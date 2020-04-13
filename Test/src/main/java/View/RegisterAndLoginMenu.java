@@ -1,6 +1,4 @@
-package View.Menu;
-
-import View.Menu.Menu;
+package View;
 
 public class RegisterAndLoginMenu extends Menu {
     public RegisterAndLoginMenu( Menu parentMenu) {

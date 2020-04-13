@@ -1,8 +1,8 @@
-package View.Menu;
+package View;
 
-public class ManagerMenu extends Menu {
-    public ManagerMenu( Menu parentMenu) {
-        super("Manager Menu", parentMenu);
+public class CustomerMenu extends Menu {
+    public CustomerMenu( Menu parentMenu) {
+        super("Customer Menu", parentMenu);
         //other options
     }
     protected Menu RegisterAccount() {
@@ -46,7 +46,6 @@ public class ManagerMenu extends Menu {
             }
         };
     }
-
     protected Menu viewPersonalInfo(){
         return new Menu("View Personal Info",this) {
             @Override
@@ -71,9 +70,8 @@ public class ManagerMenu extends Menu {
             }
         };
     }
-
-    protected Menu createDiscountCode(){
-        return new Menu("Create Discount Code" , this) {
+    protected Menu viewBalance(){
+        return new Menu("View Balance",this) {
             @Override
             public void show() {
 
@@ -85,6 +83,18 @@ public class ManagerMenu extends Menu {
             }
         };
     }
+    protected Menu viewDiscountCodes(){
+        return new Menu("View Discount Code",this) {
+            @Override
+            public void show() {
 
+            }
+
+            @Override
+            public void execute() {
+
+            }
+        };
+    }
 
 }

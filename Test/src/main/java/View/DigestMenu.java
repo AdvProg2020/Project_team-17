@@ -1,4 +1,4 @@
-package View.Menu;
+package View;
 
 public class DigestMenu extends Menu {
     public DigestMenu(Menu parentMenu) {

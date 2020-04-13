@@ -1,12 +1,11 @@
-package View.Menu;
+package View;
 
-public class ManagingProducts extends Menu {
-    public ManagingProducts( Menu parentMenu) {
-        super("Managing Products", parentMenu);
-        //other options
+public class ManagingOrders extends Menu {
+    public ManagingOrders( Menu parentMenu) {
+        super("View Orders", parentMenu);
     }
-    protected Menu viewProduct(){
-        return new Menu("View Product",this) {
+    protected Menu allOrders(){
+        return new Menu("All Orders",this) {
             @Override
             public void show() {
 
@@ -18,11 +17,10 @@ public class ManagingProducts extends Menu {
             }
         };
     }
-    protected Menu viewBuyers(){
-        return new Menu("View Buyers",this) {
+    protected Menu showOrder(){
+        return new Menu("Show Order",this) {
             @Override
             public void show() {
-
             }
 
             @Override
@@ -31,15 +29,16 @@ public class ManagingProducts extends Menu {
             }
         };
     }
-    protected Menu editProductId(){
-        return new Menu("Edit ProductId",this) {
+    protected Menu rateOrder(){
+        return new Menu("Rate Order",this) {
             @Override
             public void show() {
-
+                super.show();
             }
 
             @Override
             public void execute() {
+                super.execute();
             }
         };
     }

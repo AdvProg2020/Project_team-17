@@ -1,4 +1,4 @@
-package View.Menu;
+package View;
 
 public class ManagingCategories {
 }

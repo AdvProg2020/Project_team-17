@@ -1,20 +1,107 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="32618e29-8746-4d2a-8d73-d011168a9d97" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test/Test.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test/src/main/java/Controller/Manager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Account.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test/src/main/java/Models/BuyLog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test/src/main/java/Models/BuyLogEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Category.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Customer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Discount.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test/src/main/java/Models/DiscountCode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test/src/main/java/Models/DiscountEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Log.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Manager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test/src/main/java/Models/PointOfView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Product.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test/src/main/java/Models/ProductEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Score.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test/src/main/java/Models/SellLog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test/src/main/java/Models/SellLogEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Seller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test/src/main/java/Models/pointOfViewEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP_17.iml" beforeDir="false" afterPath="$PROJECT_DIR$/AP_17.iml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1aV5MDnFylUa1n2wuAjCQKA1Vx5" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="jdk.selected.JAVA_MODULE" value="1.8" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Test/src/main/java/View" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\UX434FL\IdeaProjects\AP_17_project\Test\src\main\java\Models" />
+    </key>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="32618e29-8746-4d2a-8d73-d011168a9d97" name="Default Changelist" comment="" />
+      <created>1586811873291</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1586811873291</updated>
+      <workItem from="1586811875333" duration="1064000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="233" y="0" key="#Project_Structure" timestamp="1586812060720">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="233" y="0" key="#Project_Structure/0.0.1280.680@0.0.1280.680" timestamp="1586812060720" />
     <state x="420" y="144" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1586807983600">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="420" y="144" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.680@0.0.1280.680" timestamp="1586807983600" />
+    <state x="438" y="212" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1586812041182">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="438" y="212" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.1280.680@0.0.1280.680" timestamp="1586812041182" />
     <state x="265" y="0" key="CommitChangelistDialog2" timestamp="1586808276544">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -23,5 +110,9 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="445" y="52" key="RollbackChangesDialog/0.0.1280.680@0.0.1280.680" timestamp="1586808245590" />
+    <state x="91" y="36" key="new project wizard" timestamp="1586811944371">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="91" y="36" key="new project wizard/0.0.1280.680@0.0.1280.680" timestamp="1586811944371" />
   </component>
 </project>

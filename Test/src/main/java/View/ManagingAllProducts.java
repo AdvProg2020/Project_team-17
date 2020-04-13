@@ -1,4 +1,4 @@
-package View.Menu;
+package View;
 
 public class ManagingAllProducts extends Menu {
     public ManagingAllProducts( Menu parentMenu) {

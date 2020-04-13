@@ -1,4 +1,4 @@
-package View.Menu;
+package View;
 
 import Controller.Manager;
 

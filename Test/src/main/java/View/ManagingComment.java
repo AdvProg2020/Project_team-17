@@ -1,4 +1,4 @@
-package View.Menu;
+package View;
 
 public class ManagingComment extends Menu {
     public ManagingComment( Menu parentMenu) {

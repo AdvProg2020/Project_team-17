@@ -1,11 +1,12 @@
-package View.Menu;
-
-public class ManagingOrders extends Menu {
-    public ManagingOrders( Menu parentMenu) {
-        super("View Orders", parentMenu);
+package View;
+//method haye in class ro motmaen nitam dorost neveshtam ya na
+public class ManagingRequest extends Menu {
+    public ManagingRequest(Menu parentMenu) {
+        super("Manage Request", parentMenu);
+        //other option
     }
-    protected Menu allOrders(){
-        return new Menu("All Orders",this) {
+    protected Menu details(){
+        return new Menu("Details",this) {
             @Override
             public void show() {
 
@@ -17,8 +18,8 @@ public class ManagingOrders extends Menu {
             }
         };
     }
-    protected Menu showOrder(){
-        return new Menu("Show Order",this) {
+    protected Menu accept(){
+        return new Menu("Accept",this) {
             @Override
             public void show() {
             }
@@ -29,16 +30,16 @@ public class ManagingOrders extends Menu {
             }
         };
     }
-    protected Menu rateOrder(){
-        return new Menu("Rate Order",this) {
+    protected Menu decline(){
+        return new Menu("Decline",this) {
             @Override
             public void show() {
-                super.show();
+
             }
 
             @Override
             public void execute() {
-                super.execute();
+
             }
         };
     }

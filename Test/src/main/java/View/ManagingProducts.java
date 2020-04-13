@@ -1,12 +1,12 @@
-package View.Menu;
+package View;
 
-public class ManagingAccount extends Menu {
-    public ManagingAccount( Menu parentMenu) {
-        super("Managing Account", parentMenu);
-        //other options with hashmap
+public class ManagingProducts extends Menu {
+    public ManagingProducts( Menu parentMenu) {
+        super("Managing Products", parentMenu);
+        //other options
     }
-    protected Menu viewUserName(){
-        return new Menu("View Username", this) {
+    protected Menu viewProduct(){
+        return new Menu("View Product",this) {
             @Override
             public void show() {
 
@@ -18,10 +18,11 @@ public class ManagingAccount extends Menu {
             }
         };
     }
-    protected Menu deleteAccount(){
-        return new Menu("Delete User", this) {
+    protected Menu viewBuyers(){
+        return new Menu("View Buyers",this) {
             @Override
             public void show() {
+
             }
 
             @Override
@@ -30,8 +31,8 @@ public class ManagingAccount extends Menu {
             }
         };
     }
-    protected Menu createMangerProfile(){
-        return new Menu("Create Manger Profile",this) {
+    protected Menu editProductId(){
+        return new Menu("Edit ProductId",this) {
             @Override
             public void show() {
 
@@ -39,7 +40,6 @@ public class ManagingAccount extends Menu {
 
             @Override
             public void execute() {
-
             }
         };
     }

@@ -1,4 +1,4 @@
-package View.Menu;
+package View;
 
 public class ManagingDiscountCode extends Menu {
         public ManagingDiscountCode( Menu parentMenu) {

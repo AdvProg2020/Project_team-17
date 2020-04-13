@@ -1,12 +1,12 @@
-package View.Menu;
+package View;
 
-public class ManagingDiscount extends Menu {
-    public ManagingDiscount( Menu parentMenu) {
-        super("Managing Discount",parentMenu);
+public class ProductsMenu extends Menu {
+    public ProductsMenu(Menu parentMenu) {
+        super("Products Menu", parentMenu);
         //other options
     }
-    public Menu viewDiscountId(){
-        return new Menu("View DiscountId",this) {
+    protected Menu productsAttributes(){
+        return new Menu("Attributes",this) {
             @Override
             public void show() {
 
@@ -18,17 +18,17 @@ public class ManagingDiscount extends Menu {
             }
         };
     }
-    public Menu addDiscount(){
-        return new Menu("Add Discount",this) {
+    protected Menu CompareProducts(){
+        return new Menu("Compare Products",this) {
             @Override
             public void show() {
             }
 
             @Override
             public void execute() {
-
             }
         };
     }
+
 
 }

@@ -1,12 +1,12 @@
-package View.Menu;
-//method haye in class ro motmaen nitam dorost neveshtam ya na
-public class ManagingRequest extends Menu {
-    public ManagingRequest(Menu parentMenu) {
-        super("Manage Request", parentMenu);
-        //other option
+package View;
+
+public class ManagingAccount extends Menu {
+    public ManagingAccount( Menu parentMenu) {
+        super("Managing Account", parentMenu);
+        //other options with hashmap
     }
-    protected Menu details(){
-        return new Menu("Details",this) {
+    protected Menu viewUserName(){
+        return new Menu("View Username", this) {
             @Override
             public void show() {
 
@@ -18,8 +18,8 @@ public class ManagingRequest extends Menu {
             }
         };
     }
-    protected Menu accept(){
-        return new Menu("Accept",this) {
+    protected Menu deleteAccount(){
+        return new Menu("Delete User", this) {
             @Override
             public void show() {
             }
@@ -30,8 +30,8 @@ public class ManagingRequest extends Menu {
             }
         };
     }
-    protected Menu decline(){
-        return new Menu("Decline",this) {
+    protected Menu createMangerProfile(){
+        return new Menu("Create Manger Profile",this) {
             @Override
             public void show() {
 

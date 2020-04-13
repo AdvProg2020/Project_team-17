@@ -1,6 +1,5 @@
 package Models;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 public class SellLog extends Log {
