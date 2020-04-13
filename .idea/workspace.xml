@@ -2,32 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="32618e29-8746-4d2a-8d73-d011168a9d97" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Test/Test.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Test/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Test/src/main/java/Controller/Manager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Account.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Test/src/main/java/Models/BuyLog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Test/src/main/java/Models/BuyLogEnum.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Category.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Customer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Discount.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Test/src/main/java/Models/DiscountCode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Test/src/main/java/Models/DiscountEnum.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Log.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Manager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Test/src/main/java/Models/PointOfView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Product.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Test/src/main/java/Models/ProductEnum.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Score.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Test/src/main/java/Models/SellLog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Test/src/main/java/Models/SellLogEnum.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Seller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Test/src/main/java/Models/pointOfViewEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP_17.iml" beforeDir="false" afterPath="$PROJECT_DIR$/AP_17.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +32,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Test/src/main/java/View" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.idea" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -68,7 +44,12 @@
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\UX434FL\IdeaProjects\AP_17_project\.idea" />
+      <recent name="C:\Users\UX434FL\IdeaProjects\AP_17_project\Test\src\main\java\View" />
       <recent name="C:\Users\UX434FL\IdeaProjects\AP_17_project\Test\src\main\java\Models" />
     </key>
   </component>
@@ -82,12 +63,24 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1586811873291</updated>
-      <workItem from="1586811875333" duration="1064000" />
+      <workItem from="1586811875333" duration="1750000" />
     </task>
+    <task id="LOCAL-00001" summary="first commit">
+      <created>1586814023547</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1586814023547</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="first commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="first commit" />
   </component>
   <component name="WindowStateProjectService">
     <state x="233" y="0" key="#Project_Structure" timestamp="1586812060720">
@@ -102,10 +95,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="438" y="212" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.1280.680@0.0.1280.680" timestamp="1586812041182" />
-    <state x="265" y="0" key="CommitChangelistDialog2" timestamp="1586808276544">
+    <state x="265" y="0" key="CommitChangelistDialog2" timestamp="1586814508543">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="265" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1586808276544" />
+    <state x="265" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1586814508543" />
     <state x="445" y="52" key="RollbackChangesDialog" timestamp="1586808245590">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
