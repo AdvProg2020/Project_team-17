@@ -4,19 +4,25 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class BuyLog extends Log {
-    private int amountPaid;
+    private double amountPaid;
     private double discountAmount;
-    //baraye meghdar takhfife emal shode motmaen nistam dorost neveshtam ya na
     private ArrayList<Product> boughtProducts;
     private String customerName;
     private BuyLogEnum buyLogEnum;
 
-    public BuyLog(String logId, Date date, int amountPaid, double discountAmount, ArrayList<Product> boughtProducts, String customerName, BuyLogEnum buyLogEnum) {
+    public BuyLog(String logId, Date date, int amountPaid, double discountAmount, String customerName, BuyLogEnum buyLogEnum) {
         super(logId, date);
         this.amountPaid = amountPaid;
         this.discountAmount = discountAmount;
-        this.boughtProducts = boughtProducts;
         this.customerName = customerName;
         this.buyLogEnum = buyLogEnum;
+        boughtProducts = new ArrayList<>();
+    }
+    public void addProductToBuyLog(Product product){
+        boughtProducts.add(product);
+    }
+    public void setBuyLogForCustomer(String customerName){
+        Customer customer = Customer.getCustomerWithName(customerName);
+        customer.setBuyLog(this);
     }
 }

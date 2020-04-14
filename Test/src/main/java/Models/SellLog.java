@@ -17,4 +17,8 @@ public class SellLog extends Log {
         this.sellerName = sellerName;
         this.sellLogState = sellLogState;
     }
+    public void setSellLogForSeller(String sellerName){
+        Seller seller = Seller.getSellerWithName(sellerName);
+        seller.setSellLog(this);
+    }
 }

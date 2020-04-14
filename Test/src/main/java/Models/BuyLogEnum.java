@@ -1,6 +1,6 @@
 package Models;
 
 public enum BuyLogEnum {
-    orderHasBeenReceived,orderIsProcessing,orderReadyToPickUp
+    ORDERHASBEENRECEIVED,ORDERISPROCCESING,ORDERREADYTOPICKUP
 
 }

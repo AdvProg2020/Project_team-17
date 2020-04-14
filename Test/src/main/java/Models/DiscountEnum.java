@@ -1,5 +1,5 @@
 package Models;
 
 public enum  DiscountEnum {
-    inHandToPutDiscount,inHandToEditDiscount,approved
+    INHANDTUPUTDISCOUNT,INHANDTOEDITDISCOUNT,APPROVED
 }

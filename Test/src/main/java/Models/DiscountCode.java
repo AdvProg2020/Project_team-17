@@ -10,16 +10,16 @@ public class DiscountCode {
     private Date startDate;
     private Date endDate;
     private double discountPercent;
-    private double maxDiscountPercent;
+    private double maxDiscountAmount;
     private Map<Account, Integer> discountUseForEachPerson;
     private ArrayList<Account> allAccountsHaveDiscount;
 
-    public DiscountCode(String discountCode, Date startDate, Date endDate, double discountPercent, double maxDiscountPercent) {
+    public DiscountCode(String discountCode, Date startDate, Date endDate, double discountPercent, double maxDiscountAmount) {
         this.discountCode = discountCode;
         this.startDate = startDate;
         this.endDate = endDate;
         this.discountPercent = discountPercent;
-        this.maxDiscountPercent = maxDiscountPercent;
+        this.maxDiscountAmount= maxDiscountAmount;
         discountUseForEachPerson = new HashMap<Account, Integer>();
         for (Account account : allAccountsHaveDiscount) {
             discountUseForEachPerson.put(account,0);

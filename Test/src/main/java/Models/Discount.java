@@ -11,5 +11,25 @@ public class Discount {
     private double discountPercent;
     private DiscountEnum discountState;
 
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
 
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+    public void addDiscountToProduct(Product product){
+
+    }
+    public void deleteDiscountFromProduct(Product product){
+
+    }
 }

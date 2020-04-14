@@ -10,4 +10,11 @@ public class Score {
         this.product = product;
         this.score = score;
     }
+
+    public Product getProduct() {
+        return product;
+    }
+    public void addScoreForProduct(double score, Product product){
+        product.addScoreForProduct(score);
+    }
 }

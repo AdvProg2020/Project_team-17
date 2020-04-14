@@ -61,12 +61,12 @@ public class CustomerMenu extends Menu {
         return new Menu("Edit Field",this) {
             @Override
             public void show() {
-                super.show();
+
             }
 
             @Override
             public void execute() {
-                super.execute();
+
             }
         };
     }

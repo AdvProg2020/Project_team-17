@@ -1,6 +1,6 @@
 package Models;
 
 public enum SellLogEnum {
-    readyToPickUpByPost,pickedUpByPost,EstimatedToDeliverByTheEndOfTheDay
+    READYTOPICKUPBYPOST, PICKEDUPBYPOST, ESTIMATEDTODELIVERYBYTHEENDOFTHEDAY
 
 }

@@ -2,8 +2,7 @@ package Models;
 
 import java.util.ArrayList;
 
-//fek konam in class ro abstract konim behtar bashe
-public class Account {
+public abstract class  Account {
     private static ArrayList<Account> allAccounts = new ArrayList<Account>();
     private String userName;
     private String firstName;
@@ -12,6 +11,7 @@ public class Account {
     private String phoneNumber;
     private String password;
     private ArrayList<DiscountCode> allDiscountCodes;
+
 
     public Account(String userName, String firstName, String lastName, String email, String phoneNumber, String password) {
         this.userName = userName;

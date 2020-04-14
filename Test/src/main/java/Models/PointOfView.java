@@ -46,4 +46,7 @@ public class PointOfView {
     public void setPointOfViewState(pointOfViewEnum pointOfViewState) {
         this.pointOfViewState = pointOfViewState;
     }
+    public void addCommentForProduct(String comment, Product product){
+        product.addCommentForProduct(comment);
+    }
 }

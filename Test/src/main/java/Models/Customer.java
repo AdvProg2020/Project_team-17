@@ -4,14 +4,30 @@ import java.util.ArrayList;
 
 public class Customer extends Account {
     private static ArrayList<Customer> allCustomers = new ArrayList<Customer>();
-    private ArrayList<BuyLog> buyLogs;
-    public Customer(String userName, String firstName, String lastName, String email, String phoneNumber, String password) {
+    //private ArrayList<BuyLog> buyLogs;
+    private BuyLog buyLog;
+    private Cart cart;
+    public Customer(String userName, String firstName, String lastName, String email, String phoneNumber, String password, BuyLog buyLog, Cart cart) {
         super(userName, firstName, lastName, email, phoneNumber, password);
-        buyLogs= new ArrayList<BuyLog>();
         allCustomers.add(this);
+        this.buyLog = buyLog;
+        this.cart = cart;
+    }
+
+    public static Customer getCustomerWithName(String userName){
+        for (Customer allCustomer : allCustomers) {
+            if (allCustomer.getUserName().equals(userName))
+                return allCustomer;
+        }
+        return null;
+    }
+
+    public void setBuyLog(BuyLog buyLog) {
+        this.buyLog = buyLog;
     }
 
     public static ArrayList<Customer> getAllCustomers() {
         return allCustomers;
     }
+
 }
