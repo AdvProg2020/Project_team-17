@@ -5,33 +5,7 @@ public class SellerMenu extends Menu {
         super("Seller Menu", parentMenu);
         //other options
     }
-    protected Menu RegisterAccount() {
-        return new Menu("Register", this) {
-            @Override
-            public void show() {
 
-            }
-
-            @Override
-            public void execute() {
-
-            }
-        };
-    }
-
-    protected Menu LoginAccount() {
-        return new Menu("Login", this) {
-            @Override
-            public void show() {
-
-            }
-
-            @Override
-            public void execute() {
-
-            }
-        };
-    }
 
     protected Menu LogoutAccount() {
         return new Menu("Logout", this) {

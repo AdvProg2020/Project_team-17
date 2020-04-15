@@ -1,8 +1,11 @@
 package View;
 
-public class ProductsMenu extends Menu {
-    public ProductsMenu(Menu parentMenu) {
-        super("Products Menu", parentMenu);
+import Controller.ProductManager;
+
+public class ProductMenu extends Menu {
+    private ProductManager productManager;
+    public ProductMenu(Menu parentMenu) {
+        super("Product Menu", parentMenu);
         //other options
     }
     protected Menu productsAttributes(){

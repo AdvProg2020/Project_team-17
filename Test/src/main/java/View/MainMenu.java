@@ -9,7 +9,7 @@ public class MainMenu extends Menu {
         subMenus.put(1, new ManagerMenu(this));
         subMenus.put(2, new SellerMenu(this));
         subMenus.put(3, new CustomerMenu(this));
-        subMenus.put(4, new ProductsMenu(this));
+        subMenus.put(4, new ProductMenu(this));
         subMenus.put(5, new DiscountsMenu(this));
         this.setSubmenus(subMenus);
 

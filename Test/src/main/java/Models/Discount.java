@@ -26,10 +26,12 @@ public class Discount {
     public Date getEndDate() {
         return endDate;
     }
-    public void addDiscountToProduct(Product product){
+
+    public void addDiscountToProduct(Product product) {
 
     }
-    public void deleteDiscountFromProduct(Product product){
+
+    public void deleteDiscountFromProduct(Product product) {
 
     }
 }

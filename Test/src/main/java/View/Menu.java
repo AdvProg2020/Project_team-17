@@ -1,7 +1,5 @@
 package View;
 
-import Controller.Manager;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -12,7 +10,7 @@ public abstract class Menu {
     protected HashMap<Integer, Menu> submenus;
     protected Menu parentMenu;
     public static Scanner scanner;
-    protected static Manager manager;
+   // protected static Manager manager;
     protected static ArrayList<Menu> allMenus= new ArrayList<Menu>();
 
     public Menu(String name, Menu parentMenu) {
@@ -37,9 +35,6 @@ public abstract class Menu {
         Menu.scanner = scanner;
     }
 
-    public static void setManager(Manager manager) {
-        Menu.manager = manager;
-    }
     public void show() {
         System.out.println(this.name + ":");
         for (Integer menuNum : submenus.keySet()) {

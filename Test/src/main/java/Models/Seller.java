@@ -1,8 +1,13 @@
 package Models;
 
+import Controller.AccountsManager.SellerAbilitiesManager;
+import Controller.ViewAndEditAccountManager;
+
 import java.util.ArrayList;
 
 public class Seller extends Account {
+    private ViewAndEditAccountManager viewAndEditAccountManager;
+    private SellerAbilitiesManager sellerAbilitiesManager;
     private String companyName;
     private static ArrayList<Seller> allSellers= new ArrayList<Seller>();
     private SellLog sellLog;

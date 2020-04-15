@@ -22,6 +22,10 @@ public class Customer extends Account {
         return null;
     }
 
+    public void setCart(Cart cart) {
+        this.cart = cart;
+    }
+
     public void setBuyLog(BuyLog buyLog) {
         this.buyLog = buyLog;
     }
