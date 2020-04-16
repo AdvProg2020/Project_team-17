@@ -1,6 +1,11 @@
 package View;
 
+import Controller.AccountsManager.SellerAbilitiesManager;
+import Controller.ViewAndEditAccountManager;
+
 public class SellerMenu extends Menu {
+    private ViewAndEditAccountManager viewAndEditAccountManager;
+    private SellerAbilitiesManager sellerAbilitiesManager;
     public SellerMenu( Menu parentMenu) {
         super("Seller Menu", parentMenu);
         //other options

@@ -5,7 +5,12 @@ import java.util.Date;
 
 public class Discount {
     private String discountId;
-    private ArrayList<Product> discountProducts;
+    private  static ArrayList<Product> discountProducts = new ArrayList<>();
+
+    public static ArrayList<Product> getDiscountProducts() {
+        return discountProducts;
+    }
+
     private Date startDate;
     private Date endDate;
     private double discountPercent;
@@ -28,6 +33,16 @@ public class Discount {
     }
 
     public void addDiscountToProduct(Product product) {
+        discountProducts.add(product);
+    }
+    public static void showDiscountProducts(){
+        for (Product product: discountProducts
+             ) {
+            System.out.println("dadasha gheymat ghable takhfif :"+product.getPrice()+" " +
+                    " va bade takhfif : "+product.getPriceAfterDiscount());
+            // chiaro bayad chap konim?!
+        }
+
 
     }
 

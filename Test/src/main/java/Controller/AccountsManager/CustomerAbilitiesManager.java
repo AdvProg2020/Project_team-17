@@ -5,15 +5,15 @@ import Models.Product;
 
 public class CustomerAbilitiesManager {
 
-    private void increaseProduct(Customer customer, Product product) {
+    public void increaseProduct(Customer customer, Product product) {
 
     }
 
-    private void decreaseProduct(Customer customer, Product product) {
+    public void decreaseProduct(Customer customer, Product product) {
 
     }
 
-    private void rateProduct(Customer customer, Product product, double score) {
+    public void rateProduct(Customer customer, Product product, double score) {
 
     }
 
@@ -21,7 +21,7 @@ public class CustomerAbilitiesManager {
 
     }
 
-    private static void purchase(Customer customer) {//argumnet e baediye ino nemidonam chi bayad bezarim
+    public  void purchase(Customer customer, Product product) {
 
     }
 }
