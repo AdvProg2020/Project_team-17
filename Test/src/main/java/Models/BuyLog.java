@@ -25,4 +25,5 @@ public class BuyLog extends Log {
         Customer customer = Customer.getCustomerWithName(customerName);
         customer.setBuyLog(this);
     }
+
 }

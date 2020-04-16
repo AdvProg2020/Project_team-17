@@ -44,4 +44,7 @@ public class Customer extends Account {
         return allCustomers;
     }
 
+    public BuyLog getBuyLog() {
+        return buyLog;
+    }
 }
