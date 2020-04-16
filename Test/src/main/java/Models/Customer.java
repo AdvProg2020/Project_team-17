@@ -7,11 +7,21 @@ public class Customer extends Account {
     //private ArrayList<BuyLog> buyLogs;
     private BuyLog buyLog;
     private Cart cart;
-    public Customer(String userName, String firstName, String lastName, String email, String phoneNumber, String password, BuyLog buyLog, Cart cart) {
+    private String address;
+
+    public Customer(String userName, String firstName, String lastName, String email,
+                    String phoneNumber, String password, BuyLog buyLog, Cart cart) {
         super(userName, firstName, lastName, email, phoneNumber, password);
         allCustomers.add(this);
         this.buyLog = buyLog;
         this.cart = cart;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+    public String getAddress() {
+        return address;
     }
 
     public static Customer getCustomerWithName(String userName){

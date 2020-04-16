@@ -9,6 +9,7 @@ public class Product {
     private String name;
     private String companyName;
     private double price;
+    private double priceAfterDiscount;
     private Seller seller;
     private Category category;
     //moshakhasat khas daste ro nemidonam yani chia
@@ -31,6 +32,14 @@ public class Product {
 
     public ArrayList<Double> getScoresForProduct() {
         return scoresForProduct;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public double getPriceAfterDiscount() {
+        return priceAfterDiscount;
     }
 
     public static Product getProductWithId(String productId){
