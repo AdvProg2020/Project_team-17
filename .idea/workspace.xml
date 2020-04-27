@@ -2,44 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="32618e29-8746-4d2a-8d73-d011168a9d97" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Accounts/Account.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Accounts/Customer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Accounts/Manager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Accounts/Seller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test/src/main/java/Controller/ProductManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Controller/AccountsManager/CustomerAbilitiesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Controller/AccountsManager/CustomerAbilitiesManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Controller/AccountsManager/ManagerAbilitiesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Controller/AccountsManager/ManagerAbilitiesManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Controller/AccountsManager/SellerAbilitiesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Controller/AccountsManager/SellerAbilitiesManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Controller/ProductManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Controller/ProductsManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Controller/RegisterAndLoginManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Controller/RegisterAndLoginManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Controller/ViewAndEditAccountManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Account.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/BuyLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Logs/BuyLog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/BuyLogEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Enums/BuyLogEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Cart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Category.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Customer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Discount.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Discount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/DiscountCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/DiscountCode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/DiscountEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Enums/DiscountEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Log.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Logs/Log.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Manager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/PointOfView.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/PointOfView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/ProductEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Enums/ProductEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Score.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Score.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/SellLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Logs/SellLog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/SellLogEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Enums/SellLogEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Seller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/pointOfViewEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Enums/PointOfViewEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/CustomerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/CustomerMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/ManagerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/ManagerMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/ManagingCategories.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/ManagingCategories.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/ProductMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/ProductMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/ProductsMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/ProductsMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/SellerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/SellerMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,6 +94,7 @@
       <workItem from="1587799472964" duration="49184000" />
       <workItem from="1587979499224" duration="329000" />
       <workItem from="1587981141629" duration="20130000" />
+      <workItem from="1587999043209" duration="1160000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1586814023547</created>
