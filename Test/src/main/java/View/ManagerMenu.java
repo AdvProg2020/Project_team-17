@@ -1,11 +1,9 @@
 package View;
 
 import Controller.AccountsManager.ManagerAbilitiesManager;
-import Controller.ViewAndEditAccountManager;
 
 public class ManagerMenu extends Menu {
     private ManagerAbilitiesManager managerAbilitiesManager;
-    private ViewAndEditAccountManager viewAndEditAccountManager;
     public ManagerMenu( Menu parentMenu) {
         super("Manager Menu", parentMenu);
         //other options

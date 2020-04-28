@@ -1,4 +1,4 @@
-package Models;
+package Models.Logs;
 
 import java.util.ArrayList;
 import java.util.Date;

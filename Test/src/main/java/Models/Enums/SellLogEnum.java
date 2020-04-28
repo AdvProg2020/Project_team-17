@@ -1,4 +1,4 @@
-package Models;
+package Models.Enums;
 
 public enum SellLogEnum {
     READYTOPICKUPBYPOST, PICKEDUPBYPOST, ESTIMATEDTODELIVERYBYTHEENDOFTHEDAY

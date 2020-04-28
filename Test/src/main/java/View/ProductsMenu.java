@@ -1,12 +1,9 @@
 package View;
 
-import Controller.ProductManager;
-import Models.Manager;
-
-import java.util.ArrayList;
+import Controller.ProductsManager;
 
 public class ProductsMenu extends Menu {
-    private ProductManager productManager;
+    private ProductsManager productsManager;
     public ProductsMenu(Menu parentMenu) {
         super("Products Menu", parentMenu);
         //other options

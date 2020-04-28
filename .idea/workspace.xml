@@ -2,63 +2,44 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="32618e29-8746-4d2a-8d73-d011168a9d97" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Accounts/Account.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Accounts/Customer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Accounts/Manager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Accounts/Seller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test/src/main/java/Controller/AccountsManager/CustomerAbilitiesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Controller/AccountsManager/CustomerAbilitiesManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Controller/ProductManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Controller/ProductManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Controller/AccountsManager/ManagerAbilitiesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Controller/AccountsManager/ManagerAbilitiesManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Controller/AccountsManager/SellerAbilitiesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Controller/AccountsManager/SellerAbilitiesManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Controller/ProductManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Controller/ProductsManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Controller/RegisterAndLoginManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Controller/RegisterAndLoginManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Controller/ViewAndEditAccountManager.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Test/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Account.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/BuyLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Logs/BuyLog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/BuyLogEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Enums/BuyLogEnum.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Cart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Customer.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Discount.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Discount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/DiscountCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/DiscountCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/DiscountEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Enums/DiscountEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Log.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Logs/Log.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Manager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/PointOfView.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/PointOfView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/DiscountsMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/DiscountsMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/PurchaseMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/PurchaseMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/ProductEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Enums/ProductEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Score.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Score.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/SellLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Logs/SellLog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/SellLogEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Enums/SellLogEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Seller.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/pointOfViewEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Enums/PointOfViewEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/CustomerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/CustomerMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/ManagerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/ManagerMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/ManagingCategories.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/ManagingCategories.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/ProductMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/ProductMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/ProductsMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/ProductsMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/SellerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/SellerMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/Controller/Manager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/Models/Account.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/Models/Account.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/Models/Cart.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/Models/Cart.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/Models/Customer.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/Models/Customer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/Models/Discount.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/Models/Discount.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/Models/DiscountCode.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/Models/DiscountCode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/Models/Product.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/Models/Product.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/Models/Seller.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/Models/Seller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/CustomerMenu$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/CustomerMenu$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/CustomerMenu$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/CustomerMenu$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/CustomerMenu$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/CustomerMenu$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/CustomerMenu$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/CustomerMenu$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/CustomerMenu$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/CustomerMenu$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/CustomerMenu$6.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/CustomerMenu$7.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/CustomerMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/CustomerMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/DiscountsMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/DiscountsMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/MainMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/MainMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagerMenu$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ManagerMenu$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagerMenu$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ManagerMenu$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagerMenu$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ManagerMenu$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagerMenu$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ManagerMenu$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagerMenu$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ManagerMenu$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagerMenu$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ManagerMenu$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagerMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ManagerMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/Menu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ProductsMenu$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ProductsMenu$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ProductsMenu$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ProductsMenu$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ProductsMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ProductsMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/RegisterAndLoginMenu$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/RegisterAndLoginMenu$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/RegisterAndLoginMenu$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/RegisterAndLoginMenu$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/RegisterAndLoginMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/RegisterAndLoginMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/SellerMenu$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/SellerMenu$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/SellerMenu$10.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/SellerMenu$11.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/SellerMenu$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/SellerMenu$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/SellerMenu$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/SellerMenu$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/SellerMenu$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/SellerMenu$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/SellerMenu$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/SellerMenu$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/SellerMenu$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/SellerMenu$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/SellerMenu$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/SellerMenu$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/SellerMenu$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/SellerMenu$8.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/SellerMenu$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/SellerMenu$9.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/SellerMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/SellerMenu.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,17 +76,17 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/.idea" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Test/src" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -145,6 +126,10 @@
       <workItem from="1586775003001" duration="9056000" />
       <workItem from="1586793351134" duration="21250000" />
       <workItem from="1586973666714" duration="18173000" />
+      <workItem from="1587039715841" duration="14574000" />
+      <workItem from="1587799472964" duration="49184000" />
+      <workItem from="1587979499224" duration="329000" />
+      <workItem from="1587981141629" duration="20130000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1586814023547</created>
@@ -179,39 +164,53 @@
     <option name="LAST_COMMIT_MESSAGE" value="add controller" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="280" y="0" key="#Project_Structure" timestamp="1586783426481">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="233" y="0" key="#Project_Structure" timestamp="1587070707195">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="0" key="#Project_Structure/0.0.1280.680@0.0.1280.680" timestamp="1586812060720" />
+    <state x="233" y="0" key="#Project_Structure/0.0.1280.680@0.0.1280.680" timestamp="1587070707195" />
     <state x="280" y="0" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1586783426481" />
     <state x="420" y="144" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1586807983600">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="420" y="144" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.680@0.0.1280.680" timestamp="1586807983600" />
-    <state x="801" y="93" key="#com.intellij.ide.util.MemberChooser" timestamp="1586995828901">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="751" y="83" key="#com.intellij.ide.util.MemberChooser" timestamp="1588035940809">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
+    <state x="751" y="83" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680/460.1080.1000.504@0.0.1280.680" timestamp="1587953827102" />
+    <state x="751" y="83" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1588035940809" />
     <state x="801" y="93" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1586995828901" />
     <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1586902334938" />
-    <state x="550" y="266" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1586993185529">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="515" y="248" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1587039723807">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="515" y="248" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1280.680@0.0.1280.680" timestamp="1586973694698" />
+    <state x="515" y="248" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1280.680@0.0.1280.680" timestamp="1587039723807" />
     <state x="550" y="266" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1366.728@0.0.1366.728" timestamp="1586993185529" />
     <state x="618" y="301" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1536.824@0.0.1536.824" timestamp="1586783619634" />
+    <state x="432" y="200" width="417" height="287" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1587970052701">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="432" y="200" width="417" height="287" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1280.680/460.1080.1000.504@0.0.1280.680" timestamp="1587970052701" />
     <state x="438" y="212" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1586812041182">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="438" y="212" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.1280.680@0.0.1280.680" timestamp="1586812041182" />
-    <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1586979296861">
+    <state x="395" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1588017222538">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1586979296861" />
+    <state x="395" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.680@0.0.1280.680" timestamp="1588017222538" />
+    <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1588017147916">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1588017147916" />
     <state x="265" y="0" key="CommitChangelistDialog2" timestamp="1586996341017">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="265" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1586996341017" />
     <state x="318" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1586903788717" />
+    <state x="421" y="67" key="FileChooserDialogImpl" timestamp="1587071987239">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="421" y="67" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1587071987239" />
     <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1586996145625">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -240,18 +239,25 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="445" y="52" key="RollbackChangesDialog/0.0.1280.680@0.0.1280.680" timestamp="1586808245590" />
-    <state x="277" y="0" key="SettingsEditor" timestamp="1586795441316">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="277" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1586795441316" />
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1586996379178">
+    <state x="231" y="0" key="SettingsEditor" timestamp="1587070524251">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1586996379178" />
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1586793358186">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="231" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1587070524251" />
+    <state x="277" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1586795441316" />
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1587081848935">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1587081848935" />
+    <state x="388" y="195" key="com.intellij.ide.util.TipDialog" timestamp="1587981232381">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="388" y="195" key="com.intellij.ide.util.TipDialog/0.0.1280.680/460.1080.1000.504@0.0.1280.680" timestamp="1587979505225" />
+    <state x="388" y="195" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1587981232381" />
     <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1586793358186" />
+    <state x="317" y="30" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1587806117721">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="317" y="30" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1280.680/460.1080.1000.504@0.0.1280.680" timestamp="1587806117721" />
     <state x="450" y="258" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1586996369349">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -264,9 +270,15 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="91" y="36" key="new project wizard/0.0.1280.680@0.0.1280.680" timestamp="1586811944371" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1586993653870">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="297" y="151" key="run.anything.popup" timestamp="1587041594790">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
+    <state x="297" y="151" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1587041594790" />
+    <state x="324" y="46" width="672" height="634" key="search.everywhere.popup" timestamp="1588023124033">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="324" y="46" width="672" height="634" key="search.everywhere.popup/0.0.1280.680/460.1080.1000.504@0.0.1280.680" timestamp="1587860318764" />
+    <state x="324" y="46" width="672" height="634" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1588023124033" />
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1586993653870" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">

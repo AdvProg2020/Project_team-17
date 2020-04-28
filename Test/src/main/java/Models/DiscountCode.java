@@ -1,5 +1,7 @@
 package Models;
 
+import Models.Accounts.Account;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -19,10 +21,10 @@ public class DiscountCode {
         this.startDate = startDate;
         this.endDate = endDate;
         this.discountPercent = discountPercent;
-        this.maxDiscountAmount= maxDiscountAmount;
+        this.maxDiscountAmount = maxDiscountAmount;
         discountUseForEachPerson = new HashMap<Account, Integer>();
         for (Account account : allAccountsHaveDiscount) {
-            discountUseForEachPerson.put(account,0);
+            discountUseForEachPerson.put(account, 0);
         }
     }
 }

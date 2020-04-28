@@ -1,4 +1,9 @@
-package Models;
+package Models.Logs;
+
+import Models.Accounts.Seller;
+import Models.Enums.SellLogEnum;
+import Models.Logs.Log;
+import Models.Product;
 
 import java.util.Date;
 

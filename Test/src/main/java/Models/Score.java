@@ -1,5 +1,7 @@
 package Models;
 
+import Models.Accounts.Customer;
+
 public class Score {
     private Customer customer;
     private Product product;
@@ -14,7 +16,8 @@ public class Score {
     public Product getProduct() {
         return product;
     }
-    public void addScoreForProduct(double score, Product product){
-        product.addScoreForProduct(score);
+
+    public double getScore() {
+        return score;
     }
 }

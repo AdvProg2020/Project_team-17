@@ -1,5 +1,5 @@
-package Models;
+package Models.Enums;
 
-public enum  pointOfViewEnum {
+public enum PointOfViewEnum {
     WAITINGFORAPPROVAL,APPROVED,DISAPPROVEDBYMANAGER;
 }

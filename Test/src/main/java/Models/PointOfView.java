@@ -1,15 +1,18 @@
 package Models;
 
+import Models.Accounts.Account;
+import Models.Enums.PointOfViewEnum;
+
 public class PointOfView {
     private Account account;
     private Product product;
     private String pointOfViewStringText;
-    private pointOfViewEnum pointOfViewState;
+    private PointOfViewEnum pointOfViewState;
     private boolean isAccountBuyer;
     //baraye in k aya nazardahande in kala ra kharide ast nazari nemidonam chi kar bayad bokonim?
 
-    public PointOfView(Account account,Product product, String pointOfViewStringText, pointOfViewEnum pointOfViewState) {
-        this.account=account;
+    public PointOfView(Account account, Product product, String pointOfViewStringText, PointOfViewEnum pointOfViewState) {
+        this.account = account;
         this.product = product;
         this.pointOfViewStringText = pointOfViewStringText;
         this.pointOfViewState = pointOfViewState;
@@ -27,7 +30,7 @@ public class PointOfView {
         return pointOfViewStringText;
     }
 
-    public pointOfViewEnum getPointOfViewState() {
+    public PointOfViewEnum getPointOfViewState() {
         return pointOfViewState;
     }
 
@@ -43,10 +46,7 @@ public class PointOfView {
         this.pointOfViewStringText = pointOfViewStringText;
     }
 
-    public void setPointOfViewState(pointOfViewEnum pointOfViewState) {
+    public void setPointOfViewState(PointOfViewEnum pointOfViewState) {
         this.pointOfViewState = pointOfViewState;
-    }
-    public void addCommentForProduct(String comment, Product product){
-        product.addCommentForProduct(comment);
     }
 }

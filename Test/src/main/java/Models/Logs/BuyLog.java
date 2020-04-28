@@ -1,4 +1,8 @@
-package Models;
+package Models.Logs;
+
+import Models.Accounts.Customer;
+import Models.Enums.BuyLogEnum;
+import Models.Product;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -22,7 +26,7 @@ public class BuyLog extends Log {
         boughtProducts.add(product);
     }
     public void setBuyLogForCustomer(String customerName){
-        Customer customer = Customer.getCustomerWithName(customerName);
+        Customer customer = Customer.getCustomerByName(customerName);
         customer.setBuyLog(this);
     }
 }
