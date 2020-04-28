@@ -87,6 +87,7 @@ public class RegisterAndLoginMenu extends Menu {
                     System.out.println("There is an account with this username!");
                 }
             }else if(command.equals("help")){
+                System.out.println("commands that you can enter are:");
                 System.out.println("create account [type] [username]");
                 System.out.println("Back");
             }else if(command.equals("back")){

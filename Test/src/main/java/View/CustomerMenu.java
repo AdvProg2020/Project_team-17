@@ -6,98 +6,89 @@ import java.util.HashMap;
 
 public class CustomerMenu extends Menu {
     private CustomerAbilitiesManager customerAbilitiesManager;
-    public CustomerMenu( Menu parentMenu) {
+
+    public CustomerMenu(Menu parentMenu) {
         super("Customer Menu", parentMenu);
-        HashMap<Integer, Menu> submenus = new HashMap<>();
-        submenus.put(1, viewPersonalInfo());
-        submenus.put(2, new ManagingCart(this));
-        submenus.put(3, new PurchaseMenu(this));
-        submenus.put(4, new ManagingOrders(this));
+
 
     }
 
-    protected Menu ManagingOrders() {
-        return new Menu("managing orders", this) {
-            @Override
-            public void show() {
-                System.out.println("1.show orders");
-                System.out.println("2.rate");
-            }
-
-            @Override
-            public void execute() {
-                int input = Integer.parseInt(scanner.nextLine());
-                if (input == 1){
-                    //sabegheye kharid
-                }else if (input == 2){
-                  //  CustomerAbilitiesManager.rateProduct();
-                }
-
-            }
-        };
+    @Override
+    public void show() {
+        System.out.println("1.view personal info");
+        System.out.println("2.view cart");
+        System.out.println("3.purchase");
+        System.out.println("4.view orders");
+        System.out.println("5.view balance");
+        System.out.println("6.view discount codes");
+        System.out.println("7.back");
     }
-    protected Menu LogoutAccount() {
-        return new Menu("Logout", this) {
-            @Override
-            public void show() {
 
-            }
-
-            @Override
-            public void execute() {
-
-            }
-        };
+    @Override
+    public void execute() {
+        int input = Integer.parseInt(scanner.nextLine());
+        if (input == 1) {
+            viewPersonalInfo();
+            parentMenu.show();
+            parentMenu.execute();
+        } else if (input == 2) {
+            viewCart();
+            parentMenu.show();
+            parentMenu.execute();
+        } else if (input == 3) {
+            purchase();
+            parentMenu.show();
+            parentMenu.execute();
+        } else if (input == 4) {
+            viewOrders();
+            parentMenu.show();
+            parentMenu.execute();
+        } else if (input == 5) {
+            viewBalance();
+            parentMenu.show();
+            parentMenu.execute();
+        } else if (input == 6) {
+            viewDiscountCodes();
+            parentMenu.show();
+            parentMenu.execute();
+        }
     }
-    protected Menu viewPersonalInfo(){
-        return new Menu("View Personal Info",this) {
-            @Override
-            public void show() {
-            }
 
-            @Override
-            public void execute() {
-            }
-        };
+    public void viewPersonalInfo() {
+        String command;
+        while (true) {
+            command = scanner.nextLine();
+            if (command.equals("view personal info")) {
+                //username i ke login karde
+            } else if (command.equals("help")) {
+                System.out.println("commands that you can enter are:");
+                System.out.println("edit [field]");
+                System.out.println("back");
+            } else if (command.equals("back")) {
+                break;
+            } else System.out.println("Command is invalid");
+        }
     }
-    protected Menu editField(){
-        return new Menu("Edit Field",this) {
-            @Override
-            public void show() {
 
-            }
+    public void viewCart() {
 
-            @Override
-            public void execute() {
-
-            }
-        };
     }
-    protected Menu viewBalance(){
-        return new Menu("View Balance",this) {
-            @Override
-            public void show() {
 
-            }
+    public void purchase() {
 
-            @Override
-            public void execute() {
-
-            }
-        };
     }
-    protected Menu viewDiscountCodes(){
-        return new Menu("View Discount Code",this) {
-            @Override
-            public void show() {
 
-            }
+    public void viewOrders() {
 
-            @Override
-            public void execute() {
-
-            }
-        };
     }
+
+    public void viewBalance() {
+
+    }
+
+    public void viewDiscountCodes() {
+
+    }
+
 
 }
