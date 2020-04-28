@@ -2,8 +2,100 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="32618e29-8746-4d2a-8d73-d011168a9d97" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Test/src/main/java/Controller/ProductManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Controller/AccountsManager/CustomerAbilitiesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Controller/AccountsManager/CustomerAbilitiesManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/CustomerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/CustomerMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/MainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/RegisterAndLoginMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/RegisterAndLoginMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/Controller/Manager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/Models/Account.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/Models/BuyLog.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/Models/BuyLogEnum.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/Models/Cart.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/Models/Cart.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/Models/Category.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/Models/Category.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/Models/Customer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/Models/Discount.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/Models/Discount.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/Models/DiscountCode.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/Models/DiscountCode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/Models/DiscountEnum.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/Models/Log.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/Models/Manager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/Models/PointOfView.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/Models/PointOfView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/Models/Product.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/Models/Product.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/Models/ProductEnum.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/Models/Score.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/Models/Score.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/Models/SellLog.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/Models/SellLogEnum.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/Models/Seller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/Models/pointOfViewEnum.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/CustomerMenu$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/CustomerMenu$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/CustomerMenu$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/CustomerMenu$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/CustomerMenu$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/CustomerMenu$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/CustomerMenu$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/CustomerMenu$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/CustomerMenu$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/CustomerMenu$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/CustomerMenu$6.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/CustomerMenu$7.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/CustomerMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/CustomerMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/DigestMenu$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/DigestMenu$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/DigestMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/DigestMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagerMenu$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ManagerMenu$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagerMenu$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ManagerMenu$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagerMenu$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ManagerMenu$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagerMenu$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ManagerMenu$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagerMenu$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ManagerMenu$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagerMenu$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ManagerMenu$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagerMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ManagerMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingAccount$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ManagingAccount$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingAccount$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ManagingAccount$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingAccount$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ManagingAccount$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingAccount.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ManagingAccount.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingAllProducts$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ManagingAllProducts$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingAllProducts.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ManagingAllProducts.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingCart$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ManagingCart$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingCart$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ManagingCart$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingCart$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ManagingCart$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingCart$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ManagingCart$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingCart$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ManagingCart$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingCart.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ManagingCart.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingCategories.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ManagingCategories.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingComment$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ManagingComment$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingComment.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ManagingComment.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingDiscount$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ManagingDiscount$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingDiscount$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ManagingDiscount$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingDiscount.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ManagingDiscount.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingDiscountCode$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ManagingDiscountCode$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingDiscountCode$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ManagingDiscountCode$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingDiscountCode$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ManagingDiscountCode$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingDiscountCode.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ManagingDiscountCode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingOrders$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ManagingOrders$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingOrders$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ManagingOrders$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingOrders$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ManagingOrders$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingOrders.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ManagingOrders.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingProducts$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ManagingProducts$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingProducts$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ManagingProducts$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingProducts$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ManagingProducts$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingProducts.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ManagingProducts.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingRequest$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ManagingRequest$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingRequest$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ManagingRequest$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingRequest$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ManagingRequest$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ManagingRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ProductsMenu$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ProductsMenu$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ProductsMenu$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ProductsMenu$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ProductsMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ProductsMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/PurchaseMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/PurchaseMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/SellerMenu$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/SellerMenu$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/SellerMenu$10.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/SellerMenu$11.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/SellerMenu$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/SellerMenu$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/SellerMenu$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/SellerMenu$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/SellerMenu$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/SellerMenu$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/SellerMenu$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/SellerMenu$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/SellerMenu$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/SellerMenu$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/SellerMenu$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/SellerMenu$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/SellerMenu$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/SellerMenu$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/SellerMenu$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/SellerMenu$9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/SellerMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/SellerMenu.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,6 +187,8 @@
       <workItem from="1587979499224" duration="329000" />
       <workItem from="1587981141629" duration="20130000" />
       <workItem from="1587999043209" duration="1160000" />
+      <workItem from="1588106900061" duration="977000" />
+      <workItem from="1588107894322" duration="1735000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1586814023547</created>
@@ -176,30 +270,30 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="421" y="67" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1587071987239" />
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1586996145625">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1588107878354">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1237" height="2" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1586996346308" />
     <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1586996145625" />
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1586793476169" />
-    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1586996145625">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1588107878354" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1588107878353">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1237" height="2" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1586996346307" />
     <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1586996145625" />
-    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1586793476169" />
-    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1586996145625">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1588107878353" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1588107878353">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1237" height="2" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1586996346306" />
     <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1586996145625" />
-    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1586793476169" />
-    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1586996145625">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1588107878353" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1588107878353">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1237" height="2" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1586996346307" />
     <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1586996145625" />
-    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1586793476169" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1588107878353" />
     <state x="445" y="52" key="RollbackChangesDialog" timestamp="1586808245590">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

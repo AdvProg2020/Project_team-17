@@ -54,7 +54,7 @@ public class CustomerAbilitiesManager {
         }
     }
 
-    public void rateProduct(Customer customer, Product product, double score) throws Exception {
+    public static void rateProduct(Customer customer, Product product, double score) throws Exception {
         Cart cart = customer.getCart();
         if (Product.isThereProductWithId(product.getProductId())) {
             if (cart.isThereProductInCart(product)) {

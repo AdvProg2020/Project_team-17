@@ -2,11 +2,39 @@ package View;
 
 import Controller.AccountsManager.CustomerAbilitiesManager;
 
+import java.util.HashMap;
+
 public class CustomerMenu extends Menu {
     private CustomerAbilitiesManager customerAbilitiesManager;
     public CustomerMenu( Menu parentMenu) {
         super("Customer Menu", parentMenu);
-        //other options
+        HashMap<Integer, Menu> submenus = new HashMap<>();
+        submenus.put(1, viewPersonalInfo());
+        submenus.put(2, new ManagingCart(this));
+        submenus.put(3, new PurchaseMenu(this));
+        submenus.put(4, new ManagingOrders(this));
+
+    }
+
+    protected Menu ManagingOrders() {
+        return new Menu("managing orders", this) {
+            @Override
+            public void show() {
+                System.out.println("1.show orders");
+                System.out.println("2.rate");
+            }
+
+            @Override
+            public void execute() {
+                int input = Integer.parseInt(scanner.nextLine());
+                if (input == 1){
+                    //sabegheye kharid
+                }else if (input == 2){
+                  //  CustomerAbilitiesManager.rateProduct();
+                }
+
+            }
+        };
     }
     protected Menu LogoutAccount() {
         return new Menu("Logout", this) {
