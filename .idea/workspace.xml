@@ -191,11 +191,11 @@
     </state>
     <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1588017147916" />
     <state x="445" y="105" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1588110193951" />
-    <state x="297" y="0" key="CommitChangelistDialog2" timestamp="1588113580664">
+    <state x="297" y="0" key="CommitChangelistDialog2" timestamp="1588326844647">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="265" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1586996341017" />
-    <state x="297" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1588113580664" />
+    <state x="297" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1588326844647" />
     <state x="505" y="81" key="FileChooserDialogImpl" timestamp="1588326132134">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -234,11 +234,11 @@
     </state>
     <state x="231" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1587070524251" />
     <state x="277" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1588326789269" />
-    <state x="280" y="90" key="Vcs.Push.Dialog.v2" timestamp="1588113605017">
+    <state x="280" y="90" key="Vcs.Push.Dialog.v2" timestamp="1588326863816">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1587081848935" />
-    <state x="280" y="90" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1588113605017" />
+    <state x="280" y="90" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1588326863816" />
     <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1588326808587">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -253,10 +253,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="450" y="258" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1586996369349" />
-    <state x="476" y="204" key="git4idea.merge.GitPullDialog" timestamp="1588113593409">
+    <state x="476" y="204" key="git4idea.merge.GitPullDialog" timestamp="1588326854216">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="476" y="204" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1588113593409" />
+    <state x="476" y="204" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1588326854216" />
     <state x="109" y="44" key="new project wizard" timestamp="1588275478876">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
