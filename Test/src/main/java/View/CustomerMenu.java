@@ -8,9 +8,7 @@ public class CustomerMenu extends Menu {
     private CustomerAbilitiesManager customerAbilitiesManager;
 
     public CustomerMenu(Menu parentMenu) {
-        super("Customer Menu", parentMenu);
-
-
+        super("Customer ", parentMenu);
     }
 
     @Override
@@ -39,6 +37,7 @@ public class CustomerMenu extends Menu {
             purchase();
             parentMenu.show();
             parentMenu.execute();
+            //ino badan check konim
         } else if (input == 4) {
             viewOrders();
             parentMenu.show();
@@ -49,6 +48,9 @@ public class CustomerMenu extends Menu {
             parentMenu.execute();
         } else if (input == 6) {
             viewDiscountCodes();
+            parentMenu.show();
+            parentMenu.execute();
+        } else if (input == 7) {
             parentMenu.show();
             parentMenu.execute();
         }
@@ -71,7 +73,6 @@ public class CustomerMenu extends Menu {
     }
 
     public void viewCart() {
-
     }
 
     public void purchase() {

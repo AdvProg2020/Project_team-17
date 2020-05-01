@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 public class RegisterAndLoginMenu extends Menu {
     private RegisterAndLoginManager registerAndLoginManager;
     public RegisterAndLoginMenu( Menu parentMenu) {
-        super("Register And Login Menu", parentMenu);
+        super("Register And Login ", parentMenu);
     }
     @Override
     public void show() {
@@ -29,17 +29,17 @@ public class RegisterAndLoginMenu extends Menu {
             parentMenu.show();
             parentMenu.execute();
         }
-        else if(input ==2){
+        else if(input == 2){
             login();
             parentMenu.show();
             parentMenu.execute();
         }
-        else if(input==3){
+        else if(input == 3){
             logout();
             //MainMenu.show()
             //MainMenu.execute()
             //vali ina static nistan nemitonim static konim chon sad ja override kardim nemidonam chi kar konim
-        }else if(input==4){
+        }else if(input == 4){
             parentMenu.show();
             parentMenu.execute();
         }
