@@ -4,6 +4,7 @@ import Controller.AccountsManager.ManagerAbilitiesManager;
 
 public class ManagerMenu extends Menu {
     private ManagerAbilitiesManager managerAbilitiesManager;
+    private RegisterAndLoginMenu registerAndLoginMenu;
     public ManagerMenu( Menu parentMenu) {
         super("Manager ", parentMenu);
     }
@@ -59,11 +60,10 @@ public class ManagerMenu extends Menu {
     }
     public void viewPersonalInfo() {
         String command;
+        registerAndLoginMenu.getCurrentManager();
         while (true) {
             command = scanner.nextLine();
-            if (command.equals("view personal info")) {
-                //username i ke login karde(vase seller)
-            } else if (command.equals("help")) {
+            if (command.equals("help")) {
                 System.out.println("commands that you can enter are:");
                 System.out.println("edit [field]");
                 System.out.println("back");

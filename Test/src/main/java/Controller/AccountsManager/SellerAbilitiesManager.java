@@ -16,25 +16,20 @@ public class SellerAbilitiesManager {
         }
     }
 
-    public void changeField(Manager manager, String username, String field, String newContentForThisField) throws Exception {
-        if (Customer.isThereCustomerWithUserName(username)) {
-            Account account = Customer.getCustomerByName(username);
+    public void changeField(Seller seller, String field, String newContentForThisField) {
             if (field.equalsIgnoreCase("first name")) {
-                account.changeFirstName(account, newContentForThisField);
+                seller.changeFirstName(seller, newContentForThisField);
             } else if (field.equalsIgnoreCase("last name")) {
-                account.changeLastName(account, newContentForThisField);
+                seller.changeLastName(seller, newContentForThisField);
             } else if (field.equalsIgnoreCase("email")) {
-                account.changeEmail(account, newContentForThisField);
+                seller.changeEmail(seller, newContentForThisField);
             } else if (field.equalsIgnoreCase("phone number")) {
-                account.changePhoneNumber(account, newContentForThisField);
+                seller.changePhoneNumber(seller, newContentForThisField);
             } else if (field.equalsIgnoreCase("password")) {
-                account.changePassword(account, newContentForThisField);
+                seller.changePassword(seller, newContentForThisField);
                 //nemidonam type passwordam bayad check konim ya na
             }
-        } else {
-            throw new Exception("There hasn't been any registered account with this username!");
         }
-    }
 
     public String viewFactoryInfo(Seller seller) {
         return seller.getCompanyName();

@@ -1,10 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="32618e29-8746-4d2a-8d73-d011168a9d97" name="Default Changelist" comment="">
+    <list default="true" id="32618e29-8746-4d2a-8d73-d011168a9d97" name="Default Changelist" comment="exception handle for password">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Controller/AccountsManager/SellerAbilitiesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Controller/AccountsManager/SellerAbilitiesManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Controller/ProductsManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Controller/ProductsManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Controller/RegisterAndLoginManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Controller/RegisterAndLoginManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Accounts/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Accounts/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Accounts/Seller.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Accounts/Seller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/CustomerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/CustomerMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/MainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/ManagerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/ManagerMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/RegisterAndLoginMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/RegisterAndLoginMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/SellerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/SellerMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test/target/classes/View/CustomerMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/CustomerMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/DigestMenu$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/DigestMenu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagerMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ManagerMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingAccount$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingAccount$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingAccount$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingAccount.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingAllProducts$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingAllProducts.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingCart$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingCart$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingCart$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingCart$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingCart$5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingCart.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingCategories.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingComment$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingComment.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingDiscount$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingDiscount$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingDiscount.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingDiscountCode$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingDiscountCode$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingDiscountCode$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingDiscountCode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingProducts$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingProducts$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingProducts$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingProducts.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingRequest$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingRequest$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingRequest$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ManagingRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ProductsMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ProductsMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/RegisterAndLoginMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/RegisterAndLoginMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/SellerMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/SellerMenu.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,7 +194,8 @@
     <MESSAGE value="add controller" />
     <MESSAGE value="add CommandProcessor and RegisterAndLoginMenu" />
     <MESSAGE value="fix CustomerMenu" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix CustomerMenu" />
+    <MESSAGE value="exception handle for password" />
+    <option name="LAST_COMMIT_MESSAGE" value="exception handle for password" />
   </component>
   <component name="WindowStateProjectService">
     <state x="233" y="0" key="#Project_Structure" timestamp="1587070707195">
@@ -161,11 +207,11 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="420" y="144" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.680@0.0.1280.680" timestamp="1586807983600" />
-    <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser" timestamp="1588275888120">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="751" y="83" key="#com.intellij.ide.util.MemberChooser" timestamp="1588493008482">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="751" y="83" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680/460.1080.1000.504@0.0.1280.680" timestamp="1587953827102" />
-    <state x="751" y="83" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1588035940809" />
+    <state x="751" y="83" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1588493008482" />
     <state x="801" y="93" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1586995828901" />
     <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1588275888120" />
     <state x="515" y="248" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1587039723807">
@@ -191,38 +237,38 @@
     </state>
     <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1588017147916" />
     <state x="445" y="105" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1588110193951" />
-    <state x="297" y="0" key="CommitChangelistDialog2" timestamp="1588326844647">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="265" y="0" key="CommitChangelistDialog2" timestamp="1588492842701">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="265" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1586996341017" />
+    <state x="265" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1588492842701" />
     <state x="297" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1588326844647" />
     <state x="505" y="81" key="FileChooserDialogImpl" timestamp="1588326132134">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="421" y="67" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1587071987239" />
     <state x="505" y="81" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1588326132134" />
-    <state width="1478" height="207" key="GridCell.Tab.0.bottom" timestamp="1588279046521">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1237" height="2" key="GridCell.Tab.0.bottom" timestamp="1588472447338">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="2" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1586996346308" />
+    <state width="1237" height="2" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1588472447338" />
     <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1586996145625" />
     <state width="1478" height="207" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1588279046521" />
-    <state width="1478" height="207" key="GridCell.Tab.0.center" timestamp="1588279046521">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1237" height="2" key="GridCell.Tab.0.center" timestamp="1588472447337">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="2" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1586996346307" />
+    <state width="1237" height="2" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1588472447337" />
     <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1586996145625" />
     <state width="1478" height="207" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1588279046521" />
-    <state width="1478" height="207" key="GridCell.Tab.0.left" timestamp="1588279046520">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1237" height="2" key="GridCell.Tab.0.left" timestamp="1588472447337">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="2" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1586996346306" />
+    <state width="1237" height="2" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1588472447337" />
     <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1586996145625" />
     <state width="1478" height="207" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1588279046520" />
-    <state width="1478" height="207" key="GridCell.Tab.0.right" timestamp="1588279046521">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1237" height="2" key="GridCell.Tab.0.right" timestamp="1588472447337">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="2" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1586996346307" />
+    <state width="1237" height="2" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1588472447337" />
     <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1586996145625" />
     <state width="1478" height="207" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1588279046521" />
     <state x="445" y="52" key="RollbackChangesDialog" timestamp="1586808245590">
@@ -266,11 +312,11 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="297" y="151" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1587041594790" />
-    <state x="389" y="56" width="807" height="769" key="search.everywhere.popup" timestamp="1588111579702">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="324" y="46" width="672" height="634" key="search.everywhere.popup" timestamp="1588473155270">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="324" y="46" width="672" height="634" key="search.everywhere.popup/0.0.1280.680/460.1080.1000.504@0.0.1280.680" timestamp="1587860318764" />
-    <state x="324" y="46" width="672" height="634" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1588023124033" />
+    <state x="324" y="46" width="672" height="634" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1588473155270" />
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1586993653870" />
     <state x="389" y="56" width="807" height="769" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1588111579702" />
   </component>

@@ -6,6 +6,7 @@ import java.util.HashMap;
 
 public class CustomerMenu extends Menu {
     private CustomerAbilitiesManager customerAbilitiesManager;
+    private RegisterAndLoginMenu registerAndLoginMenu;
 
     public CustomerMenu(Menu parentMenu) {
         super("Customer ", parentMenu);
@@ -58,11 +59,10 @@ public class CustomerMenu extends Menu {
 
     public void viewPersonalInfo() {
         String command;
+        registerAndLoginMenu.getCurrentCustomer();
         while (true) {
             command = scanner.nextLine();
-            if (command.equals("view personal info")) {
-                //username i ke login karde
-            } else if (command.equals("help")) {
+            if (command.equals("help")) {
                 System.out.println("commands that you can enter are:");
                 System.out.println("edit [field]");
                 System.out.println("back");

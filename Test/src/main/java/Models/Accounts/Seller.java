@@ -65,7 +65,6 @@ public class Seller extends Account {
         }
         return false;
     }
-
     @Override
     public String toString() {
         return "Seller{" +

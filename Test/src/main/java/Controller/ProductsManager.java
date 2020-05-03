@@ -10,7 +10,7 @@ public class ProductsManager {
         return null;
     }
 
-    public void showCategory() {
+    public static void showCategory() {
         Category.getAllCategories();
     }
 

@@ -90,14 +90,6 @@ public abstract class  Account {
         return credit;
     }
 
-    /* public Account getAccountByUserName(String UserName) {
-            for (Account account : allAccounts) {
-                if (account.getUserName().equals(userName)) {
-                    return account;
-                }
-            }
-            return null;
-        }*/
     public void changeFirstName(Account account,String firstName){
         account.firstName=firstName;
     }
@@ -113,15 +105,6 @@ public abstract class  Account {
     public void changePhoneNumber(Account account,String phoneNumber){
         account.phoneNumber=phoneNumber;
     }
-    /*public boolean isUserNameAndPasswordCorrect(String userName , String password){
-        if(getAccountByUserName(userName)!=null){
-            if(getAccountByUserName(userName).getPassword().equals(password)){
-                return true;
-            }
-            return false;
-        }
-        return false;
-    }*/
     @Override
     public abstract String toString();
 }

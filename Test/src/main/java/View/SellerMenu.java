@@ -1,11 +1,15 @@
 package View;
 
 import Controller.AccountsManager.SellerAbilitiesManager;
+import Models.Accounts.Seller;
 
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class SellerMenu extends Menu {
     private SellerAbilitiesManager sellerAbilitiesManager;
+    private RegisterAndLoginMenu registerAndLoginMenu;
     public SellerMenu( Menu parentMenu) {
         super("Seller ", parentMenu);
     }
@@ -70,11 +74,17 @@ public class SellerMenu extends Menu {
     }
 
     public void viewPersonalInfo() {
+        Seller seller =registerAndLoginMenu.getCurrentSeller();
         String command;
         while (true) {
             command = scanner.nextLine();
-            if (command.equals("view personal info")) {
-                //username i ke login karde(vase seller)
+            Pattern editFieldPattern=Pattern.compile("edit\\s(.+)");
+            Matcher editFieldMatcher= editFieldPattern.matcher(command);
+            if (command.matches("edit\\s(.+)")) {
+                editFieldMatcher.find();
+                System.out.println("what is the new content for this field?");
+                String newContent=scanner.nextLine();
+                sellerAbilitiesManager.changeField(seller,editFieldMatcher.group(1),newContent);
             } else if (command.equals("help")) {
                 System.out.println("commands that you can enter are:");
                 System.out.println("edit [field]");
@@ -85,6 +95,8 @@ public class SellerMenu extends Menu {
         }
     }
     public void viewCompanyInformation(){
+
+
 
     }
     public void viewSalesHistory(){
@@ -97,7 +109,6 @@ public class SellerMenu extends Menu {
 
     }
     public void removeProduct(){
-        System.out.println("remove product [productId]");
     }
     public void showCategories(){
 
