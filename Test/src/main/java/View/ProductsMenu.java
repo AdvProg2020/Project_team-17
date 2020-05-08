@@ -1,6 +1,10 @@
 package View;
 
+import Controller.DiscountManager;
 import Controller.ProductsManager;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ProductsMenu extends Menu {
     ProductMenu productMenu = new ProductMenu(this);
@@ -16,14 +20,13 @@ public class ProductsMenu extends Menu {
         System.out.println("2.filtering");
         System.out.println("3.sorting");
         System.out.println("4.show products");
-        System.out.println("5.show product");
-        System.out.println("6.back");
+        System.out.println("5.back");
     }
 
     @Override
     public void execute() {
         int input = Integer.parseInt(scanner.nextLine());
-          if (input == 1) {
+        if (input == 1) {
             viewCategories();
             parentMenu.show();
             parentMenu.execute();
@@ -40,18 +43,11 @@ public class ProductsMenu extends Menu {
             parentMenu.show();
             parentMenu.execute();
         } else if (input == 5) {
-            showProduct();
-            productMenu.show();
-            productMenu.execute();
-        } else if (input == 6) {
             parentMenu.show();
             parentMenu.execute();
         }
     }
 
-    public void products() {
-
-    }
 
     public void viewCategories() {
 
@@ -66,10 +62,26 @@ public class ProductsMenu extends Menu {
     }
 
     public void showProducts() {
+        String command;
+        DiscountManager.showDiscountProducts();
+        while (true) {
+            command = scanner.nextLine();
+            Pattern showProductByIdPattern = Pattern.compile("show product\\s(.+)");
+            Matcher showProductByIdMatcher = showProductByIdPattern.matcher(command);
+            if (command.matches("show product\\\\s(.+)")) {
+                showProductByIdMatcher.find();
+                //in k alan miad inja mibine id product ro baed mire to safeye hamon mahsol chejori handle konim k id
+                //ro gereft bere to safeye hamoon product
+
+            } else if (command.equals("help")) {
+                System.out.println("commands that you can enter are:");
+                System.out.println("show product [productID]");
+                System.out.println("back");
+            } else if (command.equals("back")) {
+                break;
+            } else System.out.println("Command is invalid");
+        }
 
     }
 
-    public void showProduct() {
-        System.out.println("show product [productId]");
-    }
 }

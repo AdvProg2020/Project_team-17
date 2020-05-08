@@ -3,14 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="32618e29-8746-4d2a-8d73-d011168a9d97" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Controller/AccountsManager/CustomerAbilitiesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Controller/AccountsManager/CustomerAbilitiesManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Accounts/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Accounts/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Cart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/CustomerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/CustomerMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/PurchaseMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/PurchaseMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/RegisterAndLoginMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/RegisterAndLoginMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Controller/DiscountManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Controller/DiscountManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/DiscountsMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/DiscountsMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/ProductMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/ProductMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/ProductsMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/ProductsMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/SellerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/SellerMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/MainMenu.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
