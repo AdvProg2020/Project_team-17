@@ -52,16 +52,6 @@ public class Customer extends Account {
         }
         return false;
     }
-    public boolean isUserNameAndPasswordCorrect(String userName , String password){
-        //exception handle
-        if(getCustomerByName(userName)!=null){
-            if(getCustomerByName(userName).getPassword().equals(password)){
-                return true;
-            }
-            return false;
-        }
-        return false;
-    }
     public void addDiscountCode(DiscountCode discountCode){
         this.discountCodes.add(discountCode);
     }
@@ -81,6 +71,7 @@ public class Customer extends Account {
     public static ArrayList<Customer> getAllCustomers() {
         return allCustomers;
     }
+    get
 
     @Override
     public String toString() {

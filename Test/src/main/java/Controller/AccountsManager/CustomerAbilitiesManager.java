@@ -15,23 +15,17 @@ public class CustomerAbilitiesManager {
         }
     }
 
-    public void changeField(Manager manager, String username, String field, String newContentForThisField) throws Exception {
-        if (Customer.isThereCustomerWithUserName(username)) {
-            Account account = Customer.getCustomerByName(username);
-            //nemidonam type haro bayad check konim ya na
-            if (field.equalsIgnoreCase("first name")) {
-                account.changeFirstName(account, newContentForThisField);
-            } else if (field.equalsIgnoreCase("last name")) {
-                account.changeLastName(account, newContentForThisField);
-            } else if (field.equalsIgnoreCase("email")) {
-                account.changeEmail(account, newContentForThisField);
-            } else if (field.equalsIgnoreCase("phone number")) {
-                account.changePhoneNumber(account, newContentForThisField);
-            } else if (field.equalsIgnoreCase("password")) {
-                account.changePassword(account, newContentForThisField);
-            }
-        } else {
-            throw new Exception("There hasn't been any registered account with this username!");
+    public static void changeField(Customer customer, String field, String newContentForThisField){
+        if (field.equalsIgnoreCase("first name")) {
+            customer.changeFirstName(customer, newContentForThisField);
+        } else if (field.equalsIgnoreCase("last name")) {
+            customer.changeLastName(customer, newContentForThisField);
+        } else if (field.equalsIgnoreCase("email")) {
+            customer.changeEmail(customer, newContentForThisField);
+        } else if (field.equalsIgnoreCase("phone number")) {
+            customer.changePhoneNumber(customer, newContentForThisField);
+        } else if (field.equalsIgnoreCase("password")) {
+            customer.changePassword(customer, newContentForThisField);
         }
     }
 

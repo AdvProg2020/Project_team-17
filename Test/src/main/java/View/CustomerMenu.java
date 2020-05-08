@@ -1,12 +1,17 @@
 package View;
 
 import Controller.AccountsManager.CustomerAbilitiesManager;
+import Models.Accounts.Customer;
 
 import java.util.HashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class CustomerMenu extends Menu {
     private CustomerAbilitiesManager customerAbilitiesManager;
     private RegisterAndLoginMenu registerAndLoginMenu;
+    PurchaseMenu purchaseMenu = new PurchaseMenu(this);
+    CartMenu cartMenu = new CartMenu(this);
 
     public CustomerMenu(Menu parentMenu) {
         super("Customer ", parentMenu);
@@ -31,14 +36,11 @@ public class CustomerMenu extends Menu {
             parentMenu.show();
             parentMenu.execute();
         } else if (input == 2) {
-            viewCart();
-            parentMenu.show();
-            parentMenu.execute();
+            cartMenu.show();
+            cartMenu.execute();
         } else if (input == 3) {
-            purchase();
-            parentMenu.show();
-            parentMenu.execute();
-            //ino badan check konim
+            purchaseMenu.show();
+            purchaseMenu.execute();
         } else if (input == 4) {
             viewOrders();
             parentMenu.show();
@@ -59,10 +61,19 @@ public class CustomerMenu extends Menu {
 
     public void viewPersonalInfo() {
         String command;
-        registerAndLoginMenu.getCurrentCustomer();
+        Customer customer = registerAndLoginMenu.getCurrentCustomer();
+        customer.toString();
         while (true) {
             command = scanner.nextLine();
-            if (command.equals("help")) {
+            Pattern editFieldPattern=Pattern.compile("edit\\s(.+)");
+            Matcher editFieldMatcher= editFieldPattern.matcher(command);
+            if (command.matches("edit\\s(.+)")) {
+                editFieldMatcher.find();
+                System.out.println("what is the new content for this field?");
+                String newContent=scanner.nextLine();
+                CustomerAbilitiesManager.changeField(customer,editFieldMatcher.group(1),newContent);
+            }
+            else if (command.equals("help")) {
                 System.out.println("commands that you can enter are:");
                 System.out.println("edit [field]");
                 System.out.println("back");
@@ -72,23 +83,17 @@ public class CustomerMenu extends Menu {
         }
     }
 
-    public void viewCart() {
-    }
-
-    public void purchase() {
-
-    }
-
     public void viewOrders() {
-
+        //nemidonam
     }
 
     public void viewBalance() {
-
+        Customer customer = registerAndLoginMenu.getCurrentCustomer();
+        System.out.println(customer.getCredit());
     }
-
     public void viewDiscountCodes() {
-
+        Customer customer = registerAndLoginMenu.getCurrentCustomer();
+        System.out.println(customer.getDiscountCodes());
     }
 
 

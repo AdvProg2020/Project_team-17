@@ -58,5 +58,7 @@ public class Cart {
         return sum;
     }
 
-
+    public HashMap<Product, Integer> getProductsInCart() {
+        return productsInCart;
+    }
 }
