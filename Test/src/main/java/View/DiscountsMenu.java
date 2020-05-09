@@ -19,31 +19,32 @@ public class DiscountsMenu extends Menu {
     @Override
     public void execute() {
         int input = Integer.parseInt(scanner.nextLine());
-        if (input == 1){
+        if (input == 1) {
             showProducts();
             parentMenu.show();
             parentMenu.execute();
-        }else if (input == 2){
+        } else if (input == 2) {
             parentMenu.show();
             parentMenu.execute();
         }
     }
-    public void showProducts(){
+
+    public void showProducts() {
         String command;
         DiscountManager.showDiscountProducts();
-        while (true){
+        while (true) {
             command = scanner.nextLine();
-            Pattern showProductByIdPattern=Pattern.compile("show product\\s(.+)");
-            Matcher showProductByIdMatcher= showProductByIdPattern.matcher(command);
-            if(command.matches("show product\\\\s(.+)")){
+            Pattern showProductByIdPattern = Pattern.compile("show product\\s(.+)");
+            Matcher showProductByIdMatcher = showProductByIdPattern.matcher(command);
+            if (command.matches("show product\\\\s(.+)")) {
                 showProductByIdMatcher.find();
                 //in k alan miad inja mibine id product ro baed mire to safeye hamon mahsol chejori handle konim k id
                 //ro gereft bere to safeye hamoon product
-            }else if (command.equals("help")) {
+            } else if (command.equals("help")) {
                 System.out.println("commands that you can enter are:");
                 System.out.println("show product [productID]");
                 System.out.println("back");
-            }else if (command.equals("back")) {
+            } else if (command.equals("back")) {
                 break;
             } else System.out.println("Command is invalid");
         }

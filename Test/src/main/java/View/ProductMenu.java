@@ -1,9 +1,11 @@
 package View;
 
 import Controller.ProductsManager;
+import Models.Product;
 
 public class ProductMenu extends Menu {
     private ProductsManager productsManager;
+
     public ProductMenu(Menu parentMenu) {
         super("Product Menu", parentMenu);
 
@@ -20,37 +22,41 @@ public class ProductMenu extends Menu {
     @Override
     public void execute() {
         int input = Integer.parseInt(scanner.nextLine());
-        if (input == 1){
+        if (input == 1) {
             digest();
             parentMenu.show();
             parentMenu.execute();
-        }else if (input == 2){
+        } else if (input == 2) {
             attributes();
             parentMenu.show();
             parentMenu.execute();
-        }else if (input == 3){
+        } else if (input == 3) {
             compare();
             parentMenu.show();
             parentMenu.execute();
-        }else if (input == 4){
+        } else if (input == 4) {
             comments();
             parentMenu.show();
             parentMenu.execute();
-        } else if (input == 5){
+        } else if (input == 5) {
             parentMenu.show();
             parentMenu.execute();
         }
     }
-    public void digest(){
+
+    public void digest() {
+        //Product product = Product.getProductWithId()
+    }
+
+    public void attributes() {
 
     }
-    public void attributes(){
+
+    public void compare() {
 
     }
-    public void compare(){
 
-    }
-    public void comments(){
+    public void comments() {
 
     }
 }
