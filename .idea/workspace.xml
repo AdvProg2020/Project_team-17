@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="32618e29-8746-4d2a-8d73-d011168a9d97" name="Default Changelist" comment="add cart menu">
+    <list default="true" id="32618e29-8746-4d2a-8d73-d011168a9d97" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test/src/main/java/Controller/AccountsManager/SellerAbilitiesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Controller/AccountsManager/SellerAbilitiesManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Accounts/Seller.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Accounts/Seller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/SellerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/SellerMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Enums/ProductEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Enums/ProductEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Enums/RequestStatusEnum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Enums/RequestTypeEnum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Request/Request.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +109,7 @@
       <workItem from="1588320974356" duration="649000" />
       <workItem from="1588325616113" duration="346000" />
       <workItem from="1588325973714" duration="817000" />
-      <workItem from="1589008255420" duration="6802000" />
+      <workItem from="1589008255420" duration="12118000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1586814023547</created>
@@ -155,7 +160,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588906493567</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="add request class">
+      <created>1589049120587</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1589049120587</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -168,7 +180,8 @@
     <MESSAGE value="fix CustomerMenu" />
     <MESSAGE value="exception handle for password" />
     <MESSAGE value="add cart menu" />
-    <option name="LAST_COMMIT_MESSAGE" value="add cart menu" />
+    <MESSAGE value="add request class" />
+    <option name="LAST_COMMIT_MESSAGE" value="add request class" />
   </component>
   <component name="WindowStateProjectService">
     <state x="233" y="0" key="#Project_Structure" timestamp="1587070707195">
@@ -205,15 +218,15 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="395" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.680@0.0.1280.680" timestamp="1588017222538" />
-    <state x="445" y="105" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1588110193951">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1588017147916" />
-    <state x="445" y="105" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1588110193951" />
-    <state x="265" y="0" key="CommitChangelistDialog2" timestamp="1588906847500">
+    <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1589051831428">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="265" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1588906847500" />
+    <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1589051831428" />
+    <state x="445" y="105" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1588110193951" />
+    <state x="265" y="0" key="CommitChangelistDialog2" timestamp="1589049119918">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="265" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1589049119918" />
     <state x="297" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1588326844647" />
     <state x="505" y="81" key="FileChooserDialogImpl" timestamp="1588326132134">
       <screen x="0" y="0" width="1536" height="824" />
@@ -253,10 +266,10 @@
     </state>
     <state x="231" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1587070524251" />
     <state x="277" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1588326789269" />
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1588906513275">
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1589049148360">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1588906513275" />
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1589049148360" />
     <state x="280" y="90" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1588326863816" />
     <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1588326808587">
       <screen x="0" y="0" width="1536" height="824" />
@@ -272,20 +285,20 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="450" y="258" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1588906790230" />
-    <state x="397" y="168" key="git4idea.merge.GitPullDialog" timestamp="1588906503919">
+    <state x="397" y="168" key="git4idea.merge.GitPullDialog" timestamp="1589049134305">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="397" y="168" key="git4idea.merge.GitPullDialog/0.0.1280.680@0.0.1280.680" timestamp="1588906503919" />
+    <state x="397" y="168" key="git4idea.merge.GitPullDialog/0.0.1280.680@0.0.1280.680" timestamp="1589049134305" />
     <state x="476" y="204" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1588326854216" />
     <state x="109" y="44" key="new project wizard" timestamp="1588275478876">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="91" y="36" key="new project wizard/0.0.1280.680@0.0.1280.680" timestamp="1586811944371" />
     <state x="109" y="44" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1588275478876" />
-    <state x="297" y="151" key="run.anything.popup" timestamp="1587041594790">
+    <state x="297" y="151" key="run.anything.popup" timestamp="1589051977099">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="297" y="151" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1587041594790" />
+    <state x="297" y="151" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1589051977099" />
     <state x="324" y="46" width="672" height="634" key="search.everywhere.popup" timestamp="1588473155270">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

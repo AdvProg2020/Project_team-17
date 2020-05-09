@@ -27,6 +27,9 @@ public class Category {
         }
         return false;
     }
+    public void addProductToThisCategory(Category category , Product product){
+        category.products.add(product);
+    }
 
     public ArrayList<Product> getProducts() {
         return products;

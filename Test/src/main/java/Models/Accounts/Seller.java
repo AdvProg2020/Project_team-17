@@ -25,6 +25,7 @@ public class Seller extends Account {
         return allSellers;
     }
 
+
     public void setSellLog(SellLog sellLog) {
         this.sellLog = sellLog;
     }
@@ -53,6 +54,9 @@ public class Seller extends Account {
                 return seller;
         }
         return null;
+    }
+    public void addProduct(Seller seller,Product product){
+        seller.allProducts.add(product);
     }
     public void removeProduct(Seller seller,Product product){
         seller.allProducts.remove(product);

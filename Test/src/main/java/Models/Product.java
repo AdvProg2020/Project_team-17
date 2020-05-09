@@ -90,7 +90,7 @@ public class Product {
         Category category = product.getCategory();
         category.removeProductFromCategory(category, product);
         Seller seller = product.getSeller();
-        seller.removeProduct(product);
+        seller.removeProduct(seller,product);
     }
 
     public static void deleteProducts(ArrayList<Product> removeProduct) {
