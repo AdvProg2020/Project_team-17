@@ -3,22 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="32618e29-8746-4d2a-8d73-d011168a9d97" name="Default Changelist" comment="add cart menu">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Controller/AccountsManager/ManagerAbilitiesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Controller/AccountsManager/ManagerAbilitiesManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test/src/main/java/Controller/AccountsManager/SellerAbilitiesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Controller/AccountsManager/SellerAbilitiesManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Controller/DiscountManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Controller/DiscountManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Controller/RegisterAndLoginManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Controller/RegisterAndLoginManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Accounts/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Accounts/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Accounts/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Accounts/Manager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Accounts/Seller.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Accounts/Seller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Category.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Discount.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Discount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/CustomerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/CustomerMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/DiscountsMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/DiscountsMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/ManagerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/ManagerMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/ProductMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/ProductMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/ProductsMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/ProductsMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/RegisterAndLoginMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/RegisterAndLoginMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/SellerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/SellerMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -30,6 +16,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -117,6 +104,7 @@
       <workItem from="1588320974356" duration="649000" />
       <workItem from="1588325616113" duration="346000" />
       <workItem from="1588325973714" duration="817000" />
+      <workItem from="1589008255420" duration="6802000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1586814023547</created>
@@ -192,11 +180,11 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="420" y="144" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.680@0.0.1280.680" timestamp="1586807983600" />
-    <state x="751" y="83" key="#com.intellij.ide.util.MemberChooser" timestamp="1589007542556">
+    <state x="751" y="83" key="#com.intellij.ide.util.MemberChooser" timestamp="1589048737119">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="751" y="83" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680/460.1080.1000.504@0.0.1280.680" timestamp="1587953827102" />
-    <state x="751" y="83" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1589007542556" />
+    <state x="751" y="83" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1589048737119" />
     <state x="801" y="93" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1586995828901" />
     <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1588275888120" />
     <state x="515" y="248" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1587039723807">

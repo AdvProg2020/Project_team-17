@@ -54,8 +54,8 @@ public class Seller extends Account {
         }
         return null;
     }
-    public void removeProduct(Product product){
-        allProducts.remove(product);
+    public void removeProduct(Seller seller,Product product){
+        seller.allProducts.remove(product);
     }
 
     public String getCompanyName() {

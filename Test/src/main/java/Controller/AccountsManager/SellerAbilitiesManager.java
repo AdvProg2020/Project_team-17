@@ -6,6 +6,8 @@ import Models.Accounts.Customer;
 import Models.Accounts.Manager;
 import Models.Accounts.Seller;
 
+import java.util.ArrayList;
+
 public class SellerAbilitiesManager {
     public void viewAccount(String username) throws Exception {
         if (Customer.isThereCustomerWithUserName(username)) {
@@ -47,11 +49,12 @@ public class SellerAbilitiesManager {
         //baraye request esh nemidonam chi kar konam
     }
 
-    public void removeProduct(Seller seller, String productId) throws Exception {
+    public static void removeProduct(Seller seller, String productId) throws Exception {
         if (Product.isThereProductWithId(productId)) {
             Product product = Product.getProductWithId(productId);
             if (seller.doesSellerHaveThisProduct(product)) {
                 Product.removeProduct(product);
+                seller.removeProduct(seller,product);
             } else {
                 throw new Exception("This seller doesn't have this product!");
             }
@@ -69,11 +72,11 @@ public class SellerAbilitiesManager {
         //TODO
     }
 
-    public static void showCategories() {
-        Category.showCategories();
+    public static ArrayList<String> showCategories() {
+        return Category.showCategories();
     }
 
-    public static void viewBalance(Seller seller) {
-        seller.getCredit();
+    public static int viewBalance(Seller seller) {
+        return seller.getCredit();
     }
 }
