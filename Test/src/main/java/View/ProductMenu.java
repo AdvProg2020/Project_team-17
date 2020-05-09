@@ -8,7 +8,6 @@ public class ProductMenu extends Menu {
         super("Product Menu", parentMenu);
 
     }
-
     @Override
     public void show() {
         System.out.println("1.digest");

@@ -15,6 +15,7 @@ public class Category {
         allCategories.add(this);
     }
 
+
     public String getCategoryName() {
         return categoryName;
     }
@@ -25,6 +26,10 @@ public class Category {
                 return true;
         }
         return false;
+    }
+
+    public ArrayList<Product> getProducts() {
+        return products;
     }
 
     public static ArrayList<Category> getAllCategories() {
@@ -48,8 +53,14 @@ public class Category {
     }
 
     public static void deleteCategory(Category category) {
+        //dige nemidonam product haye in bayad az jaye digeyi ham hazf beshe ya na az arraylist allproducts to class products
+        //pak kardam vali az cart o ina motmaen nistam
+        ArrayList<Product> productsOfThisCategory= new ArrayList<>();
         allCategories.remove(category);
-        //inja fek konam bayad begam product haye in category az class product to arraylist allproducts ham pak beshe
+        for (Product product : category.getProducts()) {
+            productsOfThisCategory.add(product);
+        }
+        Product.deleteProducts(productsOfThisCategory);
     }
 
     public void removeProductFromCategory(Category category, Product product) {

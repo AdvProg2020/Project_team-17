@@ -22,6 +22,7 @@ public class RegisterAndLoginManager {
 
 
     public void isUserNameAndPasswordCorrectForCustomer(String userName, String password) throws Exception {
+        //nemidonam inja doroste k to if hichi nazashtim
         if (Customer.isThereCustomerWithUserName(userName)) {
             if (Customer.getCustomerByName(userName).getPassword().equals(password)) {
             } else {

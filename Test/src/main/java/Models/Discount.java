@@ -14,11 +14,12 @@ public class Discount {
     private double discountPercent;
     private DiscountEnum discountState;
 
-    public Discount(String discountId, Date startDate, Date endDate, double discountPercent) {
+    public Discount(String discountId, Date startDate, Date endDate, double discountPercent, DiscountEnum discountState) {
         this.discountId = discountId;
         this.startDate = startDate;
         this.endDate = endDate;
         this.discountPercent = discountPercent;
+        this.discountState= discountState;
         allDiscounts.add(this);
     }
 
@@ -42,16 +43,21 @@ public class Discount {
         return endDate;
     }
 
+
     public void addProduct(Product product) {
         discountProducts.add(product);
     }
 
+    public DiscountEnum getDiscountState() {
+        return discountState;
+    }
+
     public static void showDiscountProducts() {
         for (Product product : discountProducts) {
-            System.out.println("dadasha gheymat ghable takhfif :" + product.getPrice() + " " +
-                    " va bade takhfif : " + product.getPriceAfterDiscount());
-            // chiaro bayad chap konim?!
+            System.out.println("Product ID : "+product.getProductId() +"Price before discount :" + product.getPrice() + " " +
+                    "Price after discount : " + product.getPriceAfterDiscount());
         }
+        //fek konam chizaye dige ham bayad bezarim
     }
 
     public void deleteProduct(Product product) {

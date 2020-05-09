@@ -8,8 +8,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class CustomerMenu extends Menu {
-    private CustomerAbilitiesManager customerAbilitiesManager;
-    private RegisterAndLoginMenu registerAndLoginMenu;
     PurchaseMenu purchaseMenu = new PurchaseMenu(this);
     CartMenu cartMenu = new CartMenu(this);
 
@@ -61,7 +59,7 @@ public class CustomerMenu extends Menu {
 
     public void viewPersonalInfo() {
         String command;
-        Customer customer = registerAndLoginMenu.getCurrentCustomer();
+        Customer customer = RegisterAndLoginMenu.getCurrentCustomer();
         customer.toString();
         while (true) {
             command = scanner.nextLine();
@@ -88,11 +86,11 @@ public class CustomerMenu extends Menu {
     }
 
     public void viewBalance() {
-        Customer customer = registerAndLoginMenu.getCurrentCustomer();
+        Customer customer = RegisterAndLoginMenu.getCurrentCustomer();
         System.out.println(customer.getCredit());
     }
     public void viewDiscountCodes() {
-        Customer customer = registerAndLoginMenu.getCurrentCustomer();
+        Customer customer = RegisterAndLoginMenu.getCurrentCustomer();
         System.out.println(customer.getDiscountCodes());
     }
 

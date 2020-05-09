@@ -93,8 +93,10 @@ public class Product {
         seller.removeProduct(product);
     }
 
-    public static void deleteProduct(Product product) {
-        allProducts.remove(product);
+    public static void deleteProducts(ArrayList<Product> removeProduct) {
+        for (Product product : removeProduct) {
+            allProducts.remove(product);
+        }
     }
 
     public Seller getSeller() {

@@ -21,6 +21,10 @@ public class Seller extends Account {
         allSellers.add(this);
     }
 
+    public static ArrayList<Seller> getAllSellers() {
+        return allSellers;
+    }
+
     public void setSellLog(SellLog sellLog) {
         this.sellLog = sellLog;
     }

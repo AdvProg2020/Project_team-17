@@ -11,9 +11,9 @@ import java.util.regex.Pattern;
 
 public class RegisterAndLoginMenu extends Menu {
     private RegisterAndLoginManager registerAndLoginManager;
-    public Customer currentCustomer;
-    public Seller currentSeller;
-    public  Manager currentManager;
+    public static Customer currentCustomer;
+    public static Seller currentSeller;
+    public static Manager currentManager;
 
     public RegisterAndLoginMenu(Menu parentMenu) {
         super("Register And Login ", parentMenu);
@@ -156,15 +156,15 @@ public class RegisterAndLoginMenu extends Menu {
         //fek konam bikhodie
     }
 
-    public Customer getCurrentCustomer() {
+    public static Customer getCurrentCustomer() {
         return currentCustomer;
     }
 
-    public Seller getCurrentSeller() {
+    public static Seller getCurrentSeller() {
         return currentSeller;
     }
 
-    public Manager getCurrentManager() {
+    public static Manager getCurrentManager() {
         return currentManager;
     }
 }

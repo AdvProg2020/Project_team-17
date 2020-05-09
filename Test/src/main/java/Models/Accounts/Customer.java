@@ -71,7 +71,7 @@ public class Customer extends Account {
     public static ArrayList<Customer> getAllCustomers() {
         return allCustomers;
     }
-    get
+
 
     @Override
     public String toString() {

@@ -1,16 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="32618e29-8746-4d2a-8d73-d011168a9d97" name="Default Changelist" comment="">
+    <list default="true" id="32618e29-8746-4d2a-8d73-d011168a9d97" name="Default Changelist" comment="add cart menu">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Controller/AccountsManager/CustomerAbilitiesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Controller/AccountsManager/CustomerAbilitiesManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Controller/AccountsManager/ManagerAbilitiesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Controller/AccountsManager/ManagerAbilitiesManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Controller/AccountsManager/SellerAbilitiesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Controller/AccountsManager/SellerAbilitiesManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Controller/DiscountManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Controller/DiscountManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Controller/RegisterAndLoginManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Controller/RegisterAndLoginManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Accounts/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Accounts/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Cart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Accounts/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Accounts/Manager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Accounts/Seller.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Accounts/Seller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Discount.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Discount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Product.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/CustomerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/CustomerMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/PurchaseMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/PurchaseMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/DiscountsMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/DiscountsMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/ManagerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/ManagerMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/ProductMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/ProductMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/ProductsMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/ProductsMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/RegisterAndLoginMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/RegisterAndLoginMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/SellerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/SellerMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/MainMenu.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,7 +160,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588493041427</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="add cart menu">
+      <created>1588906493567</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1588906493567</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -163,7 +179,8 @@
     <MESSAGE value="add CommandProcessor and RegisterAndLoginMenu" />
     <MESSAGE value="fix CustomerMenu" />
     <MESSAGE value="exception handle for password" />
-    <option name="LAST_COMMIT_MESSAGE" value="exception handle for password" />
+    <MESSAGE value="add cart menu" />
+    <option name="LAST_COMMIT_MESSAGE" value="add cart menu" />
   </component>
   <component name="WindowStateProjectService">
     <state x="233" y="0" key="#Project_Structure" timestamp="1587070707195">
@@ -175,11 +192,11 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="420" y="144" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.680@0.0.1280.680" timestamp="1586807983600" />
-    <state x="751" y="83" key="#com.intellij.ide.util.MemberChooser" timestamp="1588901460347">
+    <state x="751" y="83" key="#com.intellij.ide.util.MemberChooser" timestamp="1589007542556">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="751" y="83" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680/460.1080.1000.504@0.0.1280.680" timestamp="1587953827102" />
-    <state x="751" y="83" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1588901460347" />
+    <state x="751" y="83" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1589007542556" />
     <state x="801" y="93" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1586995828901" />
     <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1588275888120" />
     <state x="515" y="248" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1587039723807">
@@ -205,10 +222,10 @@
     </state>
     <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1588017147916" />
     <state x="445" y="105" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1588110193951" />
-    <state x="265" y="0" key="CommitChangelistDialog2" timestamp="1588493037209">
+    <state x="265" y="0" key="CommitChangelistDialog2" timestamp="1588906847500">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="265" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1588493037209" />
+    <state x="265" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1588906847500" />
     <state x="297" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1588326844647" />
     <state x="505" y="81" key="FileChooserDialogImpl" timestamp="1588326132134">
       <screen x="0" y="0" width="1536" height="824" />
@@ -248,10 +265,10 @@
     </state>
     <state x="231" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1587070524251" />
     <state x="277" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1588326789269" />
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1588493227577">
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1588906513275">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1588493227577" />
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1588906513275" />
     <state x="280" y="90" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1588326863816" />
     <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1588326808587">
       <screen x="0" y="0" width="1536" height="824" />
@@ -263,14 +280,14 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="317" y="30" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1280.680/460.1080.1000.504@0.0.1280.680" timestamp="1587806117721" />
-    <state x="450" y="258" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1586996369349">
+    <state x="450" y="258" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1588906790230">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="450" y="258" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1586996369349" />
-    <state x="397" y="168" key="git4idea.merge.GitPullDialog" timestamp="1588493164868">
+    <state x="450" y="258" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1588906790230" />
+    <state x="397" y="168" key="git4idea.merge.GitPullDialog" timestamp="1588906503919">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="397" y="168" key="git4idea.merge.GitPullDialog/0.0.1280.680@0.0.1280.680" timestamp="1588493164868" />
+    <state x="397" y="168" key="git4idea.merge.GitPullDialog/0.0.1280.680@0.0.1280.680" timestamp="1588906503919" />
     <state x="476" y="204" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1588326854216" />
     <state x="109" y="44" key="new project wizard" timestamp="1588275478876">
       <screen x="0" y="0" width="1536" height="824" />

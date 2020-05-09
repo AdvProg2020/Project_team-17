@@ -3,8 +3,8 @@ package Controller;
 import Models.Discount;
 
 public class DiscountManager {
-    public void showDiscountProducts() {
-        Discount.getDiscountProducts();
+    public static void showDiscountProducts() {
+        Discount.showDiscountProducts();
     }
     //filter va sort haram bayad bezanim
 }

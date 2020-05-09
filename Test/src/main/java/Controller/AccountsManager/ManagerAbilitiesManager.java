@@ -6,65 +6,88 @@ import Models.Accounts.Customer;
 import Models.Accounts.Manager;
 import Models.Accounts.Seller;
 
+import java.util.ArrayList;
+
 public class ManagerAbilitiesManager {
-
-    public void viewAccount(String username) throws Exception {
-        if (Manager.isThereManagerWithUserName(username)) {
-            Manager manager = Manager.getManagerByUserName(username);
-            manager.toString();
-        } else {
-            throw new Exception("There hasn't been any registered account with this username!");
+    public static ArrayList<String> showAllAccounts(){
+        ArrayList<String> allAccounts= new ArrayList<>();
+        for (Customer customer : Customer.getAllCustomers()) {
+            allAccounts.add(customer.getUserName());
         }
+        for (Seller seller : Seller.getAllSellers()) {
+            allAccounts.add(seller.getUserName());
+        }
+        for (Manager manager : Manager.getAllManagers()) {
+            allAccounts.add(manager.getUserName());
+        }
+        return allAccounts;
     }
 
-    public void changeField(Manager manager, String username, String field, String newContentForThisField) throws Exception {
-        if (Manager.isThereManagerWithUserName(username)) {
-            Account account = Manager.getManagerByUserName(username);
-            //nemidonam type haro bayad check konim ya na
-            if (field.equalsIgnoreCase("first name")) {
-                account.changeFirstName(account, newContentForThisField);
-            } else if (field.equalsIgnoreCase("last name")) {
-                account.changeLastName(account, newContentForThisField);
-            } else if (field.equalsIgnoreCase("email")) {
-                account.changeEmail(account, newContentForThisField);
-            } else if (field.equalsIgnoreCase("phone number")) {
-                account.changePhoneNumber(account, newContentForThisField);
-            } else if (field.equalsIgnoreCase("password")) {
-                account.changePassword(account, newContentForThisField);
+
+    public static String viewAccountByUsername(String username){
+        String output= "";
+        for (Customer customer : Customer.getAllCustomers()) {
+            if(customer.getUserName().equals(username)){
+                output=customer.toString();
             }
-        } else {
-            throw new Exception("There hasn't been any registered account with this username!");
         }
+        for (Seller seller : Seller.getAllSellers()) {
+            if(seller.getUserName().equals(username)){
+                output = seller.toString();
+            }
+        }
+        for (Manager manager : Manager.getAllManagers()) {
+            if(manager.getUserName().equals(username)){
+                output = manager.toString();
+            }
+        }
+        return output;
     }
+
+    public static void changeField( Manager manager, String field, String newContentForThisField) {
+            if (field.equalsIgnoreCase("first name")) {
+                manager.changeFirstName(manager, newContentForThisField);
+            } else if (field.equalsIgnoreCase("last name")) {
+                manager.changeLastName(manager, newContentForThisField);
+            } else if (field.equalsIgnoreCase("email")) {
+                manager.changeEmail(manager, newContentForThisField);
+            } else if (field.equalsIgnoreCase("phone number")) {
+                manager.changePhoneNumber(manager, newContentForThisField);
+            } else if (field.equalsIgnoreCase("password")) {
+                manager.changePassword(manager, newContentForThisField);
+            }
+        }
+
 
     public void changeTypeOfAccount(Manager manager, String username, String type) {
         //aslan nemidonam
     }
 
-    public void deleteUser(String username) throws Exception {
+    public static void deleteUser(String username)  {
         if (Customer.isThereCustomerWithUserName(username)) {
             Customer.deleteCustomer(username);
         } else if (Manager.isThereManagerWithUserName(username)) {
             Manager.deleteManager(username);
         } else if (Seller.isThereSellerWithUserName(username)) {
             Seller.deleteSeller(username);
-        } else {
-            throw new Exception("There hasn't been any registered account with this username!");
         }
-
     }
-
-    public void createAnotherManager(String username, String firstName, String lastName,
-                                     String email, String phoneNumber, String password) throws Exception {
+    public static void isThereAccountWithThisUsername(String username) throws Exception{
         if ((!(Manager.isThereManagerWithUserName(username))) && (!(Customer.isThereCustomerWithUserName(username))) && (!(Seller.isThereSellerWithUserName(username)))) {
-            new Manager(username, firstName, lastName, email, phoneNumber, password);
-        } else {
+
+        }else {
             throw new Exception("There is already an account with this username!");
         }
+
     }
 
-    public void removeProduct(Manager manager, String productId) throws Exception {
-        //manager hame productaro mitone bebine na? age na k bayad check konim bebinim manager on product ro dare ya na
+    public static void createAnotherManager(String username, String firstName, String lastName,
+                                     String email, String phoneNumber, String password)  {
+            new Manager(username, firstName, lastName, email, phoneNumber, password);
+
+    }
+
+    public static void removeProduct( String productId) throws Exception {
         if (Product.isThereProductWithId(productId)) {
             Product product = Product.getProductWithId(productId);
             Product.removeProduct(product);
@@ -97,23 +120,29 @@ public class ManagerAbilitiesManager {
 
     public void declineRequest(Manager manager, String requestId) {
     }
+    public static ArrayList<Category> showAllCategories(){
+        ArrayList<Category> showAllCategory = new ArrayList<>();
+        for (Category category : Category.getAllCategories()) {
+            showAllCategory.add(category);
+        }
+        return showAllCategory;
+    }
 
-    public void editCategoryName(String oldName, String newName) {
+    public static void editCategoryName(String oldName, String newName) {
         Category category = Category.getCategoryByName(oldName);
         category.changeCategoryName(category, newName);
     }
 
-    public void editCategoryFeature(String name, String newFeature) {
+    public static void editCategoryFeature(String name, String newFeature) {
         Category category = Category.getCategoryByName(name);
         category.changeSpecialFeatures(category, newFeature);
     }
 
-    public void addCategory(String name, String feature) {
-        //safe 22 doc neveshte faghat add category vali fek kardam belakhare y esmi chiziam bayad begire vorodi
+    public static void addCategory(String name, String feature) {
         new Category(name, feature);
     }
 
-    public void removeCategory(String name) {
+    public static void removeCategory(String name) {
         Category.deleteCategory(Category.getCategoryByName(name));
     }
 }

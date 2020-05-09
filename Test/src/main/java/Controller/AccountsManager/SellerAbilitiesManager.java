@@ -16,7 +16,7 @@ public class SellerAbilitiesManager {
         }
     }
 
-    public void changeField(Seller seller, String field, String newContentForThisField) {
+    public static void changeField(Seller seller, String field, String newContentForThisField) {
             if (field.equalsIgnoreCase("first name")) {
                 seller.changeFirstName(seller, newContentForThisField);
             } else if (field.equalsIgnoreCase("last name")) {

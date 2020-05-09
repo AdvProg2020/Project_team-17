@@ -9,6 +9,11 @@ public class Manager extends Account {
         super(userName, firstName, lastName, email, phoneNumber, password, 0);
         allManagers.add(this);
     }
+
+    public static ArrayList<Manager> getAllManagers() {
+        return allManagers;
+    }
+
     public static void deleteManager(String userName){
         allManagers.remove(getManagerByUserName(userName));
     }
