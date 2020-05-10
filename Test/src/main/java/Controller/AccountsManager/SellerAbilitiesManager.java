@@ -41,16 +41,32 @@ public class SellerAbilitiesManager {
 
     //view saleshistory ro bayad bezanim
 
-
-
-    public static void addProduct(String productId, ProductEnum productStatus, String productName, String companyName,
+    public static Product addProduct(String productId, ProductEnum productStatus, String productName, String companyName,
                            double price, Category category, Seller seller,String productExplanation) {
-        new AddProductRequest(productId, productStatus, productName, companyName, price, category, seller,productExplanation);
+        Product product =new Product(productId, productName, companyName, price,
+                seller, category,productExplanation,0);
+        product.setProductState(ProductEnum.PRODUCING);
+        return product;
     }
 
 
-    public void editProduct(String productId) {
-        //baraye request esh nemidonam chi kar konam
+    public static Product editProduct(String id, String field, String newContentForThisField) {
+        Product product = Product.getProductWithId(id);
+        if (field.equals("name")) {
+            product.setName(newContentForThisField);
+        } else if (field.equals("companyName")) {
+            product.setCompanyName(newContentForThisField);
+        } else if (field.equals("description")) {
+            product.setExplanation(newContentForThisField);
+        } else if (field.equals("seller")) {
+            product.setSeller(Seller.getSellerByName(newContentForThisField));
+        }  else if (field.equals("price")) {
+            product.setPrice(Double.parseDouble(newContentForThisField));
+        } else if (field.equals("category")) {
+            product.setCategory(Category.getCategoryByName(newContentForThisField));
+        }
+        product.setProductState(ProductEnum.EDITING);
+        return product;
     }
 
     public static void removeProduct(Seller seller, String productId) throws Exception {
@@ -83,4 +99,11 @@ public class SellerAbilitiesManager {
     public static int viewBalance(Seller seller) {
         return seller.getCredit();
     }
+    public static void checkProductByID(String id) throws Exception{
+        if(Product.isThereProductWithId(id)){
+        }else {
+            throw new Exception("There isn't any product with this id");
+        }
+    }
+
 }

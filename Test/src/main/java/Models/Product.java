@@ -24,9 +24,9 @@ public class Product {
     private ArrayList<PointOfView> pointOfViews = new ArrayList<>();
     private ArrayList<Score> scoresForProduct = new ArrayList<>();
 
-    public Product(String productId, ProductEnum productState, String name, String companyName, double price, Seller seller, Category category, String explanation, double averageScore) {
+    public Product(String productId, String name, String companyName, double price, Seller seller, Category category, String explanation, double averageScore) {
         this.productId = productId;
-        this.productState = productState;
+        this.productState =ProductEnum.PRODUCING;
         this.name = name;
         this.companyName = companyName;
         this.price = price;
@@ -42,6 +42,42 @@ public class Product {
 
     public double getPrice() {
         return price;
+    }
+
+    public void setProductId(String productId) {
+        this.productId = productId;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public void setPriceAfterDiscount(double priceAfterDiscount) {
+        this.priceAfterDiscount = priceAfterDiscount;
+    }
+
+    public void setSeller(Seller seller) {
+        this.seller = seller;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public void setExplanation(String explanation) {
+        this.explanation = explanation;
+    }
+
+    public void setAverageScore(double averageScore) {
+        this.averageScore = averageScore;
     }
 
     public double getPriceAfterDiscount() {
@@ -83,6 +119,10 @@ public class Product {
             sum += score.getScore();
         }
         this.averageScore = sum / product.scoresForProduct.size();
+    }
+
+    public void setProductState(ProductEnum productState) {
+        this.productState = productState;
     }
 
     public static void removeProduct(Product product) {
