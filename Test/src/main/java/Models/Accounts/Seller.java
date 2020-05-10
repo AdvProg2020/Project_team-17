@@ -1,6 +1,7 @@
 package Models.Accounts;
 
 import Controller.AccountsManager.SellerAbilitiesManager;
+import Models.Discount;
 import Models.Product;
 import Models.Logs.SellLog;
 
@@ -11,6 +12,7 @@ public class Seller extends Account {
     private String companyName;
     private ArrayList<Product> allProducts;
     private static ArrayList<Seller> allSellers= new ArrayList<Seller>();
+    private ArrayList<Discount> allDiscount = new ArrayList<>();
     private SellLog sellLog;
 
     public Seller(String userName, String firstName, String lastName, String email
@@ -28,8 +30,13 @@ public class Seller extends Account {
     public static ArrayList<Seller> getAllSellers() {
         return allSellers;
     }
-
-
+    public ArrayList<String> getDiscountInfo(Seller seller){
+        ArrayList<String> allDiscountForSeller = new ArrayList<>();
+        for (Discount discount : seller.allDiscount) {
+            allDiscountForSeller.add("Discount ID: "+discount.getDiscountId()+" Discount percent: "+discount.getDiscountPercent());
+        }
+        return allDiscountForSeller;
+    }
     public void setSellLog(SellLog sellLog) {
         this.sellLog = sellLog;
     }

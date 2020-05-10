@@ -105,5 +105,8 @@ public class SellerAbilitiesManager {
             throw new Exception("There isn't any product with this id");
         }
     }
+    public static ArrayList<String> viewOffs(Seller seller){
+        return seller.getDiscountInfo(seller);
+    }
 
 }

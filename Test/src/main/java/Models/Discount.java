@@ -23,6 +23,18 @@ public class Discount {
         allDiscounts.add(this);
     }
 
+    public void setDiscountState(DiscountEnum discountState) {
+        this.discountState = discountState;
+    }
+
+    public String getDiscountId() {
+        return discountId;
+    }
+
+    public double getDiscountPercent() {
+        return discountPercent;
+    }
+
     public static ArrayList<Product> getDiscountProducts() {
         return discountProducts;
     }
