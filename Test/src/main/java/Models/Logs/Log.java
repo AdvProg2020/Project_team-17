@@ -37,4 +37,5 @@ public abstract class Log {
     public ArrayList<Product> getAllProducts() {
         return allProducts;
     }
+
 }

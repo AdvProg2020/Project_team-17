@@ -9,16 +9,16 @@ import java.util.ArrayList;
 public class Customer extends Account {
     private static ArrayList<Customer> allCustomers = new ArrayList<Customer>();
     private ArrayList<DiscountCode> discountCodes;
-    private BuyLog buyLog;
+    private ArrayList<BuyLog> buyLog;
     private Cart cart;
     private String address;
 
     public Customer(String userName, String firstName, String lastName, String email,
-                    String phoneNumber, String password, int credit, BuyLog buyLog, Cart cart) {
+                    String phoneNumber, String password, int credit, Cart cart) {
         super(userName, firstName, lastName, email, phoneNumber, password, credit);
-        this.buyLog = buyLog;
+        buyLog = new ArrayList<>();
         this.cart = cart;
-        discountCodes= new ArrayList<>();
+        discountCodes = new ArrayList<>();
         allCustomers.add(this);
     }
 
@@ -42,17 +42,19 @@ public class Customer extends Account {
         return cart;
     }
 
-    public static void deleteCustomer(String name){
+    public static void deleteCustomer(String name) {
         allCustomers.remove(getCustomerByName(name));
     }
-    public static boolean isThereCustomerWithUserName(String username){
+
+    public static boolean isThereCustomerWithUserName(String username) {
         for (Customer customer : allCustomers) {
-            if(customer.getUserName().equals(username))
+            if (customer.getUserName().equals(username))
                 return true;
         }
         return false;
     }
-    public void addDiscountCode(DiscountCode discountCode){
+
+    public void addDiscountCode(DiscountCode discountCode) {
         this.discountCodes.add(discountCode);
     }
 
@@ -62,10 +64,6 @@ public class Customer extends Account {
 
     public void setCart(Cart cart) {
         this.cart = cart;
-    }
-
-    public void setBuyLog(BuyLog buyLog) {
-        this.buyLog = buyLog;
     }
 
     public static ArrayList<Customer> getAllCustomers() {

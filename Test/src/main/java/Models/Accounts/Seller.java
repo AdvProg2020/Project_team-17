@@ -11,39 +11,40 @@ public class Seller extends Account {
     private SellerAbilitiesManager sellerAbilitiesManager;
     private String companyName;
     private ArrayList<Product> allProducts;
-    private static ArrayList<Seller> allSellers= new ArrayList<Seller>();
+    private static ArrayList<Seller> allSellers = new ArrayList<Seller>();
     private ArrayList<Discount> allDiscount = new ArrayList<>();
-    private SellLog sellLog;
+    private ArrayList<SellLog> logs;
 
     public Seller(String userName, String firstName, String lastName, String email
-            , String phoneNumber, String password ,int credit,String companyName) {
-        super(userName, firstName, lastName, email, phoneNumber, password,credit);
-        this.companyName=companyName;
+            , String phoneNumber, String password, int credit, String companyName) {
+        super(userName, firstName, lastName, email, phoneNumber, password, credit);
+        this.companyName = companyName;
         allProducts = new ArrayList<>();
+        logs = new ArrayList<>();
         allSellers.add(this);
     }
 
     public ArrayList<Product> getAllProducts() {
         return allProducts;
     }
-    public void addDiscountForSeller(Seller seller , Discount discount){
+
+    public void addDiscountForSeller(Seller seller, Discount discount) {
         seller.allDiscount.add(discount);
     }
 
     public static ArrayList<Seller> getAllSellers() {
         return allSellers;
     }
-    public ArrayList<String> getDiscountInfo(Seller seller){
+
+    public ArrayList<String> getDiscountInfo(Seller seller) {
         ArrayList<String> allDiscountForSeller = new ArrayList<>();
         for (Discount discount : seller.allDiscount) {
-            allDiscountForSeller.add("Discount ID: "+discount.getDiscountId()+" Discount percent: "+discount.getDiscountPercent());
+            allDiscountForSeller.add("Discount ID: " + discount.getDiscountId() + " Discount percent: " + discount.getDiscountPercent());
         }
         return allDiscountForSeller;
     }
-    public void setSellLog(SellLog sellLog) {
-        this.sellLog = sellLog;
-    }
-    public static Seller getSellerWithName(String userName){
+
+    public static Seller getSellerWithName(String userName) {
         for (Seller allSeller : allSellers) {
             if (allSeller.getUserName().equals(userName))
                 return allSeller;
@@ -51,49 +52,58 @@ public class Seller extends Account {
         }
         return null;
     }
-    public static boolean isThereSellerWithUserName(String userName){
+
+    public static boolean isThereSellerWithUserName(String userName) {
         for (Seller seller : allSellers) {
-            if(seller.getUserName().equals(userName)){
+            if (seller.getUserName().equals(userName)) {
                 return true;
             }
         }
         return false;
     }
-    public static void deleteSeller(String username){
+
+    public static void deleteSeller(String username) {
         allSellers.remove(getSellerByName(username));
     }
+
     public static Seller getSellerByName(String userName) {
         for (Seller seller : allSellers) {
-            if(seller.getUserName().equals(userName))
+            if (seller.getUserName().equals(userName))
                 return seller;
         }
         return null;
     }
-    public void addProduct(Seller seller,Product product){
+
+    public void addProduct(Seller seller, Product product) {
         seller.allProducts.add(product);
     }
-    public void removeProduct(Seller seller,Product product){
+
+    public void removeProduct(Seller seller, Product product) {
         seller.allProducts.remove(product);
     }
 
     public String getCompanyName() {
         return companyName;
     }
-    public boolean doesSellerHaveThisProduct(Product product){
+
+    public boolean doesSellerHaveThisProduct(Product product) {
         for (Product allProducts : this.allProducts) {
-            if(allProducts.equals(product)){
+            if (allProducts.equals(product)) {
                 return true;
             }
         }
         return false;
     }
-    public boolean isThereDiscountWithThisIdForSeller(Seller seller,String id){
+
+    public boolean isThereDiscountWithThisIdForSeller(Seller seller, String id) {
         for (Discount discount : seller.allDiscount) {
-            if(discount.getDiscountId().equals(id)){
+            if (discount.getDiscountId().equals(id)) {
                 return true;
             }
-        }return false;
+        }
+        return false;
     }
+
     @Override
     public String toString() {
         return "Seller{" +
