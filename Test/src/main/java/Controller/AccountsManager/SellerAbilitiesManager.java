@@ -5,6 +5,7 @@ import Models.Accounts.Customer;
 import Models.Accounts.Seller;
 import Models.Enums.DiscountEnum;
 import Models.Enums.ProductEnum;
+import Models.Logs.SellLog;
 import Models.Request.AddProductRequest;
 import Models.Request.Request;
 
@@ -44,9 +45,9 @@ public class SellerAbilitiesManager {
     //view saleshistory ro bayad bezanim
 
     public static Product addProduct(String productId, ProductEnum productStatus, String productName, String companyName,
-                           double price, Category category, Seller seller,String productExplanation) {
-        Product product =new Product(productId, productName, companyName, price,
-                seller, category,productExplanation,0);
+                                     double price, Category category, Seller seller, String productExplanation) {
+        Product product = new Product(productId, productName, companyName, price,
+                seller, category, productExplanation, 0);
         product.setProductState(ProductEnum.PRODUCING);
         return product;
     }
@@ -62,7 +63,7 @@ public class SellerAbilitiesManager {
             product.setExplanation(newContentForThisField);
         } else if (field.equals("seller")) {
             product.setSeller(Seller.getSellerByName(newContentForThisField));
-        }  else if (field.equals("price")) {
+        } else if (field.equals("price")) {
             product.setPrice(Double.parseDouble(newContentForThisField));
         } else if (field.equals("category")) {
             product.setCategory(Category.getCategoryByName(newContentForThisField));
@@ -84,6 +85,7 @@ public class SellerAbilitiesManager {
             throw new Exception("There isn't product with this ID!");
         }
     }
+
     public static Discount editOff(String id, String field, String newContentForThisField) {
         Discount discount = Discount.getDiscountById(id);
         if (field.equals("discount percent")) {
@@ -94,15 +96,15 @@ public class SellerAbilitiesManager {
             discount.setEndDate(new Date(newContentForThisField));
         }
         discount.setDiscountState(DiscountEnum.EDITING);
-       return discount;
-    }
-    public static Discount addDiscount(Seller seller,String id, String beginningDate, String endingDate,
-                                       double discountPercent, ArrayList<String> productsName){
-        Discount discount = new Discount(id,new Date(beginningDate),new Date(endingDate),discountPercent,Product.getProductsListByName(productsName));
-        seller.addDiscountForSeller(seller,discount);
         return discount;
     }
 
+    public static Discount addDiscount(Seller seller, String id, String beginningDate, String endingDate,
+                                       double discountPercent, ArrayList<String> productsName) {
+        Discount discount = new Discount(id, new Date(beginningDate), new Date(endingDate), discountPercent, Product.getProductsListByName(productsName));
+        seller.addDiscountForSeller(seller, discount);
+        return discount;
+    }
 
 
     public static ArrayList<String> showCategories() {
@@ -112,26 +114,49 @@ public class SellerAbilitiesManager {
     public static int viewBalance(Seller seller) {
         return seller.getCredit();
     }
-    public static void checkProductByID(String id) throws Exception{
-        if(Product.isThereProductWithId(id)){
-        }else {
+
+    public static void checkProductByID(String id) throws Exception {
+        if (Product.isThereProductWithId(id)) {
+        } else {
             throw new Exception("There isn't any product with this id");
         }
     }
-    public static ArrayList<String> viewOffs(Seller seller){
+
+    public static ArrayList<String> viewOffs(Seller seller) {
         return seller.getDiscountInfo(seller);
     }
-    public static void isThereOffByThisId(Seller seller,String id)throws Exception{
-        if(seller.isThereDiscountWithThisIdForSeller(seller,id)) {
-        }else {
+
+    public static void isThereOffByThisId(Seller seller, String id) throws Exception {
+        if (seller.isThereDiscountWithThisIdForSeller(seller, id)) {
+        } else {
             throw new Exception("you don't have any discount with this id");
         }
 
     }
-    public static String viewOffByGettingId(Seller seller , String id){
+
+    public static String viewOffByGettingId(Seller seller, String id) {
         Discount discount = Discount.getDiscountById(id);
         String output = discount.toString();
         return output;
+    }
+
+    public static ArrayList<String> viewProductsBuyer(Seller seller, String id) {
+        ArrayList<String> buyers = new ArrayList<>();
+        ArrayList<SellLog> logs = seller.getLogs();
+        for (SellLog log : logs) {
+            if (log.doesLogHaveThisProduct(id)) {
+                buyers.add(log.getBuyerName());
+            }
+        }
+        return buyers;
+    }
+
+    public static void doesSellerHaveThisProduct(Seller seller, String id) throws Exception {
+        if (seller.doesSellerHaveThisProduct(Product.getProductWithId(id))) {
+
+        } else {
+            throw new Exception("There isn't any product with this id");
+        }
     }
 
 }

@@ -38,4 +38,12 @@ public abstract class Log {
         return allProducts;
     }
 
+    public boolean doesLogHaveThisProduct(String id) {
+        for (Product product : allProducts) {
+            if (product.getProductId().equals(id)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

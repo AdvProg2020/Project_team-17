@@ -104,6 +104,10 @@ public class Seller extends Account {
         return false;
     }
 
+    public ArrayList<SellLog> getLogs() {
+        return logs;
+    }
+
     @Override
     public String toString() {
         return "Seller{" +
