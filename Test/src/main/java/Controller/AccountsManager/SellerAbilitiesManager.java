@@ -3,11 +3,13 @@ package Controller.AccountsManager;
 import Models.*;
 import Models.Accounts.Customer;
 import Models.Accounts.Seller;
+import Models.Enums.DiscountEnum;
 import Models.Enums.ProductEnum;
 import Models.Request.AddProductRequest;
 import Models.Request.Request;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 public class SellerAbilitiesManager {
@@ -82,15 +84,26 @@ public class SellerAbilitiesManager {
             throw new Exception("There isn't product with this ID!");
         }
     }
-
-
-    public static void addOff(Seller seller, Discount newDiscount) {
-        //TODO
+    public static Discount editOff(String id, String field, String newContentForThisField) {
+        Discount discount = Discount.getDiscountById(id);
+        if (field.equals("discount percent")) {
+            discount.setDiscountPercent(Double.parseDouble(newContentForThisField));
+        } else if (field.equals("start date")) {
+            discount.setStartDate(new Date(newContentForThisField));
+        } else if (field.equals("end date")) {
+            discount.setEndDate(new Date(newContentForThisField));
+        }
+        discount.setDiscountState(DiscountEnum.EDITING);
+       return discount;
+    }
+    public static Discount addDiscount(Seller seller,String id, String beginningDate, String endingDate,
+                                       double discountPercent, ArrayList<String> productsName){
+        Discount discount = new Discount(id,new Date(beginningDate),new Date(endingDate),discountPercent,Product.getProductsListByName(productsName));
+        seller.addDiscountForSeller(seller,discount);
+        return discount;
     }
 
-    public static void editOff(Seller seller, Discount discount) {
-        //TODO
-    }
+
 
     public static ArrayList<String> showCategories() {
         return Category.showCategories();
@@ -107,6 +120,18 @@ public class SellerAbilitiesManager {
     }
     public static ArrayList<String> viewOffs(Seller seller){
         return seller.getDiscountInfo(seller);
+    }
+    public static void isThereOffByThisId(Seller seller,String id)throws Exception{
+        if(seller.isThereDiscountWithThisIdForSeller(seller,id)) {
+        }else {
+            throw new Exception("you don't have any discount with this id");
+        }
+
+    }
+    public static String viewOffByGettingId(Seller seller , String id){
+        Discount discount = Discount.getDiscountById(id);
+        String output = discount.toString();
+        return output;
     }
 
 }

@@ -26,6 +26,9 @@ public class Seller extends Account {
     public ArrayList<Product> getAllProducts() {
         return allProducts;
     }
+    public void addDiscountForSeller(Seller seller , Discount discount){
+        seller.allDiscount.add(discount);
+    }
 
     public static ArrayList<Seller> getAllSellers() {
         return allSellers;
@@ -83,6 +86,13 @@ public class Seller extends Account {
             }
         }
         return false;
+    }
+    public boolean isThereDiscountWithThisIdForSeller(Seller seller,String id){
+        for (Discount discount : seller.allDiscount) {
+            if(discount.getDiscountId().equals(id)){
+                return true;
+            }
+        }return false;
     }
     @Override
     public String toString() {

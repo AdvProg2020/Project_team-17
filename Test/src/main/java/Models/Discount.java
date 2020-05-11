@@ -7,19 +7,20 @@ import java.util.Date;
 
 public class Discount {
     private String discountId;
-    private static ArrayList<Product> discountProducts = new ArrayList<>();
+    private ArrayList<Product> discountProducts;
     private static ArrayList<Discount> allDiscounts = new ArrayList<>();
     private Date startDate;
     private Date endDate;
     private double discountPercent;
     private DiscountEnum discountState;
 
-    public Discount(String discountId, Date startDate, Date endDate, double discountPercent, DiscountEnum discountState) {
+    public Discount(String discountId, Date startDate, Date endDate, double discountPercent, ArrayList<Product> products) {
         this.discountId = discountId;
         this.startDate = startDate;
         this.endDate = endDate;
         this.discountPercent = discountPercent;
-        this.discountState= discountState;
+        this.discountProducts = products;
+        this.discountState = DiscountEnum.PROCESSING;
         allDiscounts.add(this);
     }
 
@@ -35,9 +36,10 @@ public class Discount {
         return discountPercent;
     }
 
-    public static ArrayList<Product> getDiscountProducts() {
-        return discountProducts;
+    public void setDiscountPercent(double discountPercent) {
+        this.discountPercent = discountPercent;
     }
+
 
     public void setStartDate(Date startDate) {
         this.startDate = startDate;
@@ -64,13 +66,15 @@ public class Discount {
         return discountState;
     }
 
-    public static void showDiscountProducts() {
-        for (Product product : discountProducts) {
-            System.out.println("Product ID : "+product.getProductId() +"Price before discount :" + product.getPrice() + " " +
-                    "Price after discount : " + product.getPriceAfterDiscount());
+    public static void showProductsHaveDiscount() {
+        for (Discount discount : allDiscounts) {
+            for (Product product : discount.discountProducts) {
+                System.out.println("Product ID : " + product.getProductId() + "Price before discount :" + product.getPrice() + " " +
+                        "Price after discount : " + product.getPriceAfterDiscount());
+            }
         }
-        //fek konam chizaye dige ham bayad bezarim
     }
+
 
     public void deleteProduct(Product product) {
         this.discountProducts.remove(product);
@@ -84,6 +88,15 @@ public class Discount {
         }
     }
 
+    public static Discount getDiscountById(String id) {
+        for (Discount discount : allDiscounts) {
+            if (discount.getDiscountId().equals(id)) {
+                return discount;
+            }
+        }
+        return null;
+    }
+
     public boolean isThisProductInDiscount(Product product) {
         for (Product discountProduct : discountProducts) {
             if (discountProduct.equals(product)) {
@@ -95,5 +108,15 @@ public class Discount {
 
     public void deleteDiscountFromProduct(Product product) {
 
+    }
+
+    @Override
+    public String toString() {
+        return "Discount{" +
+                "discountId='" + discountId + '\'' +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", discountPercent=" + discountPercent +
+                '}';
     }
 }

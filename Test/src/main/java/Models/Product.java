@@ -60,6 +60,10 @@ public class Product {
         this.price = price;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void setPriceAfterDiscount(double priceAfterDiscount) {
         this.priceAfterDiscount = priceAfterDiscount;
     }
@@ -88,6 +92,21 @@ public class Product {
         for (Product allProduct : allProducts) {
             if (allProduct.getProductId().equals(productId))
                 return allProduct;
+        }
+        return null;
+    }
+   public static ArrayList<Product> getProductsListByName(ArrayList<String> productsName) {
+        ArrayList<Product> products = new ArrayList<>();
+        for (String name : productsName) {
+            products.add(getProductByName(name));
+        }
+        return products;
+    }
+    public static Product getProductByName(String name){
+        for (Product product : allProducts) {
+            if(product.getName().equals(name)){
+                return product;
+            }
         }
         return null;
     }
