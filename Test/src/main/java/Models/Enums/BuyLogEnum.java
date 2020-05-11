@@ -1,6 +1,0 @@
-package Models.Enums;
-
-public enum BuyLogEnum {
-    ORDERHASBEENRECEIVED,ORDERISPROCCESING,ORDERREADYTOPICKUP
-
-}

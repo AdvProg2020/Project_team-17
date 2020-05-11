@@ -1,29 +1,37 @@
 package Models.Logs;
 
-import Models.Accounts.Seller;
-import Models.Enums.SellLogEnum;
-import Models.Logs.Log;
 import Models.Product;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class SellLog extends Log {
-    private int amountReceived;
-    private int reducedAmountForDiscount;
-    private Product soldProduct;
-    private String sellerName;
-    private SellLogEnum sellLogState;
+    private double discountAmount;
+    private String buyerName;
 
-    public SellLog(String logId, Date date, int amountReceived, int reducedAmountForDiscount, Product soldProduct, String sellerName, SellLogEnum sellLogState) {
-        super(logId, date);
-        this.amountReceived = amountReceived;
-        this.reducedAmountForDiscount = reducedAmountForDiscount;
-        this.soldProduct = soldProduct;
-        this.sellerName = sellerName;
-        this.sellLogState = sellLogState;
+    public SellLog(String id, Date date, double paymentAmount, String address, String phoneNumber, String customerName, ArrayList<Product> allProducts, boolean isReceived, double discountAmount, String buyerName) {
+        super(id, date, paymentAmount, address, phoneNumber, customerName, allProducts, isReceived);
+        this.discountAmount = discountAmount;
+        this.buyerName = buyerName;
     }
-    public void setSellLogForSeller(String sellerName){
-        Seller seller = Seller.getSellerWithName(sellerName);
-        seller.setSellLog(this);
+
+    public String getBuyerName() {
+        return buyerName;
+    }
+
+    @Override
+    public String toString() {
+        return "SellLog{" +
+                "discountAmount=" + discountAmount +
+                ", buyerName='" + buyerName + '\'' +
+                ", id='" + id + '\'' +
+                ", date=" + date +
+                ", paymentAmount=" + paymentAmount +
+                ", address='" + address + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", allProducts=" + allProducts +
+                ", customerName='" + customerName + '\'' +
+                ", isReceived=" + isReceived +
+                '}';
     }
 }

@@ -2,21 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="32618e29-8746-4d2a-8d73-d011168a9d97" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Controller/AccountsManager/SellerAbilitiesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Controller/AccountsManager/SellerAbilitiesManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Controller/DiscountManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Controller/DiscountManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Accounts/Seller.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Accounts/Seller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Discount.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Discount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/SellerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/SellerMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/Models/Cart.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/Models/Cart.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/Models/Category.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/Models/Category.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/Models/Discount.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/Models/Discount.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/Models/Product.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/Models/Product.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/DiscountsMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/DiscountsMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ProductsMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/ProductsMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/PurchaseMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/View/PurchaseMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Logs/Log.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Logs/Log.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

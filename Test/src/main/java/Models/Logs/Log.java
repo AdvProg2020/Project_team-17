@@ -1,32 +1,40 @@
 package Models.Logs;
 
+import Models.Product;
+
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Log {
-    private String logId;
-    private Date date;
-    private static ArrayList<Log> allLogs = new ArrayList<Log>();
+public abstract class Log {
+    protected String id;
+    protected Date date;
+    protected double paymentAmount;
+    protected String address;
+    protected String phoneNumber;
+    protected ArrayList<Product> allProducts;
+    protected String customerName;
+    protected boolean isReceived;
 
-    public Log(String logId, Date date) {
-        this.logId = logId;
+
+    public Log(String id, Date date, double paymentAmount, String address, String phoneNumber, String customerName, ArrayList<Product> products, boolean isReceived) {
+        this.id = id;
         this.date = date;
-        allLogs.add(this);
+        this.paymentAmount = paymentAmount;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.allProducts = products;
+        this.customerName = customerName;
+        this.isReceived = isReceived;
     }
 
-    public String getLogId() {
-        return logId;
+    @Override
+    public abstract String toString();
+
+    public String getId() {
+        return id;
     }
 
-    public void setLogId(String logId) {
-        this.logId = logId;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
+    public ArrayList<Product> getAllProducts() {
+        return allProducts;
     }
 }
