@@ -126,6 +126,7 @@ public class ManagerMenu extends Menu {
         }
     }
     public void createDiscountCode(){
+
     }
     public void viewDiscountCodes(){
     }

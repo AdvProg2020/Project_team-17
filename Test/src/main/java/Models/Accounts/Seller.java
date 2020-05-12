@@ -13,15 +13,17 @@ public class Seller extends Account {
     private ArrayList<Product> allProducts;
     private static ArrayList<Seller> allSellers= new ArrayList<Seller>();
     private ArrayList<Discount> allDiscount = new ArrayList<>();
-    private SellLog sellLog;
+    private ArrayList<SellLog> logs;
 
     public Seller(String userName, String firstName, String lastName, String email
             , String phoneNumber, String password ,int credit,String companyName) {
         super(userName, firstName, lastName, email, phoneNumber, password,credit);
         this.companyName=companyName;
         allProducts = new ArrayList<>();
+        logs=new ArrayList<>();
         allSellers.add(this);
     }
+
 
     public ArrayList<Product> getAllProducts() {
         return allProducts;
@@ -40,9 +42,11 @@ public class Seller extends Account {
         }
         return allDiscountForSeller;
     }
-    public void setSellLog(SellLog sellLog) {
-        this.sellLog = sellLog;
+
+    public ArrayList<SellLog> getLogs() {
+        return logs;
     }
+
     public static Seller getSellerWithName(String userName){
         for (Seller allSeller : allSellers) {
             if (allSeller.getUserName().equals(userName))
