@@ -4,6 +4,7 @@ import Controller.AccountsManager.CustomerAbilitiesManager;
 import Models.DiscountCode;
 
 public class DiscountCodePage extends Menu {
+    PaymentPage paymentPage = new PaymentPage(this);
     private static String discountCode = "";
 
     public DiscountCodePage(Menu parentMenu) {
@@ -22,7 +23,8 @@ public class DiscountCodePage extends Menu {
         if (input.equals("yes")) {
             discountCode();
         } else if (input.equals("no")) {
-            new PaymentPage(this);
+            paymentPage.show();
+            paymentPage.execute();
         } else if (input.equals("back")) {
             //y soal ma alan kolan back k mizanim mirim ghabli parent ini k alan mirim tosh ini k tosh bodim k nemishe ya na mishe?
             parentMenu.show();
@@ -38,7 +40,8 @@ public class DiscountCodePage extends Menu {
             try {
                 CustomerAbilitiesManager.checkDiscountCodeValidation(code);
                 discountCode = code;
-                new PaymentPage(this);
+                paymentPage.show();
+                paymentPage.execute();
                 break;
             } catch (Exception e) {
                 e.getMessage();

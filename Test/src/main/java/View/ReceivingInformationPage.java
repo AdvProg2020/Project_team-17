@@ -3,6 +3,7 @@ package View;
 import Models.Accounts.Customer;
 
 public class ReceivingInformationPage extends Menu {
+    DiscountCodePage discountCodePage = new DiscountCodePage(this);
     private static String address;
     private static String phoneNum;
     private static String date;
@@ -47,7 +48,8 @@ public class ReceivingInformationPage extends Menu {
                 System.out.println("enter done to confirm the information\n " + "enter change to re enter the information");
                 String option = scanner.nextLine();
                 if (option.equals("confirm")) {
-                    new DiscountCodePage(this);
+                    discountCodePage.show();
+                    discountCodePage.execute();
                 } else if (option.equals("change")) {
                     receivingInformation();
                 }

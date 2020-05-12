@@ -1,6 +1,7 @@
 package View;
 
 public class PurchaseMenu extends Menu {
+    ReceivingInformationPage receivingInformationPage = new ReceivingInformationPage(this);
     public PurchaseMenu(Menu parentMenu) {
         super("Purchase", parentMenu);
     }
@@ -15,7 +16,8 @@ public class PurchaseMenu extends Menu {
     public void execute() {
         String input= scanner.nextLine();
         if(input.equals("next")){
-            new ReceivingInformationPage(this);
+            receivingInformationPage.show();
+            receivingInformationPage.execute();
         }else if(input.equals("back")){
             parentMenu.show();
             parentMenu.execute();
