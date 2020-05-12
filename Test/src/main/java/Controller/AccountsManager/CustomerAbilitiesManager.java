@@ -5,6 +5,7 @@ import Models.Accounts.Account;
 import Models.Accounts.Customer;
 import Models.Accounts.Manager;
 import Models.Logs.BuyLog;
+import Models.Logs.Log;
 import View.ReceivingInformationPage;
 import View.RegisterAndLoginMenu;
 
@@ -36,7 +37,23 @@ public class CustomerAbilitiesManager {
         }
     }
 
-    //TODO view orders
+    public static ArrayList<String> viewOrders(Customer customer) {
+        ArrayList<String> buyLogs = new ArrayList<>();
+        for (BuyLog log : customer.getBuyLog()) {
+            buyLogs.add(log.showOrders());
+        }
+        return buyLogs;
+    }
+
+    public String showOrder(String id) throws Exception {
+        if (BuyLog.isThereBuyLogWithThisId(id)) {
+            return BuyLog.getButLogWithId(id).toString();
+        } else {
+            throw new Exception("There isn't log with this id");
+        }
+    }
+
+
     public static void rateProduct(Customer customer, Product product, double score) throws Exception {
         Cart cart = customer.getCart();
         if (Product.isThereProductWithId(product.getProductId())) {
@@ -46,9 +63,8 @@ public class CustomerAbilitiesManager {
                 throw new Exception("There isn't this product in customer's cart");
             }
         } else {
-            throw new Exception("");//nemidonam asan lazeme k in exception ro handle konim ya na
+            throw new Exception("There isn't any product with this id");
         }
-
     }
 
 
@@ -59,12 +75,12 @@ public class CustomerAbilitiesManager {
     }
 
 
-    public static void checkAndPay(Customer customer, String code) throws Exception{
+    public static void checkAndPay(Customer customer, String code) throws Exception {
         DiscountCode discountCode = DiscountCode.getDiscountCodeWithCode(code);
         if (customer.getCart().totalPriceWithDiscount(discountCode) <= customer.getCredit()) {
-            pay(customer,code);
+            pay(customer, code);
         } else
-            throw  new Exception("there isn't enough money in your card!" );
+            throw new Exception("there isn't enough money in your card!");
     }
 
     public static void pay(Customer customer, String code) {
