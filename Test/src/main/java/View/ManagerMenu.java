@@ -180,7 +180,44 @@ public class ManagerMenu extends Menu {
         }
     }
     public void manageRequests(){
-        //TODO
+        String command;
+        System.out.println(ManagerAbilitiesManager.showAllRequests());
+        while (true){
+            command=scanner.nextLine();
+            Pattern detailsOfRequestPattern = Pattern.compile("details\\s(.+)");
+            Matcher detailsOfRequestMatcher = detailsOfRequestPattern.matcher(command);
+            Pattern acceptRequestPattern = Pattern.compile("accept\\s(.+)");
+            Matcher acceptRequestMatcher = acceptRequestPattern.matcher(command);
+            Pattern declineRequestPattern = Pattern.compile("decline\\s(.+)");
+            Matcher declineRequestMatcher = declineRequestPattern.matcher(command);
+            if(command.matches("details\\s(.+)")){
+                detailsOfRequestMatcher.find();
+                try {
+                    ManagerAbilitiesManager.isThereRequestWithThisId(detailsOfRequestMatcher.group(1));
+                    System.out.println(ManagerAbilitiesManager.showDetailsOfRequest(detailsOfRequestMatcher.group(1)));
+                }catch (Exception e){
+                    e.getMessage();
+                }
+            }else if(command.matches("accept\\s(.+)")){
+                acceptRequestMatcher.find();
+                try {
+                    ManagerAbilitiesManager.isThereRequestWithThisId(acceptRequestMatcher.group(1));
+                    ManagerAbilitiesManager.acceptRequest(acceptRequestMatcher.group(1));
+                }catch (Exception e){
+                    e.getMessage();
+                }
+
+            }else if(command.matches("decline\\s(.+)")){
+                declineRequestMatcher.find();
+                try {
+                    ManagerAbilitiesManager.isThereRequestWithThisId(declineRequestMatcher.group(1));
+                    ManagerAbilitiesManager.declineRequest(declineRequestMatcher.group(1));
+                }catch (Exception e){
+                    e.getMessage();
+                }
+            }
+        }
+
     }
     public void manageCategories(){
         String command;

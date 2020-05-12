@@ -6,6 +6,7 @@ import Models.Accounts.Customer;
 import Models.Accounts.Manager;
 import Models.Accounts.Seller;
 import Models.Enums.DiscountEnum;
+import Models.Request.Request;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -139,14 +140,28 @@ public class ManagerAbilitiesManager {
     public static void removeDiscountCode(String discountCode) {
         DiscountCode.removeDiscountCode(DiscountCode.getDiscountCodeWithCode(discountCode));
     }
-
-    public void getDetailsOfRequest(Manager manager, String requestId) {
+    public static void isThereRequestWithThisId(String id) throws Exception{
+        if(Request.hasRequestById(id)) {
+        }
+        else throw new Exception("There isn't request with this id");
+    }
+    public static ArrayList<String> showAllRequests(){
+        ArrayList<String> requestInfo = new ArrayList<>();
+        for (Request request : Request.getAllRequests()) {
+            requestInfo.add(request.getId());
+        }
+        return requestInfo;
     }
 
-    public void acceptRequest(Manager manager, String requestId) {
-    }
 
-    public void declineRequest(Manager manager, String requestId) {
+    public static String showDetailsOfRequest( String requestId) {
+        return Request.getRequestById(requestId).toString();
+    }
+    public static void acceptRequest( String requestId) {
+        //TODO
+    }
+    public static void declineRequest( String requestId) {
+        //TODO
     }
     public static ArrayList<Category> showAllCategories(){
         ArrayList<Category> showAllCategory = new ArrayList<>();

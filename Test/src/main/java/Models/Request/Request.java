@@ -22,6 +22,10 @@ public abstract class Request {
 
     public abstract void accept();
 
+    public Manager getManager() {
+        return manager;
+    }
+
     public static ArrayList<String> viewRequestsInShort() {
         ArrayList<String> allRequestsShortViews = new ArrayList<String>();
         for (Request request : allRequests) {
@@ -52,7 +56,13 @@ public abstract class Request {
         allRequests.remove(request);
     }
 
+    public static ArrayList<Request> getAllRequests() {
+        return allRequests;
+    }
 
+    public String getId() {
+        return id;
+    }
 
     @Override
     public abstract String toString();
