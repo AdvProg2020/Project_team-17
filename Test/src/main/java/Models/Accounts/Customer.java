@@ -72,10 +72,14 @@ public class Customer extends Account {
     public static ArrayList<Customer> getAllCustomers() {
         return allCustomers;
     }
+
     public void payMoney(Customer customer,Double amount){
         customer.setCredit(customer.getCredit()-amount);
     }
 
+    public ArrayList<BuyLog> getBuyLog() {
+        return buyLog;
+    }
 
     @Override
     public String toString() {

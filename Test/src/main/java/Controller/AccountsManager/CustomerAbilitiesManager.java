@@ -22,7 +22,7 @@ public class CustomerAbilitiesManager {
         }
     }
 
-    public static void changeField(Customer customer, String field, String newContentForThisField){
+    public static void changeField(Customer customer, String field, String newContentForThisField) {
         if (field.equalsIgnoreCase("first name")) {
             customer.changeFirstName(customer, newContentForThisField);
         } else if (field.equalsIgnoreCase("last name")) {
@@ -35,6 +35,7 @@ public class CustomerAbilitiesManager {
             customer.changePassword(customer, newContentForThisField);
         }
     }
+
     //TODO view orders
     public static void rateProduct(Customer customer, Product product, double score) throws Exception {
         Cart cart = customer.getCart();
@@ -52,35 +53,37 @@ public class CustomerAbilitiesManager {
 
 
     public static ArrayList<String> showDiscountCodes(Customer customer) {
-        ArrayList<String> discountCodes= new ArrayList<>();
+        ArrayList<String> discountCodes = new ArrayList<>();
         discountCodes.add(customer.getDiscountCodes().toString());
         return discountCodes;
     }
 
-    public static boolean canPay(Customer customer,String code){
+
+    public static void checkAndPay(Customer customer, String code) throws Exception{
         DiscountCode discountCode = DiscountCode.getDiscountCodeWithCode(code);
-        if(customer.getCart().totalPriceWithDiscount(discountCode)<=customer.getCredit()){
-            return true;
-        }else
-            return false;
+        if (customer.getCart().totalPriceWithDiscount(discountCode) <= customer.getCredit()) {
+            pay(customer,code);
+        } else
+            throw  new Exception("there isn't enough money in your card!" );
     }
-    public static void pay(Customer customer , String code){
+
+    public static void pay(Customer customer, String code) {
         DiscountCode discountCode = DiscountCode.getDiscountCodeWithCode(code);
         double amountForPay = customer.getCart().totalPriceWithDiscount(discountCode);
         double sum = customer.getCart().totalPriceOfProductInCart();
-        double discountAmount = DiscountCode.calculateDiscountAmount(sum,discountCode);
-        customer.payMoney(customer,amountForPay);
+        double discountAmount = DiscountCode.calculateDiscountAmount(sum, discountCode);
+        customer.payMoney(customer, amountForPay);
         ArrayList<Product> boughtProducts = customer.getCart().getProductsInCart();
         //random id ro bayad dorost konim
-        BuyLog buyLog =new BuyLog("random id",new Date(ReceivingInformationPage.getDate()),amountForPay,ReceivingInformationPage.getAddress(),
-                ReceivingInformationPage.getPhoneNum(),customer.getUserName(),boughtProducts,false,discountAmount, RegisterAndLoginMenu.getCurrentSeller().getUserName());
+        BuyLog buyLog = new BuyLog("random id", new Date(ReceivingInformationPage.getDate()), amountForPay, ReceivingInformationPage.getAddress(),
+                ReceivingInformationPage.getPhoneNum(), customer.getUserName(), boughtProducts, false, discountAmount, RegisterAndLoginMenu.getCurrentSeller().getUserName());
         customer.addLogToBuyLog(buyLog);
     }
 
     public static void checkDiscountCodeValidation(String code) throws Exception {
-        if(DiscountCode.isThereDiscountCodeWithThisCode(code)){
+        if (DiscountCode.isThereDiscountCodeWithThisCode(code)) {
 
-        }else {
+        } else {
             throw new Exception("this code isn't valid");
         }
     }
