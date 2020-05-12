@@ -9,8 +9,8 @@ import Models.Enums.RequestTypeEnum;
 public class EditOffRequest extends Request {
     private Discount discount;
 
-    public EditOffRequest(String id, Seller seller, Manager manager, Discount discount) {
-        super(id, seller, manager);
+    public EditOffRequest( Seller seller, Manager manager, Discount discount) {
+        super("Edit off ---> "+allRequests.size()+1, seller, manager);
         this.type = RequestTypeEnum.EDIT_OFF;
         this.discount = discount;
     }

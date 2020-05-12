@@ -3,7 +3,6 @@ package View;
 import Controller.AccountsManager.CustomerAbilitiesManager;
 import Models.Accounts.Customer;
 
-import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -63,15 +62,14 @@ public class CustomerMenu extends Menu {
         customer.toString();
         while (true) {
             command = scanner.nextLine();
-            Pattern editFieldPattern=Pattern.compile("edit\\s(.+)");
-            Matcher editFieldMatcher= editFieldPattern.matcher(command);
+            Pattern editFieldPattern = Pattern.compile("edit\\s(.+)");
+            Matcher editFieldMatcher = editFieldPattern.matcher(command);
             if (command.matches("edit\\s(.+)")) {
                 editFieldMatcher.find();
                 System.out.println("what is the new content for this field?");
-                String newContent=scanner.nextLine();
-                CustomerAbilitiesManager.changeField(customer,editFieldMatcher.group(1),newContent);
-            }
-            else if (command.equals("help")) {
+                String newContent = scanner.nextLine();
+                CustomerAbilitiesManager.changeField(customer, editFieldMatcher.group(1), newContent);
+            } else if (command.equals("help")) {
                 System.out.println("commands that you can enter are:");
                 System.out.println("edit [field]");
                 System.out.println("back");
@@ -89,6 +87,7 @@ public class CustomerMenu extends Menu {
         Customer customer = RegisterAndLoginMenu.getCurrentCustomer();
         System.out.println(customer.getCredit());
     }
+
     public void viewDiscountCodes() {
         Customer customer = RegisterAndLoginMenu.getCurrentCustomer();
         System.out.println(customer.getDiscountCodes());

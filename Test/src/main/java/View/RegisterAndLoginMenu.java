@@ -70,7 +70,7 @@ public class RegisterAndLoginMenu extends Menu {
                     accountInfo.add(scanner.nextLine());
                     if (registerMatcher.group(1).equals("customer")) {
                         new Customer(registerMatcher.group(1), accountInfo.get(1), accountInfo.get(2), accountInfo.get(3),
-                                accountInfo.get(5), accountInfo.get(0), 0, null, null);
+                                accountInfo.get(5), accountInfo.get(0), 0, null);
                     } else if (registerMatcher.group(1).equals("seller")) {
                         System.out.println("Enter your company's name:");
                         accountInfo.add(scanner.nextLine());
@@ -150,10 +150,6 @@ public class RegisterAndLoginMenu extends Menu {
             }
 
         }
-    }
-
-    public void logout() {
-        //fek konam bikhodie
     }
 
     public static Customer getCurrentCustomer() {

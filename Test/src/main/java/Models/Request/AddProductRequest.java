@@ -11,8 +11,8 @@ public class AddProductRequest extends Request {
     private Product product;
     private Category category;
 
-    public AddProductRequest(String id, Seller seller, Manager manager, Product product,Category category) {
-        super(id, seller, manager);
+    public AddProductRequest( Seller seller, Manager manager, Product product,Category category) {
+        super("Add product ---> "+allRequests.size()+1, seller, manager);
         this.type = RequestTypeEnum.ADD_PRODUCT;
         this.product = product;
         this.category=category;

@@ -9,8 +9,8 @@ import Models.Product;
 public class EditProductRequest extends Request {
     private Product product;
 
-    public EditProductRequest(String id, Seller seller, Manager manager, Product product) {
-        super(id, seller, manager);
+    public EditProductRequest(Seller seller, Manager manager, Product product) {
+        super("Edit product ---> "+allRequests.size()+1, seller, manager);
         this.type = RequestTypeEnum.EDIT_PRODUCT;
         this.product = product;
     }

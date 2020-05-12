@@ -126,11 +126,61 @@ public class ManagerMenu extends Menu {
         }
     }
     public void createDiscountCode(){
-
+        //  TODO
     }
     public void viewDiscountCodes(){
+        String command;
+        System.out.println(ManagerAbilitiesManager.viewDiscountCodes());
+        while (true){
+            command=scanner.nextLine();
+            Pattern viewDiscountCodePattern = Pattern.compile("view discount code\\s(.+)");
+            Matcher viewDiscountCodeMatcher = viewDiscountCodePattern.matcher(command);
+            Pattern editDiscountCodePattern = Pattern.compile("edit discount code\\s(.+)");
+            Matcher editDiscountCodeMatcher = editDiscountCodePattern.matcher(command);
+            Pattern removeDiscountCodePattern = Pattern.compile("remove discount code\\s(.+)");
+            Matcher removeDiscountCodeMatcher = removeDiscountCodePattern.matcher(command);
+            if(command.matches("view discount code\\s(.+)")){
+                viewDiscountCodeMatcher.find();
+                try {
+                    ManagerAbilitiesManager.isThereDiscountCode(viewDiscountCodeMatcher.group(1));
+                    System.out.println(ManagerAbilitiesManager.viewDiscountCode(viewDiscountCodeMatcher.group(1)));
+                }catch (Exception e){
+                    e.getMessage();
+                }
+            }else if(command.matches("edit discount code\\s(.+)")){
+                editDiscountCodeMatcher.find();
+                try{
+                    ManagerAbilitiesManager.isThereDiscountCode(editDiscountCodeMatcher.group(1));
+                    System.out.println("enter the field you want to edit: ");
+                    String field = scanner.nextLine();
+                    System.out.println("enter new content for this field: ");
+                    String newContent = scanner.nextLine();
+                    ManagerAbilitiesManager.editDiscountCode(editDiscountCodeMatcher.group(1),field,newContent);
+                }catch (Exception e){
+                    e.getMessage();
+                }
+            }else if(command.matches("remove discount code\\s(.+)")){
+                removeDiscountCodeMatcher.find();
+                try {
+                    ManagerAbilitiesManager.isThereDiscountCode(removeDiscountCodeMatcher.group(1));
+                    ManagerAbilitiesManager.removeDiscountCode(removeDiscountCodeMatcher.group(1));
+                }catch (Exception e){
+                    e.getMessage();
+                }
+            }else if(command.equals("back")){
+                break;
+            }else if(command.equals("help")){
+                System.out.println("commands that you can enter are:");
+                System.out.println("view discount code [code]");
+                System.out.println("edit discount code [code]");
+                System.out.println("remove discount code [code]");
+                System.out.println("back");
+            }
+
+        }
     }
     public void manageRequests(){
+        //TODO
     }
     public void manageCategories(){
         String command;

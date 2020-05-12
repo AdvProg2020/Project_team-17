@@ -5,8 +5,10 @@ import Models.Accounts.Account;
 import Models.Accounts.Customer;
 import Models.Accounts.Manager;
 import Models.Accounts.Seller;
+import Models.Enums.DiscountEnum;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class ManagerAbilitiesManager {
     public static ArrayList<String> showAllAccounts(){
@@ -96,20 +98,46 @@ public class ManagerAbilitiesManager {
         }
     }
 
-    public void createDiscountCode(Manager manager) {
-
+    public void createDiscountCode() {
     }
 
-    public void viewDiscountCodes(Manager manager) {
+    public static ArrayList<String>viewDiscountCodes() {
+        //fek konam hamin k code ro faghat neshon bede okaye
+        ArrayList<String> discountCodeInfo = new ArrayList<>();
+        for (DiscountCode discountCode : DiscountCode.getAllDiscountCodes()) {
+            discountCodeInfo.add(discountCode.getDiscountCode());
+        }
+        return discountCodeInfo;
+    }
+    public static void isThereDiscountCode(String discountCode ) throws Exception{
+        if(DiscountCode.isThereDiscountCodeWithThisCode(discountCode)){
+
+        }else {
+            throw new Exception("There isn't any discount code with this code");
+        }
     }
 
-    public void viewDiscount(Manager manager, String discountCode) {
+    public static String viewDiscountCode( String discountCode) {
+        return DiscountCode.getDiscountCodeWithCode(discountCode).toString();
     }
 
-    public void editDiscount(Manager manager, String discountCode) {
+    public static void editDiscountCode(String code,String field,String newContentForThisField) {
+        DiscountCode discountCode=DiscountCode.getDiscountCodeWithCode(code);
+        if(field.equals("starting date")){
+            discountCode.setStartDate(new Date(newContentForThisField));
+        }else if(field.equals("ending date")){
+            discountCode.setEndDate(new Date(newContentForThisField));
+        }else if(field.equals("discount percent")){
+            discountCode.setDiscountCode(newContentForThisField);
+        }else if(field.equals("maximum discount amount")){
+            discountCode.setMaxDiscountAmount(Double.parseDouble(newContentForThisField));
+        }else if(field.equals("count discount code")){
+            discountCode.setCountDiscountCode(Integer.parseInt(newContentForThisField));
+        }
     }
 
-    public void removeDiscount(Manager manager, String discountCode) {
+    public static void removeDiscountCode(String discountCode) {
+        DiscountCode.removeDiscountCode(DiscountCode.getDiscountCodeWithCode(discountCode));
     }
 
     public void getDetailsOfRequest(Manager manager, String requestId) {
