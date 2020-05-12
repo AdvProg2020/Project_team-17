@@ -99,7 +99,12 @@ public class ManagerAbilitiesManager {
         }
     }
 
-    public void createDiscountCode() {
+    public static void createDiscountCode(String code,String beginningDate, String endingDate, String discountPercent , String max,String repeat,ArrayList<String> customersName) {
+        ArrayList<Customer> customers = new ArrayList<>();
+        for (String customer : customersName) {
+            customers.add(Customer.getCustomerByName(customer));
+        }
+        new DiscountCode(code,new Date(beginningDate),new Date(endingDate),Double.parseDouble(discountPercent),Double.parseDouble(max),Integer.parseInt(repeat),customers);
     }
 
     public static ArrayList<String>viewDiscountCodes() {
