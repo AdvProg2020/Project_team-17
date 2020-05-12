@@ -119,7 +119,7 @@ public class SellerAbilitiesManager {
         return Category.showCategories();
     }
 
-    public static int viewBalance(Seller seller) {
+    public static double viewBalance(Seller seller) {
         return seller.getCredit();
     }
 
