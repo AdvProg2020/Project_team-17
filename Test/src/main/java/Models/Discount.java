@@ -106,9 +106,11 @@ public class Discount {
         return false;
     }
 
+
     public void deleteDiscountFromProduct(Product product) {
 
     }
+
 
     @Override
     public String toString() {

@@ -21,6 +21,4 @@ public class PurchaseMenu extends Menu {
             parentMenu.execute();
         }
     }
-
-
 }

@@ -4,8 +4,13 @@ import Models.*;
 import Models.Accounts.Account;
 import Models.Accounts.Customer;
 import Models.Accounts.Manager;
+import Models.Logs.BuyLog;
+import View.ReceivingInformationPage;
+import View.RegisterAndLoginMenu;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Random;
 
 public class CustomerAbilitiesManager {
     public void viewAccount(String username) throws Exception {
@@ -30,9 +35,7 @@ public class CustomerAbilitiesManager {
             customer.changePassword(customer, newContentForThisField);
         }
     }
-
-
-
+    //TODO view orders
     public static void rateProduct(Customer customer, Product product, double score) throws Exception {
         Cart cart = customer.getCart();
         if (Product.isThereProductWithId(product.getProductId())) {
@@ -54,9 +57,32 @@ public class CustomerAbilitiesManager {
         return discountCodes;
     }
 
-    public void purchase(Customer customer, Product product) {
-        //nemidonam asan
+    public static boolean canPay(Customer customer,String code){
+        DiscountCode discountCode = DiscountCode.getDiscountCodeWithCode(code);
+        if(customer.getCart().totalPriceWithDiscount(discountCode)<=customer.getCredit()){
+            return true;
+        }else
+            return false;
     }
-    //view orders o nemkidonam chi kar bayad kard
+    public static void pay(Customer customer , String code){
+        DiscountCode discountCode = DiscountCode.getDiscountCodeWithCode(code);
+        double amountForPay = customer.getCart().totalPriceWithDiscount(discountCode);
+        double sum = customer.getCart().totalPriceOfProductInCart();
+        double discountAmount = DiscountCode.calculateDiscountAmount(sum,discountCode);
+        customer.payMoney(customer,amountForPay);
+        ArrayList<Product> boughtProducts = customer.getCart().getProductsInCart();
+        //random id ro bayad dorost konim
+        BuyLog buyLog =new BuyLog("random id",new Date(ReceivingInformationPage.getDate()),amountForPay,ReceivingInformationPage.getAddress(),
+                ReceivingInformationPage.getPhoneNum(),customer.getUserName(),boughtProducts,false,discountAmount, RegisterAndLoginMenu.getCurrentSeller().getUserName());
+        customer.addLogToBuyLog(buyLog);
+    }
+
+    public static void checkDiscountCodeValidation(String code) throws Exception {
+        if(DiscountCode.isThereDiscountCodeWithThisCode(code)){
+
+        }else {
+            throw new Exception("this code isn't valid");
+        }
+    }
 
 }

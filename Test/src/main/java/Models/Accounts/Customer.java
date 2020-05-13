@@ -53,6 +53,9 @@ public class Customer extends Account {
         }
         return false;
     }
+    public void addLogToBuyLog(BuyLog buyLog){
+        this.buyLog.add(buyLog);
+    }
 
     public void addDiscountCode(DiscountCode discountCode) {
         this.discountCodes.add(discountCode);
@@ -68,6 +71,9 @@ public class Customer extends Account {
 
     public static ArrayList<Customer> getAllCustomers() {
         return allCustomers;
+    }
+    public void payMoney(Customer customer,Double amount){
+        customer.setCredit(customer.getCredit()-amount);
     }
 
 

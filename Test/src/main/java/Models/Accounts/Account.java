@@ -12,12 +12,12 @@ public abstract class  Account {
     protected String email;
     protected String phoneNumber;
     protected String password;
-    protected int credit;
+    protected double credit;
     private ArrayList<DiscountCode> allDiscountCodes;
     protected boolean isThisAccountLogged=false; //meghdare ino nemidonam to constructor bayad false bezram ya inja
 
 
-    public Account(String userName, String firstName, String lastName, String email, String phoneNumber, String password,int credit) {
+    public Account(String userName, String firstName, String lastName, String email, String phoneNumber, String password,double credit) {
         this.userName = userName;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -86,11 +86,15 @@ public abstract class  Account {
         return password;
     }
 
-    public int getCredit() {
+    public double getCredit() {
         return credit;
     }
 
-    public void changeFirstName(Account account,String firstName){
+    public void setCredit(double credit) {
+        this.credit = credit;
+    }
+
+    public void changeFirstName(Account account, String firstName){
         account.firstName=firstName;
     }
     public void changeLastName(Account account,String lastName){

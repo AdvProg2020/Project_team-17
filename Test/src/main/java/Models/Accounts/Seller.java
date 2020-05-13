@@ -16,7 +16,7 @@ public class Seller extends Account {
     private ArrayList<SellLog> logs;
 
     public Seller(String userName, String firstName, String lastName, String email
-            , String phoneNumber, String password ,int credit,String companyName) {
+            , String phoneNumber, String password ,double credit,String companyName) {
         super(userName, firstName, lastName, email, phoneNumber, password,credit);
         this.companyName=companyName;
         allProducts = new ArrayList<>();

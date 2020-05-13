@@ -46,6 +46,13 @@ public class Cart {
         }
         return allProductOfCart;
     }
+    public ArrayList<Product> getProductsInCart(){
+        ArrayList<Product> products = new ArrayList<>();
+        for (Product product : productsInCart.keySet()) {
+            products.add(product);
+        }
+        return products;
+    }
 
     public boolean isThereProductInCart(Product product) {
         for (Product productInCart : productsInCart.keySet()) {
@@ -63,8 +70,7 @@ public class Cart {
         }
         return sum;
     }
+  public double totalPriceWithDiscount(DiscountCode discountCode){
+        return totalPriceOfProductInCart()-DiscountCode.calculateDiscountAmount(totalPriceOfProductInCart(),discountCode);}
 
-    public HashMap<Product, Integer> getProductsInCart() {
-        return productsInCart;
-    }
 }
