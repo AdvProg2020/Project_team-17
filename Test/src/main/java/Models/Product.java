@@ -5,6 +5,7 @@ import Models.Accounts.Customer;
 import Models.Accounts.Seller;
 import Models.Enums.PointOfViewEnum;
 import Models.Enums.ProductEnum;
+import Models.Logs.BuyLog;
 
 import java.util.ArrayList;
 
@@ -167,9 +168,16 @@ public class Product {
         return averageScore;
     }
 
-    public void addCommentForProduct(Account account, String content, PointOfViewEnum title) {
-        //nemidonam title hamoon vaziate comment hast ya na
-        this.pointOfViews.add(new PointOfView(account, this, content, title));
+    public void addCommentForProduct(Customer customer, String content) {
+        //nemidonam title chi karast!
+        boolean hasBought= false;
+        ArrayList<BuyLog> buyLogs= customer.getBuyLog();
+        for (BuyLog log : buyLogs) {
+            if(log.doesLogHaveThisProduct(this.getProductId())){
+                hasBought=true;
+            }
+        }
+        this.pointOfViews.add(new PointOfView(customer, this, content, null,hasBought));
     }
 
     public ArrayList<PointOfView> getPointOfViews() {

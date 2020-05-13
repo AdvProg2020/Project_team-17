@@ -2,12 +2,12 @@ package View;
 
 import Controller.DiscountManager;
 import Controller.ProductsManager;
+import Models.Product;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ProductsMenu extends Menu {
-    ProductMenu productMenu = new ProductMenu(this);
     private ProductsManager productsManager;
 
     public ProductsMenu(Menu parentMenu) {
@@ -50,7 +50,7 @@ public class ProductsMenu extends Menu {
 
 
     public void viewCategories() {
-
+        System.out.println(ProductsManager.showCategory());
     }
 
     public void filtering() {
@@ -70,9 +70,10 @@ public class ProductsMenu extends Menu {
             Matcher showProductByIdMatcher= showProductByIdPattern.matcher(command);
             if(command.matches("show product\\\\s(.+)")){
                 showProductByIdMatcher.find();
-                //in k alan miad inja mibine id product ro baed mire to safeye hamon mahsol chejori handle konim k id
-                //ro gereft bere to safeye hamoon product
-
+                Product product = Product.getProductWithId(showProductByIdMatcher.group(1));
+                ProductMenu productMenu = new ProductMenu(this,product);
+                productMenu.show();
+                productMenu.execute();
             }else if (command.equals("help")) {
                 System.out.println("commands that you can enter are:");
                 System.out.println("show product [productID]");

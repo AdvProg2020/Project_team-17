@@ -8,34 +8,34 @@ import Models.Enums.PointOfViewEnum;
 import Models.Product;
 
 public class ProductManager {
-    public void digestAttributes(Product product) {
-        product.digestAttributes();
+    public static String digestAttributes(Product product) {
+        return product.digestAttributes();
     }
 
-    public void addToCart(Customer customer, Product product) {
+    public static void addToCart(Customer customer, Product product) {
         Cart cart = customer.getCart();
         cart.addProductToCart(customer, product);
-        //in k hanooz login nashode bood bere safeheye login fek konam to menu ha bayad bezarim
     }
 
-    public void showAttributes(Product product) {
-        product.toString();
-        //safe 32 vijegi haye category ro nemifahmam yani chi
+    public static String showAttributes(Product product) {
+        Category category = product.getCategory();
+        return "Product info -----> " + product.toString() + " Category info of this product ----->" + category.getSpecialFeature();
     }
 
-    public String compareProduct(String firstId, String secondId) {
+    public static String compareProduct(Product firstProduct, String secondId) {
         String twoProductsAttributes;
-        Product firstProduct = Product.getProductWithId(firstId);
         Product secondProduct = Product.getProductWithId(secondId);
-        twoProductsAttributes = "Product 1 : " + firstProduct.toString() + " Product 2 : " + secondProduct.toString();
+        twoProductsAttributes = "Product 1 -----> " + firstProduct.toString() + "\n Product 2 -----> " + secondProduct.toString();
         return twoProductsAttributes;
     }
 
-    public void showComments(Product product) {
-        product.getPointOfViews();
+    public static String showComments(Product product) {
+        String output="Product score: "+Double.toString(product.getAverageScore());
+        output+="Product comments: "+product.getPointOfViews();
+        return output;
     }
 
-    public void addComment(Account account, Product product, String content, PointOfViewEnum title) {
-        product.addCommentForProduct(account, content, title);
+    public static void addComment(Customer customer, Product product, String content) {
+        product.addCommentForProduct(customer, content);
     }
 }

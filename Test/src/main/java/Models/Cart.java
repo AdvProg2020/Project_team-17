@@ -13,7 +13,6 @@ public class Cart {
         if (cart.isThereProductInCart(product)) {
             int count = productsInCart.get(product);
             productsInCart.put(product,count+1);
-
         } else {
             cart.productsInCart.put(product, 1);
         }

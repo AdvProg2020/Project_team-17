@@ -10,8 +10,12 @@ public class ProductsManager {
         return null;
     }
 
-    public static void showCategory() {
-        Category.getAllCategories();
+    public static ArrayList<String> showCategory() {
+        ArrayList<String> categoryName = new ArrayList<>();
+        for (Category category : Category.getAllCategories()) {
+            categoryName.add(category.getCategoryName());
+        }
+        return categoryName;
     }
 
     public void showAvailableFilter() {

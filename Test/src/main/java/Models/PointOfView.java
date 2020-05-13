@@ -8,14 +8,14 @@ public class PointOfView {
     private Product product;
     private String pointOfViewStringText;
     private PointOfViewEnum pointOfViewState;
-    private boolean isAccountBuyer;
-    //baraye in k aya nazardahande in kala ra kharide ast nazari nemidonam chi kar bayad bokonim?
+    private boolean hasBought;
 
-    public PointOfView(Account account, Product product, String pointOfViewStringText, PointOfViewEnum pointOfViewState) {
+    public PointOfView(Account account, Product product, String pointOfViewStringText, PointOfViewEnum pointOfViewState,boolean hasBought) {
         this.account = account;
         this.product = product;
         this.pointOfViewStringText = pointOfViewStringText;
         this.pointOfViewState = pointOfViewState;
+        this.hasBought= hasBought;
     }
 
     public Account getAccount() {

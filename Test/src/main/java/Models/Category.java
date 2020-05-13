@@ -15,6 +15,9 @@ public class Category {
         allCategories.add(this);
     }
 
+    public String getSpecialFeature() {
+        return specialFeature;
+    }
 
     public String getCategoryName() {
         return categoryName;
