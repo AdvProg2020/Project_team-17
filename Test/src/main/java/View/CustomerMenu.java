@@ -90,7 +90,7 @@ public class CustomerMenu extends Menu {
 
     public void viewDiscountCodes() {
         Customer customer = RegisterAndLoginMenu.getCurrentCustomer();
-        System.out.println(customer.getDiscountCodes());
+        System.out.println(CustomerAbilitiesManager.showDiscountCodes(customer));
     }
 
 

@@ -5,6 +5,8 @@ import Models.Accounts.Account;
 import Models.Accounts.Customer;
 import Models.Accounts.Manager;
 
+import java.util.ArrayList;
+
 public class CustomerAbilitiesManager {
     public void viewAccount(String username) throws Exception {
         if (Customer.isThereCustomerWithUserName(username)) {
@@ -29,24 +31,7 @@ public class CustomerAbilitiesManager {
         }
     }
 
-    public void increaseProduct(Customer customer, Product product) throws Exception {
-        Cart cart = customer.getCart();
-        if (cart.isThereProductInCart(product)) {
-            cart.increaseNumberOfProduct(product);
-        } else {
-            throw new Exception("There isn't any product in cart!");
-        }
 
-    }
-
-    public void decreaseProduct(Customer customer, Product product) throws Exception {
-        Cart cart = customer.getCart();
-        if (cart.isThereProductInCart(product)) {
-            cart.decreaseNumberOfProduct(product);
-        } else {
-            throw new Exception("There isn't any product in cart!");
-        }
-    }
 
     public static void rateProduct(Customer customer, Product product, double score) throws Exception {
         Cart cart = customer.getCart();
@@ -62,18 +47,11 @@ public class CustomerAbilitiesManager {
 
     }
 
-    public void showProductsInCart(Customer customer) {
-        Cart cart = customer.getCart();
-        cart.showProductsOfCart();
-    }
 
-    public void showTotalPrice(Customer customer) {
-        Cart cart = customer.getCart();
-        cart.totalPriceOfProductInCart();
-    }
-
-    public void showDiscountCodes(Customer customer) {
-        customer.getDiscountCodes();
+    public static ArrayList<String> showDiscountCodes(Customer customer) {
+        ArrayList<String> discountCodes= new ArrayList<>();
+        discountCodes.add(customer.getDiscountCodes().toString());
+        return discountCodes;
     }
 
     public void purchase(Customer customer, Product product) {

@@ -11,8 +11,8 @@ public class Cart {
     public void addProductToCart(Customer customer, Product product) {
         Cart cart = customer.getCart();
         if (cart.isThereProductInCart(product)) {
-            //tedade on product haro to haashmapesh ziad kone
-            //nemidonam chejori
+            int count = productsInCart.get(product);
+            productsInCart.put(product,count+1);
 
         } else {
             cart.productsInCart.put(product, 1);
@@ -23,13 +23,19 @@ public class Cart {
     public void increaseNumberOfProduct(Product product) {
         for (Product productInCart : productsInCart.keySet()) {
             if (productInCart.equals(product)) {
-                //inja nemidonam chejori meghdare value ro kam konam
+                int count = productsInCart.get(productInCart);
+                productsInCart.put(productInCart , count+1);
             }
         }
     }
 
     public void decreaseNumberOfProduct(Product product) {
-        //inam mese methode bala
+        for (Product productInCart : productsInCart.keySet()) {
+            if (productInCart.equals(product)) {
+                int count = productsInCart.get(productInCart);
+                productsInCart.put(productInCart , count-1);
+            }
+        }
 
     }
 

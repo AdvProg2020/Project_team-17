@@ -36,6 +36,7 @@ public class Product {
         this.averageScore = averageScore;
     }
 
+
     public ArrayList<Score> getScoresForProduct() {
         return scoresForProduct;
     }

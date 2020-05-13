@@ -1,7 +1,13 @@
 package View;
 
 
+import Controller.CartManager;
 import Models.Accounts.Customer;
+import Models.Accounts.Seller;
+import Models.Product;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class CartMenu extends Menu {
     PurchaseMenu purchaseMenu = new PurchaseMenu(this);
@@ -52,10 +58,60 @@ public class CartMenu extends Menu {
             parentMenu.execute();
         }
     }
-    public void showProducts(){}
-    public void viewProduct(){}
-    public void increaseProduct(){}
-    public void decreaseProduct(){}
-    public void showTotalPrice(){}
+    public void showProducts(){
+        Customer customer = RegisterAndLoginMenu.getCurrentCustomer();
+        System.out.println(CartManager.showProducts(customer));
+    }
+    public void viewProduct(){
+
+    }
+    public void increaseProduct(){
+        Customer customer = RegisterAndLoginMenu.getCurrentCustomer();
+        String command;
+        while (true) {
+            command = scanner.nextLine();
+            Pattern increasePattern = Pattern.compile("increase\\s(.+)");
+            Matcher increaseMatcher = increasePattern.matcher(command);
+            if(command.matches("increase\\s(.+)")){
+                increaseMatcher.find();
+                try {
+                    CartManager.increaseProduct(customer, Product.getProductWithId(increaseMatcher.group(1)));
+                }catch (Exception e){
+                    e.getMessage();
+                }
+            }else if(command.equals("back")){
+                break;
+            }else if(command.equals("help")){
+                System.out.println("commands that you can enter are:");
+                System.out.println("increase [product ID]");
+            }
+        }
+    }
+    public void decreaseProduct(){
+        Customer customer = RegisterAndLoginMenu.getCurrentCustomer();
+        String command;
+        while (true) {
+            command = scanner.nextLine();
+            Pattern decreasePattern = Pattern.compile("decrease\\s(.+)");
+            Matcher decreaseMatcher = decreasePattern.matcher(command);
+            if(command.matches("decrease\\s(.+)")){
+                decreaseMatcher.find();
+                try {
+                    CartManager.decreaseProduct(customer, Product.getProductWithId(decreaseMatcher.group(1)));
+                }catch (Exception e){
+                    e.getMessage();
+                }
+            }else if(command.equals("back")){
+                break;
+            }else if(command.equals("help")){
+                System.out.println("commands that you can enter are:");
+                System.out.println("decrease [product ID]");
+            }
+        }
+    }
+    public void showTotalPrice(){
+        Customer customer = RegisterAndLoginMenu.getCurrentCustomer();
+        System.out.println(CartManager.showTotalPriceOfCart(customer));
+    }
 
 }
