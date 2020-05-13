@@ -7,21 +7,20 @@ public class PurchaseMenu extends Menu {
 
     @Override
     public void show() {
-
+        System.out.println("you are processing your order");
+        System.out.println("enter next to go to receiving information page");
     }
 
     @Override
     public void execute() {
-
+        String input= scanner.nextLine();
+        if(input.equals("next")){
+            new ReceivingInformationPage(this);
+        }else if(input.equals("back")){
+            parentMenu.show();
+            parentMenu.execute();
+        }
     }
 
-    public void receivingInformation(){
-        System.out.println("enter your receiving address");
-    }
-    public void receivingDiscountCode(){
 
-    }
-    public void payment(){
-
-    }
 }

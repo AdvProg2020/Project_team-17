@@ -33,11 +33,14 @@ public class CustomerMenu extends Menu {
             parentMenu.show();
             parentMenu.execute();
         } else if (input == 2) {
-            cartMenu.show();
-            cartMenu.execute();
+            new CartMenu(this);
+            //cartMenu.show();
+            //cartMenu.execute();
         } else if (input == 3) {
-            purchaseMenu.show();
-            purchaseMenu.execute();
+           new PurchaseMenu(this);
+           //fek konam bejaye in dota payiniya age in karo bokonam behtar bashe
+            // purchaseMenu.show();
+            // purchaseMenu.execute();
         } else if (input == 4) {
             viewOrders();
             parentMenu.show();
