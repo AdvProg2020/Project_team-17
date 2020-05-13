@@ -5,7 +5,6 @@ import Models.Accounts.Customer;
 public class ReceivingInformationPage extends Menu {
     private static String address;
     private static String phoneNum;
-    private static String date;
     public ReceivingInformationPage( Menu parentMenu) {
         super("Receiver Information", parentMenu);
     }
@@ -17,7 +16,7 @@ public class ReceivingInformationPage extends Menu {
         System.out.println("2.back");
 
     }
-
+        
     @Override
     public void execute() {
         int input= Integer.parseInt(scanner.nextLine());
@@ -40,8 +39,6 @@ public class ReceivingInformationPage extends Menu {
                 address = scanner.nextLine();
                 System.out.println("Enter phone number:");
                 phoneNum = scanner.nextLine();
-                System.out.println("Enter date");
-                date=scanner.nextLine();
                 System.out.println("enter done to confirm the information\n " + "enter change to re enter the information");
                 String option = scanner.nextLine();
                 if (option.equals("confirm")) {
@@ -61,9 +58,5 @@ public class ReceivingInformationPage extends Menu {
 
     public static String getPhoneNum() {
         return phoneNum;
-    }
-
-    public static String getDate() {
-        return date;
     }
 }

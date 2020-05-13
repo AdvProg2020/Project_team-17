@@ -19,7 +19,8 @@ public class DiscountCode {
     private static ArrayList<DiscountCode> allDiscountCodes = new ArrayList<>();
 
 
-    public DiscountCode(String discountCode, Date startDate, Date endDate, double discountPercent, double maxDiscountAmount, int countDiscountCode, ArrayList<Customer> customers) {
+    public DiscountCode(String discountCode, Date startDate, Date endDate, double discountPercent,
+                        double maxDiscountAmount, int countDiscountCode, ArrayList<Customer> customers) {
         this.discountCode = discountCode;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -81,33 +82,38 @@ public class DiscountCode {
     public int getCountDiscountCode() {
         return countDiscountCode;
     }
-    public static void removeDiscountCode(DiscountCode discountCode){
+
+    public static void removeDiscountCode(DiscountCode discountCode) {
         allDiscountCodes.remove(discountCode);
     }
 
-    public static boolean isThereDiscountCodeWithThisCode(String discountCode){
+    public static boolean isThereDiscountCodeWithThisCode(String discountCode) {
         for (DiscountCode code : allDiscountCodes) {
-            if(code.getDiscountCode().equals(discountCode)){
+            if (code.getDiscountCode().equals(discountCode)) {
                 return true;
             }
-        }return false;
+        }
+        return false;
     }
-    public static DiscountCode getDiscountCodeWithCode(String discountCode){
+
+    public static DiscountCode getDiscountCodeWithCode(String discountCode) {
         for (DiscountCode code : allDiscountCodes) {
-            if(code.getDiscountCode().equals(discountCode)){
+            if (code.getDiscountCode().equals(discountCode)) {
                 return code;
             }
-        }return null;
+        }
+        return null;
     }
-    public static double calculateDiscountAmount(double sum , DiscountCode discountCode){
-        if(discountCode==null){
+
+    public static double calculateDiscountAmount(double sum, DiscountCode discountCode) {
+        if (discountCode == null) {
             return 0;
         }
-        double sumWithDiscountPercent = (discountCode.getDiscountPercent()*sum)/100;
+        double sumWithDiscountPercent = (discountCode.getDiscountPercent() * sum) / 100;
         double sumWithMaximumAmount = discountCode.getMaxDiscountAmount();
-        if(sumWithDiscountPercent>sumWithMaximumAmount){
+        if (sumWithDiscountPercent > sumWithMaximumAmount) {
             return sumWithMaximumAmount;
-        }else return sumWithDiscountPercent;
+        } else return sumWithDiscountPercent;
     }
 
 

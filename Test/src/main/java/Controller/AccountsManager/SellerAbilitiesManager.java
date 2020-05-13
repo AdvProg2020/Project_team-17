@@ -42,7 +42,7 @@ public class SellerAbilitiesManager {
         return seller.getCompanyName();
     }
 
-    public static ArrayList<String> viewSalesHistory(Seller seller){
+    public static ArrayList<String> viewSalesHistory(Seller seller) {
         ArrayList<SellLog> logs = seller.getLogs();
         ArrayList<String> salesHistory = new ArrayList<String>();
         for (SellLog log : logs) {
@@ -140,19 +140,22 @@ public class SellerAbilitiesManager {
             throw new Exception("you don't have any discount with this id");
         }
     }
-    public static ArrayList<String> viewProductsBuyer(Seller seller,String id){
+
+    public static ArrayList<String> viewProductsBuyer(Seller seller, String id) {
         ArrayList<String> buyers = new ArrayList<>();
         ArrayList<SellLog> logs = seller.getLogs();
         for (SellLog log : logs) {
-            if(log.doesLogHaveThisProduct(id)){
+            if (log.doesLogHaveThisProduct(id)) {
                 buyers.add(log.getBuyerName());
             }
-        }return buyers;
+        }
+        return buyers;
     }
-    public static void doesSellerHaveThisProduct(Seller seller,String id)throws Exception{
-        if(seller.doesSellerHaveThisProduct(Product.getProductWithId(id))){
 
-        }else {
+    public static void doesSellerHaveThisProduct(Seller seller, String id) throws Exception {
+        if (seller.doesSellerHaveThisProduct(Product.getProductWithId(id))) {
+
+        } else {
             throw new Exception("There isn't any product with this id");
         }
     }
