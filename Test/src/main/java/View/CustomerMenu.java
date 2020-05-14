@@ -2,6 +2,7 @@ package View;
 
 import Controller.AccountsManager.CustomerAbilitiesManager;
 import Models.Accounts.Customer;
+import Models.Product;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -36,8 +37,8 @@ public class CustomerMenu extends Menu {
             cartMenu.show();
             cartMenu.execute();
         } else if (input == 3) {
-             purchaseMenu.show();
-             purchaseMenu.execute();
+            purchaseMenu.show();
+            purchaseMenu.execute();
         } else if (input == 4) {
             viewOrders();
             parentMenu.show();
@@ -80,7 +81,44 @@ public class CustomerMenu extends Menu {
     }
 
     public void viewOrders() {
-        //nemidonam
+        String command;
+        Customer customer = RegisterAndLoginMenu.getCurrentCustomer();
+        System.out.println(CustomerAbilitiesManager.viewOrders(customer));
+        while (true) {
+            command = scanner.nextLine();
+            Pattern showOrderPattern = Pattern.compile("show order\\s(.+)");
+            Matcher showOrderMatcher = showOrderPattern.matcher(command);
+            Pattern ratePattern = Pattern.compile("rate\\s(.+)\\s(\\d)");
+            Matcher rateMatcher = ratePattern.matcher(command);
+            if (command.matches("show order\\s(.+)")) {
+                showOrderMatcher.find();
+                try {
+                    CustomerAbilitiesManager.showOrder(showOrderMatcher.group(1));
+                } catch (Exception e) {
+                    e.getMessage();
+                }
+            } else if (command.matches("rate\\s(.+)\\s(\\d)")) {
+                rateMatcher.find();
+                double rate = Double.parseDouble(rateMatcher.group(2));
+                if (rate > 5) {
+                    System.out.println("you can only rate in range 1-5 ! enter new score: ");
+                    rate = scanner.nextDouble();
+                }
+                try {
+                    CustomerAbilitiesManager.rateProduct(customer, Product.getProductWithId(rateMatcher.group(1)), rate);
+                } catch (Exception e) {
+                    e.getMessage();
+                }
+            } else if (command.equals("help")) {
+                System.out.println("commands that you can enter are:");
+                System.out.println("show order [orderID]");
+                System.out.println("rate [productID] [1-5]");
+                System.out.println("back");
+            } else if (command.equals("back")) {
+                break;
+            } else System.out.println("Command is invalid");
+        }
+
     }
 
     public void viewBalance() {
@@ -92,6 +130,4 @@ public class CustomerMenu extends Menu {
         Customer customer = RegisterAndLoginMenu.getCurrentCustomer();
         System.out.println(CustomerAbilitiesManager.showDiscountCodes(customer));
     }
-
-
 }

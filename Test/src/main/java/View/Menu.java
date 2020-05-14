@@ -10,8 +10,8 @@ public abstract class Menu {
     protected HashMap<Integer, Menu> submenus;
     protected Menu parentMenu;
     public static Scanner scanner;
-   // protected static Manager manager;
-    protected static ArrayList<Menu> allMenus= new ArrayList<Menu>();
+    // protected static Manager manager;
+    protected static ArrayList<Menu> allMenus = new ArrayList<Menu>();
 
     public Menu(String name, Menu parentMenu) {
         this.name = name;
@@ -45,6 +45,7 @@ public abstract class Menu {
         else
             System.out.println((submenus.size() + 1) + ". Exit");
     }
+
     public void execute() {
         Menu nextMenu = null;
         int chosenMenu = Integer.parseInt(scanner.nextLine());

@@ -19,12 +19,19 @@ public class CartManager {
         Cart cart = customer.getCart();
         return cart.totalPriceOfProductInCart();
     }
+    public static void isThereProductInThisCart(Customer customer,Product product) throws Exception{
+        Cart cart =customer.getCart();
+        if(cart.isThereProductInCart(product)){
+
+        }else
+            throw new Exception("There isn't any product with this ID in cart!");
+        }
     public static void increaseProduct(Customer customer, Product product) throws Exception {
         Cart cart = customer.getCart();
         if (cart.isThereProductInCart(product)) {
             cart.increaseNumberOfProduct(product);
         } else {
-            throw new Exception("There isn't any product in cart!");
+            throw new Exception("There isn't any product with this ID in cart!");
         }
 
     }

@@ -2,6 +2,7 @@ package View;
 
 public class PurchaseMenu extends Menu {
     ReceivingInformationPage receivingInformationPage = new ReceivingInformationPage(this);
+
     public PurchaseMenu(Menu parentMenu) {
         super("Purchase", parentMenu);
     }
@@ -14,11 +15,11 @@ public class PurchaseMenu extends Menu {
 
     @Override
     public void execute() {
-        String input= scanner.nextLine();
-        if(input.equals("next")){
+        String input = scanner.nextLine();
+        if (input.equals("next")) {
             receivingInformationPage.show();
             receivingInformationPage.execute();
-        }else if(input.equals("back")){
+        } else if (input.equals("back")) {
             parentMenu.show();
             parentMenu.execute();
         }

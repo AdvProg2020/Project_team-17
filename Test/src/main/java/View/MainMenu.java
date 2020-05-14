@@ -3,8 +3,8 @@ package View;
 import java.util.HashMap;
 
 public class MainMenu extends Menu {
-    public MainMenu(){
-        super("Main Menu" , null);
+    public MainMenu() {
+        super("Main Menu", null);
         HashMap<Integer, Menu> subMenus = new HashMap<Integer, Menu>();
         subMenus.put(1, new RegisterAndLoginMenu(this));
         subMenus.put(2, new ManagerMenu(this));

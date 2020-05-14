@@ -3,7 +3,6 @@ package View;
 
 import Controller.CartManager;
 import Models.Accounts.Customer;
-import Models.Accounts.Seller;
 import Models.Product;
 
 import java.util.regex.Matcher;
@@ -11,10 +10,10 @@ import java.util.regex.Pattern;
 
 public class CartMenu extends Menu {
     PurchaseMenu purchaseMenu = new PurchaseMenu(this);
-    public CartMenu( Menu parentMenu) {
+
+    public CartMenu(Menu parentMenu) {
         super("Cart", parentMenu);
     }
-
 
     @Override
     public void show() {
@@ -58,58 +57,86 @@ public class CartMenu extends Menu {
             parentMenu.execute();
         }
     }
-    public void showProducts(){
+
+    public void showProducts() {
         Customer customer = RegisterAndLoginMenu.getCurrentCustomer();
         System.out.println(CartManager.showProducts(customer));
     }
-    public void viewProduct(){
+
+    public void viewProduct() {
+        Customer customer = RegisterAndLoginMenu.getCurrentCustomer();
+        String command;
+        while (true) {
+            command = scanner.nextLine();
+            Pattern viewProductPattern = Pattern.compile("view product\\s(.+)");
+            Matcher viewProductMatcher = viewProductPattern.matcher(command);
+            if (command.matches("view product\\s(.+)")) {
+                viewProductMatcher.find();
+                try {
+                    CartManager.isThereProductInThisCart(customer, Product.getProductWithId(viewProductMatcher.group(1)));
+                    ProductMenu productMenu = new ProductMenu(this, Product.getProductWithId(viewProductMatcher.group(1)));
+                    productMenu.show();
+                    productMenu.execute();
+                } catch (Exception e) {
+                    e.getMessage();
+                }
+            } else if (command.matches("back")) {
+                break;
+            } else if (command.matches("help")) {
+                System.out.println("commands that you can enter are:");
+                System.out.println("view product [product ID]");
+            }
+        }
 
     }
-    public void increaseProduct(){
+
+    public void increaseProduct() {
         Customer customer = RegisterAndLoginMenu.getCurrentCustomer();
         String command;
         while (true) {
             command = scanner.nextLine();
             Pattern increasePattern = Pattern.compile("increase\\s(.+)");
             Matcher increaseMatcher = increasePattern.matcher(command);
-            if(command.matches("increase\\s(.+)")){
+            if (command.matches("increase\\s(.+)")) {
                 increaseMatcher.find();
                 try {
                     CartManager.increaseProduct(customer, Product.getProductWithId(increaseMatcher.group(1)));
-                }catch (Exception e){
+                } catch (Exception e) {
                     e.getMessage();
                 }
-            }else if(command.equals("back")){
+            } else if (command.equals("back")) {
                 break;
-            }else if(command.equals("help")){
+            } else if (command.equals("help")) {
                 System.out.println("commands that you can enter are:");
                 System.out.println("increase [product ID]");
             }
         }
     }
-    public void decreaseProduct(){
+
+    public void decreaseProduct() {
         Customer customer = RegisterAndLoginMenu.getCurrentCustomer();
         String command;
         while (true) {
             command = scanner.nextLine();
             Pattern decreasePattern = Pattern.compile("decrease\\s(.+)");
             Matcher decreaseMatcher = decreasePattern.matcher(command);
-            if(command.matches("decrease\\s(.+)")){
+            if (command.matches("decrease\\s(.+)")) {
                 decreaseMatcher.find();
                 try {
                     CartManager.decreaseProduct(customer, Product.getProductWithId(decreaseMatcher.group(1)));
-                }catch (Exception e){
+                } catch (Exception e) {
                     e.getMessage();
                 }
-            }else if(command.equals("back")){
+            } else if (command.equals("back")) {
                 break;
-            }else if(command.equals("help")){
+            } else if (command.equals("help")) {
                 System.out.println("commands that you can enter are:");
                 System.out.println("decrease [product ID]");
             }
         }
     }
-    public void showTotalPrice(){
+
+    public void showTotalPrice() {
         Customer customer = RegisterAndLoginMenu.getCurrentCustomer();
         System.out.println(CartManager.showTotalPriceOfCart(customer));
     }

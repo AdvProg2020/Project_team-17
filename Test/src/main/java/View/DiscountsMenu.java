@@ -13,7 +13,8 @@ public class DiscountsMenu extends Menu {
     @Override
     public void show() {
         System.out.println("1.offs");
-        System.out.println("2.back");
+        System.out.println("2.show Product");
+        System.out.println("3.back");
     }
 
     @Override
@@ -24,6 +25,10 @@ public class DiscountsMenu extends Menu {
             parentMenu.show();
             parentMenu.execute();
         } else if (input == 2) {
+            showProducts();
+            parentMenu.show();
+            parentMenu.execute();
+        }else if(input == 3){
             parentMenu.show();
             parentMenu.execute();
         }

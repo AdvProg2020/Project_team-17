@@ -45,14 +45,13 @@ public class CustomerAbilitiesManager {
         return buyLogs;
     }
 
-    public String showOrder(String id) throws Exception {
+    public static String showOrder(String id) throws Exception {
         if (BuyLog.isThereBuyLogWithThisId(id)) {
             return BuyLog.getButLogWithId(id).toString();
         } else {
             throw new Exception("There isn't log with this id");
         }
     }
-
 
     public static void rateProduct(Customer customer, Product product, double score) throws Exception {
         Cart cart = customer.getCart();

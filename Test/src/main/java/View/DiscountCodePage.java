@@ -1,7 +1,6 @@
 package View;
 
 import Controller.AccountsManager.CustomerAbilitiesManager;
-import Models.DiscountCode;
 
 public class DiscountCodePage extends Menu {
     PaymentPage paymentPage = new PaymentPage(this);

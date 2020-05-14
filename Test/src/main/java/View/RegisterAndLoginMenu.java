@@ -10,7 +10,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class RegisterAndLoginMenu extends Menu {
-    private RegisterAndLoginManager registerAndLoginManager;
     public static Customer currentCustomer;
     public static Seller currentSeller;
     public static Manager currentManager;
@@ -108,7 +107,7 @@ public class RegisterAndLoginMenu extends Menu {
                     System.out.println("Enter your password: ");
                     String password = scanner.nextLine();
                     try {
-                        registerAndLoginManager.isUserNameAndPasswordCorrectForCustomer(loginMatcher.group(1), password);
+                        RegisterAndLoginManager.isUserNameAndPasswordCorrectForCustomer(loginMatcher.group(1), password);
                         currentCustomer = customer;
                         //in k be safhe ghabli k mikhaste bere ro bayad handle konim
                     } catch (Exception e) {
@@ -119,7 +118,7 @@ public class RegisterAndLoginMenu extends Menu {
                     System.out.println("Enter your password: ");
                     String password = scanner.nextLine();
                     try {
-                        registerAndLoginManager.isUserNameAndPasswordCorrectForSeller(loginMatcher.group(1), password);
+                        RegisterAndLoginManager.isUserNameAndPasswordCorrectForSeller(loginMatcher.group(1), password);
                         currentSeller = seller;
                         //in k be safhe ghabli k mikhaste bere ro bayad handle konim
                     } catch (Exception e) {
@@ -130,7 +129,7 @@ public class RegisterAndLoginMenu extends Menu {
                     System.out.println("Enter your password: ");
                     String password = scanner.nextLine();
                     try {
-                        registerAndLoginManager.isUserNameAndPasswordCorrectForManager(loginMatcher.group(1), password);
+                        RegisterAndLoginManager.isUserNameAndPasswordCorrectForManager(loginMatcher.group(1), password);
                         currentManager = manager;
                         //in k be safhe ghabli k mikhaste bere ro bayad handle konim
                     } catch (Exception e) {

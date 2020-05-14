@@ -26,7 +26,7 @@ public class ProductsMenu extends Menu {
     @Override
     public void execute() {
         int input = Integer.parseInt(scanner.nextLine());
-          if (input == 1) {
+        if (input == 1) {
             viewCategories();
             parentMenu.show();
             parentMenu.execute();
@@ -42,12 +42,11 @@ public class ProductsMenu extends Menu {
             showProducts();
             parentMenu.show();
             parentMenu.execute();
-        }  else if (input == 5) {
+        } else if (input == 5) {
             parentMenu.show();
             parentMenu.execute();
         }
     }
-
 
     public void viewCategories() {
         System.out.println(ProductsManager.showCategory());
@@ -64,21 +63,21 @@ public class ProductsMenu extends Menu {
     public void showProducts() {
         String command;
         DiscountManager.showDiscountProducts();
-        while (true){
+        while (true) {
             command = scanner.nextLine();
-            Pattern showProductByIdPattern=Pattern.compile("show product\\s(.+)");
-            Matcher showProductByIdMatcher= showProductByIdPattern.matcher(command);
-            if(command.matches("show product\\\\s(.+)")){
+            Pattern showProductByIdPattern = Pattern.compile("show product\\s(.+)");
+            Matcher showProductByIdMatcher = showProductByIdPattern.matcher(command);
+            if (command.matches("show product\\\\s(.+)")) {
                 showProductByIdMatcher.find();
                 Product product = Product.getProductWithId(showProductByIdMatcher.group(1));
-                ProductMenu productMenu = new ProductMenu(this,product);
+                ProductMenu productMenu = new ProductMenu(this, product);
                 productMenu.show();
                 productMenu.execute();
-            }else if (command.equals("help")) {
+            } else if (command.equals("help")) {
                 System.out.println("commands that you can enter are:");
                 System.out.println("show product [productID]");
                 System.out.println("back");
-            }else if (command.equals("back")) {
+            } else if (command.equals("back")) {
                 break;
             } else System.out.println("Command is invalid");
         }

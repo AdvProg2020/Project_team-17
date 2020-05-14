@@ -6,13 +6,14 @@ import Models.Accounts.Customer;
 import Models.Product;
 
 public class ProductMenu extends Menu {
-   RegisterAndLoginMenu registerAndLoginMenu = new RegisterAndLoginMenu(this);
+    RegisterAndLoginMenu registerAndLoginMenu = new RegisterAndLoginMenu(this);
     private Product product;
 
-    public ProductMenu(Menu parentMenu,Product product) {
+    public ProductMenu(Menu parentMenu, Product product) {
         super("Product Menu", parentMenu);
-        this.product= product;
+        this.product = product;
     }
+
     @Override
     public void show() {
         System.out.println("1.digest");
@@ -51,19 +52,19 @@ public class ProductMenu extends Menu {
         Customer customer = RegisterAndLoginMenu.getCurrentCustomer();
         String command;
         System.out.println(ProductManager.digestAttributes(product));
-        while (true){
-            command=scanner.nextLine();
-            if(command.equals("add to cart")){
-                if(customer== null){
+        while (true) {
+            command = scanner.nextLine();
+            if (command.equals("add to cart")) {
+                if (customer == null) {
                     registerAndLoginMenu.show();
                     registerAndLoginMenu.execute();
                     // alan k mire to in safe vaghti k bar login kard dobare biad haminja? ya na az aval
-                }else {
-                    ProductManager.addToCart(customer,product);
+                } else {
+                    ProductManager.addToCart(customer, product);
                 }
-            }else if(command.equals("back")){
+            } else if (command.equals("back")) {
                 break;
-            }else if(command.equals("help")){
+            } else if (command.equals("help")) {
                 System.out.println("commands that you can enter are:");
                 System.out.println("add to cart");
             }
@@ -78,22 +79,23 @@ public class ProductMenu extends Menu {
         //inja miad y id product digaro migire ba producti k alan to safashim moghayese mikonim?
         //age injori bashe k doroste age na kolan miad id dota ro migire moghayese mikonae bayad avaz konim
         System.out.println("enter product id you want to compare with this product: ");
-        String id= scanner.nextLine();
-        ProductManager.compareProduct(product,id);
+        String id = scanner.nextLine();
+        ProductManager.compareProduct(product, id);
     }
 
     public void comments() {
         String command;
         Customer customer = RegisterAndLoginMenu.getCurrentCustomer();
-        while (true){
-            command=scanner.nextLine();
-            if(command.equals("add comment")){
+        System.out.println(ProductManager.showComments(product));
+        while (true) {
+            command = scanner.nextLine();
+            if (command.equals("add comment")) {
                 System.out.println("enter your comment");
-                String comment=scanner.nextLine();
-                ProductManager.addComment(customer,product,comment);
-            }else if(command.equals("back")){
+                String comment = scanner.nextLine();
+                ProductManager.addComment(customer, product, comment);
+            } else if (command.equals("back")) {
                 break;
-            }else if(command.equals("help")){
+            } else if (command.equals("help")) {
                 System.out.println("commands that you can enter are:");
                 System.out.println("add comment");
             }

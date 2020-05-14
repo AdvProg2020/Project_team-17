@@ -9,7 +9,7 @@ public class RegisterAndLoginManager {
 
     }
 
-    public void isUserNameAndPasswordCorrectForManager(String userName, String password) throws Exception {
+    public static void isUserNameAndPasswordCorrectForManager(String userName, String password) throws Exception {
         if (Manager.isThereManagerWithUserName(userName)) {
             if (Manager.getManagerByUserName(userName).getPassword().equals(password)) {
             } else {
@@ -21,7 +21,7 @@ public class RegisterAndLoginManager {
     }
 
 
-    public void isUserNameAndPasswordCorrectForCustomer(String userName, String password) throws Exception {
+    public static void isUserNameAndPasswordCorrectForCustomer(String userName, String password) throws Exception {
         //nemidonam inja doroste k to if hichi nazashtim
         if (Customer.isThereCustomerWithUserName(userName)) {
             if (Customer.getCustomerByName(userName).getPassword().equals(password)) {
@@ -33,7 +33,7 @@ public class RegisterAndLoginManager {
         }
     }
 
-    public void isUserNameAndPasswordCorrectForSeller(String userName, String password) throws Exception {
+    public static void isUserNameAndPasswordCorrectForSeller(String userName, String password) throws Exception {
         if (Seller.isThereSellerWithUserName(userName)) {
             if (Seller.getSellerByName(userName).getPassword().equals(password)) {
             } else {
