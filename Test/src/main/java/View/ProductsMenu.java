@@ -12,7 +12,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ProductsMenu extends Menu {
-    private ArrayList<String> currentFilters= new ArrayList<>();
+    private ArrayList<String> currentFilters = new ArrayList<>();
 
     public ProductsMenu(Menu parentMenu) {
         super("Products", parentMenu);
@@ -59,30 +59,30 @@ public class ProductsMenu extends Menu {
     public void filtering() {
         // age residim ino ghesmate filter va disable esho method konim tabehe kotahtar she
         String command;
-        while (true){
-            command= scanner.nextLine();
+        while (true) {
+            command = scanner.nextLine();
             Pattern filterPattern = Pattern.compile("filter\\s(.+)");
             Matcher filterMatcher = filterPattern.matcher(command);
             Pattern disableFilterPattern = Pattern.compile("disable filter\\s(.+)");
             Matcher disableFilterMatcher = disableFilterPattern.matcher(command);
-            if(command.equals("show available filters")){
+            if (command.equals("show available filters")) {
                 System.out.println("available filters are: ");
                 System.out.println(ProductsManager.showAvailableFilter());
-            }else if(command.matches("filter by\\s(.+)")){
+            } else if (command.matches("filter by\\s(.+)")) {
                 filterMatcher.find();
-                if(filterMatcher.group(1).equals("name")){
+                if (filterMatcher.group(1).equals("name")) {
                     System.out.println("enter a name");
                     String name = scanner.nextLine();
                     ProductsManager.filterByName(name);
                     System.out.println(ProductsManager.getFilterProductsName());
                     addFilterToCurrentFilter("name");
-                }else if(filterMatcher.group(1).equals("category")){
+                } else if (filterMatcher.group(1).equals("category")) {
                     System.out.println("enter a category name: ");
-                    String categoryName= scanner.nextLine();
+                    String categoryName = scanner.nextLine();
                     ProductsManager.filterByCategory(categoryName);
                     System.out.println(ProductsManager.getFilterProductsName());
                     addFilterToCurrentFilter("category");
-                }else if(filterMatcher.group(1).equals("price")){
+                } else if (filterMatcher.group(1).equals("price")) {
                     System.out.println("enter minimum price: ");
                     double min = scanner.nextDouble();
                     System.out.println("enter maximum price: ");
@@ -90,65 +90,65 @@ public class ProductsMenu extends Menu {
                     ProductsManager.filterByPrice(min, max);
                     System.out.println(ProductsManager.getFilterProductsName());
                     addFilterToCurrentFilter("price");
-                }else if(filterMatcher.group(1).equals("seller")){
+                } else if (filterMatcher.group(1).equals("seller")) {
                     System.out.println("enter seller name: ");
                     String name = scanner.nextLine();
                     ProductsManager.filterBySeller(name);
                     System.out.println(ProductsManager.getFilterProductsName());
                     addFilterToCurrentFilter("seller");
-                }else if (filterMatcher.group(1).equals("availability")){
+                } else if (filterMatcher.group(1).equals("availability")) {
                     System.out.println("enter a state for availability"); //agar manzore mojodiate kalaro dorost gerefte basham
                     String state = scanner.nextLine();
                     ProductsManager.filterByAvailability(ProductEnum.valueOf(state));
                     System.out.println(ProductsManager.getFilterProductsName());
                     addFilterToCurrentFilter("availability");
-                }else if (filterMatcher.group(1).equals("special features")){
+                } else if (filterMatcher.group(1).equals("special features")) {
                     System.out.println("enter special feature: ");
                     String feature = scanner.nextLine();
                     ProductsManager.filterBySpecialFeature(feature);
                     System.out.println(ProductsManager.getFilterProductsName());
                     addFilterToCurrentFilter("special feature");
                 }
-            }else if(command.equals("current filters")){
+            } else if (command.equals("current filters")) {
                 System.out.println(currentFilters);
-            }else if(command.matches("disable filter\\s(.+)")){
+            } else if (command.matches("disable filter\\s(.+)")) {
                 disableFilterMatcher.find();
-                if(disableFilterMatcher.group(1).equals("name")){
+                if (disableFilterMatcher.group(1).equals("name")) {
                     System.out.println("enter a name");
                     String name = scanner.nextLine();
                     ProductsManager.disableFilterByName(name);
                     removeFilterFromCurrentFilter("name");
-                }else if(disableFilterMatcher.group(1).equals("category")){
+                } else if (disableFilterMatcher.group(1).equals("category")) {
                     System.out.println("enter a category name: ");
-                    String categoryName= scanner.nextLine();
+                    String categoryName = scanner.nextLine();
                     ProductsManager.disableFilterByCategory(categoryName);
                     removeFilterFromCurrentFilter("category");
-                }else if(disableFilterMatcher.group(1).equals("price")){
+                } else if (disableFilterMatcher.group(1).equals("price")) {
                     System.out.println("enter minimum price: ");
                     double min = scanner.nextDouble();
                     System.out.println("enter maximum price: ");
                     double max = scanner.nextDouble();
                     ProductsManager.disableFilterByPrice(min, max);
-                   removeFilterFromCurrentFilter("price");
-                }else if(disableFilterMatcher.group(1).equals("seller")){
+                    removeFilterFromCurrentFilter("price");
+                } else if (disableFilterMatcher.group(1).equals("seller")) {
                     System.out.println("enter seller name: ");
                     String name = scanner.nextLine();
                     ProductsManager.disableFilterBySeller(name);
                     removeFilterFromCurrentFilter("seller");
-                }else if (disableFilterMatcher.group(1).equals("availability")){
+                } else if (disableFilterMatcher.group(1).equals("availability")) {
                     System.out.println("enter a state for availability"); //agar manzore mojodiate kalaro dorost gerefte basham
                     String state = scanner.nextLine();
                     ProductsManager.disableFilterByAvailability(ProductEnum.valueOf(state));
                     removeFilterFromCurrentFilter("availability");
-                }else if (disableFilterMatcher.group(1).equals("special features")){
+                } else if (disableFilterMatcher.group(1).equals("special features")) {
                     System.out.println("enter special feature: ");
                     String feature = scanner.nextLine();
                     ProductsManager.disableFilterBySpecialFeature(feature);
                     removeFilterFromCurrentFilter("special features");
                 }
-            }else if(command.equals("back")){
+            } else if (command.equals("back")) {
                 break;
-            }else if(command.equals("help")){
+            } else if (command.equals("help")) {
                 System.out.println("commands that you can enter are:");
                 System.out.println("filter [an available filter]");
                 System.out.println("current filters");
@@ -165,12 +165,12 @@ public class ProductsMenu extends Menu {
 
     public void showProducts() {
         String command;
-        DiscountManager.showDiscountProducts();
+        ProductsManager.showProducts();
         while (true) {
             command = scanner.nextLine();
             Pattern showProductByIdPattern = Pattern.compile("show product\\s(.+)");
             Matcher showProductByIdMatcher = showProductByIdPattern.matcher(command);
-            if (command.matches("show product\\\\s(.+)")) {
+            if (command.matches("show product\\s(.+)")) {
                 showProductByIdMatcher.find();
                 Product product = Product.getProductWithId(showProductByIdMatcher.group(1));
                 ProductMenu productMenu = new ProductMenu(this, product);
@@ -186,16 +186,18 @@ public class ProductsMenu extends Menu {
         }
 
     }
-    private void addFilterToCurrentFilter(String name){
+
+    private void addFilterToCurrentFilter(String name) {
         for (String filter : currentFilters) {
-            if(!(filter.contains(name))){
+            if (!(filter.contains(name))) {
                 currentFilters.add(name);
             }
         }
     }
-    private void removeFilterFromCurrentFilter(String name){
+
+    private void removeFilterFromCurrentFilter(String name) {
         for (String filter : currentFilters) {
-            if(filter.contains(name)){
+            if (filter.contains(name)) {
                 currentFilters.remove(name);
             }
         }

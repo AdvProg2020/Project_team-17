@@ -53,9 +53,9 @@ public class SellerAbilitiesManager {
 
 
     public static Product addProduct(String productId, ProductEnum productStatus, String productName, String companyName,
-                                     double price, Category category, Seller seller, String productExplanation) {
+                                     double price, Category category, Seller seller, String productExplanation, String specialFeature) {
         Product product = new Product(productId, productName, companyName, price,
-                seller, category, productExplanation, 0);
+                seller, category, productExplanation, 0, specialFeature);
         product.setProductState(ProductEnum.PRODUCING);
         return product;
     }

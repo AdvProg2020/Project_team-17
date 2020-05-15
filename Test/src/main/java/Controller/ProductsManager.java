@@ -10,8 +10,9 @@ import java.util.stream.Collectors;
 
 public class ProductsManager {
     private static ArrayList<Product> filterProduct = new ArrayList<>(Product.getAllProducts());
-    public ArrayList<Product> showProducts() {
-        return null;
+
+    public static ArrayList<Product> showProducts() {
+        return Product.getAllProducts();
     }
 
     public static ArrayList<String> showCategory() {
@@ -35,90 +36,101 @@ public class ProductsManager {
         return productsName;
     }
 
-    public static void filterByCategory(String categoryName){
+    public static void filterByCategory(String categoryName) {
         Category category = Category.getCategoryByName(categoryName);
         for (Product product : filterProduct) {
-            if(!(product.getCategory().equals(category))){
+            if (!(product.getCategory().equals(category))) {
                 filterProduct.remove(product);
             }
         }
     }
-    public static void disableFilterByCategory(String categoryName){
+
+    public static void disableFilterByCategory(String categoryName) {
         Category category = Category.getCategoryByName(categoryName);
         for (Product product : filterProduct) {
-            if(!product.getCategory().equals(categoryName)){
+            if (!(product.getCategory().equals(category))) {
                 filterProduct.add(product);
             }
         }
     }
-    public static void filterByPrice(double minPrice , double maxPrice){
+
+    public static void filterByPrice(double minPrice, double maxPrice) {
         for (Product product : filterProduct) {
-            if(product.getPrice()<=minPrice && product.getPrice()>=maxPrice){
+            if (product.getPrice() <= minPrice && product.getPrice() >= maxPrice) {
                 filterProduct.remove(product);
             }
         }
     }
-    public static void disableFilterByPrice(double minPrice , double maxPrice){
+
+    public static void disableFilterByPrice(double minPrice, double maxPrice) {
         for (Product product : filterProduct) {
-            if(product.getPrice()<=minPrice && product.getPrice()>=maxPrice){
+            if (product.getPrice() <= minPrice && product.getPrice() >= maxPrice) {
                 filterProduct.add(product);
             }
         }
     }
-    public static void filterBySeller(String sellerName){
+
+    public static void filterBySeller(String sellerName) {
         Seller seller = Seller.getSellerByName(sellerName);
         for (Product product : filterProduct) {
-            if(!(product.getSeller().equals(seller))){
+            if (!(product.getSeller().equals(seller))) {
                 filterProduct.remove(product);
             }
         }
     }
-    public static void disableFilterBySeller(String sellerName){
+
+    public static void disableFilterBySeller(String sellerName) {
         Seller seller = Seller.getSellerByName(sellerName);
         for (Product product : filterProduct) {
-            if(!(product.getSeller().equals(seller))){
+            if (!(product.getSeller().equals(seller))) {
                 filterProduct.add(product);
             }
         }
     }
-    public static void filterByAvailability(ProductEnum productEnum){
+
+    public static void filterByAvailability(ProductEnum productEnum) {
         for (Product product : Product.getAllProducts()) {
-            if(!(product.getProductState().equals(productEnum))){
+            if (!(product.getProductState().equals(productEnum))) {
                 filterProduct.remove(product);
             }
         }
     }
-    public static void disableFilterByAvailability(ProductEnum productEnum){
+
+    public static void disableFilterByAvailability(ProductEnum productEnum) {
         for (Product product : Product.getAllProducts()) {
-            if(!(product.getProductState().equals(productEnum))){
+            if (!(product.getProductState().equals(productEnum))) {
                 filterProduct.add(product);
             }
         }
     }
-    public static void filterByName(String name){
+
+    public static void filterByName(String name) {
         for (Product product : Product.getAllProducts()) {
-            if(!(product.getName().equals(name))){
+            if (!(product.getName().equals(name))) {
                 filterProduct.remove(product);
             }
         }
     }
-    public static void disableFilterByName(String name){
+
+    public static void disableFilterByName(String name) {
         for (Product product : Product.getAllProducts()) {
-            if(!(product.getName().equals(name))){
+            if (!(product.getName().equals(name))) {
                 filterProduct.add(product);
             }
         }
     }
-    public static void filterBySpecialFeature(String feature){
+
+    public static void filterBySpecialFeature(String feature) {
         for (Product product : Product.getAllProducts()) {
-            if(!(product.getProductsSpecialFeature().equals(feature))){
+            if (!(product.getProductsSpecialFeature().equals(feature))) {
                 filterProduct.remove(product);
             }
         }
     }
-    public static void disableFilterBySpecialFeature(String feature){
+
+    public static void disableFilterBySpecialFeature(String feature) {
         for (Product product : Product.getAllProducts()) {
-            if(!(product.getProductsSpecialFeature().equals(feature))){
+            if (!(product.getProductsSpecialFeature().equals(feature))) {
                 filterProduct.add(product);
             }
         }
