@@ -6,10 +6,14 @@ import Models.Enums.ProductEnum;
 import Models.Product;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class ProductsManager {
     private static ArrayList<Product> filterProduct = new ArrayList<>(Product.getAllProducts());
+    private static List<Product> sortProducts = new ArrayList<>(Product.getAllProducts());
+    private static ArrayList<String> currentSorts = new ArrayList<>();
 
     public static ArrayList<Product> showProducts() {
         return Product.getAllProducts();
@@ -26,6 +30,7 @@ public class ProductsManager {
     public static String showAvailableFilter() {
         return "by category\nby name\nby price\nby brand\nby seller\nby availability\nby category feature";
         // baraye category featue o name o brand idk
+        //brand hamon company name e?
     }
 
     public static ArrayList<String> getFilterProductsName() {
@@ -111,7 +116,6 @@ public class ProductsManager {
             }
         }
     }
-
     public static void disableFilterByName(String name) {
         for (Product product : Product.getAllProducts()) {
             if (!(product.getName().equals(name))) {
@@ -135,27 +139,18 @@ public class ProductsManager {
             }
         }
     }
-
-
-    public void disableFilter(String filter) {
-
+    public static void filterByCompanyName(String name){
+        for (Product product : Product.getAllProducts()) {
+            if(!(product.getCompanyName().equals(name))){
+                filterProduct.remove(product);
+            }
+        }
     }
-
-    public void showAvailableSort() {
-
+    public static void disableFilterByCompanyName(String name){
+        for (Product product : Product.getAllProducts()) {
+            if(!(product.getCompanyName().equals(name))){
+                filterProduct.add(product);
+            }
+        }
     }
-
-    public void sort(String sortType) {
-
-    }
-
-    public void currentSort() {
-
-    }
-
-    public void disableSort(String sort) {
-
-    }
-
-
 }

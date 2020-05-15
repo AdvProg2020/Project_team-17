@@ -25,9 +25,9 @@ public class Product {
     private ArrayList<Score> scoresForProduct = new ArrayList<>();
     private static ArrayList<Product> products = new ArrayList<>();
 
-    public Product(String productId, String name, String companyName, double price, Seller seller, Category category, String explanation, double averageScore,String productsSpecialFeature) {
+    public Product(String productId, String name, String companyName, double price, Seller seller, Category category, String explanation, double averageScore, String productsSpecialFeature) {
         this.productId = productId;
-        this.productState =ProductEnum.PRODUCING;
+        this.productState = ProductEnum.PRODUCING;
         this.name = name;
         this.companyName = companyName;
         this.price = price;
@@ -35,7 +35,7 @@ public class Product {
         this.category = category;
         this.explanation = explanation;
         this.averageScore = averageScore;
-        this.productsSpecialFeature=productsSpecialFeature;
+        this.productsSpecialFeature = productsSpecialFeature;
         products.add(this);
     }
 
@@ -99,16 +99,18 @@ public class Product {
         }
         return null;
     }
-   public static ArrayList<Product> getProductsListByName(ArrayList<String> productsName) {
+
+    public static ArrayList<Product> getProductsListByName(ArrayList<String> productsName) {
         ArrayList<Product> products = new ArrayList<>();
         for (String name : productsName) {
             products.add(getProductByName(name));
         }
         return products;
     }
-    public static Product getProductByName(String name){
+
+    public static Product getProductByName(String name) {
         for (Product product : allProducts) {
-            if(product.getName().equals(name)){
+            if (product.getName().equals(name)) {
                 return product;
             }
         }
@@ -136,6 +138,10 @@ public class Product {
         return productId;
     }
 
+    public String getCompanyName() {
+        return companyName;
+    }
+
     public void averageScoreForProduct(Product product) {
         int sum = 0;
         for (Score score : product.scoresForProduct) {
@@ -153,7 +159,7 @@ public class Product {
         Category category = product.getCategory();
         category.removeProductFromCategory(category, product);
         Seller seller = product.getSeller();
-        seller.removeProduct(seller,product);
+        seller.removeProduct(seller, product);
     }
 
     public static void deleteProducts(ArrayList<Product> removeProduct) {
@@ -172,14 +178,14 @@ public class Product {
 
     public void addCommentForProduct(Customer customer, String content) {
         //nemidonam title chi karast!
-        boolean hasBought= false;
-        ArrayList<BuyLog> buyLogs= customer.getBuyLog();
+        boolean hasBought = false;
+        ArrayList<BuyLog> buyLogs = customer.getBuyLog();
         for (BuyLog log : buyLogs) {
-            if(log.doesLogHaveThisProduct(this.getProductId())){
-                hasBought=true;
+            if (log.doesLogHaveThisProduct(this.getProductId())) {
+                hasBought = true;
             }
         }
-        this.pointOfViews.add(new PointOfView(customer, this, content, null,hasBought));
+        this.pointOfViews.add(new PointOfView(customer, this, content, null, hasBought));
     }
 
     public ArrayList<PointOfView> getPointOfViews() {
