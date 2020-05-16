@@ -114,6 +114,7 @@ public class ProductsManager {
             }
         }
     }
+
     public static void disableFilterByName(String name) {
         for (Product product : Product.getAllProducts()) {
             if (!(product.getName().equals(name))) {

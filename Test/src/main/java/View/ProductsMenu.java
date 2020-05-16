@@ -112,6 +112,7 @@ public class ProductsMenu extends Menu {
                     System.out.println("enter company name: ");
                     String name = scanner.nextLine();
                     ProductsManager.filterByCompanyName(name);
+                    System.out.println(ProductsManager.getFilterProductsName());
                     addFilterToCurrentFilter("brand");
                 }
             } else if (command.equals("current filters")) {
@@ -170,6 +171,37 @@ public class ProductsMenu extends Menu {
     }
 
     public void sorting() {
+        //ina bara vaghtie k chandta sort ro baham mikone na faghat yeki nemidonam yeki faghat mishe ya na
+        String command;
+        while (true) {
+            command = scanner.nextLine();
+            Pattern sortPattern = Pattern.compile("sort\\s(.+)");
+            Matcher sortMatcher = sortPattern.matcher(command);
+            if (command.equals("show available sort")) {
+                System.out.println(ProductsManager.showAvailableSort());
+            } else if (command.matches("sort\\s(.+)")) {
+                sortMatcher.find();
+                ProductsManager.sort(sortMatcher.group(1));
+                System.out.println(ProductsManager.getSortProductsName(ProductsManager.getCurrentSort()));
+            } else if (command.equals("current sort")) {
+                System.out.println(ProductsManager.getCurrentSort());
+            } else if (command.matches("disable sort")) {
+                try {
+                    ProductsManager.disableSort(ProductsManager.getCurrentSort());
+                } catch (Exception e) {
+                    e.getMessage();
+                }
+            } else if (command.matches("back")) {
+                break;
+            } else if (command.matches("help")) {
+                System.out.println("commands that you can enter are:");
+                System.out.println("sort [an available sort]");
+                System.out.println("current sort");
+                System.out.println("disable sort");
+                System.out.println("back");
+            }
+        }
+
 
     }
 
