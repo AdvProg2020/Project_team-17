@@ -12,8 +12,8 @@ import java.util.stream.Collectors;
 
 public class ProductsManager {
     private static ArrayList<Product> filterProduct = new ArrayList<>(Product.getAllProducts());
-    private static List<Product> sortProducts = new ArrayList<>(Product.getAllProducts());
-    private static ArrayList<String> currentSorts = new ArrayList<>();
+    private static ArrayList<Product> sortProducts = new ArrayList<>(Product.getAllProducts());
+    private static String currentSort = "price";
 
     public static ArrayList<Product> showProducts() {
         return Product.getAllProducts();
@@ -29,8 +29,6 @@ public class ProductsManager {
 
     public static String showAvailableFilter() {
         return "by category\nby name\nby price\nby brand\nby seller\nby availability\nby category feature";
-        // baraye category featue o name o brand idk
-        //brand hamon company name e?
     }
 
     public static ArrayList<String> getFilterProductsName() {
@@ -161,48 +159,45 @@ public class ProductsManager {
         return "by score\nby price"; //nemidonam ba che chizaye digeyi mishe sort kard
     }
 
-    public static void sortByScore() {
-        sortProducts.sort(Comparator.comparing(o -> Double.toString(o.getAverageScore())));
-        if (!(currentSorts.contains("score"))) {
-            currentSorts.add("score");
-        }
-        //(o1,o2) -> Double.toString(o1.getAverageScore()).compareTo(Double.toString(o2.getAverageScore()))
-        //aval in balayiaro zade boodam vali khodesh goft replace kon ba ain
-    }
-
-    public static void sortByPrice() {
+    public static void applyDefaultSort() {
         sortProducts.sort(Comparator.comparing(o -> Double.toString(o.getPrice())));
-        if (!(currentSorts.contains("price"))) {
-            currentSorts.add("price");
-        }
     }
 
-    public static void disableSort(String sortType) {
+    public static ArrayList<Product> sort(String sortType) {
         if (sortType.equals("score")) {
-            if (currentSorts.contains("price")) {
-                sortProducts.sort(Comparator.comparing(o -> Double.toString(o.getPrice())));
-            } else if (!(currentSorts.contains("price"))) {
-                sortProducts = Product.getAllProducts();
-            }
-            currentSorts.remove("score");
+            currentSort = "score";
+            ArrayList<Product> sortByScore = sortProducts;
+            sortByScore.sort(Comparator.comparing(o -> Double.toString(o.getAverageScore())));
+            return sortByScore;
         } else if (sortType.equals("price")) {
-            if (currentSorts.contains("score")) {
-                sortProducts.sort(Comparator.comparing(o -> Double.toString(o.getAverageScore())));
-            } else if (!(currentSorts.contains("score"))) {
-                sortProducts = Product.getAllProducts();
+            currentSort = "price";
+            ArrayList<Product> sortByPrice = sortProducts;
+            sortByPrice.sort(Comparator.comparing(o -> Double.toString(o.getPrice())));
+            return sortByPrice;
+        }
+        return Product.getAllProducts();
+    }
+
+    public static ArrayList<String> getSortProductsName(String currentSort) {
+        ArrayList<String> sortProductsName = new ArrayList<>();
+        for (Product product : sort(currentSort)) {
+            sortProductsName.add(product.getName());
+        }
+        return sortProductsName;
+    }
+
+    public static void disableSort(String sortType) throws Exception {
+        if (sortType.equals("score")) {
+            if (currentSort.equals("score")) {
+                currentSort = "price";
+                applyDefaultSort();
             }
+        } else {
+            throw new Exception("current sort is default sort(price)");
         }
     }
 
-    public static ArrayList<Product> getFilterProduct() {
-        return filterProduct;
-    }
-
-    public static List<Product> getSortProducts() {
-        return sortProducts;
-    }
-
-    public static ArrayList<String> getCurrentSorts() {
-        return currentSorts;
+    public static String getCurrentSort() {
+        return currentSort;
     }
 }
