@@ -7,7 +7,10 @@ import Models.Enums.DiscountEnum;
 import Models.Enums.ProductEnum;
 import Models.Logs.SellLog;
 import Models.Request.AddProductRequest;
+import Models.Request.EditOffRequest;
+import Models.Request.EditProductRequest;
 import Models.Request.Request;
+import View.RegisterAndLoginMenu;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -60,25 +63,11 @@ public class SellerAbilitiesManager {
         return product;
     }
 
-
-    public static Product editProduct(String id, String field, String newContentForThisField) {
+    public static void sendEditingProductRequest(String id, Seller seller, String field, String newContentForThisField) {
         Product product = Product.getProductWithId(id);
-        if (field.equals("name")) {
-            product.setName(newContentForThisField);
-        } else if (field.equals("companyName")) {
-            product.setCompanyName(newContentForThisField);
-        } else if (field.equals("description")) {
-            product.setExplanation(newContentForThisField);
-        } else if (field.equals("seller")) {
-            product.setSeller(Seller.getSellerByName(newContentForThisField));
-        } else if (field.equals("price")) {
-            product.setPrice(Double.parseDouble(newContentForThisField));
-        } else if (field.equals("category")) {
-            product.setCategory(Category.getCategoryByName(newContentForThisField));
-        }
-        product.setProductState(ProductEnum.EDITING);
-        return product;
+        new EditProductRequest(seller, RegisterAndLoginMenu.getCurrentManager(), product, field, newContentForThisField);
     }
+
 
     public static void removeProduct(Seller seller, String productId) throws Exception {
         if (Product.isThereProductWithId(productId)) {
@@ -92,6 +81,11 @@ public class SellerAbilitiesManager {
         } else {
             throw new Exception("There isn't product with this ID!");
         }
+    }
+
+    public static void sendEditingOffRequest(String id, Seller seller, String field, String newContentForThisField) {
+        Discount discount = Discount.getDiscountById(id);
+        new EditOffRequest(seller, RegisterAndLoginMenu.getCurrentManager(), discount);
     }
 
     public static Discount editOff(String id, String field, String newContentForThisField) {

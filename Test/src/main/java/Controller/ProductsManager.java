@@ -116,6 +116,7 @@ public class ProductsManager {
             }
         }
     }
+
     public static void disableFilterByName(String name) {
         for (Product product : Product.getAllProducts()) {
             if (!(product.getName().equals(name))) {
@@ -140,16 +141,17 @@ public class ProductsManager {
         }
     }
 
-    public static void filterByCompanyName(String name){
+    public static void filterByCompanyName(String name) {
         for (Product product : Product.getAllProducts()) {
-            if(!(product.getCompanyName().equals(name))){
+            if (!(product.getCompanyName().equals(name))) {
                 filterProduct.remove(product);
             }
         }
     }
-    public static void disableFilterByCompanyName(String name){
+
+    public static void disableFilterByCompanyName(String name) {
         for (Product product : Product.getAllProducts()) {
-            if(!(product.getCompanyName().equals(name))){
+            if (!(product.getCompanyName().equals(name))) {
                 filterProduct.add(product);
             }
         }
