@@ -104,11 +104,13 @@ public class SellerMenu extends Menu {
     }
 
     public void viewCompanyInformation() {
-        System.out.println(RegisterAndLoginMenu.currentSeller.getCompanyName());
+        Seller seller = RegisterAndLoginMenu.getCurrentSeller();
+        System.out.println(SellerAbilitiesManager.viewFactoryInfo(seller));
     }
 
     public void viewSalesHistory() {
-        //nafahmidam che field ro bayad neshon bede
+        Seller seller = RegisterAndLoginMenu.getCurrentSeller();
+        System.out.println(SellerAbilitiesManager.viewSalesHistory(seller));
     }
 
 
@@ -141,8 +143,7 @@ public class SellerMenu extends Menu {
                     String field = scanner.nextLine();
                     System.out.println("enter the content for this field: ");
                     String newContent = scanner.nextLine();
-                    Product product = SellerAbilitiesManager.editProduct(editProductMatcher.group(1), field, newContent);
-                    new EditProductRequest("random id", seller, RegisterAndLoginMenu.getCurrentManager(), product);
+                    SellerAbilitiesManager.sendEditingProductRequest(editProductMatcher.group(1),seller, field, newContent);
                 } catch (Exception e) {
                     e.getMessage();
                 }
@@ -167,7 +168,6 @@ public class SellerMenu extends Menu {
         }
 
     }
-
     public void addProduct() {
         String command;
         Seller seller = RegisterAndLoginMenu.getCurrentSeller();
@@ -188,8 +188,10 @@ public class SellerMenu extends Menu {
                 Category category = Category.getCategoryByName(scanner.nextLine());
                 System.out.println("Enter explanation for product: ");
                 String explanation = scanner.nextLine();
-                Product product = SellerAbilitiesManager.addProduct(id, productStatus, name, companyName, price, category, seller, explanation);
-                new AddProductRequest("random id", seller, RegisterAndLoginMenu.getCurrentManager(), product, category);
+                System.out.println("Enter special feature");
+                String feature = scanner.nextLine();
+                Product product = SellerAbilitiesManager.addProduct(id, productStatus, name, companyName, price, category, seller, explanation,feature);
+                new AddProductRequest(seller, RegisterAndLoginMenu.getCurrentManager(), product, category);
             } else if (command.equals("back")) {
                 break;
             } else if (command.equals("help")) {
@@ -230,7 +232,6 @@ public class SellerMenu extends Menu {
         System.out.println(SellerAbilitiesManager.showCategories());
     }
 
-
     public void viewOffs() {
         String command;
         Seller seller = RegisterAndLoginMenu.getCurrentSeller();
@@ -258,7 +259,7 @@ public class SellerMenu extends Menu {
                     System.out.println("enter the content for this field: ");
                     String newContent = scanner.nextLine();
                     Discount discount = SellerAbilitiesManager.editOff(editOffMatcher.group(1), field, newContent);
-                    new EditOffRequest("random id", seller, RegisterAndLoginMenu.getCurrentManager(), discount);
+                    new EditOffRequest(seller, RegisterAndLoginMenu.getCurrentManager(), discount);
                 } catch (Exception e) {
                     e.getMessage();
                 }
@@ -283,7 +284,7 @@ public class SellerMenu extends Menu {
                 }
                 Discount discount = SellerAbilitiesManager.addDiscount(seller, id, beginningDate, endingDate,
                         discountPercent, productsName);
-                new AddOffRequest("random id", seller, RegisterAndLoginMenu.getCurrentManager(), discount);
+                new AddOffRequest(seller, RegisterAndLoginMenu.getCurrentManager(), discount);
             } else if (command.equals("back")) {
                 break;
             } else if (command.equals("help")) {
@@ -295,7 +296,6 @@ public class SellerMenu extends Menu {
             }
         }
     }
-
 
     public void viewBalance() {
         Seller seller = RegisterAndLoginMenu.getCurrentSeller();
