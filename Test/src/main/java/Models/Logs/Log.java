@@ -16,15 +16,15 @@ public abstract class Log {
     protected boolean isReceived;
 
 
-    public Log(String id, Date date, double paymentAmount, String address, String phoneNumber, String customerName,ArrayList<Product> products,boolean isReceived) {
+    public Log(String id, Date date, double paymentAmount, String address, String phoneNumber, String customerName, ArrayList<Product> products, boolean isReceived) {
         this.id = id;
         this.date = date;
         this.paymentAmount = paymentAmount;
         this.address = address;
         this.phoneNumber = phoneNumber;
-        this.allProducts=products;
+        this.allProducts = products;
         this.customerName = customerName;
-        this.isReceived=isReceived;
+        this.isReceived = isReceived;
     }
 
     @Override
@@ -33,12 +33,14 @@ public abstract class Log {
     public String getId() {
         return id;
     }
-    public boolean doesLogHaveThisProduct(String id){
+
+    public boolean doesLogHaveThisProduct(String id) {
         for (Product product : allProducts) {
-            if(product.getProductId().equals(id)){
+            if (product.getProductId().equals(id)) {
                 return true;
             }
-        }return false;
+        }
+        return false;
     }
 
     public ArrayList<Product> getAllProducts() {

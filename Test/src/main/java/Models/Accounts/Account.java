@@ -4,7 +4,7 @@ import Models.DiscountCode;
 
 import java.util.ArrayList;
 
-public abstract class  Account {
+public abstract class Account {
     //private static ArrayList<Account> allAccounts = new ArrayList<Account>();
     protected String userName;
     protected String firstName;
@@ -14,27 +14,30 @@ public abstract class  Account {
     protected String password;
     protected double credit;
     private ArrayList<DiscountCode> allDiscountCodes;
-    protected boolean isThisAccountLogged=false; //meghdare ino nemidonam to constructor bayad false bezram ya inja
+    protected boolean isThisAccountLogged = false; //meghdare ino nemidonam to constructor bayad false bezram ya inja
 
 
-    public Account(String userName, String firstName, String lastName, String email, String phoneNumber, String password,double credit) {
+    public Account(String userName, String firstName, String lastName, String email, String phoneNumber, String password, double credit) {
         this.userName = userName;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.password = password;
-        this.credit=credit;
+        this.credit = credit;
         allDiscountCodes = new ArrayList<DiscountCode>();
         //allAccounts.add(this);
     }
-    public void loginAccount(Account account){
-        account.isThisAccountLogged=true;
+
+    public void loginAccount(Account account) {
+        account.isThisAccountLogged = true;
     }
-    public void logoutAccount(Account account){
-        account.isThisAccountLogged=false;
+
+    public void logoutAccount(Account account) {
+        account.isThisAccountLogged = false;
     }
-    public boolean getIsThisAccountLogged(Account account){
+
+    public boolean getIsThisAccountLogged(Account account) {
         return account.isThisAccountLogged;
     }
 
@@ -94,21 +97,26 @@ public abstract class  Account {
         this.credit = credit;
     }
 
-    public void changeFirstName(Account account, String firstName){
-        account.firstName=firstName;
+    public void changeFirstName(Account account, String firstName) {
+        account.firstName = firstName;
     }
-    public void changeLastName(Account account,String lastName){
-        account.lastName=lastName;
+
+    public void changeLastName(Account account, String lastName) {
+        account.lastName = lastName;
     }
-    public void changePassword(Account account,String password){
-        account.password=password;
+
+    public void changePassword(Account account, String password) {
+        account.password = password;
     }
-    public void changeEmail(Account account,String email){
-        account.email=email;
+
+    public void changeEmail(Account account, String email) {
+        account.email = email;
     }
-    public void changePhoneNumber(Account account,String phoneNumber){
-        account.phoneNumber=phoneNumber;
+
+    public void changePhoneNumber(Account account, String phoneNumber) {
+        account.phoneNumber = phoneNumber;
     }
+
     @Override
     public abstract String toString();
 }

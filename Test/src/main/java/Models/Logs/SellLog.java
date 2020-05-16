@@ -1,11 +1,12 @@
 package Models.Logs;
+
 import Models.Product;
 
 import java.util.ArrayList;
 import java.util.Date;
 
 public class SellLog extends Log {
-    private double discountAmount ;
+    private double discountAmount;
     private String buyerName;
 
     public SellLog(String id, Date date, double paymentAmount, String address, String phoneNumber, String customerName, ArrayList<Product> allProducts, boolean isReceived, double discountAmount, String buyerName) {

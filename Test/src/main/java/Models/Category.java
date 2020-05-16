@@ -30,7 +30,8 @@ public class Category {
         }
         return false;
     }
-    public void addProductToThisCategory(Category category , Product product){
+
+    public void addProductToThisCategory(Category category, Product product) {
         category.products.add(product);
     }
 
@@ -61,7 +62,7 @@ public class Category {
     public static void deleteCategory(Category category) {
         //dige nemidonam product haye in bayad az jaye digeyi ham hazf beshe ya na az arraylist allproducts to class products
         //pak kardam vali az cart o ina motmaen nistam
-        ArrayList<Product> productsOfThisCategory= new ArrayList<>();
+        ArrayList<Product> productsOfThisCategory = new ArrayList<>();
         allCategories.remove(category);
         for (Product product : category.getProducts()) {
             productsOfThisCategory.add(product);

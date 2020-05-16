@@ -30,8 +30,8 @@ public class ProductManager {
     }
 
     public static String showComments(Product product) {
-        String output="Product score: "+Double.toString(product.getAverageScore());
-        output+="Product comments: "+product.getPointOfViews();
+        String output = "Product score: " + Double.toString(product.getAverageScore());
+        output += "Product comments: " + product.getPointOfViews();
         return output;
     }
 

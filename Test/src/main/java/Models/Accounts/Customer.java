@@ -53,7 +53,8 @@ public class Customer extends Account {
         }
         return false;
     }
-    public void addLogToBuyLog(BuyLog buyLog){
+
+    public void addLogToBuyLog(BuyLog buyLog) {
         this.buyLog.add(buyLog);
     }
 
@@ -73,8 +74,8 @@ public class Customer extends Account {
         return allCustomers;
     }
 
-    public void payMoney(Customer customer,Double amount){
-        customer.setCredit(customer.getCredit()-amount);
+    public void payMoney(Customer customer, Double amount) {
+        customer.setCredit(customer.getCredit() - amount);
     }
 
     public ArrayList<BuyLog> getBuyLog() {

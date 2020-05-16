@@ -10,12 +10,12 @@ public class PointOfView {
     private PointOfViewEnum pointOfViewState;
     private boolean hasBought;
 
-    public PointOfView(Account account, Product product, String pointOfViewStringText, PointOfViewEnum pointOfViewState,boolean hasBought) {
+    public PointOfView(Account account, Product product, String pointOfViewStringText, PointOfViewEnum pointOfViewState, boolean hasBought) {
         this.account = account;
         this.product = product;
         this.pointOfViewStringText = pointOfViewStringText;
         this.pointOfViewState = pointOfViewState;
-        this.hasBought= hasBought;
+        this.hasBought = hasBought;
     }
 
     public Account getAccount() {

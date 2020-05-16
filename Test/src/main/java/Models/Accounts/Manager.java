@@ -3,7 +3,7 @@ package Models.Accounts;
 import java.util.ArrayList;
 
 public class Manager extends Account {
-    private static ArrayList<Manager> allManagers =new ArrayList<>();
+    private static ArrayList<Manager> allManagers = new ArrayList<>();
 
     public Manager(String userName, String firstName, String lastName, String email, String phoneNumber, String password) {
         super(userName, firstName, lastName, email, phoneNumber, password, 0);
@@ -14,26 +14,27 @@ public class Manager extends Account {
         return allManagers;
     }
 
-    public static void deleteManager(String userName){
+    public static void deleteManager(String userName) {
         allManagers.remove(getManagerByUserName(userName));
     }
-    public static boolean isThereManagerWithUserName(String username){
+
+    public static boolean isThereManagerWithUserName(String username) {
         for (Manager manager : allManagers) {
-            if(manager.getUserName().equals(username)){
+            if (manager.getUserName().equals(username)) {
                 return true;
             }
         }
         return false;
     }
-    public static Manager getManagerByUserName(String username){
+
+    public static Manager getManagerByUserName(String username) {
         for (Manager manager : allManagers) {
-            if(manager.getUserName().equals(username)){
+            if (manager.getUserName().equals(username)) {
                 return manager;
             }
         }
         return null;
     }
-
 
 
     @Override

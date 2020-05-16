@@ -7,7 +7,7 @@ import Models.Product;
 import java.util.ArrayList;
 
 public class CartManager {
-    public static ArrayList<String> showProducts(Customer customer){
+    public static ArrayList<String> showProducts(Customer customer) {
         ArrayList<String> showProducts = new ArrayList<>();
         Cart cart = customer.getCart();
         for (Product product : cart.showProductsOfCart()) {
@@ -15,17 +15,20 @@ public class CartManager {
         }
         return showProducts;
     }
-    public static double showTotalPriceOfCart(Customer customer){
+
+    public static double showTotalPriceOfCart(Customer customer) {
         Cart cart = customer.getCart();
         return cart.totalPriceOfProductInCart();
     }
-    public static void isThereProductInThisCart(Customer customer,Product product) throws Exception{
-        Cart cart =customer.getCart();
-        if(cart.isThereProductInCart(product)){
 
-        }else
+    public static void isThereProductInThisCart(Customer customer, Product product) throws Exception {
+        Cart cart = customer.getCart();
+        if (cart.isThereProductInCart(product)) {
+
+        } else
             throw new Exception("There isn't any product with this ID in cart!");
-        }
+    }
+
     public static void increaseProduct(Customer customer, Product product) throws Exception {
         Cart cart = customer.getCart();
         if (cart.isThereProductInCart(product)) {

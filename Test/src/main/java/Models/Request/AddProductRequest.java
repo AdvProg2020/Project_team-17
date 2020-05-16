@@ -11,18 +11,18 @@ public class AddProductRequest extends Request {
     private Product product;
     private Category category;
 
-    public AddProductRequest( Seller seller, Manager manager, Product product,Category category) {
-        super("Add product ---> "+allRequests.size()+1, seller, manager);
+    public AddProductRequest(Seller seller, Manager manager, Product product, Category category) {
+        super("Add product ---> " + allRequests.size() + 1, seller, manager);
         this.type = RequestTypeEnum.ADD_PRODUCT;
         this.product = product;
-        this.category=category;
+        this.category = category;
     }
 
     @Override
     public void accept() {
         product.setProductState(ProductEnum.ACCEPTED);
-        seller.addProduct(seller,product);
-        category.addProductToThisCategory(category,product);
+        seller.addProduct(seller, product);
+        category.addProductToThisCategory(category, product);
     }
 
     @Override

@@ -28,12 +28,13 @@ public class DiscountsMenu extends Menu {
             showProducts();
             parentMenu.show();
             parentMenu.execute();
-        }else if(input == 3){
+        } else if (input == 3) {
             parentMenu.show();
             parentMenu.execute();
         }
     }
-    public void offs(){
+
+    public void offs() {
         System.out.println(DiscountManager.showDiscountProducts());
     }
 

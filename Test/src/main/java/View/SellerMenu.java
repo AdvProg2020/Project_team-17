@@ -10,7 +10,8 @@ import java.util.regex.Pattern;
 public class SellerMenu extends Menu {
     private SellerAbilitiesManager sellerAbilitiesManager;
     private RegisterAndLoginMenu registerAndLoginMenu;
-    public SellerMenu( Menu parentMenu) {
+
+    public SellerMenu(Menu parentMenu) {
         super("Seller ", parentMenu);
     }
 
@@ -31,60 +32,60 @@ public class SellerMenu extends Menu {
     @Override
     public void execute() {
         int input = Integer.parseInt(scanner.nextLine());
-        if (input == 1){
+        if (input == 1) {
             viewPersonalInfo();
             parentMenu.show();
             parentMenu.execute();
-        }else if (input == 2){
+        } else if (input == 2) {
             viewCompanyInformation();
             parentMenu.show();
             parentMenu.execute();
-        }else if (input == 3){
+        } else if (input == 3) {
             viewSalesHistory();
             parentMenu.show();
             parentMenu.execute();
-        }else if (input == 4){
+        } else if (input == 4) {
             manageProducts();
             parentMenu.show();
             parentMenu.execute();
-        }else if (input == 5){
+        } else if (input == 5) {
             addProduct();
             parentMenu.show();
             parentMenu.execute();
-        }else if (input == 6){
+        } else if (input == 6) {
             removeProduct();
             parentMenu.show();
             parentMenu.execute();
-        }else if (input == 7){
+        } else if (input == 7) {
             showCategories();
             parentMenu.show();
             parentMenu.execute();
-        }else if (input == 8){
+        } else if (input == 8) {
             viewOffs();
             parentMenu.show();
             parentMenu.execute();
-        }else if (input == 9){
+        } else if (input == 9) {
             viewBalance();
             parentMenu.show();
             parentMenu.execute();
-        }else if (input == 10){
+        } else if (input == 10) {
             parentMenu.show();
             parentMenu.execute();
         }
     }
 
     public void viewPersonalInfo() {
-        Seller seller =registerAndLoginMenu.getCurrentSeller();
+        Seller seller = registerAndLoginMenu.getCurrentSeller();
         String command;
         while (true) {
             command = scanner.nextLine();
-            Pattern editFieldPattern=Pattern.compile("edit\\s(.+)");
-            Matcher editFieldMatcher= editFieldPattern.matcher(command);
+            Pattern editFieldPattern = Pattern.compile("edit\\s(.+)");
+            Matcher editFieldMatcher = editFieldPattern.matcher(command);
             if (command.matches("edit\\s(.+)")) {
                 editFieldMatcher.find();
                 System.out.println("what is the new content for this field?");
-                String newContent=scanner.nextLine();
-                sellerAbilitiesManager.changeField(seller,editFieldMatcher.group(1),newContent);
+                String newContent = scanner.nextLine();
+                sellerAbilitiesManager.changeField(seller, editFieldMatcher.group(1), newContent);
             } else if (command.equals("help")) {
                 System.out.println("commands that you can enter are:");
                 System.out.println("edit [field]");
@@ -94,28 +95,36 @@ public class SellerMenu extends Menu {
             } else System.out.println("Command is invalid");
         }
     }
-    public void viewCompanyInformation(){
+
+    public void viewCompanyInformation() {
         System.out.println(registerAndLoginMenu.currentSeller.getCompanyName());
     }
-    public void viewSalesHistory(){
+
+    public void viewSalesHistory() {
         //nafahmidam che field ro bayad neshon bede
     }
-    public void manageProducts(){
+
+    public void manageProducts() {
 
 
     }
-    public void addProduct(){
+
+    public void addProduct() {
 
     }
-    public void removeProduct(){
+
+    public void removeProduct() {
     }
-    public void showCategories(){
+
+    public void showCategories() {
 
     }
-    public void viewOffs(){
+
+    public void viewOffs() {
 
     }
-    public void viewBalance(){
+
+    public void viewBalance() {
 
     }
 }

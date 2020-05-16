@@ -139,6 +139,7 @@ public class ProductsManager {
             }
         }
     }
+
     public static void filterByCompanyName(String name){
         for (Product product : Product.getAllProducts()) {
             if(!(product.getCompanyName().equals(name))){
@@ -152,5 +153,54 @@ public class ProductsManager {
                 filterProduct.add(product);
             }
         }
+    }
+
+    public static String showAvailableSort() {
+        return "by score\nby price"; //nemidonam ba che chizaye digeyi mishe sort kard
+    }
+
+    public static void sortByScore() {
+        sortProducts.sort(Comparator.comparing(o -> Double.toString(o.getAverageScore())));
+        if (!(currentSorts.contains("score"))) {
+            currentSorts.add("score");
+        }
+        //(o1,o2) -> Double.toString(o1.getAverageScore()).compareTo(Double.toString(o2.getAverageScore()))
+        //aval in balayiaro zade boodam vali khodesh goft replace kon ba ain
+    }
+
+    public static void sortByPrice() {
+        sortProducts.sort(Comparator.comparing(o -> Double.toString(o.getPrice())));
+        if (!(currentSorts.contains("price"))) {
+            currentSorts.add("price");
+        }
+    }
+
+    public static void disableSort(String sortType) {
+        if (sortType.equals("score")) {
+            if (currentSorts.contains("price")) {
+                sortProducts.sort(Comparator.comparing(o -> Double.toString(o.getPrice())));
+            } else if (!(currentSorts.contains("price"))) {
+                sortProducts = Product.getAllProducts();
+            }
+            currentSorts.remove("score");
+        } else if (sortType.equals("price")) {
+            if (currentSorts.contains("score")) {
+                sortProducts.sort(Comparator.comparing(o -> Double.toString(o.getAverageScore())));
+            } else if (!(currentSorts.contains("score"))) {
+                sortProducts = Product.getAllProducts();
+            }
+        }
+    }
+
+    public static ArrayList<Product> getFilterProduct() {
+        return filterProduct;
+    }
+
+    public static List<Product> getSortProducts() {
+        return sortProducts;
+    }
+
+    public static ArrayList<String> getCurrentSorts() {
+        return currentSorts;
     }
 }

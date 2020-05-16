@@ -108,7 +108,7 @@ public class ProductsMenu extends Menu {
                     ProductsManager.filterBySpecialFeature(feature);
                     System.out.println(ProductsManager.getFilterProductsName());
                     addFilterToCurrentFilter("special feature");
-                }else if (filterMatcher.group(1).equals("brand")){
+                } else if (filterMatcher.group(1).equals("brand")) {
                     System.out.println("enter company name: ");
                     String name = scanner.nextLine();
                     ProductsManager.filterByCompanyName(name);
@@ -150,7 +150,7 @@ public class ProductsMenu extends Menu {
                     String feature = scanner.nextLine();
                     ProductsManager.disableFilterBySpecialFeature(feature);
                     removeFilterFromCurrentFilter("special features");
-                }else if (disableFilterMatcher.group(1).equals("brand")){
+                } else if (disableFilterMatcher.group(1).equals("brand")) {
                     System.out.println("enter company name: ");
                     String name = scanner.nextLine();
                     ProductsManager.disableFilterByCompanyName(name);

@@ -9,8 +9,8 @@ import Models.Enums.RequestTypeEnum;
 public class AddOffRequest extends Request {
     private Discount discount;
 
-    public AddOffRequest( Seller seller, Manager manager, Discount discount) {
-        super("Add off ---> "+allRequests.size()+1, seller, manager);
+    public AddOffRequest(Seller seller, Manager manager, Discount discount) {
+        super("Add off ---> " + allRequests.size() + 1, seller, manager);
         this.type = RequestTypeEnum.ADD_OFF;
         this.discount = discount;
     }
