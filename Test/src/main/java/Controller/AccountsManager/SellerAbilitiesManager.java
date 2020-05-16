@@ -69,6 +69,24 @@ public class SellerAbilitiesManager {
     }
 
 
+    /*public static Product editProduct(String id, String field, String newContentForThisField) {
+        Product product = Product.getProductWithId(id);
+        if (field.equals("name")) {
+            product.setName(newContentForThisField);
+        } else if (field.equals("companyName")) {
+            product.setCompanyName(newContentForThisField);
+        } else if (field.equals("description")) {
+            product.setExplanation(newContentForThisField);
+        } else if (field.equals("seller")) {
+            product.setSeller(Seller.getSellerByName(newContentForThisField));
+        } else if (field.equals("price")) {
+            product.setPrice(Double.parseDouble(newContentForThisField));
+        } else if (field.equals("category")) {
+            product.setCategory(Category.getCategoryByName(newContentForThisField));
+        }
+        product.setProductState(ProductEnum.EDITING);
+        return product;
+    }*/
     public static void removeProduct(Seller seller, String productId) throws Exception {
         if (Product.isThereProductWithId(productId)) {
             Product product = Product.getProductWithId(productId);
@@ -85,10 +103,10 @@ public class SellerAbilitiesManager {
 
     public static void sendEditingOffRequest(String id, Seller seller, String field, String newContentForThisField) {
         Discount discount = Discount.getDiscountById(id);
-        new EditOffRequest(seller, RegisterAndLoginMenu.getCurrentManager(), discount);
+        new EditOffRequest(seller, RegisterAndLoginMenu.getCurrentManager(), discount,field,newContentForThisField);
     }
 
-    public static Discount editOff(String id, String field, String newContentForThisField) {
+    /*public static Discount editOff(String id, String field, String newContentForThisField) {
         Discount discount = Discount.getDiscountById(id);
         if (field.equals("discount percent")) {
             discount.setDiscountPercent(Double.parseDouble(newContentForThisField));
@@ -99,7 +117,7 @@ public class SellerAbilitiesManager {
         }
         discount.setDiscountState(DiscountEnum.EDITING);
         return discount;
-    }
+    }*/
 
     public static Discount addDiscount(Seller seller, String id, String beginningDate, String endingDate,
                                        double discountPercent, ArrayList<String> productsName) {

@@ -1,4 +1,3 @@
-
 package View;
 
 import Controller.AccountsManager.SellerAbilitiesManager;
@@ -113,7 +112,6 @@ public class SellerMenu extends Menu {
         System.out.println(SellerAbilitiesManager.viewSalesHistory(seller));
     }
 
-
     public void manageProducts() {
         String command;
         Seller seller = RegisterAndLoginMenu.getCurrentSeller();
@@ -143,7 +141,7 @@ public class SellerMenu extends Menu {
                     String field = scanner.nextLine();
                     System.out.println("enter the content for this field: ");
                     String newContent = scanner.nextLine();
-                    SellerAbilitiesManager.sendEditingProductRequest(editProductMatcher.group(1),seller, field, newContent);
+                    SellerAbilitiesManager.sendEditingProductRequest(editProductMatcher.group(1), seller, field, newContent);
                 } catch (Exception e) {
                     e.getMessage();
                 }
@@ -168,6 +166,7 @@ public class SellerMenu extends Menu {
         }
 
     }
+
     public void addProduct() {
         String command;
         Seller seller = RegisterAndLoginMenu.getCurrentSeller();
@@ -190,7 +189,7 @@ public class SellerMenu extends Menu {
                 String explanation = scanner.nextLine();
                 System.out.println("Enter special feature");
                 String feature = scanner.nextLine();
-                Product product = SellerAbilitiesManager.addProduct(id, productStatus, name, companyName, price, category, seller, explanation,feature);
+                Product product = SellerAbilitiesManager.addProduct(id, productStatus, name, companyName, price, category, seller, explanation, feature);
                 new AddProductRequest(seller, RegisterAndLoginMenu.getCurrentManager(), product, category);
             } else if (command.equals("back")) {
                 break;
@@ -258,8 +257,8 @@ public class SellerMenu extends Menu {
                     String field = scanner.nextLine();
                     System.out.println("enter the content for this field: ");
                     String newContent = scanner.nextLine();
-                    Discount discount = SellerAbilitiesManager.editOff(editOffMatcher.group(1), field, newContent);
-                    new EditOffRequest(seller, RegisterAndLoginMenu.getCurrentManager(), discount);
+                    SellerAbilitiesManager.sendEditingOffRequest(editOffMatcher.group(1),seller , field, newContent);
+
                 } catch (Exception e) {
                     e.getMessage();
                 }

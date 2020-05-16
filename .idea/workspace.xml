@@ -2,18 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="32618e29-8746-4d2a-8d73-d011168a9d97" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Accounts/Seller.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Accounts/Seller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Request/AddOffRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Request/AddOffRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/Models/Cart.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/Models/Discount.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/Models/DiscountCode.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/DiscountsMenu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/Menu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/ProductsMenu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/View/PurchaseMenu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Controller/AccountsManager/ManagerAbilitiesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Controller/AccountsManager/ManagerAbilitiesManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Controller/AccountsManager/SellerAbilitiesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Controller/AccountsManager/SellerAbilitiesManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Request/EditOffRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Request/EditOffRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Request/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Request/Request.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/SellerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/SellerMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -327,14 +321,20 @@
       <option name="project" value="LOCAL" />
       <updated>1589635602808</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="fix AddOffRequest">
+      <created>1589636834218</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1589636834218</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add cart menu" />
     <MESSAGE value="add request class" />
     <MESSAGE value="adding product request" />
     <MESSAGE value="products request done" />
@@ -359,7 +359,8 @@
     <MESSAGE value="working on SellerMenu" />
     <MESSAGE value="fix some methods in SellerMenu" />
     <MESSAGE value="SellerAbilitiesManager done" />
-    <option name="LAST_COMMIT_MESSAGE" value="SellerAbilitiesManager done" />
+    <MESSAGE value="fix AddOffRequest" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix AddOffRequest" />
   </component>
   <component name="WindowStateProjectService">
     <state x="233" y="0" key="#Project_Structure" timestamp="1587070707195">
@@ -371,12 +372,12 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="420" y="144" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.680@0.0.1280.680" timestamp="1586807983600" />
-    <state x="751" y="83" key="#com.intellij.ide.util.MemberChooser" timestamp="1589588799311">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state x="801" y="93" key="#com.intellij.ide.util.MemberChooser" timestamp="1589639216969">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="751" y="83" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680/460.1080.1000.504@0.0.1280.680" timestamp="1587953827102" />
     <state x="751" y="83" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1589588799311" />
-    <state x="801" y="93" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1586995828901" />
+    <state x="801" y="93" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1589639216969" />
     <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1588275888120" />
     <state x="550" y="266" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1589636577975">
       <screen x="0" y="0" width="1366" height="728" />
@@ -384,11 +385,12 @@
     <state x="515" y="248" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1280.680@0.0.1280.680" timestamp="1589097572279" />
     <state x="550" y="266" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1366.728@0.0.1366.728" timestamp="1589636577975" />
     <state x="618" y="301" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1536.824@0.0.1536.824" timestamp="1589636369788" />
-    <state x="432" y="200" width="417" height="287" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1589350125181">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state x="461" y="214" width="408" height="237" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1589639241561">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="432" y="200" width="417" height="287" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1280.680/460.1080.1000.504@0.0.1280.680" timestamp="1587970052701" />
     <state x="432" y="200" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1280.680@0.0.1280.680" timestamp="1589350125181" />
+    <state x="461" y="214" width="408" height="237" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1366.728@0.0.1366.728" timestamp="1589639241561" />
     <state x="438" y="212" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1586812041182">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -402,11 +404,11 @@
     </state>
     <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1589051831428" />
     <state x="445" y="105" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1588110193951" />
-    <state x="478" y="14" key="CommitChangelistDialog2" timestamp="1589635601609">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="425" y="0" key="CommitChangelistDialog2" timestamp="1589636832652">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="265" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1589440028242" />
-    <state x="425" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1589634831714" />
+    <state x="425" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1589636832652" />
     <state x="478" y="14" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1589635601609" />
     <state x="421" y="67" key="FileChooserDialogImpl" timestamp="1589408270000">
       <screen x="0" y="0" width="1280" height="680" />
@@ -450,11 +452,11 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1280.680@0.0.1280.680" timestamp="1589342406634" />
-    <state x="280" y="90" key="Vcs.Push.Dialog.v2" timestamp="1589635623545">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="249" y="80" key="Vcs.Push.Dialog.v2" timestamp="1589636875126">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1589440052047" />
-    <state x="249" y="80" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1589634850684" />
+    <state x="249" y="80" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1589636875126" />
     <state x="280" y="90" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1589635623545" />
     <state x="388" y="195" key="com.intellij.ide.util.TipDialog" timestamp="1589358435446">
       <screen x="0" y="0" width="1280" height="680" />
@@ -471,11 +473,11 @@
     </state>
     <state x="450" y="258" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1588906790230" />
     <state x="540" y="313" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1589636207761" />
-    <state x="476" y="204" key="git4idea.merge.GitPullDialog" timestamp="1589635613074">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="423" y="180" key="git4idea.merge.GitPullDialog" timestamp="1589636866332">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="397" y="168" key="git4idea.merge.GitPullDialog/0.0.1280.680@0.0.1280.680" timestamp="1589440043687" />
-    <state x="423" y="180" key="git4idea.merge.GitPullDialog/0.0.1366.728@0.0.1366.728" timestamp="1589634843435" />
+    <state x="423" y="180" key="git4idea.merge.GitPullDialog/0.0.1366.728@0.0.1366.728" timestamp="1589636866332" />
     <state x="476" y="204" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1589635613074" />
     <state x="109" y="44" key="new project wizard" timestamp="1588275478876">
       <screen x="0" y="0" width="1536" height="824" />
