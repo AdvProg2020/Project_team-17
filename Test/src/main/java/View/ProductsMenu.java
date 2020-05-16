@@ -159,21 +159,24 @@ public class ProductsMenu extends Menu {
             }
         }
     }
-    private void filterByName(){
+
+    private void filterByName() {
         System.out.println("enter a name");
         String name = scanner.nextLine();
         ProductsManager.filterByName(name);
         System.out.println(ProductsManager.getFilterProductsName());
         addFilterToCurrentFilter("name");
     }
-    private void filterByCategory(){
+
+    private void filterByCategory() {
         System.out.println("enter a category name: ");
         String categoryName = scanner.nextLine();
         ProductsManager.filterByCategory(categoryName);
         System.out.println(ProductsManager.getFilterProductsName());
         addFilterToCurrentFilter("category");
     }
-    private void filterByPrice(){
+
+    private void filterByPrice() {
         System.out.println("enter minimum price: ");
         double min = scanner.nextDouble();
         System.out.println("enter maximum price: ");
@@ -182,47 +185,54 @@ public class ProductsMenu extends Menu {
         System.out.println(ProductsManager.getFilterProductsName());
         addFilterToCurrentFilter("price");
     }
-    private void filterBySeller(){
+
+    private void filterBySeller() {
         System.out.println("enter seller name: ");
         String name = scanner.nextLine();
         ProductsManager.filterBySeller(name);
         System.out.println(ProductsManager.getFilterProductsName());
         addFilterToCurrentFilter("seller");
     }
-    private void filterByAvailability(){
+
+    private void filterByAvailability() {
         System.out.println("enter a state for availability"); //agar manzore mojodiate kalaro dorost gerefte basham
         String state = scanner.nextLine();
         ProductsManager.filterByAvailability(ProductEnum.valueOf(state));
         System.out.println(ProductsManager.getFilterProductsName());
         addFilterToCurrentFilter("availability");
     }
-    private void filterBySpecialFeature(){
+
+    private void filterBySpecialFeature() {
         System.out.println("enter special feature: ");
         String feature = scanner.nextLine();
         ProductsManager.filterBySpecialFeature(feature);
         System.out.println(ProductsManager.getFilterProductsName());
         addFilterToCurrentFilter("special feature");
     }
-    private void filterByBrand(){
+
+    private void filterByBrand() {
         System.out.println("enter company name: ");
         String name = scanner.nextLine();
         ProductsManager.filterByCompanyName(name);
         System.out.println(ProductsManager.getFilterProductsName());
         addFilterToCurrentFilter("brand");
     }
-    private void disableFilterByName(){
+
+    private void disableFilterByName() {
         System.out.println("enter a name");
         String name = scanner.nextLine();
         ProductsManager.disableFilterByName(name);
         removeFilterFromCurrentFilter("name");
     }
-    private void disableFilterByCategory(){
+
+    private void disableFilterByCategory() {
         System.out.println("enter a category name: ");
         String categoryName = scanner.nextLine();
         ProductsManager.disableFilterByCategory(categoryName);
         removeFilterFromCurrentFilter("category");
     }
-    private void disableFilterByPrice(){
+
+    private void disableFilterByPrice() {
         System.out.println("enter minimum price: ");
         double min = scanner.nextDouble();
         System.out.println("enter maximum price: ");
@@ -230,31 +240,36 @@ public class ProductsMenu extends Menu {
         ProductsManager.disableFilterByPrice(min, max);
         removeFilterFromCurrentFilter("price");
     }
-    private void disableFilterBySeller(){
+
+    private void disableFilterBySeller() {
         System.out.println("enter seller name: ");
         String name = scanner.nextLine();
         ProductsManager.disableFilterBySeller(name);
         removeFilterFromCurrentFilter("seller");
     }
-    private void disableFilterByAvailability(){
+
+    private void disableFilterByAvailability() {
         System.out.println("enter a state for availability"); //agar manzore mojodiate kalaro dorost gerefte basham
         String state = scanner.nextLine();
         ProductsManager.disableFilterByAvailability(ProductEnum.valueOf(state));
         removeFilterFromCurrentFilter("availability");
     }
-    private void disableFilterBySpecialFeature(){
+
+    private void disableFilterBySpecialFeature() {
         System.out.println("enter special feature: ");
         String feature = scanner.nextLine();
         ProductsManager.disableFilterBySpecialFeature(feature);
         removeFilterFromCurrentFilter("special features");
     }
-    private void disableFilterByBrand(){
+
+    private void disableFilterByBrand() {
         System.out.println("enter company name: ");
         String name = scanner.nextLine();
         ProductsManager.disableFilterByCompanyName(name);
         removeFilterFromCurrentFilter("brand");
     }
-    private void filter(String command){
+
+    private void filter(String command) {
 
         if (command.equals("name")) {
             filterByName();
@@ -272,7 +287,8 @@ public class ProductsMenu extends Menu {
             filterByBrand();
         }
     }
-    private void disableFilter(String command){
+
+    private void disableFilter(String command) {
         if (command.equals("name")) {
             disableFilterByName();
         } else if (command.equals("category")) {

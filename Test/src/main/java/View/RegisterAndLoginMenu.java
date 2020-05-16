@@ -68,17 +68,18 @@ public class RegisterAndLoginMenu extends Menu {
                     System.out.println("Enter your phone number:");
                     accountInfo.add(scanner.nextLine());
                     if (registerMatcher.group(1).equals("customer")) {
-                        new Customer(registerMatcher.group(1), accountInfo.get(1), accountInfo.get(2), accountInfo.get(3),
+                        new Customer(registerMatcher.group(2), accountInfo.get(1), accountInfo.get(2), accountInfo.get(3),
                                 accountInfo.get(5), accountInfo.get(0), 0, null);
                     } else if (registerMatcher.group(1).equals("seller")) {
                         System.out.println("Enter your company's name:");
                         accountInfo.add(scanner.nextLine());
-                        new Seller(registerMatcher.group(1), accountInfo.get(1), accountInfo.get(2), accountInfo.get(3),
+                        new Seller(registerMatcher.group(2), accountInfo.get(1), accountInfo.get(2), accountInfo.get(3),
                                 accountInfo.get(5), accountInfo.get(0), 0, accountInfo.get(6));
                     } else if (registerMatcher.group(1).equals("manager")) {
-                        new Manager(registerMatcher.group(1), accountInfo.get(1), accountInfo.get(2), accountInfo.get(3),
+                        new Manager(registerMatcher.group(2), accountInfo.get(1), accountInfo.get(2), accountInfo.get(3),
                                 accountInfo.get(5), accountInfo.get(0));
                     }
+                    System.out.println(registerMatcher.group(1) + " registered successfully");
                 } else {
                     System.out.println("There is an account with this username!");
                 }
