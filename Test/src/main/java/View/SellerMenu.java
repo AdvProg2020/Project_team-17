@@ -5,13 +5,16 @@
 import Controller.AccountsManager.SellerAbilitiesManager;
 import Models.Accounts.Seller;
 import Models.Category;
+import Models.Discount;
 import Models.Enums.ProductEnum;
 import Models.Product;
+import Models.Request.AddOffRequest;
 import Models.Request.AddProductRequest;
+import Models.Request.EditOffRequest;
 import Models.Request.EditProductRequest;
-import View.RegisterAndLoginMenu;
 
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -109,6 +112,7 @@ public class SellerMenu extends Menu {
     public void viewSalesHistory() {
         //nafahmidam che field ro bayad neshon bede
     }
+
     public void manageProducts() {
         String command;
         Seller seller = RegisterAndLoginMenu.getCurrentSeller();
@@ -138,8 +142,8 @@ public class SellerMenu extends Menu {
                     String field = scanner.nextLine();
                     System.out.println("enter the content for this field: ");
                     String newContent = scanner.nextLine();
-                    SellerAbilitiesManager.editProduct(editProductMatcher.group(1), field, newContent);
-                    new EditProductRequest(editProductMatcher.group(1), seller, RegisterAndLoginMenu.getCurrentManager(), Product.getProductWithId(editProductMatcher.group(1)));
+                    Product product=SellerAbilitiesManager.editProduct(editProductMatcher.group(1), field, newContent);
+                    new EditProductRequest("random id", seller, RegisterAndLoginMenu.getCurrentManager(), product);
                 } catch (Exception e) {
                     e.getMessage();
                 }
@@ -165,6 +169,7 @@ public class SellerMenu extends Menu {
 
     }
 
+    Nona Ghazizadeh, [16.05.20 17:16]
     public void addProduct() {
         String command;
         Seller seller = RegisterAndLoginMenu.getCurrentSeller();
@@ -228,8 +233,68 @@ public class SellerMenu extends Menu {
     }
 
     public void viewOffs() {
+        String command;
         Seller seller = RegisterAndLoginMenu.getCurrentSeller();
         SellerAbilitiesManager.viewOffs(seller);
+        while(true){
+            command= scanner.nextLine();
+            Pattern viewOffPattern = Pattern.compile("view\\s(.+)");
+            Matcher viewOffMatcher = viewOffPattern.matcher(command);
+            Pattern editOffPattern = Pattern.compile("edit\\s(.+)");
+            Matcher editOffMatcher = editOffPattern.matcher(command);
+            if(command.matches("view\\s(.+)")){
+                viewOffMatcher.find();
+                try {
+                    SellerAbilitiesManager.isThereOffByThisId(seller,viewOffMatcher.group(1));
+                    System.out.println(SellerAbilitiesManager.viewOffByGettingId(seller,viewOffMatcher.group(1)));
+                }catch (Exception e){
+                    e.getMessage();
+                }
+            }else if(command.matches("edit\\s(.+)")){
+                editOffMatcher.find();
+                try {
+                    SellerAbilitiesManager.isThereOffByThisId(seller,editOffMatcher.group(1));
+                    System.out.println("enter the field you want to change: ");
+                    String field = scanner.nextLine();
+                    System.out.println("enter the content for this field: ");
+                    String newContent = scanner.nextLine();
+                    Discount discount =SellerAbilitiesManager.editOff(editOffMatcher.group(1),field,newContent);
+                    new EditOffRequest("random id",seller,RegisterAndLoginMenu.getCurrentManager(),discount);
+                }catch (Exception e){
+                    e.getMessage();
+                }
+            }else if(command.equals("add off")){
+                System.out.println("enter discount's id");
+                String id = scanner.nextLine();
+                System.out.println("enter discount's beginningDate");
+                String beginningDate = scanner.nextLine();
+                System.out.println("enter discount's endingDate");
+                String endingDate = scanner.nextLine();
+                System.out.println("enter discount's percent");
+                double discountPercent = scanner.nextDouble();
+                ArrayList<String> productsName = new ArrayList<>();
+                System.out.println("enter discount's products names(enter end to finish)");
+                //tanha rahi k fek kardam mishe ine vali in k dota while miofte to ham bade fek konam
+                while (true) {
+                    String product = scanner.nextLine();
+                    if (product.equals("end")) {
+                        break;
+                    }
+                    productsName.add(product);
+                }
+                Discount discount = SellerAbilitiesManager.addDiscount(seller,id,beginningDate,endingDate,
+                        discountPercent,productsName);
+                new AddOffRequest("random id",seller,RegisterAndLoginMenu.getCurrentManager(),discount);
+            } else if (command.equals("back")) {
+                break;
+            } else if (command.equals("help")) {
+                System.out.println("commands that you can enter are:");
+                System.out.println("view [off id]");
+                System.out.println("edit [off id]");
+                System.out.println("add off");
+                System.out.println("back");
+            }
+        }
     }
 
     public void viewBalance() {
