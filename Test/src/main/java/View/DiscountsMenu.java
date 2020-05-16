@@ -87,93 +87,12 @@ public class DiscountsMenu extends Menu {
                 System.out.println("available fil");
             } else if (command.matches("filter\\s(.+)")) {
                 filterMatcher.find();
-                if (filterMatcher.group(1).equals("name")) {
-                    System.out.println("enter a name");
-                    String name = scanner.nextLine();
-                    DiscountManager.filterByName(name);
-                    System.out.println(DiscountManager.getFilterProductsName());
-                    addFilterToCurrentFilter("name");
-                } else if (filterMatcher.group(1).equals("category")) {
-                    System.out.println("enter a category name: ");
-                    String categoryName = scanner.nextLine();
-                    DiscountManager.filterByCategory(categoryName);
-                    System.out.println(DiscountManager.getFilterProductsName());
-                    addFilterToCurrentFilter("category");
-                } else if (filterMatcher.group(1).equals("price")) {
-                    System.out.println("enter minimum price: ");
-                    double min = scanner.nextDouble();
-                    System.out.println("enter maximum price: ");
-                    double max = scanner.nextDouble();
-                    DiscountManager.filterByPrice(min, max);
-                    System.out.println(DiscountManager.getFilterProductsName());
-                    addFilterToCurrentFilter("price");
-                } else if (filterMatcher.group(1).equals("seller")) {
-                    System.out.println("enter seller name: ");
-                    String name = scanner.nextLine();
-                    DiscountManager.filterBySeller(name);
-                    System.out.println(DiscountManager.getFilterProductsName());
-                    addFilterToCurrentFilter("seller");
-                } else if (filterMatcher.group(1).equals("availability")) {
-                    System.out.println("enter a state for availability"); //agar manzore mojodiate kalaro dorost gerefte basham
-                    String state = scanner.nextLine();
-                    DiscountManager.filterByAvailability(ProductEnum.valueOf(state));
-                    System.out.println(DiscountManager.getFilterProductsName());
-                    addFilterToCurrentFilter("availability");
-                } else if (filterMatcher.group(1).equals("special features")) {
-                    System.out.println("enter special feature: ");
-                    String feature = scanner.nextLine();
-                    DiscountManager.filterBySpecialFeature(feature);
-                    System.out.println(DiscountManager.getFilterProductsName());
-                    addFilterToCurrentFilter("special feature");
-                } else if (filterMatcher.group(1).equals("brand")) {
-                    System.out.println("enter company name: ");
-                    String name = scanner.nextLine();
-                    DiscountManager.filterByCompanyName(name);
-                    System.out.println(DiscountManager.getFilterProductsName());
-                    addFilterToCurrentFilter("brand");
-                }
+                filter(filterMatcher.group(1));
             } else if (command.equals("current filters")) {
                 System.out.println(currentFilters);
             } else if (command.matches("disable filter\\s(.+)")) {
                 disableFilterMatcher.find();
-                if (disableFilterMatcher.group(1).equals("name")) {
-                    System.out.println("enter a name");
-                    String name = scanner.nextLine();
-                    DiscountManager.disableFilterByName(name);
-                    removeFilterFromCurrentFilter("name");
-                } else if (disableFilterMatcher.group(1).equals("category")) {
-                    System.out.println("enter a category name: ");
-                    String categoryName = scanner.nextLine();
-                    DiscountManager.disableFilterByCategory(categoryName);
-                    removeFilterFromCurrentFilter("category");
-                } else if (disableFilterMatcher.group(1).equals("price")) {
-                    System.out.println("enter minimum price: ");
-                    double min = scanner.nextDouble();
-                    System.out.println("enter maximum price: ");
-                    double max = scanner.nextDouble();
-                    DiscountManager.disableFilterByPrice(min, max);
-                    removeFilterFromCurrentFilter("price");
-                } else if (disableFilterMatcher.group(1).equals("seller")) {
-                    System.out.println("enter seller name: ");
-                    String name = scanner.nextLine();
-                    DiscountManager.disableFilterBySeller(name);
-                    removeFilterFromCurrentFilter("seller");
-                } else if (disableFilterMatcher.group(1).equals("availability")) {
-                    System.out.println("enter a state for availability");
-                    String state = scanner.nextLine();
-                    DiscountManager.disableFilterByAvailability(ProductEnum.valueOf(state));
-                    removeFilterFromCurrentFilter("availability");
-                } else if (disableFilterMatcher.group(1).equals("special features")) {
-                    System.out.println("enter special feature: ");
-                    String feature = scanner.nextLine();
-                    DiscountManager.disableFilterBySpecialFeature(feature);
-                    removeFilterFromCurrentFilter("special features");
-                } else if (disableFilterMatcher.group(1).equals("brand")) {
-                    System.out.println("enter company name: ");
-                    String name = scanner.nextLine();
-                    DiscountManager.disableFilterByCompanyName(name);
-                    removeFilterFromCurrentFilter("brand");
-                }
+                disableFilter(disableFilterMatcher.group(1));
             } else if (command.equals("back")) {
                 break;
             } else if (command.equals("help")) {
@@ -235,4 +154,133 @@ public class DiscountsMenu extends Menu {
         }
     }
 
+    private void filterByName(){
+        System.out.println("enter a name");
+        String name = scanner.nextLine();
+        DiscountManager.filterByName(name);
+        System.out.println(DiscountManager.getFilterProductsName());
+        addFilterToCurrentFilter("name");
+    }
+    private void filterByCategory(){
+        System.out.println("enter a category name: ");
+        String categoryName = scanner.nextLine();
+        DiscountManager.filterByCategory(categoryName);
+        System.out.println(DiscountManager.getFilterProductsName());
+        addFilterToCurrentFilter("category");
+    }
+    private void filterByPrice(){
+        System.out.println("enter minimum price: ");
+        double min = scanner.nextDouble();
+        System.out.println("enter maximum price: ");
+        double max = scanner.nextDouble();
+        DiscountManager.filterByPrice(min, max);
+        System.out.println(DiscountManager.getFilterProductsName());
+        addFilterToCurrentFilter("price");
+    }
+    private void filterBySeller(){
+        System.out.println("enter seller name: ");
+        String name = scanner.nextLine();
+        DiscountManager.filterBySeller(name);
+        System.out.println(DiscountManager.getFilterProductsName());
+        addFilterToCurrentFilter("seller");
+    }
+    private void filterByAvailability(){
+        System.out.println("enter a state for availability"); //agar manzore mojodiate kalaro dorost gerefte basham
+        String state = scanner.nextLine();
+        DiscountManager.filterByAvailability(ProductEnum.valueOf(state));
+        System.out.println(DiscountManager.getFilterProductsName());
+        addFilterToCurrentFilter("availability");
+    }
+    private void filterBySpecialFeature(){
+        System.out.println("enter special feature: ");
+        String feature = scanner.nextLine();
+        DiscountManager.filterBySpecialFeature(feature);
+        System.out.println(DiscountManager.getFilterProductsName());
+        addFilterToCurrentFilter("special feature");
+    }
+    private void filterByBrand(){
+        System.out.println("enter company name: ");
+        String name = scanner.nextLine();
+        DiscountManager.filterByCompanyName(name);
+        System.out.println(DiscountManager.getFilterProductsName());
+        addFilterToCurrentFilter("brand");
+    }
+    private void disableFilterByName(){
+        System.out.println("enter a name");
+        String name = scanner.nextLine();
+        DiscountManager.disableFilterByName(name);
+        removeFilterFromCurrentFilter("name");
+    }
+    private void disableFilterByCategory(){
+        System.out.println("enter a category name: ");
+        String categoryName = scanner.nextLine();
+        DiscountManager.disableFilterByCategory(categoryName);
+        removeFilterFromCurrentFilter("category");
+    }
+    private void disableFilterByPrice(){
+        System.out.println("enter minimum price: ");
+        double min = scanner.nextDouble();
+        System.out.println("enter maximum price: ");
+        double max = scanner.nextDouble();
+        DiscountManager.disableFilterByPrice(min, max);
+        removeFilterFromCurrentFilter("price");
+    }
+    private void disableFilterBySeller(){
+        System.out.println("enter seller name: ");
+        String name = scanner.nextLine();
+        DiscountManager.disableFilterBySeller(name);
+        removeFilterFromCurrentFilter("seller");
+    }
+    private void disableFilterByAvailability(){
+        System.out.println("enter a state for availability");
+        String state = scanner.nextLine();
+        DiscountManager.disableFilterByAvailability(ProductEnum.valueOf(state));
+        removeFilterFromCurrentFilter("availability");
+    }
+    private void disableFilterBySpecialFeature(){
+        System.out.println("enter special feature: ");
+        String feature = scanner.nextLine();
+        DiscountManager.disableFilterBySpecialFeature(feature);
+        removeFilterFromCurrentFilter("special features");
+    }
+    private void disableFilterByBrand(){
+        System.out.println("enter company name: ");
+        String name = scanner.nextLine();
+        DiscountManager.disableFilterByCompanyName(name);
+        removeFilterFromCurrentFilter("brand");
+    }
+    private void filter(String command){
+        if (command.equals("name")) {
+            filterByName();
+        } else if (command.equals("category")) {
+            filterByCategory();
+        } else if (command.equals("price")) {
+            filterByPrice();
+        } else if (command.equals("seller")) {
+            filterBySeller();
+        } else if (command.equals("availability")) {
+            filterByAvailability();
+        } else if (command.equals("special features")) {
+            filterBySpecialFeature();
+        } else if (command.equals("brand")) {
+            filterByBrand();
+        }
+    }
+    private void disableFilter(String command){
+        if (command.equals("name")) {
+            disableFilterByName();
+        } else if (command.equals("category")) {
+            disableFilterByCategory();
+        } else if (command.equals("price")) {
+            disableFilterByPrice();
+        } else if (command.equals("seller")) {
+            disableFilterBySeller();
+        } else if (command.equals("availability")) {
+            disableFilterByAvailability();
+        } else if (command.equals("special features")) {
+            disableFilterBySpecialFeature();
+        } else if (command.equals("brand")) {
+            disableFilterByBrand();
+        }
+    }
 }

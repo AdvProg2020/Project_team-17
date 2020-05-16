@@ -54,7 +54,6 @@ public class ProductsMenu extends Menu {
     }
 
     public void filtering() {
-        // age residim ino ghesmate filter va disable esho method konim tabehe kotahtar she
         String command;
         while (true) {
             command = scanner.nextLine();
