@@ -1,13 +1,10 @@
 package View;
 
-import Controller.DiscountManager;
-import Controller.ProductManager;
 import Controller.ProductsManager;
 import Models.Enums.ProductEnum;
 import Models.Product;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -171,7 +168,6 @@ public class ProductsMenu extends Menu {
     }
 
     public void sorting() {
-        //ina bara vaghtie k chandta sort ro baham mikone na faghat yeki nemidonam yeki faghat mishe ya na
         String command;
         while (true) {
             command = scanner.nextLine();

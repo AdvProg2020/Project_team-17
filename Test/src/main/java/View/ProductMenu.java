@@ -12,6 +12,7 @@ public class ProductMenu extends Menu {
     public ProductMenu(Menu parentMenu, Product product) {
         super("Product Menu", parentMenu);
         this.product = product;
+        product.addToVisitedTime();
     }
 
     @Override
