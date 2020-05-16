@@ -41,11 +41,7 @@ public class ProductsManager {
 
     public static void filterByCategory(String categoryName) {
         Category category = Category.getCategoryByName(categoryName);
-        for (Product product : filterProduct) {
-            if (!(product.getCategory().equals(category))) {
-                filterProduct.remove(product);
-            }
-        }
+        filterProduct.removeIf(product -> !(product.getCategory().equals(category)));
     }
 
     public static void disableFilterByCategory(String categoryName) {
@@ -58,11 +54,7 @@ public class ProductsManager {
     }
 
     public static void filterByPrice(double minPrice, double maxPrice) {
-        for (Product product : filterProduct) {
-            if (product.getPrice() <= minPrice && product.getPrice() >= maxPrice) {
-                filterProduct.remove(product);
-            }
-        }
+        filterProduct.removeIf(product -> product.getPrice() <= minPrice && product.getPrice() >= maxPrice);
     }
 
     public static void disableFilterByPrice(double minPrice, double maxPrice) {
@@ -75,11 +67,7 @@ public class ProductsManager {
 
     public static void filterBySeller(String sellerName) {
         Seller seller = Seller.getSellerByName(sellerName);
-        for (Product product : filterProduct) {
-            if (!(product.getSeller().equals(seller))) {
-                filterProduct.remove(product);
-            }
-        }
+        filterProduct.removeIf(product -> !(product.getSeller().equals(seller)));
     }
 
     public static void disableFilterBySeller(String sellerName) {
@@ -92,15 +80,11 @@ public class ProductsManager {
     }
 
     public static void filterByAvailability(ProductEnum productEnum) {
-        for (Product product : Product.getAllProducts()) {
-            if (!(product.getProductState().equals(productEnum))) {
-                filterProduct.remove(product);
-            }
-        }
+        filterProduct.removeIf(product -> !(product.getProductState().equals(productEnum)));
     }
 
     public static void disableFilterByAvailability(ProductEnum productEnum) {
-        for (Product product : Product.getAllProducts()) {
+        for (Product product : filterProduct) {
             if (!(product.getProductState().equals(productEnum))) {
                 filterProduct.add(product);
             }
@@ -108,15 +92,11 @@ public class ProductsManager {
     }
 
     public static void filterByName(String name) {
-        for (Product product : Product.getAllProducts()) {
-            if (!(product.getName().equals(name))) {
-                filterProduct.remove(product);
-            }
-        }
+        filterProduct.removeIf(product -> !(product.getName().equals(name)));
     }
 
     public static void disableFilterByName(String name) {
-        for (Product product : Product.getAllProducts()) {
+        for (Product product : filterProduct) {
             if (!(product.getName().equals(name))) {
                 filterProduct.add(product);
             }
@@ -124,15 +104,11 @@ public class ProductsManager {
     }
 
     public static void filterBySpecialFeature(String feature) {
-        for (Product product : Product.getAllProducts()) {
-            if (!(product.getProductsSpecialFeature().equals(feature))) {
-                filterProduct.remove(product);
-            }
-        }
+        filterProduct.removeIf(product -> !(product.getProductsSpecialFeature().equals(feature)));
     }
 
     public static void disableFilterBySpecialFeature(String feature) {
-        for (Product product : Product.getAllProducts()) {
+        for (Product product : filterProduct) {
             if (!(product.getProductsSpecialFeature().equals(feature))) {
                 filterProduct.add(product);
             }
@@ -140,15 +116,11 @@ public class ProductsManager {
     }
 
     public static void filterByCompanyName(String name) {
-        for (Product product : Product.getAllProducts()) {
-            if (!(product.getCompanyName().equals(name))) {
-                filterProduct.remove(product);
-            }
-        }
+        filterProduct.removeIf(product -> !(product.getCompanyName().equals(name)));
     }
 
     public static void disableFilterByCompanyName(String name) {
-        for (Product product : Product.getAllProducts()) {
+        for (Product product : filterProduct) {
             if (!(product.getCompanyName().equals(name))) {
                 filterProduct.add(product);
             }

@@ -24,6 +24,14 @@ public class Discount {
         allDiscounts.add(this);
     }
 
+    public static ArrayList<Discount> getAllDiscounts() {
+        return allDiscounts;
+    }
+
+    public ArrayList<Product> getDiscountProducts() {
+        return discountProducts;
+    }
+
     public void setDiscountState(DiscountEnum discountState) {
         this.discountState = discountState;
     }
