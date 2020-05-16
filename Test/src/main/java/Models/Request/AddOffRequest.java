@@ -15,8 +15,10 @@ public class AddOffRequest extends Request {
         this.discount = discount;
     }
 
+    @Override
     public void accept() {
         discount.setDiscountState(DiscountEnum.ACCEPTED);
+        seller.addDiscount(discount);
     }
 
     @Override
