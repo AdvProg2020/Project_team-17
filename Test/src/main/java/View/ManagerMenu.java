@@ -105,9 +105,7 @@ public class ManagerMenu extends Menu {
                 getInfoForCreatingManger();
             }
         }
-    }
-
-    public void manageAllProducts() {
+    }public void manageAllProducts() {
         String command;
         while (true) {
             command = scanner.nextLine();
@@ -155,7 +153,6 @@ public class ManagerMenu extends Menu {
         }
         ManagerAbilitiesManager.createDiscountCode(code, startDate, endDate, discountPercent, maxAmountForDiscount, repeat, customersName);
     }
-
     public void viewDiscountCodes() {
         String command;
         System.out.println(ManagerAbilitiesManager.viewDiscountCodes());
@@ -207,7 +204,6 @@ public class ManagerMenu extends Menu {
 
         }
     }
-
     public void manageRequests() {
         String command;
         System.out.println(ManagerAbilitiesManager.showAllRequests());
@@ -222,7 +218,6 @@ public class ManagerMenu extends Menu {
             if (command.matches("details\\s(.+)")) {
                 detailsOfRequestMatcher.find();
                 try {
-                    ManagerAbilitiesManager.isThereRequestWithThisId(detailsOfRequestMatcher.group(1));
                     System.out.println(ManagerAbilitiesManager.showDetailsOfRequest(detailsOfRequestMatcher.group(1)));
                 } catch (Exception e) {
                     e.getMessage();
@@ -230,7 +225,6 @@ public class ManagerMenu extends Menu {
             } else if (command.matches("accept\\s(.+)")) {
                 acceptRequestMatcher.find();
                 try {
-                    ManagerAbilitiesManager.isThereRequestWithThisId(acceptRequestMatcher.group(1));
                     ManagerAbilitiesManager.acceptRequest(acceptRequestMatcher.group(1));
                 } catch (Exception e) {
                     e.getMessage();
@@ -239,7 +233,6 @@ public class ManagerMenu extends Menu {
             } else if (command.matches("decline\\s(.+)")) {
                 declineRequestMatcher.find();
                 try {
-                    ManagerAbilitiesManager.isThereRequestWithThisId(declineRequestMatcher.group(1));
                     ManagerAbilitiesManager.declineRequest(declineRequestMatcher.group(1));
                 } catch (Exception e) {
                     e.getMessage();
@@ -288,13 +281,14 @@ public class ManagerMenu extends Menu {
                 break;
             } else if (command.equals("help")) {
                 System.out.println("commands that you can enter are:");
-                System.out.println("edit [category]");
-                System.out.println("remove [category]");
-                System.out.println("add [category]");
-                System.out.println("back");
             }
+            System.out.println("edit [category]");
+            System.out.println("remove [category]");
+            System.out.println("add [category]");
+            System.out.println("back");
         }
     }
+
 
     public void getInfoForCreatingManger() {
         ArrayList<String> accountInfo = new ArrayList<>();
