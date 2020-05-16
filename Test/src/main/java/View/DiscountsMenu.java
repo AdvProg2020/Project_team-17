@@ -21,7 +21,7 @@ public class DiscountsMenu extends Menu {
     public void execute() {
         int input = Integer.parseInt(scanner.nextLine());
         if (input == 1) {
-            showProducts();
+            offs();
             parentMenu.show();
             parentMenu.execute();
         } else if (input == 2) {
@@ -32,6 +32,9 @@ public class DiscountsMenu extends Menu {
             parentMenu.show();
             parentMenu.execute();
         }
+    }
+    public void offs(){
+        System.out.println(DiscountManager.showDiscountProducts());
     }
 
     public void showProducts() {

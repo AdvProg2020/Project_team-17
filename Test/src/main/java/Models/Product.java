@@ -1,16 +1,14 @@
 package Models;
 
-import Models.Accounts.Account;
 import Models.Accounts.Customer;
 import Models.Accounts.Seller;
-import Models.Enums.PointOfViewEnum;
 import Models.Enums.ProductEnum;
 import Models.Logs.BuyLog;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class Product {
-    //moshakhasat khas daste ro nemidonam yani chia
     private static ArrayList<Product> allProducts = new ArrayList<Product>();
     private String productId;
     private ProductEnum productState;
@@ -22,10 +20,12 @@ public class Product {
     private Category category;
     private String explanation;
     private double averageScore = 0;
+    private String productsSpecialFeature;
     private ArrayList<PointOfView> pointOfViews = new ArrayList<>();
     private ArrayList<Score> scoresForProduct = new ArrayList<>();
+    private static ArrayList<Product> products = new ArrayList<>();
 
-    public Product(String productId, String name, String companyName, double price, Seller seller, Category category, String explanation, double averageScore) {
+    public Product(String productId, String name, String companyName, double price, Seller seller, Category category, String explanation, double averageScore,String productsSpecialFeature) {
         this.productId = productId;
         this.productState =ProductEnum.PRODUCING;
         this.name = name;
@@ -35,6 +35,8 @@ public class Product {
         this.category = category;
         this.explanation = explanation;
         this.averageScore = averageScore;
+        this.productsSpecialFeature=productsSpecialFeature;
+        products.add(this);
     }
 
 
@@ -182,6 +184,18 @@ public class Product {
 
     public ArrayList<PointOfView> getPointOfViews() {
         return pointOfViews;
+    }
+
+    public static ArrayList<Product> getAllProducts() {
+        return allProducts;
+    }
+
+    public ProductEnum getProductState() {
+        return productState;
+    }
+
+    public String getProductsSpecialFeature() {
+        return productsSpecialFeature;
     }
 
     public String digestAttributes() {

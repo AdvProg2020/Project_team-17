@@ -7,8 +7,8 @@ import Models.Product;
 import java.util.ArrayList;
 
 public class DiscountManager {
-    public static void showDiscountProducts() {
-        Discount.showProductsHaveDiscount();
+    public static ArrayList<String> showDiscountProducts() {
+        return Discount.showProductsHaveDiscount();
     }
-    //filter va sort haram bayad bezanim
+    //filter va sort haram bayad bezanim?
 }

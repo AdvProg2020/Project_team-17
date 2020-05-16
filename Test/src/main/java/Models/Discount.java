@@ -66,13 +66,15 @@ public class Discount {
         return discountState;
     }
 
-    public static void showProductsHaveDiscount() {
+    public static ArrayList<String> showProductsHaveDiscount() {
+        ArrayList<String> productInfo = new ArrayList<>();
         for (Discount discount : allDiscounts) {
             for (Product product : discount.discountProducts) {
-                System.out.println("Product ID : " + product.getProductId() + "Price before discount :" + product.getPrice() + " " +
+                productInfo.add("Product ID : " + product.getProductId() + "Price before discount :" + product.getPrice() + " " +
                         "Price after discount : " + product.getPriceAfterDiscount());
             }
         }
+        return productInfo;
     }
 
 
