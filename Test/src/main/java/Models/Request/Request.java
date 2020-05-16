@@ -22,6 +22,7 @@ public abstract class Request {
 
     public abstract void accept();
 
+
     public Manager getManager() {
         return manager;
     }
@@ -43,7 +44,7 @@ public abstract class Request {
         return null;
     }
 
-    public static boolean hasRequestById(String id) {
+    public static boolean isThereRequestById(String id) {
         for (Request request : allRequests) {
             if (request.id.equals(id)) {
                 return true;
@@ -67,6 +68,3 @@ public abstract class Request {
     @Override
     public abstract String toString();
 }
-
-
-

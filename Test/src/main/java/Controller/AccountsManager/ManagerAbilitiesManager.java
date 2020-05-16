@@ -12,8 +12,8 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class ManagerAbilitiesManager {
-    public static ArrayList<String> showAllAccounts() {
-        ArrayList<String> allAccounts = new ArrayList<>();
+    public static ArrayList<String> showAllAccounts(){
+        ArrayList<String> allAccounts= new ArrayList<>();
         for (Customer customer : Customer.getAllCustomers()) {
             allAccounts.add(customer.getUserName());
         }
@@ -27,27 +27,27 @@ public class ManagerAbilitiesManager {
     }
 
 
-    public static String viewAccountByUsername(String username) {
-        String output = "";
+    public static String viewAccountByUsername(String username){
+        String output= "";
         for (Customer customer : Customer.getAllCustomers()) {
-            if (customer.getUserName().equals(username)) {
-                output = customer.toString();
+            if(customer.getUserName().equals(username)){
+                output=customer.toString();
             }
         }
         for (Seller seller : Seller.getAllSellers()) {
-            if (seller.getUserName().equals(username)) {
+            if(seller.getUserName().equals(username)){
                 output = seller.toString();
             }
         }
         for (Manager manager : Manager.getAllManagers()) {
-            if (manager.getUserName().equals(username)) {
+            if(manager.getUserName().equals(username)){
                 output = manager.toString();
             }
         }
         return output;
     }
 
-    public static void changeField(Manager manager, String field, String newContentForThisField) {
+    public static void changeField( Manager manager, String field, String newContentForThisField) {
         if (field.equalsIgnoreCase("first name")) {
             manager.changeFirstName(manager, newContentForThisField);
         } else if (field.equalsIgnoreCase("last name")) {
@@ -66,7 +66,7 @@ public class ManagerAbilitiesManager {
         //aslan nemidonam
     }
 
-    public static void deleteUser(String username) {
+    public static void deleteUser(String username)  {
         if (Customer.isThereCustomerWithUserName(username)) {
             Customer.deleteCustomer(username);
         } else if (Manager.isThereManagerWithUserName(username)) {
@@ -75,23 +75,22 @@ public class ManagerAbilitiesManager {
             Seller.deleteSeller(username);
         }
     }
-
-    public static void isThereAccountWithThisUsername(String username) throws Exception {
+    public static void isThereAccountWithThisUsername(String username) throws Exception{
         if ((!(Manager.isThereManagerWithUserName(username))) && (!(Customer.isThereCustomerWithUserName(username))) && (!(Seller.isThereSellerWithUserName(username)))) {
 
-        } else {
+        }else {
             throw new Exception("There is already an account with this username!");
         }
 
     }
 
     public static void createAnotherManager(String username, String firstName, String lastName,
-                                            String email, String phoneNumber, String password) {
+                                            String email, String phoneNumber, String password)  {
         new Manager(username, firstName, lastName, email, phoneNumber, password);
 
     }
 
-    public static void removeProduct(String productId) throws Exception {
+    public static void removeProduct( String productId) throws Exception {
         if (Product.isThereProductWithId(productId)) {
             Product product = Product.getProductWithId(productId);
             Product.removeProduct(product);
@@ -99,16 +98,15 @@ public class ManagerAbilitiesManager {
             throw new Exception("There isn't any product with this ID!");
         }
     }
-
-    public static void createDiscountCode(String code, String beginningDate, String endingDate, String discountPercent, String max, String repeat, ArrayList<String> customersName) {
+    public static void createDiscountCode(String code,String beginningDate, String endingDate, String discountPercent , String max,String repeat,ArrayList<String> customersName) {
         ArrayList<Customer> customers = new ArrayList<>();
         for (String customer : customersName) {
             customers.add(Customer.getCustomerByName(customer));
         }
-        new DiscountCode(code, new Date(beginningDate), new Date(endingDate), Double.parseDouble(discountPercent), Double.parseDouble(max), Integer.parseInt(repeat), customers);
+        new DiscountCode(code,new Date(beginningDate),new Date(endingDate),Double.parseDouble(discountPercent),Double.parseDouble(max),Integer.parseInt(repeat),customers);
     }
 
-    public static ArrayList<String> viewDiscountCodes() {
+    public static ArrayList<String>viewDiscountCodes() {
         //fek konam hamin k code ro faghat neshon bede okaye
         ArrayList<String> discountCodeInfo = new ArrayList<>();
         for (DiscountCode discountCode : DiscountCode.getAllDiscountCodes()) {
@@ -116,30 +114,29 @@ public class ManagerAbilitiesManager {
         }
         return discountCodeInfo;
     }
+    public static void isThereDiscountCode(String discountCode ) throws Exception{
+        if(DiscountCode.isThereDiscountCodeWithThisCode(discountCode)){
 
-    public static void isThereDiscountCode(String discountCode) throws Exception {
-        if (DiscountCode.isThereDiscountCodeWithThisCode(discountCode)) {
-
-        } else {
+        }else {
             throw new Exception("There isn't any discount code with this code");
         }
     }
 
-    public static String viewDiscountCode(String discountCode) {
+    public static String viewDiscountCode( String discountCode) {
         return DiscountCode.getDiscountCodeWithCode(discountCode).toString();
     }
 
-    public static void editDiscountCode(String code, String field, String newContentForThisField) {
-        DiscountCode discountCode = DiscountCode.getDiscountCodeWithCode(code);
-        if (field.equals("starting date")) {
+    public static void editDiscountCode(String code,String field,String newContentForThisField) {
+        DiscountCode discountCode=DiscountCode.getDiscountCodeWithCode(code);
+        if(field.equals("starting date")){
             discountCode.setStartDate(new Date(newContentForThisField));
-        } else if (field.equals("ending date")) {
+        }else if(field.equals("ending date")){
             discountCode.setEndDate(new Date(newContentForThisField));
-        } else if (field.equals("discount percent")) {
+        }else if(field.equals("discount percent")){
             discountCode.setDiscountCode(newContentForThisField);
-        } else if (field.equals("maximum discount amount")) {
+        }else if(field.equals("maximum discount amount")){
             discountCode.setMaxDiscountAmount(Double.parseDouble(newContentForThisField));
-        } else if (field.equals("count discount code")) {
+        }else if(field.equals("count discount code")){
             discountCode.setCountDiscountCode(Integer.parseInt(newContentForThisField));
         }
     }
@@ -148,12 +145,7 @@ public class ManagerAbilitiesManager {
         DiscountCode.removeDiscountCode(DiscountCode.getDiscountCodeWithCode(discountCode));
     }
 
-    public static void isThereRequestWithThisId(String id) throws Exception {
-        if (Request.hasRequestById(id)) {
-        } else throw new Exception("There isn't request with this id");
-    }
-
-    public static ArrayList<String> showAllRequests() {
+    public static ArrayList<String> showAllRequests(){
         ArrayList<String> requestInfo = new ArrayList<>();
         for (Request request : Request.getAllRequests()) {
             requestInfo.add(request.getId());
@@ -162,19 +154,32 @@ public class ManagerAbilitiesManager {
     }
 
 
-    public static String showDetailsOfRequest(String requestId) {
-        return Request.getRequestById(requestId).toString();
+    public static String showDetailsOfRequest( String requestId) throws Exception {
+        if(Request.isThereRequestById(requestId)){
+            return Request.getRequestById(requestId).toString();
+        } else {
+            throw new Exception("There isn't request with this id");
+        }
     }
 
-    public static void acceptRequest(String requestId) {
-        //TODO
+    public static void acceptRequest( String requestId) throws Exception{
+        if(Request.isThereRequestById(requestId)) {
+            Request request = Request.getRequestById(requestId);
+            request.accept();
+        }else {
+            throw new Exception("there isn't request with this ID");
+        }
     }
-
-    public static void declineRequest(String requestId) {
-        //TODO
+    public static void declineRequest( String requestId) throws Exception{
+        if(Request.isThereRequestById(requestId)){
+            Request request = Request.getRequestById(requestId);
+            Request.deleteRequest(request);
+        }
+        else {
+            throw new Exception("there isn't request with this ID");
+        }
     }
-
-    public static ArrayList<Category> showAllCategories() {
+    public static ArrayList<Category> showAllCategories(){
         ArrayList<Category> showAllCategory = new ArrayList<>();
         for (Category category : Category.getAllCategories()) {
             showAllCategory.add(category);
@@ -186,7 +191,6 @@ public class ManagerAbilitiesManager {
         Category category = Category.getCategoryByName(oldName);
         category.changeCategoryName(category, newName);
     }
-
     public static void editCategoryFeature(String name, String newFeature) {
         Category category = Category.getCategoryByName(name);
         category.changeSpecialFeatures(category, newFeature);
@@ -200,3 +204,4 @@ public class ManagerAbilitiesManager {
         Category.deleteCategory(Category.getCategoryByName(name));
     }
 }
+
