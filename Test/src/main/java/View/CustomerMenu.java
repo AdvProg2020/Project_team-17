@@ -11,6 +11,7 @@ public class CustomerMenu extends Menu {
     PurchaseMenu purchaseMenu = new PurchaseMenu(this);
     CartMenu cartMenu = new CartMenu(this);
     RegisterAndLoginMenu registerAndLoginMenu = new RegisterAndLoginMenu(this);
+    CommandProcessor commandProcessor = new CommandProcessor();
 
 
     public CustomerMenu(Menu parentMenu) {
@@ -63,7 +64,7 @@ public class CustomerMenu extends Menu {
                 parentMenu.execute();
             } else if (input == 7) {
                 RegisterAndLoginMenu.logout();
-                // chi kar konim
+                commandProcessor.runWithMenu();
             }else if(input == 8){
                 parentMenu.show();
                 parentMenu.execute();
@@ -155,6 +156,5 @@ public class CustomerMenu extends Menu {
         }catch (Exception e){
             System.out.println(e.getMessage());
         }
-
     }
 }
