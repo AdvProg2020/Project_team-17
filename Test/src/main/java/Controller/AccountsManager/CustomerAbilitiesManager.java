@@ -37,12 +37,16 @@ public class CustomerAbilitiesManager {
         }
     }
 
-    public static ArrayList<String> viewOrders(Customer customer) {
+    public static ArrayList<String> viewOrders(Customer customer) throws Exception {
         ArrayList<String> buyLogs = new ArrayList<>();
+        if(customer.getBuyLog()!=null){
         for (BuyLog log : customer.getBuyLog()) {
             buyLogs.add(log.showOrders());
         }
         return buyLogs;
+        }else {
+            throw new Exception("there isn't any order");
+        }
     }
 
     public static String showOrder(String id) throws Exception {
@@ -67,10 +71,12 @@ public class CustomerAbilitiesManager {
     }
 
 
-    public static ArrayList<String> showDiscountCodes(Customer customer) {
+    public static ArrayList<String> showDiscountCodes(Customer customer) throws Exception {
         ArrayList<String> discountCodes = new ArrayList<>();
+        if(customer.getDiscountCodes()!= null){
         discountCodes.add(customer.getDiscountCodes().toString());
         return discountCodes;
+        }else throw new Exception("There isn't any discount code already");
     }
 
 
@@ -97,7 +103,6 @@ public class CustomerAbilitiesManager {
 
     public static void checkDiscountCodeValidation(String code) throws Exception {
         if (DiscountCode.isThereDiscountCodeWithThisCode(code)) {
-
         } else {
             throw new Exception("this code isn't valid");
         }

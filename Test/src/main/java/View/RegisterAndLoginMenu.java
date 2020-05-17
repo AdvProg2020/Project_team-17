@@ -27,18 +27,24 @@ public class RegisterAndLoginMenu extends Menu {
 
     @Override
     public void execute() {
-        int input = Integer.parseInt(scanner.nextLine());
-        if (input == 1) {
-            register();
-            parentMenu.show();
-            parentMenu.execute();
-        } else if (input == 2) {
-            login();
-            parentMenu.show();
-            parentMenu.execute();
-        } else if (input == 3) {
-            parentMenu.show();
-            parentMenu.execute();
+        try {
+            int input = Integer.parseInt(scanner.nextLine());
+            if (input == 1) {
+                register();
+                parentMenu.show();
+                parentMenu.execute();
+            } else if (input == 2) {
+                login();
+                parentMenu.show();
+                parentMenu.execute();
+            } else if (input == 3) {
+                parentMenu.show();
+                parentMenu.execute();
+            }
+        } catch (Exception e) {
+            System.out.println("you should enter a number");
+            this.show();
+            this.execute();
         }
 
     }
@@ -55,6 +61,7 @@ public class RegisterAndLoginMenu extends Menu {
                 if ((!(Customer.isThereCustomerWithUserName(registerMatcher.group(2)))) &&
                         (!(Seller.isThereSellerWithUserName(registerMatcher.group(2)))) &&
                         (!(Manager.isThereManagerWithUserName(registerMatcher.group(2))))) {
+                    //ino az in arraylist bardarim moteghayereh konim
                     System.out.println("Enter password:");
                     accountInfo.add(scanner.nextLine());
                     System.out.println("Enter your first name:");
@@ -68,24 +75,27 @@ public class RegisterAndLoginMenu extends Menu {
                     System.out.println("Enter your phone number:");
                     accountInfo.add(scanner.nextLine());
                     if (registerMatcher.group(1).equals("customer")) {
-                        new Customer(registerMatcher.group(1), accountInfo.get(1), accountInfo.get(2), accountInfo.get(3),
-                                accountInfo.get(5), accountInfo.get(0), 0, null);
+                        System.out.println("Enter your credit:");
+                        double credit = scanner.nextDouble();
+                        new Customer(registerMatcher.group(2), accountInfo.get(1), accountInfo.get(2), accountInfo.get(3),
+                                accountInfo.get(5), accountInfo.get(0), credit, null);
                     } else if (registerMatcher.group(1).equals("seller")) {
                         System.out.println("Enter your company's name:");
                         accountInfo.add(scanner.nextLine());
-                        new Seller(registerMatcher.group(1), accountInfo.get(1), accountInfo.get(2), accountInfo.get(3),
+                        new Seller(registerMatcher.group(2), accountInfo.get(1), accountInfo.get(2), accountInfo.get(3),
                                 accountInfo.get(5), accountInfo.get(0), 0, accountInfo.get(6));
                     } else if (registerMatcher.group(1).equals("manager")) {
-                        new Manager(registerMatcher.group(1), accountInfo.get(1), accountInfo.get(2), accountInfo.get(3),
+                        new Manager(registerMatcher.group(2), accountInfo.get(1), accountInfo.get(2), accountInfo.get(3),
                                 accountInfo.get(5), accountInfo.get(0));
                     }
+                    System.out.println(registerMatcher.group(1) + " is registered successfully!");
                 } else {
                     System.out.println("There is an account with this username!");
                 }
             } else if (command.equals("help")) {
                 System.out.println("commands that you can enter are:");
                 System.out.println("create account [type] [username]");
-                System.out.println("Back");
+                System.out.println("back");
             } else if (command.equals("back")) {
                 break;
             } else {
@@ -104,36 +114,54 @@ public class RegisterAndLoginMenu extends Menu {
                 loginMatcher.find();
                 if (Customer.isThereCustomerWithUserName(loginMatcher.group(1))) {
                     Customer customer = Customer.getCustomerByName(loginMatcher.group(1));
-                    System.out.println("Enter your password: ");
-                    String password = scanner.nextLine();
-                    try {
-                        RegisterAndLoginManager.isUserNameAndPasswordCorrectForCustomer(loginMatcher.group(1), password);
-                        currentCustomer = customer;
-                        //in k be safhe ghabli k mikhaste bere ro bayad handle konim
-                    } catch (Exception e) {
-                        System.out.println(e.getMessage());
+                    boolean getPassword = true;
+                    while (getPassword) {
+                        System.out.println("Enter your password: ");
+                        String password = scanner.nextLine();
+                        try {
+                            RegisterAndLoginManager.isUserNameAndPasswordCorrectForCustomer(loginMatcher.group(1), password);
+                            currentCustomer = customer;
+                            currentSeller =null;
+                            currentManager= null;
+                            getPassword = false;
+                            System.out.println("you have login successfully!");
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
                     }
                 } else if (Seller.isThereSellerWithUserName(loginMatcher.group(1))) {
                     Seller seller = Seller.getSellerByName(loginMatcher.group(1));
-                    System.out.println("Enter your password: ");
-                    String password = scanner.nextLine();
-                    try {
-                        RegisterAndLoginManager.isUserNameAndPasswordCorrectForSeller(loginMatcher.group(1), password);
-                        currentSeller = seller;
-                        //in k be safhe ghabli k mikhaste bere ro bayad handle konim
-                    } catch (Exception e) {
-                        System.out.println(e.getMessage());
+                    boolean getPassword = true;
+                    while (getPassword) {
+                        System.out.println("Enter your password: ");
+                        String password = scanner.nextLine();
+                        try {
+                            RegisterAndLoginManager.isUserNameAndPasswordCorrectForSeller(loginMatcher.group(1), password);
+                            currentSeller = seller;
+                            currentCustomer= null;
+                            currentManager= null;
+                            getPassword = false;
+                            System.out.println("you have been login successfully!");
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
                     }
                 } else if (Manager.isThereManagerWithUserName(loginMatcher.group(1))) {
                     Manager manager = Manager.getManagerByUserName(loginMatcher.group(1));
-                    System.out.println("Enter your password: ");
-                    String password = scanner.nextLine();
-                    try {
-                        RegisterAndLoginManager.isUserNameAndPasswordCorrectForManager(loginMatcher.group(1), password);
-                        currentManager = manager;
-                        //in k be safhe ghabli k mikhaste bere ro bayad handle konim
-                    } catch (Exception e) {
-                        System.out.println(e.getMessage());
+                    boolean getPassword = true;
+                    while (getPassword) {
+                        System.out.println("Enter your password: ");
+                        String password = scanner.nextLine();
+                        try {
+                            RegisterAndLoginManager.isUserNameAndPasswordCorrectForManager(loginMatcher.group(1), password);
+                            currentManager = manager;
+                            currentCustomer= null;
+                            currentSeller= null;
+                            getPassword = false;
+                            System.out.println("you have login successfully!");
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
                     }
                 } else {
                     System.out.println("There isn't any account registered with this username");
@@ -141,7 +169,7 @@ public class RegisterAndLoginMenu extends Menu {
             } else if (command.equals("help")) {
                 System.out.println("commands that you can enter are:");
                 System.out.println("login [username]");
-                System.out.println("Back");
+                System.out.println("back");
             } else if (command.equals("back")) {
                 break;
             } else {
@@ -161,5 +189,14 @@ public class RegisterAndLoginMenu extends Menu {
 
     public static Manager getCurrentManager() {
         return currentManager;
+    }
+    public static void logout(){
+        if(currentCustomer!= null){
+            currentCustomer= null;
+        }else if(currentSeller!= null){
+            currentSeller= null;
+        }else if(currentManager!= null){
+            currentManager=null;
+        }
     }
 }

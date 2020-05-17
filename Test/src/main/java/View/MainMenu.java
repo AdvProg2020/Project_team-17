@@ -14,5 +14,4 @@ public class MainMenu extends Menu {
         subMenus.put(6, new DiscountsMenu(this));
         this.setSubmenus(subMenus);
     }
-    //bayad age raft to page dige joz product bere aval to login age login nakarde bood
 }

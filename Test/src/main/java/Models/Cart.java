@@ -29,10 +29,14 @@ public class Cart {
     }
 
     public void decreaseNumberOfProduct(Product product) {
-        for (Product productInCart : productsInCart.keySet()) {
-            if (productInCart.equals(product)) {
-                int count = productsInCart.get(productInCart);
-                productsInCart.put(productInCart, count - 1);
+        // remove ro bayad check kard doroste ya na anemidonam az hashmap che shekli remove konam
+        for (Product cartProduct : productsInCart.keySet()) {
+            if (cartProduct.equals(product)) {
+                int count = productsInCart.get(cartProduct);
+                productsInCart.put(cartProduct, count - 1);
+                if(productsInCart.get(cartProduct)==0){
+                    productsInCart.remove(cartProduct);
+                }
             }
         }
 
@@ -61,6 +65,14 @@ public class Cart {
             }
         }
         return false;
+    }
+    public Product getProductInCart(String id){
+        for (Product product : this.productsInCart.keySet()) {
+            if(product.getProductId().equals(id)){
+                return product;
+            }
+        }
+        return null;
     }
 
     public double totalPriceOfProductInCart() {
