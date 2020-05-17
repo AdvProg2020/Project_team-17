@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 public class ProductsManager {
     private static ArrayList<Product> filterProduct = new ArrayList<>(Product.getAllProducts());
     private static ArrayList<Product> sortProducts = new ArrayList<>(Product.getAllProducts());
-    private static String currentSort = "price";
+    private static String currentSort = "visited time";
 
     public static ArrayList<Product> showProducts() {
         return Product.getAllProducts();
@@ -128,11 +128,11 @@ public class ProductsManager {
     }
 
     public static String showAvailableSort() {
-        return "by score\nby price"; //nemidonam ba che chizaye digeyi mishe sort kard
+        return "by score\nby visited time";
     }
 
     public static void applyDefaultSort() {
-        sortProducts.sort(Comparator.comparing(o -> Double.toString(o.getPrice())));
+        sortProducts.sort(Comparator.comparing(o -> Integer.toString(o.getVisitedTime())));
     }
 
     public static ArrayList<Product> sort(String sortType) {
@@ -141,11 +141,11 @@ public class ProductsManager {
             ArrayList<Product> sortByScore = sortProducts;
             sortByScore.sort(Comparator.comparing(o -> Double.toString(o.getAverageScore())));
             return sortByScore;
-        } else if (sortType.equals("price")) {
-            currentSort = "price";
-            ArrayList<Product> sortByPrice = sortProducts;
-            sortByPrice.sort(Comparator.comparing(o -> Double.toString(o.getPrice())));
-            return sortByPrice;
+        }else if(sortType.equals("visited time")){
+            currentSort="visited time";
+            ArrayList<Product> sortByVisitedTime = sortProducts;
+            sortByVisitedTime.sort(Comparator.comparing(o -> Integer.toString(o.getVisitedTime())));
+            return sortByVisitedTime;
         }
         return Product.getAllProducts();
     }
@@ -161,7 +161,7 @@ public class ProductsManager {
     public static void disableSort(String sortType) throws Exception {
         if (sortType.equals("score")) {
             if (currentSort.equals("score")) {
-                currentSort = "price";
+                currentSort = "visited time";
                 applyDefaultSort();
             }
         } else {

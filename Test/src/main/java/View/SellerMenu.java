@@ -8,75 +8,88 @@ import Models.Enums.ProductEnum;
 import Models.Product;
 import Models.Request.AddOffRequest;
 import Models.Request.AddProductRequest;
-import Models.Request.EditOffRequest;
-import Models.Request.EditProductRequest;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class SellerMenu extends Menu {
-
+    RegisterAndLoginMenu registerAndLoginMenu = new RegisterAndLoginMenu(this);
+    CommandProcessor commandProcessor = new CommandProcessor();
     public SellerMenu(Menu parentMenu) {
         super("Seller ", parentMenu);
     }
 
     @Override
     public void show() {
-        System.out.println("1.view personal info");
-        System.out.println("2.view company information");
-        System.out.println("3.view sales history");
-        System.out.println("4.manage products");
-        System.out.println("5.add product");
-        System.out.println("6.remove product");
-        System.out.println("7.show categories");
-        System.out.println("8.view offs");
-        System.out.println("9.view balance");
-        System.out.println("10.back");
+        if (RegisterAndLoginMenu.getCurrentSeller() != null) {
+            System.out.println("1.view personal info");
+            System.out.println("2.view company information");
+            System.out.println("3.view sales history");
+            System.out.println("4.manage products");
+            System.out.println("5.add product");
+            System.out.println("6.remove product");
+            System.out.println("7.show categories");
+            System.out.println("8.view offs");
+            System.out.println("9.view balance");
+            System.out.println("10.logout");
+            System.out.println("11.back");
+        }else{
+            System.out.println("you haven't logged in yet, first login as a seller");
+            registerAndLoginMenu.show();
+            registerAndLoginMenu.execute();
+        }
     }
 
     @Override
     public void execute() {
-        int input = Integer.parseInt(scanner.nextLine());
-        if (input == 1) {
-            viewPersonalInfo();
-            parentMenu.show();
-            parentMenu.execute();
-        } else if (input == 2) {
-            viewCompanyInformation();
-            parentMenu.show();
-            parentMenu.execute();
-        } else if (input == 3) {
-            viewSalesHistory();
-            parentMenu.show();
-            parentMenu.execute();
-        } else if (input == 4) {
-            manageProducts();
-            parentMenu.show();
-            parentMenu.execute();
-        } else if (input == 5) {
-            addProduct();
-            parentMenu.show();
-            parentMenu.execute();
-        } else if (input == 6) {
-            removeProduct();
-            parentMenu.show();
-            parentMenu.execute();
-        } else if (input == 7) {
-            showCategories();
-            parentMenu.show();
-            parentMenu.execute();
-        } else if (input == 8) {
-            viewOffs();
-            parentMenu.show();
-            parentMenu.execute();
-        } else if (input == 9) {
-            viewBalance();
-            parentMenu.show();
-            parentMenu.execute();
-        } else if (input == 10) {
-            parentMenu.show();
-            parentMenu.execute();
+        try {
+            int input = Integer.parseInt(scanner.nextLine());
+            if (input == 1) {
+                viewPersonalInfo();
+                parentMenu.show();
+                parentMenu.execute();
+            } else if (input == 2) {
+                viewCompanyInformation();
+                parentMenu.show();
+                parentMenu.execute();
+            } else if (input == 3) {
+                viewSalesHistory();
+                parentMenu.show();
+                parentMenu.execute();
+            } else if (input == 4) {
+                manageProducts();
+                parentMenu.show();
+                parentMenu.execute();
+            } else if (input == 5) {
+                addProduct();
+                parentMenu.show();
+                parentMenu.execute();
+            } else if (input == 6) {
+                removeProduct();
+                parentMenu.show();
+                parentMenu.execute();
+            } else if (input == 7) {
+                showCategories();
+                parentMenu.show();
+                parentMenu.execute();
+            } else if (input == 8) {
+                viewOffs();
+                parentMenu.show();
+                parentMenu.execute();
+            } else if (input == 9) {
+                viewBalance();
+                parentMenu.show();
+                parentMenu.execute();
+            } else if (input == 10) {
+                RegisterAndLoginMenu.logout();
+                commandProcessor.runWithMenu();
+            } else if (input == 11) {
+                parentMenu.show();
+                parentMenu.execute();
+            }
+        }catch (Exception e){
+            System.out.println("you should enter a number");
         }
     }
 

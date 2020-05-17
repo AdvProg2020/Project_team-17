@@ -14,8 +14,6 @@ public abstract class Account {
     protected String password;
     protected double credit;
     private ArrayList<DiscountCode> allDiscountCodes;
-    protected boolean isThisAccountLogged = false; //meghdare ino nemidonam to constructor bayad false bezram ya inja
-
 
     public Account(String userName, String firstName, String lastName, String email, String phoneNumber, String password, double credit) {
         this.userName = userName;
@@ -27,18 +25,6 @@ public abstract class Account {
         this.credit = credit;
         allDiscountCodes = new ArrayList<DiscountCode>();
         //allAccounts.add(this);
-    }
-
-    public void loginAccount(Account account) {
-        account.isThisAccountLogged = true;
-    }
-
-    public void logoutAccount(Account account) {
-        account.isThisAccountLogged = false;
-    }
-
-    public boolean getIsThisAccountLogged(Account account) {
-        return account.isThisAccountLogged;
     }
 
     public void setUserName(String userName) {

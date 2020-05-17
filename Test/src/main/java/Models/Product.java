@@ -21,6 +21,7 @@ public class Product {
     private String explanation;
     private double averageScore = 0;
     private String productsSpecialFeature;
+    private int visitedTime=0;
     private ArrayList<PointOfView> pointOfViews = new ArrayList<>();
     private ArrayList<Score> scoresForProduct = new ArrayList<>();
     private static ArrayList<Product> products = new ArrayList<>();
@@ -37,6 +38,13 @@ public class Product {
         this.averageScore = averageScore;
         this.productsSpecialFeature=productsSpecialFeature;
         products.add(this);
+    }
+    public void addToVisitedTime(){
+        this.visitedTime++;
+    }
+
+    public int getVisitedTime() {
+        return visitedTime;
     }
 
     public ArrayList<Score> getScoresForProduct() {

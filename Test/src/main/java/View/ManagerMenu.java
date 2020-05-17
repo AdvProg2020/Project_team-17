@@ -4,64 +4,80 @@ import Controller.AccountsManager.ManagerAbilitiesManager;
 import Models.Accounts.Manager;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ManagerMenu extends Menu {
+    RegisterAndLoginMenu registerAndLoginMenu = new RegisterAndLoginMenu(this);
+    CommandProcessor commandProcessor = new CommandProcessor();
+
     public ManagerMenu(Menu parentMenu) {
         super("Manager ", parentMenu);
     }
 
     @Override
     public void show() {
-        System.out.println("1.view personal info");
-        System.out.println("2.manage users");
-        System.out.println("3.manage all products");
-        System.out.println("4.create discount code");
-        System.out.println("5.view discount codes");
-        System.out.println("6.manage requests");
-        System.out.println("7.manage categories");
-        System.out.println("8.back");
+        if (RegisterAndLoginMenu.getCurrentManager() != null) {
+            System.out.println("1.view personal info");
+            System.out.println("2.manage users");
+            System.out.println("3.manage all products");
+            System.out.println("4.create discount code");
+            System.out.println("5.view discount codes");
+            System.out.println("6.manage requests");
+            System.out.println("7.manage categories");
+            System.out.println("8.logout");
+            System.out.println("9.back");
+        } else {
+            System.out.println("you haven't logged in yet, first login as a manager");
+            registerAndLoginMenu.show();
+            registerAndLoginMenu.execute();
+        }
     }
 
     @Override
     public void execute() {
-        int input = Integer.parseInt(scanner.nextLine());
-        if (input == 1) {
-            viewPersonalInfo();
-            parentMenu.show();
-            parentMenu.execute();
-        } else if (input == 2) {
-            manageUsers();
-            parentMenu.show();
-            parentMenu.execute();
-        } else if (input == 3) {
-            manageAllProducts();
-            parentMenu.show();
-            parentMenu.execute();
-        } else if (input == 4) {
-            createDiscountCode();
-            parentMenu.show();
-            parentMenu.execute();
-        } else if (input == 5) {
-            viewDiscountCodes();
-            parentMenu.show();
-            parentMenu.execute();
-        } else if (input == 6) {
-            manageRequests();
-            parentMenu.show();
-            parentMenu.execute();
-        } else if (input == 7) {
-            manageCategories();
-            parentMenu.show();
-            parentMenu.execute();
-        } else if (input == 8) {
-            parentMenu.show();
-            parentMenu.execute();
+        try {
+            int input = Integer.parseInt(scanner.nextLine());
+            if (input == 1) {
+                viewPersonalInfo();
+                parentMenu.show();
+                parentMenu.execute();
+            } else if (input == 2) {
+                manageUsers();
+                parentMenu.show();
+                parentMenu.execute();
+            } else if (input == 3) {
+                manageAllProducts();
+                parentMenu.show();
+                parentMenu.execute();
+            } else if (input == 4) {
+                createDiscountCode();
+                parentMenu.show();
+                parentMenu.execute();
+            } else if (input == 5) {
+                viewDiscountCodes();
+                parentMenu.show();
+                parentMenu.execute();
+            } else if (input == 6) {
+                manageRequests();
+                parentMenu.show();
+                parentMenu.execute();
+            } else if (input == 7) {
+                manageCategories();
+                parentMenu.show();
+                parentMenu.execute();
+            } else if (input == 8) {
+                RegisterAndLoginMenu.logout();
+                commandProcessor.runWithMenu();
+            } else if (input == 9) {
+                parentMenu.show();
+                parentMenu.execute();
+            }
+        } catch (Exception e) {
+            System.out.println("you should enter a number");
         }
-
     }
+
 
     public void viewPersonalInfo() {
         String command;
@@ -75,8 +91,7 @@ public class ManagerMenu extends Menu {
                 System.out.println("what is the new content for this field?");
                 String newContent = scanner.nextLine();
                 ManagerAbilitiesManager.changeField(manager, editFieldMatcher.group(1), newContent);
-            }
-            if (command.equals("help")) {
+            } else if (command.equals("help")) {
                 System.out.println("commands that you can enter are:");
                 System.out.println("edit [field]");
                 System.out.println("back");
@@ -97,15 +112,26 @@ public class ManagerMenu extends Menu {
             Matcher deleteAccountMatcher = deleteAccountPattern.matcher(command);
             if (command.matches("view\\s(.+)")) {
                 viewAccountMatcher.find();
-                System.out.println(ManagerAbilitiesManager.viewAccountByUsername(viewAccountMatcher.group(1)));
+                try {
+                    System.out.println(ManagerAbilitiesManager.viewAccountByUsername(viewAccountMatcher.group(1)));
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
             } else if (command.matches("delete user\\s(.+)")) {
                 deleteAccountMatcher.find();
-                ManagerAbilitiesManager.deleteUser(deleteAccountMatcher.group(1));
+                try {
+                    ManagerAbilitiesManager.deleteUser(deleteAccountMatcher.group(1));
+                    System.out.println("user deleted successfully");
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
             } else if (command.equals("create manager profile")) {
                 getInfoForCreatingManger();
             }
         }
-    }public void manageAllProducts() {
+    }
+
+    public void manageAllProducts() {
         String command;
         while (true) {
             command = scanner.nextLine();
@@ -153,6 +179,7 @@ public class ManagerMenu extends Menu {
         }
         ManagerAbilitiesManager.createDiscountCode(code, startDate, endDate, discountPercent, maxAmountForDiscount, repeat, customersName);
     }
+
     public void viewDiscountCodes() {
         String command;
         System.out.println(ManagerAbilitiesManager.viewDiscountCodes());
@@ -204,6 +231,7 @@ public class ManagerMenu extends Menu {
 
         }
     }
+
     public void manageRequests() {
         String command;
         System.out.println(ManagerAbilitiesManager.showAllRequests());
@@ -229,7 +257,6 @@ public class ManagerMenu extends Menu {
                 } catch (Exception e) {
                     e.getMessage();
                 }
-
             } else if (command.matches("decline\\s(.+)")) {
                 declineRequestMatcher.find();
                 try {
@@ -308,7 +335,7 @@ public class ManagerMenu extends Menu {
             accountInfo.add(scanner.nextLine());
             ManagerAbilitiesManager.createAnotherManager(username, accountInfo.get(1), accountInfo.get(2), accountInfo.get(3), accountInfo.get(4), accountInfo.get(0));
         } catch (Exception e) {
-            e.getMessage();
+            System.out.println(e.getMessage());
         }
     }
 }
