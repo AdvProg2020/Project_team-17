@@ -8,6 +8,7 @@ import Models.Accounts.Seller;
 import Models.Enums.DiscountEnum;
 import Models.Request.Request;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -96,19 +97,19 @@ public class ManagerAbilitiesManager {
         for (String customer : customersName) {
             customers.add(Customer.getCustomerByName(customer));
         }
-        new DiscountCode(code, new Date(beginningDate), new Date(endingDate), Double.parseDouble(discountPercent), Double.parseDouble(max), repeat, customers);
+        new DiscountCode(code, LocalDate.parse(beginningDate), LocalDate.parse(endingDate), Double.parseDouble(discountPercent), Double.parseDouble(max), repeat, customers);
     }
 
-    public static ArrayList<String> viewDiscountCodes() throws Exception{
-        if(DiscountCode.getAllDiscountCodes()!=null){
-        ArrayList<String> discountCodeInfo = new ArrayList<>();
-        for (DiscountCode discountCode : DiscountCode.getAllDiscountCodes()) {
-            discountCodeInfo.add(discountCode.getDiscountCode());
-        }
-        return discountCodeInfo;
-        }else {
-            throw new Exception("there isn't any discount code ");
-        }
+    public static ArrayList<String> viewDiscountCodes() {
+        //if (DiscountCode.getAllDiscountCodes() != null) {
+            ArrayList<String> discountCodeInfo = new ArrayList<>();
+            for (DiscountCode discountCode : DiscountCode.getAllDiscountCodes()) {
+                discountCodeInfo.add(discountCode.getDiscountCode());
+            }
+            return discountCodeInfo;
+        //} else {
+       //     throw new Exception("there isn't any discount code ");
+       // }
     }
 
     public static void isThereDiscountCode(String discountCode) throws Exception {
@@ -126,9 +127,9 @@ public class ManagerAbilitiesManager {
     public static void editDiscountCode(String code, String field, String newContentForThisField) {
         DiscountCode discountCode = DiscountCode.getDiscountCodeWithCode(code);
         if (field.equals("starting date")) {
-            discountCode.setStartDate(new Date(newContentForThisField));
+            discountCode.setStartDate(LocalDate.parse(newContentForThisField));
         } else if (field.equals("ending date")) {
-            discountCode.setEndDate(new Date(newContentForThisField));
+            discountCode.setEndDate(LocalDate.parse(newContentForThisField));
         } else if (field.equals("discount percent")) {
             discountCode.setDiscountCode(newContentForThisField);
         } else if (field.equals("maximum discount amount")) {
@@ -159,10 +160,11 @@ public class ManagerAbilitiesManager {
         }
     }
 
-    public static void acceptRequest(String requestId) throws Exception {
+    public static String acceptRequest(String requestId) throws Exception {
         if (Request.isThereRequestById(requestId)) {
-            Request request = Request.getRequestById(requestId);
-            request.accept();
+            Request.getRequestById(requestId).accept();
+            Request.deleteRequest(Request.getRequestById(requestId));
+            return "request accepted";
         } else {
             throw new Exception("there isn't request with this ID");
         }
@@ -185,14 +187,12 @@ public class ManagerAbilitiesManager {
         return showAllCategory;
     }
 
-    public static void editCategoryName(Category category, String newName){
-            category.changeCategoryName(category, newName);
-
+    public static void editCategoryName(Category category, String newName) {
+        category.changeCategoryName(category, newName);
     }
 
     public static void editCategoryFeature(Category category, String newFeature) {
         category.changeSpecialFeatures(category, newFeature);
-
     }
 
     public static void addCategory(String name, String feature) throws Exception {

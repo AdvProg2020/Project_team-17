@@ -167,7 +167,6 @@ public class ManagerMenu extends Menu {
         }
     }
 
-    //bug (create discount code)
     public void createDiscountCode() {
         String command;
         while (true) {
@@ -186,11 +185,12 @@ public class ManagerMenu extends Menu {
 
     public void viewDiscountCodes() {
         String command;
-        try {
+        /*try {
             System.out.println(ManagerAbilitiesManager.viewDiscountCodes());
         } catch (Exception e) {
             System.out.println(e.getMessage());
-        }
+        }*/
+        System.out.println(ManagerAbilitiesManager.viewDiscountCodes());
         while (true) {
             command = scanner.nextLine();
             Pattern viewDiscountCodePattern = Pattern.compile("view discount code\\s(.+)");
@@ -260,8 +260,9 @@ public class ManagerMenu extends Menu {
                 }
             } else if (command.matches("accept\\s(.+)")) {
                 acceptRequestMatcher.find();
+                System.out.println(acceptRequestMatcher.group(1));
                 try {
-                    ManagerAbilitiesManager.acceptRequest(acceptRequestMatcher.group(1));
+                    System.out.println(ManagerAbilitiesManager.acceptRequest(acceptRequestMatcher.group(1)));
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
@@ -272,12 +273,12 @@ public class ManagerMenu extends Menu {
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
-            }else if(command.equals("help")){
+            } else if (command.equals("help")) {
                 System.out.println("commands that you can enter are:");
                 System.out.println("details [requestID]");
                 System.out.println("accept [requestID]");
                 System.out.println("decline [requestID]");
-            }else if(command.equals("back")) {
+            } else if (command.equals("back")) {
                 break;
             }
         }
@@ -383,6 +384,7 @@ public class ManagerMenu extends Menu {
         System.out.println("how many customer have this code: ");
         int numOfCustomer = scanner.nextInt();
         for (int i = 0; i < numOfCustomer; i++) {
+            scanner.next();
             String name = scanner.nextLine();
             customersName.add(name);
         }

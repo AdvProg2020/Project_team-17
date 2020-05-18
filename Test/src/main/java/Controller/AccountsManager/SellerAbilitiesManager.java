@@ -12,6 +12,7 @@ import Models.Request.EditProductRequest;
 import Models.Request.Request;
 import View.RegisterAndLoginMenu;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -92,7 +93,7 @@ public class SellerAbilitiesManager {
 
     public static Discount addDiscount(Seller seller, String id, String beginningDate, String endingDate,
                                        double discountPercent, ArrayList<String> productsName) {
-        Discount discount = new Discount(id, new Date(beginningDate), new Date(endingDate), discountPercent, Product.getProductsListByName(productsName));
+        Discount discount = new Discount(id, LocalDate.parse(beginningDate), LocalDate.parse(endingDate), discountPercent, Product.getProductsListByName(productsName));
         seller.addDiscountForSeller(seller, discount);
         return discount;
     }

@@ -3,6 +3,7 @@ package Models;
 import Models.Accounts.Account;
 import Models.Accounts.Customer;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -10,8 +11,8 @@ import java.util.Map;
 
 public class DiscountCode {
     private String discountCode;
-    private Date startDate;
-    private Date endDate;
+    private LocalDate startDate;
+    private LocalDate endDate;
     private double discountPercent;
     private double maxDiscountAmount;
     private int countDiscountCode;
@@ -19,7 +20,7 @@ public class DiscountCode {
     private static ArrayList<DiscountCode> allDiscountCodes = new ArrayList<>();
 
 
-    public DiscountCode(String discountCode, Date startDate, Date endDate, double discountPercent,
+    public DiscountCode(String discountCode, LocalDate startDate, LocalDate endDate, double discountPercent,
                         double maxDiscountAmount, int countDiscountCode, ArrayList<Customer> customers) {
         this.discountCode = discountCode;
         this.startDate = startDate;
@@ -43,11 +44,11 @@ public class DiscountCode {
         this.discountCode = discountCode;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 
@@ -63,13 +64,6 @@ public class DiscountCode {
         this.countDiscountCode = countDiscountCode;
     }
 
-    public Date getStartDate() {
-        return startDate;
-    }
-
-    public Date getEndDate() {
-        return endDate;
-    }
 
     public double getDiscountPercent() {
         return discountPercent;

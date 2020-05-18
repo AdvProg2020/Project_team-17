@@ -2,6 +2,7 @@ package Models;
 
 import Models.Enums.DiscountEnum;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -9,12 +10,12 @@ public class Discount {
     private String discountId;
     private ArrayList<Product> discountProducts;
     private static ArrayList<Discount> allDiscounts = new ArrayList<>();
-    private Date startDate;
-    private Date endDate;
+    private LocalDate startDate;
+    private LocalDate endDate;
     private double discountPercent;
     private DiscountEnum discountState;
 
-    public Discount(String discountId, Date startDate, Date endDate, double discountPercent, ArrayList<Product> products) {
+    public Discount(String discountId, LocalDate startDate, LocalDate endDate, double discountPercent, ArrayList<Product> products) {
         this.discountId = discountId;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -48,23 +49,21 @@ public class Discount {
         this.discountPercent = discountPercent;
     }
 
-
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
-
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
-    }
-
-    public Date getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public Date getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
+    }
+
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
+    }
 
     public void addProduct(Product product) {
         discountProducts.add(product);

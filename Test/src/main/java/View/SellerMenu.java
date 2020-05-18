@@ -89,6 +89,8 @@ public class SellerMenu extends Menu {
             }
         }catch (Exception e){
             System.out.println("you should enter a number");
+            this.show();
+            this.execute();
         }
     }
 
