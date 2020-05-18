@@ -4,7 +4,6 @@ import Controller.AccountsManager.SellerAbilitiesManager;
 import Models.Accounts.Seller;
 import Models.Category;
 import Models.Discount;
-import Models.Enums.ProductEnum;
 import Models.Product;
 import Models.Request.AddOffRequest;
 import Models.Request.AddProductRequest;
@@ -122,13 +121,21 @@ public class SellerMenu extends Menu {
 
     public void viewSalesHistory() {
         Seller seller = RegisterAndLoginMenu.getCurrentSeller();
-        System.out.println(SellerAbilitiesManager.viewSalesHistory(seller));
+        try {
+            System.out.println(SellerAbilitiesManager.viewSalesHistory(seller));
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 
     public void manageProducts() {
         String command;
         Seller seller = RegisterAndLoginMenu.getCurrentSeller();
-        System.out.println(seller.getAllProducts());
+        if(seller.getAllProducts()!= null){
+            System.out.println(seller.getAllProducts());
+        }else {
+            System.out.println("seller doesn't have any product yet");
+        }
         while (true) {
             command = scanner.nextLine();
             Pattern viewProductPattern = Pattern.compile("view\\s(.+)");
@@ -144,7 +151,7 @@ public class SellerMenu extends Menu {
                     Product product = Product.getProductWithId(viewProductMatcher.group(1));
                     System.out.println(product.toString());
                 } catch (Exception e) {
-                    e.getMessage();
+                    System.out.println(e.getMessage());
                 }
             } else if (command.matches("edit\\s(.+)")) {
                 editProductMatcher.find();
@@ -156,7 +163,7 @@ public class SellerMenu extends Menu {
                     String newContent = scanner.nextLine();
                     SellerAbilitiesManager.sendEditingProductRequest(editProductMatcher.group(1), seller, field, newContent);
                 } catch (Exception e) {
-                    e.getMessage();
+                    System.out.println(e.getMessage());
                 }
             } else if (command.matches("view buyers\\s(.+)")) {
                 viewBuyersMatcher.find();
@@ -164,7 +171,7 @@ public class SellerMenu extends Menu {
                     SellerAbilitiesManager.doesSellerHaveThisProduct(seller, viewBuyersMatcher.group(1));
                     System.out.println(SellerAbilitiesManager.viewProductsBuyer(seller, viewBuyersMatcher.group(1)));
                 } catch (Exception e) {
-                    e.getMessage();
+                    System.out.println(e.getMessage());
                 }
             } else if (command.equals("back")) {
                 break;
@@ -174,10 +181,8 @@ public class SellerMenu extends Menu {
                 System.out.println("view [productID]");
                 System.out.println("view buyers [productID]");
                 System.out.println("back");
-
             }
         }
-
     }
 
     public void addProduct() {
@@ -188,8 +193,6 @@ public class SellerMenu extends Menu {
             if (command.equals("add product")) {
                 System.out.println("Enter productID: ");
                 String id = scanner.nextLine();
-                System.out.println("Enter product status: ");
-                ProductEnum productStatus = ProductEnum.valueOf(scanner.nextLine());
                 System.out.println("Enter product name: ");
                 String name = scanner.nextLine();
                 System.out.println("Enter company name: ");
@@ -202,8 +205,9 @@ public class SellerMenu extends Menu {
                 String explanation = scanner.nextLine();
                 System.out.println("Enter special feature");
                 String feature = scanner.nextLine();
-                Product product = SellerAbilitiesManager.addProduct(id, productStatus, name, companyName, price, category, seller, explanation, feature);
+                Product product = SellerAbilitiesManager.addProduct(id, name, companyName, price, category, seller, explanation, feature);
                 new AddProductRequest(seller, RegisterAndLoginMenu.getCurrentManager(), product, category);
+                System.out.println("request for adding product sent to manager");
             } else if (command.equals("back")) {
                 break;
             } else if (command.equals("help")) {
@@ -212,7 +216,6 @@ public class SellerMenu extends Menu {
                 System.out.println("back");
             }
         }
-
     }
 
     public void removeProduct() {

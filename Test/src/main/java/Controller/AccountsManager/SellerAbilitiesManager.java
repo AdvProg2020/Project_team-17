@@ -45,22 +45,24 @@ public class SellerAbilitiesManager {
         return seller.getCompanyName();
     }
 
-    public static ArrayList<String> viewSalesHistory(Seller seller) {
-        ArrayList<SellLog> logs = seller.getLogs();
-        ArrayList<String> salesHistory = new ArrayList<String>();
-        for (SellLog log : logs) {
-            salesHistory.add(log.toString());
+    public static ArrayList<String> viewSalesHistory(Seller seller) throws Exception {
+        if (seller.getLogs() != null) {
+            ArrayList<SellLog> logs = seller.getLogs();
+            ArrayList<String> salesHistory = new ArrayList<String>();
+            for (SellLog log : logs) {
+                salesHistory.add(log.toString());
+            }
+            return salesHistory;
+        } else {
+            throw new Exception("you haven't sold anything yet");
         }
-        return salesHistory;
     }
 
 
-    public static Product addProduct(String productId, ProductEnum productStatus, String productName, String companyName,
+    public static Product addProduct(String productId, String productName, String companyName,
                                      double price, Category category, Seller seller, String productExplanation, String specialFeature) {
-        Product product = new Product(productId, productName, companyName, price,
+        return new Product(productId, productName, companyName, price,
                 seller, category, productExplanation, 0, specialFeature);
-        product.setProductState(ProductEnum.PRODUCING);
-        return product;
     }
 
     public static void sendEditingProductRequest(String id, Seller seller, String field, String newContentForThisField) {
@@ -68,25 +70,6 @@ public class SellerAbilitiesManager {
         new EditProductRequest(seller, RegisterAndLoginMenu.getCurrentManager(), product, field, newContentForThisField);
     }
 
-
-    /*public static Product editProduct(String id, String field, String newContentForThisField) {
-        Product product = Product.getProductWithId(id);
-        if (field.equals("name")) {
-            product.setName(newContentForThisField);
-        } else if (field.equals("companyName")) {
-            product.setCompanyName(newContentForThisField);
-        } else if (field.equals("description")) {
-            product.setExplanation(newContentForThisField);
-        } else if (field.equals("seller")) {
-            product.setSeller(Seller.getSellerByName(newContentForThisField));
-        } else if (field.equals("price")) {
-            product.setPrice(Double.parseDouble(newContentForThisField));
-        } else if (field.equals("category")) {
-            product.setCategory(Category.getCategoryByName(newContentForThisField));
-        }
-        product.setProductState(ProductEnum.EDITING);
-        return product;
-    }*/
     public static void removeProduct(Seller seller, String productId) throws Exception {
         if (Product.isThereProductWithId(productId)) {
             Product product = Product.getProductWithId(productId);
@@ -103,21 +86,9 @@ public class SellerAbilitiesManager {
 
     public static void sendEditingOffRequest(String id, Seller seller, String field, String newContentForThisField) {
         Discount discount = Discount.getDiscountById(id);
-        new EditOffRequest(seller, RegisterAndLoginMenu.getCurrentManager(), discount,field,newContentForThisField);
+        new EditOffRequest(seller, RegisterAndLoginMenu.getCurrentManager(), discount, field, newContentForThisField);
     }
 
-    /*public static Discount editOff(String id, String field, String newContentForThisField) {
-        Discount discount = Discount.getDiscountById(id);
-        if (field.equals("discount percent")) {
-            discount.setDiscountPercent(Double.parseDouble(newContentForThisField));
-        } else if (field.equals("start date")) {
-            discount.setStartDate(new Date(newContentForThisField));
-        } else if (field.equals("end date")) {
-            discount.setEndDate(new Date(newContentForThisField));
-        }
-        discount.setDiscountState(DiscountEnum.EDITING);
-        return discount;
-    }*/
 
     public static Discount addDiscount(Seller seller, String id, String beginningDate, String endingDate,
                                        double discountPercent, ArrayList<String> productsName) {

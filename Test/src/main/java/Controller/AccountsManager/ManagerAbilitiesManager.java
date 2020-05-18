@@ -27,17 +27,17 @@ public class ManagerAbilitiesManager {
     }
 
 
-    public static String viewAccountByUsername(String username) throws Exception{
+    public static String viewAccountByUsername(String username) throws Exception {
         if (Customer.isThereCustomerWithUserName(username)) {
             Customer customer = Customer.getCustomerByName(username);
             return customer.toString();
-        }else if(Seller.isThereSellerWithUserName(username)){
-            Seller seller= Seller.getSellerByName(username);
+        } else if (Seller.isThereSellerWithUserName(username)) {
+            Seller seller = Seller.getSellerByName(username);
             return seller.toString();
-        }else if(Manager.isThereManagerWithUserName(username)){
-            Manager manager =Manager.getManagerByUserName(username);
+        } else if (Manager.isThereManagerWithUserName(username)) {
+            Manager manager = Manager.getManagerByUserName(username);
             return manager.toString();
-        }else throw new Exception("There isn't any account with thus username");
+        } else throw new Exception("There isn't any account with thus username");
 
     }
 
@@ -55,14 +55,14 @@ public class ManagerAbilitiesManager {
         }
     }
 
-    public static void deleteUser(String username) throws Exception{
+    public static void deleteUser(String username) throws Exception {
         if (Customer.isThereCustomerWithUserName(username)) {
             Customer.deleteCustomer(username);
         } else if (Manager.isThereManagerWithUserName(username)) {
             Manager.deleteManager(username);
         } else if (Seller.isThereSellerWithUserName(username)) {
             Seller.deleteSeller(username);
-        }else {
+        } else {
             throw new Exception("there isn't account with this username");
         }
     }
@@ -91,21 +91,24 @@ public class ManagerAbilitiesManager {
         }
     }
 
-    public static void createDiscountCode(String code, String beginningDate, String endingDate, String discountPercent, String max, String repeat, ArrayList<String> customersName) {
+    public static void createDiscountCode(String code, String beginningDate, String endingDate, String discountPercent, String max, int repeat, ArrayList<String> customersName) {
         ArrayList<Customer> customers = new ArrayList<>();
         for (String customer : customersName) {
             customers.add(Customer.getCustomerByName(customer));
         }
-        new DiscountCode(code, new Date(beginningDate), new Date(endingDate), Double.parseDouble(discountPercent), Double.parseDouble(max), Integer.parseInt(repeat), customers);
+        new DiscountCode(code, new Date(beginningDate), new Date(endingDate), Double.parseDouble(discountPercent), Double.parseDouble(max), repeat, customers);
     }
 
-    public static ArrayList<String> viewDiscountCodes() {
-        //fek konam hamin k code ro faghat neshon bede okaye
+    public static ArrayList<String> viewDiscountCodes() throws Exception{
+        if(DiscountCode.getAllDiscountCodes()!=null){
         ArrayList<String> discountCodeInfo = new ArrayList<>();
         for (DiscountCode discountCode : DiscountCode.getAllDiscountCodes()) {
             discountCodeInfo.add(discountCode.getDiscountCode());
         }
         return discountCodeInfo;
+        }else {
+            throw new Exception("there isn't any discount code ");
+        }
     }
 
     public static void isThereDiscountCode(String discountCode) throws Exception {
@@ -174,30 +177,36 @@ public class ManagerAbilitiesManager {
         }
     }
 
-    public static ArrayList<Category> showAllCategories() {
-        ArrayList<Category> showAllCategory = new ArrayList<>();
+    public static ArrayList<String> showAllCategories() {
+        ArrayList<String> showAllCategory = new ArrayList<>();
         for (Category category : Category.getAllCategories()) {
-            showAllCategory.add(category);
+            showAllCategory.add(category.getCategoryName());
         }
         return showAllCategory;
     }
 
-    public static void editCategoryName(String oldName, String newName) {
-        Category category = Category.getCategoryByName(oldName);
-        category.changeCategoryName(category, newName);
+    public static void editCategoryName(Category category, String newName){
+            category.changeCategoryName(category, newName);
+
     }
 
-    public static void editCategoryFeature(String name, String newFeature) {
-        Category category = Category.getCategoryByName(name);
+    public static void editCategoryFeature(Category category, String newFeature) {
         category.changeSpecialFeatures(category, newFeature);
+
     }
 
-    public static void addCategory(String name, String feature) {
-        new Category(name, feature);
+    public static void addCategory(String name, String feature) throws Exception {
+        if (!(Category.isThereCategoryWithName(name))) {
+            new Category(name, feature);
+        } else {
+            throw new Exception("there is a category with this name");
+        }
     }
 
-    public static void removeCategory(String name) {
-        Category.deleteCategory(Category.getCategoryByName(name));
+    public static void removeCategory(String name) throws Exception {
+        if (Category.isThereCategoryWithName(name)) {
+            Category.deleteCategory(Category.getCategoryByName(name));
+        } else throw new Exception("there isn't any category with this name");
     }
 }
 

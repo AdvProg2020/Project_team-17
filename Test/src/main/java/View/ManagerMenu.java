@@ -2,6 +2,7 @@ package View;
 
 import Controller.AccountsManager.ManagerAbilitiesManager;
 import Models.Accounts.Manager;
+import Models.Category;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -75,6 +76,8 @@ public class ManagerMenu extends Menu {
             }
         } catch (Exception e) {
             System.out.println("you should enter a number");
+            this.show();
+            this.execute();
         }
     }
 
@@ -127,6 +130,15 @@ public class ManagerMenu extends Menu {
                 }
             } else if (command.equals("create manager profile")) {
                 getInfoForCreatingManger();
+                System.out.println("manager created successfully");
+            } else if (command.equals("back")) {
+                break;
+            } else if (command.equals("help")) {
+                System.out.println("commands that you can enter are:");
+                System.out.println("view [username]");
+                System.out.println("delete user [username]");
+                System.out.println("create manager profile");
+                System.out.println("back");
             }
         }
     }
@@ -143,7 +155,7 @@ public class ManagerMenu extends Menu {
                     ManagerAbilitiesManager.removeProduct(removeProductMatcher.group(1));
                     System.out.println("Product removed successfully");
                 } catch (Exception e) {
-                    e.getMessage();
+                    System.out.println(e.getMessage());
                 }
             } else if (command.equals("back")) {
                 break;
@@ -155,34 +167,30 @@ public class ManagerMenu extends Menu {
         }
     }
 
+    //bug (create discount code)
     public void createDiscountCode() {
-        System.out.println("Enter code: ");
-        String code = scanner.nextLine();
-        System.out.println("Enter beginning date: ");
-        String startDate = scanner.nextLine();
-        System.out.println("Enter ending date: ");
-        String endDate = scanner.nextLine();
-        System.out.println("Enter discount percent: ");
-        String discountPercent = scanner.nextLine();
-        System.out.println("Enter maximum discount amount :");
-        String maxAmountForDiscount = scanner.nextLine();
-        System.out.println("Enter number of repeat for this discount code: ");
-        String repeat = scanner.nextLine();
-        ArrayList<String> customersName = new ArrayList<>();
-        System.out.println("enter customers that have this code(enter end to finish)");
+        String command;
         while (true) {
-            String name = scanner.nextLine();
-            if (name.equals("end")) {
+            command = scanner.nextLine();
+            if (command.equals("create discount code")) {
+                getInfoForCreatingDiscountCode();
+            } else if (command.equals("back")) {
                 break;
+            } else if (command.equals("help")) {
+                System.out.println("commands that you can enter are:");
+                System.out.println("create discount code");
+                System.out.println("back");
             }
-            customersName.add(name);
         }
-        ManagerAbilitiesManager.createDiscountCode(code, startDate, endDate, discountPercent, maxAmountForDiscount, repeat, customersName);
     }
 
     public void viewDiscountCodes() {
         String command;
-        System.out.println(ManagerAbilitiesManager.viewDiscountCodes());
+        try {
+            System.out.println(ManagerAbilitiesManager.viewDiscountCodes());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
         while (true) {
             command = scanner.nextLine();
             Pattern viewDiscountCodePattern = Pattern.compile("view discount code\\s(.+)");
@@ -197,7 +205,7 @@ public class ManagerMenu extends Menu {
                     ManagerAbilitiesManager.isThereDiscountCode(viewDiscountCodeMatcher.group(1));
                     System.out.println(ManagerAbilitiesManager.viewDiscountCode(viewDiscountCodeMatcher.group(1)));
                 } catch (Exception e) {
-                    e.getMessage();
+                    System.out.println(e.getMessage());
                 }
             } else if (command.matches("edit discount code\\s(.+)")) {
                 editDiscountCodeMatcher.find();
@@ -209,7 +217,7 @@ public class ManagerMenu extends Menu {
                     String newContent = scanner.nextLine();
                     ManagerAbilitiesManager.editDiscountCode(editDiscountCodeMatcher.group(1), field, newContent);
                 } catch (Exception e) {
-                    e.getMessage();
+                    System.out.println(e.getMessage());
                 }
             } else if (command.matches("remove discount code\\s(.+)")) {
                 removeDiscountCodeMatcher.find();
@@ -217,7 +225,7 @@ public class ManagerMenu extends Menu {
                     ManagerAbilitiesManager.isThereDiscountCode(removeDiscountCodeMatcher.group(1));
                     ManagerAbilitiesManager.removeDiscountCode(removeDiscountCodeMatcher.group(1));
                 } catch (Exception e) {
-                    e.getMessage();
+                    System.out.println(e.getMessage());
                 }
             } else if (command.equals("back")) {
                 break;
@@ -248,25 +256,31 @@ public class ManagerMenu extends Menu {
                 try {
                     System.out.println(ManagerAbilitiesManager.showDetailsOfRequest(detailsOfRequestMatcher.group(1)));
                 } catch (Exception e) {
-                    e.getMessage();
+                    System.out.println(e.getMessage());
                 }
             } else if (command.matches("accept\\s(.+)")) {
                 acceptRequestMatcher.find();
                 try {
                     ManagerAbilitiesManager.acceptRequest(acceptRequestMatcher.group(1));
                 } catch (Exception e) {
-                    e.getMessage();
+                    System.out.println(e.getMessage());
                 }
             } else if (command.matches("decline\\s(.+)")) {
                 declineRequestMatcher.find();
                 try {
                     ManagerAbilitiesManager.declineRequest(declineRequestMatcher.group(1));
                 } catch (Exception e) {
-                    e.getMessage();
+                    System.out.println(e.getMessage());
                 }
+            }else if(command.equals("help")){
+                System.out.println("commands that you can enter are:");
+                System.out.println("details [requestID]");
+                System.out.println("accept [requestID]");
+                System.out.println("decline [requestID]");
+            }else if(command.equals("back")) {
+                break;
             }
         }
-
     }
 
     public void manageCategories() {
@@ -282,40 +296,53 @@ public class ManagerMenu extends Menu {
             Matcher removeCategoryMatcher = removeCategoryPattern.matcher(command);
             if (command.matches("edit\\s(.+)")) {
                 editCategoryMatcher.find();
-                System.out.println("you want to edit name or feature?");
-                String input = scanner.nextLine();
-                if (input.equals("name")) {
-                    System.out.println("enter the new name :");
-                    String newName = scanner.nextLine();
-                    ManagerAbilitiesManager.editCategoryName(editCategoryMatcher.group(1), newName);
-                    System.out.println("name edited successfully");
-                } else if (input.equals("feature")) {
-                    System.out.println("enter the new feature :");
-                    String newFeature = scanner.nextLine();
-                    ManagerAbilitiesManager.editCategoryFeature(editCategoryMatcher.group(1), newFeature);
-                    System.out.println("feature edited successfully");
+                Category category = Category.getCategoryByName(editCategoryMatcher.group(1));
+                if (category != null) {
+                    System.out.println("you want to edit name or feature?(enter name or feature)");
+                    String input = scanner.nextLine();
+                    if (input.equals("name")) {
+                        System.out.println("enter the new name :");
+                        String newName = scanner.nextLine();
+                        ManagerAbilitiesManager.editCategoryName(category, newName);
+                        System.out.println("name edited successfully");
+                    } else if (input.equals("feature")) {
+                        System.out.println("enter the new feature :");
+                        String newFeature = scanner.nextLine();
+                        ManagerAbilitiesManager.editCategoryFeature(category, newFeature);
+                        System.out.println("feature edited successfully");
+                    }
+                } else if (category == null) {
+                    System.out.println("there isn't category with this name");
                 }
+
             } else if (command.matches("add\\s(.+)")) {
                 addCategoryMatcher.find();
                 System.out.println("enter the feature of new category :");
                 String feature = scanner.nextLine();
-                ManagerAbilitiesManager.addCategory(addCategoryMatcher.group(1), feature);
-                System.out.println("new category added successfully");
+                try {
+                    ManagerAbilitiesManager.addCategory(addCategoryMatcher.group(1), feature);
+                    System.out.println("new category added successfully");
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
             } else if (command.matches("remove\\s(.+)")) {
                 removeCategoryMatcher.find();
-                ManagerAbilitiesManager.removeCategory(removeCategoryMatcher.group(1));
+                try {
+                    ManagerAbilitiesManager.removeCategory(removeCategoryMatcher.group(1));
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
             } else if (command.equals("back")) {
                 break;
             } else if (command.equals("help")) {
                 System.out.println("commands that you can enter are:");
+                System.out.println("edit [category]");
+                System.out.println("remove [category]");
+                System.out.println("add [category]");
+                System.out.println("back");
             }
-            System.out.println("edit [category]");
-            System.out.println("remove [category]");
-            System.out.println("add [category]");
-            System.out.println("back");
         }
     }
-
 
     public void getInfoForCreatingManger() {
         ArrayList<String> accountInfo = new ArrayList<>();
@@ -337,5 +364,28 @@ public class ManagerMenu extends Menu {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    public void getInfoForCreatingDiscountCode() {
+        ArrayList<String> customersName = new ArrayList<>();
+        System.out.println("Enter code: ");
+        String code = scanner.nextLine();
+        System.out.println("Enter beginning date: ");
+        String startDate = scanner.nextLine();
+        System.out.println("Enter ending date: ");
+        String endDate = scanner.nextLine();
+        System.out.println("Enter discount percent: ");
+        String discountPercent = scanner.nextLine();
+        System.out.println("Enter maximum discount amount :");
+        String maxAmountForDiscount = scanner.nextLine();
+        System.out.println("Enter number of repeat for this discount code: ");
+        int repeat = scanner.nextInt();
+        System.out.println("how many customer have this code: ");
+        int numOfCustomer = scanner.nextInt();
+        for (int i = 0; i < numOfCustomer; i++) {
+            String name = scanner.nextLine();
+            customersName.add(name);
+        }
+        ManagerAbilitiesManager.createDiscountCode(code, startDate, endDate, discountPercent, maxAmountForDiscount, repeat, customersName);
     }
 }
