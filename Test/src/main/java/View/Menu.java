@@ -9,13 +9,20 @@ public abstract class Menu {
     private String name;
     protected HashMap<Integer, Menu> submenus;
     protected Menu parentMenu;
-    public static Scanner scanner ;
+    public static Scanner scanner;
     protected static ArrayList<Menu> allMenus = new ArrayList<Menu>();
 
     public Menu(String name, Menu parentMenu) {
         this.name = name;
         this.parentMenu = parentMenu;
         allMenus.add(this);
+    }
+    public static Menu getMenu(String name){
+        for (Menu menu : allMenus) {
+            if(menu.getName().equals(name)){
+                return menu;
+            }
+        }return null;
     }
 
     public String getName() {
@@ -30,8 +37,8 @@ public abstract class Menu {
         this.parentMenu = parentMenu;
     }
 
-   public static void setScanner(Scanner scanner) {
-       Menu.scanner = scanner;
+    public static void setScanner(Scanner scanner) {
+        Menu.scanner = scanner;
     }
 
     public void show() {

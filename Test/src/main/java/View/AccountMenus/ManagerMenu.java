@@ -4,7 +4,6 @@ import Controller.AccountsManager.ManagerAbilitiesManager;
 import Models.Accounts.Manager;
 import Models.Category;
 import View.CommandProcessor;
-import View.MainMenu;
 import View.Menu;
 import View.RegisterAndLoginMenu;
 
@@ -71,14 +70,14 @@ public class ManagerMenu extends Menu {
                 manageCategories();
                 parentMenu.show();
                 parentMenu.execute();
-            }   else if (input == 8) {
+            } else if (input == 8) {
                 RegisterAndLoginMenu.logout();
                 commandProcessor.runWithMenu();
             } else if (input == 9) {
                 parentMenu.show();
                 parentMenu.execute();
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
 
@@ -183,6 +182,8 @@ public class ManagerMenu extends Menu {
                 System.out.println("commands that you can enter are:");
                 System.out.println("create discount code");
                 System.out.println("back");
+            } else {
+                System.out.println("invalid command");
             }
         }
     }
@@ -380,14 +381,14 @@ public class ManagerMenu extends Menu {
         System.out.println("Enter number of repeat for this discount code: ");
         String repeat = scanner.nextLine();
 
-       System.out.println("how many customer have this code: ");
-       int numOfCustomer = Integer.valueOf(scanner.nextLine());
-       for (int i = 0; i <numOfCustomer; i++) {
-           System.out.println("enter the name of customer:");
-           String name = scanner.nextLine();
+        System.out.println("how many customer have this code: ");
+        int numOfCustomer = Integer.valueOf(scanner.nextLine());
+        for (int i = 0; i < numOfCustomer; i++) {
+            System.out.println("enter the name of customer:");
+            String name = scanner.nextLine();
             customersName.add(name);
         }
-       ManagerAbilitiesManager.createDiscountCode(code, startDate, endDate, discountPercent, maxAmountForDiscount, Integer.parseInt(repeat),customersName );
+        ManagerAbilitiesManager.createDiscountCode(code, startDate, endDate, discountPercent, maxAmountForDiscount, Integer.parseInt(repeat), customersName);
     }
 
 
