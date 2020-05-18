@@ -62,8 +62,10 @@ public class SellerAbilitiesManager {
 
     public static Product addProduct(String productId, String productName, String companyName,
                                      double price, Category category, Seller seller, String productExplanation, String specialFeature) {
-        return new Product(productId, productName, companyName, price,
+        Product product= new Product(productId, productName, companyName, price,
                 seller, category, productExplanation, 0, specialFeature);
+        Product.addProduct(product);
+        return product;
     }
 
     public static void sendEditingProductRequest(String id, Seller seller, String field, String newContentForThisField) {

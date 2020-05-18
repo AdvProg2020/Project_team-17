@@ -6,7 +6,7 @@ import Models.Discount;
 import Models.Enums.DiscountEnum;
 import Models.Enums.RequestTypeEnum;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class EditOffRequest extends Request {
     private Discount discount;
@@ -25,10 +25,10 @@ public class EditOffRequest extends Request {
     public void accept() {
         if (field.equals("discount percent")) {
             discount.setDiscountPercent(Double.parseDouble(newContentForThisField));
-        } else if (field.equals("start date")) {
-            discount.setStartDate(new Date(newContentForThisField));
-        } else if (field.equals("end date")) {
-            discount.setEndDate(new Date(newContentForThisField));
+        } else if (field.equals("enter start date as below(yyyy-mm-dd)")) {
+            discount.setStartDate(LocalDate.parse(newContentForThisField));
+        } else if (field.equals("enter end date as below(yyyy-mm-dd)")) {
+            discount.setEndDate(LocalDate.parse(newContentForThisField));
         }
         discount.setDiscountState(DiscountEnum.ACCEPTED);
     }

@@ -96,6 +96,7 @@ public class SellerMenu extends Menu {
 
     public void viewPersonalInfo() {
         Seller seller = RegisterAndLoginMenu.getCurrentSeller();
+        System.out.println(seller.toString());
         String command;
         while (true) {
             command = scanner.nextLine();

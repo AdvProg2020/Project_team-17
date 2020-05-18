@@ -37,7 +37,7 @@ public abstract class Request {
 
     public static Request getRequestById(String id) {
         for (Request request : allRequests) {
-            if (request.id.equals(id)) {
+            if (request.getId().equals(id)) {
                 return request;
             }
         }
@@ -46,7 +46,7 @@ public abstract class Request {
 
     public static boolean isThereRequestById(String id) {
         for (Request request : allRequests) {
-            if (request.id.equals(id)) {
+            if (request.getId().equals(id)) {
                 return true;
             }
         }

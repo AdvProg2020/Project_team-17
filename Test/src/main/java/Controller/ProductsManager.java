@@ -4,6 +4,8 @@ import Models.Accounts.Seller;
 import Models.Category;
 import Models.Enums.ProductEnum;
 import Models.Product;
+import View.ProductMenu;
+import View.ProductsMenu;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -25,6 +27,13 @@ public class ProductsManager {
             categoryName.add(category.getCategoryName());
         }
         return categoryName;
+    }
+    public static Product checkProductID(String id) throws Exception{
+        if(Product.getProductWithId(id)!=null){
+            return Product.getProductWithId(id);
+        }else {
+            throw new Exception("There isn't any product with this id");
+        }
     }
 
     public static String showAvailableFilter() {

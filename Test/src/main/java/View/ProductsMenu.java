@@ -121,17 +121,21 @@ public class ProductsMenu extends Menu {
 
     public void showProducts() {
         String command;
-        ProductsManager.showProducts();
+        System.out.println(ProductsManager.showProducts());
         while (true) {
             command = scanner.nextLine();
             Pattern showProductByIdPattern = Pattern.compile("show product\\s(.+)");
             Matcher showProductByIdMatcher = showProductByIdPattern.matcher(command);
             if (command.matches("show product\\s(.+)")) {
                 showProductByIdMatcher.find();
-                Product product = Product.getProductWithId(showProductByIdMatcher.group(1));
-                ProductMenu productMenu = new ProductMenu(this, product);
-                productMenu.show();
-                productMenu.execute();
+                try {
+                    Product product=ProductsManager.checkProductID(showProductByIdMatcher.group(1));
+                    ProductMenu productMenu = new ProductMenu(this, product);
+                    productMenu.show();
+                    productMenu.execute();
+                }catch (Exception e){
+                    System.out.println(e.getMessage());
+                }
             } else if (command.equals("help")) {
                 System.out.println("commands that you can enter are:");
                 System.out.println("show product [productID]");

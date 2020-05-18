@@ -74,6 +74,9 @@ public class Product {
     public String getName() {
         return name;
     }
+    public static void addProduct(Product product){
+        allProducts.add(product);
+    }
 
     public void setPriceAfterDiscount(double priceAfterDiscount) {
         this.priceAfterDiscount = priceAfterDiscount;
