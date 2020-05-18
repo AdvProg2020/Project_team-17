@@ -4,6 +4,7 @@ import Controller.AccountsManager.ManagerAbilitiesManager;
 import Models.Accounts.Manager;
 import Models.Category;
 import View.CommandProcessor;
+import View.MainMenu;
 import View.Menu;
 import View.RegisterAndLoginMenu;
 
@@ -70,10 +71,10 @@ public class ManagerMenu extends Menu {
                 manageCategories();
                 parentMenu.show();
                 parentMenu.execute();
-            } /*else if (input == 8) {
+            }   else if (input == 8) {
                 RegisterAndLoginMenu.logout();
                 commandProcessor.runWithMenu();
-            } */else if (input == 9) {
+            } else if (input == 9) {
                 parentMenu.show();
                 parentMenu.execute();
             }
