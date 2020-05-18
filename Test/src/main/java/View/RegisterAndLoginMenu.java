@@ -76,9 +76,9 @@ public class RegisterAndLoginMenu extends Menu {
                     accountInfo.add(scanner.nextLine());
                     if (registerMatcher.group(1).equals("customer")) {
                         System.out.println("Enter your credit:");
-                        double credit = scanner.nextDouble();
+                        String credit = scanner.nextLine();
                         new Customer(registerMatcher.group(2), accountInfo.get(1), accountInfo.get(2), accountInfo.get(3),
-                                accountInfo.get(5), accountInfo.get(0), credit, null);
+                                accountInfo.get(5), accountInfo.get(0), Double.parseDouble(credit));
                     } else if (registerMatcher.group(1).equals("seller")) {
                         System.out.println("Enter your company's name:");
                         accountInfo.add(scanner.nextLine());

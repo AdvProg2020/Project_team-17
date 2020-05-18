@@ -62,12 +62,14 @@ public class ProductMenu extends Menu {
                     // alan k mire to in safe vaghti k bar login kard dobare biad haminja? ya na az aval
                 } else {
                     ProductManager.addToCart(customer, product);
+                    System.out.println("product successfully added to your cart");
                 }
             } else if (command.equals("back")) {
                 break;
             } else if (command.equals("help")) {
                 System.out.println("commands that you can enter are:");
                 System.out.println("add to cart");
+                System.out.println("back");
             }
         }
     }

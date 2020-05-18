@@ -6,7 +6,6 @@ public class ReceivingInformationPage extends Menu {
     DiscountCodePage discountCodePage = new DiscountCodePage(this);
     private static String address;
     private static String phoneNum;
-    private static String date;
 
     public ReceivingInformationPage(Menu parentMenu) {
         super("Receiver Information", parentMenu);
@@ -43,11 +42,9 @@ public class ReceivingInformationPage extends Menu {
                 address = scanner.nextLine();
                 System.out.println("Enter phone number:");
                 phoneNum = scanner.nextLine();
-                System.out.println("Enter date");
-                date = scanner.nextLine();
                 System.out.println("enter done to confirm the information\n " + "enter change to re enter the information");
                 String option = scanner.nextLine();
-                if (option.equals("confirm")) {
+                if (option.equals("done")) {
                     discountCodePage.show();
                     discountCodePage.execute();
                 } else if (option.equals("change")) {
@@ -65,9 +62,5 @@ public class ReceivingInformationPage extends Menu {
 
     public static String getPhoneNum() {
         return phoneNum;
-    }
-
-    public static String getDate() {
-        return date;
     }
 }

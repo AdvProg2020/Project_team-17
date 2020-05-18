@@ -2,36 +2,27 @@ package Models.Logs;
 
 import Models.Product;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class SellLog extends Log {
-    private double discountAmount;
-    private String buyerName;
-
-    public SellLog(String id, Date date, double paymentAmount, String address, String phoneNumber, String customerName, ArrayList<Product> allProducts, boolean isReceived, double discountAmount, String buyerName) {
-        super(id, date, paymentAmount, address, phoneNumber, customerName, allProducts, isReceived);
-        this.discountAmount = discountAmount;
-        this.buyerName = buyerName;
-    }
-
-    public String getBuyerName() {
-        return buyerName;
+    public SellLog( LocalDate date, double paymentAmount, String address, String phoneNumber, String customerName, ArrayList<Product> products, boolean isReceived, double discountAmount) {
+        super("Sell Log ---> "+(getAllLogs().size()+1), date, paymentAmount, address, phoneNumber, customerName, products, isReceived, discountAmount);
     }
 
     @Override
     public String toString() {
         return "SellLog{" +
-                "discountAmount=" + discountAmount +
-                ", buyerName='" + buyerName + '\'' +
-                ", id='" + id + '\'' +
+                "id='" + id + '\'' +
                 ", date=" + date +
                 ", paymentAmount=" + paymentAmount +
                 ", address='" + address + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", allProducts=" + allProducts +
-                ", customerName='" + customerName + '\'' +
+                ", name='" + name + '\'' +
                 ", isReceived=" + isReceived +
+                ", discountAmount=" + discountAmount +
                 '}';
     }
 }

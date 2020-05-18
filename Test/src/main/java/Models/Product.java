@@ -22,6 +22,7 @@ public class Product {
     private double averageScore = 0;
     private String productsSpecialFeature;
     private int visitedTime=0;
+    private Discount discount;
     private ArrayList<PointOfView> pointOfViews = new ArrayList<>();
     private ArrayList<Score> scoresForProduct = new ArrayList<>();
     private static ArrayList<Product> products = new ArrayList<>();
@@ -51,6 +52,15 @@ public class Product {
         return scoresForProduct;
     }
 
+    public double calculateProductPrice(Product product) {
+        if(Discount.doesThisProductHaveDiscount(product)){
+          Discount discount=Discount.getProductDiscount(product);
+          double discountAmount = (discount.getDiscountPercent()*product.getPrice())/100;
+          return product.getPrice()-discountAmount;
+        }
+        return product.getPrice();
+    }
+
     public double getPrice() {
         return price;
     }
@@ -76,6 +86,14 @@ public class Product {
     }
     public static void addProduct(Product product){
         allProducts.add(product);
+    }
+
+    public void setDiscount(Discount discount) {
+        this.discount = discount;
+    }
+
+    public Discount getDiscount() {
+        return discount;
     }
 
     public void setPriceAfterDiscount(double priceAfterDiscount) {

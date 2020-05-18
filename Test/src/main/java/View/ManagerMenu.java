@@ -260,7 +260,6 @@ public class ManagerMenu extends Menu {
                 }
             } else if (command.matches("accept\\s(.+)")) {
                 acceptRequestMatcher.find();
-                System.out.println(acceptRequestMatcher.group(1));
                 try {
                     System.out.println(ManagerAbilitiesManager.acceptRequest(acceptRequestMatcher.group(1)));
                 } catch (Exception e) {

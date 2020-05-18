@@ -132,7 +132,7 @@ public class SellerAbilitiesManager {
         ArrayList<SellLog> logs = seller.getLogs();
         for (SellLog log : logs) {
             if (log.doesLogHaveThisProduct(id)) {
-                buyers.add(log.getBuyerName());
+                buyers.add(log.getName());
             }
         }
         return buyers;

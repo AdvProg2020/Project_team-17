@@ -23,6 +23,18 @@ public class Seller extends Account {
         logs=new ArrayList<>();
         allSellers.add(this);
     }
+    public static Seller getSellerHasThisProduct(Product product){
+        for (Seller seller : allSellers) {
+            for (Product allProduct : seller.getAllProducts()) {
+                if (allProduct.equals(product)){
+                    return seller;
+                }
+            }
+        }return null;
+    }
+    public void addLogToSellLog(SellLog sellLog){
+        this.logs.add(sellLog);
+    }
 
 
     public ArrayList<Product> getAllProducts() {
@@ -101,6 +113,9 @@ public class Seller extends Account {
                 return true;
             }
         }return false;
+    }
+    public void addMoneyToCredit(Product product){
+        this.credit+=product.calculateProductPrice(product);
     }
     @Override
     public String toString() {

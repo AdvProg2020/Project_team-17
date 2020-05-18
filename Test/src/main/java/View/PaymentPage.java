@@ -7,6 +7,7 @@ public class PaymentPage extends Menu {
     public PaymentPage(Menu parentMenu) {
         super("Payment", parentMenu);
     }
+    CommandProcessor commandProcessor = new CommandProcessor();
 
     @Override
     public void show() {
@@ -31,6 +32,7 @@ public class PaymentPage extends Menu {
         try {
             CustomerAbilitiesManager.checkAndPay(customer, DiscountCodePage.getDiscountCode());
             System.out.println("Finish");
+            commandProcessor.runWithMenu();
         } catch (Exception e) {
             e.getMessage();
         }

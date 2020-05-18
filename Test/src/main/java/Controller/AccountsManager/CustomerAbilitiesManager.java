@@ -4,11 +4,14 @@ import Models.*;
 import Models.Accounts.Account;
 import Models.Accounts.Customer;
 import Models.Accounts.Manager;
+import Models.Accounts.Seller;
 import Models.Logs.BuyLog;
 import Models.Logs.Log;
+import Models.Logs.SellLog;
 import View.ReceivingInformationPage;
 import View.RegisterAndLoginMenu;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
@@ -39,12 +42,12 @@ public class CustomerAbilitiesManager {
 
     public static ArrayList<String> viewOrders(Customer customer) throws Exception {
         ArrayList<String> buyLogs = new ArrayList<>();
-        if(customer.getBuyLog()!=null){
-        for (BuyLog log : customer.getBuyLog()) {
-            buyLogs.add(log.showOrders());
-        }
-        return buyLogs;
-        }else {
+        if (customer.getBuyLog() != null) {
+            for (BuyLog log : customer.getBuyLog()) {
+                buyLogs.add(log.showOrders());
+            }
+            return buyLogs;
+        } else {
             throw new Exception("there isn't any order");
         }
     }
@@ -73,12 +76,11 @@ public class CustomerAbilitiesManager {
 
     public static ArrayList<String> showDiscountCodes(Customer customer) throws Exception {
         ArrayList<String> discountCodes = new ArrayList<>();
-        if(customer.getDiscountCodes()!= null){
-        discountCodes.add(customer.getDiscountCodes().toString());
-        return discountCodes;
-        }else throw new Exception("There isn't any discount code already");
+        if (customer.getDiscountCodes() != null) {
+            discountCodes.add(customer.getDiscountCodes().toString());
+            return discountCodes;
+        } else throw new Exception("There isn't any discount code already");
     }
-
 
     public static void checkAndPay(Customer customer, String code) throws Exception {
         DiscountCode discountCode = DiscountCode.getDiscountCodeWithCode(code);
@@ -93,12 +95,25 @@ public class CustomerAbilitiesManager {
         double amountForPay = customer.getCart().totalPriceWithDiscount(discountCode);
         double sum = customer.getCart().totalPriceOfProductInCart();
         double discountAmount = DiscountCode.calculateDiscountAmount(sum, discountCode);
-        customer.payMoney(customer, amountForPay);
         ArrayList<Product> boughtProducts = customer.getCart().getProductsInCart();
-        //random id ro bayad dorost konim
-        BuyLog buyLog = new BuyLog("random id", new Date(ReceivingInformationPage.getDate()), amountForPay, ReceivingInformationPage.getAddress(),
-                ReceivingInformationPage.getPhoneNum(), customer.getUserName(), boughtProducts, false, discountAmount, RegisterAndLoginMenu.getCurrentSeller().getUserName());
-        customer.addLogToBuyLog(buyLog);
+        ArrayList<Seller> sellers = getSellers(boughtProducts);
+        for (Seller seller : sellers) {
+            ArrayList<Product> productsThatThisSellerSold = new ArrayList<>();
+            for (Product product : boughtProducts) {
+                if(product.getSeller().equals(seller)){
+                    productsThatThisSellerSold.add(product);
+                }
+            }
+            SellLog sellLog = new SellLog(LocalDate.now(),amountForPay,ReceivingInformationPage.getAddress(),ReceivingInformationPage.getPhoneNum(),
+                    customer.getUserName(),boughtProducts,false,discountAmount);
+            seller.addLogToSellLog(sellLog);
+            BuyLog buyLog = new BuyLog(LocalDate.now(),amountForPay,ReceivingInformationPage.getAddress(),ReceivingInformationPage.getPhoneNum(),
+                    seller.getUserName(),boughtProducts,false,discountAmount);
+            customer.addLogToBuyLog(buyLog);
+        }customer.payMoney(customer, amountForPay);
+        for (Product product : boughtProducts) {
+            product.getSeller().addMoneyToCredit(product);
+        }
     }
 
     public static void checkDiscountCodeValidation(String code) throws Exception {
@@ -107,5 +122,13 @@ public class CustomerAbilitiesManager {
             throw new Exception("this code isn't valid");
         }
     }
+    public static ArrayList<Seller> getSellers(ArrayList<Product> boughtProducts){
+        ArrayList<Seller> sellers = new ArrayList<>();
+        for (Product product : boughtProducts) {
+            sellers.add(product.getSeller());
+        }
+        return sellers;
+    }
 
 }
+

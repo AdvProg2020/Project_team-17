@@ -84,6 +84,24 @@ public class Discount {
         return productInfo;
     }
 
+    public static boolean doesThisProductHaveDiscount(Product product){
+        for (Discount allDiscount : allDiscounts) {
+            for (Product discountProduct : allDiscount.discountProducts) {
+                if(discountProduct.equals(product)){
+                    return true;
+                }
+            }
+        }return false;
+    }
+    public static Discount getProductDiscount(Product product){
+        for (Discount discount : allDiscounts) {
+            for (Product discountProduct : discount.discountProducts) {
+                if(discountProduct.equals(product)){
+                    return discount;
+                }
+            }
+        }return null;
+    }
 
     public void deleteProduct(Product product) {
         this.discountProducts.remove(product);
@@ -115,10 +133,6 @@ public class Discount {
         return false;
     }
 
-
-    public void deleteDiscountFromProduct(Product product) {
-
-    }
 
 
     @Override

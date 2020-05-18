@@ -2,25 +2,20 @@ package Models.Logs;
 
 import Models.Product;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class BuyLog extends Log {
-    private double discountAmount;
-    private String sellerName;
+
     private static ArrayList<BuyLog> allBuyLogs = new ArrayList<>();
 
-    public BuyLog(String id, Date date, double paymentAmount, String address, String phoneNumber, String customerName,
-                  ArrayList<Product> products, boolean isReceived, double discountAmount, String sellerName) {
-        super(id, date, paymentAmount, address, phoneNumber, customerName, products, isReceived);
-        this.discountAmount = discountAmount;
-        this.sellerName = sellerName;
+    public BuyLog(LocalDate date, double paymentAmount, String address, String phoneNumber, String sellerName,
+                  ArrayList<Product> products, boolean isReceived, double discountAmount) {
+        super("Buy log ---> " + (getAllLogs().size() + 1), date, paymentAmount, address, phoneNumber, sellerName, products, isReceived, discountAmount);
         allBuyLogs.add(this);
     }
 
-    public String getSellerName() {
-        return sellerName;
-    }
 
     public String showOrders() {
         return "Order ID: " + this.getId() + "-----> Products: " + this.getAllProducts();
@@ -47,16 +42,15 @@ public class BuyLog extends Log {
     @Override
     public String toString() {
         return "BuyLog{" +
-                "discountAmount=" + discountAmount +
-                ", sellerName='" + sellerName + '\'' +
-                ", id='" + id + '\'' +
+                "id='" + id + '\'' +
                 ", date=" + date +
                 ", paymentAmount=" + paymentAmount +
                 ", address='" + address + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", allProducts=" + allProducts +
-                ", customerName='" + customerName + '\'' +
+                ", name='" + name + '\'' +
                 ", isReceived=" + isReceived +
+                ", discountAmount=" + discountAmount +
                 '}';
     }
 }
