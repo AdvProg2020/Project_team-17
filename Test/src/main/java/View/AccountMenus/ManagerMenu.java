@@ -80,10 +80,9 @@ public class ManagerMenu extends Menu {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-
     }
 
-
+    //check
     public void viewPersonalInfo() {
         String command;
         Manager manager = RegisterAndLoginMenu.getCurrentManager();
@@ -97,6 +96,7 @@ public class ManagerMenu extends Menu {
                 System.out.println("what is the new content for this field?");
                 String newContent = scanner.nextLine();
                 ManagerAbilitiesManager.changeField(manager, editFieldMatcher.group(1), newContent);
+                System.out.println("field successfully changed");
             } else if (command.equals("help")) {
                 System.out.println("commands that you can enter are:");
                 System.out.println("edit [field]");
@@ -107,6 +107,7 @@ public class ManagerMenu extends Menu {
         }
     }
 
+    //check
     public void manageUsers() {
         String command;
         System.out.println(ManagerAbilitiesManager.showAllAccounts());
@@ -146,6 +147,7 @@ public class ManagerMenu extends Menu {
         }
     }
 
+    //check
     public void manageAllProducts() {
         String command;
         while (true) {
@@ -166,16 +168,23 @@ public class ManagerMenu extends Menu {
                 System.out.println("commands that you can enter are:");
                 System.out.println("remove product [productID]");
                 System.out.println("back");
+            } else {
+                System.out.println("invalid command");
             }
         }
     }
 
+    //check
     public void createDiscountCode() {
         String command;
         while (true) {
             command = scanner.nextLine();
             if (command.equals("create discount code")) {
-                getInfoForCreatingDiscountCode();
+                try {
+                    getInfoForCreatingDiscountCode();
+                } catch (Exception e) {
+                    System.out.println("enter validate input(check customers have been registered and be sure the type of date is correct)");
+                }
             } else if (command.equals("back")) {
                 break;
             } else if (command.equals("help")) {
@@ -187,7 +196,7 @@ public class ManagerMenu extends Menu {
             }
         }
     }
-
+//check
     public void viewDiscountCodes() {
         String command;
         System.out.println(ManagerAbilitiesManager.viewDiscountCodes());
@@ -215,7 +224,7 @@ public class ManagerMenu extends Menu {
                     String field = scanner.nextLine();
                     System.out.println("enter new content for this field: ");
                     String newContent = scanner.nextLine();
-                    ManagerAbilitiesManager.editDiscountCode(editDiscountCodeMatcher.group(1), field, newContent);
+                    System.out.println(ManagerAbilitiesManager.editDiscountCode(editDiscountCodeMatcher.group(1), field, newContent));
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
@@ -224,6 +233,7 @@ public class ManagerMenu extends Menu {
                 try {
                     ManagerAbilitiesManager.isThereDiscountCode(removeDiscountCodeMatcher.group(1));
                     ManagerAbilitiesManager.removeDiscountCode(removeDiscountCodeMatcher.group(1));
+                    System.out.println("discount code removed successfully");
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
@@ -235,11 +245,14 @@ public class ManagerMenu extends Menu {
                 System.out.println("edit discount code [code]");
                 System.out.println("remove discount code [code]");
                 System.out.println("back");
+            } else {
+                System.out.println("invalid command");
             }
 
         }
     }
 
+    //check
     public void manageRequests() {
         String command;
         System.out.println(ManagerAbilitiesManager.showAllRequests());
@@ -269,6 +282,7 @@ public class ManagerMenu extends Menu {
                 declineRequestMatcher.find();
                 try {
                     ManagerAbilitiesManager.declineRequest(declineRequestMatcher.group(1));
+                    System.out.println("request declined");
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
@@ -279,10 +293,12 @@ public class ManagerMenu extends Menu {
                 System.out.println("decline [requestID]");
             } else if (command.equals("back")) {
                 break;
+            } else {
+                System.out.println("invalid command");
             }
         }
     }
-
+//check
     public void manageCategories() {
         String command;
         System.out.println(ManagerAbilitiesManager.showAllCategories());
@@ -340,11 +356,13 @@ public class ManagerMenu extends Menu {
                 System.out.println("remove [category]");
                 System.out.println("add [category]");
                 System.out.println("back");
+            } else {
+                System.out.println("invalid command");
             }
         }
     }
-
-    public void getInfoForCreatingManger() {
+//check
+    private void getInfoForCreatingManger() {
         ArrayList<String> accountInfo = new ArrayList<>();
         System.out.println("Enter username: ");
         String username = scanner.nextLine();
@@ -366,29 +384,35 @@ public class ManagerMenu extends Menu {
         }
     }
 
-    public void getInfoForCreatingDiscountCode() {
+    //check
+    private void getInfoForCreatingDiscountCode() {
+        String code = "";
         ArrayList<String> customersName = new ArrayList<>();
-        System.out.println("Enter code: ");
-        String code = scanner.nextLine();
-        System.out.println("Enter beginning date(yyyy-mm-dd): ");
-        String startDate = scanner.nextLine();
-        System.out.println("Enter ending date(yyyy-mm-dd): ");
-        String endDate = scanner.nextLine();
-        System.out.println("Enter discount percent: ");
-        String discountPercent = scanner.nextLine();
-        System.out.println("Enter maximum discount amount :");
-        String maxAmountForDiscount = scanner.nextLine();
-        System.out.println("Enter number of repeat for this discount code: ");
-        String repeat = scanner.nextLine();
+        try {
+            System.out.println("Enter code: ");
+            code = scanner.nextLine();
+            System.out.println("Enter beginning date(yyyy-mm-dd): ");
+            String startDate = scanner.nextLine();
+            System.out.println("Enter ending date(yyyy-mm-dd): ");
+            String endDate = scanner.nextLine();
+            System.out.println("Enter discount percent: ");
+            String discountPercent = scanner.nextLine();
+            System.out.println("Enter maximum discount amount :");
+            String maxAmountForDiscount = scanner.nextLine();
+            System.out.println("Enter number of repeat for this discount code: ");
+            String repeat = scanner.nextLine();
 
-        System.out.println("how many customer have this code: ");
-        int numOfCustomer = Integer.valueOf(scanner.nextLine());
-        for (int i = 0; i < numOfCustomer; i++) {
-            System.out.println("enter the name of customer:");
-            String name = scanner.nextLine();
-            customersName.add(name);
+            System.out.println("how many customer have this code: ");
+            int numOfCustomer = Integer.valueOf(scanner.nextLine());
+            for (int i = 0; i < numOfCustomer; i++) {
+                System.out.println("enter the name of customer:");
+                String name = scanner.nextLine();
+                customersName.add(name);
+            }
+            ManagerAbilitiesManager.createDiscountCode(code, startDate, endDate, discountPercent, maxAmountForDiscount, Integer.parseInt(repeat), customersName);
+        } catch (Exception e) {
+            ManagerAbilitiesManager.removeDiscountCodeDueToException(code, customersName);
         }
-        ManagerAbilitiesManager.createDiscountCode(code, startDate, endDate, discountPercent, maxAmountForDiscount, Integer.parseInt(repeat), customersName);
     }
 
 

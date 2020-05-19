@@ -121,12 +121,12 @@ public class SellerMenu extends Menu {
             } else System.out.println("Command is invalid");
         }
     }
-
+//check
     public void viewCompanyInformation() {
         Seller seller = RegisterAndLoginMenu.getCurrentSeller();
         System.out.println(SellerAbilitiesManager.viewFactoryInfo(seller));
     }
-
+//check
     public void viewSalesHistory() {
         Seller seller = RegisterAndLoginMenu.getCurrentSeller();
         try {
@@ -135,7 +135,7 @@ public class SellerMenu extends Menu {
             System.out.println(e.getMessage());
         }
     }
-
+//check
     public void manageProducts() {
         String command;
         Seller seller = RegisterAndLoginMenu.getCurrentSeller();
@@ -161,6 +161,7 @@ public class SellerMenu extends Menu {
                     System.out.println("enter the content for this field: ");
                     String newContent = scanner.nextLine();
                     SellerAbilitiesManager.sendEditingProductRequest(editProductMatcher.group(1), seller, field, newContent);
+                    System.out.println("request sent to manager");
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
@@ -247,7 +248,7 @@ public class SellerMenu extends Menu {
     public void showCategories() {
         System.out.println(SellerAbilitiesManager.showCategories());
     }
-
+//check
     public void viewOffs() {
         String command;
         Seller seller = RegisterAndLoginMenu.getCurrentSeller();
@@ -309,7 +310,7 @@ public class SellerMenu extends Menu {
             }
         }
     }
-
+//check
     public void viewBalance() {
         Seller seller = RegisterAndLoginMenu.getCurrentSeller();
         System.out.println(SellerAbilitiesManager.viewBalance(seller));

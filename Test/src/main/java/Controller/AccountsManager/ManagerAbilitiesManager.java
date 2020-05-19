@@ -50,6 +50,8 @@ public class ManagerAbilitiesManager {
             manager.changePhoneNumber(manager, newContentForThisField);
         } else if (field.equalsIgnoreCase("password")) {
             manager.changePassword(manager, newContentForThisField);
+        }else {
+            System.out.println("enter a valid field");
         }
     }
 
@@ -101,6 +103,17 @@ public class ManagerAbilitiesManager {
         }
         System.out.println("discount code created");
     }
+    public static void removeDiscountCodeDueToException(String code, ArrayList<String> customersName){
+        ArrayList<Customer> customers = new ArrayList<>();
+        for (String customer : customersName) {
+            customers.add(Customer.getCustomerByName(customer));
+        }
+        DiscountCode discountCode= DiscountCode.getDiscountCodeWithCode(code);
+        DiscountCode.removeDiscountCode(discountCode);
+        for (Customer customer : customers) {
+            customer.removeDiscountCode(discountCode);
+        }
+    }
 
     public static ArrayList<String> viewDiscountCodes() {
         ArrayList<String> discountCodeInfo = new ArrayList<>();
@@ -122,18 +135,25 @@ public class ManagerAbilitiesManager {
         return DiscountCode.getDiscountCodeWithCode(discountCode).toString();
     }
 
-    public static void editDiscountCode(String code, String field, String newContentForThisField) {
+    public static String editDiscountCode(String code, String field, String newContentForThisField) {
         DiscountCode discountCode = DiscountCode.getDiscountCodeWithCode(code);
         if (field.equals("starting date")) {
             discountCode.setStartDate(LocalDate.parse(newContentForThisField));
+            return"discount code edited successfully";
         } else if (field.equals("ending date")) {
             discountCode.setEndDate(LocalDate.parse(newContentForThisField));
+            return"discount code edited successfully";
         } else if (field.equals("discount percent")) {
             discountCode.setDiscountCode(newContentForThisField);
+            return"discount code edited successfully";
         } else if (field.equals("maximum discount amount")) {
             discountCode.setMaxDiscountAmount(Double.parseDouble(newContentForThisField));
+            return"discount code edited successfully";
         } else if (field.equals("count discount code")) {
             discountCode.setCountDiscountCode(Integer.parseInt(newContentForThisField));
+            return"discount code edited successfully";
+        }else{
+            return "enter a valid field";
         }
     }
 

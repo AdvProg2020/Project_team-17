@@ -37,6 +37,9 @@ public class Customer extends Account {
         }
         return null;
     }
+    public void removeDiscountCode(DiscountCode discountCode){
+        this.discountCodes.remove(discountCode);
+    }
 
     public Cart getCart() {
         return cart;
