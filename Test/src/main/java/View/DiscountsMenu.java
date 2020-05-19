@@ -54,7 +54,7 @@ public class DiscountsMenu extends Menu {
 
     public void showProducts() {
         String command;
-        DiscountManager.showDiscountProducts();
+        System.out.println(DiscountManager.showDiscountProducts());
         while (true) {
             command = scanner.nextLine();
             Pattern showProductByIdPattern = Pattern.compile("show product\\s(.+)");
@@ -123,7 +123,7 @@ public class DiscountsMenu extends Menu {
                 try {
                     DiscountManager.disableSort(DiscountManager.getCurrentSort());
                 } catch (Exception e) {
-                    e.getMessage();
+                    System.out.println(e.getMessage());
                 }
             } else if (command.matches("back")) {
                 break;

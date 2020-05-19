@@ -48,6 +48,7 @@ public class ProductMenu extends Menu {
         }
     }
 
+    //check
     public void digest() {
         Customer customer = RegisterAndLoginMenu.getCurrentCustomer();
         String command;

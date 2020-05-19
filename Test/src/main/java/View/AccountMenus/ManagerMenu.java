@@ -95,8 +95,7 @@ public class ManagerMenu extends Menu {
                 editFieldMatcher.find();
                 System.out.println("what is the new content for this field?");
                 String newContent = scanner.nextLine();
-                ManagerAbilitiesManager.changeField(manager, editFieldMatcher.group(1), newContent);
-                System.out.println("field successfully changed");
+                System.out.println(ManagerAbilitiesManager.changeField(manager, editFieldMatcher.group(1), newContent));
             } else if (command.equals("help")) {
                 System.out.println("commands that you can enter are:");
                 System.out.println("edit [field]");
@@ -196,7 +195,8 @@ public class ManagerMenu extends Menu {
             }
         }
     }
-//check
+
+    //check
     public void viewDiscountCodes() {
         String command;
         System.out.println(ManagerAbilitiesManager.viewDiscountCodes());
@@ -298,7 +298,8 @@ public class ManagerMenu extends Menu {
             }
         }
     }
-//check
+
+    //check
     public void manageCategories() {
         String command;
         System.out.println(ManagerAbilitiesManager.showAllCategories());
@@ -361,7 +362,8 @@ public class ManagerMenu extends Menu {
             }
         }
     }
-//check
+
+    //check
     private void getInfoForCreatingManger() {
         ArrayList<String> accountInfo = new ArrayList<>();
         System.out.println("Enter username: ");

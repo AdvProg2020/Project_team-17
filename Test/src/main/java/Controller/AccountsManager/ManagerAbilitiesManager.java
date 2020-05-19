@@ -39,19 +39,24 @@ public class ManagerAbilitiesManager {
 
     }
 
-    public static void changeField(Manager manager, String field, String newContentForThisField) {
+    public static String changeField(Manager manager, String field, String newContentForThisField) {
         if (field.equalsIgnoreCase("first name")) {
             manager.changeFirstName(manager, newContentForThisField);
+            return"field successfully changed";
         } else if (field.equalsIgnoreCase("last name")) {
             manager.changeLastName(manager, newContentForThisField);
+            return"field successfully changed";
         } else if (field.equalsIgnoreCase("email")) {
             manager.changeEmail(manager, newContentForThisField);
+            return"field successfully changed";
         } else if (field.equalsIgnoreCase("phone number")) {
             manager.changePhoneNumber(manager, newContentForThisField);
+            return"field successfully changed";
         } else if (field.equalsIgnoreCase("password")) {
             manager.changePassword(manager, newContentForThisField);
+            return"field successfully changed";
         }else {
-            System.out.println("enter a valid field");
+            return "enter a valid field";
         }
     }
 

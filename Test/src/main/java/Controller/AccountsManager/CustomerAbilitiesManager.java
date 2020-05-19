@@ -11,26 +11,25 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class CustomerAbilitiesManager {
-    public void viewAccount(String username) throws Exception {
-        if (Customer.isThereCustomerWithUserName(username)) {
-            Customer customer = Customer.getCustomerByName(username);
-            customer.toString();
-        } else {
-            throw new Exception("There hasn't been any registered account with this username!");
-        }
-    }
 
-    public static void changeField(Customer customer, String field, String newContentForThisField) {
+    public static String changeField(Customer customer, String field, String newContentForThisField) {
         if (field.equalsIgnoreCase("first name")) {
             customer.changeFirstName(customer, newContentForThisField);
+            return"field successfully changed";
         } else if (field.equalsIgnoreCase("last name")) {
             customer.changeLastName(customer, newContentForThisField);
+            return"field successfully changed";
         } else if (field.equalsIgnoreCase("email")) {
             customer.changeEmail(customer, newContentForThisField);
+            return"field successfully changed";
         } else if (field.equalsIgnoreCase("phone number")) {
             customer.changePhoneNumber(customer, newContentForThisField);
+            return"field successfully changed";
         } else if (field.equalsIgnoreCase("password")) {
             customer.changePassword(customer, newContentForThisField);
+            return"field successfully changed";
+        }else {
+            return ("enter a valid field");
         }
     }
 

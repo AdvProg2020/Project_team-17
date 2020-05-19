@@ -103,7 +103,7 @@ public class ProductsMenu extends Menu {
                 try {
                     ProductsManager.disableSort(ProductsManager.getCurrentSort());
                 } catch (Exception e) {
-                    e.getMessage();
+                    System.out.println(e.getMessage());
                 }
             } else if (command.matches("back")) {
                 break;

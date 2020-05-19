@@ -63,6 +63,7 @@ public class CartMenu extends Menu {
         }
     }
 
+    //check
     public void showProducts() {
         Customer customer = RegisterAndLoginMenu.getCurrentCustomer();
         try {
@@ -73,6 +74,7 @@ public class CartMenu extends Menu {
         }
     }
 
+    //check
     public void viewProduct() {
         Customer customer = RegisterAndLoginMenu.getCurrentCustomer();
         String command;

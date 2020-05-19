@@ -71,13 +71,12 @@ public class CustomerMenu extends Menu {
                 parentMenu.show();
                 parentMenu.execute();
             }
-
         } catch (Exception e) {
             System.out.println("you should enter a number");
         }
-
     }
 
+    //check
     public void viewPersonalInfo() {
         String command;
         Customer customer = RegisterAndLoginMenu.getCurrentCustomer();
@@ -90,7 +89,7 @@ public class CustomerMenu extends Menu {
                 editFieldMatcher.find();
                 System.out.println("what is the new content for this field?");
                 String newContent = scanner.nextLine();
-                CustomerAbilitiesManager.changeField(customer, editFieldMatcher.group(1), newContent);
+                System.out.println(CustomerAbilitiesManager.changeField(customer, editFieldMatcher.group(1), newContent));
             } else if (command.equals("help")) {
                 System.out.println("commands that you can enter are:");
                 System.out.println("edit [field]");
@@ -146,11 +145,13 @@ public class CustomerMenu extends Menu {
         }
     }
 
+    //check
     public void viewBalance() {
         Customer customer = RegisterAndLoginMenu.getCurrentCustomer();
         System.out.println(customer.getCredit());
     }
 
+    //check
     public void viewDiscountCodes() {
         Customer customer = RegisterAndLoginMenu.getCurrentCustomer();
         try {
