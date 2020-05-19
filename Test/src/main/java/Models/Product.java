@@ -14,7 +14,6 @@ public class Product {
     private String name;
     private String companyName;
     private double price;
-    private double priceAfterDiscount;
     private Seller seller;
     private Category category;
     private String explanation;
@@ -97,10 +96,6 @@ public class Product {
         return discount;
     }
 
-    public void setPriceAfterDiscount(double priceAfterDiscount) {
-        this.priceAfterDiscount = priceAfterDiscount;
-    }
-
     public void setSeller(Seller seller) {
         this.seller = seller;
     }
@@ -117,9 +112,6 @@ public class Product {
         this.averageScore = averageScore;
     }
 
-    public double getPriceAfterDiscount() {
-        return priceAfterDiscount;
-    }
 
     public String getCompanyName() {
         return companyName;
@@ -197,6 +189,13 @@ public class Product {
         }
     }
 
+    public double getProductPriceAfterDiscount(Discount discount) {
+        if (discount == null)
+            return this.getPrice() - ((discount.getDiscountPercent() * this.getPrice()) / 100);
+        else
+            return this.getPrice();
+    }
+
     public Seller getSeller() {
         return seller;
     }
@@ -238,7 +237,6 @@ public class Product {
                 "productId='" + productId + '\'' +
                 ", name='" + name + '\'' +
                 ", price=" + price +
-                ", priceAfterDiscount=" + priceAfterDiscount +
                 ", seller=" + seller +
                 ", category=" + category +
                 ", explanation='" + explanation + '\'' +
@@ -254,7 +252,6 @@ public class Product {
                 ", name='" + name + '\'' +
                 ", companyName='" + companyName + '\'' +
                 ", price=" + price +
-                ", priceAfterDiscount=" + priceAfterDiscount +
                 ", seller=" + seller +
                 ", category=" + category.getCategoryName() +
                 ", explanation='" + explanation + '\'' +

@@ -77,7 +77,7 @@ public class Discount {
         for (Discount discount : allDiscounts) {
             for (Product product : discount.discountProducts) {
                 productInfo.add("Product ID : " + product.getProductId() + "Price before discount :" + product.getPrice() + " " +
-                        "Price after discount : " + product.getPriceAfterDiscount());
+                        "Price after discount : " + product.getProductPriceAfterDiscount(discount));
             }
         }
         return productInfo;
