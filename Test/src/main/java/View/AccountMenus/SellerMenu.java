@@ -148,48 +148,9 @@ public class SellerMenu extends Menu {
             Matcher editProductMatcher = editProductPattern.matcher(command);
             Pattern viewBuyersPattern = Pattern.compile("view buyers\\s(.+)");
             Matcher viewBuyersMatcher = viewBuyersPattern.matcher(command);
-            /*if (command.matches("view\\s(.+)")) {
-                viewProductMatcher.find();
-                //try {
-                    //SellerAbilitiesManager.checkProductByID(viewProductMatcher.group(1));
-                    Product product = Product.getProductWithId(viewProductMatcher.group(1));
-                    System.out.println(product.toString());
-                //} catch (Exception e) {
-                  //  System.out.println(e.getMessage());
-                //}
-            } else if (command.matches("edit\\s(.+)")) {
-                editProductMatcher.find();
-                //try {
-                  //  SellerAbilitiesManager.checkProductByID(editProductMatcher.group(1));
-                    System.out.println("enter the field you want to change: ");
-                    String field = scanner.nextLine();
-                    System.out.println("enter the content for this field: ");
-                    String newContent = scanner.nextLine();
-                    SellerAbilitiesManager.sendEditingProductRequest(editProductMatcher.group(1), seller, field, newContent);
-                //} catch (Exception e) {
-                  //  System.out.println(e.getMessage());
-                //}
-            } else if (command.matches("view buyers\\s(.+)")) {
-                System.out.println("so");
-                viewBuyersMatcher.find();
-                System.out.println("yo");
-                System.out.println(SellerAbilitiesManager.viewProductsBuyer(seller, viewBuyersMatcher.group(1)));
-                System.out.println("bo");
-            } else if (command.equals("back")) {
-                break;
-            } else if (command.equals("help")) {
-                System.out.println("commands that you can enter are:");
-                System.out.println("edit [productID]");
-                System.out.println("view [productID]");
-                System.out.println("view buyers [productID]");
-                System.out.println("back");
-            }*/
             if (command.matches("view buyers\\s(.+)")) {
-                System.out.println("so");
                 viewBuyersMatcher.find();
-                System.out.println("yo");
                 System.out.println(SellerAbilitiesManager.viewProductsBuyer(seller, viewBuyersMatcher.group(1)));
-                System.out.println("bo");
             }
             else if (command.matches("edit\\s(.+)")) {
                 editProductMatcher.find();
