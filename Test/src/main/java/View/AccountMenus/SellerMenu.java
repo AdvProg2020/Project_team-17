@@ -138,11 +138,7 @@ public class SellerMenu extends Menu {
     public void manageProducts() {
         String command;
         Seller seller = RegisterAndLoginMenu.getCurrentSeller();
-        if (seller.getAllProducts() != null) {
-            System.out.println(seller.getAllProducts());
-        } else {
-            System.out.println("seller doesn't have any product yet");
-        }
+        System.out.println(seller.getAllProducts());
         while (true) {
             command = scanner.nextLine();
             Pattern viewProductPattern = Pattern.compile("view\\s(.+)");
@@ -174,12 +170,9 @@ public class SellerMenu extends Menu {
                 }
             } else if (command.matches("view buyers\\s(.+)")) {
                 viewBuyersMatcher.find();
-                try {
-                    SellerAbilitiesManager.doesSellerHaveThisProduct(seller, viewBuyersMatcher.group(1));
-                    System.out.println(SellerAbilitiesManager.viewProductsBuyer(seller, viewBuyersMatcher.group(1)));
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                }
+                System.out.println("yo");
+                System.out.println(SellerAbilitiesManager.viewProductsBuyer(seller, viewBuyersMatcher.group(1)));
+                System.out.println("bo");
             } else if (command.equals("back")) {
                 break;
             } else if (command.equals("help")) {

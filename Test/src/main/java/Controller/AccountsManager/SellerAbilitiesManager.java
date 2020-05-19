@@ -113,14 +113,16 @@ public class SellerAbilitiesManager {
     }
 
     public static ArrayList<String> viewProductsBuyer(Seller seller, String id) {
-        ArrayList<String> buyers = new ArrayList<>();
+        ArrayList<String> customers = new ArrayList<>();
         ArrayList<SellLog> logs = seller.getLogs();
         for (SellLog log : logs) {
-            if (log.doesLogHaveThisProduct(id)) {
-                buyers.add(log.getName());
+            for (Product product : log.getAllProducts()) {
+                if(product.getProductId().equals(id)){
+                    customers.add(log.getName());
+                }
             }
         }
-        return buyers;
+        return customers;
     }
 
     public static void doesSellerHaveThisProduct(Seller seller, String id) throws Exception {

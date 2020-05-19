@@ -23,6 +23,8 @@ public class DiscountCodePage extends Menu {
         String input = scanner.nextLine();
         if (input.equals("yes")) {
             discountCode();
+            paymentPage.show();
+            paymentPage.execute();
         } else if (input.equals("no")) {
             paymentPage.show();
             paymentPage.execute();
@@ -41,11 +43,8 @@ public class DiscountCodePage extends Menu {
             try {
                 CustomerAbilitiesManager.checkDiscountCodeValidation(code);
                 discountCode = code;
-                paymentPage.show();
-                paymentPage.execute();
-                break;
             } catch (Exception e) {
-                e.getMessage();
+                System.out.println(e.getMessage());
             }
         }
     }

@@ -77,17 +77,17 @@ public class ManagerMenu extends Menu {
                 parentMenu.show();
                 parentMenu.execute();
             }
-        } catch (Exception e) {
-            System.out.println("you should enter a number");
-            this.show();
-            this.execute();
+        }catch (Exception e){
+            System.out.println(e.getMessage());
         }
+
     }
 
 
     public void viewPersonalInfo() {
         String command;
         Manager manager = RegisterAndLoginMenu.getCurrentManager();
+        System.out.println(manager.toString());
         while (true) {
             command = scanner.nextLine();
             Pattern editFieldPattern = Pattern.compile("edit\\s(.+)");
@@ -378,15 +378,16 @@ public class ManagerMenu extends Menu {
         String maxAmountForDiscount = scanner.nextLine();
         System.out.println("Enter number of repeat for this discount code: ");
         String repeat = scanner.nextLine();
-        System.out.println("how many customer have this code: ");
-        String numOfCustomer = scanner.nextLine();
-        for (int i = 0; i < Integer.parseInt(numOfCustomer); i++) {
-            System.out.println("enter the name of customer(enter done at the end):");
-            String name = scanner.nextLine();
-            customersName.add(name);
-            scanner.next();
-        }
-        ManagerAbilitiesManager.createDiscountCode(code, startDate, endDate, discountPercent, maxAmountForDiscount, Integer.parseInt(repeat), customersName);
 
+       System.out.println("how many customer have this code: ");
+       int numOfCustomer = Integer.valueOf(scanner.nextLine());
+       for (int i = 0; i <numOfCustomer; i++) {
+           System.out.println("enter the name of customer:");
+           String name = scanner.nextLine();
+            customersName.add(name);
+        }
+       ManagerAbilitiesManager.createDiscountCode(code, startDate, endDate, discountPercent, maxAmountForDiscount, Integer.parseInt(repeat),customersName );
     }
+
+
 }

@@ -61,7 +61,6 @@ public class RegisterAndLoginMenu extends Menu {
                 if ((!(Customer.isThereCustomerWithUserName(registerMatcher.group(2)))) &&
                         (!(Seller.isThereSellerWithUserName(registerMatcher.group(2)))) &&
                         (!(Manager.isThereManagerWithUserName(registerMatcher.group(2))))) {
-                    //ino az in arraylist bardarim moteghayereh konim
                     System.out.println("Enter password:");
                     accountInfo.add(scanner.nextLine());
                     System.out.println("Enter your first name:");
