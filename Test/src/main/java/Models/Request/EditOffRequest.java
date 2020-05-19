@@ -19,6 +19,7 @@ public class EditOffRequest extends Request {
         this.discount = discount;
         this.field = field;
         this.newContentForThisField = newContentForThisField;
+        discount.setDiscountState(DiscountEnum.EDITING);
     }
 
     @Override

@@ -27,13 +27,6 @@ public abstract class Request {
         return manager;
     }
 
-    public static ArrayList<String> viewRequestsInShort() {
-        ArrayList<String> allRequestsShortViews = new ArrayList<String>();
-        for (Request request : allRequests) {
-            allRequestsShortViews.add(request.id + " : " + request.type);
-        }
-        return allRequestsShortViews;
-    }
 
     public static Request getRequestById(String id) {
         for (Request request : allRequests) {

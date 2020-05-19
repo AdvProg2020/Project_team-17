@@ -4,13 +4,10 @@ import Models.Accounts.Seller;
 import Models.Category;
 import Models.Enums.ProductEnum;
 import Models.Product;
-import View.ProductMenu;
-import View.ProductsMenu;
 
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.List;
-import java.util.stream.Collectors;
+
 
 public class ProductsManager {
     private static ArrayList<Product> filterProduct = new ArrayList<>(Product.getAllProducts());
@@ -28,10 +25,11 @@ public class ProductsManager {
         }
         return categoryName;
     }
-    public static Product checkProductID(String id) throws Exception{
-        if(Product.getProductWithId(id)!=null){
+
+    public static Product checkProductID(String id) throws Exception {
+        if (Product.getProductWithId(id) != null) {
             return Product.getProductWithId(id);
-        }else {
+        } else {
             throw new Exception("There isn't any product with this id");
         }
     }
@@ -150,8 +148,8 @@ public class ProductsManager {
             ArrayList<Product> sortByScore = sortProducts;
             sortByScore.sort(Comparator.comparing(o -> Double.toString(o.getAverageScore())));
             return sortByScore;
-        }else if(sortType.equals("visited time")){
-            currentSort="visited time";
+        } else if (sortType.equals("visited time")) {
+            currentSort = "visited time";
             ArrayList<Product> sortByVisitedTime = sortProducts;
             sortByVisitedTime.sort(Comparator.comparing(o -> Integer.toString(o.getVisitedTime())));
             return sortByVisitedTime;

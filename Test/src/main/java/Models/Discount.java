@@ -4,7 +4,6 @@ import Models.Enums.DiscountEnum;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class Discount {
     private String discountId;
@@ -84,23 +83,26 @@ public class Discount {
         return productInfo;
     }
 
-    public static boolean doesThisProductHaveDiscount(Product product){
+    public static boolean doesThisProductHaveDiscount(Product product) {
         for (Discount allDiscount : allDiscounts) {
             for (Product discountProduct : allDiscount.discountProducts) {
-                if(discountProduct.equals(product)){
+                if (discountProduct.equals(product)) {
                     return true;
                 }
             }
-        }return false;
+        }
+        return false;
     }
-    public static Discount getProductDiscount(Product product){
+
+    public static Discount getProductDiscount(Product product) {
         for (Discount discount : allDiscounts) {
             for (Product discountProduct : discount.discountProducts) {
-                if(discountProduct.equals(product)){
+                if (discountProduct.equals(product)) {
                     return discount;
                 }
             }
-        }return null;
+        }
+        return null;
     }
 
     public void deleteProduct(Product product) {
@@ -132,7 +134,6 @@ public class Discount {
         }
         return false;
     }
-
 
 
     @Override

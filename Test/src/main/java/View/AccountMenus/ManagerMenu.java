@@ -1,8 +1,11 @@
-package View;
+package View.AccountMenus;
 
 import Controller.AccountsManager.ManagerAbilitiesManager;
 import Models.Accounts.Manager;
 import Models.Category;
+import View.CommandProcessor;
+import View.Menu;
+import View.RegisterAndLoginMenu;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -185,11 +188,6 @@ public class ManagerMenu extends Menu {
 
     public void viewDiscountCodes() {
         String command;
-        /*try {
-            System.out.println(ManagerAbilitiesManager.viewDiscountCodes());
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }*/
         System.out.println(ManagerAbilitiesManager.viewDiscountCodes());
         while (true) {
             command = scanner.nextLine();
@@ -370,23 +368,25 @@ public class ManagerMenu extends Menu {
         ArrayList<String> customersName = new ArrayList<>();
         System.out.println("Enter code: ");
         String code = scanner.nextLine();
-        System.out.println("Enter beginning date: ");
+        System.out.println("Enter beginning date(yyyy-mm-dd): ");
         String startDate = scanner.nextLine();
-        System.out.println("Enter ending date: ");
+        System.out.println("Enter ending date(yyyy-mm-dd): ");
         String endDate = scanner.nextLine();
         System.out.println("Enter discount percent: ");
         String discountPercent = scanner.nextLine();
         System.out.println("Enter maximum discount amount :");
         String maxAmountForDiscount = scanner.nextLine();
         System.out.println("Enter number of repeat for this discount code: ");
-        int repeat = scanner.nextInt();
+        String repeat = scanner.nextLine();
         System.out.println("how many customer have this code: ");
-        int numOfCustomer = scanner.nextInt();
-        for (int i = 0; i < numOfCustomer; i++) {
-            scanner.next();
+        String numOfCustomer = scanner.nextLine();
+        for (int i = 0; i < Integer.parseInt(numOfCustomer); i++) {
+            System.out.println("enter the name of customer(enter done at the end):");
             String name = scanner.nextLine();
             customersName.add(name);
+            scanner.next();
         }
-        ManagerAbilitiesManager.createDiscountCode(code, startDate, endDate, discountPercent, maxAmountForDiscount, repeat, customersName);
+        ManagerAbilitiesManager.createDiscountCode(code, startDate, endDate, discountPercent, maxAmountForDiscount, Integer.parseInt(repeat), customersName);
+
     }
 }

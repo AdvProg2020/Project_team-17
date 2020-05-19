@@ -34,12 +34,15 @@ public class Cart {
             if (cartProduct.equals(product)) {
                 int count = productsInCart.get(cartProduct);
                 productsInCart.put(cartProduct, count - 1);
-                if(productsInCart.get(cartProduct)==0){
+                if (productsInCart.get(cartProduct) == 0) {
                     productsInCart.remove(cartProduct);
                 }
             }
         }
+    }
 
+    public void removeProductAfterPurchasingFromCart(Product product) {
+        this.productsInCart.remove(product);
     }
 
     public ArrayList<Product> showProductsOfCart() {
@@ -66,9 +69,10 @@ public class Cart {
         }
         return false;
     }
-    public Product getProductInCart(String id){
+
+    public Product getProductInCart(String id) {
         for (Product product : this.productsInCart.keySet()) {
-            if(product.getProductId().equals(id)){
+            if (product.getProductId().equals(id)) {
                 return product;
             }
         }
@@ -86,8 +90,6 @@ public class Cart {
     public double totalPriceWithDiscount(DiscountCode discountCode) {
         return totalPriceOfProductInCart() - DiscountCode.calculateDiscountAmount(totalPriceOfProductInCart(), discountCode);
     }
-
-
 
 
 }

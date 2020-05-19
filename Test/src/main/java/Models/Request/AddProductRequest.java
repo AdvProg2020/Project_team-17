@@ -7,8 +7,6 @@ import Models.Enums.ProductEnum;
 import Models.Enums.RequestTypeEnum;
 import Models.Product;
 
-import java.util.ArrayList;
-
 public class AddProductRequest extends Request {
     private Product product;
     private Category category;
@@ -20,20 +18,6 @@ public class AddProductRequest extends Request {
         this.category = category;
 
     }
-    /*public static boolean isThereAddProductRequestWithThisID(String id){
-        for (AddProductRequest addProductRequest : addProductRequests) {
-            if(addProductRequest.getId().equals(id)){
-                return true;
-            }
-        }return false;
-    }
-    public static AddProductRequest getRequest(String id){
-        for (AddProductRequest addProductRequest : addProductRequests) {
-            if(addProductRequest.getId().equals(id)){
-                return addProductRequest;
-            }
-        }return null;
-    }*/
 
     @Override
     public void accept() {

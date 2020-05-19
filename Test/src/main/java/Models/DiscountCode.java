@@ -1,13 +1,9 @@
 package Models;
 
-import Models.Accounts.Account;
 import Models.Accounts.Customer;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 public class DiscountCode {
     private String discountCode;

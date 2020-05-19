@@ -10,7 +10,6 @@ public abstract class Menu {
     protected HashMap<Integer, Menu> submenus;
     protected Menu parentMenu;
     public static Scanner scanner;
-    // protected static Manager manager;
     protected static ArrayList<Menu> allMenus = new ArrayList<Menu>();
 
     public Menu(String name, Menu parentMenu) {
@@ -48,15 +47,22 @@ public abstract class Menu {
 
     public void execute() {
         Menu nextMenu = null;
-        int chosenMenu = Integer.parseInt(scanner.nextLine());
-        if (chosenMenu == submenus.size() + 1) {
-            if (this.parentMenu == null)
-                System.exit(1);
-            else
-                nextMenu = this.parentMenu;
-        } else
-            nextMenu = submenus.get(chosenMenu);
-        nextMenu.show();
-        nextMenu.execute();
+        try {
+            int chosenMenu = Integer.parseInt(scanner.nextLine());
+            if (chosenMenu == submenus.size() + 1) {
+                if (this.parentMenu == null)
+                    System.exit(1);
+                else
+                    nextMenu = this.parentMenu;
+            } else
+                nextMenu = submenus.get(chosenMenu);
+            nextMenu.show();
+            nextMenu.execute();
+        } catch (Exception e) {
+            System.out.println("enter a number");
+            this.show();
+            this.execute();
+        }
+
     }
 }

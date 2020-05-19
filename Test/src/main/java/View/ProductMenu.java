@@ -1,7 +1,6 @@
 package View;
 
 import Controller.ProductManager;
-import Controller.ProductsManager;
 import Models.Accounts.Customer;
 import Models.Product;
 
@@ -59,7 +58,6 @@ public class ProductMenu extends Menu {
                 if (customer == null) {
                     registerAndLoginMenu.show();
                     registerAndLoginMenu.execute();
-                    // alan k mire to in safe vaghti k bar login kard dobare biad haminja? ya na az aval
                 } else {
                     ProductManager.addToCart(customer, product);
                     System.out.println("product successfully added to your cart");

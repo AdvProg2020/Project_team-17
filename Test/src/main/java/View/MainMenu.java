@@ -1,5 +1,9 @@
 package View;
 
+import View.AccountMenus.CustomerMenu;
+import View.AccountMenus.ManagerMenu;
+import View.AccountMenus.SellerMenu;
+
 import java.util.HashMap;
 
 public class MainMenu extends Menu {

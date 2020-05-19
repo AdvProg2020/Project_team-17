@@ -1,6 +1,8 @@
-package View;
+package View.PurchasingProcessMenus;
 
 import Models.Accounts.Customer;
+import View.Menu;
+import View.RegisterAndLoginMenu;
 
 public class ReceivingInformationPage extends Menu {
     DiscountCodePage discountCodePage = new DiscountCodePage(this);

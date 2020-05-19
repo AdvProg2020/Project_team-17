@@ -1,6 +1,8 @@
-package View;
+package View.PurchasingProcessMenus;
 
 import Controller.AccountsManager.CustomerAbilitiesManager;
+import View.Menu;
+import View.PurchasingProcessMenus.PaymentPage;
 
 public class DiscountCodePage extends Menu {
     PaymentPage paymentPage = new PaymentPage(this);

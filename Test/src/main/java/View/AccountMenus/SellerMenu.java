@@ -1,4 +1,4 @@
-package View;
+package View.AccountMenus;
 
 import Controller.AccountsManager.SellerAbilitiesManager;
 import Models.Accounts.Seller;
@@ -7,6 +7,9 @@ import Models.Discount;
 import Models.Product;
 import Models.Request.AddOffRequest;
 import Models.Request.AddProductRequest;
+import View.CommandProcessor;
+import View.Menu;
+import View.RegisterAndLoginMenu;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -15,6 +18,7 @@ import java.util.regex.Pattern;
 public class SellerMenu extends Menu {
     RegisterAndLoginMenu registerAndLoginMenu = new RegisterAndLoginMenu(this);
     CommandProcessor commandProcessor = new CommandProcessor();
+
     public SellerMenu(Menu parentMenu) {
         super("Seller ", parentMenu);
     }
@@ -33,7 +37,7 @@ public class SellerMenu extends Menu {
             System.out.println("9.view balance");
             System.out.println("10.logout");
             System.out.println("11.back");
-        }else{
+        } else {
             System.out.println("you haven't logged in yet, first login as a seller");
             registerAndLoginMenu.show();
             registerAndLoginMenu.execute();
@@ -87,7 +91,7 @@ public class SellerMenu extends Menu {
                 parentMenu.show();
                 parentMenu.execute();
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("you should enter a number");
             this.show();
             this.execute();
@@ -126,7 +130,7 @@ public class SellerMenu extends Menu {
         Seller seller = RegisterAndLoginMenu.getCurrentSeller();
         try {
             System.out.println(SellerAbilitiesManager.viewSalesHistory(seller));
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
@@ -134,9 +138,9 @@ public class SellerMenu extends Menu {
     public void manageProducts() {
         String command;
         Seller seller = RegisterAndLoginMenu.getCurrentSeller();
-        if(seller.getAllProducts()!= null){
+        if (seller.getAllProducts() != null) {
             System.out.println(seller.getAllProducts());
-        }else {
+        } else {
             System.out.println("seller doesn't have any product yet");
         }
         while (true) {
@@ -234,7 +238,7 @@ public class SellerMenu extends Menu {
                     SellerAbilitiesManager.removeProduct(seller, removeProductMatcher.group(1));
                     System.out.println("product removed successfully");
                 } catch (Exception e) {
-                    e.getMessage();
+                    System.out.println(e.getMessage());
                 }
             } else if (command.equals("back")) {
                 break;
@@ -253,7 +257,7 @@ public class SellerMenu extends Menu {
     public void viewOffs() {
         String command;
         Seller seller = RegisterAndLoginMenu.getCurrentSeller();
-        SellerAbilitiesManager.viewOffs(seller);
+        System.out.println(SellerAbilitiesManager.viewOffs(seller));
         while (true) {
             command = scanner.nextLine();
             Pattern viewOffPattern = Pattern.compile("view\\s(.+)");
@@ -266,7 +270,7 @@ public class SellerMenu extends Menu {
                     SellerAbilitiesManager.isThereOffByThisId(seller, viewOffMatcher.group(1));
                     System.out.println(SellerAbilitiesManager.viewOffByGettingId(seller, viewOffMatcher.group(1)));
                 } catch (Exception e) {
-                    e.getMessage();
+                    System.out.println(e.getMessage());
                 }
             } else if (command.matches("edit\\s(.+)")) {
                 editOffMatcher.find();
@@ -276,10 +280,10 @@ public class SellerMenu extends Menu {
                     String field = scanner.nextLine();
                     System.out.println("enter the content for this field: ");
                     String newContent = scanner.nextLine();
-                    SellerAbilitiesManager.sendEditingOffRequest(editOffMatcher.group(1),seller , field, newContent);
+                    SellerAbilitiesManager.sendEditingOffRequest(editOffMatcher.group(1), seller, field, newContent);
 
                 } catch (Exception e) {
-                    e.getMessage();
+                    System.out.println(e.getMessage());
                 }
             } else if (command.equals("add off")) {
                 System.out.println("enter discount's id");
@@ -289,10 +293,9 @@ public class SellerMenu extends Menu {
                 System.out.println("enter discount's endingDate");
                 String endingDate = scanner.nextLine();
                 System.out.println("enter discount's percent");
-                double discountPercent = scanner.nextDouble();
+                String discountPercent = scanner.nextLine();
                 ArrayList<String> productsName = new ArrayList<>();
                 System.out.println("enter discount's products names(enter end to finish)");
-                //tanha rahi k fek kardam mishe ine vali in k dota while miofte to ham bade fek konam
                 while (true) {
                     String product = scanner.nextLine();
                     if (product.equals("end")) {
@@ -301,7 +304,7 @@ public class SellerMenu extends Menu {
                     productsName.add(product);
                 }
                 Discount discount = SellerAbilitiesManager.addDiscount(seller, id, beginningDate, endingDate,
-                        discountPercent, productsName);
+                        Double.parseDouble(discountPercent), productsName);
                 new AddOffRequest(seller, RegisterAndLoginMenu.getCurrentManager(), discount);
             } else if (command.equals("back")) {
                 break;

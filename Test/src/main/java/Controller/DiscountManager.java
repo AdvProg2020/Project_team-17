@@ -12,20 +12,24 @@ import java.util.Comparator;
 public class DiscountManager {
     private static ArrayList<Product> filterProduct = new ArrayList<>();
     private static ArrayList<Product> sortProducts = new ArrayList<>();
-    private static String currentSort="price";
+    private static String currentSort = "price";
+
     public static ArrayList<String> showDiscountProducts() {
         return Discount.showProductsHaveDiscount();
     }
-    public static void addAllProductsToFilterProducts(){
+
+    public static void addAllProductsToFilterProducts() {
         for (Discount discount : Discount.getAllDiscounts()) {
             filterProduct.addAll(discount.getDiscountProducts());
         }
     }
-    public static void addAllProductsToSortProducts(){
+
+    public static void addAllProductsToSortProducts() {
         for (Discount discount : Discount.getAllDiscounts()) {
             sortProducts.addAll(discount.getDiscountProducts());
         }
     }
+
     public static String showAvailableFilter() {
         return "by category\nby name\nby price\nby brand\nby seller\nby availability\nby category feature";
     }
@@ -125,6 +129,7 @@ public class DiscountManager {
             }
         }
     }
+
     public static String showAvailableSort() {
         return "by score\nby visited time";
     }
@@ -139,8 +144,8 @@ public class DiscountManager {
             ArrayList<Product> sortByScore = sortProducts;
             sortByScore.sort(Comparator.comparing(o -> Double.toString(o.getAverageScore())));
             return sortByScore;
-        }else if(sortType.equals("visited time")){
-            currentSort="visited time";
+        } else if (sortType.equals("visited time")) {
+            currentSort = "visited time";
             ArrayList<Product> sortByVisitedTime = sortProducts;
             sortByVisitedTime.sort(Comparator.comparing(o -> Integer.toString(o.getVisitedTime())));
             return sortByVisitedTime;

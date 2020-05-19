@@ -5,7 +5,6 @@ import Models.DiscountCode;
 import java.util.ArrayList;
 
 public abstract class Account {
-    //private static ArrayList<Account> allAccounts = new ArrayList<Account>();
     protected String userName;
     protected String firstName;
     protected String lastName;
@@ -23,8 +22,7 @@ public abstract class Account {
         this.phoneNumber = phoneNumber;
         this.password = password;
         this.credit = credit;
-        allDiscountCodes = new ArrayList<DiscountCode>();
-        //allAccounts.add(this);
+        allDiscountCodes = new ArrayList<>();
     }
 
     public void setUserName(String userName) {

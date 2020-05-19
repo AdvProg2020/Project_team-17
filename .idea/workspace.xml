@@ -4,20 +4,40 @@
     <list default="true" id="32618e29-8746-4d2a-8d73-d011168a9d97" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test/src/main/java/Controller/AccountsManager/CustomerAbilitiesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Controller/AccountsManager/CustomerAbilitiesManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Controller/AccountsManager/ManagerAbilitiesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Controller/AccountsManager/ManagerAbilitiesManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test/src/main/java/Controller/AccountsManager/SellerAbilitiesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Controller/AccountsManager/SellerAbilitiesManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Accounts/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Accounts/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Controller/CartManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Controller/CartManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Controller/DiscountManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Controller/DiscountManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Controller/ProductManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Controller/ProductManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Controller/ProductsManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Controller/ProductsManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Controller/RegisterAndLoginManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Controller/RegisterAndLoginManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Accounts/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Accounts/Account.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Accounts/Seller.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Accounts/Seller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Cart.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Discount.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Discount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Logs/BuyLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Logs/BuyLog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Logs/Log.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Logs/Log.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Logs/SellLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Logs/SellLog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/DiscountCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/DiscountCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Enums/PointOfViewEnum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/PointOfView.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/PointOfView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/ManagerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/ManagerMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/PaymentPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/PaymentPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Request/AddProductRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Request/AddProductRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Request/EditOffRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Request/EditOffRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Request/EditProductRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Request/EditProductRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Request/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Request/Request.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/CartMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/CartMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/CustomerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/AccountMenus/CustomerMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/DiscountCodePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/PurchasingProcessMenus/DiscountCodePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/DiscountsMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/DiscountsMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/MainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/ManagerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/AccountMenus/ManagerMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/PaymentPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/PurchasingProcessMenus/PaymentPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/ProductMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/ProductMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/ReceivingInformationPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/ReceivingInformationPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/ProductsMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/ProductsMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/PurchaseMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/PurchasingProcessMenus/PurchaseMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/ReceivingInformationPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/PurchasingProcessMenus/ReceivingInformationPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/RegisterAndLoginMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/RegisterAndLoginMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/SellerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/AccountMenus/SellerMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test/target/classes/Models/Product.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/Models/Product.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -125,7 +145,7 @@
       <workItem from="1589358280898" duration="131000" />
       <workItem from="1589358434908" duration="36456000" />
       <workItem from="1589687397962" duration="45941000" />
-      <workItem from="1589789907395" duration="27876000" />
+      <workItem from="1589789907395" duration="40709000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1586814023547</created>
@@ -393,14 +413,20 @@
       <option name="project" value="LOCAL" />
       <updated>1589830261185</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="fix lots of bugs">
+      <created>1589845062524</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1589845062524</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="renew SellerMenu" />
     <MESSAGE value="manage request for manager" />
     <MESSAGE value="ManagerMenu done" />
     <MESSAGE value="add cart manager and working on CartMenu" />
@@ -425,7 +451,8 @@
     <MESSAGE value="xml and iml gson" />
     <MESSAGE value="fix date" />
     <MESSAGE value="fix some bugs" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix some bugs" />
+    <MESSAGE value="fix lots of bugs" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix lots of bugs" />
   </component>
   <component name="WindowStateProjectService">
     <state x="233" y="0" key="#Project_Structure" timestamp="1589785759293">
@@ -463,15 +490,15 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="395" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.680@0.0.1280.680" timestamp="1588017222538" />
-    <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1589051831428">
+    <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1589857617230">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1589051831428" />
+    <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1589857617230" />
     <state x="445" y="105" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1588110193951" />
-    <state x="265" y="0" key="CommitChangelistDialog2" timestamp="1589830260275">
+    <state x="265" y="0" key="CommitChangelistDialog2" timestamp="1589845061435">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="265" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1589830260275" />
+    <state x="265" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1589845061435" />
     <state x="425" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1589641442995" />
     <state x="478" y="14" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1589635601609" />
     <state x="421" y="67" key="FileChooserDialogImpl" timestamp="1589827216400">
@@ -479,46 +506,46 @@
     </state>
     <state x="421" y="67" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1589827216400" />
     <state x="505" y="81" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1588326132134" />
-    <state width="1237" height="232" key="GridCell.Tab.0.bottom" timestamp="1589845003678">
+    <state width="1237" height="60" key="GridCell.Tab.0.bottom" timestamp="1589857506896">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="232" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1589845003678" />
+    <state width="1237" height="60" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1589857506896" />
     <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1586996145625" />
     <state width="1493" height="208" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1589636034396" />
-    <state width="1237" height="232" key="GridCell.Tab.0.center" timestamp="1589845003678">
+    <state width="1237" height="60" key="GridCell.Tab.0.center" timestamp="1589857506895">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="232" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1589845003678" />
+    <state width="1237" height="60" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1589857506895" />
     <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1586996145625" />
     <state width="1493" height="208" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1589636034395" />
-    <state width="1237" height="232" key="GridCell.Tab.0.left" timestamp="1589845003678">
+    <state width="1237" height="60" key="GridCell.Tab.0.left" timestamp="1589857506894">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="232" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1589845003678" />
+    <state width="1237" height="60" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1589857506894" />
     <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1586996145625" />
     <state width="1493" height="208" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1589636034395" />
-    <state width="1237" height="232" key="GridCell.Tab.0.right" timestamp="1589845003678">
+    <state width="1237" height="60" key="GridCell.Tab.0.right" timestamp="1589857506895">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="232" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1589845003678" />
+    <state width="1237" height="60" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1589857506895" />
     <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1586996145625" />
     <state width="1493" height="208" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1589636034396" />
-    <state width="1237" height="407" key="GridCell.Tab.1.bottom" timestamp="1589844866124">
+    <state width="1237" height="523" key="GridCell.Tab.1.bottom" timestamp="1589854243391">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="407" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1589844866124" />
-    <state width="1237" height="407" key="GridCell.Tab.1.center" timestamp="1589844866124">
+    <state width="1237" height="523" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1589854243391" />
+    <state width="1237" height="523" key="GridCell.Tab.1.center" timestamp="1589854243391">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="407" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1589844866124" />
-    <state width="1237" height="407" key="GridCell.Tab.1.left" timestamp="1589844866123">
+    <state width="1237" height="523" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1589854243391" />
+    <state width="1237" height="523" key="GridCell.Tab.1.left" timestamp="1589854243391">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="407" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1589844866123" />
-    <state width="1237" height="407" key="GridCell.Tab.1.right" timestamp="1589844866124">
+    <state width="1237" height="523" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1589854243391" />
+    <state width="1237" height="523" key="GridCell.Tab.1.right" timestamp="1589854243391">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="407" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1589844866124" />
+    <state width="1237" height="523" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1589854243391" />
     <state x="354" y="57" key="MultipleFileMergeDialog" timestamp="1589785236792">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -536,10 +563,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1280.680@0.0.1280.680" timestamp="1589767285229" />
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1589830281337">
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1589845080320">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1589830281337" />
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1589845080320" />
     <state x="249" y="80" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1589634850684" />
     <state x="280" y="90" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1589638333146" />
     <state x="388" y="195" key="com.intellij.ide.util.TipDialog" timestamp="1589358435446">
@@ -557,10 +584,10 @@
     </state>
     <state x="450" y="258" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1589690838556" />
     <state x="540" y="313" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1589636207761" />
-    <state x="397" y="168" key="git4idea.merge.GitPullDialog" timestamp="1589830266045">
+    <state x="397" y="168" key="git4idea.merge.GitPullDialog" timestamp="1589845075239">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="397" y="168" key="git4idea.merge.GitPullDialog/0.0.1280.680@0.0.1280.680" timestamp="1589830266045" />
+    <state x="397" y="168" key="git4idea.merge.GitPullDialog/0.0.1280.680@0.0.1280.680" timestamp="1589845075239" />
     <state x="423" y="180" key="git4idea.merge.GitPullDialog/0.0.1366.728@0.0.1366.728" timestamp="1589634843435" />
     <state x="476" y="204" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1589635613074" />
     <state x="91" y="36" key="new project wizard" timestamp="1589787215150">
@@ -584,19 +611,19 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Test/src/main/java/View/ManagerMenu.java</url>
-          <line>263</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Test/src/main/java/View/RegisterAndLoginMenu.java</url>
-          <line>84</line>
+          <line>83</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Test/src/main/java/View/RegisterAndLoginMenu.java</url>
           <line>78</line>
           <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Test/src/main/java/Controller/AccountsManager/ManagerAbilitiesManager.java</url>
+          <line>96</line>
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

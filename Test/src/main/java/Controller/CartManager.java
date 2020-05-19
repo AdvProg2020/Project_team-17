@@ -16,11 +16,11 @@ public class CartManager {
         return showProducts;
     }
 
-    public static double showTotalPriceOfCart(Customer customer) throws Exception{
+    public static double showTotalPriceOfCart(Customer customer) throws Exception {
         Cart cart = customer.getCart();
-        if(cart!= null) {
+        if (cart != null) {
             return cart.totalPriceOfProductInCart();
-        }else throw new Exception("Cart is empty");
+        } else throw new Exception("Cart is empty");
     }
 
 
@@ -38,14 +38,14 @@ public class CartManager {
 
     public static void decreaseProduct(Customer customer, String id) throws Exception {
         Cart cart = customer.getCart();
-        if(cart != null){
+        if (cart != null) {
             try {
                 Product product = cart.getProductInCart(id);
                 cart.decreaseNumberOfProduct(product);
-            }catch (Exception e){
+            } catch (Exception e) {
                 System.out.println("There isn't any product with this id in cart");
             }
-        }else throw new Exception("Cart is empty");
+        } else throw new Exception("Cart is empty");
     }
 
 }

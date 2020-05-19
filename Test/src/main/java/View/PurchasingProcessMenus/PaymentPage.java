@@ -1,7 +1,10 @@
-package View;
+package View.PurchasingProcessMenus;
 
 import Controller.AccountsManager.CustomerAbilitiesManager;
 import Models.Accounts.Customer;
+import View.CommandProcessor;
+import View.Menu;
+import View.RegisterAndLoginMenu;
 
 public class PaymentPage extends Menu {
     public PaymentPage(Menu parentMenu) {
@@ -21,6 +24,7 @@ public class PaymentPage extends Menu {
         int input = Integer.parseInt(scanner.nextLine());
         if (input == 1) {
             pay();
+            commandProcessor.runWithMenu();
         } else if (input == 2) {
             parentMenu.show();
             parentMenu.execute();
@@ -32,9 +36,8 @@ public class PaymentPage extends Menu {
         try {
             CustomerAbilitiesManager.checkAndPay(customer, DiscountCodePage.getDiscountCode());
             System.out.println("Finish");
-            commandProcessor.runWithMenu();
         } catch (Exception e) {
-            e.getMessage();
+            System.out.println(e.getMessage());
         }
     }
 }

@@ -4,6 +4,7 @@ package View;
 import Controller.CartManager;
 import Models.Accounts.Customer;
 import Models.Product;
+import View.PurchasingProcessMenus.PurchaseMenu;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -57,7 +58,7 @@ public class CartMenu extends Menu {
                 parentMenu.show();
                 parentMenu.execute();
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("you should enter a number!");
         }
     }
@@ -67,7 +68,7 @@ public class CartMenu extends Menu {
         try {
             customer.getCart();
             System.out.println(CartManager.showProducts(customer));
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Cart is empty!");
         }
     }
@@ -83,7 +84,7 @@ public class CartMenu extends Menu {
                 viewProductMatcher.find();
                 try {
                     Product product = customer.getCart().getProductInCart(viewProductMatcher.group(1));
-                    ProductMenu productMenu = new ProductMenu(this,product);
+                    ProductMenu productMenu = new ProductMenu(this, product);
                     productMenu.show();
                     productMenu.execute();
                 } catch (Exception e) {
@@ -150,7 +151,7 @@ public class CartMenu extends Menu {
         Customer customer = RegisterAndLoginMenu.getCurrentCustomer();
         try {
             System.out.println(CartManager.showTotalPriceOfCart(customer));
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
 

@@ -1,31 +1,16 @@
 package Controller.AccountsManager;
 
 import Models.*;
-import Models.Accounts.Customer;
 import Models.Accounts.Seller;
-import Models.Enums.DiscountEnum;
-import Models.Enums.ProductEnum;
 import Models.Logs.SellLog;
-import Models.Request.AddProductRequest;
 import Models.Request.EditOffRequest;
 import Models.Request.EditProductRequest;
-import Models.Request.Request;
 import View.RegisterAndLoginMenu;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
 
 public class SellerAbilitiesManager {
-    public void viewAccount(String username) throws Exception {
-        if (Customer.isThereCustomerWithUserName(username)) {
-            Customer customer = Customer.getCustomerByName(username);
-            customer.toString();
-        } else {
-            throw new Exception("There hasn't been any registered account with this username!");
-        }
-    }
 
     public static void changeField(Seller seller, String field, String newContentForThisField) {
         if (field.equalsIgnoreCase("first name")) {
@@ -62,7 +47,7 @@ public class SellerAbilitiesManager {
 
     public static Product addProduct(String productId, String productName, String companyName,
                                      double price, Category category, Seller seller, String productExplanation, String specialFeature) {
-        Product product= new Product(productId, productName, companyName, price,
+        Product product = new Product(productId, productName, companyName, price,
                 seller, category, productExplanation, 0, specialFeature);
         Product.addProduct(product);
         return product;

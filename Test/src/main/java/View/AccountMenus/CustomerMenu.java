@@ -1,8 +1,10 @@
-package View;
+package View.AccountMenus;
 
 import Controller.AccountsManager.CustomerAbilitiesManager;
 import Models.Accounts.Customer;
 import Models.Product;
+import View.*;
+import View.PurchasingProcessMenus.PurchaseMenu;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -65,7 +67,7 @@ public class CustomerMenu extends Menu {
             } else if (input == 7) {
                 RegisterAndLoginMenu.logout();
                 commandProcessor.runWithMenu();
-            }else if(input == 8){
+            } else if (input == 8) {
                 parentMenu.show();
                 parentMenu.execute();
             }
@@ -139,8 +141,8 @@ public class CustomerMenu extends Menu {
                     break;
                 } else System.out.println("Command is invalid");
             }
-        }catch (Exception e){
-        System.out.println(e.getMessage());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
 
@@ -153,7 +155,7 @@ public class CustomerMenu extends Menu {
         Customer customer = RegisterAndLoginMenu.getCurrentCustomer();
         try {
             System.out.println(CustomerAbilitiesManager.showDiscountCodes(customer));
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }

@@ -1,4 +1,6 @@
-package View;
+package View.PurchasingProcessMenus;
+
+import View.Menu;
 
 public class PurchaseMenu extends Menu {
     ReceivingInformationPage receivingInformationPage = new ReceivingInformationPage(this);

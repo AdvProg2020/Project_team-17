@@ -18,6 +18,7 @@ public class EditProductRequest extends Request {
         this.product = product;
         this.field = field;
         this.newContentForThisField = newContentForThisField;
+        product.setProductState(ProductEnum.EDITING);
     }
 
     @Override

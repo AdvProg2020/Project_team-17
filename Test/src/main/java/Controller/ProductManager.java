@@ -1,10 +1,8 @@
 package Controller;
 
-import Models.Accounts.Account;
 import Models.Accounts.Customer;
 import Models.Cart;
 import Models.Category;
-import Models.Enums.PointOfViewEnum;
 import Models.Product;
 
 public class ProductManager {

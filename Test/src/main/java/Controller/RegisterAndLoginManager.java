@@ -5,9 +5,6 @@ import Models.Accounts.Manager;
 import Models.Accounts.Seller;
 
 public class RegisterAndLoginManager {
-    public void registerAccount(String type, String username) {
-
-    }
 
     public static void isUserNameAndPasswordCorrectForManager(String userName, String password) throws Exception {
         if (Manager.isThereManagerWithUserName(userName)) {

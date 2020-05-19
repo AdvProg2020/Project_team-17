@@ -121,8 +121,8 @@ public class RegisterAndLoginMenu extends Menu {
                         try {
                             RegisterAndLoginManager.isUserNameAndPasswordCorrectForCustomer(loginMatcher.group(1), password);
                             currentCustomer = customer;
-                            currentSeller =null;
-                            currentManager= null;
+                            currentSeller = null;
+                            currentManager = null;
                             getPassword = false;
                             System.out.println("you have login successfully!");
                         } catch (Exception e) {
@@ -138,8 +138,8 @@ public class RegisterAndLoginMenu extends Menu {
                         try {
                             RegisterAndLoginManager.isUserNameAndPasswordCorrectForSeller(loginMatcher.group(1), password);
                             currentSeller = seller;
-                            currentCustomer= null;
-                            currentManager= null;
+                            currentCustomer = null;
+                            currentManager = null;
                             getPassword = false;
                             System.out.println("you have been login successfully!");
                         } catch (Exception e) {
@@ -155,8 +155,8 @@ public class RegisterAndLoginMenu extends Menu {
                         try {
                             RegisterAndLoginManager.isUserNameAndPasswordCorrectForManager(loginMatcher.group(1), password);
                             currentManager = manager;
-                            currentCustomer= null;
-                            currentSeller= null;
+                            currentCustomer = null;
+                            currentSeller = null;
                             getPassword = false;
                             System.out.println("you have login successfully!");
                         } catch (Exception e) {
@@ -190,13 +190,14 @@ public class RegisterAndLoginMenu extends Menu {
     public static Manager getCurrentManager() {
         return currentManager;
     }
-    public static void logout(){
-        if(currentCustomer!= null){
-            currentCustomer= null;
-        }else if(currentSeller!= null){
-            currentSeller= null;
-        }else if(currentManager!= null){
-            currentManager=null;
+
+    public static void logout() {
+        if (currentCustomer != null) {
+            currentCustomer = null;
+        } else if (currentSeller != null) {
+            currentSeller = null;
+        } else if (currentManager != null) {
+            currentManager = null;
         }
     }
 }

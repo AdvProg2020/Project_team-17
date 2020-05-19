@@ -1,20 +1,14 @@
 package Controller.AccountsManager;
 
 import Models.*;
-import Models.Accounts.Account;
 import Models.Accounts.Customer;
-import Models.Accounts.Manager;
 import Models.Accounts.Seller;
 import Models.Logs.BuyLog;
-import Models.Logs.Log;
 import Models.Logs.SellLog;
-import View.ReceivingInformationPage;
-import View.RegisterAndLoginMenu;
+import View.PurchasingProcessMenus.ReceivingInformationPage;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Random;
 
 public class CustomerAbilitiesManager {
     public void viewAccount(String username) throws Exception {
@@ -113,6 +107,9 @@ public class CustomerAbilitiesManager {
         }customer.payMoney(customer, amountForPay);
         for (Product product : boughtProducts) {
             product.getSeller().addMoneyToCredit(product);
+        }
+        for (Product product : boughtProducts) {
+            customer.getCart().removeProductAfterPurchasingFromCart(product);
         }
     }
 

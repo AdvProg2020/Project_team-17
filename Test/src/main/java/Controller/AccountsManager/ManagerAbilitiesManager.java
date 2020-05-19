@@ -1,16 +1,13 @@
 package Controller.AccountsManager;
 
 import Models.*;
-import Models.Accounts.Account;
 import Models.Accounts.Customer;
 import Models.Accounts.Manager;
 import Models.Accounts.Seller;
-import Models.Enums.DiscountEnum;
 import Models.Request.Request;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class ManagerAbilitiesManager {
     public static ArrayList<String> showAllAccounts() {
@@ -97,19 +94,20 @@ public class ManagerAbilitiesManager {
         for (String customer : customersName) {
             customers.add(Customer.getCustomerByName(customer));
         }
-        new DiscountCode(code, LocalDate.parse(beginningDate), LocalDate.parse(endingDate), Double.parseDouble(discountPercent), Double.parseDouble(max), repeat, customers);
+        DiscountCode discountCode = new DiscountCode(code, LocalDate.parse(beginningDate), LocalDate.parse(endingDate),
+                Double.parseDouble(discountPercent), Double.parseDouble(max), repeat, customers);
+        for (Customer customer : customers) {
+            customer.addDiscountCode(discountCode);
+        }
+        System.out.println("discount code created");
     }
 
     public static ArrayList<String> viewDiscountCodes() {
-        //if (DiscountCode.getAllDiscountCodes() != null) {
-            ArrayList<String> discountCodeInfo = new ArrayList<>();
-            for (DiscountCode discountCode : DiscountCode.getAllDiscountCodes()) {
-                discountCodeInfo.add(discountCode.getDiscountCode());
-            }
-            return discountCodeInfo;
-        //} else {
-       //     throw new Exception("there isn't any discount code ");
-       // }
+        ArrayList<String> discountCodeInfo = new ArrayList<>();
+        for (DiscountCode discountCode : DiscountCode.getAllDiscountCodes()) {
+            discountCodeInfo.add(discountCode.getDiscountCode());
+        }
+        return discountCodeInfo;
     }
 
     public static void isThereDiscountCode(String discountCode) throws Exception {

@@ -129,11 +129,11 @@ public class ProductsMenu extends Menu {
             if (command.matches("show product\\s(.+)")) {
                 showProductByIdMatcher.find();
                 try {
-                    Product product=ProductsManager.checkProductID(showProductByIdMatcher.group(1));
+                    Product product = ProductsManager.checkProductID(showProductByIdMatcher.group(1));
                     ProductMenu productMenu = new ProductMenu(this, product);
                     productMenu.show();
                     productMenu.execute();
-                }catch (Exception e){
+                } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
             } else if (command.equals("help")) {

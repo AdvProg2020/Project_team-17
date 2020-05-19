@@ -6,7 +6,6 @@ import Models.Enums.ProductEnum;
 import Models.Logs.BuyLog;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 
 public class Product {
     private static ArrayList<Product> allProducts = new ArrayList<Product>();
@@ -21,15 +20,15 @@ public class Product {
     private String explanation;
     private double averageScore = 0;
     private String productsSpecialFeature;
-    private int visitedTime=0;
+    private int visitedTime = 0;
     private Discount discount;
     private ArrayList<PointOfView> pointOfViews = new ArrayList<>();
     private ArrayList<Score> scoresForProduct = new ArrayList<>();
     private static ArrayList<Product> products = new ArrayList<>();
 
-    public Product(String productId, String name, String companyName, double price, Seller seller, Category category, String explanation, double averageScore,String productsSpecialFeature) {
+    public Product(String productId, String name, String companyName, double price, Seller seller, Category category, String explanation, double averageScore, String productsSpecialFeature) {
         this.productId = productId;
-        this.productState =ProductEnum.PRODUCING;
+        this.productState = ProductEnum.PRODUCING;
         this.name = name;
         this.companyName = companyName;
         this.price = price;
@@ -37,10 +36,11 @@ public class Product {
         this.category = category;
         this.explanation = explanation;
         this.averageScore = averageScore;
-        this.productsSpecialFeature=productsSpecialFeature;
+        this.productsSpecialFeature = productsSpecialFeature;
         products.add(this);
     }
-    public void addToVisitedTime(){
+
+    public void addToVisitedTime() {
         this.visitedTime++;
     }
 
@@ -53,10 +53,10 @@ public class Product {
     }
 
     public double calculateProductPrice(Product product) {
-        if(Discount.doesThisProductHaveDiscount(product)){
-          Discount discount=Discount.getProductDiscount(product);
-          double discountAmount = (discount.getDiscountPercent()*product.getPrice())/100;
-          return product.getPrice()-discountAmount;
+        if (Discount.doesThisProductHaveDiscount(product)) {
+            Discount discount = Discount.getProductDiscount(product);
+            double discountAmount = (discount.getDiscountPercent() * product.getPrice()) / 100;
+            return product.getPrice() - discountAmount;
         }
         return product.getPrice();
     }
@@ -84,7 +84,8 @@ public class Product {
     public String getName() {
         return name;
     }
-    public static void addProduct(Product product){
+
+    public static void addProduct(Product product) {
         allProducts.add(product);
     }
 
@@ -131,6 +132,7 @@ public class Product {
         }
         return null;
     }
+
     public static ArrayList<Product> getProductsListByName(ArrayList<String> productsName) {
         ArrayList<Product> products = new ArrayList<>();
         for (String name : productsName) {
@@ -138,9 +140,10 @@ public class Product {
         }
         return products;
     }
-    public static Product getProductByName(String name){
+
+    public static Product getProductByName(String name) {
         for (Product product : allProducts) {
-            if(product.getName().equals(name)){
+            if (product.getName().equals(name)) {
                 return product;
             }
         }
@@ -167,6 +170,7 @@ public class Product {
     public String getProductId() {
         return productId;
     }
+
     public void averageScoreForProduct(Product product) {
         int sum = 0;
         for (Score score : product.scoresForProduct) {
@@ -184,7 +188,7 @@ public class Product {
         Category category = product.getCategory();
         category.removeProductFromCategory(category, product);
         Seller seller = product.getSeller();
-        seller.removeProduct(seller,product);
+        seller.removeProduct(seller, product);
     }
 
     public static void deleteProducts(ArrayList<Product> removeProduct) {
@@ -203,14 +207,14 @@ public class Product {
 
     public void addCommentForProduct(Customer customer, String content) {
         //nemidonam title chi karast!
-        boolean hasBought= false;
-        ArrayList<BuyLog> buyLogs= customer.getBuyLog();
+        boolean hasBought = false;
+        ArrayList<BuyLog> buyLogs = customer.getBuyLog();
         for (BuyLog log : buyLogs) {
-            if(log.doesLogHaveThisProduct(this.getProductId())){
-                hasBought=true;
+            if (log.doesLogHaveThisProduct(this.getProductId())) {
+                hasBought = true;
             }
         }
-        this.pointOfViews.add(new PointOfView(customer, this, content, null,hasBought));
+        this.pointOfViews.add(new PointOfView(customer, this, content, hasBought));
     }
 
     public ArrayList<PointOfView> getPointOfViews() {
@@ -252,7 +256,7 @@ public class Product {
                 ", price=" + price +
                 ", priceAfterDiscount=" + priceAfterDiscount +
                 ", seller=" + seller +
-                ", category=" + category +
+                ", category=" + category.getCategoryName() +
                 ", explanation='" + explanation + '\'' +
                 ", averageScore=" + averageScore +
                 '}';
