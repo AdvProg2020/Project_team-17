@@ -10,8 +10,8 @@ public class CommandProcessor {
     }
 
     public void runWithMenu() {
-        Menu.setScanner(this.scanner);
         Menu currentMenu = new MainMenu();
+        Menu.setScanner(this.scanner);
         currentMenu.show();
         currentMenu.execute();
     }

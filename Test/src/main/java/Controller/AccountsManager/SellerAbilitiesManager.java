@@ -78,10 +78,9 @@ public class SellerAbilitiesManager {
     }
 
 
-    public static Discount addDiscount(Seller seller, String id, String beginningDate, String endingDate,
+    public static Discount addDiscount(String id, String beginningDate, String endingDate,
                                        double discountPercent, ArrayList<String> productsName) {
         Discount discount = new Discount(id, LocalDate.parse(beginningDate), LocalDate.parse(endingDate), discountPercent, Product.getProductsListByName(productsName));
-        seller.addDiscountForSeller(seller, discount);
         return discount;
     }
 

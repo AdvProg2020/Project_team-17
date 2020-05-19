@@ -19,6 +19,7 @@ public class SellerMenu extends Menu {
     RegisterAndLoginMenu registerAndLoginMenu = new RegisterAndLoginMenu(this);
     CommandProcessor commandProcessor = new CommandProcessor();
 
+
     public SellerMenu(Menu parentMenu) {
         super("Seller ", parentMenu);
     }
@@ -149,25 +150,25 @@ public class SellerMenu extends Menu {
             Matcher viewBuyersMatcher = viewBuyersPattern.matcher(command);
             if (command.matches("view\\s(.+)")) {
                 viewProductMatcher.find();
-                try {
-                    SellerAbilitiesManager.checkProductByID(viewProductMatcher.group(1));
+                //try {
+                    //SellerAbilitiesManager.checkProductByID(viewProductMatcher.group(1));
                     Product product = Product.getProductWithId(viewProductMatcher.group(1));
                     System.out.println(product.toString());
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                }
+                //} catch (Exception e) {
+                  //  System.out.println(e.getMessage());
+                //}
             } else if (command.matches("edit\\s(.+)")) {
                 editProductMatcher.find();
-                try {
-                    SellerAbilitiesManager.checkProductByID(editProductMatcher.group(1));
+                //try {
+                  //  SellerAbilitiesManager.checkProductByID(editProductMatcher.group(1));
                     System.out.println("enter the field you want to change: ");
                     String field = scanner.nextLine();
                     System.out.println("enter the content for this field: ");
                     String newContent = scanner.nextLine();
                     SellerAbilitiesManager.sendEditingProductRequest(editProductMatcher.group(1), seller, field, newContent);
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                }
+                //} catch (Exception e) {
+                  //  System.out.println(e.getMessage());
+                //}
             } else if (command.matches("view buyers\\s(.+)")) {
                 viewBuyersMatcher.find();
                 System.out.println("yo");
@@ -184,7 +185,7 @@ public class SellerMenu extends Menu {
             }
         }
     }
-
+//check
     public void addProduct() {
         String command;
         Seller seller = RegisterAndLoginMenu.getCurrentSeller();
@@ -217,7 +218,7 @@ public class SellerMenu extends Menu {
             }
         }
     }
-
+//check
     public void removeProduct() {
         String command;
         Seller seller = RegisterAndLoginMenu.getCurrentSeller();
@@ -242,7 +243,7 @@ public class SellerMenu extends Menu {
             }
         }
     }
-
+//check
     public void showCategories() {
         System.out.println(SellerAbilitiesManager.showCategories());
     }
@@ -274,31 +275,29 @@ public class SellerMenu extends Menu {
                     System.out.println("enter the content for this field: ");
                     String newContent = scanner.nextLine();
                     SellerAbilitiesManager.sendEditingOffRequest(editOffMatcher.group(1), seller, field, newContent);
-
+                    System.out.println("request sent to manager");
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
             } else if (command.equals("add off")) {
+                ArrayList<String> productsName = new ArrayList<>();
                 System.out.println("enter discount's id");
                 String id = scanner.nextLine();
-                System.out.println("enter discount's beginningDate");
+                System.out.println("enter discount's beginningDate(yyyy-mm-dd)");
                 String beginningDate = scanner.nextLine();
-                System.out.println("enter discount's endingDate");
+                System.out.println("enter discount's endingDate(yyyy-mm-dd)");
                 String endingDate = scanner.nextLine();
                 System.out.println("enter discount's percent");
                 String discountPercent = scanner.nextLine();
-                ArrayList<String> productsName = new ArrayList<>();
-                System.out.println("enter discount's products names(enter end to finish)");
-                while (true) {
-                    String product = scanner.nextLine();
-                    if (product.equals("end")) {
-                        break;
-                    }
-                    productsName.add(product);
+                System.out.println("how many products have this discount:");
+                int num = Integer.valueOf(scanner.nextLine());
+                for(int i = 0 ; i< num ; i++){
+                    productsName.add(scanner.nextLine());
                 }
-                Discount discount = SellerAbilitiesManager.addDiscount(seller, id, beginningDate, endingDate,
+                Discount discount = SellerAbilitiesManager.addDiscount( id, beginningDate, endingDate,
                         Double.parseDouble(discountPercent), productsName);
                 new AddOffRequest(seller, RegisterAndLoginMenu.getCurrentManager(), discount);
+                System.out.println("request sent to manager");
             } else if (command.equals("back")) {
                 break;
             } else if (command.equals("help")) {
