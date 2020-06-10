@@ -2,6 +2,7 @@ package Controller;
 
 import Models.Accounts.Customer;
 import Models.Cart;
+import Models.DiscountCode;
 import Models.Product;
 
 import java.util.ArrayList;
@@ -16,11 +17,14 @@ public class CartManager {
         return showProducts;
     }
 
-    public static double showTotalPriceOfCart(Customer customer) throws Exception {
+    /*public static double showTotalPriceOfCart(Customer customer) throws Exception {
         Cart cart = customer.getCart();
         if (cart != null) {
             return cart.totalPriceOfProductInCart();
         } else throw new Exception("Cart is empty");
+    }*/
+    public static double showTotalPriceOfCart(Customer customer, DiscountCode discountCode){
+        return customer.getCart().totalPriceWithDiscount(discountCode);
     }
 
 

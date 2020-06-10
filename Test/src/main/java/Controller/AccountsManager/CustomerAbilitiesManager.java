@@ -75,12 +75,24 @@ public class CustomerAbilitiesManager {
         } else throw new Exception("There isn't any discount code already");
     }
 
-    public static void checkAndPay(Customer customer, String code) throws Exception {
+   /* public static void checkAndPay(Customer customer, String code) throws Exception {
         DiscountCode discountCode = DiscountCode.getDiscountCodeWithCode(code);
         if (customer.getCart().totalPriceWithDiscount(discountCode) <= customer.getCredit()) {
             pay(customer, code);
         } else
             throw new Exception("there isn't enough money in your card!");
+    }*/
+   public static String finalPay(Customer customer, String code){
+       if(canPay(customer,code)){
+           pay(customer,code);
+           return "payment done";
+       }else return "there isn't enough money in your card!";
+   }
+    public static boolean canPay(Customer customer, String code){
+        DiscountCode discountCode = DiscountCode.getDiscountCodeWithCode(code);
+        if (customer.getCart().totalPriceWithDiscount(discountCode) <= customer.getCredit()){
+            return true;
+        }return false;
     }
 
     public static void pay(Customer customer, String code) {

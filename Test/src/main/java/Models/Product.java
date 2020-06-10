@@ -163,12 +163,12 @@ public class Product {
         return productId;
     }
 
-    public void averageScoreForProduct(Product product) {
+    public double averageScoreForProduct(Product product) {
         int sum = 0;
         for (Score score : product.scoresForProduct) {
             sum += score.getScore();
         }
-        this.averageScore = sum / product.scoresForProduct.size();
+        return this.averageScore = sum / product.scoresForProduct.size();
     }
 
     public void setProductState(ProductEnum productState) {
@@ -201,11 +201,10 @@ public class Product {
     }
 
     public double getAverageScore() {
-        return averageScore;
+        return this.averageScoreForProduct(this);
     }
 
     public void addCommentForProduct(Customer customer, String content) {
-        //nemidonam title chi karast!
         boolean hasBought = false;
         ArrayList<BuyLog> buyLogs = customer.getBuyLog();
         for (BuyLog log : buyLogs) {

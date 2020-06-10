@@ -2,6 +2,7 @@ package View;
 
 import Controller.DiscountManager;
 import Models.Enums.ProductEnum;
+import Models.Product;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -59,10 +60,14 @@ public class DiscountsMenu extends Menu {
             command = scanner.nextLine();
             Pattern showProductByIdPattern = Pattern.compile("show product\\s(.+)");
             Matcher showProductByIdMatcher = showProductByIdPattern.matcher(command);
-            if (command.matches("show product\\\\s(.+)")) {
+            if (command.matches("show product\\s(.+)")) {
                 showProductByIdMatcher.find();
-                //in k alan miad inja mibine id product ro baed mire to safeye hamon mahsol chejori handle konim k id
-                //ro gereft bere to safeye hamoon product
+                Product product = Product.getProductWithId(showProductByIdMatcher.group(1));
+                ProductMenu productMenu = (ProductMenu)(Menu.getMenu("Product Menu"));
+                productMenu.setParentMenu(this);
+                productMenu.setProduct(product);
+                productMenu.show();
+                productMenu.execute();
             } else if (command.equals("help")) {
                 System.out.println("commands that you can enter are:");
                 System.out.println("show product [productID]");

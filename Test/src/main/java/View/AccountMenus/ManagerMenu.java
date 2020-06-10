@@ -3,7 +3,6 @@ package View.AccountMenus;
 import Controller.AccountsManager.ManagerAbilitiesManager;
 import Models.Accounts.Manager;
 import Models.Category;
-import View.CommandProcessor;
 import View.Menu;
 import View.RegisterAndLoginMenu;
 
@@ -12,8 +11,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ManagerMenu extends Menu {
-    RegisterAndLoginMenu registerAndLoginMenu = new RegisterAndLoginMenu(this);
-    CommandProcessor commandProcessor = new CommandProcessor();
+    //RegisterAndLoginMenu registerAndLoginMenu = new RegisterAndLoginMenu(this);
+    //CommandProcessor commandProcessor = new CommandProcessor();
+    Menu menu = Menu.getMenu("Main Menu");
+    Menu registerAndLoginMenu = Menu.getMenu("Register And Login ");
 
     public ManagerMenu(Menu parentMenu) {
         super("Manager ", parentMenu);
@@ -33,6 +34,7 @@ public class ManagerMenu extends Menu {
             System.out.println("9.back");
         } else {
             System.out.println("you haven't logged in yet, first login as a manager");
+            registerAndLoginMenu.setParentMenu(this);
             registerAndLoginMenu.show();
             registerAndLoginMenu.execute();
         }
@@ -72,7 +74,9 @@ public class ManagerMenu extends Menu {
                 parentMenu.execute();
             } else if (input == 8) {
                 RegisterAndLoginMenu.logout();
-                commandProcessor.runWithMenu();
+                menu.show();
+                menu.execute();
+                //commandProcessor.runWithMenu();
             } else if (input == 9) {
                 parentMenu.show();
                 parentMenu.execute();

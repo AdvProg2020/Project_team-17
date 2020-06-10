@@ -86,6 +86,11 @@ public class DiscountCode {
         return false;
     }
 
+    public void setUsageOfDiscountCode() {
+        int num = this.getCountDiscountCode() - 1;
+        this.setCountDiscountCode(num);
+    }
+
     public static DiscountCode getDiscountCodeWithCode(String discountCode) {
         for (DiscountCode code : allDiscountCodes) {
             if (code.getDiscountCode().equals(discountCode)) {

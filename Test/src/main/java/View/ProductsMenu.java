@@ -10,7 +10,6 @@ import java.util.regex.Pattern;
 
 public class ProductsMenu extends Menu {
     private ArrayList<String> currentFilters = new ArrayList<>();
-
     public ProductsMenu(Menu parentMenu) {
         super("Products", parentMenu);
     }
@@ -49,10 +48,11 @@ public class ProductsMenu extends Menu {
         }
     }
 
+    //check
     public void viewCategories() {
         System.out.println(ProductsManager.showCategory());
     }
-
+//bug
     public void filtering() {
         String command;
         while (true) {
@@ -76,6 +76,7 @@ public class ProductsMenu extends Menu {
                 break;
             } else if (command.equals("help")) {
                 System.out.println("commands that you can enter are:");
+                System.out.println("show available filters");
                 System.out.println("filter [an available filter]");
                 System.out.println("current filters");
                 System.out.println("disable filter [a selected filter]");
@@ -84,19 +85,19 @@ public class ProductsMenu extends Menu {
         }
 
     }
-
+//bug
     public void sorting() {
         String command;
         while (true) {
             command = scanner.nextLine();
             Pattern sortPattern = Pattern.compile("sort\\s(.+)");
             Matcher sortMatcher = sortPattern.matcher(command);
-            if (command.equals("show available sort")) {
-                System.out.println(ProductsManager.showAvailableSort());
-            } else if (command.matches("sort\\s(.+)")) {
+            if (command.matches("sort\\s(.+)")) {
                 sortMatcher.find();
                 ProductsManager.sort(sortMatcher.group(1));
                 System.out.println(ProductsManager.getSortProductsName(ProductsManager.getCurrentSort()));
+            } else if (command.equals("show available sort")) {
+                System.out.println(ProductsManager.showAvailableSort());
             } else if (command.equals("current sort")) {
                 System.out.println(ProductsManager.getCurrentSort());
             } else if (command.matches("disable sort")) {
@@ -119,6 +120,7 @@ public class ProductsMenu extends Menu {
 
     }
 
+    //check
     public void showProducts() {
         String command;
         System.out.println(ProductsManager.showProducts());
@@ -130,9 +132,14 @@ public class ProductsMenu extends Menu {
                 showProductByIdMatcher.find();
                 try {
                     Product product = ProductsManager.checkProductID(showProductByIdMatcher.group(1));
-                    ProductMenu productMenu = new ProductMenu(this, product);
-                    productMenu.show();
-                    productMenu.execute();
+                   ProductMenu productMenu = new ProductMenu(this, product);
+                   productMenu.show();
+                   productMenu.execute();
+                    //ProductMenu productMenu = (ProductMenu)(Menu.getMenu("Product Menu"));
+                    //productMenu.setParentMenu(this);
+                    //productMenu.setProduct(product);
+                    //productMenu.show();
+                    //productMenu.execute();
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
@@ -198,7 +205,7 @@ public class ProductsMenu extends Menu {
     }
 
     private void filterByAvailability() {
-        System.out.println("enter a state for availability"); //agar manzore mojodiate kalaro dorost gerefte basham
+        System.out.println("enter a state for availability");
         String state = scanner.nextLine();
         ProductsManager.filterByAvailability(ProductEnum.valueOf(state));
         System.out.println(ProductsManager.getFilterProductsName());
@@ -273,7 +280,6 @@ public class ProductsMenu extends Menu {
     }
 
     private void filter(String command) {
-
         if (command.equals("name")) {
             filterByName();
         } else if (command.equals("category")) {

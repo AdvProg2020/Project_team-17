@@ -1,8 +1,8 @@
 package View.PurchasingProcessMenus;
 
 import Controller.AccountsManager.CustomerAbilitiesManager;
+import Models.DiscountCode;
 import View.Menu;
-import View.PurchasingProcessMenus.PaymentPage;
 
 public class DiscountCodePage extends Menu {
     PaymentPage paymentPage = new PaymentPage(this);
@@ -43,13 +43,18 @@ public class DiscountCodePage extends Menu {
             try {
                 CustomerAbilitiesManager.checkDiscountCodeValidation(code);
                 discountCode = code;
+                DiscountCode.getDiscountCodeWithCode(code).setUsageOfDiscountCode();
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
         }
     }
 
-    public static String getDiscountCode() {
+    public static String getCodeOfDiscountCode() {
         return discountCode;
+    }
+
+    public static DiscountCode getDiscountCode() {
+        return DiscountCode.getDiscountCodeWithCode(getCodeOfDiscountCode());
     }
 }

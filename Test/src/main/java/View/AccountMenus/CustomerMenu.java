@@ -3,7 +3,9 @@ package View.AccountMenus;
 import Controller.AccountsManager.CustomerAbilitiesManager;
 import Models.Accounts.Customer;
 import Models.Product;
-import View.*;
+import View.CartMenu;
+import View.Menu;
+import View.RegisterAndLoginMenu;
 import View.PurchasingProcessMenus.PurchaseMenu;
 
 import java.util.regex.Matcher;
@@ -12,9 +14,10 @@ import java.util.regex.Pattern;
 public class CustomerMenu extends Menu {
     PurchaseMenu purchaseMenu = new PurchaseMenu(this);
     CartMenu cartMenu = new CartMenu(this);
-    RegisterAndLoginMenu registerAndLoginMenu = new RegisterAndLoginMenu(this);
-    CommandProcessor commandProcessor = new CommandProcessor();
-
+    //RegisterAndLoginMenu registerAndLoginMenu = new RegisterAndLoginMenu(this);
+    //CommandProcessor commandProcessor = new CommandProcessor();
+    Menu menu = Menu.getMenu("Main Menu");
+    Menu registerAndLoginMenu = Menu.getMenu("Register And Login ");
 
     public CustomerMenu(Menu parentMenu) {
         super("Customer ", parentMenu);
@@ -33,6 +36,7 @@ public class CustomerMenu extends Menu {
             System.out.println("8.back");
         } else {
             System.out.println("you haven't logged in yet, first login as a customer");
+            registerAndLoginMenu.setParentMenu(this);
             registerAndLoginMenu.show();
             registerAndLoginMenu.execute();
         }
@@ -66,7 +70,9 @@ public class CustomerMenu extends Menu {
                 parentMenu.execute();
             } else if (input == 7) {
                 RegisterAndLoginMenu.logout();
-                commandProcessor.runWithMenu();
+                //commandProcessor.runWithMenu();
+                menu.show();
+                menu.execute();
             } else if (input == 8) {
                 parentMenu.show();
                 parentMenu.execute();
@@ -128,6 +134,7 @@ public class CustomerMenu extends Menu {
                     }
                     try {
                         CustomerAbilitiesManager.rateProduct(customer, Product.getProductWithId(rateMatcher.group(1)), rate);
+                        System.out.println("you rated successfully");
                     } catch (Exception e) {
                         System.out.println(e.getMessage());
                     }

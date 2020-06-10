@@ -3,7 +3,10 @@ package Controller;
 import Models.Accounts.Customer;
 import Models.Cart;
 import Models.Category;
+import Models.PointOfView;
 import Models.Product;
+
+import java.util.ArrayList;
 
 public class ProductManager {
     public static String digestAttributes(Product product) {
@@ -28,8 +31,12 @@ public class ProductManager {
     }
 
     public static String showComments(Product product) {
+        ArrayList<String> comments = new ArrayList<>();
+        for (PointOfView pointOfView : product.getPointOfViews()) {
+            comments.add(pointOfView.getPointOfViewStringText());
+        }
         String output = "Product score: " + Double.toString(product.getAverageScore());
-        output += "Product comments: " + product.getPointOfViews();
+        output += "Product comments: " + comments;
         return output;
     }
 

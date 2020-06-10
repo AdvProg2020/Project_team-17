@@ -7,7 +7,6 @@ import Models.Discount;
 import Models.Product;
 import Models.Request.AddOffRequest;
 import Models.Request.AddProductRequest;
-import View.CommandProcessor;
 import View.Menu;
 import View.RegisterAndLoginMenu;
 
@@ -16,9 +15,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class SellerMenu extends Menu {
-    RegisterAndLoginMenu registerAndLoginMenu = new RegisterAndLoginMenu(this);
-    CommandProcessor commandProcessor = new CommandProcessor();
-
+    //RegisterAndLoginMenu registerAndLoginMenu = new RegisterAndLoginMenu(this);
+    //CommandProcessor commandProcessor = new CommandProcessor();
+    Menu menu = Menu.getMenu("Main Menu");
+    Menu registerAndLoginMenu = Menu.getMenu("Register And Login ");
 
     public SellerMenu(Menu parentMenu) {
         super("Seller ", parentMenu);
@@ -40,6 +40,7 @@ public class SellerMenu extends Menu {
             System.out.println("11.back");
         } else {
             System.out.println("you haven't logged in yet, first login as a seller");
+            registerAndLoginMenu.setParentMenu(this);
             registerAndLoginMenu.show();
             registerAndLoginMenu.execute();
         }
@@ -87,7 +88,9 @@ public class SellerMenu extends Menu {
                 parentMenu.execute();
             } else if (input == 10) {
                 RegisterAndLoginMenu.logout();
-                commandProcessor.runWithMenu();
+                //commandProcessor.runWithMenu();
+                menu.show();
+                menu.execute();
             } else if (input == 11) {
                 parentMenu.show();
                 parentMenu.execute();
@@ -207,7 +210,7 @@ public class SellerMenu extends Menu {
                 Category category = Category.getCategoryByName(scanner.nextLine());
                 System.out.println("Enter explanation for product: ");
                 String explanation = scanner.nextLine();
-                System.out.println("Enter special feature");
+                System.out.println("Enter special feature: ");
                 String feature = scanner.nextLine();
                 Product product = SellerAbilitiesManager.addProduct(id, name, companyName, price, category, seller, explanation, feature);
                 new AddProductRequest(seller, RegisterAndLoginMenu.getCurrentManager(), product, category);
@@ -298,6 +301,7 @@ public class SellerMenu extends Menu {
                 System.out.println("how many products have this discount:");
                 int num = Integer.valueOf(scanner.nextLine());
                 for (int i = 0; i < num; i++) {
+                    System.out.println("enter products name: ");
                     productsName.add(scanner.nextLine());
                 }
                 Discount discount = SellerAbilitiesManager.addDiscount(id, beginningDate, endingDate,
@@ -321,4 +325,5 @@ public class SellerMenu extends Menu {
         Seller seller = RegisterAndLoginMenu.getCurrentSeller();
         System.out.println(SellerAbilitiesManager.viewBalance(seller));
     }
+
 }

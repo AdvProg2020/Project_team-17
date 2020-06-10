@@ -102,7 +102,7 @@ public class CartMenu extends Menu {
         }
 
     }
-
+//TODO CHECK
     public void increaseProduct() {
         Customer customer = RegisterAndLoginMenu.getCurrentCustomer();
         String command;
@@ -114,6 +114,7 @@ public class CartMenu extends Menu {
                 increaseMatcher.find();
                 try {
                     CartManager.increaseProduct(customer, increaseMatcher.group(1));
+                    System.out.println("number of product increased");
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
@@ -122,10 +123,11 @@ public class CartMenu extends Menu {
             } else if (command.equals("help")) {
                 System.out.println("commands that you can enter are:");
                 System.out.println("increase [product ID]");
+                System.out.println("back");
             }
         }
     }
-
+//TODO CHECK
     public void decreaseProduct() {
         Customer customer = RegisterAndLoginMenu.getCurrentCustomer();
         String command;
@@ -137,6 +139,7 @@ public class CartMenu extends Menu {
                 decreaseMatcher.find();
                 try {
                     CartManager.decreaseProduct(customer, decreaseMatcher.group(1));
+                    System.out.println("number of product decreased");
                 } catch (Exception e) {
                     e.getMessage();
                 }
@@ -145,17 +148,19 @@ public class CartMenu extends Menu {
             } else if (command.equals("help")) {
                 System.out.println("commands that you can enter are:");
                 System.out.println("decrease [product ID]");
+                System.out.println("back");
             }
         }
     }
-
+    //TODO check price with discount code
     public void showTotalPrice() {
         Customer customer = RegisterAndLoginMenu.getCurrentCustomer();
-        try {
+        System.out.println(CartManager.showTotalPriceOfCart(customer,null));
+        /*try {
             System.out.println(CartManager.showTotalPriceOfCart(customer));
         } catch (Exception e) {
             System.out.println(e.getMessage());
-        }
+        }*/
 
     }
 

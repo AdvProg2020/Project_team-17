@@ -103,8 +103,8 @@ public class ProductsManager {
     }
 
     public static void disableFilterByName(String name) {
-        for (Product product : filterProduct) {
-            if (!(product.getName().equals(name))) {
+        for (Product product : Product.getAllProducts()) {
+            if (!(filterProduct.contains(product))) {
                 filterProduct.add(product);
             }
         }

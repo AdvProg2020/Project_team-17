@@ -23,7 +23,7 @@ public class Cart {
         for (Product productInCart : productsInCart.keySet()) {
             if (productInCart.equals(product)) {
                 int count = productsInCart.get(productInCart);
-                productsInCart.put(productInCart, count + 1);
+                productsInCart.replace(productInCart, count + 1);
             }
         }
     }
@@ -33,7 +33,7 @@ public class Cart {
         for (Product cartProduct : productsInCart.keySet()) {
             if (cartProduct.equals(product)) {
                 int count = productsInCart.get(cartProduct);
-                productsInCart.put(cartProduct, count - 1);
+                productsInCart.replace(cartProduct, count - 1);
                 if (productsInCart.get(cartProduct) == 0) {
                     productsInCart.remove(cartProduct);
                 }
@@ -46,19 +46,11 @@ public class Cart {
     }
 
     public ArrayList<Product> showProductsOfCart() {
-        ArrayList<Product> allProductOfCart = new ArrayList<>();
-        for (Product product : productsInCart.keySet()) {
-            allProductOfCart.add(product);
-        }
-        return allProductOfCart;
+        return new ArrayList<>(productsInCart.keySet());
     }
 
     public ArrayList<Product> getProductsInCart() {
-        ArrayList<Product> products = new ArrayList<>();
-        for (Product product : productsInCart.keySet()) {
-            products.add(product);
-        }
-        return products;
+        return new ArrayList<>(productsInCart.keySet());
     }
 
     public boolean isThereProductInCart(Product product) {
@@ -90,6 +82,4 @@ public class Cart {
     public double totalPriceWithDiscount(DiscountCode discountCode) {
         return totalPriceOfProductInCart() - DiscountCode.calculateDiscountAmount(totalPriceOfProductInCart(), discountCode);
     }
-
-
 }
