@@ -4,6 +4,7 @@ import Controller.DiscountManager;
 import Models.Enums.ProductEnum;
 import Models.Product;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -24,36 +25,11 @@ public class DiscountsMenu extends Menu {
         System.out.println("5.back");
     }
 
-    @Override
-    public void execute() {
-        int input = Integer.parseInt(scanner.nextLine());
-        if (input == 1) {
-            offs();
-            parentMenu.show();
-            parentMenu.execute();
-        } else if (input == 2) {
-            showProducts();
-            parentMenu.show();
-            parentMenu.execute();
-        } else if (input == 3) {
-            filtering();
-            parentMenu.show();
-            parentMenu.execute();
-        } else if (input == 4) {
-            sorting();
-            parentMenu.show();
-            parentMenu.execute();
-        } else if (input == 5) {
-            parentMenu.show();
-            parentMenu.execute();
-        }
-    }
-
     public void offs() {
         System.out.println(DiscountManager.showDiscountProducts());
     }
 
-    public void showProducts() {
+    public void showProducts() throws FileNotFoundException {
         String command;
         System.out.println(DiscountManager.showDiscountProducts());
         while (true) {
@@ -67,7 +43,7 @@ public class DiscountsMenu extends Menu {
                 productMenu.setParentMenu(this);
                 productMenu.setProduct(product);
                 productMenu.show();
-                productMenu.execute();
+              //  productMenu.execute();
             } else if (command.equals("help")) {
                 System.out.println("commands that you can enter are:");
                 System.out.println("show product [productID]");

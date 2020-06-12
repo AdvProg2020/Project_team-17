@@ -1,10 +1,15 @@
 package View;
 
+import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -15,7 +20,8 @@ public abstract class Menu {
     protected HashMap<Integer, Menu> submenus;
     protected Menu parentMenu;
     public static Scanner scanner;
-    protected static GridPane mainPane = new GridPane();
+
+   protected static BorderPane mainPane = new BorderPane();
     protected static Stage window;
     protected static ArrayList<Menu> allMenus = new ArrayList<Menu>();
 
@@ -57,49 +63,20 @@ public abstract class Menu {
         Menu.window = window;
     }
 
-   /* public void show() {
-        System.out.println(this.name + ":");
-        for (Integer menuNum : submenus.keySet()) {
-            System.out.println(menuNum + ". " + submenus.get(menuNum).getName());
-        }
-        if (this.parentMenu != null)
-            System.out.println((submenus.size() + 1) + ". Back");
-        else
-            System.out.println((submenus.size() + 1) + ". Exit");
-    }*/
-
-    public void execute() {
-        Menu nextMenu = null;
-        try {
-            int chosenMenu = Integer.parseInt(scanner.nextLine());
-            if (chosenMenu == submenus.size() + 1) {
-                if (this.parentMenu == null)
-                    System.exit(1);
-                else
-                    nextMenu = this.parentMenu;
-            } else
-                nextMenu = submenus.get(chosenMenu);
-            nextMenu.show();
-            nextMenu.execute();
-        } catch (Exception e) {
-            System.out.println("enter a number");
-            this.show();
-            this.execute();
-        }
-
-    }
-
-    public void adjustPane() {
-        mainPane = new GridPane();
+    public void setScene() {
+        mainPane = new BorderPane();
         HBox mainButtons = new HBox();
-        Button loginButton = new Button("Login");
-        Button userButton = new Button("Accounts");
+        mainButtons.setSpacing(20);
+        mainButtons.setAlignment(Pos.CENTER);
+        Button accountsButton = new Button("Accounts");
         Button productButton = new Button("Products");
-        Button offButton = new Button("Offs");
-        Button exitButton = new Button("exit");
-        mainButtons.getChildren().addAll(loginButton, userButton, productButton, offButton, exitButton);
-        mainPane.add(mainButtons,0,0);
+        Button discountButton = new Button("Discounts");
+        Button exitButton = new Button("Exit");
+        mainButtons.getChildren().addAll(accountsButton, productButton, discountButton, exitButton);
+        mainPane.setTop(mainButtons);
     }
+
+
 
     public void show() {
     }

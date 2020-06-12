@@ -4,6 +4,8 @@ import Controller.ProductManager;
 import Models.Accounts.Customer;
 import Models.Product;
 
+import java.io.FileNotFoundException;
+
 public class ProductMenu extends Menu {
     //RegisterAndLoginMenu registerAndLoginMenu = new RegisterAndLoginMenu(this);
     Menu registerAndLoginMenu = Menu.getMenu("Register And Login ");
@@ -24,34 +26,10 @@ public class ProductMenu extends Menu {
         System.out.println("5.back");
     }
 
-    @Override
-    public void execute() {
-        int input = Integer.parseInt(scanner.nextLine());
-        if (input == 1) {
-            digest();
-            parentMenu.show();
-            parentMenu.execute();
-        } else if (input == 2) {
-            attributes();
-            parentMenu.show();
-            parentMenu.execute();
-        } else if (input == 3) {
-            compare();
-            parentMenu.show();
-            parentMenu.execute();
-        } else if (input == 4) {
-            comments();
-            parentMenu.show();
-            parentMenu.execute();
-        } else if (input == 5) {
-            parentMenu.show();
-            parentMenu.execute();
-        }
-    }
 
     //check
-    public void digest() {
-        Customer customer = RegisterAndLoginMenu.getCurrentCustomer();
+    public void digest() throws FileNotFoundException {
+        Customer customer = RegisterCustomerMenu.getCurrentCustomer();
         String command;
         System.out.println(ProductManager.digestAttributes(product));
         while (true) {
@@ -59,7 +37,7 @@ public class ProductMenu extends Menu {
             if (command.equals("add to cart")) {
                 if (customer == null) {
                     registerAndLoginMenu.show();
-                    registerAndLoginMenu.execute();
+                    //registerAndLoginMenu.execute();
                 } else {
                     ProductManager.addToCart(customer, product);
                     System.out.println("product successfully added to your cart");
@@ -88,7 +66,7 @@ public class ProductMenu extends Menu {
 //check
     public void comments() {
         String command;
-        Customer customer = RegisterAndLoginMenu.getCurrentCustomer();
+        Customer customer = RegisterCustomerMenu.getCurrentCustomer();
         System.out.println(ProductManager.showComments(product));
         while (true) {
             command = scanner.nextLine();

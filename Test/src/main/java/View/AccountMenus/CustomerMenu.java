@@ -5,17 +5,17 @@ import Models.Accounts.Customer;
 import Models.Product;
 import View.CartMenu;
 import View.Menu;
-import View.RegisterAndLoginMenu;
+import View.RegisterCustomerMenu;
+import View.RegisterSellerMenu;
 import View.PurchasingProcessMenus.PurchaseMenu;
 
+import java.io.FileNotFoundException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class CustomerMenu extends Menu {
     PurchaseMenu purchaseMenu = new PurchaseMenu(this);
     CartMenu cartMenu = new CartMenu(this);
-    //RegisterAndLoginMenu registerAndLoginMenu = new RegisterAndLoginMenu(this);
-    //CommandProcessor commandProcessor = new CommandProcessor();
     Menu menu = Menu.getMenu("Main Menu");
     Menu registerAndLoginMenu = Menu.getMenu("Register And Login ");
 
@@ -24,8 +24,8 @@ public class CustomerMenu extends Menu {
     }
 
     @Override
-    public void show() {
-        if (RegisterAndLoginMenu.getCurrentCustomer() != null) {
+    public void show(){
+        if (RegisterCustomerMenu.getCurrentCustomer() != null) {
             System.out.println("1.view personal info");
             System.out.println("2.view cart");
             System.out.println("3.purchase");
@@ -38,54 +38,15 @@ public class CustomerMenu extends Menu {
             System.out.println("you haven't logged in yet, first login as a customer");
             registerAndLoginMenu.setParentMenu(this);
             registerAndLoginMenu.show();
-            registerAndLoginMenu.execute();
         }
     }
 
-    @Override
-    public void execute() {
-        try {
-            int input = Integer.parseInt(scanner.nextLine());
-            if (input == 1) {
-                viewPersonalInfo();
-                parentMenu.show();
-                parentMenu.execute();
-            } else if (input == 2) {
-                cartMenu.show();
-                cartMenu.execute();
-            } else if (input == 3) {
-                purchaseMenu.show();
-                purchaseMenu.execute();
-            } else if (input == 4) {
-                viewOrders();
-                parentMenu.show();
-                parentMenu.execute();
-            } else if (input == 5) {
-                viewBalance();
-                parentMenu.show();
-                parentMenu.execute();
-            } else if (input == 6) {
-                viewDiscountCodes();
-                parentMenu.show();
-                parentMenu.execute();
-            } else if (input == 7) {
-                RegisterAndLoginMenu.logout();
-                //commandProcessor.runWithMenu();
-                menu.show();
-                menu.execute();
-            } else if (input == 8) {
-                parentMenu.show();
-                parentMenu.execute();
-            }
-        } catch (Exception e) {
-            System.out.println("you should enter a number");
-        }
-    }
+
 
     //check
     public void viewPersonalInfo() {
         String command;
-        Customer customer = RegisterAndLoginMenu.getCurrentCustomer();
+        Customer customer = RegisterCustomerMenu.getCurrentCustomer();
         System.out.println(customer.toString());
         while (true) {
             command = scanner.nextLine();
@@ -109,7 +70,7 @@ public class CustomerMenu extends Menu {
 
     public void viewOrders() {
         String command;
-        Customer customer = RegisterAndLoginMenu.getCurrentCustomer();
+        Customer customer = RegisterCustomerMenu.getCurrentCustomer();
         try {
             System.out.println(CustomerAbilitiesManager.viewOrders(customer));
             while (true) {
@@ -154,13 +115,13 @@ public class CustomerMenu extends Menu {
 
     //check
     public void viewBalance() {
-        Customer customer = RegisterAndLoginMenu.getCurrentCustomer();
+        Customer customer = RegisterCustomerMenu.getCurrentCustomer();
         System.out.println(customer.getCredit());
     }
 
     //check
     public void viewDiscountCodes() {
-        Customer customer = RegisterAndLoginMenu.getCurrentCustomer();
+        Customer customer = RegisterCustomerMenu.getCurrentCustomer();
         try {
             System.out.println(CustomerAbilitiesManager.showDiscountCodes(customer));
         } catch (Exception e) {

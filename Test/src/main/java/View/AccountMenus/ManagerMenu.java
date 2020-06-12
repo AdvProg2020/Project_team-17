@@ -4,8 +4,10 @@ import Controller.AccountsManager.ManagerAbilitiesManager;
 import Models.Accounts.Manager;
 import Models.Category;
 import View.Menu;
-import View.RegisterAndLoginMenu;
+import View.RegisterManagerMenu;
+import View.RegisterSellerMenu;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -21,8 +23,8 @@ public class ManagerMenu extends Menu {
     }
 
     @Override
-    public void show() {
-        if (RegisterAndLoginMenu.getCurrentManager() != null) {
+    public void show()  {
+        if (RegisterManagerMenu.getCurrentManager() != null) {
             System.out.println("1.view personal info");
             System.out.println("2.manage users");
             System.out.println("3.manage all products");
@@ -36,60 +38,13 @@ public class ManagerMenu extends Menu {
             System.out.println("you haven't logged in yet, first login as a manager");
             registerAndLoginMenu.setParentMenu(this);
             registerAndLoginMenu.show();
-            registerAndLoginMenu.execute();
-        }
-    }
-
-    @Override
-    public void execute() {
-        try {
-            int input = Integer.parseInt(scanner.nextLine());
-            if (input == 1) {
-                viewPersonalInfo();
-                parentMenu.show();
-                parentMenu.execute();
-            } else if (input == 2) {
-                manageUsers();
-                parentMenu.show();
-                parentMenu.execute();
-            } else if (input == 3) {
-                manageAllProducts();
-                parentMenu.show();
-                parentMenu.execute();
-            } else if (input == 4) {
-                createDiscountCode();
-                parentMenu.show();
-                parentMenu.execute();
-            } else if (input == 5) {
-                viewDiscountCodes();
-                parentMenu.show();
-                parentMenu.execute();
-            } else if (input == 6) {
-                manageRequests();
-                parentMenu.show();
-                parentMenu.execute();
-            } else if (input == 7) {
-                manageCategories();
-                parentMenu.show();
-                parentMenu.execute();
-            } else if (input == 8) {
-                RegisterAndLoginMenu.logout();
-                menu.show();
-                menu.execute();
-                //commandProcessor.runWithMenu();
-            } else if (input == 9) {
-                parentMenu.show();
-                parentMenu.execute();
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
         }
     }
 
     //check
     public void viewPersonalInfo() {
         String command;
-        Manager manager = RegisterAndLoginMenu.getCurrentManager();
+        Manager manager = RegisterManagerMenu.getCurrentManager();
         System.out.println(manager.toString());
         while (true) {
             command = scanner.nextLine();

@@ -4,7 +4,10 @@ import Controller.AccountsManager.CustomerAbilitiesManager;
 import Controller.CartManager;
 import Models.Accounts.Customer;
 import View.Menu;
-import View.RegisterAndLoginMenu;
+import View.RegisterCustomerMenu;
+import View.RegisterSellerMenu;
+
+import java.io.FileNotFoundException;
 
 public class PaymentPage extends Menu {
     public PaymentPage(Menu parentMenu) {
@@ -21,31 +24,14 @@ public class PaymentPage extends Menu {
         System.out.println("3.back");
     }
 
-    @Override
-    public void execute() {
-        int input = Integer.parseInt(scanner.nextLine());
-        if (input == 1) {
-            showFinalPrice();
-            this.show();
-            this.execute();
-        } else if (input == 2) {
-            pay();
-            menu.show();
-            menu.execute();
-            //commandProcessor.runWithMenu();
-        } else if (input == 3) {
-            parentMenu.show();
-            parentMenu.execute();
-        }
-    }
 
     public void showFinalPrice() {
-        Customer customer = RegisterAndLoginMenu.getCurrentCustomer();
+        Customer customer = RegisterCustomerMenu.getCurrentCustomer();
         System.out.println(CartManager.showTotalPriceOfCart(customer, DiscountCodePage.getDiscountCode()));
     }
 
     private void pay() {
-        Customer customer = RegisterAndLoginMenu.getCurrentCustomer();
+        Customer customer = RegisterCustomerMenu.getCurrentCustomer();
         /*try {
             CustomerAbilitiesManager.finalPay(customer, DiscountCodePage.getCodeOfDiscountCode());
             System.out.println("Finish");

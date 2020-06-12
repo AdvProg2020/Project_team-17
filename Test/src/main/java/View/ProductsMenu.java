@@ -4,6 +4,7 @@ import Controller.ProductsManager;
 import Models.Enums.ProductEnum;
 import Models.Product;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -21,31 +22,6 @@ public class ProductsMenu extends Menu {
         System.out.println("3.sorting");
         System.out.println("4.show products");
         System.out.println("5.back");
-    }
-
-    @Override
-    public void execute() {
-        int input = Integer.parseInt(scanner.nextLine());
-        if (input == 1) {
-            viewCategories();
-            parentMenu.show();
-            parentMenu.execute();
-        } else if (input == 2) {
-            filtering();
-            parentMenu.show();
-            parentMenu.execute();
-        } else if (input == 3) {
-            sorting();
-            parentMenu.show();
-            parentMenu.execute();
-        } else if (input == 4) {
-            showProducts();
-            parentMenu.show();
-            parentMenu.execute();
-        } else if (input == 5) {
-            parentMenu.show();
-            parentMenu.execute();
-        }
     }
 
     //check
@@ -134,12 +110,7 @@ public class ProductsMenu extends Menu {
                     Product product = ProductsManager.checkProductID(showProductByIdMatcher.group(1));
                    ProductMenu productMenu = new ProductMenu(this, product);
                    productMenu.show();
-                   productMenu.execute();
-                    //ProductMenu productMenu = (ProductMenu)(Menu.getMenu("Product Menu"));
-                    //productMenu.setParentMenu(this);
-                    //productMenu.setProduct(product);
-                    //productMenu.show();
-                    //productMenu.execute();
+                  // productMenu.execute();
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }

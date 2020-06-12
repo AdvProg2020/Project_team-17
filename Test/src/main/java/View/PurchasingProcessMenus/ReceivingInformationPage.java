@@ -2,7 +2,10 @@ package View.PurchasingProcessMenus;
 
 import Models.Accounts.Customer;
 import View.Menu;
-import View.RegisterAndLoginMenu;
+import View.RegisterCustomerMenu;
+import View.RegisterSellerMenu;
+
+import java.io.FileNotFoundException;
 
 public class ReceivingInformationPage extends Menu {
     DiscountCodePage discountCodePage = new DiscountCodePage(this);
@@ -21,21 +24,11 @@ public class ReceivingInformationPage extends Menu {
 
     }
 
-    @Override
-    public void execute() {
-        int input = Integer.parseInt(scanner.nextLine());
-        if (input == 1) {
-            receivingInformation();
-        } else if (input == 2) {
-            parentMenu.show();
-            parentMenu.execute();
-        }
 
-    }
 
-    public void receivingInformation() {
+    public void receivingInformation() throws FileNotFoundException {
         String command;
-        Customer customer = RegisterAndLoginMenu.getCurrentCustomer();
+        Customer customer = RegisterCustomerMenu.getCurrentCustomer();
         System.out.println("if you are sure you want to continue this process enter yes\n " + "enter back to go back to previous page");
         while (true) {
             command = scanner.nextLine();
@@ -48,7 +41,7 @@ public class ReceivingInformationPage extends Menu {
                 String option = scanner.nextLine();
                 if (option.equals("done")) {
                     discountCodePage.show();
-                    discountCodePage.execute();
+                   // discountCodePage.execute();
                 } else if (option.equals("change")) {
                     receivingInformation();
                 }

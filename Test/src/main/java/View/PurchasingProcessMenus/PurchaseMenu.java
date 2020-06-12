@@ -2,6 +2,8 @@ package View.PurchasingProcessMenus;
 
 import View.Menu;
 
+import java.io.FileNotFoundException;
+
 public class PurchaseMenu extends Menu {
     ReceivingInformationPage receivingInformationPage = new ReceivingInformationPage(this);
 
@@ -15,15 +17,5 @@ public class PurchaseMenu extends Menu {
         System.out.println("enter next to go to receiving information page");
     }
 
-    @Override
-    public void execute() {
-        String input = scanner.nextLine();
-        if (input.equals("next")) {
-            receivingInformationPage.show();
-            receivingInformationPage.execute();
-        } else if (input.equals("back")) {
-            parentMenu.show();
-            parentMenu.execute();
-        }
-    }
+
 }

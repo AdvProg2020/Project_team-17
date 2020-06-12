@@ -5,7 +5,7 @@ import Models.Accounts.Seller;
 import Models.Logs.SellLog;
 import Models.Request.EditOffRequest;
 import Models.Request.EditProductRequest;
-import View.RegisterAndLoginMenu;
+import View.RegisterManagerMenu;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -55,7 +55,7 @@ public class SellerAbilitiesManager {
 
     public static void sendEditingProductRequest(String id, Seller seller, String field, String newContentForThisField) {
         Product product = Product.getProductWithId(id);
-        new EditProductRequest(seller, RegisterAndLoginMenu.getCurrentManager(), product, field, newContentForThisField);
+        new EditProductRequest(seller, RegisterManagerMenu.getCurrentManager(), product, field, newContentForThisField);
     }
 
     public static void removeProduct(Seller seller, String productId) throws Exception {
@@ -74,7 +74,7 @@ public class SellerAbilitiesManager {
 
     public static void sendEditingOffRequest(String id, Seller seller, String field, String newContentForThisField) {
         Discount discount = Discount.getDiscountById(id);
-        new EditOffRequest(seller, RegisterAndLoginMenu.getCurrentManager(), discount, field, newContentForThisField);
+        new EditOffRequest(seller, RegisterManagerMenu.getCurrentManager(), discount, field, newContentForThisField);
     }
 
 

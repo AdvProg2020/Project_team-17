@@ -27,45 +27,9 @@ public class CartMenu extends Menu {
         System.out.println("7.back");
     }
 
-    @Override
-    public void execute() {
-        try {
-            int input = Integer.parseInt(scanner.nextLine());
-            if (input == 1) {
-                showProducts();
-                parentMenu.show();
-                parentMenu.execute();
-            } else if (input == 2) {
-                viewProduct();
-                parentMenu.show();
-                parentMenu.execute();
-            } else if (input == 3) {
-                increaseProduct();
-                parentMenu.show();
-                parentMenu.execute();
-            } else if (input == 4) {
-                decreaseProduct();
-                parentMenu.show();
-                parentMenu.execute();
-            } else if (input == 5) {
-                showTotalPrice();
-                parentMenu.show();
-                parentMenu.execute();
-            } else if (input == 6) {
-                purchaseMenu.show();
-                purchaseMenu.execute();
-            } else if (input == 7) {
-                parentMenu.show();
-                parentMenu.execute();
-            }
-        } catch (Exception e) {
-            System.out.println("you should enter a number!");
-        }
-    }
-
     //check
     public void showProducts() {
-        Customer customer = RegisterAndLoginMenu.getCurrentCustomer();
+        Customer customer = RegisterCustomerMenu.getCurrentCustomer();
         try {
             customer.getCart();
             System.out.println(CartManager.showProducts(customer));
@@ -76,7 +40,7 @@ public class CartMenu extends Menu {
 
     //check
     public void viewProduct() {
-        Customer customer = RegisterAndLoginMenu.getCurrentCustomer();
+        Customer customer = RegisterCustomerMenu.getCurrentCustomer();
         String command;
         while (true) {
             command = scanner.nextLine();
@@ -88,7 +52,7 @@ public class CartMenu extends Menu {
                     Product product = customer.getCart().getProductInCart(viewProductMatcher.group(1));
                     ProductMenu productMenu = new ProductMenu(this, product);
                     productMenu.show();
-                    productMenu.execute();
+                    //productMenu.execute();
                 } catch (Exception e) {
                     System.out.println("There isn't any product with this ID in cart!");
                 }
@@ -104,7 +68,7 @@ public class CartMenu extends Menu {
     }
 //TODO CHECK
     public void increaseProduct() {
-        Customer customer = RegisterAndLoginMenu.getCurrentCustomer();
+        Customer customer = RegisterCustomerMenu.getCurrentCustomer();
         String command;
         while (true) {
             command = scanner.nextLine();
@@ -129,7 +93,7 @@ public class CartMenu extends Menu {
     }
 //TODO CHECK
     public void decreaseProduct() {
-        Customer customer = RegisterAndLoginMenu.getCurrentCustomer();
+        Customer customer = RegisterCustomerMenu.getCurrentCustomer();
         String command;
         while (true) {
             command = scanner.nextLine();
@@ -154,7 +118,7 @@ public class CartMenu extends Menu {
     }
     //TODO check price with discount code
     public void showTotalPrice() {
-        Customer customer = RegisterAndLoginMenu.getCurrentCustomer();
+        Customer customer = RegisterCustomerMenu.getCurrentCustomer();
         System.out.println(CartManager.showTotalPriceOfCart(customer,null));
         /*try {
             System.out.println(CartManager.showTotalPriceOfCart(customer));
