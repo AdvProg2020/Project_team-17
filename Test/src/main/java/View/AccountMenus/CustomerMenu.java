@@ -43,6 +43,8 @@ public class CustomerMenu extends Menu {
 
 
 
+
+
     //check
     public void viewPersonalInfo() {
         String command;

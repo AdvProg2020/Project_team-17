@@ -65,15 +65,40 @@ public abstract class Menu {
 
     public void setScene() {
         mainPane = new BorderPane();
-        HBox mainButtons = new HBox();
+        HBox mainButtons = new HBox(5);
         mainButtons.setSpacing(20);
         mainButtons.setAlignment(Pos.CENTER);
         Button accountsButton = new Button("Accounts");
         Button productButton = new Button("Products");
         Button discountButton = new Button("Discounts");
-        Button exitButton = new Button("Exit");
-        mainButtons.getChildren().addAll(accountsButton, productButton, discountButton, exitButton);
+        Button logoutButton = new Button("Logout");
+        mainButtons.getChildren().addAll(accountsButton, productButton, discountButton, logoutButton);
         mainPane.setTop(mainButtons);
+    }
+    public void buttonAction(Button accountsButton , Button productsButton, Button discountButton , Button exitButton){
+        accountsButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                handleAccounts();
+            }
+        });
+        productsButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                //TODO
+            }
+        });
+        discountButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                //TODO
+            }
+        });
+
+    }
+    public void handleAccounts(){
+        AccountsMenu accountsMenu = new AccountsMenu(this);
+        accountsMenu.show();
     }
 
 
