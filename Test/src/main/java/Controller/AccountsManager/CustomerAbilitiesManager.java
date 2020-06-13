@@ -8,6 +8,7 @@ import Models.Logs.SellLog;
 import View.PurchasingProcessMenus.ReceivingInformationPage;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.ListView;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -28,24 +29,18 @@ public class CustomerAbilitiesManager {
         }
     }
 
-    public static ArrayList<String> viewOrders(Customer customer) throws Exception {
-        ArrayList<String> buyLogs = new ArrayList<>();
-        if (customer.getBuyLog() != null) {
-            for (BuyLog log : customer.getBuyLog()) {
-                buyLogs.add(log.showOrders());
-            }
-            return buyLogs;
-        } else {
-            throw new Exception("there isn't any order");
+    public static ObservableList<String> viewOrders(Customer customer) {
+        ArrayList<String> orders = new ArrayList<>();
+        for (BuyLog buyLog : customer.getBuyLog()) {
+            orders.add(buyLog.getId());
         }
+        ObservableList data = FXCollections.observableArrayList();
+        data.addAll(orders);
+        return data;
     }
 
-    public static String showOrder(String id) throws Exception {
-        if (BuyLog.isThereBuyLogWithThisId(id)) {
-            return BuyLog.getButLogWithId(id).toString();
-        } else {
-            throw new Exception("There isn't log with this id");
-        }
+    public static String showOrder(String id) {
+        return BuyLog.getButLogWithId(id).toString();
     }
 
     public static void rateProduct(Customer customer, Product product, double score) throws Exception {
@@ -63,11 +58,17 @@ public class CustomerAbilitiesManager {
 
     public static ObservableList<String> showDiscountCodes(Customer customer) {
         ArrayList<String> discountCodes = new ArrayList<>();
-        discountCodes.add(customer.getDiscountCodes().toString());
+        for (DiscountCode discountCode : customer.getDiscountCodes()) {
+            discountCodes.add(discountCode.getDiscountCode());
+        }
         ObservableList data = FXCollections.observableArrayList();
         data.addAll(discountCodes);
         return data;
     }
+    public static String showDiscountCodeInfo(String id){
+        return DiscountCode.getDiscountCodeWithCode(id).toString();
+    }
+
 
     /* public static void checkAndPay(Customer customer, String code) throws Exception {
          DiscountCode discountCode = DiscountCode.getDiscountCodeWithCode(code);

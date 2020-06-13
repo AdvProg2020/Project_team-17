@@ -26,7 +26,6 @@ public class ProductMenu extends Menu {
         System.out.println("5.back");
     }
 
-
     //check
     public void digest() throws FileNotFoundException {
         Customer customer = RegisterCustomerMenu.getCurrentCustomer();
@@ -51,11 +50,13 @@ public class ProductMenu extends Menu {
             }
         }
     }
-//check
+
+    //check
     public void attributes() {
         System.out.println(ProductManager.showAttributes(product));
     }
-//check
+
+    //check
     public void compare() {
         //inja miad y id product digaro migire ba producti k alan to safashim moghayese mikonim?
         //age injori bashe k doroste age na kolan miad id dota ro migire moghayese mikonae bayad avaz konim
@@ -63,7 +64,8 @@ public class ProductMenu extends Menu {
         String id = scanner.nextLine();
         System.out.println(ProductManager.compareProduct(product, id));
     }
-//check
+
+    //check
     public void comments() {
         String command;
         Customer customer = RegisterCustomerMenu.getCurrentCustomer();

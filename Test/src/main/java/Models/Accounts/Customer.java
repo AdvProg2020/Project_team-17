@@ -14,7 +14,7 @@ public class Customer extends Account {
     private String address;
 
     public Customer(String userName, String firstName, String lastName, String email,
-                    String phoneNumber, String password,double credit) {
+                    String phoneNumber, String password, double credit) {
         super(userName, firstName, lastName, email, phoneNumber, password, credit);
         buyLog = new ArrayList<>();
         this.cart = new Cart();

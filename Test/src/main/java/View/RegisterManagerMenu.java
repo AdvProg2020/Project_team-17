@@ -169,6 +169,10 @@ public class RegisterManagerMenu extends Menu {
     public static Manager getCurrentManager() {
         return currentManager;
     }
+
+    public static void setCurrentManager(Manager currentManager) {
+        RegisterManagerMenu.currentManager = currentManager;
+    }
 }
 
 

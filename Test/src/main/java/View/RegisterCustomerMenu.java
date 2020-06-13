@@ -174,4 +174,8 @@ public class RegisterCustomerMenu extends Menu {
     public static Customer getCurrentCustomer() {
         return currentCustomer;
     }
+
+    public static void setCurrentCustomer(Customer currentCustomer) {
+        RegisterCustomerMenu.currentCustomer = currentCustomer;
+    }
 }

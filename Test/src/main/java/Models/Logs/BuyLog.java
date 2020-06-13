@@ -17,9 +17,6 @@ public class BuyLog extends Log {
     }
 
 
-    public String showOrders() {
-        return "Order ID: " + this.getId() + "-----> Products: " + this.getAllProducts();
-    }
 
     public static boolean isThereBuyLogWithThisId(String id) {
         for (BuyLog buyLog : allBuyLogs) {

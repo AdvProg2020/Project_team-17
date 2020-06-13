@@ -1,10 +1,8 @@
 package View.AccountMenus;
 
 import Controller.AccountsManager.CustomerAbilitiesManager;
-import Models.Accounts.Customer;
-import Models.Product;
+import View.*;
 import View.Menu;
-import View.RegisterCustomerMenu;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -14,8 +12,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class CustomerMenu extends Menu {
     public CustomerMenu(Menu parentMenu) {
@@ -36,9 +32,9 @@ public class CustomerMenu extends Menu {
         Button productButton = new Button("Products");
         Button discountButton = new Button("Discounts");
         Button logoutButton = new Button("Logout");
+        addActionForMainButtons(accountsButton, productButton, discountButton, logoutButton);
         mainButtons.getChildren().addAll(accountsButton, productButton, discountButton, logoutButton);
         pane.setTop(mainButtons);
-
         backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -47,11 +43,24 @@ public class CustomerMenu extends Menu {
         });
         VBox vBox = new VBox(10);
         Button viewOrdersButton = new Button("View orders");
+        viewOrdersButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                setViewOrdersScene();
+            }
+        });
         Button viewListOfDiscountCodes = new Button("Discount codes");
         viewListOfDiscountCodes.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 setDiscountCodeScene();
+            }
+        });
+        Button cartButton = new Button("View cart");
+        cartButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                //TODO
             }
         });
         Button editButton = new Button("Edit field");
@@ -65,17 +74,62 @@ public class CustomerMenu extends Menu {
         pane.setLeft(vBox);
         VBox vBox1 = new VBox(10);
         vBox1.setAlignment(Pos.CENTER);
+        Label title = new Label("CUSTOMER");
         Label username = new Label("username: " + RegisterCustomerMenu.getCurrentCustomer().getUserName());
         Label firstName = new Label("first name: " + RegisterCustomerMenu.getCurrentCustomer().getFirstName());
         Label lastName = new Label("last name: " + RegisterCustomerMenu.getCurrentCustomer().getLastName());
         Label email = new Label("email: " + RegisterCustomerMenu.getCurrentCustomer().getEmail());
         Label phoneNumber = new Label("phone number: " + RegisterCustomerMenu.getCurrentCustomer().getPhoneNumber());
         Label credit = new Label("credit: " + RegisterCustomerMenu.getCurrentCustomer().getCredit());
-        vBox1.getChildren().addAll(username, firstName, lastName, email, phoneNumber, credit);
+        vBox1.getChildren().addAll(title, username, firstName, lastName, email, phoneNumber, credit);
         pane.setCenter(vBox1);
         pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
         Scene scene = new Scene(pane, 600, 600);
         Menu.window.setScene(scene);
+    }
+
+    public void addActionForMainButtons(Button accountsButton, Button productsButton, Button discountButton, Button logoutButton) {
+        accountsButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                handleAccountsMenu();
+            }
+        });
+        productsButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                //TODO
+            }
+        });
+        discountButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                //TODO
+            }
+        });
+        logoutButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                handleLogout();
+            }
+        });
+    }
+
+    public void handleAccountsMenu() {
+        AccountsMenu accountsMenu = new AccountsMenu(this);
+        accountsMenu.show();
+    }
+
+    public void handleLogout() {
+        if (RegisterCustomerMenu.getCurrentCustomer() != null) {
+            RegisterCustomerMenu.setCurrentCustomer(null);
+        } else if (RegisterSellerMenu.getCurrentSeller() != null) {
+            RegisterSellerMenu.setCurrentSeller(null);
+        } else if (RegisterManagerMenu.getCurrentManager() != null) {
+            RegisterManagerMenu.setCurrentManager(null);
+        }
+        MainMenu mainMenu = new MainMenu();
+        mainMenu.show();
     }
 
     public void setEditScene() {
@@ -114,52 +168,41 @@ public class CustomerMenu extends Menu {
         Menu.window.setScene(scene);
     }
 
+//TODO baayd buylog bezanim check konim bebinim kar mikone alert box ya na
 
-    public void viewOrders() {
-        String command;
-        Customer customer = RegisterCustomerMenu.getCurrentCustomer();
-        try {
-            System.out.println(CustomerAbilitiesManager.viewOrders(customer));
-            while (true) {
-                command = scanner.nextLine();
-                Pattern showOrderPattern = Pattern.compile("show order\\s(.+)");
-                Matcher showOrderMatcher = showOrderPattern.matcher(command);
-                Pattern ratePattern = Pattern.compile("rate\\s(.+)\\s(\\d)");
-                Matcher rateMatcher = ratePattern.matcher(command);
-                if (command.matches("show order\\s(.+)")) {
-                    showOrderMatcher.find();
-                    try {
-                        System.out.println(CustomerAbilitiesManager.showOrder(showOrderMatcher.group(1)));
-                    } catch (Exception e) {
-                        System.out.println(e.getMessage());
-                    }
-                } else if (command.matches("rate\\s(.+)\\s(\\d)")) {
-                    rateMatcher.find();
-                    double rate = Double.parseDouble(rateMatcher.group(2));
-                    if (rate > 5) {
-                        System.out.println("you can only rate in range 1-5 ! enter new score: ");
-                        rate = scanner.nextDouble();
-                    }
-                    try {
-                        CustomerAbilitiesManager.rateProduct(customer, Product.getProductWithId(rateMatcher.group(1)), rate);
-                        System.out.println("you rated successfully");
-                    } catch (Exception e) {
-                        System.out.println(e.getMessage());
-                    }
-                } else if (command.equals("help")) {
-                    System.out.println("commands that you can enter are:");
-                    System.out.println("show order [orderID]");
-                    System.out.println("rate [productID] [1-5]");
-                    System.out.println("back");
-                } else if (command.equals("back")) {
-                    break;
-                } else System.out.println("Command is invalid");
+    public void setViewOrdersScene() {
+        BorderPane pane = new BorderPane();
+        VBox vBox = new VBox(10);
+        vBox.setAlignment(Pos.TOP_LEFT);
+        Button button = new Button("Back");
+        button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                parentMenu.show();
             }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        });
+        vBox.getChildren().addAll(button);
+        pane.setTop(vBox);
+        ListView<String> listView = new ListView<>();
+        listView.getItems().addAll(CustomerAbilitiesManager.viewOrders(RegisterCustomerMenu.getCurrentCustomer()));
+        listView.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                Alert alert = new Alert(Alert.AlertType.NONE);
+                //TODO mitonim alert type ro information bezarim
+                alert.setTitle("show order");
+                alert.setHeaderText("buy log information");
+                String s = CustomerAbilitiesManager.showOrder(listView.getSelectionModel().getSelectedItem());
+                alert.setContentText(s);
+                alert.show();
+            }
+        });
+        pane.setCenter(listView);
+        //TODO rate product / asan nemidonam chejori
+
+
     }
-    
+
     public void setDiscountCodeScene() {
         BorderPane pane = new BorderPane();
         VBox vBox = new VBox(10);
@@ -175,6 +218,18 @@ public class CustomerMenu extends Menu {
         pane.setTop(vBox);
         ListView<String> listView = new ListView<>();
         listView.getItems().addAll(CustomerAbilitiesManager.showDiscountCodes(RegisterCustomerMenu.getCurrentCustomer()));
+        listView.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                Alert alert = new Alert(Alert.AlertType.NONE);
+                //TODO mitonim alert type ro information bezarim
+                alert.setTitle("show discount code");
+                alert.setHeaderText("discount code information");
+                String s = CustomerAbilitiesManager.showDiscountCodeInfo(listView.getSelectionModel().getSelectedItem());
+                alert.setContentText(s);
+                alert.show();
+            }
+        });
         pane.setCenter(listView);
         Scene scene = new Scene(pane, 350, 350);
         Menu.window.setScene(scene);

@@ -169,13 +169,7 @@ public class RegisterSellerMenu extends Menu {
         return currentSeller;
     }
 
-   /* public static void logout() {
-        if (currentCustomer != null) {
-            currentCustomer = null;
-        } else if (currentSeller != null) {
-            currentSeller = null;
-        } else if (currentManager != null) {
-            currentManager = null;
-        }
-    }*/
+    public static void setCurrentSeller(Seller currentSeller) {
+        RegisterSellerMenu.currentSeller = currentSeller;
+    }
 }
