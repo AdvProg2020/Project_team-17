@@ -25,7 +25,7 @@ public class EditProductRequest extends Request {
     public void accept() {
         if (field.equals("name")) {
             product.setName(newContentForThisField);
-        } else if (field.equals("companyName")) {
+        } else if (field.equals("company name")) {
             product.setCompanyName(newContentForThisField);
         } else if (field.equals("description")) {
             product.setExplanation(newContentForThisField);

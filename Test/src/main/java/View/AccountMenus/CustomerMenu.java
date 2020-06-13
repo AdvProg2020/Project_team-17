@@ -70,7 +70,7 @@ public class CustomerMenu extends Menu {
                 setEditScene();
             }
         });
-        vBox.getChildren().addAll(backButton, viewOrdersButton, viewListOfDiscountCodes, editButton);
+        vBox.getChildren().addAll(backButton, viewOrdersButton, cartButton,viewListOfDiscountCodes, editButton);
         pane.setLeft(vBox);
         VBox vBox1 = new VBox(10);
         vBox1.setAlignment(Pos.CENTER);
@@ -198,6 +198,8 @@ public class CustomerMenu extends Menu {
             }
         });
         pane.setCenter(listView);
+        Scene scene = new Scene(pane , 600 , 600);
+        Menu.window.setScene(scene);
         //TODO rate product / asan nemidonam chejori
 
 

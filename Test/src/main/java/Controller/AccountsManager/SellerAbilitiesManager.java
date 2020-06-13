@@ -48,8 +48,7 @@ public class SellerAbilitiesManager {
         return product;
     }
 
-    public static void sendEditingProductRequest(String id, Seller seller, String field, String newContentForThisField) {
-        Product product = Product.getProductWithId(id);
+    public static void sendEditingProductRequest(Product product, Seller seller, String field, String newContentForThisField) {
         new EditProductRequest(seller, RegisterManagerMenu.getCurrentManager(), product, field, newContentForThisField);
     }
 
@@ -83,6 +82,16 @@ public class SellerAbilitiesManager {
     public static ObservableList<String> showCategories() {
         ObservableList data = FXCollections.observableArrayList();
         data.addAll(Category.showCategories());
+        return data;
+    }
+
+    public static ObservableList<String> showProducts(Seller seller) {
+        ArrayList<String> products = new ArrayList<>();
+        for (Product product : seller.getAllProducts()) {
+            products.add(product.getName());
+        }
+        ObservableList data = FXCollections.observableArrayList();
+        data.addAll(products);
         return data;
     }
 

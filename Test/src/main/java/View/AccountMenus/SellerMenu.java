@@ -1,10 +1,8 @@
 package View.AccountMenus;
 
-import Controller.AccountsManager.CustomerAbilitiesManager;
 import Controller.AccountsManager.SellerAbilitiesManager;
 import Models.Accounts.Seller;
 import Models.Category;
-import Models.Discount;
 import Models.Product;
 import Models.Request.AddOffRequest;
 import Models.Request.AddProductRequest;
@@ -19,11 +17,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-import java.util.ArrayList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class SellerMenu extends Menu {
+    Product selectedProduct;
 
     public SellerMenu(Menu parentMenu) {
         super("Seller ", parentMenu);
@@ -35,10 +30,10 @@ public class SellerMenu extends Menu {
             //System.out.println("1.view personal info");
             //System.out.println("2.view company information");
            // System.out.println("3.view sales history");
-            System.out.println("4.manage products");
-            System.out.println("5.add product");
+            //System.out.println("4.manage products");
+            //System.out.println("5.add product");
             System.out.println("6.remove product");
-            System.out.println("7.show categories");
+            //System.out.println("7.show categories");
             System.out.println("8.view offs");
             //System.out.println("9.view balance");
            // System.out.println("10.logout");
@@ -176,7 +171,7 @@ public class SellerMenu extends Menu {
         backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                parentMenu.show();
+                show();
             }
         });
         Label title = new Label("Editing field");
@@ -212,7 +207,7 @@ public class SellerMenu extends Menu {
         button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                parentMenu.show();
+                show();
             }
         });
         vBox.getChildren().addAll(button);
@@ -225,85 +220,128 @@ public class SellerMenu extends Menu {
     }
 
     public void setManageProductScene() {
-       /* String command;
-        Seller seller = RegisterSellerMenu.getCurrentSeller();
-        System.out.println(seller.getAllProducts());
-        while (true) {
-            command = scanner.nextLine();
-            Pattern viewProductPattern = Pattern.compile("view\\s(.+)");
-            Matcher viewProductMatcher = viewProductPattern.matcher(command);
-            Pattern editProductPattern = Pattern.compile("edit\\s(.+)");
-            Matcher editProductMatcher = editProductPattern.matcher(command);
-            Pattern viewBuyersPattern = Pattern.compile("view buyers\\s(.+)");
-            Matcher viewBuyersMatcher = viewBuyersPattern.matcher(command);
-            if (command.matches("view buyers\\s(.+)")) {
-                viewBuyersMatcher.find();
-                System.out.println(SellerAbilitiesManager.viewProductsBuyer(seller, viewBuyersMatcher.group(1)));
-            } else if (command.matches("edit\\s(.+)")) {
-                editProductMatcher.find();
-                try {
-                    SellerAbilitiesManager.checkProductByID(editProductMatcher.group(1));
-                    System.out.println("enter the field you want to change: ");
-                    String field = scanner.nextLine();
-                    System.out.println("enter the content for this field: ");
-                    String newContent = scanner.nextLine();
-                    SellerAbilitiesManager.sendEditingProductRequest(editProductMatcher.group(1), seller, field, newContent);
-                    System.out.println("request sent to manager");
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                }
-            } else if (command.matches("view\\s(.+)")) {
-                viewProductMatcher.find();
-                try {
-                    SellerAbilitiesManager.checkProductByID(viewProductMatcher.group(1));
-                    Product product = Product.getProductWithId(viewProductMatcher.group(1));
-                    System.out.println(product.toString());
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                }
-            } else if (command.equals("back")) {
-                break;
-            } else if (command.equals("help")) {
-                System.out.println("commands that you can enter are:");
-                System.out.println("edit [productID]");
-                System.out.println("view [productID]");
-                System.out.println("view buyers [productID]");
-                System.out.println("back");
+        BorderPane pane = new BorderPane();
+        VBox vBox = new VBox(10);
+        vBox.setAlignment(Pos.TOP_LEFT);
+        Button button = new Button("Back");
+        button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                show();
             }
-        }*/
+        });
+        vBox.getChildren().addAll(button);
+        pane.setTop(vBox);
+
+        ListView<String> listView = new ListView<>();
+        listView.getItems().addAll(SellerAbilitiesManager.showProducts(RegisterSellerMenu.getCurrentSeller()));
+        pane.setCenter(listView);
+
+        VBox vBox1 = new VBox(10);
+        Button addProduct = new Button("Add product");
+        Button editProduct = new Button("Edit product");
+        Button removeButton = new Button("Remove product");
+        addProduct.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                setAddProductScene();
+            }
+        });
+        editProduct.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                selectedProduct = Product.getProductByName(listView.getSelectionModel().getSelectedItem());
+                setEditProductScene();
+            }
+        });
+        removeButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+
+            }
+        });
+        vBox1.getChildren().addAll(addProduct, editProduct, removeButton);
     }
 
-    public void addProduct() {
-     /*   String command;
-        Seller seller = RegisterSellerMenu.getCurrentSeller();
-        while (true) {
-            command = scanner.nextLine();
-            if (command.equals("add product")) {
-                System.out.println("Enter productID: ");
-                String id = scanner.nextLine();
-                System.out.println("Enter product name: ");
-                String name = scanner.nextLine();
-                System.out.println("Enter company name: ");
-                String companyName = scanner.nextLine();
-                System.out.println("Enter product price: ");
-                double price = Double.parseDouble(scanner.nextLine());
-                System.out.println("Enter product Category: ");
-                Category category = Category.getCategoryByName(scanner.nextLine());
-                System.out.println("Enter explanation for product: ");
-                String explanation = scanner.nextLine();
-                System.out.println("Enter special feature: ");
-                String feature = scanner.nextLine();
-                Product product = SellerAbilitiesManager.addProduct(id, name, companyName, price, category, seller, explanation, feature);
-                new AddProductRequest(seller, RegisterManagerMenu.getCurrentManager(), product, category);
-                System.out.println("request for adding product sent to manager");
-            } else if (command.equals("back")) {
-                break;
-            } else if (command.equals("help")) {
-                System.out.println("commands that you can enter are:");
-                System.out.println("add product");
-                System.out.println("back");
+    public void setEditProductScene() {
+        BorderPane pane = new BorderPane();
+        Label notify = new Label();
+        VBox vBox = new VBox(10);
+        vBox.setAlignment(Pos.TOP_LEFT);
+        Button back = new Button("Back");
+        back.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                setManageProductScene();
             }
-        }*/
+        });
+        vBox.getChildren().addAll(back);
+        pane.setTop(back);
+
+        HBox hBox = new HBox(10);
+        ChoiceBox<String> field = new ChoiceBox<>();
+        field.getItems().addAll("name", "company name", "description", "seller", "price", "category");
+        TextField newContent = new TextField();
+        newContent.setPromptText("new content for this field");
+        Button button = new Button("change");
+        button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                SellerAbilitiesManager.sendEditingProductRequest(selectedProduct, RegisterSellerMenu.getCurrentSeller(), field.getValue(), newContent.getText());
+                notify.setStyle("-fx-text-fill: #3193ff");
+                notify.setText("request sent");
+            }
+        });
+        hBox.getChildren().addAll(field, newContent, button, notify);
+        pane.setCenter(hBox);
+        Scene scene = new Scene(pane, 350, 350);
+        Menu.window.setScene(scene);
+    }
+
+    public void setAddProductScene() {
+        BorderPane pane = new BorderPane();
+        VBox vBox = new VBox(10);
+        vBox.setAlignment(Pos.TOP_LEFT);
+        Button back = new Button("Back");
+        back.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                setManageProductScene();
+            }
+        });
+        vBox.getChildren().addAll(back);
+        pane.setTop(back);
+        VBox vBox1 = new VBox(10);
+        Label notify = new Label();
+        TextField ID = new TextField();
+        ID.setPromptText("product ID");
+        TextField name = new TextField();
+        name.setPromptText("name");
+        TextField company = new TextField();
+        company.setPromptText("company");
+        TextField price = new TextField();
+        price.setPromptText("price");
+        TextField category = new TextField("category");
+        category.setPromptText("category");
+        TextField explanation = new TextField();
+        explanation.setPromptText("explanation");
+        TextField feature = new TextField();
+        feature.setPromptText("feature");
+        Button add = new Button("add");
+        add.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                Product product = SellerAbilitiesManager.addProduct(ID.getText(), name.getText(), company.getText(), Double.parseDouble(price.getText()),
+                        Category.getCategoryByName(category.getText()), RegisterSellerMenu.getCurrentSeller(), explanation.getText(), feature.getText());
+                new AddProductRequest(RegisterSellerMenu.getCurrentSeller(), RegisterManagerMenu.getCurrentManager(), product, Category.getCategoryByName(category.getText()));
+                notify.setStyle("-fx-text-fill: #3193ff");
+                notify.setText("request sent to manager");
+            }
+        });
+        vBox1.getChildren().addAll(ID, name, company, price, category, explanation, feature);
+        pane.setCenter(vBox1);
+        Scene scene = new Scene(pane, 600, 600);
+        Menu.window.setScene(scene);
     }
 
     public void removeProduct() {
