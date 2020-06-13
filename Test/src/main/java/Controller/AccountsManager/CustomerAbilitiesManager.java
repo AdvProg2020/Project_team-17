@@ -12,24 +12,17 @@ import java.util.ArrayList;
 
 public class CustomerAbilitiesManager {
 
-    public static String changeField(Customer customer, String field, String newContentForThisField) {
+    public static void changeField(Customer customer, String field, String newContentForThisField) {
         if (field.equalsIgnoreCase("first name")) {
             customer.changeFirstName(customer, newContentForThisField);
-            return"field successfully changed";
         } else if (field.equalsIgnoreCase("last name")) {
             customer.changeLastName(customer, newContentForThisField);
-            return"field successfully changed";
         } else if (field.equalsIgnoreCase("email")) {
             customer.changeEmail(customer, newContentForThisField);
-            return"field successfully changed";
         } else if (field.equalsIgnoreCase("phone number")) {
             customer.changePhoneNumber(customer, newContentForThisField);
-            return"field successfully changed";
         } else if (field.equalsIgnoreCase("password")) {
             customer.changePassword(customer, newContentForThisField);
-            return"field successfully changed";
-        }else {
-            return ("enter a valid field");
         }
     }
 
