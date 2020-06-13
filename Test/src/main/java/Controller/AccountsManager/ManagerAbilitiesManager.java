@@ -42,20 +42,20 @@ public class ManagerAbilitiesManager {
     public static String changeField(Manager manager, String field, String newContentForThisField) {
         if (field.equalsIgnoreCase("first name")) {
             manager.changeFirstName(manager, newContentForThisField);
-            return"field successfully changed";
+            return "field successfully changed";
         } else if (field.equalsIgnoreCase("last name")) {
             manager.changeLastName(manager, newContentForThisField);
-            return"field successfully changed";
+            return "field successfully changed";
         } else if (field.equalsIgnoreCase("email")) {
             manager.changeEmail(manager, newContentForThisField);
-            return"field successfully changed";
+            return "field successfully changed";
         } else if (field.equalsIgnoreCase("phone number")) {
             manager.changePhoneNumber(manager, newContentForThisField);
-            return"field successfully changed";
+            return "field successfully changed";
         } else if (field.equalsIgnoreCase("password")) {
             manager.changePassword(manager, newContentForThisField);
-            return"field successfully changed";
-        }else {
+            return "field successfully changed";
+        } else {
             return "enter a valid field";
         }
     }
@@ -78,13 +78,11 @@ public class ManagerAbilitiesManager {
         } else {
             throw new Exception("There is already an account with this username!");
         }
-
     }
 
     public static void createAnotherManager(String username, String firstName, String lastName,
                                             String email, String phoneNumber, String password) {
         new Manager(username, firstName, lastName, email, phoneNumber, password);
-
     }
 
     public static void removeProduct(String productId) throws Exception {
@@ -108,12 +106,13 @@ public class ManagerAbilitiesManager {
         }
         System.out.println("discount code created");
     }
-    public static void removeDiscountCodeDueToException(String code, ArrayList<String> customersName){
+
+    public static void removeDiscountCodeDueToException(String code, ArrayList<String> customersName) {
         ArrayList<Customer> customers = new ArrayList<>();
         for (String customer : customersName) {
             customers.add(Customer.getCustomerByName(customer));
         }
-        DiscountCode discountCode= DiscountCode.getDiscountCodeWithCode(code);
+        DiscountCode discountCode = DiscountCode.getDiscountCodeWithCode(code);
         DiscountCode.removeDiscountCode(discountCode);
         for (Customer customer : customers) {
             customer.removeDiscountCode(discountCode);
@@ -144,20 +143,20 @@ public class ManagerAbilitiesManager {
         DiscountCode discountCode = DiscountCode.getDiscountCodeWithCode(code);
         if (field.equals("starting date")) {
             discountCode.setStartDate(LocalDate.parse(newContentForThisField));
-            return"discount code edited successfully";
+            return "discount code edited successfully";
         } else if (field.equals("ending date")) {
             discountCode.setEndDate(LocalDate.parse(newContentForThisField));
-            return"discount code edited successfully";
+            return "discount code edited successfully";
         } else if (field.equals("discount percent")) {
             discountCode.setDiscountCode(newContentForThisField);
-            return"discount code edited successfully";
+            return "discount code edited successfully";
         } else if (field.equals("maximum discount amount")) {
             discountCode.setMaxDiscountAmount(Double.parseDouble(newContentForThisField));
-            return"discount code edited successfully";
+            return "discount code edited successfully";
         } else if (field.equals("count discount code")) {
             discountCode.setCountDiscountCode(Integer.parseInt(newContentForThisField));
-            return"discount code edited successfully";
-        }else{
+            return "discount code edited successfully";
+        } else {
             return "enter a valid field";
         }
     }

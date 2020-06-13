@@ -5,6 +5,7 @@ import Models.Accounts.Seller;
 import Models.Logs.SellLog;
 import Models.Request.EditOffRequest;
 import Models.Request.EditProductRequest;
+import Models.Request.RemoveProductRequest;
 import View.RegisterManagerMenu;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -49,7 +50,10 @@ public class SellerAbilitiesManager {
     }
 
     public static void sendEditingProductRequest(Product product, Seller seller, String field, String newContentForThisField) {
-        new EditProductRequest(seller, RegisterManagerMenu.getCurrentManager(), product, field, newContentForThisField);
+        new EditProductRequest(seller, product, field, newContentForThisField);
+    }
+    public static void sendRemovingProductRequest(Product product , Seller seller){
+        new RemoveProductRequest(seller ,product);
     }
 
     public static void removeProduct(Seller seller, String productId) throws Exception {
@@ -68,9 +72,8 @@ public class SellerAbilitiesManager {
 
     public static void sendEditingOffRequest(String id, Seller seller, String field, String newContentForThisField) {
         Discount discount = Discount.getDiscountById(id);
-        new EditOffRequest(seller, RegisterManagerMenu.getCurrentManager(), discount, field, newContentForThisField);
+        new EditOffRequest(seller, discount, field, newContentForThisField);
     }
-
 
     public static Discount addDiscount(String id, String beginningDate, String endingDate,
                                        double discountPercent, ArrayList<String> productsName) {

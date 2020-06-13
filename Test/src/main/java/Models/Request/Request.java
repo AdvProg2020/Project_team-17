@@ -9,23 +9,21 @@ import java.util.ArrayList;
 public abstract class Request {
     protected static ArrayList<Request> allRequests = new ArrayList<Request>();
     protected String id;
-    protected Manager manager;
     protected Seller seller;
     protected RequestTypeEnum type;
 
-    public Request(String id, Seller seller, Manager manager) {
+    public Request(String id, Seller seller) {
         this.id = id;
         this.seller = seller;
-        this.manager = manager;
         allRequests.add(this);
     }
 
     public abstract void accept();
 
 
-    public Manager getManager() {
-        return manager;
-    }
+    //public Manager getManager() {
+   //     return manager;
+    //}
 
 
     public static Request getRequestById(String id) {

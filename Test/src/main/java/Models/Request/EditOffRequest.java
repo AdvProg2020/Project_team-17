@@ -13,8 +13,8 @@ public class EditOffRequest extends Request {
     private String field;
     private String newContentForThisField;
 
-    public EditOffRequest(Seller seller, Manager manager, Discount discount, String field, String newContentForThisField) {
-        super("Edit off ---> " + (allRequests.size() + 1), seller, manager);
+    public EditOffRequest(Seller seller, Discount discount, String field, String newContentForThisField) {
+        super("Edit off ---> " + (allRequests.size() + 1), seller);
         this.type = RequestTypeEnum.EDIT_OFF;
         this.discount = discount;
         this.field = field;

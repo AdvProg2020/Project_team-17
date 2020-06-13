@@ -3,9 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="32618e29-8746-4d2a-8d73-d011168a9d97" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Controller/AccountsManager/ManagerAbilitiesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Controller/AccountsManager/ManagerAbilitiesManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test/src/main/java/Controller/AccountsManager/SellerAbilitiesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Controller/AccountsManager/SellerAbilitiesManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Enums/RequestTypeEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Enums/RequestTypeEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Request/AddOffRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Request/AddOffRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Request/AddProductRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Request/AddProductRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Request/EditOffRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Request/EditOffRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Request/EditProductRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Request/EditProductRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/AccountMenus/CustomerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/AccountMenus/CustomerMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Request/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Request/Request.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/AccountMenus/SellerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/AccountMenus/SellerMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -117,14 +122,7 @@
       <workItem from="1589789907395" duration="67836000" />
       <workItem from="1589844315408" duration="368000" />
       <workItem from="1589886906439" duration="29927000" />
-      <workItem from="1591669653243" duration="105573000" />
-    </task>
-    <task id="LOCAL-00005" summary="fix CustomerMenu">
-      <created>1588113581314</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1588113581314</updated>
+      <workItem from="1591669653243" duration="108820000" />
     </task>
     <task id="LOCAL-00006" summary="exception handle for password">
       <created>1588493041427</created>
@@ -462,14 +460,20 @@
       <option name="project" value="LOCAL" />
       <updated>1592066704238</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="seller add and edit product">
+      <created>1592076376378</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1592076376378</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="ProductsManager and ProductsMenu filtering done" />
     <MESSAGE value="add sort to ProductsManager" />
     <MESSAGE value="working on SellerMenu" />
     <MESSAGE value="fix some methods in SellerMenu" />
@@ -494,7 +498,8 @@
     <MESSAGE value="customer discount code listview" />
     <MESSAGE value="customer menu graphic" />
     <MESSAGE value="seller menu personal info" />
-    <option name="LAST_COMMIT_MESSAGE" value="seller menu personal info" />
+    <MESSAGE value="seller add and edit product" />
+    <option name="LAST_COMMIT_MESSAGE" value="seller add and edit product" />
   </component>
   <component name="WindowStateProjectService">
     <state x="233" y="0" key="#Project_Structure" timestamp="1589785759293">
@@ -506,11 +511,11 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="420" y="144" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.680@0.0.1280.680" timestamp="1586807983600" />
-    <state x="751" y="83" key="#com.intellij.ide.util.MemberChooser" timestamp="1592060785354">
+    <state x="751" y="83" key="#com.intellij.ide.util.MemberChooser" timestamp="1592079381101">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="751" y="83" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680/460.1080.1000.504@0.0.1280.680" timestamp="1587953827102" />
-    <state x="751" y="83" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1592060785354" />
+    <state x="751" y="83" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1592079381101" />
     <state x="801" y="93" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1586995828901" />
     <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1588275888120" />
     <state x="515" y="248" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1589789028342">
@@ -537,10 +542,10 @@
     </state>
     <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1589857617230" />
     <state x="445" y="105" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1588110193951" />
-    <state x="265" y="0" key="CommitChangelistDialog2" timestamp="1592066702010">
+    <state x="265" y="0" key="CommitChangelistDialog2" timestamp="1592076375071">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="265" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1592066702010" />
+    <state x="265" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1592076375071" />
     <state x="425" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1589641442995" />
     <state x="478" y="14" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1589635601609" />
     <state x="421" y="67" key="FileChooserDialogImpl" timestamp="1592042438528">
@@ -609,10 +614,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1280.680@0.0.1280.680" timestamp="1589767285229" />
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1592066712461">
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1592076393485">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1592066712461" />
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1592076393485" />
     <state x="249" y="80" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1589634850684" />
     <state x="280" y="90" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1589844348791" />
     <state x="388" y="195" key="com.intellij.ide.util.TipDialog" timestamp="1591669661225">
@@ -634,10 +639,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="193" y="77" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1280.680@0.0.1280.680" timestamp="1589878981587" />
-    <state x="397" y="168" key="git4idea.merge.GitPullDialog" timestamp="1592066706789">
+    <state x="397" y="168" key="git4idea.merge.GitPullDialog" timestamp="1592076385609">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="397" y="168" key="git4idea.merge.GitPullDialog/0.0.1280.680@0.0.1280.680" timestamp="1592066706789" />
+    <state x="397" y="168" key="git4idea.merge.GitPullDialog/0.0.1280.680@0.0.1280.680" timestamp="1592076385609" />
     <state x="423" y="180" key="git4idea.merge.GitPullDialog/0.0.1366.728@0.0.1366.728" timestamp="1589634843435" />
     <state x="476" y="204" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1589635613074" />
     <state x="91" y="0" key="new project wizard" timestamp="1591857448572">
@@ -649,11 +654,11 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="297" y="151" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1591985430188" />
-    <state x="324" y="46" width="672" height="634" key="search.everywhere.popup" timestamp="1592036657120">
+    <state x="324" y="46" width="672" height="634" key="search.everywhere.popup" timestamp="1592079427471">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="324" y="46" width="672" height="634" key="search.everywhere.popup/0.0.1280.680/460.1080.1000.504@0.0.1280.680" timestamp="1587860318764" />
-    <state x="324" y="46" width="672" height="634" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1592036657120" />
+    <state x="324" y="46" width="672" height="634" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1592079427471" />
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1586993653870" />
     <state x="389" y="56" width="807" height="769" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1588111579702" />
   </component>

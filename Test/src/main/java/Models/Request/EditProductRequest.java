@@ -12,8 +12,8 @@ public class EditProductRequest extends Request {
     private String field;
     private String newContentForThisField;
 
-    public EditProductRequest(Seller seller, Manager manager, Product product, String field, String newContentForThisField) {
-        super("Edit product ---> " + (allRequests.size() + 1), seller, manager);
+    public EditProductRequest(Seller seller,  Product product, String field, String newContentForThisField) {
+        super("Edit product ---> " + (allRequests.size() + 1), seller);
         this.type = RequestTypeEnum.EDIT_PRODUCT;
         this.product = product;
         this.field = field;

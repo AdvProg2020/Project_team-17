@@ -1,11 +1,10 @@
 package View.AccountMenus;
 
 import Controller.AccountsManager.SellerAbilitiesManager;
-import Models.Accounts.Seller;
 import Models.Category;
 import Models.Product;
-import Models.Request.AddOffRequest;
 import Models.Request.AddProductRequest;
+import Models.Request.RemoveProductRequest;
 import View.*;
 import View.Menu;
 import javafx.event.EventHandler;
@@ -26,19 +25,6 @@ public class SellerMenu extends Menu {
 
     @Override
     public void show() {
-       /* if (RegisterSellerMenu.getCurrentSeller() != null) {
-            //System.out.println("1.view personal info");
-            //System.out.println("2.view company information");
-           // System.out.println("3.view sales history");
-            //System.out.println("4.manage products");
-            //System.out.println("5.add product");
-            System.out.println("6.remove product");
-            //System.out.println("7.show categories");
-            System.out.println("8.view offs");
-            //System.out.println("9.view balance");
-           // System.out.println("10.logout");
-           // System.out.println("11.back");
-        }*/
         setPersonalScene();
     }
 
@@ -69,12 +55,11 @@ public class SellerMenu extends Menu {
                 setSalesHistoryScene();
             }
         });
-
         Button manageProductButton = new Button("Manage products");
         manageProductButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                //TODO
+                setManageProductScene();
             }
         });
         Button viewOffsButton = new Button("View offs");
@@ -221,6 +206,7 @@ public class SellerMenu extends Menu {
 
     public void setManageProductScene() {
         BorderPane pane = new BorderPane();
+        Label notify = new Label();
         VBox vBox = new VBox(10);
         vBox.setAlignment(Pos.TOP_LEFT);
         Button button = new Button("Back");
@@ -257,10 +243,16 @@ public class SellerMenu extends Menu {
         removeButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-
+                selectedProduct = Product.getProductByName(listView.getSelectionModel().getSelectedItem());
+                new RemoveProductRequest(RegisterSellerMenu.getCurrentSeller(), selectedProduct);
+                notify.setStyle("-fx-text-fill: #3193ff");
+                notify.setText("request sent");
             }
         });
-        vBox1.getChildren().addAll(addProduct, editProduct, removeButton);
+        vBox1.getChildren().addAll(addProduct, editProduct, removeButton,notify);
+        pane.setLeft(vBox1);
+        Scene scene = new Scene(pane,600,600);
+        Menu.window.setScene(scene);
     }
 
     public void setEditProductScene() {
@@ -333,7 +325,7 @@ public class SellerMenu extends Menu {
             public void handle(MouseEvent mouseEvent) {
                 Product product = SellerAbilitiesManager.addProduct(ID.getText(), name.getText(), company.getText(), Double.parseDouble(price.getText()),
                         Category.getCategoryByName(category.getText()), RegisterSellerMenu.getCurrentSeller(), explanation.getText(), feature.getText());
-                new AddProductRequest(RegisterSellerMenu.getCurrentSeller(), RegisterManagerMenu.getCurrentManager(), product, Category.getCategoryByName(category.getText()));
+                new AddProductRequest(RegisterSellerMenu.getCurrentSeller(), product, Category.getCategoryByName(category.getText()));
                 notify.setStyle("-fx-text-fill: #3193ff");
                 notify.setText("request sent to manager");
             }
@@ -342,31 +334,6 @@ public class SellerMenu extends Menu {
         pane.setCenter(vBox1);
         Scene scene = new Scene(pane, 600, 600);
         Menu.window.setScene(scene);
-    }
-
-    public void removeProduct() {
-       /* String command;
-        Seller seller = RegisterSellerMenu.getCurrentSeller();
-        while (true) {
-            command = scanner.nextLine();
-            Pattern removeProductPattern = Pattern.compile("remove product\\s(.+)");
-            Matcher removeProductMatcher = removeProductPattern.matcher(command);
-            if (command.matches("remove product\\s(.+)")) {
-                removeProductMatcher.find();
-                try {
-                    SellerAbilitiesManager.removeProduct(seller, removeProductMatcher.group(1));
-                    System.out.println("product removed successfully");
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                }
-            } else if (command.equals("back")) {
-                break;
-            } else if (command.equals("help")) {
-                System.out.println("commands that you can enter are:");
-                System.out.println("remove product [productID]");
-                System.out.println("back");
-            }
-        }*/
     }
 
     public void setShowCategoriesScene() {
