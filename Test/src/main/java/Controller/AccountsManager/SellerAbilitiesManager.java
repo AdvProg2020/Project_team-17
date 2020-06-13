@@ -6,6 +6,8 @@ import Models.Logs.SellLog;
 import Models.Request.EditOffRequest;
 import Models.Request.EditProductRequest;
 import View.RegisterManagerMenu;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -23,25 +25,18 @@ public class SellerAbilitiesManager {
             seller.changePhoneNumber(seller, newContentForThisField);
         } else if (field.equalsIgnoreCase("password")) {
             seller.changePassword(seller, newContentForThisField);
-            //nemidonam type passwordam bayad check konim ya na
         }
     }
 
-    public static String viewFactoryInfo(Seller seller) {
-        return seller.getCompanyName();
-    }
-
-    public static ArrayList<String> viewSalesHistory(Seller seller) throws Exception {
-        if (seller.getLogs() != null) {
-            ArrayList<SellLog> logs = seller.getLogs();
-            ArrayList<String> salesHistory = new ArrayList<String>();
-            for (SellLog log : logs) {
-                salesHistory.add(log.toString());
-            }
-            return salesHistory;
-        } else {
-            throw new Exception("you haven't sold anything yet");
+    public static ObservableList<String> viewSalesHistory(Seller seller) {
+        ArrayList<SellLog> logs = seller.getLogs();
+        ArrayList<String> salesHistory = new ArrayList<String>();
+        for (SellLog log : logs) {
+            salesHistory.add(log.toString());
         }
+        ObservableList data = FXCollections.observableArrayList();
+        data.addAll(salesHistory);
+        return data;
     }
 
 
@@ -85,13 +80,12 @@ public class SellerAbilitiesManager {
     }
 
 
-    public static ArrayList<String> showCategories() {
-        return Category.showCategories();
+    public static ObservableList<String> showCategories() {
+        ObservableList data = FXCollections.observableArrayList();
+        data.addAll(Category.showCategories());
+        return data;
     }
 
-    public static double viewBalance(Seller seller) {
-        return seller.getCredit();
-    }
 
     public static void checkProductByID(String id) throws Exception {
         if (Product.isThereProductWithId(id)) {
@@ -116,7 +110,7 @@ public class SellerAbilitiesManager {
         ArrayList<SellLog> logs = seller.getLogs();
         for (SellLog log : logs) {
             for (Product product : log.getAllProducts()) {
-                if(product.getProductId().equals(id)){
+                if (product.getProductId().equals(id)) {
                     customers.add(log.getName());
                 }
             }
