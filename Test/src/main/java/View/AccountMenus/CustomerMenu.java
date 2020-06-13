@@ -6,10 +6,20 @@ import Models.Product;
 import View.CartMenu;
 import View.Menu;
 import View.RegisterCustomerMenu;
-import View.RegisterSellerMenu;
 import View.PurchasingProcessMenus.PurchaseMenu;
+import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
-import java.io.FileNotFoundException;
+import java.awt.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -25,27 +35,40 @@ public class CustomerMenu extends Menu {
 
     @Override
     public void show(){
-        if (RegisterCustomerMenu.getCurrentCustomer() != null) {
-            System.out.println("1.view personal info");
-            System.out.println("2.view cart");
-            System.out.println("3.purchase");
-            System.out.println("4.view orders");
-            System.out.println("5.view balance");
-            System.out.println("6.view discount codes");
-            System.out.println("7.logout");
-            System.out.println("8.back");
-        } else {
-            System.out.println("you haven't logged in yet, first login as a customer");
-            registerAndLoginMenu.setParentMenu(this);
-            registerAndLoginMenu.show();
-        }
+        design();
+
     }
+    public void design(){
+        GridPane pane = new GridPane();
+        pane.setHgap(10);
+        pane.setVgap(10);
+        pane.setPadding(new Insets(25, 25, 25, 25));
+        VBox vBox = new VBox(10);
+        Button backButton = new Button("Back");
+        backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                parentMenu.show();
+            }
+        });
+        Button viewOrdersButton = new Button("View orders");
+        Button viewListOfDiscountCodes = new Button("Discount codes");
+        vBox.getChildren().addAll(backButton,viewOrdersButton,viewListOfDiscountCodes);
+        VBox vBox1 = new VBox(10);
+        Label username = new Label(RegisterCustomerMenu.getCurrentCustomer().getUserName());
+        Label firstName = new Label(RegisterCustomerMenu.getCurrentCustomer().getFirstName());
+        Label lastName = new Label(RegisterCustomerMenu.getCurrentCustomer().getLastName());
+        Label email = new Label(RegisterCustomerMenu.getCurrentCustomer().getEmail());
+        Label phoneNumber = new Label(RegisterCustomerMenu.getCurrentCustomer().getPhoneNumber());
+        Label address = new Label(RegisterCustomerMenu.getCurrentCustomer().getAddress());
+        Label credit = new Label(Double.toString(RegisterCustomerMenu.getCurrentCustomer().getCredit()));
+        vBox1.getChildren().addAll(username,firstName,lastName,email,phoneNumber,address,credit);
+        HBox hBox = new HBox(30);
+        hBox.getChildren().addAll(vBox,vBox1);
+        Scene scene = new Scene(pane, 600 ,600);
+        Menu.window.setScene(scene);
 
-
-
-
-
-    //check
+    }
     public void viewPersonalInfo() {
         String command;
         Customer customer = RegisterCustomerMenu.getCurrentCustomer();

@@ -1,5 +1,6 @@
 package View;
 
+import View.AccountMenus.CustomerMenu;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -17,6 +18,7 @@ public class AccountsMenu extends Menu {
 
     @Override
     public void show() {
+        BorderPane pane = new BorderPane();
         VBox accountButtons = new VBox(15);
         accountButtons.setAlignment(Pos.CENTER);
         String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
@@ -35,7 +37,6 @@ public class AccountsMenu extends Menu {
                 parentMenu.show();
             }
         });
-        // age betonim back button ro bebarim bala samte chap awli mishe
         Image mainImage = null;
         try {
             mainImage = new Image(new FileInputStream("C:\\Users\\UX434FL\\IdeaProjects\\17\\Test\\src\\main\\java\\Images\\MAIN_BACKGROUND.png"));
@@ -52,8 +53,8 @@ public class AccountsMenu extends Menu {
         accountButtons.setBackground(mainBackground);
         addActionForButtons(sellerAccountsButton, customerAccountsButton, mangerAccountsButton);
         accountButtons.getChildren().addAll(backButton,sellerAccountsButton, customerAccountsButton, mangerAccountsButton);
-        super.mainPane.setCenter(accountButtons);
-        Scene scene = new Scene(super.mainPane, 600, 600);
+        pane.setCenter(accountButtons);
+        Scene scene = new Scene(pane, 600, 600);
         Menu.window.setScene(scene);
     }
 
@@ -74,7 +75,7 @@ public class AccountsMenu extends Menu {
                 if (RegisterCustomerMenu.getCurrentCustomer() == null) {
                     handleRegisterCustomer();
                 } else {
-                    //TODO view personal info
+                    handleCustomerMenu();
                 }
             }
         });
@@ -103,5 +104,9 @@ public class AccountsMenu extends Menu {
     public void handleRegisterManager() {
         RegisterManagerMenu registerManagerMenu = new RegisterManagerMenu(this);
         registerManagerMenu.show();
+    }
+    public void handleCustomerMenu(){
+        CustomerMenu customerMenu = new CustomerMenu(this);
+        customerMenu.show();
     }
 }

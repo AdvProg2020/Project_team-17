@@ -20,8 +20,6 @@ public abstract class Menu {
     protected HashMap<Integer, Menu> submenus;
     protected Menu parentMenu;
     public static Scanner scanner;
-
-   protected static BorderPane mainPane = new BorderPane();
     protected static Stage window;
     protected static ArrayList<Menu> allMenus = new ArrayList<Menu>();
 
@@ -64,18 +62,17 @@ public abstract class Menu {
     }
 
     public void setScene() {
-        mainPane = new BorderPane();
-        HBox mainButtons = new HBox(5);
-        mainButtons.setSpacing(20);
-        mainButtons.setAlignment(Pos.CENTER);
+       /* mainPane = new BorderPane();
+        HBox mainButtons = new HBox(3);
+        mainButtons.setAlignment(Pos.TOP_RIGHT);
         Button accountsButton = new Button("Accounts");
         Button productButton = new Button("Products");
         Button discountButton = new Button("Discounts");
         Button logoutButton = new Button("Logout");
         mainButtons.getChildren().addAll(accountsButton, productButton, discountButton, logoutButton);
-        mainPane.setTop(mainButtons);
+        mainPane.setTop(mainButtons);*/
     }
-    public void buttonAction(Button accountsButton , Button productsButton, Button discountButton , Button exitButton){
+   /* public void buttonAction(Button accountsButton , Button productsButton, Button discountButton , Button exitButton){
         accountsButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -99,7 +96,7 @@ public abstract class Menu {
     public void handleAccounts(){
         AccountsMenu accountsMenu = new AccountsMenu(this);
         accountsMenu.show();
-    }
+    }*/
 
 
 

@@ -25,8 +25,8 @@ public class MainMenu extends Menu {
         super("Main Menu", null);
     }
 
-    @Override
-    public void setScene() {
+    public BorderPane setMainScene() {
+        BorderPane mainPane = new BorderPane();
         VBox mainButtons = new VBox(15);
         mainButtons.setAlignment(Pos.CENTER);
         String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
@@ -57,6 +57,7 @@ public class MainMenu extends Menu {
         mainButtons.getChildren().addAll(accountsButton, productsButton, discountButton, exitButton);
         mainButtons.setBackground(mainBackground);
         mainPane.setCenter(mainButtons);
+        return mainPane;
     }
 
     public void addActionForButtons(Button accountButton, Button productButton, Button discountButton, Button exitButton) {
@@ -92,6 +93,7 @@ public class MainMenu extends Menu {
     }
 
     public void registerFirstManager() {
+        BorderPane pane= new BorderPane();
         VBox vBox = new VBox(10);
         Button backButton = new Button("Back");
         Label title = new Label("Manager account registration");
@@ -142,9 +144,9 @@ public class MainMenu extends Menu {
         });
 
         vBox.getChildren().addAll(backButton, title, userNameTextField, passwordField, firstNameTextField, lastNameTextField, emailTextField, phoneNumberTextField, addressTextField, SUButton, notify);
-        super.mainPane.setCenter(vBox);
-        super.mainPane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#abbaab , #ffffff)");
-        Scene scene = new Scene(super.mainPane, 600, 600);
+        vBox.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#abbaab , #ffffff)");
+        pane.setCenter(vBox);
+        Scene scene = new Scene(pane, 600, 600);
         Menu.window.setScene(scene);
     }
 
@@ -152,8 +154,8 @@ public class MainMenu extends Menu {
     @Override
     public void show() {
         //  if (Manager.getAllManagers().size()!=0) {
-        setScene();
-        Scene scene = new Scene(mainPane, 600, 600);
+        setMainScene();
+        Scene scene = new Scene(setMainScene(), 600, 600);
         Menu.window.setScene(scene);
         Menu.window.show();
         //} else {
