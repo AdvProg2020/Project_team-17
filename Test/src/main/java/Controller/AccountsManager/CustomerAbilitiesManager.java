@@ -6,6 +6,8 @@ import Models.Accounts.Seller;
 import Models.Logs.BuyLog;
 import Models.Logs.SellLog;
 import View.PurchasingProcessMenus.ReceivingInformationPage;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -59,33 +61,34 @@ public class CustomerAbilitiesManager {
         }
     }
 
-
-    public static ArrayList<String> showDiscountCodes(Customer customer) throws Exception {
+    public static ObservableList<String> showDiscountCodes(Customer customer) {
         ArrayList<String> discountCodes = new ArrayList<>();
-        if (customer.getDiscountCodes() != null) {
-            discountCodes.add(customer.getDiscountCodes().toString());
-            return discountCodes;
-        } else throw new Exception("There isn't any discount code already");
+        discountCodes.add(customer.getDiscountCodes().toString());
+        ObservableList data = FXCollections.observableArrayList();
+        data.addAll(discountCodes);
+        return data;
     }
 
-   /* public static void checkAndPay(Customer customer, String code) throws Exception {
+    /* public static void checkAndPay(Customer customer, String code) throws Exception {
+         DiscountCode discountCode = DiscountCode.getDiscountCodeWithCode(code);
+         if (customer.getCart().totalPriceWithDiscount(discountCode) <= customer.getCredit()) {
+             pay(customer, code);
+         } else
+             throw new Exception("there isn't enough money in your card!");
+     }*/
+    public static String finalPay(Customer customer, String code) {
+        if (canPay(customer, code)) {
+            pay(customer, code);
+            return "payment done";
+        } else return "there isn't enough money in your card!";
+    }
+
+    public static boolean canPay(Customer customer, String code) {
         DiscountCode discountCode = DiscountCode.getDiscountCodeWithCode(code);
         if (customer.getCart().totalPriceWithDiscount(discountCode) <= customer.getCredit()) {
-            pay(customer, code);
-        } else
-            throw new Exception("there isn't enough money in your card!");
-    }*/
-   public static String finalPay(Customer customer, String code){
-       if(canPay(customer,code)){
-           pay(customer,code);
-           return "payment done";
-       }else return "there isn't enough money in your card!";
-   }
-    public static boolean canPay(Customer customer, String code){
-        DiscountCode discountCode = DiscountCode.getDiscountCodeWithCode(code);
-        if (customer.getCart().totalPriceWithDiscount(discountCode) <= customer.getCredit()){
             return true;
-        }return false;
+        }
+        return false;
     }
 
     public static void pay(Customer customer, String code) {
@@ -98,17 +101,18 @@ public class CustomerAbilitiesManager {
         for (Seller seller : sellers) {
             ArrayList<Product> productsThatThisSellerSold = new ArrayList<>();
             for (Product product : boughtProducts) {
-                if(product.getSeller().equals(seller)){
+                if (product.getSeller().equals(seller)) {
                     productsThatThisSellerSold.add(product);
                 }
             }
-            SellLog sellLog = new SellLog(LocalDate.now(),amountForPay,ReceivingInformationPage.getAddress(),ReceivingInformationPage.getPhoneNum(),
-                    customer.getUserName(),boughtProducts,false,discountAmount);
+            SellLog sellLog = new SellLog(LocalDate.now(), amountForPay, ReceivingInformationPage.getAddress(), ReceivingInformationPage.getPhoneNum(),
+                    customer.getUserName(), boughtProducts, false, discountAmount);
             seller.addLogToSellLog(sellLog);
-            BuyLog buyLog = new BuyLog(LocalDate.now(),amountForPay,ReceivingInformationPage.getAddress(),ReceivingInformationPage.getPhoneNum(),
-                    seller.getUserName(),boughtProducts,false,discountAmount);
+            BuyLog buyLog = new BuyLog(LocalDate.now(), amountForPay, ReceivingInformationPage.getAddress(), ReceivingInformationPage.getPhoneNum(),
+                    seller.getUserName(), boughtProducts, false, discountAmount);
             customer.addLogToBuyLog(buyLog);
-        }customer.payMoney(customer, amountForPay);
+        }
+        customer.payMoney(customer, amountForPay);
         for (Product product : boughtProducts) {
             product.getSeller().addMoneyToCredit(product);
         }
@@ -123,7 +127,8 @@ public class CustomerAbilitiesManager {
             throw new Exception("this code isn't valid");
         }
     }
-    public static ArrayList<Seller> getSellers(ArrayList<Product> boughtProducts){
+
+    public static ArrayList<Seller> getSellers(ArrayList<Product> boughtProducts) {
         ArrayList<Seller> sellers = new ArrayList<>();
         for (Product product : boughtProducts) {
             sellers.add(product.getSeller());

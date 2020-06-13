@@ -3,17 +3,12 @@ package View.AccountMenus;
 import Controller.AccountsManager.CustomerAbilitiesManager;
 import Models.Accounts.Customer;
 import Models.Product;
-import View.CartMenu;
 import View.Menu;
 import View.RegisterCustomerMenu;
-import View.PurchasingProcessMenus.PurchaseMenu;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -23,11 +18,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class CustomerMenu extends Menu {
-    PurchaseMenu purchaseMenu = new PurchaseMenu(this);
-    CartMenu cartMenu = new CartMenu(this);
-    Menu menu = Menu.getMenu("Main Menu");
-    Menu registerAndLoginMenu = Menu.getMenu("Register And Login ");
-
     public CustomerMenu(Menu parentMenu) {
         super("Customer ", parentMenu);
     }
@@ -58,6 +48,12 @@ public class CustomerMenu extends Menu {
         VBox vBox = new VBox(10);
         Button viewOrdersButton = new Button("View orders");
         Button viewListOfDiscountCodes = new Button("Discount codes");
+        viewListOfDiscountCodes.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                setDiscountCodeScene();
+            }
+        });
         Button editButton = new Button("Edit field");
         editButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
@@ -112,7 +108,7 @@ public class CustomerMenu extends Menu {
                 notify.setText("successfully changed");
             }
         });
-        vBox1.getChildren().addAll(hBox,notify);
+        vBox1.getChildren().addAll(hBox, notify);
         pane.setCenter(vBox1);
         Scene scene = new Scene(pane, 400, 200);
         Menu.window.setScene(scene);
@@ -163,14 +159,24 @@ public class CustomerMenu extends Menu {
             System.out.println(e.getMessage());
         }
     }
-
-    //check
-    public void viewDiscountCodes() {
-        Customer customer = RegisterCustomerMenu.getCurrentCustomer();
-        try {
-            System.out.println(CustomerAbilitiesManager.showDiscountCodes(customer));
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+    
+    public void setDiscountCodeScene() {
+        BorderPane pane = new BorderPane();
+        VBox vBox = new VBox(10);
+        vBox.setAlignment(Pos.TOP_LEFT);
+        Button button = new Button("Back");
+        button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                parentMenu.show();
+            }
+        });
+        vBox.getChildren().addAll(button);
+        pane.setTop(vBox);
+        ListView<String> listView = new ListView<>();
+        listView.getItems().addAll(CustomerAbilitiesManager.showDiscountCodes(RegisterCustomerMenu.getCurrentCustomer()));
+        pane.setCenter(listView);
+        Scene scene = new Scene(pane, 350, 350);
+        Menu.window.setScene(scene);
     }
 }
