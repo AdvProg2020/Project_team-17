@@ -362,7 +362,7 @@ public class SellerMenu extends Menu {
         button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                parentMenu.show();
+                show();
             }
         });
         vBox.getChildren().addAll(button);

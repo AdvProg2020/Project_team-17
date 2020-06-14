@@ -70,7 +70,7 @@ public class CustomerMenu extends Menu {
                 setEditScene();
             }
         });
-        vBox.getChildren().addAll(backButton, viewOrdersButton, cartButton,viewListOfDiscountCodes, editButton);
+        vBox.getChildren().addAll(backButton, viewOrdersButton, cartButton, viewListOfDiscountCodes, editButton);
         pane.setLeft(vBox);
         VBox vBox1 = new VBox(10);
         vBox1.setAlignment(Pos.CENTER);
@@ -140,7 +140,7 @@ public class CustomerMenu extends Menu {
         backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                parentMenu.show();
+                show();
             }
         });
         Label title = new Label("Editing field");
@@ -178,7 +178,7 @@ public class CustomerMenu extends Menu {
         button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                parentMenu.show();
+                show();
             }
         });
         vBox.getChildren().addAll(button);
@@ -198,11 +198,9 @@ public class CustomerMenu extends Menu {
             }
         });
         pane.setCenter(listView);
-        Scene scene = new Scene(pane , 600 , 600);
+        Scene scene = new Scene(pane, 600, 600);
         Menu.window.setScene(scene);
         //TODO rate product / asan nemidonam chejori
-
-
     }
 
     public void setDiscountCodeScene() {
@@ -213,7 +211,7 @@ public class CustomerMenu extends Menu {
         button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                parentMenu.show();
+                show();
             }
         });
         vBox.getChildren().addAll(button);
