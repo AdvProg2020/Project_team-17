@@ -5,12 +5,14 @@ import Models.Accounts.Customer;
 import Models.Accounts.Manager;
 import Models.Accounts.Seller;
 import Models.Request.Request;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class ManagerAbilitiesManager {
-    public static ArrayList<String> showAllAccounts() {
+    public static ObservableList<String> showAllAccounts() {
         ArrayList<String> allAccounts = new ArrayList<>();
         for (Customer customer : Customer.getAllCustomers()) {
             allAccounts.add(customer.getUserName());
@@ -21,62 +23,48 @@ public class ManagerAbilitiesManager {
         for (Manager manager : Manager.getAllManagers()) {
             allAccounts.add(manager.getUserName());
         }
-        return allAccounts;
+        ObservableList data = FXCollections.observableArrayList();
+        data.addAll(allAccounts);
+        return data;
     }
 
 
-    public static String viewAccountByUsername(String username) throws Exception {
+    public static String viewAccountByUsername(String username) {
+        String s = "";
         if (Customer.isThereCustomerWithUserName(username)) {
             Customer customer = Customer.getCustomerByName(username);
-            return customer.toString();
+            s = customer.toString();
         } else if (Seller.isThereSellerWithUserName(username)) {
             Seller seller = Seller.getSellerByName(username);
-            return seller.toString();
+            s = seller.toString();
         } else if (Manager.isThereManagerWithUserName(username)) {
             Manager manager = Manager.getManagerByUserName(username);
-            return manager.toString();
-        } else throw new Exception("There isn't any account with thus username");
-
+            s = manager.toString();
+        }
+        return s;
     }
 
-    public static String changeField(Manager manager, String field, String newContentForThisField) {
+    public static void changeField(Manager manager, String field, String newContentForThisField) {
         if (field.equalsIgnoreCase("first name")) {
             manager.changeFirstName(manager, newContentForThisField);
-            return "field successfully changed";
         } else if (field.equalsIgnoreCase("last name")) {
             manager.changeLastName(manager, newContentForThisField);
-            return "field successfully changed";
         } else if (field.equalsIgnoreCase("email")) {
             manager.changeEmail(manager, newContentForThisField);
-            return "field successfully changed";
         } else if (field.equalsIgnoreCase("phone number")) {
             manager.changePhoneNumber(manager, newContentForThisField);
-            return "field successfully changed";
         } else if (field.equalsIgnoreCase("password")) {
             manager.changePassword(manager, newContentForThisField);
-            return "field successfully changed";
-        } else {
-            return "enter a valid field";
         }
     }
 
-    public static void deleteUser(String username) throws Exception {
+    public static void deleteUser(String username) {
         if (Customer.isThereCustomerWithUserName(username)) {
             Customer.deleteCustomer(username);
         } else if (Manager.isThereManagerWithUserName(username)) {
             Manager.deleteManager(username);
         } else if (Seller.isThereSellerWithUserName(username)) {
             Seller.deleteSeller(username);
-        } else {
-            throw new Exception("there isn't account with this username");
-        }
-    }
-
-    public static void isThereAccountWithThisUsername(String username) throws Exception {
-        if ((!(Manager.isThereManagerWithUserName(username))) && (!(Customer.isThereCustomerWithUserName(username))) && (!(Seller.isThereSellerWithUserName(username)))) {
-
-        } else {
-            throw new Exception("There is already an account with this username!");
         }
     }
 
@@ -119,12 +107,14 @@ public class ManagerAbilitiesManager {
         }
     }
 
-    public static ArrayList<String> viewDiscountCodes() {
+    public static ObservableList<String> viewDiscountCodes() {
         ArrayList<String> discountCodeInfo = new ArrayList<>();
         for (DiscountCode discountCode : DiscountCode.getAllDiscountCodes()) {
             discountCodeInfo.add(discountCode.getDiscountCode());
         }
-        return discountCodeInfo;
+        ObservableList data = FXCollections.observableArrayList();
+        data.addAll(discountCodeInfo);
+        return data;
     }
 
     public static void isThereDiscountCode(String discountCode) throws Exception {
@@ -201,34 +191,30 @@ public class ManagerAbilitiesManager {
         }
     }
 
-    public static ArrayList<String> showAllCategories() {
+    public static ObservableList<String> showAllCategories() {
         ArrayList<String> showAllCategory = new ArrayList<>();
         for (Category category : Category.getAllCategories()) {
             showAllCategory.add(category.getCategoryName());
         }
-        return showAllCategory;
+        ObservableList data = FXCollections.observableArrayList();
+        data.addAll(showAllCategory);
+        return data;
     }
-
-    public static void editCategoryName(Category category, String newName) {
-        category.changeCategoryName(category, newName);
-    }
-
-    public static void editCategoryFeature(Category category, String newFeature) {
-        category.changeSpecialFeatures(category, newFeature);
-    }
-
-    public static void addCategory(String name, String feature) throws Exception {
-        if (!(Category.isThereCategoryWithName(name))) {
-            new Category(name, feature);
-        } else {
-            throw new Exception("there is a category with this name");
+    public static void editCategory(Category category , String field , String newContentForThisField){
+        if(field.equals("name")){
+            category.changeCategoryName(category, newContentForThisField);
+        }else if(field.equals("name")){
+            category.changeSpecialFeatures(category, newContentForThisField);
         }
     }
 
-    public static void removeCategory(String name) throws Exception {
-        if (Category.isThereCategoryWithName(name)) {
-            Category.deleteCategory(Category.getCategoryByName(name));
-        } else throw new Exception("there isn't any category with this name");
+    public static void addCategory(String name, String feature) {
+        new Category(name, feature);
+    }
+
+    public static void removeCategory(String name) {
+        Category.deleteCategory(Category.getCategoryByName(name));
+
     }
 }
 
