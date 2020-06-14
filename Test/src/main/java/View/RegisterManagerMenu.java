@@ -29,25 +29,23 @@ public class RegisterManagerMenu extends Menu {
                 + "-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); -fx-font-size: 1.9em; -fx-padding: 10px;";
         HBox registerAndLoginButtons = new HBox(10);
         registerAndLoginButtons.setAlignment(Pos.CENTER);
-        Button registerButton = new Button("Register");
-        registerButton.setStyle(style);
         Button loginButton = new Button("Login");
         loginButton.setStyle(style);
-        registerAndLoginButtons.getChildren().addAll(registerButton, loginButton);
+        registerAndLoginButtons.getChildren().addAll(loginButton);
         HBox backAndOthersButton = new HBox(10);
         backAndOthersButton.setAlignment(Pos.TOP_LEFT);
         Button backButton = new Button("Back");
         backAndOthersButton.getChildren().addAll(backButton, registerAndLoginButtons);
         VBox vBox = new VBox(220);
         vBox.getChildren().addAll(backAndOthersButton, registerAndLoginButtons);
-        addActionForButton(backButton, loginButton, registerButton);
+        addActionForButton(backButton, loginButton);
         vBox.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#abbaab , #ffffff)");
         pane.setCenter(vBox);
         Scene scene = new Scene(pane, 600, 600);
         Menu.window.setScene(scene);
     }
 
-    public void addActionForButton(Button backButton, Button loginButton, Button registerButton) {
+    public void addActionForButton(Button backButton, Button loginButton) {
         backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -60,73 +58,7 @@ public class RegisterManagerMenu extends Menu {
                 loginManagerScene();
             }
         });
-        registerButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                registerManagerScene();
-            }
-        });
     }
-
-
-    public void registerManagerScene() {
-        BorderPane pane = new BorderPane();
-        VBox vBox = new VBox(10);
-        Button backButton = new Button("Back");
-        Label title = new Label("Manager account registration");
-        Label notify = new Label();
-        TextField userNameTextField = new TextField();
-        userNameTextField.setPromptText("username");
-
-        PasswordField passwordField = new PasswordField();
-        passwordField.setPromptText("password");
-
-        TextField firstNameTextField = new TextField();
-        firstNameTextField.setPromptText("first name");
-
-        TextField lastNameTextField = new TextField();
-        lastNameTextField.setPromptText("last name");
-
-        TextField emailTextField = new TextField();
-        emailTextField.setPromptText("email");
-
-        TextField phoneNumberTextField = new TextField();
-        phoneNumberTextField.setPromptText("phone number");
-
-        TextField addressTextField = new TextField();
-        addressTextField.setPromptText("address");
-
-        Button SUButton = new Button("Sign up");
-
-        SUButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                if (RegisterAndLoginManager.canHaveAccountWithThisUsername(userNameTextField.getText())) {
-                    new Manager(userNameTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText(),
-                            phoneNumberTextField.getText(), passwordField.getText());
-                    notify.setStyle("-fx-text-fill: #3193ff");
-                    notify.setText("successfully registered");
-                } else {
-                    notify.setStyle("-fx-text-fill: #ff4f59");
-                    notify.setText("this username already exist");
-                }
-
-            }
-        });
-        backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                parentMenu.show();
-            }
-        });
-
-        vBox.getChildren().addAll(backButton, title, userNameTextField, passwordField, firstNameTextField, lastNameTextField, emailTextField, phoneNumberTextField, addressTextField, SUButton, notify);
-        vBox.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#abbaab , #ffffff)");
-        pane.setCenter(vBox);
-        Scene scene = new Scene(pane, 600, 600);
-        Menu.window.setScene(scene);
-    }
-
     public void loginManagerScene() {
         BorderPane pane = new BorderPane();
         VBox vBox = new VBox(10);
