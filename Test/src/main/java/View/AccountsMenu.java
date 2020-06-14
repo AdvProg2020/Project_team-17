@@ -1,6 +1,8 @@
 package View;
 
 import View.AccountMenus.CustomerMenu;
+import View.AccountMenus.ManagerMenu;
+import View.AccountMenus.SellerMenu;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -52,7 +54,7 @@ public class AccountsMenu extends Menu {
         Background mainBackground = new Background(mainBackgroundImage);
         accountButtons.setBackground(mainBackground);
         addActionForButtons(sellerAccountsButton, customerAccountsButton, mangerAccountsButton);
-        accountButtons.getChildren().addAll(backButton,sellerAccountsButton, customerAccountsButton, mangerAccountsButton);
+        accountButtons.getChildren().addAll(backButton, sellerAccountsButton, customerAccountsButton, mangerAccountsButton);
         pane.setCenter(accountButtons);
         Scene scene = new Scene(pane, 600, 600);
         Menu.window.setScene(scene);
@@ -65,10 +67,11 @@ public class AccountsMenu extends Menu {
                 if (RegisterSellerMenu.getCurrentSeller() == null) {
                     handleRegisterSeller();
                 } else {
-                    //TODO view personal info
+                    handleSellerMenu();
                 }
             }
         });
+
         customerButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -85,12 +88,11 @@ public class AccountsMenu extends Menu {
                 if (RegisterManagerMenu.getCurrentManager() == null) {
                     handleRegisterManager();
                 } else {
-                    //TODO view personal info
+                    handleManagerMenu();
                 }
             }
         });
     }
-
     public void handleRegisterSeller() {
         RegisterSellerMenu registerSellerMenu = new RegisterSellerMenu(this);
         registerSellerMenu.show();
@@ -105,8 +107,19 @@ public class AccountsMenu extends Menu {
         RegisterManagerMenu registerManagerMenu = new RegisterManagerMenu(this);
         registerManagerMenu.show();
     }
-    public void handleCustomerMenu(){
+
+    public void handleCustomerMenu() {
         CustomerMenu customerMenu = new CustomerMenu(this);
         customerMenu.show();
+    }
+
+    public void handleSellerMenu() {
+        SellerMenu sellerMenu = new SellerMenu(this);
+        sellerMenu.show();
+    }
+
+    public void handleManagerMenu() {
+        ManagerMenu managerMenu = new ManagerMenu(this);
+        managerMenu.show();
     }
 }
