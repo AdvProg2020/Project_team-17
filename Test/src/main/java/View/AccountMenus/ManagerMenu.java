@@ -1,4 +1,4 @@
-package View.AccountMenus;
+        package View.AccountMenus;
 
 import Controller.AccountsManager.ManagerAbilitiesManager;
 import Controller.AccountsManager.SellerAbilitiesManager;
@@ -83,7 +83,7 @@ public class ManagerMenu extends Menu {
         manageRequests.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                //TODO
+                manageRequestsScene();
             }
         });
         Button manageCategories = new Button("Manage categories");
@@ -285,7 +285,7 @@ public class ManagerMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 if (RegisterAndLoginManager.canHaveAccountWithThisUsername(userNameTextField.getText())) {
-                    new Manager(userNameTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText(),
+                    ManagerAbilitiesManager.createAnotherManager(userNameTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText(),
                             phoneNumberTextField.getText(), passwordField.getText());
                     notify.setStyle("-fx-text-fill: #3193ff");
                     notify.setText("successfully registered");
@@ -310,34 +310,6 @@ public class ManagerMenu extends Menu {
         Menu.window.setScene(scene);
     }
 
-    //check
-    public void manageAllProducts() {
-        //TODO ask to doce phase2 asan hamchin chizi nagofte chi kar konim?
-        String command;
-        while (true) {
-            command = scanner.nextLine();
-            Pattern removeProductPattern = Pattern.compile("remove product\\s(.+)");
-            Matcher removeProductMatcher = removeProductPattern.matcher(command);
-            if (command.matches("remove product\\s(.+)")) {
-                removeProductMatcher.find();
-                try {
-                    ManagerAbilitiesManager.removeProduct(removeProductMatcher.group(1));
-                    System.out.println("Product removed successfully");
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                }
-            } else if (command.equals("back")) {
-                break;
-            } else if (command.equals("help")) {
-                System.out.println("commands that you can enter are:");
-                System.out.println("remove product [productID]");
-                System.out.println("back");
-            } else {
-                System.out.println("invalid command");
-            }
-        }
-    }
-
     public void setDiscountCodeScene() {
         BorderPane pane = new BorderPane();
         VBox vBox = new VBox(10);
@@ -355,7 +327,6 @@ public class ManagerMenu extends Menu {
         ListView<String> listView = new ListView<>();
         listView.getItems().addAll(ManagerAbilitiesManager.viewDiscountCodes());
         pane.setCenter(listView);
-
         VBox vBox1 = new VBox(10);
         Label notify = new Label();
         Button view = new Button("view discount code");
@@ -464,51 +435,61 @@ public class ManagerMenu extends Menu {
         Menu.window.setScene(scene);
     }
 
-    //check
-    public void manageRequests() {
-        String command;
-        System.out.println(ManagerAbilitiesManager.showAllRequests());
-        while (true) {
-            command = scanner.nextLine();
-            Pattern detailsOfRequestPattern = Pattern.compile("details\\s(.+)");
-            Matcher detailsOfRequestMatcher = detailsOfRequestPattern.matcher(command);
-            Pattern acceptRequestPattern = Pattern.compile("accept\\s(.+)");
-            Matcher acceptRequestMatcher = acceptRequestPattern.matcher(command);
-            Pattern declineRequestPattern = Pattern.compile("decline\\s(.+)");
-            Matcher declineRequestMatcher = declineRequestPattern.matcher(command);
-            if (command.matches("details\\s(.+)")) {
-                detailsOfRequestMatcher.find();
-                try {
-                    System.out.println(ManagerAbilitiesManager.showDetailsOfRequest(detailsOfRequestMatcher.group(1)));
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                }
-            } else if (command.matches("accept\\s(.+)")) {
-                acceptRequestMatcher.find();
-                try {
-                    System.out.println(ManagerAbilitiesManager.acceptRequest(acceptRequestMatcher.group(1)));
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                }
-            } else if (command.matches("decline\\s(.+)")) {
-                declineRequestMatcher.find();
-                try {
-                    ManagerAbilitiesManager.declineRequest(declineRequestMatcher.group(1));
-                    System.out.println("request declined");
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                }
-            } else if (command.equals("help")) {
-                System.out.println("commands that you can enter are:");
-                System.out.println("details [requestID]");
-                System.out.println("accept [requestID]");
-                System.out.println("decline [requestID]");
-            } else if (command.equals("back")) {
-                break;
-            } else {
-                System.out.println("invalid command");
+    public void manageRequestsScene() {
+        BorderPane pane = new BorderPane();
+        VBox vBox = new VBox(10);
+        vBox.setAlignment(Pos.TOP_LEFT);
+        Button button = new Button("Back");
+        button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                show();
             }
-        }
+        });
+        vBox.getChildren().addAll(button);
+        pane.setTop(vBox);
+
+        ListView<String> listView = new ListView<>();
+        listView.getItems().addAll(ManagerAbilitiesManager.showAllRequests());
+        pane.setCenter(listView);
+
+        VBox vBox1 = new VBox(10);
+        Label notify = new Label();
+        Button details = new Button("details");
+        Button accept = new Button("accept");
+        Button decline = new Button("decline");
+        details.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                Alert alert = new Alert(Alert.AlertType.NONE);
+                //TODO mitonim alert type ro information bezarim
+                alert.setTitle("show user info");
+                alert.setHeaderText("user information");
+                String s = ManagerAbilitiesManager.showDetailsOfRequest(listView.getSelectionModel().getSelectedItem());
+                alert.setContentText(s);
+                alert.show();
+            }
+        });
+        accept.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                ManagerAbilitiesManager.acceptRequest(listView.getSelectionModel().getSelectedItem());
+                notify.setStyle("-fx-text-fill: #3193ff");
+                notify.setText("request accepted");
+            }
+        });
+        decline.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                ManagerAbilitiesManager.declineRequest(listView.getSelectionModel().getSelectedItem());
+                notify.setStyle("-fx-text-fill: #3193ff");
+                notify.setText("request declined");
+            }
+        });
+        vBox1.getChildren().addAll(details, accept, decline);
+        pane.setLeft(vBox1);
+        Scene scene = new Scene(pane, 600, 600);
+        Menu.window.setScene(scene);
     }
 
     public void setCategoriesScene() {
@@ -619,4 +600,31 @@ public class ManagerMenu extends Menu {
         Scene scene = new Scene(pane, 350, 350);
         Menu.window.setScene(scene);
     }
+
+     /*public void manageAllProducts() {
+        //TODO ask to doce phase2 asan hamchin chizi nagofte chi kar konim?
+        String command;
+        while (true) {
+            command = scanner.nextLine();
+            Pattern removeProductPattern = Pattern.compile("remove product\\s(.+)");
+            Matcher removeProductMatcher = removeProductPattern.matcher(command);
+            if (command.matches("remove product\\s(.+)")) {
+                removeProductMatcher.find();
+                try {
+                    ManagerAbilitiesManager.removeProduct(removeProductMatcher.group(1));
+                    System.out.println("Product removed successfully");
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
+            } else if (command.equals("back")) {
+                break;
+            } else if (command.equals("help")) {
+                System.out.println("commands that you can enter are:");
+                System.out.println("remove product [productID]");
+                System.out.println("back");
+            } else {
+                System.out.println("invalid command");
+            }
+        }
+    }*/
 }
