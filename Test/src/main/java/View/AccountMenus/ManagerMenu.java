@@ -1,9 +1,13 @@
 package View.AccountMenus;
 
 import Controller.AccountsManager.ManagerAbilitiesManager;
+import Controller.AccountsManager.SellerAbilitiesManager;
 import Controller.RegisterAndLoginManager;
 import Models.Accounts.Manager;
 import Models.Category;
+import Models.Discount;
+import Models.DiscountCode;
+import Models.Request.AddOffRequest;
 import View.*;
 import View.Menu;
 import javafx.event.EventHandler;
@@ -14,13 +18,17 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ManagerMenu extends Menu {
     Category selectedCategory;
+    DiscountCode selectedDiscountCode;
 
     public ManagerMenu(Menu parentMenu) {
         super("Manager ", parentMenu);
@@ -28,17 +36,6 @@ public class ManagerMenu extends Menu {
 
     @Override
     public void show() {
-       /* if (RegisterManagerMenu.getCurrentManager() != null) {
-            System.out.println("1.view personal info");
-            System.out.println("2.manage users");
-            System.out.println("3.manage all products");
-            System.out.println("4.create discount code");
-            System.out.println("5.view discount codes");
-            System.out.println("6.manage requests");
-            System.out.println("7.manage categories");
-            System.out.println("8.logout");
-            System.out.println("9.back");
-        } */
         setPersonalInfoScene();
     }
 
@@ -79,7 +76,7 @@ public class ManagerMenu extends Menu {
         manageDiscountCodes.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                //TODO
+                setDiscountCodeScene();
             }
         });
         Button manageRequests = new Button("Manage requests");
@@ -93,7 +90,7 @@ public class ManagerMenu extends Menu {
         manageCategories.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                //TODO
+                setCategoriesScene();
             }
         });
 
@@ -341,83 +338,130 @@ public class ManagerMenu extends Menu {
         }
     }
 
-    //check
-    public void createDiscountCode() {
-        String command;
-        while (true) {
-            command = scanner.nextLine();
-            if (command.equals("create discount code")) {
-                try {
-                    getInfoForCreatingDiscountCode();
-                } catch (Exception e) {
-                    System.out.println("enter validate input(check customers have been registered and be sure the type of date is correct)");
-                }
-            } else if (command.equals("back")) {
-                break;
-            } else if (command.equals("help")) {
-                System.out.println("commands that you can enter are:");
-                System.out.println("create discount code");
-                System.out.println("back");
-            } else {
-                System.out.println("invalid command");
+    public void setDiscountCodeScene() {
+        BorderPane pane = new BorderPane();
+        VBox vBox = new VBox(10);
+        vBox.setAlignment(Pos.TOP_LEFT);
+        Button button = new Button("Back");
+        button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                show();
             }
-        }
+        });
+        vBox.getChildren().addAll(button);
+        pane.setTop(vBox);
+
+        ListView<String> listView = new ListView<>();
+        listView.getItems().addAll(ManagerAbilitiesManager.viewDiscountCodes());
+        pane.setCenter(listView);
+
+        VBox vBox1 = new VBox(10);
+        Label notify = new Label();
+        Button view = new Button("view discount code");
+        Button edit = new Button("edit discount code");
+        Button add = new Button("add discount code");
+        Button remove = new Button("remove discount code");
+        view.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                Alert alert = new Alert(Alert.AlertType.NONE);
+                //TODO mitonim alert type ro information bezarim
+                alert.setTitle("discount code info");
+                alert.setHeaderText("discount code information");
+                String s = ManagerAbilitiesManager.viewDiscountCode(listView.getSelectionModel().getSelectedItem());
+                alert.setContentText(s);
+                alert.show();
+            }
+        });
+
+        edit.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                selectedDiscountCode = DiscountCode.getDiscountCodeWithCode(listView.getSelectionModel().getSelectedItem());
+                editDiscountCodeScene();
+            }
+        });
+        add.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                addDiscountCodeScene();
+            }
+        });
+        remove.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                ManagerAbilitiesManager.removeDiscountCode(listView.getSelectionModel().getSelectedItem());
+                notify.setStyle("-fx-text-fill: #3193ff");
+                notify.setText("discount code removed successfully");
+            }
+        });
+        vBox1.getChildren().addAll(edit, add, remove, notify);
+        pane.setLeft(vBox1);
+        Scene scene = new Scene(pane, 600, 600);
+        Menu.window.setScene(scene);
     }
 
-    //check
-    public void viewDiscountCodes() {
-        String command;
-        System.out.println(ManagerAbilitiesManager.viewDiscountCodes());
-        while (true) {
-            command = scanner.nextLine();
-            Pattern viewDiscountCodePattern = Pattern.compile("view discount code\\s(.+)");
-            Matcher viewDiscountCodeMatcher = viewDiscountCodePattern.matcher(command);
-            Pattern editDiscountCodePattern = Pattern.compile("edit discount code\\s(.+)");
-            Matcher editDiscountCodeMatcher = editDiscountCodePattern.matcher(command);
-            Pattern removeDiscountCodePattern = Pattern.compile("remove discount code\\s(.+)");
-            Matcher removeDiscountCodeMatcher = removeDiscountCodePattern.matcher(command);
-            if (command.matches("view discount code\\s(.+)")) {
-                viewDiscountCodeMatcher.find();
-                try {
-                    ManagerAbilitiesManager.isThereDiscountCode(viewDiscountCodeMatcher.group(1));
-                    System.out.println(ManagerAbilitiesManager.viewDiscountCode(viewDiscountCodeMatcher.group(1)));
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                }
-            } else if (command.matches("edit discount code\\s(.+)")) {
-                editDiscountCodeMatcher.find();
-                try {
-                    ManagerAbilitiesManager.isThereDiscountCode(editDiscountCodeMatcher.group(1));
-                    System.out.println("enter the field you want to edit: ");
-                    String field = scanner.nextLine();
-                    System.out.println("enter new content for this field: ");
-                    String newContent = scanner.nextLine();
-                    System.out.println(ManagerAbilitiesManager.editDiscountCode(editDiscountCodeMatcher.group(1), field, newContent));
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                }
-            } else if (command.matches("remove discount code\\s(.+)")) {
-                removeDiscountCodeMatcher.find();
-                try {
-                    ManagerAbilitiesManager.isThereDiscountCode(removeDiscountCodeMatcher.group(1));
-                    ManagerAbilitiesManager.removeDiscountCode(removeDiscountCodeMatcher.group(1));
-                    System.out.println("discount code removed successfully");
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                }
-            } else if (command.equals("back")) {
-                break;
-            } else if (command.equals("help")) {
-                System.out.println("commands that you can enter are:");
-                System.out.println("view discount code [code]");
-                System.out.println("edit discount code [code]");
-                System.out.println("remove discount code [code]");
-                System.out.println("back");
-            } else {
-                System.out.println("invalid command");
+    public void editDiscountCodeScene() {
+        BorderPane pane = new BorderPane();
+        HBox hBox = new HBox(10);
+        Label notify = new Label();
+        ChoiceBox<String> field = new ChoiceBox<>();
+        field.getItems().addAll("starting date", "ending date", "discount percent", "maximum discount amount", "count discount code");
+        TextField newContent = new TextField();
+        newContent.setPromptText("new content for this field");
+        Button button = new Button("change");
+        hBox.getChildren().addAll(field, newContent, button);
+        VBox vBox1 = new VBox(5);
+        button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                ManagerAbilitiesManager.editDiscountCode(selectedDiscountCode, field.getValue(), newContent.getText());
+                notify.setStyle("-fx-text-fill: #3193ff");
+                notify.setText("successfully changed");
             }
+        });
+        vBox1.getChildren().addAll(hBox, notify);
+        pane.setCenter(vBox1);
+        Scene scene = new Scene(pane, 350, 350);
+        Menu.window.setScene(scene);
+    }
 
-        }
+    public void addDiscountCodeScene() {
+        BorderPane pane = new BorderPane();
+        VBox vBox = new VBox(10);
+        Label notify = new Label();
+        TextField ID = new TextField();
+        ID.setPromptText("off ID");
+        TextField startDate = new TextField();
+        startDate.setPromptText("yyyy-mm-dd");
+        TextField endDate = new TextField();
+        endDate.setPromptText("yyyy-mm-dd");
+        TextField discountPercent = new TextField();
+        discountPercent.setPromptText("discount percent");
+        TextField max = new TextField();
+        max.setPromptText("maximum discount amount");
+        TextField count = new TextField();
+        count.setPromptText("number of repetitions");
+        TextField customersName = new TextField();
+        customersName.setPromptText("customers name");
+        Button add = new Button("Add");
+        add.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                String s = customersName.getText();
+                String str[] = s.split(" ");
+                List<String> names = new ArrayList<>();
+                names = Arrays.asList(str);
+                ManagerAbilitiesManager.createDiscountCode(ID.getText(), startDate.getText(), endDate.getText(), discountPercent.getText(), max.getText(), Integer.parseInt(count.getText()), names);
+                notify.setStyle("-fx-text-fill: #3193ff");
+                notify.setText("discount code created");
+            }
+        });
+        vBox.getChildren().addAll(ID, startDate, endDate, discountPercent, customersName, add, notify);
+        pane.setCenter(vBox);
+        Scene scene = new Scene(pane, 600, 600);
+        Menu.window.setScene(scene);
     }
 
     //check
@@ -493,7 +537,7 @@ public class ManagerMenu extends Menu {
         edit.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                selectedCategory= Category.getCategoryByName(listView.getSelectionModel().getSelectedItem());
+                selectedCategory = Category.getCategoryByName(listView.getSelectionModel().getSelectedItem());
                 setEditCategoryScene();
             }
         });
@@ -512,7 +556,9 @@ public class ManagerMenu extends Menu {
             }
         });
         vBox1.getChildren().addAll(edit, add, remove, notify);
-
+        pane.setLeft(vBox1);
+        Scene scene = new Scene(pane, 600, 600);
+        Menu.window.setScene(scene);
     }
 
     public void addCategoryScene() {
@@ -534,22 +580,22 @@ public class ManagerMenu extends Menu {
         name.setPromptText("category name");
         TextField feature = new TextField();
         feature.setPromptText("category feature");
-        Button add= new Button("Add category");
+        Button add = new Button("Add category");
         add.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                ManagerAbilitiesManager.addCategory(name.getText() , feature.getText());
+                ManagerAbilitiesManager.addCategory(name.getText(), feature.getText());
                 notify.setStyle("-fx-text-fill: #3193ff");
                 notify.setText("category successfully added");
             }
         });
-        hBox.getChildren().addAll(name,feature,add,notify);
+        hBox.getChildren().addAll(name, feature, add, notify);
         pane.setCenter(hBox);
-        Scene scene = new Scene(pane,350,350);
+        Scene scene = new Scene(pane, 350, 350);
         Menu.window.setScene(scene);
     }
 
-    public void setEditCategoryScene(){
+    public void setEditCategoryScene() {
         BorderPane pane = new BorderPane();
         HBox hBox = new HBox(10);
         Label notify = new Label();
@@ -570,41 +616,7 @@ public class ManagerMenu extends Menu {
         });
         vBox1.getChildren().addAll(hBox, notify);
         pane.setCenter(vBox1);
-        Scene scene = new Scene(pane, 350 , 350);
+        Scene scene = new Scene(pane, 350, 350);
         Menu.window.setScene(scene);
     }
-
-
-    //check
-    private void getInfoForCreatingDiscountCode() {
-        String code = "";
-        ArrayList<String> customersName = new ArrayList<>();
-        try {
-            System.out.println("Enter code: ");
-            code = scanner.nextLine();
-            System.out.println("Enter beginning date(yyyy-mm-dd): ");
-            String startDate = scanner.nextLine();
-            System.out.println("Enter ending date(yyyy-mm-dd): ");
-            String endDate = scanner.nextLine();
-            System.out.println("Enter discount percent: ");
-            String discountPercent = scanner.nextLine();
-            System.out.println("Enter maximum discount amount :");
-            String maxAmountForDiscount = scanner.nextLine();
-            System.out.println("Enter number of repeat for this discount code: ");
-            String repeat = scanner.nextLine();
-
-            System.out.println("how many customer have this code: ");
-            int numOfCustomer = Integer.valueOf(scanner.nextLine());
-            for (int i = 0; i < numOfCustomer; i++) {
-                System.out.println("enter the name of customer:");
-                String name = scanner.nextLine();
-                customersName.add(name);
-            }
-            ManagerAbilitiesManager.createDiscountCode(code, startDate, endDate, discountPercent, maxAmountForDiscount, Integer.parseInt(repeat), customersName);
-        } catch (Exception e) {
-            ManagerAbilitiesManager.removeDiscountCodeDueToException(code, customersName);
-        }
-    }
-
-
 }

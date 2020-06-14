@@ -95,7 +95,6 @@ public class MainMenu extends Menu {
     public void registerFirstManager() {
         BorderPane pane= new BorderPane();
         VBox vBox = new VBox(10);
-        Button backButton = new Button("Back");
         Label title = new Label("Manager account registration");
         Label notify = new Label();
         TextField userNameTextField = new TextField();
@@ -136,14 +135,8 @@ public class MainMenu extends Menu {
 
             }
         });
-        backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                parentMenu.show();
-            }
-        });
 
-        vBox.getChildren().addAll(backButton, title, userNameTextField, passwordField, firstNameTextField, lastNameTextField, emailTextField, phoneNumberTextField, addressTextField, SUButton, notify);
+        vBox.getChildren().addAll(title, userNameTextField, passwordField, firstNameTextField, lastNameTextField, emailTextField, phoneNumberTextField, addressTextField, SUButton, notify);
         vBox.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#abbaab , #ffffff)");
         pane.setCenter(vBox);
         Scene scene = new Scene(pane, 600, 600);

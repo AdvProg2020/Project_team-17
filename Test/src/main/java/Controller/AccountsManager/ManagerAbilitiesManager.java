@@ -10,6 +10,7 @@ import javafx.collections.ObservableList;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ManagerAbilitiesManager {
     public static ObservableList<String> showAllAccounts() {
@@ -82,7 +83,7 @@ public class ManagerAbilitiesManager {
         }
     }
 
-    public static void createDiscountCode(String code, String beginningDate, String endingDate, String discountPercent, String max, int repeat, ArrayList<String> customersName) {
+    public static void createDiscountCode(String code, String beginningDate, String endingDate, String discountPercent, String max, int repeat, List<String> customersName) {
         ArrayList<Customer> customers = new ArrayList<>();
         for (String customer : customersName) {
             customers.add(Customer.getCustomerByName(customer));
@@ -92,7 +93,6 @@ public class ManagerAbilitiesManager {
         for (Customer customer : customers) {
             customer.addDiscountCode(discountCode);
         }
-        System.out.println("discount code created");
     }
 
     public static void removeDiscountCodeDueToException(String code, ArrayList<String> customersName) {
@@ -117,37 +117,21 @@ public class ManagerAbilitiesManager {
         return data;
     }
 
-    public static void isThereDiscountCode(String discountCode) throws Exception {
-        if (DiscountCode.isThereDiscountCodeWithThisCode(discountCode)) {
-
-        } else {
-            throw new Exception("There isn't any discount code with this code");
-        }
-    }
-
     public static String viewDiscountCode(String discountCode) {
         return DiscountCode.getDiscountCodeWithCode(discountCode).toString();
     }
 
-    public static String editDiscountCode(String code, String field, String newContentForThisField) {
-        DiscountCode discountCode = DiscountCode.getDiscountCodeWithCode(code);
+    public static void editDiscountCode(DiscountCode discountCode, String field, String newContentForThisField) {
         if (field.equals("starting date")) {
             discountCode.setStartDate(LocalDate.parse(newContentForThisField));
-            return "discount code edited successfully";
         } else if (field.equals("ending date")) {
             discountCode.setEndDate(LocalDate.parse(newContentForThisField));
-            return "discount code edited successfully";
         } else if (field.equals("discount percent")) {
             discountCode.setDiscountCode(newContentForThisField);
-            return "discount code edited successfully";
         } else if (field.equals("maximum discount amount")) {
             discountCode.setMaxDiscountAmount(Double.parseDouble(newContentForThisField));
-            return "discount code edited successfully";
         } else if (field.equals("count discount code")) {
             discountCode.setCountDiscountCode(Integer.parseInt(newContentForThisField));
-            return "discount code edited successfully";
-        } else {
-            return "enter a valid field";
         }
     }
 
@@ -200,10 +184,11 @@ public class ManagerAbilitiesManager {
         data.addAll(showAllCategory);
         return data;
     }
-    public static void editCategory(Category category , String field , String newContentForThisField){
-        if(field.equals("name")){
+
+    public static void editCategory(Category category, String field, String newContentForThisField) {
+        if (field.equals("name")) {
             category.changeCategoryName(category, newContentForThisField);
-        }else if(field.equals("name")){
+        } else if (field.equals("name")) {
             category.changeSpecialFeatures(category, newContentForThisField);
         }
     }
