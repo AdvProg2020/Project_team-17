@@ -1,4 +1,4 @@
-package Controller.AccountsManager;
+        package Controller.AccountsManager;
 
 import Models.*;
 import Models.Accounts.Customer;
@@ -94,7 +94,6 @@ public class ManagerAbilitiesManager {
             customer.addDiscountCode(discountCode);
         }
     }
-
     public static void removeDiscountCodeDueToException(String code, ArrayList<String> customersName) {
         ArrayList<Customer> customers = new ArrayList<>();
         for (String customer : customersName) {
@@ -139,40 +138,31 @@ public class ManagerAbilitiesManager {
         DiscountCode.removeDiscountCode(DiscountCode.getDiscountCodeWithCode(discountCode));
     }
 
-    public static ArrayList<String> showAllRequests() {
+    public static ObservableList<String> showAllRequests() {
         ArrayList<String> requestInfo = new ArrayList<>();
         for (Request request : Request.getAllRequests()) {
             requestInfo.add(request.getId());
         }
-        return requestInfo;
+        ObservableList data = FXCollections.observableArrayList();
+        data.addAll(requestInfo);
+        return data;
     }
 
 
-    public static String showDetailsOfRequest(String requestId) throws Exception {
-        if (Request.isThereRequestById(requestId)) {
-            return Request.getRequestById(requestId).toString();
-        } else {
-            throw new Exception("There isn't request with this id");
-        }
+    public static String showDetailsOfRequest(String requestId) {
+        return Request.getRequestById(requestId).toString();
+
     }
 
-    public static String acceptRequest(String requestId) throws Exception {
-        if (Request.isThereRequestById(requestId)) {
-            Request.getRequestById(requestId).accept();
-            Request.deleteRequest(Request.getRequestById(requestId));
-            return "request accepted";
-        } else {
-            throw new Exception("there isn't request with this ID");
-        }
+    public static void acceptRequest(String requestId) {
+        Request.getRequestById(requestId).accept();
+        Request.deleteRequest(Request.getRequestById(requestId));
     }
 
-    public static void declineRequest(String requestId) throws Exception {
-        if (Request.isThereRequestById(requestId)) {
-            Request request = Request.getRequestById(requestId);
-            Request.deleteRequest(request);
-        } else {
-            throw new Exception("there isn't request with this ID");
-        }
+    public static void declineRequest(String requestId) {
+        Request request = Request.getRequestById(requestId);
+        Request.deleteRequest(request);
+
     }
 
     public static ObservableList<String> showAllCategories() {
@@ -202,4 +192,3 @@ public class ManagerAbilitiesManager {
 
     }
 }
-
