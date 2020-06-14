@@ -54,7 +54,7 @@ public class Seller extends Account {
     public ArrayList<String> getDiscountInfo(Seller seller) {
         ArrayList<String> allDiscountForSeller = new ArrayList<>();
         for (Discount discount : seller.allDiscount) {
-            allDiscountForSeller.add("Discount ID: " + discount.getDiscountId() + " Discount percent: " + discount.getDiscountPercent());
+            allDiscountForSeller.add( discount.getDiscountId());
         }
         return allDiscountForSeller;
     }

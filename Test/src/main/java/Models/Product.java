@@ -6,6 +6,7 @@ import Models.Enums.ProductEnum;
 import Models.Logs.BuyLog;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Product {
     private static ArrayList<Product> allProducts = new ArrayList<Product>();
@@ -125,7 +126,7 @@ public class Product {
         return null;
     }
 
-    public static ArrayList<Product> getProductsListByName(ArrayList<String> productsName) {
+    public static ArrayList<Product> getProductsListByName(List<String> productsName) {
         ArrayList<Product> products = new ArrayList<>();
         for (String name : productsName) {
             products.add(getProductByName(name));

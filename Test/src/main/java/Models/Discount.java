@@ -4,17 +4,18 @@ import Models.Enums.DiscountEnum;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Discount {
     private String discountId;
-    private ArrayList<Product> discountProducts;
+    private List<Product> discountProducts;
     private static ArrayList<Discount> allDiscounts = new ArrayList<>();
     private LocalDate startDate;
     private LocalDate endDate;
     private double discountPercent;
     private DiscountEnum discountState;
 
-    public Discount(String discountId, LocalDate startDate, LocalDate endDate, double discountPercent, ArrayList<Product> products) {
+    public Discount(String discountId, LocalDate startDate, LocalDate endDate, double discountPercent, List<Product> products) {
         this.discountId = discountId;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -28,7 +29,7 @@ public class Discount {
         return allDiscounts;
     }
 
-    public ArrayList<Product> getDiscountProducts() {
+    public List<Product> getDiscountProducts() {
         return discountProducts;
     }
 

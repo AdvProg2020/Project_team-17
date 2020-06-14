@@ -26,10 +26,19 @@ public abstract class Log {
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.allProducts = products;
-        this.name =name;
+        this.name = name;
         this.isReceived = isReceived;
         this.discountAmount = discountAmount;
         allLogs.add(this);
+    }
+
+    public static Log getLogWithId(String id) {
+        for (Log log : allLogs) {
+            if (log.getId().equals(id)) {
+                return log;
+            }
+        }
+        return null;
     }
 
     @Override

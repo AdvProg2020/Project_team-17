@@ -2,9 +2,10 @@ package View.AccountMenus;
 
 import Controller.AccountsManager.SellerAbilitiesManager;
 import Models.Category;
+import Models.Discount;
 import Models.Product;
+import Models.Request.AddOffRequest;
 import Models.Request.AddProductRequest;
-import Models.Request.RemoveProductRequest;
 import View.*;
 import View.Menu;
 import javafx.event.EventHandler;
@@ -16,8 +17,13 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class SellerMenu extends Menu {
     Product selectedProduct;
+    Discount selectedDiscount;
 
     public SellerMenu(Menu parentMenu) {
         super("Seller ", parentMenu);
@@ -199,6 +205,18 @@ public class SellerMenu extends Menu {
         pane.setTop(vBox);
         ListView<String> listView = new ListView<>();
         listView.getItems().addAll(SellerAbilitiesManager.viewSalesHistory(RegisterSellerMenu.getCurrentSeller()));
+        listView.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                Alert alert = new Alert(Alert.AlertType.NONE);
+                //TODO mitonim alert type ro information bezarim
+                alert.setTitle("show discount");
+                alert.setHeaderText("discount information");
+                String s = SellerAbilitiesManager.showDiscountInfo(listView.getSelectionModel().getSelectedItem());
+                alert.setContentText(s);
+                alert.show();
+            }
+        });
         pane.setCenter(listView);
         Scene scene = new Scene(pane, 350, 350);
         Menu.window.setScene(scene);
@@ -244,14 +262,14 @@ public class SellerMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 selectedProduct = Product.getProductByName(listView.getSelectionModel().getSelectedItem());
-                new RemoveProductRequest(RegisterSellerMenu.getCurrentSeller(), selectedProduct);
+                SellerAbilitiesManager.sendRemovingProductRequest(selectedProduct, RegisterSellerMenu.getCurrentSeller());
                 notify.setStyle("-fx-text-fill: #3193ff");
                 notify.setText("request sent");
             }
         });
-        vBox1.getChildren().addAll(addProduct, editProduct, removeButton,notify);
+        vBox1.getChildren().addAll(addProduct, editProduct, removeButton, notify);
         pane.setLeft(vBox1);
-        Scene scene = new Scene(pane,600,600);
+        Scene scene = new Scene(pane, 600, 600);
         Menu.window.setScene(scene);
     }
 
@@ -330,7 +348,7 @@ public class SellerMenu extends Menu {
                 notify.setText("request sent to manager");
             }
         });
-        vBox1.getChildren().addAll(ID, name, company, price, category, explanation, feature);
+        vBox1.getChildren().addAll(ID, name, company, price, category, explanation, feature, notify);
         pane.setCenter(vBox1);
         Scene scene = new Scene(pane, 600, 600);
         Menu.window.setScene(scene);
@@ -356,68 +374,124 @@ public class SellerMenu extends Menu {
         Menu.window.setScene(scene);
     }
 
-    public void viewOffs() {
-        /*String command;
-        Seller seller = RegisterSellerMenu.getCurrentSeller();
-        System.out.println(SellerAbilitiesManager.viewOffs(seller));
-        while (true) {
-            command = scanner.nextLine();
-            Pattern viewOffPattern = Pattern.compile("view\\s(.+)");
-            Matcher viewOffMatcher = viewOffPattern.matcher(command);
-            Pattern editOffPattern = Pattern.compile("edit\\s(.+)");
-            Matcher editOffMatcher = editOffPattern.matcher(command);
-            if (command.matches("view\\s(.+)")) {
-                viewOffMatcher.find();
-                try {
-                    SellerAbilitiesManager.isThereOffByThisId(seller, viewOffMatcher.group(1));
-                    System.out.println(SellerAbilitiesManager.viewOffByGettingId(seller, viewOffMatcher.group(1)));
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                }
-            } else if (command.matches("edit\\s(.+)")) {
-                editOffMatcher.find();
-                try {
-                    SellerAbilitiesManager.isThereOffByThisId(seller, editOffMatcher.group(1));
-                    System.out.println("enter the field you want to change: ");
-                    String field = scanner.nextLine();
-                    System.out.println("enter the content for this field: ");
-                    String newContent = scanner.nextLine();
-                    SellerAbilitiesManager.sendEditingOffRequest(editOffMatcher.group(1), seller, field, newContent);
-                    System.out.println("request sent to manager");
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                }
-            } else if (command.equals("add off")) {
-                ArrayList<String> productsName = new ArrayList<>();
-                System.out.println("enter discount's id");
-                String id = scanner.nextLine();
-                System.out.println("enter discount's beginningDate(yyyy-mm-dd)");
-                String beginningDate = scanner.nextLine();
-                System.out.println("enter discount's endingDate(yyyy-mm-dd)");
-                String endingDate = scanner.nextLine();
-                System.out.println("enter discount's percent");
-                String discountPercent = scanner.nextLine();
-                System.out.println("how many products have this discount:");
-                int num = Integer.valueOf(scanner.nextLine());
-                for (int i = 0; i < num; i++) {
-                    System.out.println("enter products name: ");
-                    productsName.add(scanner.nextLine());
-                }
-                Discount discount = SellerAbilitiesManager.addDiscount(id, beginningDate, endingDate,
-                        Double.parseDouble(discountPercent), productsName);
-                new AddOffRequest(seller, RegisterManagerMenu.getCurrentManager(), discount);
-                System.out.println("request sent to manager");
-            } else if (command.equals("back")) {
-                break;
-            } else if (command.equals("help")) {
-                System.out.println("commands that you can enter are:");
-                System.out.println("view [off id]");
-                System.out.println("edit [off id]");
-                System.out.println("add off");
-                System.out.println("back");
+    public void setOffsScene() {
+        BorderPane pane = new BorderPane();
+        VBox vBox = new VBox(10);
+        vBox.setAlignment(Pos.TOP_LEFT);
+        Button button = new Button("Back");
+        button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                show();
             }
-        }*/
+        });
+        vBox.getChildren().addAll(button);
+        pane.setTop(vBox);
+
+        ListView<String> listView = new ListView<>();
+        listView.getItems().addAll(SellerAbilitiesManager.viewOffs(RegisterSellerMenu.getCurrentSeller()));
+        pane.setCenter(listView);
+
+        VBox vBox1 = new VBox(10);
+        Button addOff = new Button("Add off");
+        Button editOff = new Button("Edit off");
+        addOff.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                setAddOffScene();
+            }
+        });
+        editOff.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                selectedDiscount = Discount.getDiscountById(listView.getSelectionModel().getSelectedItem());
+                setEditOffScene();
+            }
+        });
+        vBox1.getChildren().addAll(addOff, editOff);
+        pane.setCenter(vBox1);
+        Scene scene = new Scene(pane, 600, 600);
+        Menu.window.setScene(scene);
     }
 
+    public void setEditOffScene() {
+        BorderPane pane = new BorderPane();
+        Label notify = new Label();
+        VBox vBox = new VBox(10);
+        vBox.setAlignment(Pos.TOP_LEFT);
+        Button back = new Button("Back");
+        back.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                setOffsScene();
+            }
+        });
+        vBox.getChildren().addAll(back);
+        pane.setTop(back);
 
+        HBox hBox = new HBox(10);
+        ChoiceBox<String> field = new ChoiceBox<>();
+        field.getItems().addAll("discount percent", "start date", "end date");
+        TextField newContent = new TextField();
+        newContent.setPromptText("new content for this field");
+        Button button = new Button("change");
+        button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                SellerAbilitiesManager.sendEditingOffRequest(selectedDiscount, RegisterSellerMenu.getCurrentSeller(), field.getValue(), newContent.getText());
+                notify.setStyle("-fx-text-fill: #3193ff");
+                notify.setText("request sent");
+            }
+        });
+        hBox.getChildren().addAll(field, newContent, button, notify);
+        pane.setCenter(hBox);
+        Scene scene = new Scene(pane, 350, 350);
+        Menu.window.setScene(scene);
+    }
+
+    public void setAddOffScene() {
+        BorderPane pane = new BorderPane();
+        VBox vBox = new VBox(10);
+        vBox.setAlignment(Pos.TOP_LEFT);
+        Button back = new Button("Back");
+        back.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                setOffsScene();
+            }
+        });
+        vBox.getChildren().addAll(back);
+        pane.setTop(back);
+        VBox vBox1 = new VBox(10);
+        Label notify = new Label();
+        TextField ID = new TextField();
+        ID.setPromptText("off ID");
+        TextField startDate = new TextField();
+        startDate.setPromptText("yyyy-mm-dd");
+        TextField endDate = new TextField();
+        endDate.setPromptText("yyyy-mm-dd");
+        TextField discountPercent = new TextField();
+        discountPercent.setPromptText("discount percent");
+        TextField productsName = new TextField();
+        productsName.setPromptText("products name with space");
+        Button add = new Button("Add");
+        add.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                String s = productsName.getText();
+                String str[] = s.split(" ");
+                List<String> names = new ArrayList<>();
+                names = Arrays.asList(str);
+                Discount discount = SellerAbilitiesManager.addDiscount(ID.getText(), startDate.getText(), endDate.getText(),
+                        Double.parseDouble(discountPercent.getText()), names);
+                new AddOffRequest(RegisterSellerMenu.getCurrentSeller(), discount);
+                notify.setStyle("-fx-text-fill: #3193ff");
+                notify.setText("request sent");
+            }
+        });
+        vBox1.getChildren().addAll(ID, startDate, endDate, discountPercent, productsName, add, notify);
+        pane.setCenter(vBox1);
+        Scene scene = new Scene(pane, 600, 600);
+        Menu.window.setScene(scene);
+    }
 }

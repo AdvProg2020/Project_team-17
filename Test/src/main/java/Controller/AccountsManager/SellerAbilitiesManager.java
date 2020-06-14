@@ -2,16 +2,17 @@ package Controller.AccountsManager;
 
 import Models.*;
 import Models.Accounts.Seller;
+import Models.Logs.Log;
 import Models.Logs.SellLog;
 import Models.Request.EditOffRequest;
 import Models.Request.EditProductRequest;
 import Models.Request.RemoveProductRequest;
-import View.RegisterManagerMenu;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class SellerAbilitiesManager {
 
@@ -33,11 +34,15 @@ public class SellerAbilitiesManager {
         ArrayList<SellLog> logs = seller.getLogs();
         ArrayList<String> salesHistory = new ArrayList<String>();
         for (SellLog log : logs) {
-            salesHistory.add(log.toString());
+            salesHistory.add(log.getId());
         }
         ObservableList data = FXCollections.observableArrayList();
         data.addAll(salesHistory);
         return data;
+    }
+    public static String showDiscountInfo(String id){
+        SellLog log = (SellLog) Log.getLogWithId(id);
+        return log.toString();
     }
 
 
@@ -56,31 +61,15 @@ public class SellerAbilitiesManager {
         new RemoveProductRequest(seller ,product);
     }
 
-    public static void removeProduct(Seller seller, String productId) throws Exception {
-        if (Product.isThereProductWithId(productId)) {
-            Product product = Product.getProductWithId(productId);
-            if (seller.doesSellerHaveThisProduct(product)) {
-                Product.removeProduct(product);
-                seller.removeProduct(seller, product);
-            } else {
-                throw new Exception("This seller doesn't have this product!");
-            }
-        } else {
-            throw new Exception("There isn't product with this ID!");
-        }
-    }
-
-    public static void sendEditingOffRequest(String id, Seller seller, String field, String newContentForThisField) {
-        Discount discount = Discount.getDiscountById(id);
+    public static void sendEditingOffRequest(Discount discount, Seller seller, String field, String newContentForThisField) {
         new EditOffRequest(seller, discount, field, newContentForThisField);
     }
 
     public static Discount addDiscount(String id, String beginningDate, String endingDate,
-                                       double discountPercent, ArrayList<String> productsName) {
+                                       double discountPercent, List<String> productsName) {
         Discount discount = new Discount(id, LocalDate.parse(beginningDate), LocalDate.parse(endingDate), discountPercent, Product.getProductsListByName(productsName));
         return discount;
     }
-
 
     public static ObservableList<String> showCategories() {
         ObservableList data = FXCollections.observableArrayList();
@@ -99,22 +88,10 @@ public class SellerAbilitiesManager {
     }
 
 
-    public static void checkProductByID(String id) throws Exception {
-        if (Product.isThereProductWithId(id)) {
-        } else {
-            throw new Exception("There isn't any product with this id");
-        }
-    }
-
-    public static ArrayList<String> viewOffs(Seller seller) {
-        return seller.getDiscountInfo(seller);
-    }
-
-    public static void isThereOffByThisId(Seller seller, String id) throws Exception {
-        if (seller.isThereDiscountWithThisIdForSeller(seller, id)) {
-        } else {
-            throw new Exception("you don't have any discount with this id");
-        }
+    public static ObservableList<String> viewOffs(Seller seller) {
+        ObservableList data = FXCollections.observableArrayList();
+        data.addAll(seller.getDiscountInfo(seller));
+        return data;
     }
 
     public static ArrayList<String> viewProductsBuyer(Seller seller, String id) {
@@ -129,15 +106,6 @@ public class SellerAbilitiesManager {
         }
         return customers;
     }
-
-    public static void doesSellerHaveThisProduct(Seller seller, String id) throws Exception {
-        if (seller.doesSellerHaveThisProduct(Product.getProductWithId(id))) {
-
-        } else {
-            throw new Exception("There isn't any product with this id");
-        }
-    }
-
 
     public static String viewOffByGettingId(Seller seller, String id) {
         Discount discount = Discount.getDiscountById(id);
