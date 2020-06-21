@@ -94,7 +94,7 @@ public class MainMenu extends Menu {
     }
 
     public void registerFirstManager() {
-        BorderPane pane= new BorderPane();
+        BorderPane pane = new BorderPane();
         VBox vBox = new VBox(10);
         Label title = new Label("Manager account registration");
         Label notify = new Label();
