@@ -1,16 +1,24 @@
 package View;
 
-
 import Controller.CartManager;
-import Models.Accounts.Customer;
 import Models.Product;
-import View.PurchasingProcessMenus.PurchaseMenu;
+import View.PurchasingProcessMenus.ReceivingInformationPage;
+import javafx.event.EventHandler;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.io.FileInputStream;
+import java.util.ArrayList;
 
 public class CartMenu extends Menu {
-    PurchaseMenu purchaseMenu = new PurchaseMenu(this);
 
     public CartMenu(Menu parentMenu) {
         super("Cart", parentMenu);
@@ -18,114 +26,138 @@ public class CartMenu extends Menu {
 
     @Override
     public void show() {
-        System.out.println("1.show products");
-        System.out.println("2.view product");
-        System.out.println("3.increase product");
-        System.out.println("4.decrease product");
-        System.out.println("5.show total price");
-        System.out.println("6.purchase");
-        System.out.println("7.back");
+        setCartScene();
     }
 
-    //check
-    public void showProducts() {
-        Customer customer = RegisterCustomerMenu.getCurrentCustomer();
-        try {
-            customer.getCart();
-            System.out.println(CartManager.showProducts(customer));
-        } catch (Exception e) {
-            System.out.println("Cart is empty!");
-        }
-    }
-
-    //check
-    public void viewProduct() {
-        Customer customer = RegisterCustomerMenu.getCurrentCustomer();
-        String command;
-        while (true) {
-            command = scanner.nextLine();
-            Pattern viewProductPattern = Pattern.compile("view product\\s(.+)");
-            Matcher viewProductMatcher = viewProductPattern.matcher(command);
-            if (command.matches("view product\\s(.+)")) {
-                viewProductMatcher.find();
-                try {
-                    Product product = customer.getCart().getProductInCart(viewProductMatcher.group(1));
-                    ProductMenu productMenu = new ProductMenu(this, product);
-                    productMenu.show();
-                    //productMenu.execute();
-                } catch (Exception e) {
-                    System.out.println("There isn't any product with this ID in cart!");
-                }
-            } else if (command.matches("back")) {
-                break;
-            } else if (command.matches("help")) {
-                System.out.println("commands that you can enter are:");
-                System.out.println("view product [product ID]");
-                System.out.println("back");
+    public void setCartScene() {
+        ScrollPane scrollPane = new ScrollPane();
+        Button backButton = new Button("Back");
+        HBox mainButtons = new HBox(3);
+        mainButtons.setAlignment(Pos.TOP_RIGHT);
+        Button accountsButton = new Button("Accounts");
+        Button productButton = new Button("Products");
+        Button discountButton = new Button("Discounts");
+        Button logoutButton = new Button("Logout");
+        addActionForMainButtons(accountsButton, productButton, discountButton, logoutButton);
+        mainButtons.getChildren().addAll(accountsButton, productButton, discountButton, logoutButton);
+        HBox bar = new HBox(30);
+        //TODO check spacing
+        bar.getChildren().addAll(backButton, mainButtons);
+        backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                parentMenu.show();
             }
-        }
-
-    }
-//TODO CHECK
-    public void increaseProduct() {
-        Customer customer = RegisterCustomerMenu.getCurrentCustomer();
-        String command;
-        while (true) {
-            command = scanner.nextLine();
-            Pattern increasePattern = Pattern.compile("increase\\s(.+)");
-            Matcher increaseMatcher = increasePattern.matcher(command);
-            if (command.matches("increase\\s(.+)")) {
-                increaseMatcher.find();
-                try {
-                    CartManager.increaseProduct(customer, increaseMatcher.group(1));
-                    System.out.println("number of product increased");
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                }
-            } else if (command.equals("back")) {
-                break;
-            } else if (command.equals("help")) {
-                System.out.println("commands that you can enter are:");
-                System.out.println("increase [product ID]");
-                System.out.println("back");
+        });
+        ArrayList<HBox> hBoxes = new ArrayList<>();
+        hBoxes.add(bar);
+        for (Product product : CartManager.cartProducts(RegisterCustomerMenu.getCurrentCustomer())) {
+            HBox hBox = new HBox(5);
+            Image image = null;
+            try {
+                FileInputStream inputStream = new FileInputStream(product.getPath());
+                image = new Image(inputStream);
+            } catch (Exception e) {
             }
-        }
-    }
-//TODO CHECK
-    public void decreaseProduct() {
-        Customer customer = RegisterCustomerMenu.getCurrentCustomer();
-        String command;
-        while (true) {
-            command = scanner.nextLine();
-            Pattern decreasePattern = Pattern.compile("decrease\\s(.+)");
-            Matcher decreaseMatcher = decreasePattern.matcher(command);
-            if (command.matches("decrease\\s(.+)")) {
-                decreaseMatcher.find();
-                try {
-                    CartManager.decreaseProduct(customer, decreaseMatcher.group(1));
-                    System.out.println("number of product decreased");
-                } catch (Exception e) {
-                    e.getMessage();
-                }
-            } else if (command.equals("back")) {
-                break;
-            } else if (command.equals("help")) {
-                System.out.println("commands that you can enter are:");
-                System.out.println("decrease [product ID]");
-                System.out.println("back");
+            ImageView imageView = new ImageView(image);
+            Label name = new Label(product.getName());
+            int numberOfProduct = CartManager.numberOfProducts(RegisterCustomerMenu.getCurrentCustomer(), product);
+            Label number = new Label(Integer.toString(numberOfProduct));
+            Label price = new Label("price per one: " + product.getPrice() + " total price: " + product.getPrice() * numberOfProduct);
+            Image image1 = null;
+            try {
+                FileInputStream inputStream1 = new FileInputStream("C:\\Users\\UX434FL\\IdeaProjects\\AP17\\Test\\src\\main\\java\\Images\\Plus.png");
+                image1 = new Image(inputStream1);
+            } catch (Exception e) {
             }
+            ImageView imageView1 = new ImageView(image1);
+            Button increase = new Button("", imageView1);
+            increase.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    CartManager.increaseProduct(RegisterCustomerMenu.getCurrentCustomer(), product);
+                }
+            });
+            Image image2 = null;
+            try {
+                FileInputStream inputStream2 = new FileInputStream("C:\\Users\\UX434FL\\IdeaProjects\\AP17\\Test\\src\\main\\java\\Images\\Minus.png");
+                image2 = new Image(inputStream2);
+            } catch (Exception e) {
+            }
+            ImageView imageView2 = new ImageView(image2);
+            Button decrease = new Button("", imageView2);
+            decrease.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    CartManager.decreaseProduct(RegisterCustomerMenu.getCurrentCustomer(), product);
+                }
+            });
+            hBox.getChildren().addAll(imageView, name, number, price, increase, decrease);
+            hBoxes.add(hBox);
         }
+        VBox vBox = new VBox(5);
+        vBox.getChildren().addAll(hBoxes);
+        Label totalCartPrice = new Label("total price: " + CartManager.showTotalPriceOfCart(RegisterCustomerMenu.getCurrentCustomer()));
+        Button purchase = new Button("Purchase");
+        purchase.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                handleReceivingInformationPage();
+            }
+        });
+        VBox vBox1 = new VBox(5);
+        vBox1.getChildren().addAll(vBox, totalCartPrice, purchase);
+        scrollPane.setContent(vBox1);
+        Scene scene = new Scene(scrollPane, 600, 600);
+        Menu.window.setScene(scene);
     }
-    //TODO check price with discount code
-    public void showTotalPrice() {
-        Customer customer = RegisterCustomerMenu.getCurrentCustomer();
-        System.out.println(CartManager.showTotalPriceOfCart(customer,null));
-        /*try {
-            System.out.println(CartManager.showTotalPriceOfCart(customer));
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }*/
 
+    private void handleReceivingInformationPage() {
+        ReceivingInformationPage receivingInformationPage = new ReceivingInformationPage(this);
+        receivingInformationPage.show();
     }
 
+    public void addActionForMainButtons(Button accountsButton, Button productsButton, Button discountButton, Button logoutButton) {
+        accountsButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                handleAccountsMenu();
+            }
+        });
+        productsButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                //TODO
+            }
+        });
+        discountButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                //TODO
+            }
+        });
+        logoutButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                handleLogout();
+            }
+        });
+    }
+
+    public void handleAccountsMenu() {
+        AccountsMenu accountsMenu = new AccountsMenu(this);
+        accountsMenu.show();
+    }
+
+    public void handleLogout() {
+        if (RegisterCustomerMenu.getCurrentCustomer() != null) {
+            RegisterCustomerMenu.setCurrentCustomer(null);
+        } else if (RegisterSellerMenu.getCurrentSeller() != null) {
+            RegisterSellerMenu.setCurrentSeller(null);
+        } else if (RegisterManagerMenu.getCurrentManager() != null) {
+            RegisterManagerMenu.setCurrentManager(null);
+        }
+        MainMenu mainMenu = new MainMenu();
+        mainMenu.show();
+    }
 }
