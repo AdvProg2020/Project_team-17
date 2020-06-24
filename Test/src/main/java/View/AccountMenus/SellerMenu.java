@@ -1,4 +1,4 @@
-package View.AccountMenus;
+        package View.AccountMenus;
 
 import Controller.AccountsManager.SellerAbilitiesManager;
 import Models.Category;
@@ -153,7 +153,6 @@ public class SellerMenu extends Menu {
         MainMenu mainMenu = new MainMenu();
         mainMenu.show();
     }
-
     public void setEditScene() {
         BorderPane pane = new BorderPane();
         VBox vBox = new VBox(5);
@@ -337,12 +336,14 @@ public class SellerMenu extends Menu {
         explanation.setPromptText("explanation");
         TextField feature = new TextField();
         feature.setPromptText("feature");
+        TextField path = new TextField();
+        path.setPromptText("path");
         Button add = new Button("add");
         add.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 Product product = SellerAbilitiesManager.addProduct(ID.getText(), name.getText(), company.getText(), Double.parseDouble(price.getText()),
-                        Category.getCategoryByName(category.getText()), RegisterSellerMenu.getCurrentSeller(), explanation.getText(), feature.getText());
+                        Category.getCategoryByName(category.getText()), RegisterSellerMenu.getCurrentSeller(), explanation.getText(), feature.getText(), path.getText());
                 new AddProductRequest(RegisterSellerMenu.getCurrentSeller(), product, Category.getCategoryByName(category.getText()));
                 notify.setStyle("-fx-text-fill: #3193ff");
                 notify.setText("request sent to manager");
