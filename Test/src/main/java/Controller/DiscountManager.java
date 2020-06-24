@@ -13,7 +13,7 @@ public class DiscountManager {
     private static ArrayList<Product> filterProduct = new ArrayList<>();
     private static ArrayList<Product> sortProducts = new ArrayList<>();
     private static String currentSort = "price";
-    
+
     public static ArrayList<Product> showProducts() {
         return Discount.productsHaveDiscount();
     }
