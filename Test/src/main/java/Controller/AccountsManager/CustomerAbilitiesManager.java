@@ -8,7 +8,6 @@ import Models.Logs.SellLog;
 import View.PurchasingProcessMenus.ReceivingInformationPage;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.ListView;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -43,19 +42,6 @@ public class CustomerAbilitiesManager {
         return BuyLog.getButLogWithId(id).toString();
     }
 
-    public static void rateProduct(Customer customer, Product product, double score) throws Exception {
-        Cart cart = customer.getCart();
-        if (Product.isThereProductWithId(product.getProductId())) {
-            if (cart.isThereProductInCart(product)) {
-                product.addScoreForProduct(customer, product, score);
-            } else {
-                throw new Exception("There isn't this product in customer's cart");
-            }
-        } else {
-            throw new Exception("There isn't any product with this id");
-        }
-    }
-
     public static ObservableList<String> showDiscountCodes(Customer customer) {
         ArrayList<String> discountCodes = new ArrayList<>();
         for (DiscountCode discountCode : customer.getDiscountCodes()) {
@@ -65,35 +51,25 @@ public class CustomerAbilitiesManager {
         data.addAll(discountCodes);
         return data;
     }
-    public static String showDiscountCodeInfo(String id){
+
+    public static String showDiscountCodeInfo(String id) {
         return DiscountCode.getDiscountCodeWithCode(id).toString();
     }
 
-
-    /* public static void checkAndPay(Customer customer, String code) throws Exception {
-         DiscountCode discountCode = DiscountCode.getDiscountCodeWithCode(code);
-         if (customer.getCart().totalPriceWithDiscount(discountCode) <= customer.getCredit()) {
-             pay(customer, code);
-         } else
-             throw new Exception("there isn't enough money in your card!");
-     }*/
-    public static String finalPay(Customer customer, String code) {
-        if (canPay(customer, code)) {
-            pay(customer, code);
+    public static String finalPay(Customer customer, DiscountCode discountCode) {
+        if (canPay(customer, discountCode)) {
+            pay(customer, discountCode);
             return "payment done";
         } else return "there isn't enough money in your card!";
     }
 
-    public static boolean canPay(Customer customer, String code) {
-        DiscountCode discountCode = DiscountCode.getDiscountCodeWithCode(code);
+    public static boolean canPay(Customer customer, DiscountCode discountCode) {
         if (customer.getCart().totalPriceWithDiscount(discountCode) <= customer.getCredit()) {
             return true;
         }
         return false;
     }
-
-    public static void pay(Customer customer, String code) {
-        DiscountCode discountCode = DiscountCode.getDiscountCodeWithCode(code);
+    public static void pay(Customer customer, DiscountCode discountCode) {
         double amountForPay = customer.getCart().totalPriceWithDiscount(discountCode);
         double sum = customer.getCart().totalPriceOfProductInCart();
         double discountAmount = DiscountCode.calculateDiscountAmount(sum, discountCode);
@@ -138,4 +114,3 @@ public class CustomerAbilitiesManager {
     }
 
 }
-
