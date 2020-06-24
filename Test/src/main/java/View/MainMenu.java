@@ -2,9 +2,6 @@ package View;
 
 import Controller.RegisterAndLoginManager;
 import Models.Accounts.Manager;
-import View.AccountMenus.CustomerMenu;
-import View.AccountMenus.ManagerMenu;
-import View.AccountMenus.SellerMenu;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -70,13 +67,13 @@ public class MainMenu extends Menu {
         productButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                //TODO
+                handleProductsMenu();
             }
         });
         discountButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                //TODO
+                handleDiscountsMenu();
             }
         });
         exitButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
@@ -90,6 +87,16 @@ public class MainMenu extends Menu {
     public void handleAccounts() {
         AccountsMenu accountsMenu = new AccountsMenu(this);
         accountsMenu.show();
+    }
+
+    public void handleProductsMenu() {
+        ProductsMenu productsMenu = new ProductsMenu(this);
+        productsMenu.show();
+    }
+
+    public void handleDiscountsMenu() {
+        DiscountsMenu discountsMenu = new DiscountsMenu(this);
+        discountsMenu.show();
     }
 
     public void registerFirstManager() {
