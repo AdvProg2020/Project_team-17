@@ -1,4 +1,4 @@
-        package Controller.AccountsManager;
+package Controller.AccountsManager;
 
 import Models.*;
 import Models.Accounts.Customer;
@@ -74,13 +74,9 @@ public class ManagerAbilitiesManager {
         new Manager(username, firstName, lastName, email, phoneNumber, password);
     }
 
-    public static void removeProduct(String productId) throws Exception {
-        if (Product.isThereProductWithId(productId)) {
-            Product product = Product.getProductWithId(productId);
-            Product.removeProduct(product);
-        } else {
-            throw new Exception("There isn't any product with this ID!");
-        }
+    public static void removeProduct(String name){
+        Product product = Product.getProductByName(name);
+        Product.removeProduct(product);
     }
 
     public static void createDiscountCode(String code, String beginningDate, String endingDate, String discountPercent, String max, int repeat, List<String> customersName) {
@@ -94,6 +90,7 @@ public class ManagerAbilitiesManager {
             customer.addDiscountCode(discountCode);
         }
     }
+
     public static void removeDiscountCodeDueToException(String code, ArrayList<String> customersName) {
         ArrayList<Customer> customers = new ArrayList<>();
         for (String customer : customersName) {
@@ -172,6 +169,16 @@ public class ManagerAbilitiesManager {
         }
         ObservableList data = FXCollections.observableArrayList();
         data.addAll(showAllCategory);
+        return data;
+    }
+
+    public static ObservableList<String> showAllProducts() {
+        ArrayList<String> showAllProducts = new ArrayList<>();
+        for (Product product : Product.getAllProducts()) {
+            showAllProducts.add(product.getName());
+        }
+        ObservableList data = FXCollections.observableArrayList();
+        data.addAll(showAllProducts);
         return data;
     }
 

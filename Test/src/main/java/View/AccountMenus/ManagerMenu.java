@@ -62,7 +62,7 @@ public class ManagerMenu extends Menu {
         manageProducts.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                //TODO
+                setManageProductsScene();
             }
         });
         Button manageDiscountCodes = new Button("Manage discount codes");
@@ -607,30 +607,34 @@ public class ManagerMenu extends Menu {
         Menu.window.setScene(scene);
     }
 
-     /*public void manageAllProducts() {
-        //TODO ask to doce phase2 asan hamchin chizi nagofte chi kar konim?
-        String command;
-        while (true) {
-            command = scanner.nextLine();
-            Pattern removeProductPattern = Pattern.compile("remove product\\s(.+)");
-            Matcher removeProductMatcher = removeProductPattern.matcher(command);
-            if (command.matches("remove product\\s(.+)")) {
-                removeProductMatcher.find();
-                try {
-                    ManagerAbilitiesManager.removeProduct(removeProductMatcher.group(1));
-                    System.out.println("Product removed successfully");
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                }
-            } else if (command.equals("back")) {
-                break;
-            } else if (command.equals("help")) {
-                System.out.println("commands that you can enter are:");
-                System.out.println("remove product [productID]");
-                System.out.println("back");
-            } else {
-                System.out.println("invalid command");
+    public void setManageProductsScene() {
+        BorderPane pane = new BorderPane();
+        Label notify = new Label();
+        VBox vBox = new VBox(10);
+        vBox.setAlignment(Pos.TOP_LEFT);
+        Button button = new Button("Back");
+        button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                show();
             }
-        }
-    }*/
+        });
+        vBox.getChildren().addAll(button);
+        pane.setTop(vBox);
+        ListView<String> listView = new ListView<>();
+        listView.getItems().addAll(ManagerAbilitiesManager.showAllProducts());
+        pane.setCenter(listView);
+        VBox vBox1 = new VBox();
+        Button remove = new Button("remove product");
+        remove.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                ManagerAbilitiesManager.removeProduct(listView.getSelectionModel().getSelectedItem());
+                notify.setStyle("-fx-text-fill: #3193ff");
+                notify.setText("category removed successfully");
+            }
+        });
+        vBox1.getChildren().addAll(remove, notify);
+        pane.setLeft(vBox1);
+    }
 }
