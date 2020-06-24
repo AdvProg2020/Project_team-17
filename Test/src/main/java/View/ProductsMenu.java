@@ -3,126 +3,128 @@ package View;
 import Controller.ProductsManager;
 import Models.Enums.ProductEnum;
 import Models.Product;
+import javafx.event.EventHandler;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 
-import java.io.FileNotFoundException;
+import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javafx.scene.layout.VBox;
+
+
 public class ProductsMenu extends Menu {
     private ArrayList<String> currentFilters = new ArrayList<>();
+
     public ProductsMenu(Menu parentMenu) {
         super("Products", parentMenu);
     }
 
     @Override
     public void show() {
-        System.out.println("1.view categories");
-        System.out.println("2.filtering");
-        System.out.println("3.sorting");
-        System.out.println("4.show products");
-        System.out.println("5.back");
+        setProductsScene();
     }
 
-    //check
-    public void viewCategories() {
-        System.out.println(ProductsManager.showCategory());
-    }
-//bug
-    public void filtering() {
-        String command;
-        while (true) {
-            command = scanner.nextLine();
-            Pattern filterPattern = Pattern.compile("filter\\s(.+)");
-            Matcher filterMatcher = filterPattern.matcher(command);
-            Pattern disableFilterPattern = Pattern.compile("disable filter\\s(.+)");
-            Matcher disableFilterMatcher = disableFilterPattern.matcher(command);
-            if (command.equals("show available filters")) {
-                System.out.println("available filters are: ");
-                System.out.println(ProductsManager.showAvailableFilter());
-            } else if (command.matches("filter\\s(.+)")) {
-                filterMatcher.find();
-                filter(filterMatcher.group(1));
-            } else if (command.equals("current filters")) {
-                System.out.println(currentFilters);
-            } else if (command.matches("disable filter\\s(.+)")) {
-                disableFilterMatcher.find();
-                disableFilter(disableFilterMatcher.group(1));
-            } else if (command.equals("back")) {
-                break;
-            } else if (command.equals("help")) {
-                System.out.println("commands that you can enter are:");
-                System.out.println("show available filters");
-                System.out.println("filter [an available filter]");
-                System.out.println("current filters");
-                System.out.println("disable filter [a selected filter]");
-                System.out.println("back");
+    public void setProductsScene() {
+        //TODO add choice box for filter and sort
+        ScrollPane scrollPane = new ScrollPane();
+        Button backButton = new Button("Back");
+        HBox mainButtons = new HBox(3);
+        mainButtons.setAlignment(Pos.TOP_RIGHT);
+        Button accountsButton = new Button("Accounts");
+        Button discountButton = new Button("Discounts");
+        Button logoutButton = new Button("Logout");
+        addActionForMainButtons(accountsButton, discountButton, logoutButton);
+        mainButtons.getChildren().addAll(accountsButton, discountButton, logoutButton);
+        HBox bar = new HBox(30);
+        //TODO check spacing
+        backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                parentMenu.show();
             }
-        }
-
-    }
-//bug
-    public void sorting() {
-        String command;
-        while (true) {
-            command = scanner.nextLine();
-            Pattern sortPattern = Pattern.compile("sort\\s(.+)");
-            Matcher sortMatcher = sortPattern.matcher(command);
-            if (command.matches("sort\\s(.+)")) {
-                sortMatcher.find();
-                ProductsManager.sort(sortMatcher.group(1));
-                System.out.println(ProductsManager.getSortProductsName(ProductsManager.getCurrentSort()));
-            } else if (command.equals("show available sort")) {
-                System.out.println(ProductsManager.showAvailableSort());
-            } else if (command.equals("current sort")) {
-                System.out.println(ProductsManager.getCurrentSort());
-            } else if (command.matches("disable sort")) {
-                try {
-                    ProductsManager.disableSort(ProductsManager.getCurrentSort());
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                }
-            } else if (command.matches("back")) {
-                break;
-            } else if (command.matches("help")) {
-                System.out.println("commands that you can enter are:");
-                System.out.println("sort [an available sort]");
-                System.out.println("current sort");
-                System.out.println("disable sort");
-                System.out.println("back");
+        });
+        bar.getChildren().addAll(backButton, mainButtons);
+        ArrayList<HBox> hBoxes = new ArrayList<>();
+        for (Product product : ProductsManager.showProducts()) {
+            HBox hBox = new HBox(10);
+            Image image = null;
+            try {
+                FileInputStream inputStream = new FileInputStream(product.getPath());
+                image = new Image(inputStream);
+            } catch (Exception e) {
             }
+            ImageView imageView = new ImageView(image);
+            imageView.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    handleProductPage(product);
+                }
+            });
+            Label name = new Label(product.getName());
+            Label price = new Label(product.getPrice() + "$");
+            Label score = new Label("score: " + product.getPrice());
+            hBox.getChildren().addAll(imageView, name, price, score);
+            hBoxes.add(hBox);
         }
-
-
+        VBox vBox = new VBox(5);
+        vBox.getChildren().addAll(hBoxes);
+        scrollPane.setContent(vBox);
+        Scene scene = new Scene(scrollPane, 600, 600);
+        Menu.window.setScene(scene);
     }
 
-    //check
-    public void showProducts() {
-        String command;
-        System.out.println(ProductsManager.showProducts());
-        while (true) {
-            command = scanner.nextLine();
-            Pattern showProductByIdPattern = Pattern.compile("show product\\s(.+)");
-            Matcher showProductByIdMatcher = showProductByIdPattern.matcher(command);
-            if (command.matches("show product\\s(.+)")) {
-                showProductByIdMatcher.find();
-                try {
-                    Product product = ProductsManager.checkProductID(showProductByIdMatcher.group(1));
-                   ProductMenu productMenu = new ProductMenu(this, product);
-                   productMenu.show();
-                  // productMenu.execute();
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                }
-            } else if (command.equals("help")) {
-                System.out.println("commands that you can enter are:");
-                System.out.println("show product [productID]");
-                System.out.println("back");
-            } else if (command.equals("back")) {
-                break;
-            } else System.out.println("Command is invalid");
-        }
+    public void handleProductPage(Product product) {
+        ProductMenu productMenu = new ProductMenu(this, product);
+        productMenu.show();
+    }
 
+
+    public void addActionForMainButtons(Button accountsButton, Button discountButton, Button logoutButton) {
+        accountsButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                handleAccountsMenu();
+            }
+        });
+        discountButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                //TODO
+            }
+        });
+        logoutButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                handleLogout();
+            }
+        });
+    }
+
+    public void handleAccountsMenu() {
+        AccountsMenu accountsMenu = new AccountsMenu(this);
+        accountsMenu.show();
+    }
+
+    public void handleLogout() {
+        if (RegisterCustomerMenu.getCurrentCustomer() != null) {
+            RegisterCustomerMenu.setCurrentCustomer(null);
+        } else if (RegisterSellerMenu.getCurrentSeller() != null) {
+            RegisterSellerMenu.setCurrentSeller(null);
+        } else if (RegisterManagerMenu.getCurrentManager() != null) {
+            RegisterManagerMenu.setCurrentManager(null);
+        }
+        MainMenu mainMenu = new MainMenu();
+        mainMenu.show();
     }
 
     private void addFilterToCurrentFilter(String name) {
@@ -285,4 +287,77 @@ public class ProductsMenu extends Menu {
             disableFilterByBrand();
         }
     }
+
+    //check
+    public void viewCategories() {
+        System.out.println(ProductsManager.showCategory());
+    }
+
+    //bug
+    public void filtering() {
+        String command;
+        while (true) {
+            command = scanner.nextLine();
+            Pattern filterPattern = Pattern.compile("filter\\s(.+)");
+            Matcher filterMatcher = filterPattern.matcher(command);
+            Pattern disableFilterPattern = Pattern.compile("disable filter\\s(.+)");
+            Matcher disableFilterMatcher = disableFilterPattern.matcher(command);
+            if (command.equals("show available filters")) {
+                System.out.println("available filters are: ");
+                System.out.println(ProductsManager.showAvailableFilter());
+            } else if (command.matches("filter\\s(.+)")) {
+                filterMatcher.find();
+                filter(filterMatcher.group(1));
+            } else if (command.equals("current filters")) {
+                System.out.println(currentFilters);
+            } else if (command.matches("disable filter\\s(.+)")) {
+                disableFilterMatcher.find();
+                disableFilter(disableFilterMatcher.group(1));
+            } else if (command.equals("back")) {
+                break;
+            } else if (command.equals("help")) {
+                System.out.println("commands that you can enter are:");
+                System.out.println("show available filters");
+                System.out.println("filter [an available filter]");
+                System.out.println("current filters");
+                System.out.println("disable filter [a selected filter]");
+                System.out.println("back");
+            }
+        }
+
+    }
+
+    //bug
+    public void sorting() {
+        String command;
+        while (true) {
+            command = scanner.nextLine();
+            Pattern sortPattern = Pattern.compile("sort\\s(.+)");
+            Matcher sortMatcher = sortPattern.matcher(command);
+            if (command.matches("sort\\s(.+)")) {
+                sortMatcher.find();
+                ProductsManager.sort(sortMatcher.group(1));
+                System.out.println(ProductsManager.getSortProductsName(ProductsManager.getCurrentSort()));
+            } else if (command.equals("show available sort")) {
+                System.out.println(ProductsManager.showAvailableSort());
+            } else if (command.equals("current sort")) {
+                System.out.println(ProductsManager.getCurrentSort());
+            } else if (command.matches("disable sort")) {
+                try {
+                    ProductsManager.disableSort(ProductsManager.getCurrentSort());
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
+            } else if (command.matches("back")) {
+                break;
+            } else if (command.matches("help")) {
+                System.out.println("commands that you can enter are:");
+                System.out.println("sort [an available sort]");
+                System.out.println("current sort");
+                System.out.println("disable sort");
+                System.out.println("back");
+            }
+        }
+    }
+
 }
