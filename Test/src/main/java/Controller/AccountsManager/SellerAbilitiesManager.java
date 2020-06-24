@@ -1,4 +1,4 @@
-package Controller.AccountsManager;
+        package Controller.AccountsManager;
 
 import Models.*;
 import Models.Accounts.Seller;
@@ -47,9 +47,9 @@ public class SellerAbilitiesManager {
 
 
     public static Product addProduct(String productId, String productName, String companyName,
-                                     double price, Category category, Seller seller, String productExplanation, String specialFeature) {
+                                     double price, Category category, Seller seller, String productExplanation, String specialFeature,String path) {
         Product product = new Product(productId, productName, companyName, price,
-                seller, category, productExplanation, 0, specialFeature);
+                seller, category, productExplanation, 0, specialFeature,path);
         Product.addProduct(product);
         return product;
     }
