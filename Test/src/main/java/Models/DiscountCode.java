@@ -86,9 +86,14 @@ public class DiscountCode {
         return false;
     }
 
-    public void setUsageOfDiscountCode() {
+    public void setUsageOfDiscountCode(Customer customer) {
         int num = this.getCountDiscountCode() - 1;
         this.setCountDiscountCode(num);
+        if(num==0){
+            allDiscountCodes.remove(this);
+            customer.removeDiscountCode(this);
+        }
+
     }
 
     public static DiscountCode getDiscountCodeWithCode(String discountCode) {
