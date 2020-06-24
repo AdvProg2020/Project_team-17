@@ -3,8 +3,19 @@ package View;
 import Controller.DiscountManager;
 import Models.Enums.ProductEnum;
 import Models.Product;
+import javafx.event.EventHandler;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
-import java.io.FileNotFoundException;
+import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -18,41 +29,99 @@ public class DiscountsMenu extends Menu {
 
     @Override
     public void show() {
-        System.out.println("1.offs");
-        System.out.println("2.show Product");
-        System.out.println("3.filtering");
-        System.out.println("4.sorting");
-        System.out.println("5.back");
+        setDiscountScene();
     }
 
-    public void offs() {
-        System.out.println(DiscountManager.showDiscountProducts());
-    }
-
-    public void showProducts() throws FileNotFoundException {
-        String command;
-        System.out.println(DiscountManager.showDiscountProducts());
-        while (true) {
-            command = scanner.nextLine();
-            Pattern showProductByIdPattern = Pattern.compile("show product\\s(.+)");
-            Matcher showProductByIdMatcher = showProductByIdPattern.matcher(command);
-            if (command.matches("show product\\s(.+)")) {
-                showProductByIdMatcher.find();
-                Product product = Product.getProductWithId(showProductByIdMatcher.group(1));
-                ProductMenu productMenu = (ProductMenu)(Menu.getMenu("Product Menu"));
-                productMenu.setParentMenu(this);
-                productMenu.setProduct(product);
-                productMenu.show();
-              //  productMenu.execute();
-            } else if (command.equals("help")) {
-                System.out.println("commands that you can enter are:");
-                System.out.println("show product [productID]");
-                System.out.println("back");
-            } else if (command.equals("back")) {
-                break;
-            } else System.out.println("Command is invalid");
+    public void setDiscountScene() {
+        //TODO add choice box for filter and sort
+        ScrollPane scrollPane = new ScrollPane();
+        Button backButton = new Button("Back");
+        HBox mainButtons = new HBox(3);
+        mainButtons.setAlignment(Pos.TOP_RIGHT);
+        Button accountsButton = new Button("Accounts");
+        Button productButton = new Button("Products");
+        Button logoutButton = new Button("Logout");
+        addActionForMainButtons(accountsButton, productButton, logoutButton);
+        mainButtons.getChildren().addAll(accountsButton, productButton, logoutButton);
+        HBox bar = new HBox(30);
+        //TODO check spacing
+        backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                parentMenu.show();
+            }
+        });
+        bar.getChildren().addAll(backButton, mainButtons);
+        ArrayList<HBox> hBoxes = new ArrayList<>();
+        for (Product product : DiscountManager.showProducts()) {
+            HBox hBox = new HBox(10);
+            Image image = null;
+            try {
+                FileInputStream inputStream = new FileInputStream(product.getPath());
+                image = new Image(inputStream);
+            } catch (Exception e) {
+            }
+            ImageView imageView = new ImageView(image);
+            imageView.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    handleProductPage(product);
+                }
+            });
+            Label name = new Label(product.getName());
+            Label price = new Label(product.getPrice() + "$");
+            Label score = new Label("score: " + product.getPrice());
+            hBox.getChildren().addAll(imageView, name, price, score);
+            hBoxes.add(hBox);
         }
+        VBox vBox = new VBox(5);
+        vBox.getChildren().addAll(hBoxes);
+        scrollPane.setContent(vBox);
+        Scene scene = new Scene(scrollPane, 600, 600);
+        Menu.window.setScene(scene);
+    }
 
+    public void handleProductPage(Product product) {
+        ProductMenu productMenu = new ProductMenu(this, product);
+        productMenu.show();
+    }
+
+    public void addActionForMainButtons(Button accountsButton, Button productsButton, Button logoutButton) {
+        accountsButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                handleAccountsMenu();
+            }
+        });
+        productsButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                //TODO
+            }
+        });
+        logoutButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                handleLogout();
+            }
+        });
+    }
+
+    public void handleAccountsMenu() {
+        AccountsMenu accountsMenu = new AccountsMenu(this);
+        accountsMenu.show();
+    }
+
+    public void handleLogout() {
+        if (RegisterCustomerMenu.getCurrentCustomer() != null) {
+            RegisterCustomerMenu.setCurrentCustomer(null);
+        } else if (RegisterSellerMenu.getCurrentSeller() != null) {
+            RegisterSellerMenu.setCurrentSeller(null);
+        } else if (RegisterManagerMenu.getCurrentManager() != null) {
+            RegisterManagerMenu.setCurrentManager(null);
+        }
+        MainMenu mainMenu = new MainMenu();
+        mainMenu.show();
     }
 
     public void filtering() {
