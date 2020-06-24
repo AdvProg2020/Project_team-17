@@ -1,4 +1,4 @@
-package Models;
+        package Models;
 
 import Models.Accounts.Customer;
 import Models.Accounts.Seller;
@@ -22,11 +22,11 @@ public class Product {
     private String productsSpecialFeature;
     private int visitedTime = 0;
     private Discount discount;
+    private String path;
     private ArrayList<PointOfView> pointOfViews = new ArrayList<>();
     private ArrayList<Score> scoresForProduct = new ArrayList<>();
-    private static ArrayList<Product> products = new ArrayList<>();
 
-    public Product(String productId, String name, String companyName, double price, Seller seller, Category category, String explanation, double averageScore, String productsSpecialFeature) {
+    public Product(String productId, String name, String companyName, double price, Seller seller, Category category, String explanation, double averageScore, String productsSpecialFeature, String path) {
         this.productId = productId;
         this.productState = ProductEnum.PRODUCING;
         this.name = name;
@@ -37,7 +37,8 @@ public class Product {
         this.explanation = explanation;
         this.averageScore = averageScore;
         this.productsSpecialFeature = productsSpecialFeature;
-        products.add(this);
+        this.path = path;
+        allProducts.add(this);
     }
 
     public void addToVisitedTime() {
@@ -46,6 +47,10 @@ public class Product {
 
     public int getVisitedTime() {
         return visitedTime;
+    }
+
+    public String getPath() {
+        return path;
     }
 
     public ArrayList<Score> getScoresForProduct() {
