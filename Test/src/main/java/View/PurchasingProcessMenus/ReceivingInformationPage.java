@@ -30,15 +30,7 @@ public class ReceivingInformationPage extends Menu {
         VBox vBox = new VBox(10);
         vBox.setAlignment(Pos.TOP_LEFT);
         Button back = new Button("Back");
-        back.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                parentMenu.show();
-            }
-        });
         Label title = new Label("Receiving information to continue purchasing");
-        pane.setTop(title);
-        vBox.getChildren().addAll(back, title);
         VBox vBox1 = new VBox(10);
         TextField address = new TextField();
         address.setPromptText("address");
@@ -53,11 +45,23 @@ public class ReceivingInformationPage extends Menu {
                 addressString = address.getText();
                 phoneNumString = phoneNumber.getText();
                 handleDiscountCodePage();
+                address.clear();
+                phoneNumber.clear();
             }
         });
-        vBox1.getChildren().addAll(address, phoneNumber, next);
+        back.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                parentMenu.show();
+                address.clear();
+                phoneNumber.clear();
+            }
+        });
+        vBox.getChildren().addAll(back);
+        pane.setLeft(vBox);
+        vBox1.getChildren().addAll(title, address, phoneNumber, next);
         pane.setCenter(vBox1);
-        Scene scene = new Scene(pane , 400 , 400);
+        Scene scene = new Scene(pane, 400, 400);
         Menu.window.setScene(scene);
     }
 
