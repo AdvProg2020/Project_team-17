@@ -60,7 +60,7 @@ public class CustomerMenu extends Menu {
         cartButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                //TODO
+                handleCartPage();
             }
         });
         Button editButton = new Button("Edit field");
@@ -86,6 +86,10 @@ public class CustomerMenu extends Menu {
         pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
         Scene scene = new Scene(pane, 600, 600);
         Menu.window.setScene(scene);
+    }
+    public void handleCartPage(){
+        CartMenu cartMenu = new CartMenu(this);
+        cartMenu.show();
     }
 
     public void addActionForMainButtons(Button accountsButton, Button productsButton, Button discountButton, Button logoutButton) {
