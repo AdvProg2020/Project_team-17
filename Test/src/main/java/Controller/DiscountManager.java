@@ -18,6 +18,10 @@ public class DiscountManager {
         return Discount.showProductsHaveDiscount();
     }
 
+    public static ArrayList<Product> showProducts() {
+        return Discount.productsHaveDiscount();
+    }
+
     public static void addAllProductsToFilterProducts() {
         for (Discount discount : Discount.getAllDiscounts()) {
             filterProduct.addAll(discount.getDiscountProducts());
