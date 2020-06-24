@@ -53,6 +53,10 @@ public class Cart {
         return new ArrayList<>(productsInCart.keySet());
     }
 
+    public int numberOfProductInCart(Product product) {
+        return productsInCart.get(product);
+    }
+
     public boolean isThereProductInCart(Product product) {
         for (Product productInCart : productsInCart.keySet()) {
             if (productInCart.equals(product)) {
@@ -60,15 +64,6 @@ public class Cart {
             }
         }
         return false;
-    }
-
-    public Product getProductInCart(String id) {
-        for (Product product : this.productsInCart.keySet()) {
-            if (product.getProductId().equals(id)) {
-                return product;
-            }
-        }
-        return null;
     }
 
     public double totalPriceOfProductInCart() {
