@@ -72,7 +72,7 @@ public class SellerMenu extends Menu {
         viewOffsButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                //TODO
+                setOffsScene();
             }
         });
         Button showCategories = new Button("Show category");
@@ -163,6 +163,7 @@ public class SellerMenu extends Menu {
         MainMenu mainMenu = new MainMenu();
         mainMenu.show();
     }
+
     public void setEditScene() {
         BorderPane pane = new BorderPane();
         VBox vBox = new VBox(5);
