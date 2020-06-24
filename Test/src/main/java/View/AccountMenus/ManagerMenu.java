@@ -95,7 +95,6 @@ public class ManagerMenu extends Menu {
             }
         });
         vBox.getChildren().addAll(backButton, manageUsers, manageProducts, manageDiscountCodes, manageDiscountCodes, manageCategories, editButton);
-
         pane.setLeft(vBox);
         VBox vBox1 = new VBox(10);
         vBox1.setAlignment(Pos.CENTER);
@@ -165,7 +164,6 @@ public class ManagerMenu extends Menu {
         MainMenu mainMenu = new MainMenu();
         mainMenu.show();
     }
-
     public void setEditScene() {
         BorderPane pane = new BorderPane();
         VBox vBox = new VBox(5);
@@ -175,6 +173,7 @@ public class ManagerMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 show();
+                notify.setText("");
             }
         });
         Label title = new Label("Editing field");
@@ -204,6 +203,7 @@ public class ManagerMenu extends Menu {
 
     public void setManageUsersScene() {
         BorderPane pane = new BorderPane();
+        Label notify = new Label();
         VBox vBox = new VBox(10);
         vBox.setAlignment(Pos.TOP_LEFT);
         Button button = new Button("Back");
@@ -211,6 +211,7 @@ public class ManagerMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 show();
+                notify.setText("");
             }
         });
         vBox.getChildren().addAll(button);
@@ -221,7 +222,6 @@ public class ManagerMenu extends Menu {
         pane.setCenter(listView);
 
         VBox vBox1 = new VBox(10);
-        Label notify = new Label();
         Button view = new Button("View account");
         Button delete = new Button("Delete account");
         Button addManager = new Button("Add manager");
@@ -236,6 +236,7 @@ public class ManagerMenu extends Menu {
                 String s = ManagerAbilitiesManager.viewAccountByUsername(listView.getSelectionModel().getSelectedItem());
                 alert.setContentText(s);
                 alert.show();
+                notify.setText("");
             }
         });
         delete.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
@@ -250,6 +251,7 @@ public class ManagerMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 setAddManagerScene();
+                notify.setText("");
             }
         });
         vBox1.getChildren().addAll(view, delete, addManager);
@@ -257,13 +259,25 @@ public class ManagerMenu extends Menu {
         Scene scene = new Scene(pane, 600, 600);
         Menu.window.setScene(scene);
     }
-
     public void setAddManagerScene() {
         BorderPane pane = new BorderPane();
+        Label notify = new Label();
+        VBox vBox1 = new VBox(10);
+        vBox1.setAlignment(Pos.TOP_LEFT);
+        Button button = new Button("Back");
+        button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                show();
+                notify.setText("");
+            }
+        });
+        vBox1.getChildren().addAll(button);
+        pane.setTop(vBox1);
+
         VBox vBox = new VBox(10);
         Button backButton = new Button("Back");
         Label title = new Label("Manager account registration");
-        Label notify = new Label();
         TextField userNameTextField = new TextField();
         userNameTextField.setPromptText("username");
 
@@ -306,6 +320,7 @@ public class ManagerMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 setManageUsersScene();
+                notify.setText("");
             }
         });
 
@@ -318,6 +333,7 @@ public class ManagerMenu extends Menu {
 
     public void setDiscountCodeScene() {
         BorderPane pane = new BorderPane();
+        Label notify = new Label();
         VBox vBox = new VBox(10);
         vBox.setAlignment(Pos.TOP_LEFT);
         Button button = new Button("Back");
@@ -325,16 +341,15 @@ public class ManagerMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 show();
+                notify.setText("");
             }
         });
         vBox.getChildren().addAll(button);
         pane.setTop(vBox);
-
         ListView<String> listView = new ListView<>();
         listView.getItems().addAll(ManagerAbilitiesManager.viewDiscountCodes());
         pane.setCenter(listView);
         VBox vBox1 = new VBox(10);
-        Label notify = new Label();
         Button view = new Button("view discount code");
         Button edit = new Button("edit discount code");
         Button add = new Button("add discount code");
@@ -349,6 +364,7 @@ public class ManagerMenu extends Menu {
                 String s = ManagerAbilitiesManager.viewDiscountCode(listView.getSelectionModel().getSelectedItem());
                 alert.setContentText(s);
                 alert.show();
+                notify.setText("");
             }
         });
 
@@ -357,12 +373,14 @@ public class ManagerMenu extends Menu {
             public void handle(MouseEvent mouseEvent) {
                 selectedDiscountCode = DiscountCode.getDiscountCodeWithCode(listView.getSelectionModel().getSelectedItem());
                 editDiscountCodeScene();
+                notify.setText("");
             }
         });
         add.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 addDiscountCodeScene();
+                notify.setText("");
             }
         });
         remove.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
@@ -381,16 +399,29 @@ public class ManagerMenu extends Menu {
 
     public void editDiscountCodeScene() {
         BorderPane pane = new BorderPane();
-        HBox hBox = new HBox(10);
         Label notify = new Label();
+        VBox vBox = new VBox(10);
+        vBox.setAlignment(Pos.TOP_LEFT);
+        Button button = new Button("Back");
+        button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                show();
+                notify.setText("");
+            }
+        });
+        vBox.getChildren().addAll(button);
+        pane.setTop(vBox);
+
+        HBox hBox = new HBox(10);
         ChoiceBox<String> field = new ChoiceBox<>();
         field.getItems().addAll("starting date", "ending date", "discount percent", "maximum discount amount", "count discount code");
         TextField newContent = new TextField();
         newContent.setPromptText("new content for this field");
-        Button button = new Button("change");
-        hBox.getChildren().addAll(field, newContent, button);
+        Button change = new Button("change");
+        hBox.getChildren().addAll(field, newContent, change);
         VBox vBox1 = new VBox(5);
-        button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+        change.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 ManagerAbilitiesManager.editDiscountCode(selectedDiscountCode, field.getValue(), newContent.getText());
@@ -403,11 +434,22 @@ public class ManagerMenu extends Menu {
         Scene scene = new Scene(pane, 350, 350);
         Menu.window.setScene(scene);
     }
-
     public void addDiscountCodeScene() {
         BorderPane pane = new BorderPane();
-        VBox vBox = new VBox(10);
         Label notify = new Label();
+        VBox vBox1 = new VBox(10);
+        vBox1.setAlignment(Pos.TOP_LEFT);
+        Button button = new Button("Back");
+        button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                show();
+                notify.setText("");
+            }
+        });
+        vBox1.getChildren().addAll(button);
+        pane.setTop(vBox1);
+        VBox vBox = new VBox(10);
         TextField ID = new TextField();
         ID.setPromptText("off ID");
         TextField startDate = new TextField();
@@ -443,6 +485,7 @@ public class ManagerMenu extends Menu {
 
     public void manageRequestsScene() {
         BorderPane pane = new BorderPane();
+        Label notify = new Label();
         VBox vBox = new VBox(10);
         vBox.setAlignment(Pos.TOP_LEFT);
         Button button = new Button("Back");
@@ -450,6 +493,7 @@ public class ManagerMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 show();
+                notify.setText("");
             }
         });
         vBox.getChildren().addAll(button);
@@ -458,9 +502,7 @@ public class ManagerMenu extends Menu {
         ListView<String> listView = new ListView<>();
         listView.getItems().addAll(ManagerAbilitiesManager.showAllRequests());
         pane.setCenter(listView);
-
         VBox vBox1 = new VBox(10);
-        Label notify = new Label();
         Button details = new Button("details");
         Button accept = new Button("accept");
         Button decline = new Button("decline");
@@ -474,6 +516,7 @@ public class ManagerMenu extends Menu {
                 String s = ManagerAbilitiesManager.showDetailsOfRequest(listView.getSelectionModel().getSelectedItem());
                 alert.setContentText(s);
                 alert.show();
+                notify.setText("");
             }
         });
         accept.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
@@ -500,6 +543,7 @@ public class ManagerMenu extends Menu {
 
     public void setCategoriesScene() {
         BorderPane pane = new BorderPane();
+        Label notify = new Label();
         VBox vBox = new VBox(10);
         vBox.setAlignment(Pos.TOP_LEFT);
         Button button = new Button("Back");
@@ -507,6 +551,7 @@ public class ManagerMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 show();
+                notify.setText("");
             }
         });
         vBox.getChildren().addAll(button);
@@ -517,7 +562,6 @@ public class ManagerMenu extends Menu {
         pane.setCenter(listView);
 
         VBox vBox1 = new VBox(10);
-        Label notify = new Label();
         Button edit = new Button("edit category");
         Button add = new Button("add category");
         Button remove = new Button("remove category");
@@ -526,12 +570,14 @@ public class ManagerMenu extends Menu {
             public void handle(MouseEvent mouseEvent) {
                 selectedCategory = Category.getCategoryByName(listView.getSelectionModel().getSelectedItem());
                 setEditCategoryScene();
+                notify.setText("");
             }
         });
         add.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 addCategoryScene();
+                notify.setText("");
             }
         });
         remove.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
@@ -547,22 +593,22 @@ public class ManagerMenu extends Menu {
         Scene scene = new Scene(pane, 600, 600);
         Menu.window.setScene(scene);
     }
-
     public void addCategoryScene() {
         BorderPane pane = new BorderPane();
         VBox vBox = new VBox(10);
+        Label notify = new Label();
         vBox.setAlignment(Pos.TOP_LEFT);
         Button button = new Button("Back");
         button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 setCategoriesScene();
+                notify.setText("");
             }
         });
         vBox.getChildren().addAll(button);
         pane.setTop(vBox);
         HBox hBox = new HBox();
-        Label notify = new Label();
         TextField name = new TextField();
         name.setPromptText("category name");
         TextField feature = new TextField();
@@ -584,8 +630,20 @@ public class ManagerMenu extends Menu {
 
     public void setEditCategoryScene() {
         BorderPane pane = new BorderPane();
-        HBox hBox = new HBox(10);
+        VBox vBox = new VBox(10);
         Label notify = new Label();
+        vBox.setAlignment(Pos.TOP_LEFT);
+        Button back = new Button("Back");
+        back.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                setCategoriesScene();
+                notify.setText("");
+            }
+        });
+        vBox.getChildren().addAll(back);
+        pane.setTop(vBox);
+        HBox hBox = new HBox(10);
         ChoiceBox<String> field = new ChoiceBox<>();
         field.getItems().addAll("feature", "name");
         TextField newContent = new TextField();
@@ -606,7 +664,6 @@ public class ManagerMenu extends Menu {
         Scene scene = new Scene(pane, 350, 350);
         Menu.window.setScene(scene);
     }
-
     public void setManageProductsScene() {
         BorderPane pane = new BorderPane();
         Label notify = new Label();
@@ -617,6 +674,7 @@ public class ManagerMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 show();
+                notify.setText("");
             }
         });
         vBox.getChildren().addAll(button);

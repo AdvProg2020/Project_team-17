@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="32618e29-8746-4d2a-8d73-d011168a9d97" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Controller/AccountsManager/ManagerAbilitiesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Controller/AccountsManager/ManagerAbilitiesManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/AccountMenus/ManagerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/AccountMenus/ManagerMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -118,8 +117,29 @@
       <workItem from="1591669653243" duration="130908000" />
       <workItem from="1592142666171" duration="6014000" />
       <workItem from="1592748160826" duration="463000" />
-      <workItem from="1593003119971" duration="3375000" />
-      <workItem from="1593006545155" duration="2766000" />
+      <workItem from="1593003119971" duration="2739000" />
+      <workItem from="1593006029988" duration="3217000" />
+    </task>
+    <task id="LOCAL-00018" summary="correct PurchaseMenu">
+      <created>1589330403692</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1589330403692</updated>
+    </task>
+    <task id="LOCAL-00024" summary="ProductMenu done">
+      <created>1589408059004</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1589408059004</updated>
+    </task>
+    <task id="LOCAL-00025" summary="CustomerMenu and CartMenu done">
+      <created>1589440029587</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1589440029587</updated>
     </task>
     <task id="LOCAL-00026" summary="fix some bugs">
       <created>1589575804973</created>
@@ -436,41 +456,23 @@
       <option name="project" value="LOCAL" />
       <updated>1593005444830</updated>
     </task>
-    <task id="LOCAL-00071" summary="ProductMenu fix">
-      <created>1593005909729</created>
+    <task id="LOCAL-00071" summary="ReceivingInformationPage done">
+      <created>1593006149915</created>
       <option name="number" value="00071" />
       <option name="presentableId" value="LOCAL-00071" />
       <option name="project" value="LOCAL" />
-      <updated>1593005909729</updated>
+      <updated>1593006149915</updated>
     </task>
-    <task id="LOCAL-00072" summary="cart button in customer menu fix">
-      <created>1593006732055</created>
-      <option name="number" value="00072" />
-      <option name="presentableId" value="LOCAL-00072" />
-      <option name="project" value="LOCAL" />
-      <updated>1593006732055</updated>
-    </task>
-    <task id="LOCAL-00073" summary="seller menu off scene fix">
-      <created>1593007228069</created>
-      <option name="number" value="00073" />
-      <option name="presentableId" value="LOCAL-00073" />
-      <option name="project" value="LOCAL" />
-      <updated>1593007228069</updated>
-    </task>
-    <task id="LOCAL-00074" summary="ManagerMenu users scene fix">
-      <created>1593007712339</created>
-      <option name="number" value="00074" />
-      <option name="presentableId" value="LOCAL-00074" />
-      <option name="project" value="LOCAL" />
-      <updated>1593007712339</updated>
-    </task>
-    <option name="localTasksCounter" value="75" />
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="handle pane exception" />
+    <MESSAGE value="customer view personal info and edit field" />
+    <MESSAGE value="customer discount code listview" />
     <MESSAGE value="customer menu graphic" />
     <MESSAGE value="seller menu personal info" />
     <MESSAGE value="seller add and edit product" />
@@ -492,11 +494,8 @@
     <MESSAGE value="products menu first scene" />
     <MESSAGE value="discount menu first scene" />
     <MESSAGE value="handle payment page top bar" />
-    <MESSAGE value="ProductMenu fix" />
-    <MESSAGE value="cart button in customer menu fix" />
-    <MESSAGE value="seller menu off scene fix" />
-    <MESSAGE value="ManagerMenu users scene fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="ManagerMenu users scene fix" />
+    <MESSAGE value="ReceivingInformationPage done" />
+    <option name="LAST_COMMIT_MESSAGE" value="ReceivingInformationPage done" />
   </component>
   <component name="WindowStateProjectService">
     <state x="233" y="0" key="#Project_Structure" timestamp="1589785759293">
@@ -521,11 +520,11 @@
     <state x="515" y="248" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1280.680@0.0.1280.680" timestamp="1593004451966" />
     <state x="550" y="266" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1366.728@0.0.1366.728" timestamp="1592998403718" />
     <state x="618" y="301" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1536.824@0.0.1536.824" timestamp="1589638319442" />
-    <state x="432" y="200" width="404" height="236" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1593009036298">
+    <state x="432" y="200" width="404" height="236" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1591819054009">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="432" y="200" width="417" height="287" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1280.680/460.1080.1000.504@0.0.1280.680" timestamp="1587970052701" />
-    <state x="432" y="200" width="404" height="236" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1280.680@0.0.1280.680" timestamp="1593009036298" />
+    <state x="432" y="200" width="404" height="236" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1280.680@0.0.1280.680" timestamp="1591819054009" />
     <state x="438" y="212" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1586812041182">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -539,12 +538,12 @@
     </state>
     <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1589857617230" />
     <state x="445" y="105" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1588110193951" />
-    <state x="265" y="0" key="CommitChangelistDialog2" timestamp="1593007710478">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state x="395" y="14" key="CommitChangelistDialog2" timestamp="1593006149356">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="265" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1593007710478" />
+    <state x="265" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1593005443009" />
     <state x="425" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1593001247141" />
-    <state x="401" y="14" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1592143129254" />
+    <state x="395" y="14" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1593006149356" />
     <state x="421" y="67" key="FileChooserDialogImpl" timestamp="1592042438528">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -594,10 +593,11 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="171" y="0" key="Maven.ArtifactSearchDialog/0.0.1280.680@0.0.1280.680" timestamp="1591793625386" />
-    <state x="354" y="57" key="MultipleFileMergeDialog" timestamp="1593004351682">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state x="425" y="69" key="MultipleFileMergeDialog" timestamp="1593011830913">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="354" y="57" key="MultipleFileMergeDialog/0.0.1280.680@0.0.1280.680" timestamp="1593004351682" />
+    <state x="425" y="69" key="MultipleFileMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1593011830913" />
     <state x="445" y="52" key="RollbackChangesDialog" timestamp="1589788225336">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -611,12 +611,12 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1280.680@0.0.1280.680" timestamp="1589767285229" />
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1593007733099">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state x="280" y="90" key="Vcs.Push.Dialog.v2" timestamp="1593006176427">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1593007733099" />
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1593005294903" />
     <state x="249" y="80" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1593001403029" />
-    <state x="280" y="90" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1593000505024" />
+    <state x="280" y="90" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1593006176427" />
     <state x="414" y="209" key="com.intellij.ide.util.TipDialog" timestamp="1592999511554">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -628,36 +628,36 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="317" y="30" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1280.680/460.1080.1000.504@0.0.1280.680" timestamp="1587806117721" />
-    <state x="450" y="258" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1593004339476">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state x="540" y="313" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1593011807221">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="450" y="258" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1593004339476" />
     <state x="480" y="277" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1592998962616" />
-    <state x="540" y="313" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1592748225798" />
+    <state x="540" y="313" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1593011807221" />
     <state x="193" y="77" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1589878981587">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="193" y="77" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1280.680@0.0.1280.680" timestamp="1589878981587" />
-    <state x="397" y="168" key="git4idea.merge.GitPullDialog" timestamp="1593007724303">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state x="476" y="204" key="git4idea.merge.GitPullDialog" timestamp="1593006168716">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="397" y="168" key="git4idea.merge.GitPullDialog/0.0.1280.680@0.0.1280.680" timestamp="1593007724303" />
+    <state x="397" y="168" key="git4idea.merge.GitPullDialog/0.0.1280.680@0.0.1280.680" timestamp="1593005280403" />
     <state x="423" y="180" key="git4idea.merge.GitPullDialog/0.0.1366.728@0.0.1366.728" timestamp="1593001272806" />
-    <state x="476" y="204" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1592143151948" />
-    <state x="91" y="0" key="new project wizard" timestamp="1591857448572">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state x="476" y="204" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1593006168716" />
+    <state x="109" y="44" key="new project wizard" timestamp="1593009948533">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="91" y="0" key="new project wizard/0.0.1280.680@0.0.1280.680" timestamp="1591857448572" />
-    <state x="109" y="44" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1588275478876" />
+    <state x="109" y="44" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1593009948533" />
     <state x="297" y="151" key="run.anything.popup" timestamp="1591985430188">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="297" y="151" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1591985430188" />
-    <state x="324" y="46" width="672" height="634" key="search.everywhere.popup" timestamp="1593005956236">
+    <state x="324" y="46" width="672" height="634" key="search.everywhere.popup" timestamp="1593005533849">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="324" y="46" width="672" height="634" key="search.everywhere.popup/0.0.1280.680/460.1080.1000.504@0.0.1280.680" timestamp="1587860318764" />
-    <state x="324" y="46" width="672" height="634" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1593005956236" />
+    <state x="324" y="46" width="672" height="634" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1593005533849" />
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1586993653870" />
     <state x="389" y="56" width="807" height="769" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1588111579702" />
   </component>
@@ -676,7 +676,7 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/17_test1594$Main.ic" NAME="Main Coverage Results" MODIFIED="1586993201582" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/AP17$Main.ic" NAME="Main Coverage Results" MODIFIED="1589786526354" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/17_test1594$Main.ic" NAME="Main Coverage Results" MODIFIED="1586993201582" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
