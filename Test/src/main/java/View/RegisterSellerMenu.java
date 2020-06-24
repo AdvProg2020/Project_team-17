@@ -1,4 +1,4 @@
-package View;
+        package View;
 
 import Controller.RegisterAndLoginManager;
 
@@ -156,6 +156,12 @@ public class RegisterSellerMenu extends Menu {
                     notify.setStyle("-fx-text-fill: #ff4f59");
                     notify.setText("there isn't any account registered with this username");
                 }
+            }
+        });
+        backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                parentMenu.show();
             }
         });
         vBox.getChildren().addAll(backButton, title, usernameTextField, passwordField, loginButton, notify);
