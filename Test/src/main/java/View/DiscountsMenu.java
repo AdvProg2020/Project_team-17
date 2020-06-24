@@ -53,6 +53,7 @@ public class DiscountsMenu extends Menu {
         });
         bar.getChildren().addAll(backButton, mainButtons);
         ArrayList<HBox> hBoxes = new ArrayList<>();
+        hBoxes.add(bar);
         for (Product product : DiscountManager.showProducts()) {
             HBox hBox = new HBox(10);
             Image image = null;
