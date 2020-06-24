@@ -8,48 +8,35 @@ import Models.Product;
 import java.util.ArrayList;
 
 public class CartManager {
-    public static ArrayList<String> showProducts(Customer customer) {
-        ArrayList<String> showProducts = new ArrayList<>();
+
+    public static ArrayList<Product> cartProducts(Customer customer) {
         Cart cart = customer.getCart();
-        for (Product product : cart.showProductsOfCart()) {
-            showProducts.add(product.getProductId());
-        }
-        return showProducts;
+        return cart.showProductsOfCart();
     }
 
-    /*public static double showTotalPriceOfCart(Customer customer) throws Exception {
+    public static int numberOfProducts(Customer customer, Product product) {
         Cart cart = customer.getCart();
-        if (cart != null) {
-            return cart.totalPriceOfProductInCart();
-        } else throw new Exception("Cart is empty");
-    }*/
-    public static double showTotalPriceOfCart(Customer customer, DiscountCode discountCode){
+        return cart.numberOfProductInCart(product);
+    }
+
+    public static double showTotalPriceOfCart(Customer customer) {
+        Cart cart = customer.getCart();
+        return cart.totalPriceOfProductInCart();
+    }
+
+    public static double showTotalPriceOfCartIncludingDiscountCode(Customer customer, DiscountCode discountCode) {
         return customer.getCart().totalPriceWithDiscount(discountCode);
     }
 
 
-    public static void increaseProduct(Customer customer, String id) throws Exception {
+    public static void increaseProduct(Customer customer, Product product) {
         Cart cart = customer.getCart();
-        if (cart != null) {
-            try {
-                Product product = cart.getProductInCart(id);
-                cart.increaseNumberOfProduct(product);
-            } catch (Exception e) {
-                System.out.println("There isn't any product with this id in cart");
-            }
-        } else throw new Exception("Cart is empty");
+        cart.increaseNumberOfProduct(product);
     }
 
-    public static void decreaseProduct(Customer customer, String id) throws Exception {
+    public static void decreaseProduct(Customer customer, Product product) {
         Cart cart = customer.getCart();
-        if (cart != null) {
-            try {
-                Product product = cart.getProductInCart(id);
-                cart.decreaseNumberOfProduct(product);
-            } catch (Exception e) {
-                System.out.println("There isn't any product with this id in cart");
-            }
-        } else throw new Exception("Cart is empty");
+        cart.decreaseNumberOfProduct(product);
     }
 
 }
