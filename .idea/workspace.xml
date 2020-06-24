@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="32618e29-8746-4d2a-8d73-d011168a9d97" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/DiscountsMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/DiscountsMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/ProductMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/ProductMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/PurchasingProcessMenus/ReceivingInformationPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/PurchasingProcessMenus/ReceivingInformationPage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +118,7 @@
       <workItem from="1591669653243" duration="130908000" />
       <workItem from="1592142666171" duration="6014000" />
       <workItem from="1592748160826" duration="463000" />
-      <workItem from="1593003119971" duration="2061000" />
+      <workItem from="1593003119971" duration="2739000" />
     </task>
     <task id="LOCAL-00017" summary="add cart manager and working on CartMenu">
       <created>1589328574047</created>
@@ -132,20 +133,6 @@
       <option name="presentableId" value="LOCAL-00018" />
       <option name="project" value="LOCAL" />
       <updated>1589330403692</updated>
-    </task>
-    <task id="LOCAL-00022" summary="add BuyLog arrayList to BuyLog&#10;CustomerAbilitiesManager done">
-      <created>1589313910280</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1589313910280</updated>
-    </task>
-    <task id="LOCAL-00023" summary="debug CustomerMenu">
-      <created>1589315577901</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1589315577901</updated>
     </task>
     <task id="LOCAL-00024" summary="ProductMenu done">
       <created>1589408059004</created>
@@ -462,15 +449,27 @@
       <option name="project" value="LOCAL" />
       <updated>1593004797578</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="discount menu first scene">
+      <created>1593005270783</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1593005270783</updated>
+    </task>
+    <task id="LOCAL-00070" summary="handle payment page top bar">
+      <created>1593005444830</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1593005444830</updated>
+    </task>
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="start fx" />
-    <MESSAGE value="login and register accounts" />
     <MESSAGE value="fix accounts menu" />
     <MESSAGE value="handle pane exception" />
     <MESSAGE value="customer view personal info and edit field" />
@@ -494,7 +493,9 @@
     <MESSAGE value="dicount and discount controller fix for fx" />
     <MESSAGE value="PaymentPage fx" />
     <MESSAGE value="products menu first scene" />
-    <option name="LAST_COMMIT_MESSAGE" value="products menu first scene" />
+    <MESSAGE value="discount menu first scene" />
+    <MESSAGE value="handle payment page top bar" />
+    <option name="LAST_COMMIT_MESSAGE" value="handle payment page top bar" />
   </component>
   <component name="WindowStateProjectService">
     <state x="233" y="0" key="#Project_Structure" timestamp="1589785759293">
@@ -537,10 +538,10 @@
     </state>
     <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1589857617230" />
     <state x="445" y="105" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1588110193951" />
-    <state x="265" y="0" key="CommitChangelistDialog2" timestamp="1593005269145">
+    <state x="265" y="0" key="CommitChangelistDialog2" timestamp="1593005443009">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="265" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1593005269145" />
+    <state x="265" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1593005443009" />
     <state x="425" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1593001247141" />
     <state x="401" y="14" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1592143129254" />
     <state x="421" y="67" key="FileChooserDialogImpl" timestamp="1592042438528">
@@ -651,11 +652,11 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="297" y="151" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1591985430188" />
-    <state x="324" y="46" width="672" height="634" key="search.everywhere.popup" timestamp="1592079427471">
+    <state x="324" y="46" width="672" height="634" key="search.everywhere.popup" timestamp="1593005533849">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="324" y="46" width="672" height="634" key="search.everywhere.popup/0.0.1280.680/460.1080.1000.504@0.0.1280.680" timestamp="1587860318764" />
-    <state x="324" y="46" width="672" height="634" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1592079427471" />
+    <state x="324" y="46" width="672" height="634" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1593005533849" />
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1586993653870" />
     <state x="389" y="56" width="807" height="769" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1588111579702" />
   </component>

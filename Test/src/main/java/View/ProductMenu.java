@@ -125,13 +125,13 @@ public class ProductMenu extends Menu {
         productsButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                //TODO
+                handleProductsMenu();
             }
         });
         discountButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                //TODO
+                handleDiscountsMenu();
             }
         });
         logoutButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
@@ -140,18 +140,22 @@ public class ProductMenu extends Menu {
                 handleLogout();
             }
         });
-        productsButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-
-            }
-        });
         cartButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 handleAddCart();
             }
         });
+    }
+
+    public void handleProductsMenu() {
+        ProductsMenu productsMenu = new ProductsMenu(this);
+        productsMenu.show();
+    }
+
+    public void handleDiscountsMenu() {
+        DiscountsMenu discountsMenu = new DiscountsMenu(this);
+        discountsMenu.show();
     }
 
     public void handleAccountsMenu() {
