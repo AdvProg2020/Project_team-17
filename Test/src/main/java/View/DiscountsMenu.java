@@ -96,7 +96,7 @@ public class DiscountsMenu extends Menu {
         productsButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                //TODO
+                handleProductsMenu();
             }
         });
         logoutButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
@@ -105,6 +105,11 @@ public class DiscountsMenu extends Menu {
                 handleLogout();
             }
         });
+    }
+
+    public void handleProductsMenu() {
+        ProductsMenu productsMenu = new ProductsMenu(this);
+        productsMenu.show();
     }
 
     public void handleAccountsMenu() {
