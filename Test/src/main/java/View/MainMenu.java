@@ -42,8 +42,7 @@ public class MainMenu extends Menu {
         exitButton.setStyle(style);
         Image mainImage = null;
         try {
-            mainImage = new Image(new FileInputStream("C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\" +
-                    "Project_team-17\\Project_team-17\\Project_team-17\\project_phase2\\Test\\src\\main\\java\\Images\\MAIN_BACKGROUND.png"));
+            mainImage = new Image(new FileInputStream("C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Images\\MAIN_BACKGROUND.png"));
 
         } catch (Exception e) {
 

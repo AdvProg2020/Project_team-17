@@ -2,25 +2,16 @@ package Controller;
 
 import Models.Accounts.Customer;
 import Models.Cart;
-import Models.Category;
-import Models.PointOfView;
+import Models.Logs.BuyLog;
 import Models.Product;
-
-import java.util.ArrayList;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class ProductManager {
-    public static String digestAttributes(Product product) {
-        return product.digestAttributes();
-    }
 
     public static void addToCart(Customer customer, Product product) {
         Cart cart = customer.getCart();
         cart.addProductToCart(customer, product);
-    }
-
-    public static String showAttributes(Product product) {
-        Category category = product.getCategory();
-        return "Product info -----> " + product.toString() + " Category info of this product ----->" + category.getSpecialFeature();
     }
 
     public static String compareProduct(Product firstProduct, String secondId) {
@@ -30,14 +21,25 @@ public class ProductManager {
         return twoProductsAttributes;
     }
 
-    public static String showComments(Product product) {
-        ArrayList<String> comments = new ArrayList<>();
-        for (PointOfView pointOfView : product.getPointOfViews()) {
-            comments.add(pointOfView.getPointOfViewStringText());
+    public static ObservableList<String> showComments(Product product) {
+        ObservableList data = FXCollections.observableArrayList();
+        data.addAll(product.getPointOfViews());
+        return data;
+    }
+
+    public static boolean doesCustomerBoughtThisProduct(Customer customer, Product product) {
+        for (BuyLog buyLog : customer.getBuyLog()) {
+            for (Product logProduct : buyLog.getAllProducts()) {
+                if (logProduct.equals(product)) {
+                    return true;
+                }
+            }
         }
-        String output = "Product score: " + Double.toString(product.getAverageScore());
-        output += "Product comments: " + comments;
-        return output;
+        return false;
+    }
+
+    public static void rateProduct(Customer customer, Product product, double score) {
+        product.addScoreForProduct(customer, product, score);
     }
 
     public static void addComment(Customer customer, Product product, String content) {

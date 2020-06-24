@@ -84,6 +84,16 @@ public class Discount {
         return productInfo;
     }
 
+    public static ArrayList<Product> productsHaveDiscount() {
+        ArrayList<Product> products = new ArrayList<>();
+        for (Discount allDiscount : allDiscounts) {
+            for (Product discountProduct : allDiscount.discountProducts) {
+                products.add(discountProduct);
+            }
+        }
+        return products;
+    }
+
     public static boolean doesThisProductHaveDiscount(Product product) {
         for (Discount allDiscount : allDiscounts) {
             for (Product discountProduct : allDiscount.discountProducts) {

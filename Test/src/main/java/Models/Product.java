@@ -1,4 +1,4 @@
-        package Models;
+package Models;
 
 import Models.Accounts.Customer;
 import Models.Accounts.Seller;
@@ -118,6 +118,9 @@ public class Product {
         this.averageScore = averageScore;
     }
 
+    public String getExplanation() {
+        return explanation;
+    }
 
     public String getCompanyName() {
         return companyName;
