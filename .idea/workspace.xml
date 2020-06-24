@@ -118,14 +118,7 @@
       <workItem from="1592142666171" duration="6014000" />
       <workItem from="1592748160826" duration="463000" />
       <workItem from="1593003119971" duration="3375000" />
-      <workItem from="1593006545155" duration="552000" />
-    </task>
-    <task id="LOCAL-00024" summary="ProductMenu done">
-      <created>1589408059004</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1589408059004</updated>
+      <workItem from="1593006545155" duration="1114000" />
     </task>
     <task id="LOCAL-00025" summary="CustomerMenu and CartMenu done">
       <created>1589440029587</created>
@@ -463,14 +456,20 @@
       <option name="project" value="LOCAL" />
       <updated>1593006732055</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="seller menu off scene fix">
+      <created>1593007228069</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1593007228069</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="customer view personal info and edit field" />
     <MESSAGE value="customer discount code listview" />
     <MESSAGE value="customer menu graphic" />
     <MESSAGE value="seller menu personal info" />
@@ -495,7 +494,8 @@
     <MESSAGE value="handle payment page top bar" />
     <MESSAGE value="ProductMenu fix" />
     <MESSAGE value="cart button in customer menu fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="cart button in customer menu fix" />
+    <MESSAGE value="seller menu off scene fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="seller menu off scene fix" />
   </component>
   <component name="WindowStateProjectService">
     <state x="233" y="0" key="#Project_Structure" timestamp="1589785759293">
@@ -538,10 +538,10 @@
     </state>
     <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1589857617230" />
     <state x="445" y="105" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1588110193951" />
-    <state x="265" y="0" key="CommitChangelistDialog2" timestamp="1593006730422">
+    <state x="265" y="0" key="CommitChangelistDialog2" timestamp="1593007226308">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="265" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1593006730422" />
+    <state x="265" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1593007226308" />
     <state x="425" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1593001247141" />
     <state x="401" y="14" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1592143129254" />
     <state x="421" y="67" key="FileChooserDialogImpl" timestamp="1592042438528">
@@ -610,10 +610,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1280.680@0.0.1280.680" timestamp="1589767285229" />
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1593006746266">
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1593007343943">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1593006746266" />
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1593007343943" />
     <state x="249" y="80" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1593001403029" />
     <state x="280" y="90" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1593000505024" />
     <state x="414" y="209" key="com.intellij.ide.util.TipDialog" timestamp="1592999511554">
@@ -637,10 +637,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="193" y="77" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1280.680@0.0.1280.680" timestamp="1589878981587" />
-    <state x="397" y="168" key="git4idea.merge.GitPullDialog" timestamp="1593006738895">
+    <state x="397" y="168" key="git4idea.merge.GitPullDialog" timestamp="1593007263590">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="397" y="168" key="git4idea.merge.GitPullDialog/0.0.1280.680@0.0.1280.680" timestamp="1593006738895" />
+    <state x="397" y="168" key="git4idea.merge.GitPullDialog/0.0.1280.680@0.0.1280.680" timestamp="1593007263590" />
     <state x="423" y="180" key="git4idea.merge.GitPullDialog/0.0.1366.728@0.0.1366.728" timestamp="1593001272806" />
     <state x="476" y="204" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1592143151948" />
     <state x="91" y="0" key="new project wizard" timestamp="1591857448572">

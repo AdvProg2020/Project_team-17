@@ -1,13 +1,9 @@
-        package View.AccountMenus;
+package View.AccountMenus;
 
 import Controller.AccountsManager.ManagerAbilitiesManager;
-import Controller.AccountsManager.SellerAbilitiesManager;
 import Controller.RegisterAndLoginManager;
-import Models.Accounts.Manager;
 import Models.Category;
-import Models.Discount;
 import Models.DiscountCode;
-import Models.Request.AddOffRequest;
 import View.*;
 import View.Menu;
 import javafx.event.EventHandler;
@@ -18,13 +14,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class ManagerMenu extends Menu {
     Category selectedCategory;
@@ -145,6 +138,7 @@ public class ManagerMenu extends Menu {
             }
         });
     }
+
     public void handleProductsMenu() {
         ProductsMenu productsMenu = new ProductsMenu(this);
         productsMenu.show();
@@ -259,6 +253,9 @@ public class ManagerMenu extends Menu {
             }
         });
         vBox1.getChildren().addAll(view, delete, addManager);
+        pane.setLeft(vBox1);
+        Scene scene = new Scene(pane, 600, 600);
+        Menu.window.setScene(scene);
     }
 
     public void setAddManagerScene() {
