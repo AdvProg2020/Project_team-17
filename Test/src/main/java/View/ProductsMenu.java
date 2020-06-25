@@ -134,6 +134,11 @@ public class ProductsMenu extends Menu {
         });
     }
 
+    public void handleProductsMenu() {
+        ProductsMenu productsMenu = new ProductsMenu(this);
+        productsMenu.show();
+    }
+
     public void handleDiscountsMenu() {
         DiscountsMenu discountsMenu = new DiscountsMenu(this);
         discountsMenu.show();
@@ -184,8 +189,8 @@ public class ProductsMenu extends Menu {
         Button productsButton = new Button("Products");
         Button discountButton = new Button("Discounts");
         Button logoutButton = new Button("Logout");
-        addActionForMainButtons(accountsButton, discountButton, logoutButton);
-        mainButtons.getChildren().addAll(accountsButton,productsButton ,discountButton, logoutButton);
+        addActionForMainButtonsForFilterAndSort(accountsButton, discountButton, productsButton, logoutButton);
+        mainButtons.getChildren().addAll(accountsButton, productsButton, discountButton, logoutButton);
         HBox bar = new HBox(30);
         backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
@@ -257,12 +262,12 @@ public class ProductsMenu extends Menu {
         HBox mainButtons = new HBox(3);
         mainButtons.setAlignment(Pos.TOP_RIGHT);
         Button accountsButton = new Button("Accounts");
+        Button productsButton = new Button("Products");
         Button discountButton = new Button("Discounts");
         Button logoutButton = new Button("Logout");
-        addActionForMainButtons(accountsButton, discountButton, logoutButton);
-        mainButtons.getChildren().addAll(accountsButton, discountButton, logoutButton);
+        addActionForMainButtonsForFilterAndSort(accountsButton, discountButton, productsButton, logoutButton);
+        mainButtons.getChildren().addAll(accountsButton, productsButton, discountButton, logoutButton);
         HBox bar = new HBox(30);
-        //TODO check spacing
         backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -325,6 +330,33 @@ public class ProductsMenu extends Menu {
         scrollPane.setContent(vBox);
         Scene scene = new Scene(scrollPane, 600, 600);
         Menu.window.setScene(scene);
+    }
+
+    public void addActionForMainButtonsForFilterAndSort(Button accountsButton, Button productsButton, Button discountButton, Button logoutButton) {
+        accountsButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                handleAccountsMenu();
+            }
+        });
+        productsButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                handleProductsMenu();
+            }
+        });
+        discountButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                handleDiscountsMenu();
+            }
+        });
+        logoutButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                handleLogout();
+            }
+        });
     }
 
 
