@@ -382,7 +382,6 @@ public class DiscountsMenu extends Menu {
         productMenu.show();
     }
 
-    Nona Ghazizade, [25.06.20 16:54]
     public void addActionForMainButtons(Button accountsButton, Button productsButton, Button logoutButton) {
         accountsButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
@@ -495,7 +494,6 @@ public class DiscountsMenu extends Menu {
         addFilterToCurrentFilter("brand");
     }
 
-    Nona Ghazizade, [25.06.20 16:54]
     private void filter(String filter, String name) {
         if (filter.equals("name")) {
             filterByName(name);
