@@ -10,36 +10,16 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 public class DiscountManager {
-    private static ArrayList<Product> filterProduct = new ArrayList<>();
-    private static ArrayList<Product> sortProducts = new ArrayList<>();
-    private static String currentSort = "price";
+    private static ArrayList<Product> filterProduct = new ArrayList<>(Discount.productsHaveDiscount());
+    private static ArrayList<Product> sortProducts = new ArrayList<>(Discount.productsHaveDiscount());
+    private static String currentSort ;
 
     public static ArrayList<Product> showProducts() {
         return Discount.productsHaveDiscount();
     }
 
-    public static void addAllProductsToFilterProducts() {
-        for (Discount discount : Discount.getAllDiscounts()) {
-            filterProduct.addAll(discount.getDiscountProducts());
-        }
-    }
-
-    public static void addAllProductsToSortProducts() {
-        for (Discount discount : Discount.getAllDiscounts()) {
-            sortProducts.addAll(discount.getDiscountProducts());
-        }
-    }
-
-    public static String showAvailableFilter() {
-        return "by category\nby name\nby price\nby brand\nby seller\nby availability\nby category feature";
-    }
-
-    public static ArrayList<String> getFilterProductsName() {
-        ArrayList<String> productsName = new ArrayList<>();
-        for (Product product : filterProduct) {
-            productsName.add(product.getName());
-        }
-        return productsName;
+    public static ArrayList<Product> getFilterProduct() {
+        return filterProduct;
     }
 
     public static void filterByCategory(String categoryName) {
@@ -130,10 +110,6 @@ public class DiscountManager {
         }
     }
 
-    public static String showAvailableSort() {
-        return "by score\nby visited time";
-    }
-
     public static void applyDefaultSort() {
         sortProducts.sort(Comparator.comparing(o -> Integer.toString(o.getVisitedTime())));
     }
@@ -144,21 +120,17 @@ public class DiscountManager {
             ArrayList<Product> sortByScore = sortProducts;
             sortByScore.sort(Comparator.comparing(o -> Double.toString(o.getAverageScore())));
             return sortByScore;
-        } else if (sortType.equals("visited time")) {
-            currentSort = "visited time";
+        } else if (sortType.equals("price")) {
+            currentSort = "price";
             ArrayList<Product> sortByVisitedTime = sortProducts;
-            sortByVisitedTime.sort(Comparator.comparing(o -> Integer.toString(o.getVisitedTime())));
+            sortByVisitedTime.sort(Comparator.comparing(o -> Double.toString(o.getPrice())));
             return sortByVisitedTime;
         }
         return Product.getAllProducts();
     }
 
-    public static ArrayList<String> getSortProductsName(String currentSort) {
-        ArrayList<String> sortProductsName = new ArrayList<>();
-        for (Product product : sort(currentSort)) {
-            sortProductsName.add(product.getName());
-        }
-        return sortProductsName;
+    public static ArrayList<Product> getSortProducts() {
+        return sortProducts;
     }
 
     public static void disableSort(String sortType) throws Exception {
