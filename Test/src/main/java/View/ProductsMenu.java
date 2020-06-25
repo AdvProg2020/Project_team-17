@@ -1,14 +1,15 @@
 package View;
 
 import Controller.ProductsManager;
+import Models.Accounts.Seller;
+import Models.Category;
 import Models.Enums.ProductEnum;
 import Models.Product;
+import javafx.collections.FXCollections;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -16,8 +17,6 @@ import javafx.scene.layout.HBox;
 
 import java.io.FileInputStream;
 import java.util.ArrayList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import javafx.scene.layout.VBox;
 
@@ -35,8 +34,8 @@ public class ProductsMenu extends Menu {
     }
 
     public void setProductsScene() {
-        //TODO add choice box for filter and sort
         ScrollPane scrollPane = new ScrollPane();
+        Label notify = new Label();
         Button backButton = new Button("Back");
         HBox mainButtons = new HBox(3);
         mainButtons.setAlignment(Pos.TOP_RIGHT);
@@ -46,14 +45,70 @@ public class ProductsMenu extends Menu {
         addActionForMainButtons(accountsButton, discountButton, logoutButton);
         mainButtons.getChildren().addAll(accountsButton, discountButton, logoutButton);
         HBox bar = new HBox(30);
-        //TODO check spacing
         backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 parentMenu.show();
+                notify.setText("");
             }
         });
-        bar.getChildren().addAll(backButton, mainButtons);
+        ChoiceBox choiceBox = new ChoiceBox(FXCollections.observableList(filterChoiceBoxItems()));
+        TextField textField = new TextField();
+        textField.setPromptText("filter by ...");
+        Button submit = new Button("submit filter");
+        submit.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                try {
+                    String filter = (String) choiceBox.getValue();
+                    String name = textField.getText();
+                    if (filter != null) {
+                        if (filter.equals("category")) {
+                            Category category = Category.getCategoryByName(textField.getText());
+                            if (category != null) {
+                                filter(filter, name);
+                                setFilterScene();
+                            } else {
+                                notify.setText("invalid category name");
+                                notify.setStyle("-fx-text-fill: #ff4f59");
+                            }
+                        } else if (filter.equals("seller")) {
+                            Seller seller = Seller.getSellerByName(textField.getText());
+                            if (seller != null) {
+                                filter(filter, name);
+                                setFilterScene();
+                            } else {
+                                notify.setText("invalid seller name");
+                                notify.setStyle("-fx-text-fill: #ff4f59");
+                            }
+                        } else {
+                            filter(filter, name);
+                            setFilterScene();
+                        }
+                    }
+                } catch (Exception ignored) {
+                }
+            }
+        });
+        HBox filter = new HBox(10);
+        filter.getChildren().addAll(choiceBox, textField, submit, notify);
+        ChoiceBox choiceBox1 = new ChoiceBox(FXCollections.observableList(sortChoiceBoxItems()));
+        Button submitButton = new Button("submit sort");
+        submitButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                try {
+                    ProductsManager.sort((String) choiceBox1.getValue());
+                    setSortScene();
+                } catch (Exception ignored) {
+                }
+            }
+        });
+        HBox sort = new HBox(5);
+        sort.getChildren().addAll(choiceBox1, submitButton);
+
+        ChoiceBox category = new ChoiceBox(ProductsManager.showCategory());
+        bar.getChildren().addAll(backButton, mainButtons, filter, sort, category);
         ArrayList<HBox> hBoxes = new ArrayList<>();
         hBoxes.add(bar);
         for (Product product : ProductsManager.showProducts()) {
@@ -80,8 +135,311 @@ public class ProductsMenu extends Menu {
         VBox vBox = new VBox(5);
         vBox.getChildren().addAll(hBoxes);
         scrollPane.setContent(vBox);
-        Scene scene = new Scene(scrollPane, 600, 600);
+        Scene scene = new Scene(scrollPane, 1270, 650);
         Menu.window.setScene(scene);
+    }
+
+    public void setFilterScene() {
+        ScrollPane scrollPane = new ScrollPane();
+        Label notify = new Label();
+        Button backButton = new Button("Back");
+        HBox mainButtons = new HBox(3);
+        mainButtons.setAlignment(Pos.TOP_RIGHT);
+        Button accountsButton = new Button("Accounts");
+        Button productsButton = new Button("Products");
+        Button discountButton = new Button("Discounts");
+        Button logoutButton = new Button("Logout");
+        addActionForMainButtonsForFilterAndSort(accountsButton, discountButton, productsButton, logoutButton);
+        mainButtons.getChildren().addAll(accountsButton, productsButton, discountButton, logoutButton);
+        HBox bar = new HBox(30);
+        backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                parentMenu.show();
+                notify.setText("");
+            }
+        });
+        ChoiceBox choiceBox = new ChoiceBox(FXCollections.observableList(filterChoiceBoxItems()));
+        TextField textField = new TextField();
+        textField.setPromptText("filter by ...");
+        Button submit = new Button("submit");
+        submit.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                try {
+                    String filter = (String) choiceBox.getValue();
+                    String name = textField.getText();
+                    if (filter != null) {
+                        if (filter.equals("category")) {
+                            Category category = Category.getCategoryByName(textField.getText());
+                            if (category != null) {
+                                filter(filter, name);
+                                setFilterScene();
+                            } else {
+                                notify.setText("invalid category name");
+                                notify.setStyle("-fx-text-fill: #ff4f59");
+                            }
+                        } else if (filter.equals("seller")) {
+                            Seller seller = Seller.getSellerByName(textField.getText());
+                            if (seller != null) {
+                                filter(filter, name);
+                                setFilterScene();
+                            } else {
+                                notify.setText("invalid seller name");
+                                notify.setStyle("-fx-text-fill: #ff4f59");
+                            }
+                        } else {
+                            filter(filter, name);
+                            setFilterScene();
+                        }
+                    }
+                } catch (Exception ignored) {
+                }
+            }
+        });
+
+        HBox filter = new HBox(10);
+        filter.getChildren().addAll(choiceBox, textField, submit, notify);
+        ChoiceBox choiceBox1 = new ChoiceBox(FXCollections.observableList(sortChoiceBoxItems()));
+        Button submitButton = new Button("submit sort");
+        submitButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                try {
+                    ProductsManager.sort((String) choiceBox1.getValue());
+                    setSortScene();
+                } catch (Exception ignored) {
+                }
+            }
+        });
+        HBox sort = new HBox(5);
+        sort.getChildren().addAll(choiceBox1, submitButton);
+
+        bar.getChildren().addAll(backButton, mainButtons, filter, sort);
+        ArrayList<HBox> hBoxes = new ArrayList<>();
+        hBoxes.add(bar);
+        for (Product product : ProductsManager.getFilterProduct()) {
+            HBox hBox = new HBox(10);
+            Image image = null;
+            try {
+                FileInputStream inputStream = new FileInputStream(product.getPath());
+                image = new Image(inputStream);
+            } catch (Exception e) {
+            }
+            ImageView imageView = new ImageView(image);
+            imageView.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    handleProductPage(product);
+                }
+            });
+            Label name = new Label(product.getName());
+            Label price = new Label(product.getPrice() + "$");
+            Label score = new Label("score: " + product.getPrice());
+            hBox.getChildren().addAll(imageView, name, price, score);
+            hBoxes.add(hBox);
+        }
+        VBox vBox = new VBox(5);
+        vBox.getChildren().addAll(hBoxes);
+        scrollPane.setContent(vBox);
+        Scene scene = new Scene(scrollPane, 1270, 650);
+        Menu.window.setScene(scene);
+    }
+
+    public void setSortScene() {
+        ScrollPane scrollPane = new ScrollPane();
+        Label notify = new Label();
+        Button backButton = new Button("Back");
+        HBox mainButtons = new HBox(3);
+        mainButtons.setAlignment(Pos.TOP_RIGHT);
+        Button accountsButton = new Button("Accounts");
+        Button productsButton = new Button("Products");
+        Button discountButton = new Button("Discounts");
+        Button logoutButton = new Button("Logout");
+        addActionForMainButtonsForFilterAndSort(accountsButton, discountButton, productsButton, logoutButton);
+        mainButtons.getChildren().addAll(accountsButton, productsButton, discountButton, logoutButton);
+        HBox bar = new HBox(30);
+        backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                parentMenu.show();
+                notify.setText("");
+            }
+        });
+        ChoiceBox choiceBox = new ChoiceBox(FXCollections.observableList(filterChoiceBoxItems()));
+        TextField textField = new TextField();
+        textField.setPromptText("filter by ...");
+        Button submit = new Button("submit");
+        submit.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                try {
+                    String filter = (String) choiceBox.getValue();
+                    String name = textField.getText();
+                    if (filter != null) {
+                        if (filter.equals("category")) {
+                            Category category = Category.getCategoryByName(textField.getText());
+                            if (category != null) {
+                                filter(filter, name);
+                                setFilterScene();
+                            } else {
+                                notify.setText("invalid category name");
+                                notify.setStyle("-fx-text-fill: #ff4f59");
+                            }
+                        } else if (filter.equals("seller")) {
+                            Seller seller = Seller.getSellerByName(textField.getText());
+                            if (seller != null) {
+                                filter(filter, name);
+                                setFilterScene();
+                            } else {
+                                notify.setText("invalid seller name");
+                                notify.setStyle("-fx-text-fill: #ff4f59");
+                            }
+                        } else {
+                            filter(filter, name);
+                            setFilterScene();
+                        }
+                    }
+                } catch (Exception ignored) {
+                }
+            }
+        });
+        HBox filter = new HBox(10);
+        filter.getChildren().addAll(choiceBox, textField, submit, notify);
+        ChoiceBox choiceBox1 = new ChoiceBox(FXCollections.observableList(sortChoiceBoxItems()));
+        Button submitButton = new Button("submit sort");
+        submitButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                try {
+                    ProductsManager.sort((String) choiceBox1.getValue());
+                    setSortScene();
+                } catch (Exception ignored) {
+                }
+            }
+        });
+        HBox sort = new HBox(5);
+        sort.getChildren().addAll(choiceBox1, submitButton);
+
+        bar.getChildren().addAll(backButton, mainButtons, filter, sort);
+        ArrayList<HBox> hBoxes = new ArrayList<>();
+        hBoxes.add(bar);
+        for (Product product : ProductsManager.getSortProducts()) {
+            HBox hBox = new HBox(10);
+            Image image = null;
+            try {
+                FileInputStream inputStream = new FileInputStream(product.getPath());
+                image = new Image(inputStream);
+            } catch (Exception ignored) {
+            }
+            ImageView imageView = new ImageView(image);
+            imageView.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    handleProductPage(product);
+                }
+            });
+            Label name = new Label(product.getName());
+            Label price = new Label(product.getPrice() + "$");
+            Label score = new Label("score: " + product.getPrice());
+            hBox.getChildren().addAll(imageView, name, price, score);
+            hBoxes.add(hBox);
+        }
+        VBox vBox = new VBox(5);
+        vBox.getChildren().addAll(hBoxes);
+        scrollPane.setContent(vBox);
+        Scene scene = new Scene(scrollPane, 1270, 650);
+        Menu.window.setScene(scene);
+    }
+
+    public void addActionForMainButtonsForFilterAndSort(Button accountsButton, Button productsButton, Button discountButton, Button logoutButton) {
+        accountsButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                handleAccountsMenu();
+            }
+        });
+        productsButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                handleProductsMenu();
+            }
+        });
+        discountButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                handleDiscountsMenu();
+            }
+        });
+        logoutButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                handleLogout();
+            }
+        });
+    }
+
+
+    private void addFilterToCurrentFilter(String name) {
+        for (String filter : currentFilters) {
+            if (!(filter.contains(name))) {
+                currentFilters.add(name);
+            }
+        }
+    }
+
+    private void filterByName(String name) {
+        ProductsManager.filterByName(name);
+        addFilterToCurrentFilter("name");
+    }
+
+    private void filterByCategory(String name) {
+        ProductsManager.filterByCategory(name);
+        addFilterToCurrentFilter("category");
+    }
+
+    private void filterByPrice(String name) {
+        String[] split = name.split("\\s");
+        ProductsManager.filterByPrice(Double.parseDouble(split[0]), Double.parseDouble(split[1]));
+        addFilterToCurrentFilter("price");
+    }
+
+    private void filterBySeller(String name) {
+        ProductsManager.filterBySeller(name);
+        addFilterToCurrentFilter("seller");
+    }
+
+    private void filterByAvailability(String name) {
+        ProductsManager.filterByAvailability(ProductEnum.valueOf(name));
+        addFilterToCurrentFilter("availability");
+    }
+
+    private void filterBySpecialFeature(String name) {
+        ProductsManager.filterBySpecialFeature(name);
+        addFilterToCurrentFilter("special feature");
+    }
+
+    private void filterByBrand(String name) {
+        ProductsManager.filterByCompanyName(name);
+        addFilterToCurrentFilter("brand");
+    }
+
+    private void filter(String type, String name) {
+        if (type.equals("name")) {
+            filterByName(name);
+        } else if (type.equals("category")) {
+            filterByCategory(name);
+        } else if (type.equals("price")) {
+            filterByPrice(name);
+        } else if (type.equals("seller")) {
+            filterBySeller(name);
+        } else if (type.equals("availability")) {
+            filterByAvailability(name);
+        } else if (type.equals("special features")) {
+            filterBySpecialFeature(name);
+        } else if (type.equals("brand")) {
+            filterByBrand(name);
+        }
     }
 
     public void handleProductPage(Product product) {
@@ -111,6 +469,11 @@ public class ProductsMenu extends Menu {
         });
     }
 
+    public void handleProductsMenu() {
+        ProductsMenu productsMenu = new ProductsMenu(this);
+        productsMenu.show();
+    }
+
     public void handleDiscountsMenu() {
         DiscountsMenu discountsMenu = new DiscountsMenu(this);
         discountsMenu.show();
@@ -133,237 +496,133 @@ public class ProductsMenu extends Menu {
         mainMenu.show();
     }
 
-    private void addFilterToCurrentFilter(String name) {
-        for (String filter : currentFilters) {
-            if (!(filter.contains(name))) {
-                currentFilters.add(name);
-            }
-        }
+    private ArrayList<String> filterChoiceBoxItems() {
+        ArrayList<String> choiceBoxItems = new ArrayList<>();
+        choiceBoxItems.add("name");
+        choiceBoxItems.add("category");
+        choiceBoxItems.add("price");
+        choiceBoxItems.add("seller");
+        choiceBoxItems.add("availability");
+        choiceBoxItems.add("company name");
+        choiceBoxItems.add("special feature");
+        return choiceBoxItems;
     }
 
-    private void removeFilterFromCurrentFilter(String name) {
-        for (String filter : currentFilters) {
-            if (filter.contains(name)) {
-                currentFilters.remove(name);
-            }
-        }
+    private ArrayList<String> sortChoiceBoxItems() {
+        ArrayList<String> choiceBoxItems = new ArrayList<>();
+        choiceBoxItems.add("price");
+        choiceBoxItems.add("score");
+        return choiceBoxItems;
     }
 
-    private void filterByName() {
-        System.out.println("enter a name");
-        String name = scanner.nextLine();
-        ProductsManager.filterByName(name);
-        System.out.println(ProductsManager.getFilterProductsName());
-        addFilterToCurrentFilter("name");
-    }
 
-    private void filterByCategory() {
-        System.out.println("enter a category name: ");
-        String categoryName = scanner.nextLine();
-        ProductsManager.filterByCategory(categoryName);
-        System.out.println(ProductsManager.getFilterProductsName());
-        addFilterToCurrentFilter("category");
-    }
+//    private void removeFilterFromCurrentFilter(String name) {
+//        for (String filter : currentFilters) {
+//            if (filter.contains(name)) {
+//                currentFilters.remove(name);
+//            }
+//        }
+//    }
 
-    private void filterByPrice() {
-        System.out.println("enter minimum price: ");
-        double min = scanner.nextDouble();
-        System.out.println("enter maximum price: ");
-        double max = scanner.nextDouble();
-        ProductsManager.filterByPrice(min, max);
-        System.out.println(ProductsManager.getFilterProductsName());
-        addFilterToCurrentFilter("price");
-    }
+    //    private void disableFilterByName() {
+//        System.out.println("enter a name");
+//        String name = scanner.nextLine();
+//        ProductsManager.disableFilterByName(name);
+//        removeFilterFromCurrentFilter("name");
+//    }
+//
+//    private void disableFilterByCategory() {
+//        System.out.println("enter a category name: ");
+//        String categoryName = scanner.nextLine();
+//        ProductsManager.disableFilterByCategory(categoryName);
+//        removeFilterFromCurrentFilter("category");
+//    }
+//
+//    private void disableFilterByPrice() {
+//        System.out.println("enter minimum price: ");
+//        double min = scanner.nextDouble();
+//        System.out.println("enter maximum price: ");
+//        double max = scanner.nextDouble();
+//        ProductsManager.disableFilterByPrice(min, max);
+//        removeFilterFromCurrentFilter("price");
+//    }
+//
+//    private void disableFilterBySeller() {
+//        System.out.println("enter seller name: ");
+//        String name = scanner.nextLine();
+//        ProductsManager.disableFilterBySeller(name);
+//        removeFilterFromCurrentFilter("seller");
+//    }
+//
+//    private void disableFilterByAvailability() {
+//        System.out.println("enter a state for availability"); //agar manzore mojodiate kalaro dorost gerefte basham
+//        String state = scanner.nextLine();
+//        ProductsManager.disableFilterByAvailability(ProductEnum.valueOf(state));
+//        removeFilterFromCurrentFilter("availability");
+//    }
+//
+//    private void disableFilterBySpecialFeature() {
+//        System.out.println("enter special feature: ");
+//        String feature = scanner.nextLine();
+//        ProductsManager.disableFilterBySpecialFeature(feature);
+//        removeFilterFromCurrentFilter("special features");
+//    }
+//
+//    private void disableFilterByBrand() {
+//        System.out.println("enter company name: ");
+//        String name = scanner.nextLine();
+//        ProductsManager.disableFilterByCompanyName(name);
+//        removeFilterFromCurrentFilter("brand");
+//    }
 
-    private void filterBySeller() {
-        System.out.println("enter seller name: ");
-        String name = scanner.nextLine();
-        ProductsManager.filterBySeller(name);
-        System.out.println(ProductsManager.getFilterProductsName());
-        addFilterToCurrentFilter("seller");
-    }
+//    private void disableFilter(String command) {
+//        if (command.equals("name")) {
+//            disableFilterByName();
+//        } else if (command.equals("category")) {
+//            disableFilterByCategory();
+//        } else if (command.equals("price")) {
+//            disableFilterByPrice();
+//        } else if (command.equals("seller")) {
+//            disableFilterBySeller();
+//        } else if (command.equals("availability")) {
+//            disableFilterByAvailability();
+//        } else if (command.equals("special features")) {
+//            disableFilterBySpecialFeature();
+//        } else if (command.equals("brand")) {
+//            disableFilterByBrand();
+//        }
+//    }
 
-    private void filterByAvailability() {
-        System.out.println("enter a state for availability");
-        String state = scanner.nextLine();
-        ProductsManager.filterByAvailability(ProductEnum.valueOf(state));
-        System.out.println(ProductsManager.getFilterProductsName());
-        addFilterToCurrentFilter("availability");
-    }
-
-    private void filterBySpecialFeature() {
-        System.out.println("enter special feature: ");
-        String feature = scanner.nextLine();
-        ProductsManager.filterBySpecialFeature(feature);
-        System.out.println(ProductsManager.getFilterProductsName());
-        addFilterToCurrentFilter("special feature");
-    }
-
-    private void filterByBrand() {
-        System.out.println("enter company name: ");
-        String name = scanner.nextLine();
-        ProductsManager.filterByCompanyName(name);
-        System.out.println(ProductsManager.getFilterProductsName());
-        addFilterToCurrentFilter("brand");
-    }
-
-    private void disableFilterByName() {
-        System.out.println("enter a name");
-        String name = scanner.nextLine();
-        ProductsManager.disableFilterByName(name);
-        removeFilterFromCurrentFilter("name");
-    }
-
-    private void disableFilterByCategory() {
-        System.out.println("enter a category name: ");
-        String categoryName = scanner.nextLine();
-        ProductsManager.disableFilterByCategory(categoryName);
-        removeFilterFromCurrentFilter("category");
-    }
-
-    private void disableFilterByPrice() {
-        System.out.println("enter minimum price: ");
-        double min = scanner.nextDouble();
-        System.out.println("enter maximum price: ");
-        double max = scanner.nextDouble();
-        ProductsManager.disableFilterByPrice(min, max);
-        removeFilterFromCurrentFilter("price");
-    }
-
-    private void disableFilterBySeller() {
-        System.out.println("enter seller name: ");
-        String name = scanner.nextLine();
-        ProductsManager.disableFilterBySeller(name);
-        removeFilterFromCurrentFilter("seller");
-    }
-
-    private void disableFilterByAvailability() {
-        System.out.println("enter a state for availability"); //agar manzore mojodiate kalaro dorost gerefte basham
-        String state = scanner.nextLine();
-        ProductsManager.disableFilterByAvailability(ProductEnum.valueOf(state));
-        removeFilterFromCurrentFilter("availability");
-    }
-
-    private void disableFilterBySpecialFeature() {
-        System.out.println("enter special feature: ");
-        String feature = scanner.nextLine();
-        ProductsManager.disableFilterBySpecialFeature(feature);
-        removeFilterFromCurrentFilter("special features");
-    }
-
-    private void disableFilterByBrand() {
-        System.out.println("enter company name: ");
-        String name = scanner.nextLine();
-        ProductsManager.disableFilterByCompanyName(name);
-        removeFilterFromCurrentFilter("brand");
-    }
-
-    private void filter(String command) {
-        if (command.equals("name")) {
-            filterByName();
-        } else if (command.equals("category")) {
-            filterByCategory();
-        } else if (command.equals("price")) {
-            filterByPrice();
-        } else if (command.equals("seller")) {
-            filterBySeller();
-        } else if (command.equals("availability")) {
-            filterByAvailability();
-        } else if (command.equals("special features")) {
-            filterBySpecialFeature();
-        } else if (command.equals("brand")) {
-            filterByBrand();
-        }
-    }
-
-    private void disableFilter(String command) {
-        if (command.equals("name")) {
-            disableFilterByName();
-        } else if (command.equals("category")) {
-            disableFilterByCategory();
-        } else if (command.equals("price")) {
-            disableFilterByPrice();
-        } else if (command.equals("seller")) {
-            disableFilterBySeller();
-        } else if (command.equals("availability")) {
-            disableFilterByAvailability();
-        } else if (command.equals("special features")) {
-            disableFilterBySpecialFeature();
-        } else if (command.equals("brand")) {
-            disableFilterByBrand();
-        }
-    }
-
-    //check
-    public void viewCategories() {
-        System.out.println(ProductsManager.showCategory());
-    }
-
-    //bug
-    public void filtering() {
-        String command;
-        while (true) {
-            command = scanner.nextLine();
-            Pattern filterPattern = Pattern.compile("filter\\s(.+)");
-            Matcher filterMatcher = filterPattern.matcher(command);
-            Pattern disableFilterPattern = Pattern.compile("disable filter\\s(.+)");
-            Matcher disableFilterMatcher = disableFilterPattern.matcher(command);
-            if (command.equals("show available filters")) {
-                System.out.println("available filters are: ");
-                System.out.println(ProductsManager.showAvailableFilter());
-            } else if (command.matches("filter\\s(.+)")) {
-                filterMatcher.find();
-                filter(filterMatcher.group(1));
-            } else if (command.equals("current filters")) {
-                System.out.println(currentFilters);
-            } else if (command.matches("disable filter\\s(.+)")) {
-                disableFilterMatcher.find();
-                disableFilter(disableFilterMatcher.group(1));
-            } else if (command.equals("back")) {
-                break;
-            } else if (command.equals("help")) {
-                System.out.println("commands that you can enter are:");
-                System.out.println("show available filters");
-                System.out.println("filter [an available filter]");
-                System.out.println("current filters");
-                System.out.println("disable filter [a selected filter]");
-                System.out.println("back");
-            }
-        }
-
-    }
-
-    //bug
-    public void sorting() {
-        String command;
-        while (true) {
-            command = scanner.nextLine();
-            Pattern sortPattern = Pattern.compile("sort\\s(.+)");
-            Matcher sortMatcher = sortPattern.matcher(command);
-            if (command.matches("sort\\s(.+)")) {
-                sortMatcher.find();
-                ProductsManager.sort(sortMatcher.group(1));
-                System.out.println(ProductsManager.getSortProductsName(ProductsManager.getCurrentSort()));
-            } else if (command.equals("show available sort")) {
-                System.out.println(ProductsManager.showAvailableSort());
-            } else if (command.equals("current sort")) {
-                System.out.println(ProductsManager.getCurrentSort());
-            } else if (command.matches("disable sort")) {
-                try {
-                    ProductsManager.disableSort(ProductsManager.getCurrentSort());
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                }
-            } else if (command.matches("back")) {
-                break;
-            } else if (command.matches("help")) {
-                System.out.println("commands that you can enter are:");
-                System.out.println("sort [an available sort]");
-                System.out.println("current sort");
-                System.out.println("disable sort");
-                System.out.println("back");
-            }
-        }
-    }
+//    public void sorting() {
+//        String command;
+//        while (true) {
+//            command = scanner.nextLine();
+//            Pattern sortPattern = Pattern.compile("sort\\s(.+)");
+//            Matcher sortMatcher = sortPattern.matcher(command);
+//            if (command.matches("sort\\s(.+)")) {
+//                sortMatcher.find();
+//                ProductsManager.sort(sortMatcher.group(1));
+//                System.out.println(ProductsManager.getSortProductsName(ProductsManager.getCurrentSort()));
+//            } else if (command.equals("show available sort")) {
+//                System.out.println(ProductsManager.showAvailableSort());
+//            } else if (command.equals("current sort")) {
+//                System.out.println(ProductsManager.getCurrentSort());
+//            } else if (command.matches("disable sort")) {
+//                try {
+//                    ProductsManager.disableSort(ProductsManager.getCurrentSort());
+//                } catch (Exception e) {
+//                    System.out.println(e.getMessage());
+//                }
+//            } else if (command.matches("back")) {
+//                break;
+//            } else if (command.matches("help")) {
+//                System.out.println("commands that you can enter are:");
+//                System.out.println("sort [an available sort]");
+//                System.out.println("current sort");
+//                System.out.println("disable sort");
+//                System.out.println("back");
+//            }
+//        }
+//    }
 
 }
