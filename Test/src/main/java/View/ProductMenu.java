@@ -94,20 +94,24 @@ public class ProductMenu extends Menu {
                 comment.clear();
             }
         });
-        if (ProductManager.doesCustomerBoughtThisProduct(RegisterCustomerMenu.getCurrentCustomer(), product)) {
-            TextField rate = new TextField();
-            rate.setPromptText("product score");
-            Button submitScore = new Button("Submit");
-            submitScore.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    ProductManager.rateProduct(RegisterCustomerMenu.getCurrentCustomer(), product, Double.parseDouble(rate.getText()));
-                    rate.clear();
-                }
-            });
-            HBox hBox2 = new HBox(5);
-            hBox2.getChildren().addAll(rate, submitComment);
-            vBox.getChildren().addAll(listView, hBox1, hBox2);
+        if (RegisterCustomerMenu.getCurrentCustomer() != null) {
+            if (ProductManager.doesCustomerBoughtThisProduct(RegisterCustomerMenu.getCurrentCustomer(), product)) {
+                TextField rate = new TextField();
+                rate.setPromptText("product score");
+                Button submitScore = new Button("Submit");
+                submitScore.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent event) {
+                        ProductManager.rateProduct(RegisterCustomerMenu.getCurrentCustomer(), product, Double.parseDouble(rate.getText()));
+                        rate.clear();
+                    }
+                });
+                HBox hBox2 = new HBox(5);
+                hBox2.getChildren().addAll(rate, submitComment);
+                vBox.getChildren().addAll(listView, hBox1, hBox2);
+            } else {
+                vBox.getChildren().addAll(listView, hBox1);
+            }
         } else {
             vBox.getChildren().addAll(listView, hBox1);
         }

@@ -241,11 +241,12 @@ public class CustomerMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 Alert alert = new Alert(Alert.AlertType.NONE);
-                //TODO mitonim alert type ro information bezarim
                 alert.setTitle("show discount code");
                 alert.setHeaderText("discount code information");
                 String s = CustomerAbilitiesManager.showDiscountCodeInfo(listView.getSelectionModel().getSelectedItem());
                 alert.setContentText(s);
+                ButtonType buttonType = new ButtonType("Exit", ButtonBar.ButtonData.CANCEL_CLOSE);
+                alert.getButtonTypes().setAll(buttonType);
                 alert.show();
             }
         });

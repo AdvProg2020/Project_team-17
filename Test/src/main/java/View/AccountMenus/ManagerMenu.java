@@ -367,7 +367,6 @@ public class ManagerMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 Alert alert = new Alert(Alert.AlertType.NONE);
-                //TODO mitonim alert type ro information bezarim
                 alert.setTitle("discount code info");
                 alert.setHeaderText("discount code information");
                 String s = ManagerAbilitiesManager.viewDiscountCode(listView.getSelectionModel().getSelectedItem());

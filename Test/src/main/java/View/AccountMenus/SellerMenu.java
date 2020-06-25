@@ -223,7 +223,6 @@ public class SellerMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 Alert alert = new Alert(Alert.AlertType.NONE);
-                //TODO mitonim alert type ro information bezarim
                 alert.setTitle("show discount");
                 alert.setHeaderText("discount information");
                 String s = SellerAbilitiesManager.showDiscountInfo(listView.getSelectionModel().getSelectedItem());
