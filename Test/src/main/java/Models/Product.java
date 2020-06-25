@@ -24,7 +24,7 @@ public class Product {
     private Discount discount;
     private String path;
     private ArrayList<PointOfView> pointOfViews = new ArrayList<>();
-    private ArrayList<Score> scoresForProduct = new ArrayList<>();
+    private ArrayList<Double> scoresForProduct = new ArrayList<>();
 
     public Product(String productId, String name, String companyName, double price, Seller seller, Category category, String explanation, double averageScore, String productsSpecialFeature, String path) {
         this.productId = productId;
@@ -36,6 +36,7 @@ public class Product {
         this.category = category;
         this.explanation = explanation;
         this.averageScore = averageScore;
+        scoresForProduct.add(averageScore);
         this.productsSpecialFeature = productsSpecialFeature;
         this.path = path;
         allProducts.add(this);
@@ -53,9 +54,6 @@ public class Product {
         return path;
     }
 
-    public ArrayList<Score> getScoresForProduct() {
-        return scoresForProduct;
-    }
 
     public double calculateProductPrice(Product product) {
         if (Discount.doesThisProductHaveDiscount(product)) {
@@ -161,7 +159,7 @@ public class Product {
     }
 
     public void addScoreForProduct(Customer customer, Product product, double score) {
-        product.scoresForProduct.add(new Score(customer, product, score));
+        product.scoresForProduct.add(score);
     }
 
     public Category getCategory() {
@@ -174,8 +172,8 @@ public class Product {
 
     public double averageScoreForProduct(Product product) {
         int sum = 0;
-        for (Score score : product.scoresForProduct) {
-            sum += score.getScore();
+        for (Double score : product.scoresForProduct) {
+            sum+=score;
         }
         return this.averageScore = sum / product.scoresForProduct.size();
     }
