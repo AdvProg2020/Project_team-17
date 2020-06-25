@@ -121,47 +121,31 @@ public class ProductsManager {
         }
     }
 
-    public static String showAvailableSort() {
-        return "by score\nby visited time";
-    }
-
-    public static void applyDefaultSort() {
-        sortProducts.sort(Comparator.comparing(o -> Integer.toString(o.getVisitedTime())));
-    }
-
     public static ArrayList<Product> sort(String sortType) {
         if (sortType.equals("score")) {
             currentSort = "score";
-            ArrayList<Product> sortByScore = sortProducts;
-            sortByScore.sort(Comparator.comparing(o -> Double.toString(o.getAverageScore())));
-            return sortByScore;
-        } else if (sortType.equals("visited time")) {
+            sortProducts.sort(Comparator.comparing(o -> Double.toString(o.getAverageScore())));
+        } else if (sortType.equals("price")) {
             currentSort = "visited time";
-            ArrayList<Product> sortByVisitedTime = sortProducts;
-            sortByVisitedTime.sort(Comparator.comparing(o -> Integer.toString(o.getVisitedTime())));
-            return sortByVisitedTime;
+            sortProducts.sort(Comparator.comparing(o -> Double.toString(o.getPrice())));
         }
-        return Product.getAllProducts();
+        return sortProducts;
     }
 
-    public static ArrayList<String> getSortProductsName(String currentSort) {
-        ArrayList<String> sortProductsName = new ArrayList<>();
-        for (Product product : sort(currentSort)) {
-            sortProductsName.add(product.getName());
-        }
-        return sortProductsName;
+    public static ArrayList<Product> getSortProducts() {
+        return sortProducts;
     }
 
-    public static void disableSort(String sortType) throws Exception {
-        if (sortType.equals("score")) {
-            if (currentSort.equals("score")) {
-                currentSort = "visited time";
-                applyDefaultSort();
-            }
-        } else {
-            throw new Exception("current sort is default sort(price)");
-        }
-    }
+//    public static void disableSort(String sortType) throws Exception {
+//        if (sortType.equals("score")) {
+//            if (currentSort.equals("score")) {
+//                currentSort = "visited time";
+//                applyDefaultSort();
+//            }
+//        } else {
+//            throw new Exception("current sort is default sort(price)");
+//        }
+//    }
 
     public static String getCurrentSort() {
         return currentSort;

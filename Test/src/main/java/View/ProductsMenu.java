@@ -15,8 +15,6 @@ import javafx.scene.layout.HBox;
 
 import java.io.FileInputStream;
 import java.util.ArrayList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import javafx.scene.layout.VBox;
 
@@ -34,7 +32,6 @@ public class ProductsMenu extends Menu {
     }
 
     public void setProductsScene() {
-        //TODO add choice box for sort
         ScrollPane scrollPane = new ScrollPane();
         Button backButton = new Button("Back");
         HBox mainButtons = new HBox(3);
@@ -45,17 +42,16 @@ public class ProductsMenu extends Menu {
         addActionForMainButtons(accountsButton, discountButton, logoutButton);
         mainButtons.getChildren().addAll(accountsButton, discountButton, logoutButton);
         HBox bar = new HBox(30);
-        //TODO check spacing
         backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 parentMenu.show();
             }
         });
-        ChoiceBox choiceBox = new ChoiceBox(FXCollections.observableList(choiceBoxItems()));
+        ChoiceBox choiceBox = new ChoiceBox(FXCollections.observableList(filterChoiceBoxItems()));
         TextField textField = new TextField();
         textField.setPromptText("filter by ...");
-        Button submit = new Button("submit");
+        Button submit = new Button("submit filter");
         submit.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -67,8 +63,20 @@ public class ProductsMenu extends Menu {
         });
         HBox filter = new HBox(10);
         filter.getChildren().addAll(choiceBox, textField, submit);
+        ChoiceBox choiceBox1 = new ChoiceBox(FXCollections.observableList(sortChoiceBoxItems()));
+        Button submitButton = new Button("submit sort");
+        submitButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                ProductsManager.sort((String) choiceBox1.getValue());
+                setSortScene();
+            }
+        });
+        HBox sort = new HBox(5);
+        sort.getChildren().addAll(choiceBox1, submitButton);
+
         ChoiceBox category = new ChoiceBox(ProductsManager.showCategory());
-        bar.getChildren().addAll(backButton, mainButtons, filter,category);
+        bar.getChildren().addAll(backButton, mainButtons, filter, sort, category);
         ArrayList<HBox> hBoxes = new ArrayList<>();
         hBoxes.add(bar);
         for (Product product : ProductsManager.showProducts()) {
@@ -148,7 +156,7 @@ public class ProductsMenu extends Menu {
         mainMenu.show();
     }
 
-    private ArrayList<String> choiceBoxItems() {
+    private ArrayList<String> filterChoiceBoxItems() {
         ArrayList<String> choiceBoxItems = new ArrayList<>();
         choiceBoxItems.add("name");
         choiceBoxItems.add("category");
@@ -160,7 +168,90 @@ public class ProductsMenu extends Menu {
         return choiceBoxItems;
     }
 
+    private ArrayList<String> sortChoiceBoxItems() {
+        ArrayList<String> choiceBoxItems = new ArrayList<>();
+        choiceBoxItems.add("price");
+        choiceBoxItems.add("score");
+        return choiceBoxItems;
+    }
+
     public void setFilterScene() {
+        ScrollPane scrollPane = new ScrollPane();
+        Button backButton = new Button("Back");
+        HBox mainButtons = new HBox(3);
+        mainButtons.setAlignment(Pos.TOP_RIGHT);
+        Button accountsButton = new Button("Accounts");
+        Button productsButton = new Button("Products");
+        Button discountButton = new Button("Discounts");
+        Button logoutButton = new Button("Logout");
+        addActionForMainButtons(accountsButton, discountButton, logoutButton);
+        mainButtons.getChildren().addAll(accountsButton,productsButton ,discountButton, logoutButton);
+        HBox bar = new HBox(30);
+        backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                parentMenu.show();
+            }
+        });
+        ChoiceBox choiceBox = new ChoiceBox(FXCollections.observableList(filterChoiceBoxItems()));
+        TextField textField = new TextField();
+        textField.setPromptText("filter by ...");
+        Button submit = new Button("submit");
+        submit.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                String filter = (String) choiceBox.getValue();
+                String name = textField.getText();
+                filter(filter, name);
+                setFilterScene();
+            }
+        });
+        HBox filter = new HBox(10);
+        filter.getChildren().addAll(choiceBox, textField, submit);
+        ChoiceBox choiceBox1 = new ChoiceBox(FXCollections.observableList(sortChoiceBoxItems()));
+        Button submitButton = new Button("submit sort");
+        submitButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                ProductsManager.sort((String) choiceBox1.getValue());
+                setSortScene();
+            }
+        });
+        HBox sort = new HBox(5);
+        sort.getChildren().addAll(choiceBox1, submitButton);
+
+        bar.getChildren().addAll(backButton, mainButtons, filter, sort);
+        ArrayList<HBox> hBoxes = new ArrayList<>();
+        hBoxes.add(bar);
+        for (Product product : ProductsManager.getFilterProduct()) {
+            HBox hBox = new HBox(10);
+            Image image = null;
+            try {
+                FileInputStream inputStream = new FileInputStream(product.getPath());
+                image = new Image(inputStream);
+            } catch (Exception e) {
+            }
+            ImageView imageView = new ImageView(image);
+            imageView.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    handleProductPage(product);
+                }
+            });
+            Label name = new Label(product.getName());
+            Label price = new Label(product.getPrice() + "$");
+            Label score = new Label("score: " + product.getPrice());
+            hBox.getChildren().addAll(imageView, name, price, score);
+            hBoxes.add(hBox);
+        }
+        VBox vBox = new VBox(5);
+        vBox.getChildren().addAll(hBoxes);
+        scrollPane.setContent(vBox);
+        Scene scene = new Scene(scrollPane, 600, 600);
+        Menu.window.setScene(scene);
+    }
+
+    public void setSortScene() {
         ScrollPane scrollPane = new ScrollPane();
         Button backButton = new Button("Back");
         HBox mainButtons = new HBox(3);
@@ -178,7 +269,7 @@ public class ProductsMenu extends Menu {
                 parentMenu.show();
             }
         });
-        ChoiceBox choiceBox = new ChoiceBox(FXCollections.observableList(choiceBoxItems()));
+        ChoiceBox choiceBox = new ChoiceBox(FXCollections.observableList(filterChoiceBoxItems()));
         TextField textField = new TextField();
         textField.setPromptText("filter by ...");
         Button submit = new Button("submit");
@@ -193,7 +284,19 @@ public class ProductsMenu extends Menu {
         });
         HBox filter = new HBox(10);
         filter.getChildren().addAll(choiceBox, textField, submit);
-        bar.getChildren().addAll(backButton, mainButtons, filter);
+        ChoiceBox choiceBox1 = new ChoiceBox(FXCollections.observableList(sortChoiceBoxItems()));
+        Button submitButton = new Button("submit sort");
+        submitButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                ProductsManager.sort((String) choiceBox1.getValue());
+                setSortScene();
+            }
+        });
+        HBox sort = new HBox(5);
+        sort.getChildren().addAll(choiceBox1, submitButton);
+
+        bar.getChildren().addAll(backButton, mainButtons, filter, sort);
         ArrayList<HBox> hBoxes = new ArrayList<>();
         hBoxes.add(bar);
         for (Product product : ProductsManager.getFilterProduct()) {
@@ -365,37 +468,36 @@ public class ProductsMenu extends Menu {
 //        }
 //    }
 
-    //bug
-    public void sorting() {
-        String command;
-        while (true) {
-            command = scanner.nextLine();
-            Pattern sortPattern = Pattern.compile("sort\\s(.+)");
-            Matcher sortMatcher = sortPattern.matcher(command);
-            if (command.matches("sort\\s(.+)")) {
-                sortMatcher.find();
-                ProductsManager.sort(sortMatcher.group(1));
-                System.out.println(ProductsManager.getSortProductsName(ProductsManager.getCurrentSort()));
-            } else if (command.equals("show available sort")) {
-                System.out.println(ProductsManager.showAvailableSort());
-            } else if (command.equals("current sort")) {
-                System.out.println(ProductsManager.getCurrentSort());
-            } else if (command.matches("disable sort")) {
-                try {
-                    ProductsManager.disableSort(ProductsManager.getCurrentSort());
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                }
-            } else if (command.matches("back")) {
-                break;
-            } else if (command.matches("help")) {
-                System.out.println("commands that you can enter are:");
-                System.out.println("sort [an available sort]");
-                System.out.println("current sort");
-                System.out.println("disable sort");
-                System.out.println("back");
-            }
-        }
-    }
+//    public void sorting() {
+//        String command;
+//        while (true) {
+//            command = scanner.nextLine();
+//            Pattern sortPattern = Pattern.compile("sort\\s(.+)");
+//            Matcher sortMatcher = sortPattern.matcher(command);
+//            if (command.matches("sort\\s(.+)")) {
+//                sortMatcher.find();
+//                ProductsManager.sort(sortMatcher.group(1));
+//                System.out.println(ProductsManager.getSortProductsName(ProductsManager.getCurrentSort()));
+//            } else if (command.equals("show available sort")) {
+//                System.out.println(ProductsManager.showAvailableSort());
+//            } else if (command.equals("current sort")) {
+//                System.out.println(ProductsManager.getCurrentSort());
+//            } else if (command.matches("disable sort")) {
+//                try {
+//                    ProductsManager.disableSort(ProductsManager.getCurrentSort());
+//                } catch (Exception e) {
+//                    System.out.println(e.getMessage());
+//                }
+//            } else if (command.matches("back")) {
+//                break;
+//            } else if (command.matches("help")) {
+//                System.out.println("commands that you can enter are:");
+//                System.out.println("sort [an available sort]");
+//                System.out.println("current sort");
+//                System.out.println("disable sort");
+//                System.out.println("back");
+//            }
+//        }
+//    }
 
 }
