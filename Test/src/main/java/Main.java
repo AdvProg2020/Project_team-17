@@ -12,8 +12,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        //CommandProcessor commandProcessor = new CommandProcessor();
-        //commandProcessor.runWithMenu();
         Menu.setWindow(window);
         MainMenu mainMenu = new MainMenu();
         mainMenu.show();

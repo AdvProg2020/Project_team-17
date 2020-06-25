@@ -120,7 +120,8 @@ public class ProductsMenu extends Menu {
             } catch (Exception e) {
             }
             ImageView imageView = new ImageView(image);
-            imageView.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            Button button = new Button("show product");
+            button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
                     handleProductPage(product);
@@ -129,7 +130,7 @@ public class ProductsMenu extends Menu {
             Label name = new Label(product.getName());
             Label price = new Label(product.getPrice() + "$");
             Label score = new Label("score: " + product.getPrice());
-            hBox.getChildren().addAll(imageView, name, price, score);
+            hBox.getChildren().addAll(imageView, name, price, score, button);
             hBoxes.add(hBox);
         }
         VBox vBox = new VBox(5);
@@ -227,7 +228,8 @@ public class ProductsMenu extends Menu {
             } catch (Exception e) {
             }
             ImageView imageView = new ImageView(image);
-            imageView.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            Button button = new Button("show product");
+            button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
                     handleProductPage(product);
@@ -236,7 +238,7 @@ public class ProductsMenu extends Menu {
             Label name = new Label(product.getName());
             Label price = new Label(product.getPrice() + "$");
             Label score = new Label("score: " + product.getPrice());
-            hBox.getChildren().addAll(imageView, name, price, score);
+            hBox.getChildren().addAll(imageView, name, price, score, button);
             hBoxes.add(hBox);
         }
         VBox vBox = new VBox(5);
@@ -333,7 +335,8 @@ public class ProductsMenu extends Menu {
             } catch (Exception ignored) {
             }
             ImageView imageView = new ImageView(image);
-            imageView.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            Button button = new Button("show product");
+            button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
                     handleProductPage(product);
@@ -342,7 +345,7 @@ public class ProductsMenu extends Menu {
             Label name = new Label(product.getName());
             Label price = new Label(product.getPrice() + "$");
             Label score = new Label("score: " + product.getPrice());
-            hBox.getChildren().addAll(imageView, name, price, score);
+            hBox.getChildren().addAll(imageView, name, price, score, button);
             hBoxes.add(hBox);
         }
         VBox vBox = new VBox(5);

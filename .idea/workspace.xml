@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="32618e29-8746-4d2a-8d73-d011168a9d97" name="Default Changelist" comment="">
+    <list default="true" id="32618e29-8746-4d2a-8d73-d011168a9d97" name="Default Changelist" comment="add fonts">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/ProductMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/ProductMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/Test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Test/Test.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Test/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/AccountMenus/ManagerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/AccountMenus/ManagerMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/AccountMenus/SellerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/AccountMenus/SellerMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/DiscountsMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/DiscountsMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/MainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/ProductsMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/ProductsMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/PurchasingProcessMenus/DiscountCodePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/PurchasingProcessMenus/DiscountCodePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/PurchasingProcessMenus/PaymentPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/PurchasingProcessMenus/PaymentPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/PurchasingProcessMenus/ReceivingInformationPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/PurchasingProcessMenus/ReceivingInformationPage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,6 +28,7 @@
       <list>
         <option value="Enum" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -44,14 +55,14 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Test/src/main/java" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../HW3/HW3p2" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
@@ -61,11 +72,11 @@
       <recent name="" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\kian\IdeaProjects\Project_team-17\project_AP\Project_team-17\Project_team-17\Project_team-17\Project_team-17\Test\src\main\java" />
+      <recent name="C:\Users\UX434FL\IdeaProjects\project\Test\src\main\java\Sounds" />
+      <recent name="C:\Users\UX434FL\IdeaProjects\project\Test\src\main\java\Fonts" />
       <recent name="C:\Users\UX434FL\IdeaProjects\17\Test\src\main\java\Images" />
       <recent name="C:\Users\UX434FL\IdeaProjects\AP_17_project\.idea" />
       <recent name="C:\Users\UX434FL\IdeaProjects\AP_17_project\Test\src\main\java\View" />
-      <recent name="C:\Users\UX434FL\IdeaProjects\AP_17_project\Test\src\main\java\Models" />
     </key>
   </component>
   <component name="RunManager">
@@ -118,99 +129,8 @@
       <workItem from="1591669653243" duration="130908000" />
       <workItem from="1592142666171" duration="6014000" />
       <workItem from="1592748160826" duration="463000" />
-      <workItem from="1593003119971" duration="2739000" />
-      <workItem from="1593006029988" duration="11354000" />
-    </task>
-    <task id="LOCAL-00027" summary="ProductsManager and ProductsMenu filtering done">
-      <created>1589583620830</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1589583620830</updated>
-    </task>
-    <task id="LOCAL-00028" summary="working on SellerMenu">
-      <created>1589634628845</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1589634628846</updated>
-    </task>
-    <task id="LOCAL-00029" summary="fix some methods in SellerMenu">
-      <created>1589634833375</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1589634833375</updated>
-    </task>
-    <task id="LOCAL-00030" summary="SellerAbilitiesManager done">
-      <created>1589635602808</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1589635602808</updated>
-    </task>
-    <task id="LOCAL-00031" summary="fixes in ProductsMenu">
-      <created>1589690650192</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1589690650192</updated>
-    </task>
-    <task id="LOCAL-00032" summary="DiscountsMenu clean">
-      <created>1589701137573</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1589701137573</updated>
-    </task>
-    <task id="LOCAL-00033" summary="fix some bugs in CustomerMenu and CartMenu">
-      <created>1589745628452</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1589745628452</updated>
-    </task>
-    <task id="LOCAL-00034" summary="handle logout in account menus">
-      <created>1589758192025</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1589758192025</updated>
-    </task>
-    <task id="LOCAL-00035" summary="fix seller and manager bugs">
-      <created>1589785214310</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1589785214310</updated>
-    </task>
-    <task id="LOCAL-00036" summary="xml and iml gson">
-      <created>1589785290193</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1589785290193</updated>
-    </task>
-    <task id="LOCAL-00037" summary="fix date">
-      <created>1589798211575</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1589798211575</updated>
-    </task>
-    <task id="LOCAL-00038" summary="fix some bugs">
-      <created>1589830261185</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1589830261185</updated>
-    </task>
-    <task id="LOCAL-00039" summary="fix lots of bugs">
-      <created>1589845062524</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1589845062524</updated>
+      <workItem from="1593003119971" duration="3375000" />
+      <workItem from="1593006545155" duration="41464000" />
     </task>
     <task id="LOCAL-00040" summary="fix bugs">
       <created>1589857916028</created>
@@ -429,74 +349,165 @@
       <option name="project" value="LOCAL" />
       <updated>1593005444830</updated>
     </task>
-    <task id="LOCAL-00071" summary="ReceivingInformationPage done">
-      <created>1593006149915</created>
+    <task id="LOCAL-00071" summary="ProductMenu fix">
+      <created>1593005909729</created>
       <option name="number" value="00071" />
       <option name="presentableId" value="LOCAL-00071" />
       <option name="project" value="LOCAL" />
-      <updated>1593006149915</updated>
+      <updated>1593005909729</updated>
     </task>
-    <task id="LOCAL-00072" summary="ManagerMenu debug">
-      <created>1593011874821</created>
+    <task id="LOCAL-00072" summary="cart button in customer menu fix">
+      <created>1593006732055</created>
       <option name="number" value="00072" />
       <option name="presentableId" value="LOCAL-00072" />
       <option name="project" value="LOCAL" />
-      <updated>1593011874821</updated>
+      <updated>1593006732055</updated>
     </task>
-    <task id="LOCAL-00073" summary="update pom.xml file">
-      <created>1593090814177</created>
+    <task id="LOCAL-00073" summary="seller menu off scene fix">
+      <created>1593007228069</created>
       <option name="number" value="00073" />
       <option name="presentableId" value="LOCAL-00073" />
       <option name="project" value="LOCAL" />
-      <updated>1593090814177</updated>
+      <updated>1593007228069</updated>
     </task>
-    <task id="LOCAL-00074" summary="add background music">
-      <created>1593091240062</created>
+    <task id="LOCAL-00074" summary="ManagerMenu users scene fix">
+      <created>1593007712339</created>
       <option name="number" value="00074" />
       <option name="presentableId" value="LOCAL-00074" />
       <option name="project" value="LOCAL" />
-      <updated>1593091240062</updated>
+      <updated>1593007712339</updated>
     </task>
-    <task id="LOCAL-00075" summary="MainMenu done">
-      <created>1593103900818</created>
+    <task id="LOCAL-00075" summary="manager menu/manage products">
+      <created>1593009358657</created>
       <option name="number" value="00075" />
       <option name="presentableId" value="LOCAL-00075" />
       <option name="project" value="LOCAL" />
-      <updated>1593103900818</updated>
+      <updated>1593009358657</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="handle bar menu">
+      <created>1593012417223</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1593012417224</updated>
+    </task>
+    <task id="LOCAL-00077" summary="handle top bar in some menus">
+      <created>1593014319696</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1593014319696</updated>
+    </task>
+    <task id="LOCAL-00078" summary="debug top bar for ProductsMenu and DiscountsMenu">
+      <created>1593031231170</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1593031231170</updated>
+    </task>
+    <task id="LOCAL-00079" summary="filter ProductsMenu">
+      <created>1593071112485</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1593071112485</updated>
+    </task>
+    <task id="LOCAL-00080" summary="view categories in products scene">
+      <created>1593071590765</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1593071590766</updated>
+    </task>
+    <task id="LOCAL-00081" summary="sort products">
+      <created>1593078671225</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1593078671225</updated>
+    </task>
+    <task id="LOCAL-00082" summary="ProductsMenu bar fix">
+      <created>1593079455378</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1593079455378</updated>
+    </task>
+    <task id="LOCAL-00083" summary="scene size changed">
+      <created>1593079840194</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1593079840194</updated>
+    </task>
+    <task id="LOCAL-00084" summary="debug sort">
+      <created>1593080363417</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1593080363417</updated>
+    </task>
+    <task id="LOCAL-00085" summary="fix sort for discount products">
+      <created>1593081057239</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1593081057239</updated>
+    </task>
+    <task id="LOCAL-00086" summary="sort and filter discount products">
+      <created>1593081522126</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1593081522126</updated>
+    </task>
+    <task id="LOCAL-00087" summary="debug null exception for buttons">
+      <created>1593085251742</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1593085251742</updated>
+    </task>
+    <task id="LOCAL-00088" summary="add fonts">
+      <created>1593087914605</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1593087914606</updated>
+    </task>
+    <option name="localTasksCounter" value="89" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="seller menu personal info" />
-    <MESSAGE value="seller add and edit product" />
-    <MESSAGE value="remove product request" />
-    <MESSAGE value="seller menu" />
-    <MESSAGE value="seller requests" />
-    <MESSAGE value="seller requests and change arraylist to list" />
-    <MESSAGE value="fix back button" />
-    <MESSAGE value="delete registration for manager" />
-    <MESSAGE value="manager personal info and manage category" />
-    <MESSAGE value="ManagerAbilitiesManager updates" />
-    <MESSAGE value="AccountsMenu done" />
-    <MESSAGE value="DiscountCodePage update" />
-    <MESSAGE value="RegisterSellerMenu update" />
-    <MESSAGE value="SellerAbilitiesManager update" />
     <MESSAGE value="start product menu graphic" />
     <MESSAGE value="dicount and discount controller fix for fx" />
     <MESSAGE value="PaymentPage fx" />
     <MESSAGE value="products menu first scene" />
     <MESSAGE value="discount menu first scene" />
     <MESSAGE value="handle payment page top bar" />
-    <MESSAGE value="ReceivingInformationPage done" />
-    <MESSAGE value="ManagerMenu debug" />
-    <MESSAGE value="update pom.xml file" />
-    <MESSAGE value="add background music" />
-    <MESSAGE value="MainMenu done" />
-    <option name="LAST_COMMIT_MESSAGE" value="MainMenu done" />
+    <MESSAGE value="ProductMenu fix" />
+    <MESSAGE value="cart button in customer menu fix" />
+    <MESSAGE value="seller menu off scene fix" />
+    <MESSAGE value="ManagerMenu users scene fix" />
+    <MESSAGE value="manager menu/manage products" />
+    <MESSAGE value="handle bar menu" />
+    <MESSAGE value="handle top bar in some menus" />
+    <MESSAGE value="debug top bar for ProductsMenu and DiscountsMenu" />
+    <MESSAGE value="filter ProductsMenu" />
+    <MESSAGE value="view categories at products scene" />
+    <MESSAGE value="view categories in products scene" />
+    <MESSAGE value="sort products" />
+    <MESSAGE value="ProductsMenu bar fix" />
+    <MESSAGE value="scene size changed" />
+    <MESSAGE value="debug sort" />
+    <MESSAGE value="fix sort for discount products" />
+    <MESSAGE value="sort and filter discount products" />
+    <MESSAGE value="debug null exception for buttons" />
+    <MESSAGE value="add fonts" />
+    <option name="LAST_COMMIT_MESSAGE" value="add fonts" />
   </component>
   <component name="WindowStateProjectService">
     <state x="233" y="0" key="#Project_Structure" timestamp="1589785759293">
@@ -508,24 +519,24 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="420" y="144" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.680@0.0.1280.680" timestamp="1586807983600" />
-    <state x="751" y="83" key="#com.intellij.ide.util.MemberChooser" timestamp="1592079381101">
+    <state x="751" y="83" key="#com.intellij.ide.util.MemberChooser" timestamp="1593080488058">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="751" y="83" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680/460.1080.1000.504@0.0.1280.680" timestamp="1587953827102" />
-    <state x="751" y="83" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1592079381101" />
+    <state x="751" y="83" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1593080488058" />
     <state x="801" y="93" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1586995828901" />
     <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1588275888120" />
-    <state x="618" y="301" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1593103810830">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="515" y="248" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1593004451966">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="515" y="248" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1280.680@0.0.1280.680" timestamp="1593004451966" />
     <state x="550" y="266" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1366.728@0.0.1366.728" timestamp="1592998403718" />
-    <state x="618" y="301" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1536.824@0.0.1536.824" timestamp="1593103810830" />
-    <state x="432" y="200" width="404" height="236" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1591819054009">
+    <state x="618" y="301" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1536.824@0.0.1536.824" timestamp="1589638319442" />
+    <state x="432" y="200" width="404" height="236" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1593009036298">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="432" y="200" width="417" height="287" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1280.680/460.1080.1000.504@0.0.1280.680" timestamp="1587970052701" />
-    <state x="432" y="200" width="404" height="236" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1280.680@0.0.1280.680" timestamp="1591819054009" />
+    <state x="432" y="200" width="404" height="236" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1280.680@0.0.1280.680" timestamp="1593009036298" />
     <state x="438" y="212" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1586812041182">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -539,41 +550,41 @@
     </state>
     <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1589857617230" />
     <state x="445" y="105" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1588110193951" />
-    <state x="395" y="14" key="CommitChangelistDialog2" timestamp="1593103899390">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="265" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1593005443009" />
-    <state x="425" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1593001247141" />
-    <state x="395" y="14" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1593103899390" />
-    <state x="421" y="67" key="FileChooserDialogImpl" timestamp="1592042438528">
+    <state x="265" y="0" key="CommitChangelistDialog2" timestamp="1593103842882">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="421" y="67" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1592042438528" />
+    <state x="265" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1593103842882" />
+    <state x="425" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1593001247141" />
+    <state x="401" y="14" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1592143129254" />
+    <state x="421" y="67" key="FileChooserDialogImpl" timestamp="1593094923530">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="421" y="67" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1593094923530" />
     <state x="505" y="81" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1588326132134" />
-    <state width="1493" height="221" key="GridCell.Tab.0.bottom" timestamp="1593099514339">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1237" height="2" key="GridCell.Tab.0.bottom" timestamp="1593105154972">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="2" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1592135225326" />
+    <state width="1237" height="2" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1593105154972" />
     <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1586996145625" />
-    <state width="1493" height="221" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1593099514339" />
-    <state width="1493" height="221" key="GridCell.Tab.0.center" timestamp="1593099514338">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1493" height="221" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1592435351278" />
+    <state width="1237" height="2" key="GridCell.Tab.0.center" timestamp="1593105154972">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="2" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1592135225325" />
+    <state width="1237" height="2" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1593105154972" />
     <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1586996145625" />
-    <state width="1493" height="221" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1593099514338" />
-    <state width="1493" height="221" key="GridCell.Tab.0.left" timestamp="1593099514338">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1493" height="221" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1592435351277" />
+    <state width="1237" height="2" key="GridCell.Tab.0.left" timestamp="1593105154972">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="2" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1592135225325" />
+    <state width="1237" height="2" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1593105154972" />
     <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1586996145625" />
-    <state width="1493" height="221" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1593099514338" />
-    <state width="1493" height="221" key="GridCell.Tab.0.right" timestamp="1593099514339">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1493" height="221" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1592435351277" />
+    <state width="1237" height="2" key="GridCell.Tab.0.right" timestamp="1593105154972">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="2" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1592135225325" />
+    <state width="1237" height="2" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1593105154972" />
     <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1586996145625" />
-    <state width="1493" height="221" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1593099514339" />
+    <state width="1493" height="221" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1592435351277" />
     <state width="1237" height="323" key="GridCell.Tab.1.bottom" timestamp="1589920866545">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -594,34 +605,29 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="171" y="0" key="Maven.ArtifactSearchDialog/0.0.1280.680@0.0.1280.680" timestamp="1591793625386" />
-    <state x="425" y="69" key="MultipleFileMergeDialog" timestamp="1593103648431">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="354" y="57" key="MultipleFileMergeDialog" timestamp="1593106341931">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="354" y="57" key="MultipleFileMergeDialog/0.0.1280.680@0.0.1280.680" timestamp="1593004351682" />
-    <state x="425" y="69" key="MultipleFileMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1593103648431" />
+    <state x="354" y="57" key="MultipleFileMergeDialog/0.0.1280.680@0.0.1280.680" timestamp="1593106341931" />
     <state x="445" y="52" key="RollbackChangesDialog" timestamp="1589788225336">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="445" y="52" key="RollbackChangesDialog/0.0.1280.680@0.0.1280.680" timestamp="1589788225336" />
-    <state x="277" y="0" key="SettingsEditor" timestamp="1593025139419">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="231" y="0" key="SettingsEditor" timestamp="1591794508691">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="231" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1591794508691" />
-    <state x="277" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1593025139419" />
+    <state x="277" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1588326789269" />
     <state width="498" height="446" key="SwitcherDM" timestamp="1589767285229">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1280.680@0.0.1280.680" timestamp="1589767285229" />
-    <state x="364" y="128" key="VCS.ChangeListViewerDialog" timestamp="1593090838729">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1593087938203">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="364" y="128" key="VCS.ChangeListViewerDialog/0.0.1536.824@0.0.1536.824" timestamp="1593090838729" />
-    <state x="280" y="90" key="Vcs.Push.Dialog.v2" timestamp="1593103945736">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1593005294903" />
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1593087938203" />
     <state x="249" y="80" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1593001403029" />
-    <state x="280" y="90" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1593103945736" />
+    <state x="280" y="90" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1593000505024" />
     <state x="414" y="209" key="com.intellij.ide.util.TipDialog" timestamp="1592999511554">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -633,41 +639,41 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="317" y="30" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1280.680/460.1080.1000.504@0.0.1280.680" timestamp="1587806117721" />
-    <state x="540" y="313" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1593103576239">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="450" y="258" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1593106393051">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="450" y="258" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1593004339476" />
+    <state x="450" y="258" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1593106393051" />
     <state x="480" y="277" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1592998962616" />
-    <state x="540" y="313" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1593103576239" />
+    <state x="540" y="313" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1592748225798" />
     <state x="193" y="77" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1589878981587">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="193" y="77" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1280.680@0.0.1280.680" timestamp="1589878981587" />
-    <state x="476" y="204" key="git4idea.merge.GitPullDialog" timestamp="1593103936365">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="397" y="168" key="git4idea.merge.GitPullDialog" timestamp="1593087928830">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="397" y="168" key="git4idea.merge.GitPullDialog/0.0.1280.680@0.0.1280.680" timestamp="1593005280403" />
+    <state x="397" y="168" key="git4idea.merge.GitPullDialog/0.0.1280.680@0.0.1280.680" timestamp="1593087928830" />
     <state x="423" y="180" key="git4idea.merge.GitPullDialog/0.0.1366.728@0.0.1366.728" timestamp="1593001272806" />
-    <state x="476" y="204" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1593103936365" />
-    <state x="109" y="44" key="new project wizard" timestamp="1593009948533">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="476" y="204" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1592143151948" />
+    <state x="91" y="0" key="new project wizard" timestamp="1591857448572">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="91" y="0" key="new project wizard/0.0.1280.680@0.0.1280.680" timestamp="1591857448572" />
-    <state x="109" y="44" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1593009948533" />
+    <state x="109" y="44" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1588275478876" />
     <state x="297" y="151" key="run.anything.popup" timestamp="1591985430188">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="297" y="151" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1591985430188" />
-    <state x="324" y="46" width="672" height="634" key="search.everywhere.popup" timestamp="1593005533849">
+    <state x="324" y="46" width="672" height="634" key="search.everywhere.popup" timestamp="1593005956236">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="324" y="46" width="672" height="634" key="search.everywhere.popup/0.0.1280.680/460.1080.1000.504@0.0.1280.680" timestamp="1587860318764" />
-    <state x="324" y="46" width="672" height="634" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1593005533849" />
+    <state x="324" y="46" width="672" height="634" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1593005956236" />
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1586993653870" />
     <state x="389" y="56" width="807" height="769" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1588111579702" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/AP17$Main.ic" NAME="Main Coverage Results" MODIFIED="1589786526354" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/17_test1594$Main.ic" NAME="Main Coverage Results" MODIFIED="1586993201582" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/AP17$Main.ic" NAME="Main Coverage Results" MODIFIED="1589786526354" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
