@@ -1,4 +1,4 @@
-package View.PurchasingProcessMenus;
+        package View.PurchasingProcessMenus;
 
 import Controller.AccountsManager.CustomerAbilitiesManager;
 import Models.DiscountCode;
@@ -13,6 +13,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 
 public class DiscountCodePage extends Menu {
     private static String discountCode = "";
@@ -47,7 +49,8 @@ public class DiscountCodePage extends Menu {
                 parentMenu.show();
             }
         });
-        Label title = new Label("discount code");
+        Text title = new Text("discount code");
+        title.setFont(Font.loadFont("file:src/main/java/Fonts/gangstergrotesk-bold.otf",28));
         pane.setTop(title);
         vBox.getChildren().addAll(back, title);
 
