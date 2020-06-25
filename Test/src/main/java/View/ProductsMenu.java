@@ -1,6 +1,8 @@
 package View;
 
 import Controller.ProductsManager;
+import Models.Accounts.Seller;
+import Models.Category;
 import Models.Enums.ProductEnum;
 import Models.Product;
 import javafx.collections.FXCollections;
@@ -33,6 +35,7 @@ public class ProductsMenu extends Menu {
 
     public void setProductsScene() {
         ScrollPane scrollPane = new ScrollPane();
+        Label notify = new Label();
         Button backButton = new Button("Back");
         HBox mainButtons = new HBox(3);
         mainButtons.setAlignment(Pos.TOP_RIGHT);
@@ -46,6 +49,7 @@ public class ProductsMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 parentMenu.show();
+                notify.setText("");
             }
         });
         ChoiceBox choiceBox = new ChoiceBox(FXCollections.observableList(filterChoiceBoxItems()));
@@ -55,21 +59,49 @@ public class ProductsMenu extends Menu {
         submit.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                String filter = (String) choiceBox.getValue();
-                String name = textField.getText();
-                filter(filter, name);
-                setFilterScene();
+                try {
+                    String filter = (String) choiceBox.getValue();
+                    String name = textField.getText();
+                    if (filter != null) {
+                        if (filter.equals("category")) {
+                            Category category = Category.getCategoryByName(textField.getText());
+                            if (category != null) {
+                                filter(filter, name);
+                                setFilterScene();
+                            } else {
+                                notify.setText("invalid category name");
+                                notify.setStyle("-fx-text-fill: #ff4f59");
+                            }
+                        } else if (filter.equals("seller")) {
+                            Seller seller = Seller.getSellerByName(textField.getText());
+                            if (seller != null) {
+                                filter(filter, name);
+                                setFilterScene();
+                            } else {
+                                notify.setText("invalid seller name");
+                                notify.setStyle("-fx-text-fill: #ff4f59");
+                            }
+                        } else {
+                            filter(filter, name);
+                            setFilterScene();
+                        }
+                    }
+                } catch (Exception ignored) {
+                }
             }
         });
         HBox filter = new HBox(10);
-        filter.getChildren().addAll(choiceBox, textField, submit);
+        filter.getChildren().addAll(choiceBox, textField, submit, notify);
         ChoiceBox choiceBox1 = new ChoiceBox(FXCollections.observableList(sortChoiceBoxItems()));
         Button submitButton = new Button("submit sort");
         submitButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                ProductsManager.sort((String) choiceBox1.getValue());
-                setSortScene();
+                try {
+                    ProductsManager.sort((String) choiceBox1.getValue());
+                    setSortScene();
+                } catch (Exception ignored) {
+                }
             }
         });
         HBox sort = new HBox(5);
@@ -107,81 +139,9 @@ public class ProductsMenu extends Menu {
         Menu.window.setScene(scene);
     }
 
-    public void handleProductPage(Product product) {
-        ProductMenu productMenu = new ProductMenu(this, product);
-        productMenu.show();
-    }
-
-
-    public void addActionForMainButtons(Button accountsButton, Button discountButton, Button logoutButton) {
-        accountsButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                handleAccountsMenu();
-            }
-        });
-        discountButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                handleDiscountsMenu();
-            }
-        });
-        logoutButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                handleLogout();
-            }
-        });
-    }
-
-    public void handleProductsMenu() {
-        ProductsMenu productsMenu = new ProductsMenu(this);
-        productsMenu.show();
-    }
-
-    public void handleDiscountsMenu() {
-        DiscountsMenu discountsMenu = new DiscountsMenu(this);
-        discountsMenu.show();
-    }
-
-    public void handleAccountsMenu() {
-        AccountsMenu accountsMenu = new AccountsMenu(this);
-        accountsMenu.show();
-    }
-
-    public void handleLogout() {
-        if (RegisterCustomerMenu.getCurrentCustomer() != null) {
-            RegisterCustomerMenu.setCurrentCustomer(null);
-        } else if (RegisterSellerMenu.getCurrentSeller() != null) {
-            RegisterSellerMenu.setCurrentSeller(null);
-        } else if (RegisterManagerMenu.getCurrentManager() != null) {
-            RegisterManagerMenu.setCurrentManager(null);
-        }
-        MainMenu mainMenu = new MainMenu();
-        mainMenu.show();
-    }
-
-    private ArrayList<String> filterChoiceBoxItems() {
-        ArrayList<String> choiceBoxItems = new ArrayList<>();
-        choiceBoxItems.add("name");
-        choiceBoxItems.add("category");
-        choiceBoxItems.add("price");
-        choiceBoxItems.add("seller");
-        choiceBoxItems.add("availability");
-        choiceBoxItems.add("company name");
-        choiceBoxItems.add("special feature");
-        return choiceBoxItems;
-    }
-
-    private ArrayList<String> sortChoiceBoxItems() {
-        ArrayList<String> choiceBoxItems = new ArrayList<>();
-        choiceBoxItems.add("price");
-        choiceBoxItems.add("score");
-        return choiceBoxItems;
-    }
-
     public void setFilterScene() {
         ScrollPane scrollPane = new ScrollPane();
+        Label notify = new Label();
         Button backButton = new Button("Back");
         HBox mainButtons = new HBox(3);
         mainButtons.setAlignment(Pos.TOP_RIGHT);
@@ -196,6 +156,7 @@ public class ProductsMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 parentMenu.show();
+                notify.setText("");
             }
         });
         ChoiceBox choiceBox = new ChoiceBox(FXCollections.observableList(filterChoiceBoxItems()));
@@ -205,21 +166,50 @@ public class ProductsMenu extends Menu {
         submit.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                String filter = (String) choiceBox.getValue();
-                String name = textField.getText();
-                filter(filter, name);
-                setFilterScene();
+                try {
+                    String filter = (String) choiceBox.getValue();
+                    String name = textField.getText();
+                    if (filter != null) {
+                        if (filter.equals("category")) {
+                            Category category = Category.getCategoryByName(textField.getText());
+                            if (category != null) {
+                                filter(filter, name);
+                                setFilterScene();
+                            } else {
+                                notify.setText("invalid category name");
+                                notify.setStyle("-fx-text-fill: #ff4f59");
+                            }
+                        } else if (filter.equals("seller")) {
+                            Seller seller = Seller.getSellerByName(textField.getText());
+                            if (seller != null) {
+                                filter(filter, name);
+                                setFilterScene();
+                            } else {
+                                notify.setText("invalid seller name");
+                                notify.setStyle("-fx-text-fill: #ff4f59");
+                            }
+                        } else {
+                            filter(filter, name);
+                            setFilterScene();
+                        }
+                    }
+                } catch (Exception ignored) {
+                }
             }
         });
+
         HBox filter = new HBox(10);
-        filter.getChildren().addAll(choiceBox, textField, submit);
+        filter.getChildren().addAll(choiceBox, textField, submit, notify);
         ChoiceBox choiceBox1 = new ChoiceBox(FXCollections.observableList(sortChoiceBoxItems()));
         Button submitButton = new Button("submit sort");
         submitButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                ProductsManager.sort((String) choiceBox1.getValue());
-                setSortScene();
+                try {
+                    ProductsManager.sort((String) choiceBox1.getValue());
+                    setSortScene();
+                } catch (Exception ignored) {
+                }
             }
         });
         HBox sort = new HBox(5);
@@ -258,6 +248,7 @@ public class ProductsMenu extends Menu {
 
     public void setSortScene() {
         ScrollPane scrollPane = new ScrollPane();
+        Label notify = new Label();
         Button backButton = new Button("Back");
         HBox mainButtons = new HBox(3);
         mainButtons.setAlignment(Pos.TOP_RIGHT);
@@ -272,6 +263,7 @@ public class ProductsMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 parentMenu.show();
+                notify.setText("");
             }
         });
         ChoiceBox choiceBox = new ChoiceBox(FXCollections.observableList(filterChoiceBoxItems()));
@@ -281,21 +273,49 @@ public class ProductsMenu extends Menu {
         submit.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                String filter = (String) choiceBox.getValue();
-                String name = textField.getText();
-                filter(filter, name);
-                setFilterScene();
+                try {
+                    String filter = (String) choiceBox.getValue();
+                    String name = textField.getText();
+                    if (filter != null) {
+                        if (filter.equals("category")) {
+                            Category category = Category.getCategoryByName(textField.getText());
+                            if (category != null) {
+                                filter(filter, name);
+                                setFilterScene();
+                            } else {
+                                notify.setText("invalid category name");
+                                notify.setStyle("-fx-text-fill: #ff4f59");
+                            }
+                        } else if (filter.equals("seller")) {
+                            Seller seller = Seller.getSellerByName(textField.getText());
+                            if (seller != null) {
+                                filter(filter, name);
+                                setFilterScene();
+                            } else {
+                                notify.setText("invalid seller name");
+                                notify.setStyle("-fx-text-fill: #ff4f59");
+                            }
+                        } else {
+                            filter(filter, name);
+                            setFilterScene();
+                        }
+                    }
+                } catch (Exception ignored) {
+                }
             }
         });
         HBox filter = new HBox(10);
-        filter.getChildren().addAll(choiceBox, textField, submit);
+        filter.getChildren().addAll(choiceBox, textField, submit, notify);
         ChoiceBox choiceBox1 = new ChoiceBox(FXCollections.observableList(sortChoiceBoxItems()));
         Button submitButton = new Button("submit sort");
         submitButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                ProductsManager.sort((String) choiceBox1.getValue());
-                setSortScene();
+                try {
+                    ProductsManager.sort((String) choiceBox1.getValue());
+                    setSortScene();
+                } catch (Exception ignored) {
+                }
             }
         });
         HBox sort = new HBox(5);
@@ -310,7 +330,7 @@ public class ProductsMenu extends Menu {
             try {
                 FileInputStream inputStream = new FileInputStream(product.getPath());
                 image = new Image(inputStream);
-            } catch (Exception e) {
+            } catch (Exception ignored) {
             }
             ImageView imageView = new ImageView(image);
             imageView.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
@@ -420,6 +440,79 @@ public class ProductsMenu extends Menu {
         } else if (type.equals("brand")) {
             filterByBrand(name);
         }
+    }
+
+    public void handleProductPage(Product product) {
+        ProductMenu productMenu = new ProductMenu(this, product);
+        productMenu.show();
+    }
+
+
+    public void addActionForMainButtons(Button accountsButton, Button discountButton, Button logoutButton) {
+        accountsButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                handleAccountsMenu();
+            }
+        });
+        discountButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                handleDiscountsMenu();
+            }
+        });
+        logoutButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                handleLogout();
+            }
+        });
+    }
+
+    public void handleProductsMenu() {
+        ProductsMenu productsMenu = new ProductsMenu(this);
+        productsMenu.show();
+    }
+
+    public void handleDiscountsMenu() {
+        DiscountsMenu discountsMenu = new DiscountsMenu(this);
+        discountsMenu.show();
+    }
+
+    public void handleAccountsMenu() {
+        AccountsMenu accountsMenu = new AccountsMenu(this);
+        accountsMenu.show();
+    }
+
+    public void handleLogout() {
+        if (RegisterCustomerMenu.getCurrentCustomer() != null) {
+            RegisterCustomerMenu.setCurrentCustomer(null);
+        } else if (RegisterSellerMenu.getCurrentSeller() != null) {
+            RegisterSellerMenu.setCurrentSeller(null);
+        } else if (RegisterManagerMenu.getCurrentManager() != null) {
+            RegisterManagerMenu.setCurrentManager(null);
+        }
+        MainMenu mainMenu = new MainMenu();
+        mainMenu.show();
+    }
+
+    private ArrayList<String> filterChoiceBoxItems() {
+        ArrayList<String> choiceBoxItems = new ArrayList<>();
+        choiceBoxItems.add("name");
+        choiceBoxItems.add("category");
+        choiceBoxItems.add("price");
+        choiceBoxItems.add("seller");
+        choiceBoxItems.add("availability");
+        choiceBoxItems.add("company name");
+        choiceBoxItems.add("special feature");
+        return choiceBoxItems;
+    }
+
+    private ArrayList<String> sortChoiceBoxItems() {
+        ArrayList<String> choiceBoxItems = new ArrayList<>();
+        choiceBoxItems.add("price");
+        choiceBoxItems.add("score");
+        return choiceBoxItems;
     }
 
 

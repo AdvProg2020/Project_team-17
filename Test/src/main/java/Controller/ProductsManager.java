@@ -36,6 +36,7 @@ public class ProductsManager {
     public static void filterByCategory(String categoryName) {
         Category category = Category.getCategoryByName(categoryName);
         filterProduct.removeIf(product -> !(product.getCategory().equals(category)));
+
     }
 
     public static void disableFilterByCategory(String categoryName) {
@@ -59,9 +60,10 @@ public class ProductsManager {
         }
     }
 
-    public static void filterBySeller(String sellerName) {
+    public static void filterBySeller(String sellerName)   {
         Seller seller = Seller.getSellerByName(sellerName);
         filterProduct.removeIf(product -> !(product.getSeller().equals(seller)));
+
     }
 
     public static void disableFilterBySeller(String sellerName) {
