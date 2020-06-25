@@ -15,6 +15,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 
 import java.io.FileInputStream;
 import java.util.ArrayList;
@@ -33,17 +35,30 @@ public class CartMenu extends Menu {
     public void setCartScene() {
         ScrollPane scrollPane = new ScrollPane();
         scrollPane.setPadding(new Insets(25, 25, 25, 25));
+        String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
+                "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
+                + "linear-gradient(#cdded5 0%, #f6f6f6 50%);" +
+                " -fx-background-radius: 8,7,6; " +
+                "-fx-background-insets: 0,1,2; " +
+                "-fx-text-fill: #3193ff;"
+                + "-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); " +
+                "-fx-font-size: 1.2em; " +
+                "-fx-padding: 4px;";
         Button backButton = new Button("Back");
+        backButton.setStyle(style);
         HBox mainButtons = new HBox(3);
         mainButtons.setAlignment(Pos.TOP_RIGHT);
         Button accountsButton = new Button("Accounts");
         Button productButton = new Button("Products");
         Button discountButton = new Button("Discounts");
         Button logoutButton = new Button("Logout");
+        accountsButton.setStyle(style);
+        productButton.setStyle(style);
+        discountButton.setStyle(style);
+        logoutButton.setStyle(style);
         addActionForMainButtons(accountsButton, productButton, discountButton, logoutButton);
         mainButtons.getChildren().addAll(accountsButton, productButton, discountButton, logoutButton);
         HBox bar = new HBox(30);
-        //TODO check spacing
         bar.getChildren().addAll(backButton, mainButtons);
         backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
@@ -64,8 +79,9 @@ public class CartMenu extends Menu {
             ImageView imageView = new ImageView(image);
             Label name = new Label(product.getName());
             int numberOfProduct = CartManager.numberOfProducts(RegisterCustomerMenu.getCurrentCustomer(), product);
-            Label number = new Label(Integer.toString(numberOfProduct));
-            Label price = new Label("price per one: " + product.getPrice() + " total price: " + product.getPrice() * numberOfProduct);
+            Text text = new Text("Number: " + numberOfProduct + " Price per one: " + product.getPrice() + " Total price: "
+                    + product.getPrice() * numberOfProduct);
+            text.setFont(Font.loadFont("file:src/main/java/Fonts/FiraSans-Medium.otf", 22));
             Image image1 = null;
             try {
                 FileInputStream inputStream1 = new FileInputStream("C:\\Users\\UX434FL\\IdeaProjects\\AP17\\Test\\src\\main\\java\\Images\\Plus.png");
@@ -94,13 +110,15 @@ public class CartMenu extends Menu {
                     CartManager.decreaseProduct(RegisterCustomerMenu.getCurrentCustomer(), product);
                 }
             });
-            hBox.getChildren().addAll(imageView, name, number, price, increase, decrease);
+            hBox.getChildren().addAll(imageView, name, text, increase, decrease);
             hBoxes.add(hBox);
         }
         VBox vBox = new VBox(5);
         vBox.getChildren().addAll(hBoxes);
-        Label totalCartPrice = new Label("total price: " + CartManager.showTotalPriceOfCart(RegisterCustomerMenu.getCurrentCustomer()));
+        Text totalCartPrice = new Text("Total price: " + CartManager.showTotalPriceOfCart(RegisterCustomerMenu.getCurrentCustomer()));
+        totalCartPrice.setFont(Font.loadFont("file:src/main/java/Fonts/FiraSans-Medium.otf", 28));
         Button purchase = new Button("Purchase");
+        purchase.setStyle(style);
         purchase.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -110,7 +128,7 @@ public class CartMenu extends Menu {
         VBox vBox1 = new VBox(5);
         vBox1.getChildren().addAll(vBox, totalCartPrice, purchase);
         scrollPane.setContent(vBox1);
-        Scene scene = new Scene(scrollPane, 600, 600);
+        Scene scene = new Scene(scrollPane, 1270, 650);
         Menu.window.setScene(scene);
     }
 
@@ -145,6 +163,7 @@ public class CartMenu extends Menu {
             }
         });
     }
+
     public void handleProductsMenu() {
         ProductsMenu productsMenu = new ProductsMenu(this);
         productsMenu.show();
