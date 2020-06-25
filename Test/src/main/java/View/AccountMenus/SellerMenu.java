@@ -1,4 +1,4 @@
-        package View.AccountMenus;
+package View.AccountMenus;
 
 import Controller.AccountsManager.SellerAbilitiesManager;
 import Models.Category;
@@ -224,6 +224,8 @@ public class SellerMenu extends Menu {
                 alert.setHeaderText("discount information");
                 String s = SellerAbilitiesManager.showDiscountInfo(listView.getSelectionModel().getSelectedItem());
                 alert.setContentText(s);
+                ButtonType buttonType = new ButtonType("Exit", ButtonBar.ButtonData.CANCEL_CLOSE);
+                alert.getButtonTypes().setAll(buttonType);
                 alert.show();
             }
         });

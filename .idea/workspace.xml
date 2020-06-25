@@ -1,19 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="32618e29-8746-4d2a-8d73-d011168a9d97" name="Default Changelist" comment="add fonts">
+    <list default="true" id="32618e29-8746-4d2a-8d73-d011168a9d97" name="Default Changelist" comment="update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/Test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Test/Test.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Test/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/AccountMenus/CustomerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/AccountMenus/CustomerMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/AccountMenus/ManagerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/AccountMenus/ManagerMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/AccountMenus/SellerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/AccountMenus/SellerMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/DiscountsMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/DiscountsMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/MainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/ProductsMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/ProductsMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/PurchasingProcessMenus/DiscountCodePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/PurchasingProcessMenus/DiscountCodePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/PurchasingProcessMenus/PaymentPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/PurchasingProcessMenus/PaymentPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/PurchasingProcessMenus/ReceivingInformationPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/PurchasingProcessMenus/ReceivingInformationPage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,14 +122,7 @@
       <workItem from="1592142666171" duration="6014000" />
       <workItem from="1592748160826" duration="463000" />
       <workItem from="1593003119971" duration="3375000" />
-      <workItem from="1593006545155" duration="41464000" />
-    </task>
-    <task id="LOCAL-00040" summary="fix bugs">
-      <created>1589857916028</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1589857916028</updated>
+      <workItem from="1593006545155" duration="42843000" />
     </task>
     <task id="LOCAL-00041" summary="fix bugs">
       <created>1589868469760</created>
@@ -475,14 +460,20 @@
       <option name="project" value="LOCAL" />
       <updated>1593087914606</updated>
     </task>
-    <option name="localTasksCounter" value="89" />
+    <task id="LOCAL-00089" summary="update">
+      <created>1593106488122</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1593106488123</updated>
+    </task>
+    <option name="localTasksCounter" value="90" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="start product menu graphic" />
     <MESSAGE value="dicount and discount controller fix for fx" />
     <MESSAGE value="PaymentPage fx" />
     <MESSAGE value="products menu first scene" />
@@ -507,7 +498,8 @@
     <MESSAGE value="sort and filter discount products" />
     <MESSAGE value="debug null exception for buttons" />
     <MESSAGE value="add fonts" />
-    <option name="LAST_COMMIT_MESSAGE" value="add fonts" />
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
   <component name="WindowStateProjectService">
     <state x="233" y="0" key="#Project_Structure" timestamp="1589785759293">
@@ -550,10 +542,10 @@
     </state>
     <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1589857617230" />
     <state x="445" y="105" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1588110193951" />
-    <state x="265" y="0" key="CommitChangelistDialog2" timestamp="1593103842882">
+    <state x="265" y="0" key="CommitChangelistDialog2" timestamp="1593106699426">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="265" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1593103842882" />
+    <state x="265" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1593106699426" />
     <state x="425" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1593001247141" />
     <state x="401" y="14" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1592143129254" />
     <state x="421" y="67" key="FileChooserDialogImpl" timestamp="1593094923530">
@@ -622,10 +614,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1280.680@0.0.1280.680" timestamp="1589767285229" />
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1593087938203">
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1593106631839">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1593087938203" />
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1593106631839" />
     <state x="249" y="80" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1593001403029" />
     <state x="280" y="90" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1593000505024" />
     <state x="414" y="209" key="com.intellij.ide.util.TipDialog" timestamp="1592999511554">
@@ -649,10 +641,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="193" y="77" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1280.680@0.0.1280.680" timestamp="1589878981587" />
-    <state x="397" y="168" key="git4idea.merge.GitPullDialog" timestamp="1593087928830">
+    <state x="397" y="168" key="git4idea.merge.GitPullDialog" timestamp="1593106626506">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="397" y="168" key="git4idea.merge.GitPullDialog/0.0.1280.680@0.0.1280.680" timestamp="1593087928830" />
+    <state x="397" y="168" key="git4idea.merge.GitPullDialog/0.0.1280.680@0.0.1280.680" timestamp="1593106626506" />
     <state x="423" y="180" key="git4idea.merge.GitPullDialog/0.0.1366.728@0.0.1366.728" timestamp="1593001272806" />
     <state x="476" y="204" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1592143151948" />
     <state x="91" y="0" key="new project wizard" timestamp="1591857448572">

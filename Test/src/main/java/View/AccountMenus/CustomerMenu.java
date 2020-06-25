@@ -182,7 +182,6 @@ public class CustomerMenu extends Menu {
         Menu.window.setScene(scene);
     }
 
-//TODO baayd buylog bezanim check konim bebinim kar mikone alert box ya na
 
     public void setViewOrdersScene() {
         BorderPane pane = new BorderPane();
@@ -203,10 +202,11 @@ public class CustomerMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 Alert alert = new Alert(Alert.AlertType.NONE);
-                //TODO mitonim alert type ro information bezarim
                 alert.setTitle("show order");
                 alert.setHeaderText("buy log information");
                 String s = CustomerAbilitiesManager.showOrder(listView.getSelectionModel().getSelectedItem());
+                ButtonType buttonType = new ButtonType("Exit", ButtonBar.ButtonData.CANCEL_CLOSE);
+                alert.getButtonTypes().setAll(buttonType);
                 alert.setContentText(s);
                 alert.show();
             }

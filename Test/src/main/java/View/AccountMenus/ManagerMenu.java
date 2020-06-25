@@ -233,11 +233,12 @@ public class ManagerMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 Alert alert = new Alert(Alert.AlertType.NONE);
-                //TODO mitonim alert type ro information bezarim
                 alert.setTitle("show user info");
                 alert.setHeaderText("user information");
                 String s = ManagerAbilitiesManager.viewAccountByUsername(listView.getSelectionModel().getSelectedItem());
                 alert.setContentText(s);
+                ButtonType buttonType = new ButtonType("Exit", ButtonBar.ButtonData.CANCEL_CLOSE);
+                alert.getButtonTypes().setAll(buttonType);
                 alert.show();
                 notify.setText("");
             }
@@ -367,6 +368,8 @@ public class ManagerMenu extends Menu {
                 alert.setHeaderText("discount code information");
                 String s = ManagerAbilitiesManager.viewDiscountCode(listView.getSelectionModel().getSelectedItem());
                 alert.setContentText(s);
+                ButtonType buttonType = new ButtonType("Exit", ButtonBar.ButtonData.CANCEL_CLOSE);
+                alert.getButtonTypes().setAll(buttonType);
                 alert.show();
                 notify.setText("");
             }
@@ -475,7 +478,7 @@ public class ManagerMenu extends Menu {
             public void handle(MouseEvent mouseEvent) {
                 String s = customersName.getText();
                 String str[] = s.split(" ");
-                List<String> names = new ArrayList<>();
+                List<String> names;
                 names = Arrays.asList(str);
                 ManagerAbilitiesManager.createDiscountCode(ID.getText(), startDate.getText(), endDate.getText(), discountPercent.getText(), max.getText(), Integer.parseInt(count.getText()), names);
                 notify.setStyle("-fx-text-fill: #3193ff");
@@ -515,11 +518,12 @@ public class ManagerMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 Alert alert = new Alert(Alert.AlertType.NONE);
-                //TODO mitonim alert type ro information bezarim
                 alert.setTitle("show user info");
                 alert.setHeaderText("user information");
                 String s = ManagerAbilitiesManager.showDetailsOfRequest(listView.getSelectionModel().getSelectedItem());
                 alert.setContentText(s);
+                ButtonType buttonType = new ButtonType("Exit", ButtonBar.ButtonData.CANCEL_CLOSE);
+                alert.getButtonTypes().setAll(buttonType);
                 alert.show();
                 notify.setText("");
             }
