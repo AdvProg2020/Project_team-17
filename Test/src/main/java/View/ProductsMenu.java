@@ -304,7 +304,7 @@ public class ProductsMenu extends Menu {
         bar.getChildren().addAll(backButton, mainButtons, filter, sort);
         ArrayList<HBox> hBoxes = new ArrayList<>();
         hBoxes.add(bar);
-        for (Product product : ProductsManager.getFilterProduct()) {
+        for (Product product : ProductsManager.getSortProducts()) {
             HBox hBox = new HBox(10);
             Image image = null;
             try {

@@ -13,7 +13,7 @@ import java.util.Comparator;
 public class ProductsManager {
     private static ArrayList<Product> filterProduct = new ArrayList<>(Product.getAllProducts());
     private static ArrayList<Product> sortProducts = new ArrayList<>(Product.getAllProducts());
-    private static String currentSort = "visited time";
+    private static String currentSort;
 
     public static ArrayList<Product> showProducts() {
         return Product.getAllProducts();
@@ -126,7 +126,7 @@ public class ProductsManager {
             currentSort = "score";
             sortProducts.sort(Comparator.comparing(o -> Double.toString(o.getAverageScore())));
         } else if (sortType.equals("price")) {
-            currentSort = "visited time";
+            currentSort = "price";
             sortProducts.sort(Comparator.comparing(o -> Double.toString(o.getPrice())));
         }
         return sortProducts;
