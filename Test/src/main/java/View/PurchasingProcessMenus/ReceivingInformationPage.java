@@ -31,12 +31,25 @@ public class ReceivingInformationPage extends Menu {
     public void setReceivingInfoScene() {
         BorderPane pane = new BorderPane();
         pane.setPadding(new Insets(25, 25, 25, 25));
+        String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
+                "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
+                + "linear-gradient(#cdded5 0%, #f6f6f6 50%);" +
+                " -fx-background-radius: 8,7,6; " +
+                "-fx-background-insets: 0,1,2; " +
+                "-fx-text-fill: #3193ff;"
+                + "-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); " +
+                "-fx-font-size: 1.2em; " +
+                "-fx-padding: 4px;";
         HBox mainButtons = new HBox(3);
         mainButtons.setAlignment(Pos.TOP_RIGHT);
         Button accountsButton = new Button("Accounts");
         Button productButton = new Button("Products");
         Button discountButton = new Button("Discounts");
         Button logoutButton = new Button("Logout");
+        accountsButton.setStyle(style);
+        productButton.setStyle(style);
+        discountButton.setStyle(style);
+        logoutButton.setStyle(style);
         addActionForMainButtons(accountsButton, productButton, discountButton, logoutButton);
         mainButtons.getChildren().addAll(accountsButton, productButton, discountButton, logoutButton);
         pane.setTop(mainButtons);
@@ -44,16 +57,19 @@ public class ReceivingInformationPage extends Menu {
         VBox vBox = new VBox(10);
         vBox.setAlignment(Pos.TOP_LEFT);
         Button back = new Button("Back");
+        back.setStyle(style);
         Text title = new Text("Receiving information to continue purchasing");
-        title.setFont(Font.loadFont("file:src/main/java/Fonts/gangstergrotesk-bold.otf",28));
+        title.setFont(Font.loadFont("file:src/main/java/Fonts/gangstergrotesk-bold.otf", 28));
         VBox vBox1 = new VBox(10);
         TextField address = new TextField();
         address.setPromptText("address");
+        address.setStyle(style);
 
         TextField phoneNumber = new TextField();
         phoneNumber.setPromptText("phone number");
-
+        phoneNumber.setStyle(style);
         Button next = new Button("next");
+        next.setStyle(style);
         next.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -76,7 +92,7 @@ public class ReceivingInformationPage extends Menu {
         pane.setLeft(vBox);
         vBox1.getChildren().addAll(title, address, phoneNumber, next);
         pane.setCenter(vBox1);
-        Scene scene = new Scene(pane, 400, 400);
+        Scene scene = new Scene(pane, 500, 500);
         Menu.window.setScene(scene);
     }
 

@@ -29,12 +29,25 @@ public class PaymentPage extends Menu {
     public void setPaymentScene() {
         BorderPane pane = new BorderPane();
         pane.setPadding(new Insets(25, 25, 25, 25));
+        String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
+                "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
+                + "linear-gradient(#cdded5 0%, #f6f6f6 50%);" +
+                " -fx-background-radius: 8,7,6; " +
+                "-fx-background-insets: 0,1,2; " +
+                "-fx-text-fill: #3193ff;"
+                + "-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); " +
+                "-fx-font-size: 1.2em; " +
+                "-fx-padding: 4px;";
         HBox mainButtons = new HBox(3);
         mainButtons.setAlignment(Pos.TOP_RIGHT);
         Button accountsButton = new Button("Accounts");
         Button productButton = new Button("Products");
         Button discountButton = new Button("Discounts");
         Button logoutButton = new Button("Logout");
+        accountsButton.setStyle(style);
+        productButton.setStyle(style);
+        discountButton.setStyle(style);
+        logoutButton.setStyle(style);
         addActionForMainButtons(accountsButton, productButton, discountButton, logoutButton);
         mainButtons.getChildren().addAll(accountsButton, productButton, discountButton, logoutButton);
         pane.setTop(mainButtons);
@@ -42,19 +55,22 @@ public class PaymentPage extends Menu {
         VBox vBox = new VBox(10);
         vBox.setAlignment(Pos.TOP_LEFT);
         Button back = new Button("Back");
+        back.setStyle(style);
         Text title = new Text("YOUR BILL , if you are sure click done");
-        title.setFont(Font.loadFont("file:src/main/java/Fonts/gangstergrotesk-bold.otf",28));
+        title.setFont(Font.loadFont("file:src/main/java/Fonts/gangstergrotesk-bold.otf", 28));
         VBox vBox1 = new VBox(10);
-        Label totalPrice;
+        Text totalPrice;
         if (DiscountCodePage.getCodeOfDiscountCode() != null) {
-            totalPrice = new Label("total price with your discount code is going to be:" + "\n" +
+            totalPrice = new Text("total price with your discount code is going to be:" + "\n" +
                     CartManager.showTotalPriceOfCartIncludingDiscountCode(RegisterCustomerMenu.getCurrentCustomer(), DiscountCodePage.getDiscountCode()));
         } else {
-            totalPrice = new Label("total price is going to be:" + "\n" +
+            totalPrice = new Text("total price is going to be:" + "\n" +
                     CartManager.showTotalPriceOfCart(RegisterCustomerMenu.getCurrentCustomer()));
+            totalPrice.setFont(Font.loadFont("file:src/main/java/Fonts/Titillium-Semibold.otf",28));
         }
 
         Button done = new Button("Done");
+        done.setStyle(style);
         Label notify = new Label();
         done.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
@@ -71,7 +87,7 @@ public class PaymentPage extends Menu {
         pane.setLeft(vBox);
         vBox1.getChildren().addAll(title, totalPrice, done, notify);
         pane.setCenter(vBox1);
-        Scene scene = new Scene(pane, 400, 400);
+        Scene scene = new Scene(pane, 500, 500);
         Menu.window.setScene(scene);
 
     }
