@@ -1,4 +1,4 @@
-package View.AccountMenus;
+        package View.AccountMenus;
 
 import Controller.AccountsManager.ManagerAbilitiesManager;
 import Controller.RegisterAndLoginManager;
@@ -94,7 +94,7 @@ public class ManagerMenu extends Menu {
                 setEditScene();
             }
         });
-        vBox.getChildren().addAll(backButton, manageUsers, manageProducts, manageDiscountCodes, manageDiscountCodes, manageCategories, editButton);
+        vBox.getChildren().addAll(backButton, manageUsers, manageProducts, manageDiscountCodes, manageRequests,manageCategories, editButton);
         pane.setLeft(vBox);
         VBox vBox1 = new VBox(10);
         vBox1.setAlignment(Pos.CENTER);
@@ -164,6 +164,7 @@ public class ManagerMenu extends Menu {
         MainMenu mainMenu = new MainMenu();
         mainMenu.show();
     }
+
     public void setEditScene() {
         BorderPane pane = new BorderPane();
         VBox vBox = new VBox(5);
@@ -259,6 +260,7 @@ public class ManagerMenu extends Menu {
         Scene scene = new Scene(pane, 600, 600);
         Menu.window.setScene(scene);
     }
+
     public void setAddManagerScene() {
         BorderPane pane = new BorderPane();
         Label notify = new Label();
@@ -434,6 +436,7 @@ public class ManagerMenu extends Menu {
         Scene scene = new Scene(pane, 350, 350);
         Menu.window.setScene(scene);
     }
+
     public void addDiscountCodeScene() {
         BorderPane pane = new BorderPane();
         Label notify = new Label();
@@ -535,7 +538,7 @@ public class ManagerMenu extends Menu {
                 notify.setText("request declined");
             }
         });
-        vBox1.getChildren().addAll(details, accept, decline);
+        vBox1.getChildren().addAll(details, accept, decline,notify);
         pane.setLeft(vBox1);
         Scene scene = new Scene(pane, 600, 600);
         Menu.window.setScene(scene);
@@ -593,6 +596,7 @@ public class ManagerMenu extends Menu {
         Scene scene = new Scene(pane, 600, 600);
         Menu.window.setScene(scene);
     }
+
     public void addCategoryScene() {
         BorderPane pane = new BorderPane();
         VBox vBox = new VBox(10);
@@ -664,6 +668,7 @@ public class ManagerMenu extends Menu {
         Scene scene = new Scene(pane, 350, 350);
         Menu.window.setScene(scene);
     }
+
     public void setManageProductsScene() {
         BorderPane pane = new BorderPane();
         Label notify = new Label();
@@ -694,5 +699,7 @@ public class ManagerMenu extends Menu {
         });
         vBox1.getChildren().addAll(remove, notify);
         pane.setLeft(vBox1);
+        Scene scene = new Scene(pane, 600, 600);
+        Menu.window.setScene(scene);
     }
 }
