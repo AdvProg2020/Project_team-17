@@ -26,24 +26,8 @@ public class ProductsManager {
         return categoryName;
     }
 
-    public static Product checkProductID(String id) throws Exception {
-        if (Product.getProductWithId(id) != null) {
-            return Product.getProductWithId(id);
-        } else {
-            throw new Exception("There isn't any product with this id");
-        }
-    }
-
-    public static String showAvailableFilter() {
-        return "by category\nby name\nby price\nby brand\nby seller\nby availability\nby category feature";
-    }
-
-    public static ArrayList<String> getFilterProductsName() {
-        ArrayList<String> productsName = new ArrayList<>();
-        for (Product product : filterProduct) {
-            productsName.add(product.getName());
-        }
-        return productsName;
+    public static ArrayList<Product> getFilterProduct() {
+        return filterProduct;
     }
 
     public static void filterByCategory(String categoryName) {
