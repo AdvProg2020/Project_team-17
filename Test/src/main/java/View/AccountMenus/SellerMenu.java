@@ -1,4 +1,4 @@
-package View.AccountMenus;
+        package View.AccountMenus;
 
 import Controller.AccountsManager.SellerAbilitiesManager;
 import Models.Category;
@@ -341,7 +341,7 @@ public class SellerMenu extends Menu {
         company.setPromptText("company");
         TextField price = new TextField();
         price.setPromptText("price");
-        TextField category = new TextField("category");
+        TextField category = new TextField();
         category.setPromptText("category");
         TextField explanation = new TextField();
         explanation.setPromptText("explanation");
@@ -360,7 +360,7 @@ public class SellerMenu extends Menu {
                 notify.setText("request sent to manager");
             }
         });
-        vBox1.getChildren().addAll(ID, name, company, price, category, explanation, feature, notify);
+        vBox1.getChildren().addAll(ID, name, company, price, category, explanation, feature,path,add, notify);
         pane.setCenter(vBox1);
         Scene scene = new Scene(pane, 600, 600);
         Menu.window.setScene(scene);
@@ -491,7 +491,7 @@ public class SellerMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 String s = productsName.getText();
-                String str[] = s.split(" ");
+                String str[] = s.split("\\s");
                 List<String> names = new ArrayList<>();
                 names = Arrays.asList(str);
                 Discount discount = SellerAbilitiesManager.addDiscount(ID.getText(), startDate.getText(), endDate.getText(),
