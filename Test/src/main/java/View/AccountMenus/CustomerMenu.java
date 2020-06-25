@@ -4,6 +4,7 @@ import Controller.AccountsManager.CustomerAbilitiesManager;
 import View.*;
 import View.Menu;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -25,6 +26,7 @@ public class CustomerMenu extends Menu {
 
     public void setPersonalInfoScene() {
         BorderPane pane = new BorderPane();
+        pane.setPadding(new Insets(25, 25, 25, 25));
         Button backButton = new Button("Back");
         HBox mainButtons = new HBox(3);
         mainButtons.setAlignment(Pos.TOP_RIGHT);
@@ -148,6 +150,7 @@ public class CustomerMenu extends Menu {
 
     public void setEditScene() {
         BorderPane pane = new BorderPane();
+        pane.setPadding(new Insets(25, 25, 25, 25));
         VBox vBox = new VBox(5);
         Label notify = new Label();
         Button backButton = new Button("Back");
@@ -185,6 +188,7 @@ public class CustomerMenu extends Menu {
 
     public void setViewOrdersScene() {
         BorderPane pane = new BorderPane();
+        pane.setPadding(new Insets(25, 25, 25, 25));
         VBox vBox = new VBox(10);
         vBox.setAlignment(Pos.TOP_LEFT);
         Button button = new Button("Back");
@@ -219,6 +223,7 @@ public class CustomerMenu extends Menu {
 
     public void setDiscountCodeScene() {
         BorderPane pane = new BorderPane();
+        pane.setPadding(new Insets(25, 25, 25, 25));
         VBox vBox = new VBox(10);
         vBox.setAlignment(Pos.TOP_LEFT);
         Button button = new Button("Back");

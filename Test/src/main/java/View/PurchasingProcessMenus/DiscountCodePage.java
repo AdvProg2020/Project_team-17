@@ -1,9 +1,10 @@
-        package View.PurchasingProcessMenus;
+package View.PurchasingProcessMenus;
 
 import Controller.AccountsManager.CustomerAbilitiesManager;
 import Models.DiscountCode;
 import View.*;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -30,6 +31,7 @@ public class DiscountCodePage extends Menu {
 
     public void setDiscountCodeScene() {
         BorderPane pane = new BorderPane();
+        pane.setPadding(new Insets(25, 25, 25, 25));
         HBox mainButtons = new HBox(3);
         mainButtons.setAlignment(Pos.TOP_RIGHT);
         Button accountsButton = new Button("Accounts");
@@ -49,11 +51,9 @@ public class DiscountCodePage extends Menu {
                 parentMenu.show();
             }
         });
+        pane.setLeft(back);
         Text title = new Text("discount code");
-        title.setFont(Font.loadFont("file:src/main/java/Fonts/gangstergrotesk-bold.otf",28));
-        pane.setTop(title);
-        vBox.getChildren().addAll(back, title);
-
+        title.setFont(Font.loadFont("file:src/main/java/Fonts/gangstergrotesk-bold.otf", 28));
         VBox vBox1 = new VBox(10);
         Label notify = new Label();
         TextField textField = new TextField();
@@ -81,16 +81,17 @@ public class DiscountCodePage extends Menu {
                 handlePaymentPage();
             }
         });
-        vBox1.getChildren().addAll(textField, next, nextWO, notify);
+        vBox1.getChildren().addAll(title, textField, next, nextWO, notify);
         pane.setCenter(vBox1);
-        Scene scene = new Scene(pane, 400, 400);
+        Scene scene = new Scene(pane, 500, 500);
         Menu.window.setScene(scene);
     }
 
-        public void handlePaymentPage() {
+    public void handlePaymentPage() {
         PaymentPage paymentPage = new PaymentPage(this);
         paymentPage.show();
     }
+
     public void addActionForMainButtons(Button accountsButton, Button productsButton, Button discountButton, Button logoutButton) {
         accountsButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override

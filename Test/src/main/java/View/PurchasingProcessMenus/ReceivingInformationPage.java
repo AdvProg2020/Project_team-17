@@ -1,11 +1,11 @@
-        package View.PurchasingProcessMenus;
+package View.PurchasingProcessMenus;
 
 import View.*;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
@@ -30,6 +30,7 @@ public class ReceivingInformationPage extends Menu {
 
     public void setReceivingInfoScene() {
         BorderPane pane = new BorderPane();
+        pane.setPadding(new Insets(25, 25, 25, 25));
         HBox mainButtons = new HBox(3);
         mainButtons.setAlignment(Pos.TOP_RIGHT);
         Button accountsButton = new Button("Accounts");

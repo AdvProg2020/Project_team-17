@@ -3,6 +3,7 @@ package View;
 import Controller.RegisterAndLoginManager;
 import Models.Accounts.Manager;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -27,6 +28,7 @@ public class MainMenu extends Menu {
 
     public BorderPane setMainScene() {
         BorderPane mainPane = new BorderPane();
+        mainPane.setPadding(new Insets(25, 25, 25, 25));
         VBox mainButtons = new VBox(15);
         mainButtons.setAlignment(Pos.CENTER);
         String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
@@ -104,6 +106,7 @@ public class MainMenu extends Menu {
 
     public void registerFirstManager() {
         BorderPane pane = new BorderPane();
+        pane.setPadding(new Insets(25, 25, 25, 25));
         VBox vBox = new VBox(10);
         Label title = new Label("Manager account registration");
         Label notify = new Label();

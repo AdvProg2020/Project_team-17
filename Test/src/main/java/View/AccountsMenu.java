@@ -4,6 +4,7 @@ import View.AccountMenus.CustomerMenu;
 import View.AccountMenus.ManagerMenu;
 import View.AccountMenus.SellerMenu;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -21,6 +22,7 @@ public class AccountsMenu extends Menu {
     @Override
     public void show() {
         BorderPane pane = new BorderPane();
+        pane.setPadding(new Insets(25, 25, 25, 25));
         VBox accountButtons = new VBox(15);
         accountButtons.setAlignment(Pos.CENTER);
         String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "

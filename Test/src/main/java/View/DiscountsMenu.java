@@ -1,4 +1,4 @@
-        package View;
+package View;
 
 import Controller.DiscountManager;
 import Controller.ProductsManager;
@@ -8,6 +8,7 @@ import Models.Enums.ProductEnum;
 import Models.Product;
 import javafx.collections.FXCollections;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -34,6 +35,7 @@ public class DiscountsMenu extends Menu {
 
     public void setDiscountScene() {
         ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setPadding(new Insets(25, 25, 25, 25));
         Button backButton = new Button("Back");
         Label notify = new Label();
         HBox mainButtons = new HBox(3);
@@ -138,6 +140,7 @@ public class DiscountsMenu extends Menu {
 
     public void setFilterScene() {
         ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setPadding(new Insets(25, 25, 25, 25));
         Label notify = new Label();
         Button backButton = new Button("Back");
         HBox mainButtons = new HBox(3);
@@ -244,6 +247,7 @@ public class DiscountsMenu extends Menu {
 
     public void setSortScene() {
         ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setPadding(new Insets(25, 25, 25, 25));
         Label notify = new Label();
         Button backButton = new Button("Back");
         HBox mainButtons = new HBox(3);

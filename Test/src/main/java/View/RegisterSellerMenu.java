@@ -1,9 +1,10 @@
-        package View;
+package View;
 
 import Controller.RegisterAndLoginManager;
 
 import Models.Accounts.Seller;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -72,6 +73,7 @@ public class RegisterSellerMenu extends Menu {
 
     public void registerSellerScene() {
         BorderPane pane = new BorderPane();
+        pane.setPadding(new Insets(25, 25, 25, 25));
         VBox vBox = new VBox(10);
         Button backButton = new Button("Back");
         Label title = new Label("Seller account registration");
@@ -131,6 +133,7 @@ public class RegisterSellerMenu extends Menu {
 
     public void loginSellerScene() {
         BorderPane pane = new BorderPane();
+        pane.setPadding(new Insets(25, 25, 25, 25));
         VBox vBox = new VBox(10);
         Button backButton = new Button("Back");
         Label title = new Label("Login");

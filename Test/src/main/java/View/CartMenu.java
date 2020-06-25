@@ -4,6 +4,7 @@ import Controller.CartManager;
 import Models.Product;
 import View.PurchasingProcessMenus.ReceivingInformationPage;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -31,6 +32,7 @@ public class CartMenu extends Menu {
 
     public void setCartScene() {
         ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setPadding(new Insets(25, 25, 25, 25));
         Button backButton = new Button("Back");
         HBox mainButtons = new HBox(3);
         mainButtons.setAlignment(Pos.TOP_RIGHT);

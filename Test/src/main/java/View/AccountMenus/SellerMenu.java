@@ -9,6 +9,7 @@ import Models.Request.AddProductRequest;
 import View.*;
 import View.Menu;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -36,6 +37,7 @@ public class SellerMenu extends Menu {
 
     public void setPersonalScene() {
         BorderPane pane = new BorderPane();
+        pane.setPadding(new Insets(25, 25, 25, 25));
         Button backButton = new Button("Back");
         HBox mainButtons = new HBox(3);
         mainButtons.setAlignment(Pos.TOP_RIGHT);
@@ -166,6 +168,7 @@ public class SellerMenu extends Menu {
 
     public void setEditScene() {
         BorderPane pane = new BorderPane();
+        pane.setPadding(new Insets(25, 25, 25, 25));
         VBox vBox = new VBox(5);
         Label notify = new Label();
         Button backButton = new Button("Back");
@@ -202,6 +205,7 @@ public class SellerMenu extends Menu {
 
     public void setSalesHistoryScene() {
         BorderPane pane = new BorderPane();
+        pane.setPadding(new Insets(25, 25, 25, 25));
         VBox vBox = new VBox(10);
         vBox.setAlignment(Pos.TOP_LEFT);
         Button button = new Button("Back");
@@ -236,6 +240,7 @@ public class SellerMenu extends Menu {
 
     public void setManageProductScene() {
         BorderPane pane = new BorderPane();
+        pane.setPadding(new Insets(25, 25, 25, 25));
         Label notify = new Label();
         VBox vBox = new VBox(10);
         vBox.setAlignment(Pos.TOP_LEFT);
@@ -322,6 +327,7 @@ public class SellerMenu extends Menu {
 
     public void setAddProductScene() {
         BorderPane pane = new BorderPane();
+        pane.setPadding(new Insets(25, 25, 25, 25));
         VBox vBox = new VBox(10);
         vBox.setAlignment(Pos.TOP_LEFT);
         Button back = new Button("Back");
@@ -370,6 +376,7 @@ public class SellerMenu extends Menu {
 
     public void setShowCategoriesScene() {
         BorderPane pane = new BorderPane();
+        pane.setPadding(new Insets(25, 25, 25, 25));
         VBox vBox = new VBox(10);
         vBox.setAlignment(Pos.TOP_LEFT);
         Button button = new Button("Back");
@@ -390,6 +397,7 @@ public class SellerMenu extends Menu {
 
     public void setOffsScene() {
         BorderPane pane = new BorderPane();
+        pane.setPadding(new Insets(25, 25, 25, 25));
         VBox vBox = new VBox(10);
         vBox.setAlignment(Pos.TOP_LEFT);
         Button button = new Button("Back");
@@ -430,6 +438,7 @@ public class SellerMenu extends Menu {
 
     public void setEditOffScene() {
         BorderPane pane = new BorderPane();
+        pane.setPadding(new Insets(25, 25, 25, 25));
         Label notify = new Label();
         VBox vBox = new VBox(10);
         vBox.setAlignment(Pos.TOP_LEFT);
@@ -465,6 +474,7 @@ public class SellerMenu extends Menu {
 
     public void setAddOffScene() {
         BorderPane pane = new BorderPane();
+        pane.setPadding(new Insets(25, 25, 25, 25));
         VBox vBox = new VBox(10);
         vBox.setAlignment(Pos.TOP_LEFT);
         Button back = new Button("Back");

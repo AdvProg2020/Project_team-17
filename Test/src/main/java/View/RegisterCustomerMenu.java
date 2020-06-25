@@ -2,8 +2,8 @@ package View;
 
 import Controller.RegisterAndLoginManager;
 import Models.Accounts.Customer;
-import Models.Accounts.Seller;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -26,6 +26,7 @@ public class RegisterCustomerMenu extends Menu {
     @Override
     public void show() {
         BorderPane pane = new BorderPane();
+        pane.setPadding(new Insets(25, 25, 25, 25));
         String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
                 + "linear-gradient(#dddddd 0%, #f6f6f6 50%); -fx-background-radius: 8,7,6; -fx-background-insets: 0,1,2; -fx-text-fill: #000000;"
                 + "-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); -fx-font-size: 1.9em; -fx-padding: 10px;";
@@ -73,6 +74,7 @@ public class RegisterCustomerMenu extends Menu {
 
     public void registerCustomerScene() {
         BorderPane pane = new BorderPane();
+        pane.setPadding(new Insets(25, 25, 25, 25));
         VBox vBox = new VBox(10);
         Button backButton = new Button("Back");
         Label title = new Label("Customer account registration");
@@ -134,6 +136,7 @@ public class RegisterCustomerMenu extends Menu {
 
     public void loginCustomerScene() {
         BorderPane pane = new BorderPane();
+        pane.setPadding(new Insets(25, 25, 25, 25));
         VBox vBox = new VBox(10);
         Button backButton = new Button("Back");
         Label title = new Label("Login");

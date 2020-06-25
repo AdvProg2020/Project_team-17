@@ -1,4 +1,4 @@
-        package View.AccountMenus;
+package View.AccountMenus;
 
 import Controller.AccountsManager.ManagerAbilitiesManager;
 import Controller.RegisterAndLoginManager;
@@ -7,17 +7,16 @@ import Models.DiscountCode;
 import View.*;
 import View.Menu;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -36,6 +35,7 @@ public class ManagerMenu extends Menu {
 
     public void setPersonalInfoScene() {
         BorderPane pane = new BorderPane();
+        pane.setPadding(new Insets(25, 25, 25, 25));
         Button backButton = new Button("Back");
         HBox mainButtons = new HBox(3);
         mainButtons.setAlignment(Pos.TOP_RIGHT);
@@ -169,6 +169,7 @@ public class ManagerMenu extends Menu {
 
     public void setEditScene() {
         BorderPane pane = new BorderPane();
+        pane.setPadding(new Insets(25, 25, 25, 25));
         VBox vBox = new VBox(5);
         Label notify = new Label();
         Button backButton = new Button("Back");
@@ -206,6 +207,7 @@ public class ManagerMenu extends Menu {
 
     public void setManageUsersScene() {
         BorderPane pane = new BorderPane();
+        pane.setPadding(new Insets(25, 25, 25, 25));
         Label notify = new Label();
         VBox vBox = new VBox(10);
         vBox.setAlignment(Pos.TOP_LEFT);
@@ -266,6 +268,7 @@ public class ManagerMenu extends Menu {
 
     public void setAddManagerScene() {
         BorderPane pane = new BorderPane();
+        pane.setPadding(new Insets(25, 25, 25, 25));
         Label notify = new Label();
         VBox vBox1 = new VBox(10);
         vBox1.setAlignment(Pos.TOP_LEFT);
@@ -338,6 +341,7 @@ public class ManagerMenu extends Menu {
 
     public void setDiscountCodeScene() {
         BorderPane pane = new BorderPane();
+        pane.setPadding(new Insets(25, 25, 25, 25));
         Label notify = new Label();
         VBox vBox = new VBox(10);
         vBox.setAlignment(Pos.TOP_LEFT);
@@ -406,6 +410,7 @@ public class ManagerMenu extends Menu {
 
     public void editDiscountCodeScene() {
         BorderPane pane = new BorderPane();
+        pane.setPadding(new Insets(25, 25, 25, 25));
         Label notify = new Label();
         VBox vBox = new VBox(10);
         vBox.setAlignment(Pos.TOP_LEFT);
@@ -444,6 +449,7 @@ public class ManagerMenu extends Menu {
 
     public void addDiscountCodeScene() {
         BorderPane pane = new BorderPane();
+        pane.setPadding(new Insets(25, 25, 25, 25));
         Label notify = new Label();
         VBox vBox1 = new VBox(10);
         vBox1.setAlignment(Pos.TOP_LEFT);
@@ -493,6 +499,7 @@ public class ManagerMenu extends Menu {
 
     public void manageRequestsScene() {
         BorderPane pane = new BorderPane();
+        pane.setPadding(new Insets(25, 25, 25, 25));
         Label notify = new Label();
         VBox vBox = new VBox(10);
         vBox.setAlignment(Pos.TOP_LEFT);
@@ -552,6 +559,7 @@ public class ManagerMenu extends Menu {
 
     public void setCategoriesScene() {
         BorderPane pane = new BorderPane();
+        pane.setPadding(new Insets(25, 25, 25, 25));
         Label notify = new Label();
         VBox vBox = new VBox(10);
         vBox.setAlignment(Pos.TOP_LEFT);
@@ -605,6 +613,7 @@ public class ManagerMenu extends Menu {
 
     public void addCategoryScene() {
         BorderPane pane = new BorderPane();
+        pane.setPadding(new Insets(25, 25, 25, 25));
         VBox vBox = new VBox(10);
         Label notify = new Label();
         vBox.setAlignment(Pos.TOP_LEFT);
@@ -640,6 +649,7 @@ public class ManagerMenu extends Menu {
 
     public void setEditCategoryScene() {
         BorderPane pane = new BorderPane();
+        pane.setPadding(new Insets(25, 25, 25, 25));
         VBox vBox = new VBox(10);
         Label notify = new Label();
         vBox.setAlignment(Pos.TOP_LEFT);
@@ -677,6 +687,7 @@ public class ManagerMenu extends Menu {
 
     public void setManageProductsScene() {
         BorderPane pane = new BorderPane();
+        pane.setPadding(new Insets(25, 25, 25, 25));
         Label notify = new Label();
         VBox vBox = new VBox(10);
         vBox.setAlignment(Pos.TOP_LEFT);
