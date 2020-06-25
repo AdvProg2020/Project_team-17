@@ -1,7 +1,9 @@
-package View;
+        package View;
 
 import Controller.DiscountManager;
 import Controller.ProductsManager;
+import Models.Accounts.Seller;
+import Models.Category;
 import Models.Enums.ProductEnum;
 import Models.Product;
 import javafx.collections.FXCollections;
@@ -33,6 +35,7 @@ public class DiscountsMenu extends Menu {
     public void setDiscountScene() {
         ScrollPane scrollPane = new ScrollPane();
         Button backButton = new Button("Back");
+        Label notify = new Label();
         HBox mainButtons = new HBox(3);
         mainButtons.setAlignment(Pos.TOP_RIGHT);
         Button accountsButton = new Button("Accounts");
@@ -45,6 +48,7 @@ public class DiscountsMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 parentMenu.show();
+                notify.setText("");
             }
         });
         ChoiceBox choiceBox = new ChoiceBox(FXCollections.observableList(filterChoiceBoxItems()));
@@ -54,10 +58,35 @@ public class DiscountsMenu extends Menu {
         submit.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                String filter = (String) choiceBox.getValue();
-                String name = textField.getText();
-                filter(filter, name);
-                setFilterScene();
+                try {
+                    String filter = (String) choiceBox.getValue();
+                    String name = textField.getText();
+                    if (filter != null) {
+                        if (filter.equals("category")) {
+                            Category category = Category.getCategoryByName(textField.getText());
+                            if (category != null) {
+                                filter(filter, name);
+                                setFilterScene();
+                            } else {
+                                notify.setText("invalid category name");
+                                notify.setStyle("-fx-text-fill: #ff4f59");
+                            }
+                        } else if (filter.equals("seller")) {
+                            Seller seller = Seller.getSellerByName(textField.getText());
+                            if (seller != null) {
+                                filter(filter, name);
+                                setFilterScene();
+                            } else {
+                                notify.setText("invalid seller name");
+                                notify.setStyle("-fx-text-fill: #ff4f59");
+                            }
+                        } else {
+                            filter(filter, name);
+                            setFilterScene();
+                        }
+                    }
+                } catch (Exception ignored) {
+                }
             }
         });
         HBox filter = new HBox(10);
@@ -67,8 +96,11 @@ public class DiscountsMenu extends Menu {
         submitButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                ProductsManager.sort((String) choiceBox1.getValue());
-                setSortScene();
+                try {
+                    ProductsManager.sort((String) choiceBox1.getValue());
+                    setSortScene();
+                } catch (Exception ignored) {
+                }
             }
         });
         HBox sort = new HBox(5);
@@ -82,7 +114,7 @@ public class DiscountsMenu extends Menu {
             try {
                 FileInputStream inputStream = new FileInputStream(product.getPath());
                 image = new Image(inputStream);
-            } catch (Exception e) {
+            } catch (Exception ignored) {
             }
             ImageView imageView = new ImageView(image);
             imageView.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
@@ -104,62 +136,9 @@ public class DiscountsMenu extends Menu {
         Menu.window.setScene(scene);
     }
 
-    public void handleProductPage(Product product) {
-        ProductMenu productMenu = new ProductMenu(this, product);
-        productMenu.show();
-    }
-
-    public void addActionForMainButtons(Button accountsButton, Button productsButton, Button logoutButton) {
-        accountsButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                handleAccountsMenu();
-            }
-        });
-        productsButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                handleProductsMenu();
-            }
-        });
-        logoutButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                handleLogout();
-            }
-        });
-    }
-
-    public void handleProductsMenu() {
-        ProductsMenu productsMenu = new ProductsMenu(this);
-        productsMenu.show();
-    }
-
-    public void handleDiscountsMenu() {
-        DiscountsMenu discountsMenu = new DiscountsMenu(this);
-        discountsMenu.show();
-    }
-
-    public void handleAccountsMenu() {
-        AccountsMenu accountsMenu = new AccountsMenu(this);
-        accountsMenu.show();
-    }
-
-    public void handleLogout() {
-        if (RegisterCustomerMenu.getCurrentCustomer() != null) {
-            RegisterCustomerMenu.setCurrentCustomer(null);
-        } else if (RegisterSellerMenu.getCurrentSeller() != null) {
-            RegisterSellerMenu.setCurrentSeller(null);
-        } else if (RegisterManagerMenu.getCurrentManager() != null) {
-            RegisterManagerMenu.setCurrentManager(null);
-        }
-        MainMenu mainMenu = new MainMenu();
-        mainMenu.show();
-    }
-
-
     public void setFilterScene() {
         ScrollPane scrollPane = new ScrollPane();
+        Label notify = new Label();
         Button backButton = new Button("Back");
         HBox mainButtons = new HBox(3);
         mainButtons.setAlignment(Pos.TOP_RIGHT);
@@ -174,6 +153,7 @@ public class DiscountsMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 parentMenu.show();
+                notify.setText("");
             }
         });
         ChoiceBox choiceBox = new ChoiceBox(FXCollections.observableList(filterChoiceBoxItems()));
@@ -183,10 +163,35 @@ public class DiscountsMenu extends Menu {
         submit.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                String filter = (String) choiceBox.getValue();
-                String name = textField.getText();
-                filter(filter, name);
-                setFilterScene();
+                try {
+                    String filter = (String) choiceBox.getValue();
+                    String name = textField.getText();
+                    if (filter != null) {
+                        if (filter.equals("category")) {
+                            Category category = Category.getCategoryByName(textField.getText());
+                            if (category != null) {
+                                filter(filter, name);
+                                setFilterScene();
+                            } else {
+                                notify.setText("invalid category name");
+                                notify.setStyle("-fx-text-fill: #ff4f59");
+                            }
+                        } else if (filter.equals("seller")) {
+                            Seller seller = Seller.getSellerByName(textField.getText());
+                            if (seller != null) {
+                                filter(filter, name);
+                                setFilterScene();
+                            } else {
+                                notify.setText("invalid seller name");
+                                notify.setStyle("-fx-text-fill: #ff4f59");
+                            }
+                        } else {
+                            filter(filter, name);
+                            setFilterScene();
+                        }
+                    }
+                } catch (Exception ignored) {
+                }
             }
         });
         HBox filter = new HBox(10);
@@ -196,8 +201,11 @@ public class DiscountsMenu extends Menu {
         submitButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                ProductsManager.sort((String) choiceBox1.getValue());
-                setSortScene();
+                try {
+                    ProductsManager.sort((String) choiceBox1.getValue());
+                    setSortScene();
+                } catch (Exception ignored) {
+                }
             }
         });
         HBox sort = new HBox(5);
@@ -212,7 +220,7 @@ public class DiscountsMenu extends Menu {
             try {
                 FileInputStream inputStream = new FileInputStream(product.getPath());
                 image = new Image(inputStream);
-            } catch (Exception e) {
+            } catch (Exception ignored) {
             }
             ImageView imageView = new ImageView(image);
             imageView.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
@@ -236,6 +244,7 @@ public class DiscountsMenu extends Menu {
 
     public void setSortScene() {
         ScrollPane scrollPane = new ScrollPane();
+        Label notify = new Label();
         Button backButton = new Button("Back");
         HBox mainButtons = new HBox(3);
         mainButtons.setAlignment(Pos.TOP_RIGHT);
@@ -250,6 +259,7 @@ public class DiscountsMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 parentMenu.show();
+                notify.setText("");
             }
         });
         ChoiceBox choiceBox = new ChoiceBox(FXCollections.observableList(filterChoiceBoxItems()));
@@ -259,10 +269,36 @@ public class DiscountsMenu extends Menu {
         submit.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                String filter = (String) choiceBox.getValue();
-                String name = textField.getText();
-                filter(filter, name);
-                setFilterScene();
+                try {
+                    String filter = (String) choiceBox.getValue();
+                    String name = textField.getText();
+                    if (filter != null) {
+                        if (filter.equals("category")) {
+                            Category category = Category.getCategoryByName(textField.getText());
+                            if (category != null) {
+                                filter(filter, name);
+                                setFilterScene();
+                            } else {
+                                notify.setText("invalid category name");
+                                notify.setStyle("-fx-text-fill: #ff4f59");
+                            }
+                        } else if (filter.equals("seller")) {
+                            Seller seller = Seller.getSellerByName(textField.getText());
+                            if (seller != null) {
+                                filter(filter, name);
+                                setFilterScene();
+                            } else {
+                                notify.setText("invalid seller name");
+                                notify.setStyle("-fx-text-fill: #ff4f59");
+                            }
+                        } else {
+                            filter(filter, name);
+                            setFilterScene();
+
+                        }
+                    }
+                } catch (Exception ignored) {
+                }
             }
         });
         HBox filter = new HBox(10);
@@ -272,8 +308,12 @@ public class DiscountsMenu extends Menu {
         submitButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                ProductsManager.sort((String) choiceBox1.getValue());
-                setSortScene();
+                try {
+                    ProductsManager.sort((String) choiceBox1.getValue());
+                    setSortScene();
+                }catch (Exception ignored){
+
+                }
             }
         });
         HBox sort = new HBox(5);
@@ -288,7 +328,7 @@ public class DiscountsMenu extends Menu {
             try {
                 FileInputStream inputStream = new FileInputStream(product.getPath());
                 image = new Image(inputStream);
-            } catch (Exception e) {
+            } catch (Exception ignored) {
             }
             ImageView imageView = new ImageView(image);
             imageView.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
@@ -337,6 +377,60 @@ public class DiscountsMenu extends Menu {
         });
     }
 
+    public void handleProductPage(Product product) {
+        ProductMenu productMenu = new ProductMenu(this, product);
+        productMenu.show();
+    }
+
+    Nona Ghazizade, [25.06.20 16:54]
+    public void addActionForMainButtons(Button accountsButton, Button productsButton, Button logoutButton) {
+        accountsButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                handleAccountsMenu();
+            }
+        });
+        productsButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                handleProductsMenu();
+            }
+        });
+        logoutButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                handleLogout();
+            }
+        });
+    }
+
+    public void handleProductsMenu() {
+        ProductsMenu productsMenu = new ProductsMenu(this);
+        productsMenu.show();
+    }
+
+    public void handleDiscountsMenu() {
+        DiscountsMenu discountsMenu = new DiscountsMenu(this);
+        discountsMenu.show();
+    }
+
+    public void handleAccountsMenu() {
+        AccountsMenu accountsMenu = new AccountsMenu(this);
+        accountsMenu.show();
+    }
+
+    public void handleLogout() {
+        if (RegisterCustomerMenu.getCurrentCustomer() != null) {
+            RegisterCustomerMenu.setCurrentCustomer(null);
+        } else if (RegisterSellerMenu.getCurrentSeller() != null) {
+            RegisterSellerMenu.setCurrentSeller(null);
+        } else if (RegisterManagerMenu.getCurrentManager() != null) {
+            RegisterManagerMenu.setCurrentManager(null);
+        }
+        MainMenu mainMenu = new MainMenu();
+        mainMenu.show();
+    }
+
     private ArrayList<String> filterChoiceBoxItems() {
         ArrayList<String> choiceBoxItems = new ArrayList<>();
         choiceBoxItems.add("name");
@@ -361,14 +455,6 @@ public class DiscountsMenu extends Menu {
         for (String filter : currentFilters) {
             if (!(filter.contains(name))) {
                 currentFilters.add(name);
-            }
-        }
-    }
-
-    private void removeFilterFromCurrentFilter(String name) {
-        for (String filter : currentFilters) {
-            if (filter.contains(name)) {
-                currentFilters.remove(name);
             }
         }
     }
@@ -409,6 +495,7 @@ public class DiscountsMenu extends Menu {
         addFilterToCurrentFilter("brand");
     }
 
+    Nona Ghazizade, [25.06.20 16:54]
     private void filter(String filter, String name) {
         if (filter.equals("name")) {
             filterByName(name);
@@ -426,6 +513,15 @@ public class DiscountsMenu extends Menu {
             filterByBrand(name);
         }
     }
+
+
+//    private void removeFilterFromCurrentFilter(String name) {
+//        for (String filter : currentFilters) {
+//            if (filter.contains(name)) {
+//                currentFilters.remove(name);
+//            }
+//        }
+//    }
 
 //    private void disableFilterByName() {
 //        System.out.println("enter a name");
@@ -495,7 +591,6 @@ public class DiscountsMenu extends Menu {
 //            disableFilterByBrand();
 //        }
 //    }
-
 
 //    public void filtering() {
 //        String command;
