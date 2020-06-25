@@ -1,4 +1,4 @@
-package View.PurchasingProcessMenus;
+        package View.PurchasingProcessMenus;
 
 import View.*;
 import javafx.event.EventHandler;
@@ -11,6 +11,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 
 public class ReceivingInformationPage extends Menu {
     private static String addressString;
@@ -41,7 +43,8 @@ public class ReceivingInformationPage extends Menu {
         VBox vBox = new VBox(10);
         vBox.setAlignment(Pos.TOP_LEFT);
         Button back = new Button("Back");
-        Label title = new Label("Receiving information to continue purchasing");
+        Text title = new Text("Receiving information to continue purchasing");
+        title.setFont(Font.loadFont("file:src/main/java/Fonts/gangstergrotesk-bold.otf",28));
         VBox vBox1 = new VBox(10);
         TextField address = new TextField();
         address.setPromptText("address");
