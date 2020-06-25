@@ -87,7 +87,7 @@ public class DiscountCodePage extends Menu {
         Menu.window.setScene(scene);
     }
 
-    public void handlePaymentPage() {
+        public void handlePaymentPage() {
         PaymentPage paymentPage = new PaymentPage(this);
         paymentPage.show();
     }

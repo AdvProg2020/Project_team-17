@@ -1,4 +1,4 @@
-package View.PurchasingProcessMenus;
+        package View.PurchasingProcessMenus;
 
 import Controller.AccountsManager.CustomerAbilitiesManager;
 import Controller.CartManager;
@@ -12,6 +12,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 
 public class PaymentPage extends Menu {
     public PaymentPage(Menu parentMenu) {
@@ -38,7 +40,8 @@ public class PaymentPage extends Menu {
         VBox vBox = new VBox(10);
         vBox.setAlignment(Pos.TOP_LEFT);
         Button back = new Button("Back");
-        Label title = new Label("YOUR BILL , if you are sure click done");
+        Text title = new Text("YOUR BILL , if you are sure click done");
+        title.setFont(Font.loadFont("file:src/main/java/Fonts/gangstergrotesk-bold.otf",28));
         VBox vBox1 = new VBox(10);
         Label totalPrice;
         if (DiscountCodePage.getCodeOfDiscountCode() != null) {
