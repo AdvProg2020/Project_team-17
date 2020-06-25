@@ -12,8 +12,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 import java.io.FileInputStream;
+import java.nio.file.Paths;
 
 public class MainMenu extends Menu {
 
@@ -39,8 +42,7 @@ public class MainMenu extends Menu {
         exitButton.setStyle(style);
         Image mainImage = null;
         try {
-            mainImage = new Image(new FileInputStream("C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Images\\MAIN_BACKGROUND.png"));
-
+            mainImage = new Image(new FileInputStream("C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Test\\src\\main\\java\\Images\\MAIN_BACKGROUND.png"));
         } catch (Exception e) {
 
         }
@@ -150,10 +152,19 @@ public class MainMenu extends Menu {
         Menu.window.setScene(scene);
     }
 
+    MediaPlayer mediaPlayer;
+    private void music(){
+        String s = "C:\\Users\\kian\\IdeaProjects\\music_test\\src\\Koorosh-Zood-Dir-Shod-(Ft-Sami-Low-Raha)-320.mp3";
+        Media h = new Media(Paths.get(s).toUri().toString());
+        mediaPlayer = new MediaPlayer(h);
+        mediaPlayer.play();
+    }
+
 
     @Override
     public void show() {
         //  if (Manager.getAllManagers().size()!=0) {
+        music();
         setMainScene();
         Scene scene = new Scene(setMainScene(), 600, 600);
         Menu.window.setScene(scene);
