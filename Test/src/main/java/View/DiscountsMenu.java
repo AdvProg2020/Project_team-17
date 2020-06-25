@@ -1,14 +1,14 @@
 package View;
 
 import Controller.DiscountManager;
+import Controller.ProductsManager;
 import Models.Enums.ProductEnum;
 import Models.Product;
+import javafx.collections.FXCollections;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -47,7 +47,33 @@ public class DiscountsMenu extends Menu {
                 parentMenu.show();
             }
         });
-        bar.getChildren().addAll(backButton, mainButtons);
+        ChoiceBox choiceBox = new ChoiceBox(FXCollections.observableList(filterChoiceBoxItems()));
+        TextField textField = new TextField();
+        textField.setPromptText("filter by ...");
+        Button submit = new Button("submit filter");
+        submit.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                String filter = (String) choiceBox.getValue();
+                String name = textField.getText();
+                filter(filter, name);
+                setFilterScene();
+            }
+        });
+        HBox filter = new HBox(10);
+        filter.getChildren().addAll(choiceBox, textField, submit);
+        ChoiceBox choiceBox1 = new ChoiceBox(FXCollections.observableList(sortChoiceBoxItems()));
+        Button submitButton = new Button("submit sort");
+        submitButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                ProductsManager.sort((String) choiceBox1.getValue());
+                setSortScene();
+            }
+        });
+        HBox sort = new HBox(5);
+        sort.getChildren().addAll(choiceBox1, submitButton);
+        bar.getChildren().addAll(backButton, mainButtons, filter, sort);
         ArrayList<HBox> hBoxes = new ArrayList<>();
         hBoxes.add(bar);
         for (Product product : DiscountManager.showProducts()) {
@@ -109,6 +135,11 @@ public class DiscountsMenu extends Menu {
         productsMenu.show();
     }
 
+    public void handleDiscountsMenu() {
+        DiscountsMenu discountsMenu = new DiscountsMenu(this);
+        discountsMenu.show();
+    }
+
     public void handleAccountsMenu() {
         AccountsMenu accountsMenu = new AccountsMenu(this);
         accountsMenu.show();
@@ -125,6 +156,206 @@ public class DiscountsMenu extends Menu {
         MainMenu mainMenu = new MainMenu();
         mainMenu.show();
     }
+
+
+    public void setFilterScene() {
+        ScrollPane scrollPane = new ScrollPane();
+        Button backButton = new Button("Back");
+        HBox mainButtons = new HBox(3);
+        mainButtons.setAlignment(Pos.TOP_RIGHT);
+        Button accountsButton = new Button("Accounts");
+        Button productsButton = new Button("Discounts");
+        Button discountButton = new Button("Discounts");
+        Button logoutButton = new Button("Logout");
+        addActionForMainButtonsForFilterAndSort(accountsButton, discountButton, productsButton, logoutButton);
+        mainButtons.getChildren().addAll(accountsButton, productsButton, discountButton, logoutButton);
+        HBox bar = new HBox(30);
+        backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                parentMenu.show();
+            }
+        });
+        ChoiceBox choiceBox = new ChoiceBox(FXCollections.observableList(filterChoiceBoxItems()));
+        TextField textField = new TextField();
+        textField.setPromptText("filter by ...");
+        Button submit = new Button("submit");
+        submit.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                String filter = (String) choiceBox.getValue();
+                String name = textField.getText();
+                filter(filter, name);
+                setFilterScene();
+            }
+        });
+        HBox filter = new HBox(10);
+        filter.getChildren().addAll(choiceBox, textField, submit);
+        ChoiceBox choiceBox1 = new ChoiceBox(FXCollections.observableList(sortChoiceBoxItems()));
+        Button submitButton = new Button("submit sort");
+        submitButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                ProductsManager.sort((String) choiceBox1.getValue());
+                setSortScene();
+            }
+        });
+        HBox sort = new HBox(5);
+        sort.getChildren().addAll(choiceBox1, submitButton);
+
+        bar.getChildren().addAll(backButton, mainButtons, filter, sort);
+        ArrayList<HBox> hBoxes = new ArrayList<>();
+        hBoxes.add(bar);
+        for (Product product : DiscountManager.getFilterProduct()) {
+            HBox hBox = new HBox(10);
+            Image image = null;
+            try {
+                FileInputStream inputStream = new FileInputStream(product.getPath());
+                image = new Image(inputStream);
+            } catch (Exception e) {
+            }
+            ImageView imageView = new ImageView(image);
+            imageView.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    handleProductPage(product);
+                }
+            });
+            Label name = new Label(product.getName());
+            Label price = new Label(product.getPrice() + "$");
+            Label score = new Label("score: " + product.getPrice());
+            hBox.getChildren().addAll(imageView, name, price, score);
+            hBoxes.add(hBox);
+        }
+        VBox vBox = new VBox(5);
+        vBox.getChildren().addAll(hBoxes);
+        scrollPane.setContent(vBox);
+        Scene scene = new Scene(scrollPane, 1270, 650);
+        Menu.window.setScene(scene);
+    }
+
+    public void setSortScene() {
+        ScrollPane scrollPane = new ScrollPane();
+        Button backButton = new Button("Back");
+        HBox mainButtons = new HBox(3);
+        mainButtons.setAlignment(Pos.TOP_RIGHT);
+        Button accountsButton = new Button("Accounts");
+        Button productsButton = new Button("Products");
+        Button discountButton = new Button("Discounts");
+        Button logoutButton = new Button("Logout");
+        addActionForMainButtonsForFilterAndSort(accountsButton, discountButton, productsButton, logoutButton);
+        mainButtons.getChildren().addAll(accountsButton, productsButton, discountButton, logoutButton);
+        HBox bar = new HBox(30);
+        backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                parentMenu.show();
+            }
+        });
+        ChoiceBox choiceBox = new ChoiceBox(FXCollections.observableList(filterChoiceBoxItems()));
+        TextField textField = new TextField();
+        textField.setPromptText("filter by ...");
+        Button submit = new Button("submit");
+        submit.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                String filter = (String) choiceBox.getValue();
+                String name = textField.getText();
+                filter(filter, name);
+                setFilterScene();
+            }
+        });
+        HBox filter = new HBox(10);
+        filter.getChildren().addAll(choiceBox, textField, submit);
+        ChoiceBox choiceBox1 = new ChoiceBox(FXCollections.observableList(sortChoiceBoxItems()));
+        Button submitButton = new Button("submit sort");
+        submitButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                ProductsManager.sort((String) choiceBox1.getValue());
+                setSortScene();
+            }
+        });
+        HBox sort = new HBox(5);
+        sort.getChildren().addAll(choiceBox1, submitButton);
+
+        bar.getChildren().addAll(backButton, mainButtons, filter, sort);
+        ArrayList<HBox> hBoxes = new ArrayList<>();
+        hBoxes.add(bar);
+        for (Product product : DiscountManager.getSortProducts()) {
+            HBox hBox = new HBox(10);
+            Image image = null;
+            try {
+                FileInputStream inputStream = new FileInputStream(product.getPath());
+                image = new Image(inputStream);
+            } catch (Exception e) {
+            }
+            ImageView imageView = new ImageView(image);
+            imageView.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    handleProductPage(product);
+                }
+            });
+            Label name = new Label(product.getName());
+            Label price = new Label(product.getPrice() + "$");
+            Label score = new Label("score: " + product.getPrice());
+            hBox.getChildren().addAll(imageView, name, price, score);
+            hBoxes.add(hBox);
+        }
+        VBox vBox = new VBox(5);
+        vBox.getChildren().addAll(hBoxes);
+        scrollPane.setContent(vBox);
+        Scene scene = new Scene(scrollPane, 1270, 650);
+        Menu.window.setScene(scene);
+    }
+
+    public void addActionForMainButtonsForFilterAndSort(Button accountsButton, Button productsButton, Button discountButton, Button logoutButton) {
+        accountsButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                handleAccountsMenu();
+            }
+        });
+        productsButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                handleProductsMenu();
+            }
+        });
+        discountButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                handleDiscountsMenu();
+            }
+        });
+        logoutButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                handleLogout();
+            }
+        });
+    }
+
+    private ArrayList<String> filterChoiceBoxItems() {
+        ArrayList<String> choiceBoxItems = new ArrayList<>();
+        choiceBoxItems.add("name");
+        choiceBoxItems.add("category");
+        choiceBoxItems.add("price");
+        choiceBoxItems.add("seller");
+        choiceBoxItems.add("availability");
+        choiceBoxItems.add("company name");
+        choiceBoxItems.add("special feature");
+        return choiceBoxItems;
+    }
+
+    private ArrayList<String> sortChoiceBoxItems() {
+        ArrayList<String> choiceBoxItems = new ArrayList<>();
+        choiceBoxItems.add("price");
+        choiceBoxItems.add("score");
+        return choiceBoxItems;
+    }
+
 
     private void addFilterToCurrentFilter(String name) {
         for (String filter : currentFilters) {
