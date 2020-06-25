@@ -78,7 +78,7 @@ public class DiscountsMenu extends Menu {
         VBox vBox = new VBox(5);
         vBox.getChildren().addAll(hBoxes);
         scrollPane.setContent(vBox);
-        Scene scene = new Scene(scrollPane, 600, 600);
+        Scene scene = new Scene(scrollPane, 1270, 650);
         Menu.window.setScene(scene);
     }
 
