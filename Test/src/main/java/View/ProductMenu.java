@@ -16,6 +16,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 
 import java.io.FileInputStream;
 
@@ -36,7 +38,17 @@ public class ProductMenu extends Menu {
     public void setProductScene() {
         BorderPane pane = new BorderPane();
         pane.setPadding(new Insets(25, 25, 25, 25));
+        String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
+                "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
+                + "linear-gradient(#cdded5 0%, #f6f6f6 50%);" +
+                " -fx-background-radius: 8,7,6; " +
+                "-fx-background-insets: 0,1,2; " +
+                "-fx-text-fill: #3193ff;"
+                + "-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); " +
+                "-fx-font-size: 1.2em; " +
+                "-fx-padding: 4px;";
         Button backButton = new Button("Back");
+        backButton.setStyle(style);
         HBox mainButtons = new HBox(3);
         mainButtons.setAlignment(Pos.TOP_RIGHT);
         Image image1 = null;
@@ -48,9 +60,13 @@ public class ProductMenu extends Menu {
         ImageView imageView1 = new ImageView(image1);
         Button addToCart = new Button("", imageView1);
         Button accountsButton = new Button("Accounts");
+        accountsButton.setStyle(style);
         Button productButton = new Button("Products");
+        productButton.setStyle(style);
         Button discountButton = new Button("Discounts");
+        discountButton.setStyle(style);
         Button logoutButton = new Button("Logout");
+        logoutButton.setStyle(style);
         addActionForMainButtons(accountsButton, productButton, discountButton, logoutButton, addToCart);
         mainButtons.getChildren().addAll(addToCart, accountsButton, productButton, discountButton, logoutButton);
         pane.setTop(mainButtons);
@@ -69,13 +85,19 @@ public class ProductMenu extends Menu {
         }
         ImageView imageView = new ImageView(image);
         //TODO zoom
-        Label name = new Label(product.getName());
-        Label companyName = new Label(product.getCompanyName());
-        Label category = new Label(product.getCategory().getCategoryName());
-        Label price = new Label(product.getPrice() + "$");
-        Label explanation = new Label(product.getExplanation());
-        Label feature = new Label(product.getProductsSpecialFeature());
-        Label score = new Label(Double.toString(product.getAverageScore()));
+        Text name = new Text("Product name: " + product.getName());
+        Text companyName = new Text("Company name: " + product.getCompanyName());
+        Text category = new Text("Category: " + product.getCategory().getCategoryName());
+        Text price = new Text("Product price: " + product.getPrice() + "$");
+        Text explanation = new Text("Explanation: " + product.getExplanation());
+        Text feature = new Text("Feature: " + product.getProductsSpecialFeature());
+        Text score = new Text("Product Score: " + product.getAverageScore());
+        name.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf", 30));
+        companyName.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf", 30));
+        category.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf", 30));
+        price.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf", 30));
+        explanation.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf", 30));
+        score.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf", 30));
         VBox info = new VBox(5);
         info.getChildren().addAll(name, companyName, category, price, explanation, feature, score);
         HBox hBox = new HBox(10);
@@ -84,26 +106,28 @@ public class ProductMenu extends Menu {
         listView.getItems().addAll(ProductManager.showComments(product));
         TextField comment = new TextField();
         comment.setPromptText("comment");
+        comment.setStyle(style);
         Button submitComment = new Button("submit");
+        submitComment.setStyle(style);
         HBox hBox1 = new HBox(5);
         hBox1.getChildren().addAll(comment, submitComment);
         submitComment.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 ProductManager.addComment(RegisterCustomerMenu.getCurrentCustomer(), product, comment.getText());
-                comment.clear();
             }
         });
         if (RegisterCustomerMenu.getCurrentCustomer() != null) {
             if (ProductManager.doesCustomerBoughtThisProduct(RegisterCustomerMenu.getCurrentCustomer(), product)) {
                 TextField rate = new TextField();
                 rate.setPromptText("product score");
+                rate.setStyle(style);
                 Button submitScore = new Button("Submit");
+                submitScore.setStyle(style);
                 submitScore.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent event) {
                         ProductManager.rateProduct(RegisterCustomerMenu.getCurrentCustomer(), product, Double.parseDouble(rate.getText()));
-                        rate.clear();
                     }
                 });
                 HBox hBox2 = new HBox(5);

@@ -20,6 +20,8 @@ import java.io.FileInputStream;
 import java.util.ArrayList;
 
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 
 
 public class ProductsMenu extends Menu {
@@ -39,11 +41,24 @@ public class ProductsMenu extends Menu {
         scrollPane.setPadding(new Insets(25, 25, 25, 25));
         Label notify = new Label();
         Button backButton = new Button("Back");
+        String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
+                "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
+                + "linear-gradient(#cdded5 0%, #f6f6f6 50%);" +
+                " -fx-background-radius: 8,7,6; " +
+                "-fx-background-insets: 0,1,2; " +
+                "-fx-text-fill: #3193ff;"
+                + "-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); " +
+                "-fx-font-size: 1.2em; " +
+                "-fx-padding: 4px;";
+        backButton.setStyle(style);
         HBox mainButtons = new HBox(3);
         mainButtons.setAlignment(Pos.TOP_RIGHT);
         Button accountsButton = new Button("Accounts");
         Button discountButton = new Button("Discounts");
         Button logoutButton = new Button("Logout");
+        accountsButton.setStyle(style);
+        discountButton.setStyle(style);
+        logoutButton.setStyle(style);
         addActionForMainButtons(accountsButton, discountButton, logoutButton);
         mainButtons.getChildren().addAll(accountsButton, discountButton, logoutButton);
         HBox bar = new HBox(30);
@@ -57,7 +72,10 @@ public class ProductsMenu extends Menu {
         ChoiceBox choiceBox = new ChoiceBox(FXCollections.observableList(filterChoiceBoxItems()));
         TextField textField = new TextField();
         textField.setPromptText("filter by ...");
+        textField.setStyle(style);
         Button submit = new Button("submit filter");
+        submit.setStyle(style);
+        choiceBox.setStyle(style);
         submit.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -95,7 +113,9 @@ public class ProductsMenu extends Menu {
         HBox filter = new HBox(10);
         filter.getChildren().addAll(choiceBox, textField, submit, notify);
         ChoiceBox choiceBox1 = new ChoiceBox(FXCollections.observableList(sortChoiceBoxItems()));
+        choiceBox1.setStyle(style);
         Button submitButton = new Button("submit sort");
+        submitButton.setStyle(style);
         submitButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -111,6 +131,7 @@ public class ProductsMenu extends Menu {
 
         ChoiceBox category = new ChoiceBox(ProductsManager.showCategory());
         bar.getChildren().addAll(backButton, mainButtons, filter, sort, category);
+        category.setStyle(style);
         ArrayList<HBox> hBoxes = new ArrayList<>();
         hBoxes.add(bar);
         for (Product product : ProductsManager.showProducts()) {
@@ -123,16 +144,22 @@ public class ProductsMenu extends Menu {
             }
             ImageView imageView = new ImageView(image);
             Button button = new Button("show product");
+            button.setStyle(style);
             button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
                     handleProductPage(product);
                 }
             });
-            Label name = new Label(product.getName());
-            Label price = new Label(product.getPrice() + "$");
-            Label score = new Label("score: " + product.getPrice());
-            hBox.getChildren().addAll(imageView, name, price, score, button);
+            Text name = new Text("Product name: " + product.getName());
+            Text price = new Text("Product price: " + product.getPrice() + "$");
+            Text score = new Text("Product score: " + product.getPrice());
+            name.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf",24));
+            price.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf",24));
+            score.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf",24));
+            VBox vBox = new VBox(5);
+            vBox.getChildren().addAll(name, price, score);
+            hBox.getChildren().addAll(imageView, vBox, button);
             hBoxes.add(hBox);
         }
         VBox vBox = new VBox(5);
@@ -146,13 +173,27 @@ public class ProductsMenu extends Menu {
         ScrollPane scrollPane = new ScrollPane();
         scrollPane.setPadding(new Insets(25, 25, 25, 25));
         Label notify = new Label();
+        String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
+                "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
+                + "linear-gradient(#cdded5 0%, #f6f6f6 50%);" +
+                " -fx-background-radius: 8,7,6; " +
+                "-fx-background-insets: 0,1,2; " +
+                "-fx-text-fill: #3193ff;"
+                + "-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); " +
+                "-fx-font-size: 1.2em; " +
+                "-fx-padding: 4px;";
         Button backButton = new Button("Back");
+        backButton.setStyle(style);
         HBox mainButtons = new HBox(3);
         mainButtons.setAlignment(Pos.TOP_RIGHT);
         Button accountsButton = new Button("Accounts");
         Button productsButton = new Button("Products");
         Button discountButton = new Button("Discounts");
         Button logoutButton = new Button("Logout");
+        accountsButton.setStyle(style);
+        productsButton.setStyle(style);
+        discountButton.setStyle(style);
+        logoutButton.setStyle(style);
         addActionForMainButtonsForFilterAndSort(accountsButton, discountButton, productsButton, logoutButton);
         mainButtons.getChildren().addAll(accountsButton, productsButton, discountButton, logoutButton);
         HBox bar = new HBox(30);
@@ -164,9 +205,12 @@ public class ProductsMenu extends Menu {
             }
         });
         ChoiceBox choiceBox = new ChoiceBox(FXCollections.observableList(filterChoiceBoxItems()));
+        choiceBox.setStyle(style);
         TextField textField = new TextField();
         textField.setPromptText("filter by ...");
+        textField.setStyle(style);
         Button submit = new Button("submit");
+        submit.setStyle(style);
         submit.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -205,7 +249,9 @@ public class ProductsMenu extends Menu {
         HBox filter = new HBox(10);
         filter.getChildren().addAll(choiceBox, textField, submit, notify);
         ChoiceBox choiceBox1 = new ChoiceBox(FXCollections.observableList(sortChoiceBoxItems()));
+        choiceBox1.setStyle(style);
         Button submitButton = new Button("submit sort");
+        submitButton.setStyle(style);
         submitButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -218,7 +264,6 @@ public class ProductsMenu extends Menu {
         });
         HBox sort = new HBox(5);
         sort.getChildren().addAll(choiceBox1, submitButton);
-
         bar.getChildren().addAll(backButton, mainButtons, filter, sort);
         ArrayList<HBox> hBoxes = new ArrayList<>();
         hBoxes.add(bar);
@@ -232,16 +277,22 @@ public class ProductsMenu extends Menu {
             }
             ImageView imageView = new ImageView(image);
             Button button = new Button("show product");
+            button.setStyle(style);
             button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
                     handleProductPage(product);
                 }
             });
-            Label name = new Label(product.getName());
-            Label price = new Label(product.getPrice() + "$");
-            Label score = new Label("score: " + product.getPrice());
-            hBox.getChildren().addAll(imageView, name, price, score, button);
+            Text name = new Text("Product name: " + product.getName());
+            Text price = new Text("Product price: " + product.getPrice() + "$");
+            Text score = new Text("Product score: " + product.getPrice());
+            name.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf",24));
+            price.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf",24));
+            score.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf",24));
+            VBox vBox = new VBox(5);
+            vBox.getChildren().addAll(name, price, score);
+            hBox.getChildren().addAll(imageView, vBox, button);
             hBoxes.add(hBox);
         }
         VBox vBox = new VBox(5);
@@ -254,14 +305,28 @@ public class ProductsMenu extends Menu {
     public void setSortScene() {
         ScrollPane scrollPane = new ScrollPane();
         scrollPane.setPadding(new Insets(25, 25, 25, 25));
+        String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
+                "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
+                + "linear-gradient(#cdded5 0%, #f6f6f6 50%);" +
+                " -fx-background-radius: 8,7,6; " +
+                "-fx-background-insets: 0,1,2; " +
+                "-fx-text-fill: #3193ff;"
+                + "-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); " +
+                "-fx-font-size: 1.2em; " +
+                "-fx-padding: 4px;";
         Label notify = new Label();
         Button backButton = new Button("Back");
+        backButton.setStyle(style);
         HBox mainButtons = new HBox(3);
         mainButtons.setAlignment(Pos.TOP_RIGHT);
         Button accountsButton = new Button("Accounts");
         Button productsButton = new Button("Products");
         Button discountButton = new Button("Discounts");
         Button logoutButton = new Button("Logout");
+        accountsButton.setStyle(style);
+        productsButton.setStyle(style);
+        discountButton.setStyle(style);
+        logoutButton.setStyle(style);
         addActionForMainButtonsForFilterAndSort(accountsButton, discountButton, productsButton, logoutButton);
         mainButtons.getChildren().addAll(accountsButton, productsButton, discountButton, logoutButton);
         HBox bar = new HBox(30);
@@ -273,9 +338,12 @@ public class ProductsMenu extends Menu {
             }
         });
         ChoiceBox choiceBox = new ChoiceBox(FXCollections.observableList(filterChoiceBoxItems()));
+        choiceBox.setStyle(style);
         TextField textField = new TextField();
         textField.setPromptText("filter by ...");
+        textField.setStyle(style);
         Button submit = new Button("submit");
+        submit.setStyle(style);
         submit.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -313,7 +381,9 @@ public class ProductsMenu extends Menu {
         HBox filter = new HBox(10);
         filter.getChildren().addAll(choiceBox, textField, submit, notify);
         ChoiceBox choiceBox1 = new ChoiceBox(FXCollections.observableList(sortChoiceBoxItems()));
+        choiceBox1.setStyle(style);
         Button submitButton = new Button("submit sort");
+        submitButton.setStyle(style);
         submitButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -340,16 +410,22 @@ public class ProductsMenu extends Menu {
             }
             ImageView imageView = new ImageView(image);
             Button button = new Button("show product");
+            button.setStyle(style);
             button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
                     handleProductPage(product);
                 }
             });
-            Label name = new Label(product.getName());
-            Label price = new Label(product.getPrice() + "$");
-            Label score = new Label("score: " + product.getPrice());
-            hBox.getChildren().addAll(imageView, name, price, score, button);
+            Text name = new Text("Product name: " + product.getName());
+            Text price = new Text("Product price: " + product.getPrice() + "$");
+            Text score = new Text("Product score: " + product.getPrice());
+            name.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf",24));
+            price.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf",24));
+            score.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf",24));
+            VBox vBox = new VBox(5);
+            vBox.getChildren().addAll(name, price, score);
+            hBox.getChildren().addAll(imageView, vBox, button);
             hBoxes.add(hBox);
         }
         VBox vBox = new VBox(5);

@@ -110,7 +110,7 @@ public class RegisterCustomerMenu extends Menu {
             public void handle(MouseEvent mouseEvent) {
                 if (RegisterAndLoginManager.canHaveAccountWithThisUsername(userNameTextField.getText())) {
                     new Customer(userNameTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText(),
-                            phoneNumberTextField.getText(), passwordField.getText(), Double.parseDouble(extraTextField.getText()));
+                            phoneNumberTextField.getText(), passwordField.getText(), Double.parseDouble(extraTextField.getText()),addressTextField.getText());
                     notify.setStyle("-fx-text-fill: #3193ff");
                     notify.setText("successfully registered");
                 } else {

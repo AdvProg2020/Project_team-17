@@ -3,9 +3,12 @@ package Controller;
 import Models.Accounts.Customer;
 import Models.Cart;
 import Models.Logs.BuyLog;
+import Models.PointOfView;
 import Models.Product;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
+import java.util.ArrayList;
 
 public class ProductManager {
 
@@ -22,8 +25,12 @@ public class ProductManager {
     }
 
     public static ObservableList<String> showComments(Product product) {
+        ArrayList<String> comments = new ArrayList<>();
+        for (PointOfView pointOfView : product.getPointOfViews()) {
+            comments.add(pointOfView.getPointOfViewStringText());
+        }
         ObservableList data = FXCollections.observableArrayList();
-        data.addAll(product.getPointOfViews());
+        data.addAll(comments);
         return data;
     }
 
