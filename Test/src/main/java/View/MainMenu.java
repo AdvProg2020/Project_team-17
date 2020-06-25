@@ -152,11 +152,11 @@ public class MainMenu extends Menu {
         Menu.window.setScene(scene);
     }
 
-    MediaPlayer mediaPlayer;
-    private void music(){
-        String s = "C:\\Users\\kian\\IdeaProjects\\music_test\\src\\Koorosh-Zood-Dir-Shod-(Ft-Sami-Low-Raha)-320.mp3";
-        Media h = new Media(Paths.get(s).toUri().toString());
-        mediaPlayer = new MediaPlayer(h);
+    private void music() {
+        String path = "C:\\Users\\kian\\IdeaProjects\\music_test\\src\\Koorosh-Zood-Dir-Shod-(Ft-Sami-Low-Raha)-320.mp3";
+        Media media = new Media(Paths.get(path).toUri().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         mediaPlayer.play();
     }
 
