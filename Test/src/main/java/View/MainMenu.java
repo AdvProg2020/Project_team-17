@@ -42,7 +42,8 @@ public class MainMenu extends Menu {
         exitButton.setStyle(style);
         Image mainImage = null;
         try {
-            mainImage = new Image(new FileInputStream("C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Test\\src\\main\\java\\Images\\MAIN_BACKGROUND.png"));
+            mainImage = new Image(new FileInputStream("C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Images\\MAIN_BACKGROUND.png"));
+
         } catch (Exception e) {
 
         }
@@ -106,6 +107,16 @@ public class MainMenu extends Menu {
         VBox vBox = new VBox(10);
         Label title = new Label("Manager account registration");
         Label notify = new Label();
+        Button button = new Button("go to main page");
+        button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                setMainScene();
+                Scene scene = new Scene(setMainScene(), 600, 600);
+                Menu.window.setScene(scene);
+                Menu.window.show();
+            }
+        });
         TextField userNameTextField = new TextField();
         userNameTextField.setPromptText("username");
 
@@ -145,7 +156,7 @@ public class MainMenu extends Menu {
             }
         });
 
-        vBox.getChildren().addAll(title, userNameTextField, passwordField, firstNameTextField, lastNameTextField, emailTextField, phoneNumberTextField, addressTextField, SUButton, notify);
+        vBox.getChildren().addAll(button, title, userNameTextField, passwordField, firstNameTextField, lastNameTextField, emailTextField, phoneNumberTextField, addressTextField, SUButton, notify);
         vBox.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#abbaab , #ffffff)");
         pane.setCenter(vBox);
         Scene scene = new Scene(pane, 600, 600);
@@ -153,7 +164,7 @@ public class MainMenu extends Menu {
     }
 
     private void music() {
-        String path = "C:\\Users\\kian\\IdeaProjects\\music_test\\src\\Koorosh-Zood-Dir-Shod-(Ft-Sami-Low-Raha)-320.mp3";
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\My Song.m4a";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
@@ -163,14 +174,17 @@ public class MainMenu extends Menu {
 
     @Override
     public void show() {
-        //  if (Manager.getAllManagers().size()!=0) {
-        music();
-        setMainScene();
-        Scene scene = new Scene(setMainScene(), 600, 600);
-        Menu.window.setScene(scene);
-        Menu.window.show();
-        //} else {
-        //registerFirstManager();
-        //}
+        if (Manager.getAllManagers().size() != 0) {
+            music();
+            setMainScene();
+            Scene scene = new Scene(setMainScene(), 600, 600);
+            Menu.window.setScene(scene);
+            Menu.window.show();
+        } else {
+            music();
+            registerFirstManager();
+            Menu.window.show();
+
+        }
     }
 }
