@@ -67,7 +67,8 @@ public class ProductsMenu extends Menu {
         });
         HBox filter = new HBox(10);
         filter.getChildren().addAll(choiceBox, textField, submit);
-        bar.getChildren().addAll(backButton, mainButtons, filter);
+        ChoiceBox category = new ChoiceBox(ProductsManager.showCategory());
+        bar.getChildren().addAll(backButton, mainButtons, filter,category);
         ArrayList<HBox> hBoxes = new ArrayList<>();
         hBoxes.add(bar);
         for (Product product : ProductsManager.showProducts()) {
@@ -363,11 +364,6 @@ public class ProductsMenu extends Menu {
 //            disableFilterByBrand();
 //        }
 //    }
-
-    //check
-    public void viewCategories() {
-        System.out.println(ProductsManager.showCategory());
-    }
 
     //bug
     public void sorting() {

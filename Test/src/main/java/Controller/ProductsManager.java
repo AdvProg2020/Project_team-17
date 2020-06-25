@@ -4,10 +4,11 @@ import Models.Accounts.Seller;
 import Models.Category;
 import Models.Enums.ProductEnum;
 import Models.Product;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
 import java.util.Comparator;
-
 
 public class ProductsManager {
     private static ArrayList<Product> filterProduct = new ArrayList<>(Product.getAllProducts());
@@ -18,12 +19,14 @@ public class ProductsManager {
         return Product.getAllProducts();
     }
 
-    public static ArrayList<String> showCategory() {
+    public static ObservableList<String> showCategory() {
         ArrayList<String> categoryName = new ArrayList<>();
         for (Category category : Category.getAllCategories()) {
             categoryName.add(category.getCategoryName());
         }
-        return categoryName;
+        ObservableList data = FXCollections.observableArrayList();
+        data.addAll(categoryName);
+        return data;
     }
 
     public static ArrayList<Product> getFilterProduct() {
