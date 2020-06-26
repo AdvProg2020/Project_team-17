@@ -21,6 +21,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
+import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -655,8 +656,13 @@ public class SellerMenu extends Menu {
                     notify.setStyle("-fx-text-fill: #ff4f59");
                     notify.setText("wrong product name");
                 } else {
-                    Discount discount = SellerAbilitiesManager.addDiscount(ID.getText(), startDate.getText(), endDate.getText(),
-                            Double.parseDouble(discountPercent.getText()), s);
+                    Discount discount = null;
+                    try {
+                        discount = SellerAbilitiesManager.addDiscount(ID.getText(), startDate.getText(), endDate.getText(),
+                                Double.parseDouble(discountPercent.getText()), s);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                     new AddOffRequest(RegisterSellerMenu.getCurrentSeller(), discount);
                     notify.setStyle("-fx-text-fill: #3193ff");
                     notify.setText("request sent");
