@@ -3,7 +3,6 @@ package View;
 import Controller.RegisterAndLoginManager;
 import Models.Accounts.Customer;
 import javafx.event.EventHandler;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -26,10 +25,15 @@ public class RegisterCustomerMenu extends Menu {
     @Override
     public void show() {
         BorderPane pane = new BorderPane();
-        pane.setPadding(new Insets(25, 25, 25, 25));
-        String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
-                + "linear-gradient(#dddddd 0%, #f6f6f6 50%); -fx-background-radius: 8,7,6; -fx-background-insets: 0,1,2; -fx-text-fill: #000000;"
-                + "-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); -fx-font-size: 1.9em; -fx-padding: 10px;";
+        String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
+                "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
+                + "linear-gradient(#dddddd 0%, #f6f6f6 50%);" +
+                " -fx-background-radius: 8,7,6; " +
+                "-fx-background-insets: 0,1,2; " +
+                "-fx-text-fill: #000000;"
+                + "-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); " +
+                "-fx-font-size: 1.9em; " +
+                "-fx-padding: 10px;";
         HBox registerAndLoginButtons = new HBox(10);
         registerAndLoginButtons.setAlignment(Pos.CENTER);
         Button registerButton = new Button("Register");
@@ -44,8 +48,8 @@ public class RegisterCustomerMenu extends Menu {
         VBox vBox = new VBox(220);
         vBox.getChildren().addAll(backAndOthersButton, registerAndLoginButtons);
         addActionForButton(backButton, loginButton, registerButton);
-        vBox.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#abbaab , #ffffff)");
         pane.setCenter(vBox);
+        pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
         Scene scene = new Scene(pane, 600, 600);
         Menu.window.setScene(scene);
     }
@@ -74,7 +78,15 @@ public class RegisterCustomerMenu extends Menu {
 
     public void registerCustomerScene() {
         BorderPane pane = new BorderPane();
-        pane.setPadding(new Insets(25, 25, 25, 25));
+        String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
+                "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
+                + "linear-gradient(#dddddd 0%, #f6f6f6 50%);" +
+                " -fx-background-radius: 8,7,6; " +
+                "-fx-background-insets: 0,1,2; " +
+                "-fx-text-fill: #000000;"
+                + "-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); " +
+                "-fx-font-size: 1.9em; " +
+                "-fx-padding: 10px;";
         VBox vBox = new VBox(10);
         Button backButton = new Button("Back");
         Label title = new Label("Customer account registration");
@@ -104,13 +116,22 @@ public class RegisterCustomerMenu extends Menu {
         extraTextField.setPromptText("credit");
 
         Button SUButton = new Button("Sign up");
+        backButton.setStyle(style);
+        userNameTextField.setStyle(style);
+        firstNameTextField.setStyle(style);
+        lastNameTextField.setStyle(style);
+        emailTextField.setStyle(style);
+        phoneNumberTextField.setStyle(style);
+        addressTextField.setStyle(style);
+        extraTextField.setStyle(style);
+        SUButton.setStyle(style);
 
         SUButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 if (RegisterAndLoginManager.canHaveAccountWithThisUsername(userNameTextField.getText())) {
                     new Customer(userNameTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText(),
-                            phoneNumberTextField.getText(), passwordField.getText(), Double.parseDouble(extraTextField.getText()),addressTextField.getText());
+                            phoneNumberTextField.getText(), passwordField.getText(), Double.parseDouble(extraTextField.getText()), addressTextField.getText());
                     notify.setStyle("-fx-text-fill: #3193ff");
                     notify.setText("successfully registered");
                 } else {
@@ -128,15 +149,23 @@ public class RegisterCustomerMenu extends Menu {
         });
 
         vBox.getChildren().addAll(backButton, title, userNameTextField, passwordField, firstNameTextField, lastNameTextField, emailTextField, phoneNumberTextField, addressTextField, extraTextField, SUButton, notify);
-        vBox.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#abbaab , #ffffff)");
         pane.setCenter(vBox);
+        pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
         Scene scene = new Scene(pane, 600, 600);
         Menu.window.setScene(scene);
     }
 
     public void loginCustomerScene() {
         BorderPane pane = new BorderPane();
-        pane.setPadding(new Insets(25, 25, 25, 25));
+        String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
+                "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
+                + "linear-gradient(#dddddd 0%, #f6f6f6 50%);" +
+                " -fx-background-radius: 8,7,6; " +
+                "-fx-background-insets: 0,1,2; " +
+                "-fx-text-fill: #000000;"
+                + "-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); " +
+                "-fx-font-size: 1.9em; " +
+                "-fx-padding: 10px;";
         VBox vBox = new VBox(10);
         Button backButton = new Button("Back");
         Label title = new Label("Login");
@@ -146,6 +175,10 @@ public class RegisterCustomerMenu extends Menu {
         PasswordField passwordField = new PasswordField();
         passwordField.setPromptText("password");
         Button loginButton = new Button("login");
+        backButton.setStyle(style);
+        usernameTextField.setStyle(style);
+        passwordField.setStyle(style);
+        loginButton.setStyle(style);
         loginButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -168,8 +201,8 @@ public class RegisterCustomerMenu extends Menu {
             }
         });
         vBox.getChildren().addAll(backButton, title, usernameTextField, passwordField, loginButton, notify);
-        vBox.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#abbaab , #ffffff)");
         pane.setCenter(vBox);
+        pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
         Scene scene = new Scene(pane, 600, 600);
         Menu.window.setScene(scene);
     }
