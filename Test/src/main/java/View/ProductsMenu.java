@@ -17,9 +17,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 
 import java.io.FileInputStream;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
@@ -37,6 +40,10 @@ public class ProductsMenu extends Menu {
     }
 
     public void setProductsScene() {
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\button.mp3";
+        Media media = new Media(Paths.get(path).toUri().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+
         ScrollPane scrollPane = new ScrollPane();
         scrollPane.setPadding(new Insets(25, 25, 25, 25));
         Label notify = new Label();
@@ -65,6 +72,7 @@ public class ProductsMenu extends Menu {
         backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 parentMenu.show();
                 notify.setText("");
             }
@@ -79,6 +87,7 @@ public class ProductsMenu extends Menu {
         submit.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 try {
                     String filter = (String) choiceBox.getValue();
                     String name = textField.getText();
@@ -119,6 +128,7 @@ public class ProductsMenu extends Menu {
         submitButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 try {
                     ProductsManager.sort((String) choiceBox1.getValue());
                     setSortScene();
@@ -148,15 +158,16 @@ public class ProductsMenu extends Menu {
             button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
+                    mediaPlayer.play();
                     handleProductPage(product);
                 }
             });
             Text name = new Text("Product name: " + product.getName());
             Text price = new Text("Product price: " + product.getPrice() + "$");
             Text score = new Text("Product score: " + product.getPrice());
-            name.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf",24));
-            price.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf",24));
-            score.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf",24));
+            name.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf", 24));
+            price.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf", 24));
+            score.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf", 24));
             VBox vBox = new VBox(5);
             vBox.getChildren().addAll(name, price, score);
             hBox.getChildren().addAll(imageView, vBox, button);
@@ -170,6 +181,10 @@ public class ProductsMenu extends Menu {
     }
 
     public void setFilterScene() {
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\button.mp3";
+        Media media = new Media(Paths.get(path).toUri().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+
         ScrollPane scrollPane = new ScrollPane();
         scrollPane.setPadding(new Insets(25, 25, 25, 25));
         Label notify = new Label();
@@ -194,12 +209,13 @@ public class ProductsMenu extends Menu {
         productsButton.setStyle(style);
         discountButton.setStyle(style);
         logoutButton.setStyle(style);
-        addActionForMainButtonsForFilterAndSort(accountsButton, discountButton, productsButton, logoutButton);
+        addActionForMainButtonsForFilterAndSort(mediaPlayer,accountsButton, discountButton, productsButton, logoutButton);
         mainButtons.getChildren().addAll(accountsButton, productsButton, discountButton, logoutButton);
         HBox bar = new HBox(30);
         backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 parentMenu.show();
                 notify.setText("");
             }
@@ -214,6 +230,7 @@ public class ProductsMenu extends Menu {
         submit.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 try {
                     String filter = (String) choiceBox.getValue();
                     String name = textField.getText();
@@ -255,6 +272,7 @@ public class ProductsMenu extends Menu {
         submitButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 try {
                     ProductsManager.sort((String) choiceBox1.getValue());
                     setSortScene();
@@ -281,15 +299,16 @@ public class ProductsMenu extends Menu {
             button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
+                    mediaPlayer.play();
                     handleProductPage(product);
                 }
             });
             Text name = new Text("Product name: " + product.getName());
             Text price = new Text("Product price: " + product.getPrice() + "$");
             Text score = new Text("Product score: " + product.getPrice());
-            name.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf",24));
-            price.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf",24));
-            score.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf",24));
+            name.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf", 24));
+            price.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf", 24));
+            score.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf", 24));
             VBox vBox = new VBox(5);
             vBox.getChildren().addAll(name, price, score);
             hBox.getChildren().addAll(imageView, vBox, button);
@@ -303,6 +322,10 @@ public class ProductsMenu extends Menu {
     }
 
     public void setSortScene() {
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\button.mp3";
+        Media media = new Media(Paths.get(path).toUri().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+
         ScrollPane scrollPane = new ScrollPane();
         scrollPane.setPadding(new Insets(25, 25, 25, 25));
         String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
@@ -327,12 +350,13 @@ public class ProductsMenu extends Menu {
         productsButton.setStyle(style);
         discountButton.setStyle(style);
         logoutButton.setStyle(style);
-        addActionForMainButtonsForFilterAndSort(accountsButton, discountButton, productsButton, logoutButton);
+        addActionForMainButtonsForFilterAndSort(mediaPlayer, accountsButton, discountButton, productsButton, logoutButton);
         mainButtons.getChildren().addAll(accountsButton, productsButton, discountButton, logoutButton);
         HBox bar = new HBox(30);
         backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 parentMenu.show();
                 notify.setText("");
             }
@@ -347,6 +371,7 @@ public class ProductsMenu extends Menu {
         submit.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 try {
                     String filter = (String) choiceBox.getValue();
                     String name = textField.getText();
@@ -387,6 +412,7 @@ public class ProductsMenu extends Menu {
         submitButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 try {
                     ProductsManager.sort((String) choiceBox1.getValue());
                     setSortScene();
@@ -414,15 +440,16 @@ public class ProductsMenu extends Menu {
             button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
+                    mediaPlayer.play();
                     handleProductPage(product);
                 }
             });
             Text name = new Text("Product name: " + product.getName());
             Text price = new Text("Product price: " + product.getPrice() + "$");
             Text score = new Text("Product score: " + product.getPrice());
-            name.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf",24));
-            price.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf",24));
-            score.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf",24));
+            name.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf", 24));
+            price.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf", 24));
+            score.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf", 24));
             VBox vBox = new VBox(5);
             vBox.getChildren().addAll(name, price, score);
             hBox.getChildren().addAll(imageView, vBox, button);
@@ -435,28 +462,32 @@ public class ProductsMenu extends Menu {
         Menu.window.setScene(scene);
     }
 
-    public void addActionForMainButtonsForFilterAndSort(Button accountsButton, Button productsButton, Button discountButton, Button logoutButton) {
+    public void addActionForMainButtonsForFilterAndSort(MediaPlayer mediaPlayer, Button accountsButton, Button productsButton, Button discountButton, Button logoutButton) {
         accountsButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 handleAccountsMenu();
             }
         });
         productsButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 handleProductsMenu();
             }
         });
         discountButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 handleDiscountsMenu();
             }
         });
         logoutButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 handleLogout();
             }
         });

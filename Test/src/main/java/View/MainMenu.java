@@ -4,7 +4,6 @@ import Controller.RegisterAndLoginManager;
 import Controller.WriteIntoFile;
 import Models.Accounts.Manager;
 import javafx.event.EventHandler;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -29,6 +28,10 @@ public class MainMenu extends Menu {
     }
 
     public BorderPane setMainScene() {
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\button.mp3";
+        Media media = new Media(Paths.get(path).toUri().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+
         BorderPane mainPane = new BorderPane();
         VBox mainButtons = new VBox(15);
         mainButtons.setAlignment(Pos.CENTER);
@@ -62,35 +65,39 @@ public class MainMenu extends Menu {
                 BackgroundPosition.DEFAULT,
                 BackgroundSize.DEFAULT);
         Background mainBackground = new Background(mainBackgroundImage);
-        addActionForButtons(accountsButton, productsButton, discountButton, exitButton);
+        addActionForButtons(mediaPlayer, accountsButton, productsButton, discountButton, exitButton);
         mainButtons.getChildren().addAll(accountsButton, productsButton, discountButton, exitButton);
         mainButtons.setBackground(mainBackground);
         mainPane.setCenter(mainButtons);
         return mainPane;
     }
 
-    public void addActionForButtons(Button accountButton, Button productButton, Button discountButton, Button exitButton) {
+    public void addActionForButtons(MediaPlayer mediaPlayer,Button accountButton, Button productButton, Button discountButton, Button exitButton) {
         accountButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 handleAccounts();
             }
         });
         productButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 handleProductsMenu();
             }
         });
         discountButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 handleDiscountsMenu();
             }
         });
         exitButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 System.exit(0);
             }
         });
@@ -112,6 +119,10 @@ public class MainMenu extends Menu {
     }
 
     public void registerFirstManager() {
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\button.mp3";
+        Media media = new Media(Paths.get(path).toUri().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+
         BorderPane pane = new BorderPane();
         String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
                 "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
@@ -130,6 +141,7 @@ public class MainMenu extends Menu {
         button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 setMainScene();
                 Scene scene = new Scene(setMainScene(), 600, 600);
                 Menu.window.setScene(scene);
@@ -171,6 +183,7 @@ public class MainMenu extends Menu {
         SUButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 if (RegisterAndLoginManager.canHaveAccountWithThisUsername(userNameTextField.getText())) {
                     new Manager(userNameTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText(),
                             phoneNumberTextField.getText(), passwordField.getText());

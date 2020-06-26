@@ -4,7 +4,7 @@ import View.AccountMenus.CustomerMenu;
 import View.AccountMenus.ManagerMenu;
 import View.AccountMenus.SellerMenu;
 import javafx.event.EventHandler;
-import javafx.geometry.Insets;
+0import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -13,7 +13,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 
 import java.io.FileInputStream;
-import java.io.IOException;
 
 public class AccountsMenu extends Menu {
     public AccountsMenu(Menu parentMenu) {
@@ -44,8 +43,7 @@ public class AccountsMenu extends Menu {
         });
         Image mainImage = null;
         try {
-           // nona mainImage = new Image(new FileInputStream("C:\\Users\\UX434FL\\IdeaProjects\\17\\Test\\src\\main\\java\\Images\\MAIN_BACKGROUND.png"));
-            mainImage = new Image(new FileInputStream("C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Test\\src\\main\\java\\Images\\MAIN_BACKGROUND.png"));
+            mainImage = new Image(new FileInputStream("C:\\Users\\UX434FL\\IdeaProjects\\17\\Test\\src\\main\\java\\Images\\MAIN_BACKGROUND.png"));
         } catch (Exception e) {
 
         }
@@ -79,11 +77,7 @@ public class AccountsMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 if (RegisterCustomerMenu.getCurrentCustomer() == null) {
-                    try {
-                        handleRegisterCustomer();
-                    } catch (IOException e) {
-                        System.err.println(e.getMessage());
-                    }
+                    handleRegisterCustomer();
                 } else {
                     handleCustomerMenu();
                 }
@@ -106,7 +100,7 @@ public class AccountsMenu extends Menu {
         registerSellerMenu.show();
     }
 
-    public void handleRegisterCustomer() throws IOException {
+    public void handleRegisterCustomer() {
         RegisterCustomerMenu registerCustomerMenu = new RegisterCustomerMenu(this);
         registerCustomerMenu.show();
     }

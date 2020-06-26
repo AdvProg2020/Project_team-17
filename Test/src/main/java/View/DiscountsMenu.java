@@ -17,10 +17,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 import java.io.FileInputStream;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class DiscountsMenu extends Menu {
@@ -36,6 +39,10 @@ public class DiscountsMenu extends Menu {
     }
 
     public void setDiscountScene() {
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\button.mp3";
+        Media media = new Media(Paths.get(path).toUri().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+
         ScrollPane scrollPane = new ScrollPane();
         scrollPane.setPadding(new Insets(25, 25, 25, 25));
         String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
@@ -58,12 +65,13 @@ public class DiscountsMenu extends Menu {
         accountsButton.setStyle(style);
         productButton.setStyle(style);
         logoutButton.setStyle(style);
-        addActionForMainButtons(accountsButton, productButton, logoutButton);
+        addActionForMainButtons(mediaPlayer,accountsButton, productButton, logoutButton);
         mainButtons.getChildren().addAll(accountsButton, productButton, logoutButton);
         HBox bar = new HBox(30);
         backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 parentMenu.show();
                 notify.setText("");
             }
@@ -78,6 +86,7 @@ public class DiscountsMenu extends Menu {
         submit.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 try {
                     String filter = (String) choiceBox.getValue();
                     String name = textField.getText();
@@ -118,6 +127,7 @@ public class DiscountsMenu extends Menu {
         submitButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 try {
                     ProductsManager.sort((String) choiceBox1.getValue());
                     setSortScene();
@@ -144,6 +154,7 @@ public class DiscountsMenu extends Menu {
             button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
+                    mediaPlayer.play();
                     handleProductPage(product);
                 }
             });
@@ -166,6 +177,10 @@ public class DiscountsMenu extends Menu {
     }
 
     public void setFilterScene() {
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\button.mp3";
+        Media media = new Media(Paths.get(path).toUri().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+
         ScrollPane scrollPane = new ScrollPane();
         scrollPane.setPadding(new Insets(25, 25, 25, 25));
         String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
@@ -190,12 +205,13 @@ public class DiscountsMenu extends Menu {
         productsButton.setStyle(style);
         discountButton.setStyle(style);
         productsButton.setStyle(style);
-        addActionForMainButtonsForFilterAndSort(accountsButton, discountButton, productsButton, logoutButton);
+        addActionForMainButtonsForFilterAndSort(mediaPlayer,accountsButton, discountButton, productsButton, logoutButton);
         mainButtons.getChildren().addAll(accountsButton, productsButton, discountButton, logoutButton);
         HBox bar = new HBox(30);
         backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 parentMenu.show();
                 notify.setText("");
             }
@@ -210,6 +226,7 @@ public class DiscountsMenu extends Menu {
         submit.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 try {
                     String filter = (String) choiceBox.getValue();
                     String name = textField.getText();
@@ -250,6 +267,7 @@ public class DiscountsMenu extends Menu {
         submitButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 try {
                     ProductsManager.sort((String) choiceBox1.getValue());
                     setSortScene();
@@ -277,6 +295,7 @@ public class DiscountsMenu extends Menu {
             button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
+                    mediaPlayer.play();
                     handleProductPage(product);
                 }
             });
@@ -299,6 +318,10 @@ public class DiscountsMenu extends Menu {
     }
 
     public void setSortScene() {
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\button.mp3";
+        Media media = new Media(Paths.get(path).toUri().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+
         ScrollPane scrollPane = new ScrollPane();
         String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
                 "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
@@ -323,12 +346,13 @@ public class DiscountsMenu extends Menu {
         productsButton.setStyle(style);
         discountButton.setStyle(style);
         logoutButton.setStyle(style);
-        addActionForMainButtonsForFilterAndSort(accountsButton, discountButton, productsButton, logoutButton);
+        addActionForMainButtonsForFilterAndSort(mediaPlayer,accountsButton, discountButton, productsButton, logoutButton);
         mainButtons.getChildren().addAll(accountsButton, productsButton, discountButton, logoutButton);
         HBox bar = new HBox(30);
         backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 parentMenu.show();
                 notify.setText("");
             }
@@ -343,6 +367,7 @@ public class DiscountsMenu extends Menu {
         submit.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 try {
                     String filter = (String) choiceBox.getValue();
                     String name = textField.getText();
@@ -384,6 +409,7 @@ public class DiscountsMenu extends Menu {
         submitButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 try {
                     ProductsManager.sort((String) choiceBox1.getValue());
                     setSortScene();
@@ -412,6 +438,7 @@ public class DiscountsMenu extends Menu {
             button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
+                    mediaPlayer.play();
                     handleProductPage(product);
                 }
             });
@@ -433,28 +460,32 @@ public class DiscountsMenu extends Menu {
         Menu.window.setScene(scene);
     }
 
-    public void addActionForMainButtonsForFilterAndSort(Button accountsButton, Button productsButton, Button discountButton, Button logoutButton) {
+    public void addActionForMainButtonsForFilterAndSort(MediaPlayer mediaPlayer,Button accountsButton, Button productsButton, Button discountButton, Button logoutButton) {
         accountsButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 handleAccountsMenu();
             }
         });
         productsButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 handleProductsMenu();
             }
         });
         discountButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 handleDiscountsMenu();
             }
         });
         logoutButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 handleLogout();
             }
         });
@@ -465,22 +496,25 @@ public class DiscountsMenu extends Menu {
         productMenu.show();
     }
 
-    public void addActionForMainButtons(Button accountsButton, Button productsButton, Button logoutButton) {
+    public void addActionForMainButtons(MediaPlayer mediaPlayer,Button accountsButton, Button productsButton, Button logoutButton) {
         accountsButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 handleAccountsMenu();
             }
         });
         productsButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 handleProductsMenu();
             }
         });
         logoutButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 handleLogout();
             }
         });
