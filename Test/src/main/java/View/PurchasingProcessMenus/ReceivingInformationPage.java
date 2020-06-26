@@ -14,6 +14,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
 import java.nio.file.Paths;
@@ -66,7 +68,7 @@ public class ReceivingInformationPage extends Menu {
         Button back = new Button("Back");
         back.setStyle(style);
         Text title = new Text("Receiving information to continue purchasing");
-        title.setFont(Font.loadFont("file:src/main/java/Fonts/gangstergrotesk-bold.otf", 28));
+        title.setFont(Font.font("calibri", FontWeight.BOLD, FontPosture.REGULAR, 32));
         VBox vBox1 = new VBox(10);
         TextField address = new TextField();
         address.setPromptText("address");
@@ -104,7 +106,7 @@ public class ReceivingInformationPage extends Menu {
         Menu.window.setScene(scene);
     }
 
-    public void addActionForMainButtons(MediaPlayer mediaPlayer ,Button accountsButton, Button productsButton, Button discountButton, Button logoutButton) {
+    public void addActionForMainButtons(MediaPlayer mediaPlayer, Button accountsButton, Button productsButton, Button discountButton, Button logoutButton) {
         accountsButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {

@@ -16,6 +16,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
@@ -65,7 +67,7 @@ public class PaymentPage extends Menu {
         Button back = new Button("Back");
         back.setStyle(style);
         Text title = new Text("YOUR BILL , if you are sure click done");
-        title.setFont(Font.loadFont("file:src/main/java/Fonts/gangstergrotesk-bold.otf", 28));
+        title.setFont(Font.font("calibri", FontWeight.BOLD, FontPosture.REGULAR, 32));
         VBox vBox1 = new VBox(10);
         Text totalPrice;
         if (DiscountCodePage.getCodeOfDiscountCode() != null) {

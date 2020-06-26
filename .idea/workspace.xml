@@ -1,31 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="32618e29-8746-4d2a-8d73-d011168a9d97" name="Default Changelist" comment="changes">
+    <list default="true" id="32618e29-8746-4d2a-8d73-d011168a9d97" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Controller/AccountsManager/CustomerAbilitiesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Controller/AccountsManager/CustomerAbilitiesManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Controller/AccountsManager/SellerAbilitiesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Controller/AccountsManager/SellerAbilitiesManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Controller/LoadFromFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Controller/LoadFromFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Controller/ProductManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Controller/ProductManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Controller/WriteIntoFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Controller/WriteIntoFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Logs/BuyLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Logs/BuyLog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Logs/SellLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Logs/SellLog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Request/AddOffRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Request/AddOffRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Request/AddProductRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Request/AddProductRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Request/EditOffRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Request/EditOffRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Request/EditProductRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Request/EditProductRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/Models/Request/RemoveProductRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/Models/Request/RemoveProductRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/AccountMenus/CustomerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/AccountMenus/CustomerMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/AccountMenus/ManagerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/AccountMenus/ManagerMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/AccountMenus/SellerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/AccountMenus/SellerMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/AccountsMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/AccountsMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/DiscountsMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/DiscountsMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/MainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/ProductMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/ProductMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/ProductsMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/ProductsMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/PurchasingProcessMenus/DiscountCodePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/PurchasingProcessMenus/DiscountCodePage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/PurchasingProcessMenus/PaymentPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/PurchasingProcessMenus/PaymentPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/Models/PointOfView.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/Models/PointOfView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/target/classes/Models/Product.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/classes/Models/Product.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/View/PurchasingProcessMenus/ReceivingInformationPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/src/main/java/View/PurchasingProcessMenus/ReceivingInformationPage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,14 +124,7 @@
       <workItem from="1593003119971" duration="3375000" />
       <workItem from="1593006545155" duration="71674000" />
       <workItem from="1593172305186" duration="7299000" />
-      <workItem from="1593180349742" duration="4117000" />
-    </task>
-    <task id="LOCAL-00057" summary="fix back button">
-      <created>1592117000299</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1592117000299</updated>
+      <workItem from="1593180349742" duration="4432000" />
     </task>
     <task id="LOCAL-00058" summary="delete registration for manager">
       <created>1592119727536</created>
@@ -489,7 +462,14 @@
       <option name="project" value="LOCAL" />
       <updated>1593180388925</updated>
     </task>
-    <option name="localTasksCounter" value="106" />
+    <task id="LOCAL-00106" summary="debug">
+      <created>1593184587503</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1593184587503</updated>
+    </task>
+    <option name="localTasksCounter" value="107" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -516,12 +496,12 @@
     <MESSAGE value="add fonts" />
     <MESSAGE value="add font" />
     <MESSAGE value="style added" />
-    <MESSAGE value="debug" />
     <MESSAGE value="some changes" />
     <MESSAGE value="zoom" />
     <MESSAGE value="compare products" />
     <MESSAGE value="changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="changes" />
+    <MESSAGE value="debug" />
+    <option name="LAST_COMMIT_MESSAGE" value="debug" />
   </component>
   <component name="WindowStateProjectService">
     <state x="233" y="0" key="#Project_Structure" timestamp="1589785759293">
@@ -564,10 +544,10 @@
     </state>
     <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1593111249052" />
     <state x="445" y="105" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1588110193951" />
-    <state x="265" y="0" key="CommitChangelistDialog2" timestamp="1593183148529">
+    <state x="265" y="0" key="CommitChangelistDialog2" timestamp="1593184586360">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="265" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1593183148529" />
+    <state x="265" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1593184586360" />
     <state x="425" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1593001247141" />
     <state x="401" y="14" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1592143129254" />
     <state x="421" y="67" key="FileChooserDialogImpl" timestamp="1593183962778">
@@ -619,10 +599,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="171" y="0" key="Maven.ArtifactSearchDialog/0.0.1280.680@0.0.1280.680" timestamp="1591793625386" />
-    <state x="354" y="57" key="MultipleFileMergeDialog" timestamp="1593180784818">
+    <state x="354" y="57" key="MultipleFileMergeDialog" timestamp="1593184599396">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="354" y="57" key="MultipleFileMergeDialog/0.0.1280.680@0.0.1280.680" timestamp="1593180784818" />
+    <state x="354" y="57" key="MultipleFileMergeDialog/0.0.1280.680@0.0.1280.680" timestamp="1593184599396" />
     <state x="445" y="52" key="RollbackChangesDialog" timestamp="1589788225336">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -636,10 +616,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1280.680@0.0.1280.680" timestamp="1589767285229" />
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1593173571405">
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1593184625835">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1593173571405" />
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1593184625835" />
     <state x="249" y="80" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1593001403029" />
     <state x="280" y="90" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1593000505024" />
     <state x="414" y="209" key="com.intellij.ide.util.TipDialog" timestamp="1592999511554">
@@ -663,10 +643,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="193" y="77" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1280.680@0.0.1280.680" timestamp="1589878981587" />
-    <state x="397" y="168" key="git4idea.merge.GitPullDialog" timestamp="1593180506935">
+    <state x="397" y="168" key="git4idea.merge.GitPullDialog" timestamp="1593184607500">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="397" y="168" key="git4idea.merge.GitPullDialog/0.0.1280.680@0.0.1280.680" timestamp="1593180506935" />
+    <state x="397" y="168" key="git4idea.merge.GitPullDialog/0.0.1280.680@0.0.1280.680" timestamp="1593184607500" />
     <state x="423" y="180" key="git4idea.merge.GitPullDialog/0.0.1366.728@0.0.1366.728" timestamp="1593001272806" />
     <state x="476" y="204" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1592143151948" />
     <state x="91" y="0" key="new project wizard" timestamp="1593180845625">

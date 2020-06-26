@@ -17,6 +17,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
 import java.nio.file.Paths;
@@ -58,7 +60,7 @@ public class DiscountCodePage extends Menu {
         productButton.setStyle(style);
         discountButton.setStyle(style);
         logoutButton.setStyle(style);
-        addActionForMainButtons(mediaPlayer ,accountsButton, productButton, discountButton, logoutButton);
+        addActionForMainButtons(mediaPlayer, accountsButton, productButton, discountButton, logoutButton);
         mainButtons.getChildren().addAll(accountsButton, productButton, discountButton, logoutButton);
         pane.setTop(mainButtons);
 
@@ -74,7 +76,7 @@ public class DiscountCodePage extends Menu {
         });
         pane.setLeft(back);
         Text title = new Text("discount code");
-        title.setFont(Font.loadFont("file:src/main/java/Fonts/gangstergrotesk-bold.otf", 28));
+        title.setFont(Font.font("calibri", FontWeight.BOLD, FontPosture.REGULAR, 32));
         VBox vBox1 = new VBox(10);
         Label notify = new Label();
         TextField textField = new TextField();
@@ -117,7 +119,7 @@ public class DiscountCodePage extends Menu {
         paymentPage.show();
     }
 
-    public void addActionForMainButtons(MediaPlayer mediaPlayer ,Button accountsButton, Button productsButton, Button discountButton, Button logoutButton) {
+    public void addActionForMainButtons(MediaPlayer mediaPlayer, Button accountsButton, Button productsButton, Button discountButton, Button logoutButton) {
         accountsButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
