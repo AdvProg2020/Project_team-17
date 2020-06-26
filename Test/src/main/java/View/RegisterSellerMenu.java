@@ -14,6 +14,10 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Button;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+
+import java.nio.file.Paths;
 
 public class RegisterSellerMenu extends Menu {
     public static Seller currentSeller;
@@ -24,6 +28,10 @@ public class RegisterSellerMenu extends Menu {
 
     @Override
     public void show() {
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\button.mp3";
+        Media media = new Media(Paths.get(path).toUri().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+
         BorderPane pane = new BorderPane();
         String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
                 "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
@@ -48,29 +56,32 @@ public class RegisterSellerMenu extends Menu {
         backAndOthersButton.getChildren().addAll(backButton, registerAndLoginButtons);
         VBox vBox = new VBox(220);
         vBox.getChildren().addAll(backAndOthersButton, registerAndLoginButtons);
-        addActionForButton(backButton, loginButton, registerButton);
+        addActionForButton(mediaPlayer, backButton, loginButton, registerButton);
         pane.setCenter(vBox);
         pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
         Scene scene = new Scene(pane, 600, 600);
         Menu.window.setScene(scene);
     }
 
-    public void addActionForButton(Button backButton, Button loginButton, Button registerButton) {
+    public void addActionForButton(MediaPlayer mediaPlayer, Button backButton, Button loginButton, Button registerButton) {
         backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 parentMenu.show();
             }
         });
         loginButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 loginSellerScene();
             }
         });
         registerButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 registerSellerScene();
             }
         });
@@ -78,6 +89,10 @@ public class RegisterSellerMenu extends Menu {
 
 
     public void registerSellerScene() {
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\button.mp3";
+        Media media = new Media(Paths.get(path).toUri().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+
         BorderPane pane = new BorderPane();
         String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
                 "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
@@ -86,8 +101,8 @@ public class RegisterSellerMenu extends Menu {
                 "-fx-background-insets: 0,1,2;" +
                 " -fx-text-fill: #000000;"
                 + "-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); " +
-                "-fx-font-size: 1.9em;" +
-                " -fx-padding: 10px;";
+                "-fx-font-size: 1.2em;" +
+                " -fx-padding: 4px;";
         VBox vBox = new VBox(10);
         Button backButton = new Button("Back");
         backButton.setStyle(style);
@@ -130,6 +145,7 @@ public class RegisterSellerMenu extends Menu {
         SUButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 if (RegisterAndLoginManager.canHaveAccountWithThisUsername(userNameTextField.getText())) {
                     new Seller(userNameTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText(),
                             phoneNumberTextField.getText(), passwordField.getText(), 0, extraTextField.getText());
@@ -145,6 +161,7 @@ public class RegisterSellerMenu extends Menu {
         backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 parentMenu.show();
             }
         });
@@ -156,6 +173,10 @@ public class RegisterSellerMenu extends Menu {
     }
 
     public void loginSellerScene() {
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\button.mp3";
+        Media media = new Media(Paths.get(path).toUri().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+
         BorderPane pane = new BorderPane();
         String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
                 "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
@@ -164,8 +185,8 @@ public class RegisterSellerMenu extends Menu {
                 "-fx-background-insets: 0,1,2;" +
                 " -fx-text-fill: #000000;"
                 + "-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); " +
-                "-fx-font-size: 1.9em;" +
-                " -fx-padding: 10px;";
+                "-fx-font-size: 1.2em;" +
+                " -fx-padding: 4px;";
         VBox vBox = new VBox(10);
         Button backButton = new Button("Back");
         backButton.setStyle(style);
@@ -182,6 +203,7 @@ public class RegisterSellerMenu extends Menu {
         loginButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 if (Seller.isThereSellerWithUserName(usernameTextField.getText())) {
                     if (RegisterAndLoginManager.isUserNameAndPasswordCorrectForSeller(usernameTextField.getText(), passwordField.getText())) {
                         currentSeller = Seller.getSellerByName(usernameTextField.getText());
@@ -200,6 +222,7 @@ public class RegisterSellerMenu extends Menu {
         backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+                mediaPlayer.play();
                 parentMenu.show();
             }
         });

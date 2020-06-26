@@ -4,7 +4,6 @@ import View.AccountMenus.CustomerMenu;
 import View.AccountMenus.ManagerMenu;
 import View.AccountMenus.SellerMenu;
 import javafx.event.EventHandler;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -24,9 +23,15 @@ public class AccountsMenu extends Menu {
         BorderPane pane = new BorderPane();
         VBox accountButtons = new VBox(15);
         accountButtons.setAlignment(Pos.CENTER);
-        String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
-                + "linear-gradient(#cdded5 0%, #f6f6f6 50%); -fx-background-radius: 8,7,6; -fx-background-insets: 0,1,2; -fx-text-fill: #3193ff;"
-                + "-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); -fx-font-size: 1.4em; -fx-padding: 8px;";
+        String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6)," +
+                " linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
+                + "linear-gradient(#cdded5 0%, #f6f6f6 50%); " +
+                "-fx-background-radius: 8,7,6; " +
+                "-fx-background-insets: 0,1,2; " +
+                "-fx-text-fill: #3193ff;"
+                + "-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );" +
+                " -fx-font-size: 1.4em;" +
+                " -fx-padding: 8px;";
         Button sellerAccountsButton = new Button("Seller accounts");
         sellerAccountsButton.setStyle(style);
         Button customerAccountsButton = new Button("Customer accounts");

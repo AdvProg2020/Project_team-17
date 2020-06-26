@@ -13,6 +13,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+
+import java.nio.file.Paths;
 
 public class RegisterManagerMenu extends Menu {
     public static Manager currentManager;
@@ -23,6 +27,10 @@ public class RegisterManagerMenu extends Menu {
 
     @Override
     public void show() {
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\button.mp3";
+        Media media = new Media(Paths.get(path).toUri().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+
         BorderPane pane = new BorderPane();
         String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
                 "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
@@ -45,29 +53,35 @@ public class RegisterManagerMenu extends Menu {
         backAndOthersButton.getChildren().addAll(backButton, registerAndLoginButtons);
         VBox vBox = new VBox(220);
         vBox.getChildren().addAll(backAndOthersButton, registerAndLoginButtons);
-        addActionForButton(backButton, loginButton);
+        addActionForButton(mediaPlayer, backButton, loginButton);
         pane.setCenter(vBox);
         pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
         Scene scene = new Scene(pane, 600, 600);
         Menu.window.setScene(scene);
     }
 
-    public void addActionForButton(Button backButton, Button loginButton) {
+    public void addActionForButton(MediaPlayer mediaPlayer, Button backButton, Button loginButton) {
         backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 parentMenu.show();
             }
         });
         loginButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 loginManagerScene();
             }
         });
     }
 
     public void loginManagerScene() {
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\button.mp3";
+        Media media = new Media(Paths.get(path).toUri().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+
         BorderPane pane = new BorderPane();
         String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
                 "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
@@ -94,6 +108,7 @@ public class RegisterManagerMenu extends Menu {
         loginButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 if (Manager.isThereManagerWithUserName(usernameTextField.getText())) {
                     if (RegisterAndLoginManager.isUserNameAndPasswordCorrectForManager(usernameTextField.getText(), passwordField.getText())) {
                         currentManager = Manager.getManagerByUserName(usernameTextField.getText());
