@@ -7,11 +7,13 @@ import Models.Enums.ProductEnum;
 import Models.Enums.RequestTypeEnum;
 import Models.Product;
 
+import java.io.IOException;
+
 public class AddProductRequest extends Request {
     private Product product;
     private Category category;
 
-    public AddProductRequest(Seller seller,Product product, Category category) {
+    public AddProductRequest(Seller seller,Product product, Category category) throws IOException {
         super("Add product ---> " + (allRequests.size() + 1), seller);
         this.type = RequestTypeEnum.ADD_PRODUCT;
         this.product = product;

@@ -7,12 +7,10 @@ import Models.Logs.Log;
 import Models.Request.Request;
 import com.google.gson.Gson;
 
-import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 
 public class WriteIntoFile {
-    // nemidoonam kollan ye gson new konim kafie ya tu har tabe bayad new konam
     public static void writeCustomersIntoFile() throws IOException {
         Gson gson = new Gson();
         FileWriter fileWriter = new FileWriter("C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Test\\src\\main\\java\\Resources\\customers.txt");

@@ -8,6 +8,7 @@ import Models.Product;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class ProductManager {
@@ -15,13 +16,6 @@ public class ProductManager {
     public static void addToCart(Customer customer, Product product) {
         Cart cart = customer.getCart();
         cart.addProductToCart(customer, product);
-    }
-
-    public static String compareProduct(Product firstProduct, String secondId) {
-        String twoProductsAttributes;
-        Product secondProduct = Product.getProductWithId(secondId);
-        twoProductsAttributes = "Product 1 -----> " + firstProduct.toString() + "\n Product 2 -----> " + secondProduct.toString();
-        return twoProductsAttributes;
     }
 
     public static ObservableList<String> showComments(Product product) {
@@ -49,7 +43,7 @@ public class ProductManager {
         product.addScoreForProduct(customer, product, score);
     }
 
-    public static void addComment(Customer customer, Product product, String content) {
+    public static void addComment(Customer customer, Product product, String content) throws IOException {
         product.addCommentForProduct(customer, content);
     }
 }

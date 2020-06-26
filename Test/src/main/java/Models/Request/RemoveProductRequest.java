@@ -6,10 +6,12 @@ import Models.Category;
 import Models.Enums.RequestTypeEnum;
 import Models.Product;
 
+import java.io.IOException;
+
 public class RemoveProductRequest extends Request {
     private Product product;
 
-    public RemoveProductRequest(Seller seller, Product product) {
+    public RemoveProductRequest(Seller seller, Product product) throws IOException {
         super("Add product ---> " + (allRequests.size() + 1), seller);
         this.type = RequestTypeEnum.ADD_PRODUCT;
         this.product = product;

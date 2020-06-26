@@ -9,6 +9,7 @@ import View.PurchasingProcessMenus.ReceivingInformationPage;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -56,7 +57,7 @@ public class CustomerAbilitiesManager {
         return DiscountCode.getDiscountCodeWithCode(id).toString();
     }
 
-    public static String finalPay(Customer customer, DiscountCode discountCode) {
+    public static String finalPay(Customer customer, DiscountCode discountCode) throws IOException {
         if (canPay(customer, discountCode)) {
             pay(customer, discountCode);
             return "payment done";
@@ -69,7 +70,7 @@ public class CustomerAbilitiesManager {
         }
         return false;
     }
-    public static void pay(Customer customer, DiscountCode discountCode) {
+    public static void pay(Customer customer, DiscountCode discountCode) throws IOException {
         double amountForPay = customer.getCart().totalPriceWithDiscount(discountCode);
         double sum = customer.getCart().totalPriceOfProductInCart();
         double discountAmount = DiscountCode.calculateDiscountAmount(sum, discountCode);

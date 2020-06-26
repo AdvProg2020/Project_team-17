@@ -27,6 +27,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.nio.file.Paths;
 
 public class ProductMenu extends Menu {
@@ -183,7 +184,11 @@ public class ProductMenu extends Menu {
             @Override
             public void handle(MouseEvent event) {
                 mediaPlayer.play();
-                ProductManager.addComment(RegisterCustomerMenu.getCurrentCustomer(), product, comment.getText());
+                try {
+                    ProductManager.addComment(RegisterCustomerMenu.getCurrentCustomer(), product, comment.getText());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
         if (RegisterCustomerMenu.getCurrentCustomer() != null) {

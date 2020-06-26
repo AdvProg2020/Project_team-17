@@ -358,7 +358,6 @@ public class ProductsMenu extends Menu {
             public void handle(MouseEvent mouseEvent) {
                 mediaPlayer.play();
                 parentMenu.show();
-                notify.setText("");
             }
         });
         ChoiceBox choiceBox = new ChoiceBox(FXCollections.observableList(filterChoiceBoxItems()));

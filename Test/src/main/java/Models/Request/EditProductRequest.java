@@ -7,12 +7,14 @@ import Models.Enums.ProductEnum;
 import Models.Enums.RequestTypeEnum;
 import Models.Product;
 
+import java.io.IOException;
+
 public class EditProductRequest extends Request {
     private Product product;
     private String field;
     private String newContentForThisField;
 
-    public EditProductRequest(Seller seller,  Product product, String field, String newContentForThisField) {
+    public EditProductRequest(Seller seller,  Product product, String field, String newContentForThisField) throws IOException {
         super("Edit product ---> " + (allRequests.size() + 1), seller);
         this.type = RequestTypeEnum.EDIT_PRODUCT;
         this.product = product;

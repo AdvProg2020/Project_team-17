@@ -12,6 +12,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
 
@@ -101,13 +103,15 @@ public class CustomerMenu extends Menu {
         Text email = new Text("email: " + RegisterCustomerMenu.getCurrentCustomer().getEmail());
         Text phoneNumber = new Text("phone number: " + RegisterCustomerMenu.getCurrentCustomer().getPhoneNumber());
         Text credit = new Text("credit: " + RegisterCustomerMenu.getCurrentCustomer().getCredit());
-        title.setFont(Font.loadFont("file:src/main/java/Fonts/FiraSans-Medium.otf", 34));
-        username.setFont(Font.loadFont("file:src/main/java/Fonts/DroidSans.ttf", 28));
-        firstName.setFont(Font.loadFont("file:src/main/java/Fonts/DroidSans.ttf", 28));
-        lastName.setFont(Font.loadFont("file:src/main/java/Fonts/DroidSans.ttf", 28));
-        email.setFont(Font.loadFont("file:src/main/java/Fonts/DroidSans.ttf", 28));
-        phoneNumber.setFont(Font.loadFont("file:src/main/java/Fonts/DroidSans.ttf", 28));
-        credit.setFont(Font.loadFont("file:src/main/java/Fonts/DroidSans.ttf", 28));
+
+        title.setFont(Font.font("calibri", FontWeight.BOLD, FontPosture.REGULAR, 32));
+        username.setFont(Font.font("verdana", FontPosture.REGULAR, 28));
+        firstName.setFont(Font.font("verdana", FontPosture.REGULAR, 28));
+        lastName.setFont(Font.font("verdana", FontPosture.REGULAR, 28));
+        email.setFont(Font.font("verdana", FontPosture.REGULAR, 28));
+        phoneNumber.setFont(Font.font("verdana", FontPosture.REGULAR, 28));
+        credit.setFont(Font.font("verdana", FontPosture.REGULAR, 28));
+
         vBox1.getChildren().addAll(title, username, firstName, lastName, email, phoneNumber, credit);
         pane.setCenter(vBox1);
         pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");

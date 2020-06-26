@@ -6,10 +6,12 @@ import Models.Discount;
 import Models.Enums.DiscountEnum;
 import Models.Enums.RequestTypeEnum;
 
+import java.io.IOException;
+
 public class AddOffRequest extends Request {
     private Discount discount;
 
-    public AddOffRequest(Seller seller, Discount discount) {
+    public AddOffRequest(Seller seller, Discount discount) throws IOException {
         super("Add off ---> " + (allRequests.size() + 1), seller);
         this.type = RequestTypeEnum.ADD_OFF;
         this.discount = discount;

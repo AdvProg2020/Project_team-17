@@ -18,6 +18,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
+import java.io.IOException;
 import java.nio.file.Paths;
 
 public class PaymentPage extends Menu {
@@ -83,7 +84,11 @@ public class PaymentPage extends Menu {
             @Override
             public void handle(MouseEvent event) {
                 mediaPlayer.play();
-                notify.setText(CustomerAbilitiesManager.finalPay(RegisterCustomerMenu.getCurrentCustomer(), DiscountCodePage.getDiscountCode()));
+                try {
+                    notify.setText(CustomerAbilitiesManager.finalPay(RegisterCustomerMenu.getCurrentCustomer(), DiscountCodePage.getDiscountCode()));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
         back.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {

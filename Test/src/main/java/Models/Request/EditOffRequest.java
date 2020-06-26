@@ -6,6 +6,7 @@ import Models.Discount;
 import Models.Enums.DiscountEnum;
 import Models.Enums.RequestTypeEnum;
 
+import java.io.IOException;
 import java.time.LocalDate;
 
 public class EditOffRequest extends Request {
@@ -13,7 +14,7 @@ public class EditOffRequest extends Request {
     private String field;
     private String newContentForThisField;
 
-    public EditOffRequest(Seller seller, Discount discount, String field, String newContentForThisField) {
+    public EditOffRequest(Seller seller, Discount discount, String field, String newContentForThisField) throws IOException {
         super("Edit off ---> " + (allRequests.size() + 1), seller);
         this.type = RequestTypeEnum.EDIT_OFF;
         this.discount = discount;

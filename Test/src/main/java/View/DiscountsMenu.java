@@ -1,7 +1,6 @@
 package View;
 
 import Controller.DiscountManager;
-import Controller.ProductsManager;
 import Models.Accounts.Seller;
 import Models.Category;
 import Models.Enums.ProductEnum;
@@ -65,7 +64,7 @@ public class DiscountsMenu extends Menu {
         accountsButton.setStyle(style);
         productButton.setStyle(style);
         logoutButton.setStyle(style);
-        addActionForMainButtons(mediaPlayer,accountsButton, productButton, logoutButton);
+        addActionForMainButtons(mediaPlayer, accountsButton, productButton, logoutButton);
         mainButtons.getChildren().addAll(accountsButton, productButton, logoutButton);
         HBox bar = new HBox(30);
         backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
@@ -129,7 +128,7 @@ public class DiscountsMenu extends Menu {
             public void handle(MouseEvent mouseEvent) {
                 mediaPlayer.play();
                 try {
-                    ProductsManager.sort((String) choiceBox1.getValue());
+                    DiscountManager.sort((String) choiceBox1.getValue());
                     setSortScene();
                 } catch (Exception ignored) {
                 }
@@ -205,7 +204,7 @@ public class DiscountsMenu extends Menu {
         productsButton.setStyle(style);
         discountButton.setStyle(style);
         productsButton.setStyle(style);
-        addActionForMainButtonsForFilterAndSort(mediaPlayer,accountsButton, discountButton, productsButton, logoutButton);
+        addActionForMainButtonsForFilterAndSort(mediaPlayer, accountsButton, discountButton, productsButton, logoutButton);
         mainButtons.getChildren().addAll(accountsButton, productsButton, discountButton, logoutButton);
         HBox bar = new HBox(30);
         backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
@@ -269,7 +268,7 @@ public class DiscountsMenu extends Menu {
             public void handle(MouseEvent mouseEvent) {
                 mediaPlayer.play();
                 try {
-                    ProductsManager.sort((String) choiceBox1.getValue());
+                    DiscountManager.sort((String) choiceBox1.getValue());
                     setSortScene();
                 } catch (Exception ignored) {
                 }
@@ -346,7 +345,7 @@ public class DiscountsMenu extends Menu {
         productsButton.setStyle(style);
         discountButton.setStyle(style);
         logoutButton.setStyle(style);
-        addActionForMainButtonsForFilterAndSort(mediaPlayer,accountsButton, discountButton, productsButton, logoutButton);
+        addActionForMainButtonsForFilterAndSort(mediaPlayer, accountsButton, discountButton, productsButton, logoutButton);
         mainButtons.getChildren().addAll(accountsButton, productsButton, discountButton, logoutButton);
         HBox bar = new HBox(30);
         backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
@@ -411,7 +410,7 @@ public class DiscountsMenu extends Menu {
             public void handle(MouseEvent mouseEvent) {
                 mediaPlayer.play();
                 try {
-                    ProductsManager.sort((String) choiceBox1.getValue());
+                    DiscountManager.sort((String) choiceBox1.getValue());
                     setSortScene();
                 } catch (Exception ignored) {
 
@@ -460,7 +459,7 @@ public class DiscountsMenu extends Menu {
         Menu.window.setScene(scene);
     }
 
-    public void addActionForMainButtonsForFilterAndSort(MediaPlayer mediaPlayer,Button accountsButton, Button productsButton, Button discountButton, Button logoutButton) {
+    public void addActionForMainButtonsForFilterAndSort(MediaPlayer mediaPlayer, Button accountsButton, Button productsButton, Button discountButton, Button logoutButton) {
         accountsButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -496,7 +495,7 @@ public class DiscountsMenu extends Menu {
         productMenu.show();
     }
 
-    public void addActionForMainButtons(MediaPlayer mediaPlayer,Button accountsButton, Button productsButton, Button logoutButton) {
+    public void addActionForMainButtons(MediaPlayer mediaPlayer, Button accountsButton, Button productsButton, Button logoutButton) {
         accountsButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {

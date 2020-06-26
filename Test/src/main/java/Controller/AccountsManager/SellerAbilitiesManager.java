@@ -57,15 +57,15 @@ public class SellerAbilitiesManager {
         return product;
     }
 
-    public static void sendEditingProductRequest(Product product, Seller seller, String field, String newContentForThisField) {
+    public static void sendEditingProductRequest(Product product, Seller seller, String field, String newContentForThisField) throws IOException {
         new EditProductRequest(seller, product, field, newContentForThisField);
     }
 
-    public static void sendRemovingProductRequest(Product product, Seller seller) {
+    public static void sendRemovingProductRequest(Product product, Seller seller) throws IOException {
         new RemoveProductRequest(seller, product);
     }
 
-    public static void sendEditingOffRequest(Discount discount, Seller seller, String field, String newContentForThisField) {
+    public static void sendEditingOffRequest(Discount discount, Seller seller, String field, String newContentForThisField) throws IOException {
         new EditOffRequest(seller, discount, field, newContentForThisField);
     }
 

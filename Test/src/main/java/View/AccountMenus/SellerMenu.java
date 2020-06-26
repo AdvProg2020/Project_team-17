@@ -19,6 +19,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
@@ -137,14 +139,16 @@ public class SellerMenu extends Menu {
         Text phoneNumber = new Text("phone number: " + RegisterSellerMenu.getCurrentSeller().getPhoneNumber());
         Text credit = new Text("credit: " + RegisterSellerMenu.getCurrentSeller().getCredit());
         Text companyName = new Text("company name: " + RegisterSellerMenu.getCurrentSeller());
-        title.setFont(Font.loadFont("file:src/main/java/Fonts/FiraSans-Medium.otf", 34));
-        username.setFont(Font.loadFont("file:src/main/java/Fonts/DroidSans.ttf", 28));
-        firstName.setFont(Font.loadFont("file:src/main/java/Fonts/DroidSans.ttf", 28));
-        lastName.setFont(Font.loadFont("file:src/main/java/Fonts/DroidSans.ttf", 28));
-        email.setFont(Font.loadFont("file:src/main/java/Fonts/DroidSans.ttf", 28));
-        phoneNumber.setFont(Font.loadFont("file:src/main/java/Fonts/DroidSans.ttf", 28));
-        credit.setFont(Font.loadFont("file:src/main/java/Fonts/DroidSans.ttf", 28));
-        companyName.setFont(Font.loadFont("file:src/main/java/Fonts/DroidSans.ttf", 28));
+
+        title.setFont(Font.font("calibri", FontWeight.BOLD, FontPosture.REGULAR, 32));
+        username.setFont(Font.font("verdana", FontPosture.REGULAR, 28));
+        firstName.setFont(Font.font("verdana", FontPosture.REGULAR, 28));
+        lastName.setFont(Font.font("verdana", FontPosture.REGULAR, 28));
+        email.setFont(Font.font("verdana", FontPosture.REGULAR, 28));
+        phoneNumber.setFont(Font.font("verdana", FontPosture.REGULAR, 28));
+        credit.setFont(Font.font("verdana", FontPosture.REGULAR, 28));
+        companyName.setFont(Font.font("verdana", FontPosture.REGULAR, 28));
+
         vBox1.getChildren().addAll(title, username, firstName, lastName, email, phoneNumber, credit, companyName);
         pane.setCenter(vBox1);
         pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
@@ -315,7 +319,11 @@ public class SellerMenu extends Menu {
             public void handle(MouseEvent mouseEvent) {
                 mediaPlayer.play();
                 selectedProduct = Product.getProductByName(listView.getSelectionModel().getSelectedItem());
-                SellerAbilitiesManager.sendRemovingProductRequest(selectedProduct, RegisterSellerMenu.getCurrentSeller());
+                try {
+                    SellerAbilitiesManager.sendRemovingProductRequest(selectedProduct, RegisterSellerMenu.getCurrentSeller());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 notify.setStyle("-fx-text-fill: #3193ff");
                 notify.setText("request sent");
             }
@@ -369,7 +377,11 @@ public class SellerMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 mediaPlayer.play();
-                SellerAbilitiesManager.sendEditingProductRequest(selectedProduct, RegisterSellerMenu.getCurrentSeller(), field.getValue(), newContent.getText());
+                try {
+                    SellerAbilitiesManager.sendEditingProductRequest(selectedProduct, RegisterSellerMenu.getCurrentSeller(), field.getValue(), newContent.getText());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 notify.setStyle("-fx-text-fill: #3193ff");
                 notify.setText("request sent");
             }
@@ -446,7 +458,11 @@ public class SellerMenu extends Menu {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                new AddProductRequest(RegisterSellerMenu.getCurrentSeller(), product, Category.getCategoryByName(category.getText()));
+                try {
+                    new AddProductRequest(RegisterSellerMenu.getCurrentSeller(), product, Category.getCategoryByName(category.getText()));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 notify.setStyle("-fx-text-fill: #3193ff");
                 notify.setText("request sent to manager");
             }
@@ -594,7 +610,11 @@ public class SellerMenu extends Menu {
         button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                SellerAbilitiesManager.sendEditingOffRequest(selectedDiscount, RegisterSellerMenu.getCurrentSeller(), field.getValue(), newContent.getText());
+                try {
+                    SellerAbilitiesManager.sendEditingOffRequest(selectedDiscount, RegisterSellerMenu.getCurrentSeller(), field.getValue(), newContent.getText());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 notify.setStyle("-fx-text-fill: #3193ff");
                 notify.setText("request sent");
             }
@@ -668,7 +688,11 @@ public class SellerMenu extends Menu {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    new AddOffRequest(RegisterSellerMenu.getCurrentSeller(), discount);
+                    try {
+                        new AddOffRequest(RegisterSellerMenu.getCurrentSeller(), discount);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                     notify.setStyle("-fx-text-fill: #3193ff");
                     notify.setText("request sent");
                 }
