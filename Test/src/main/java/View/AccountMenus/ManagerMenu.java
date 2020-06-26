@@ -17,12 +17,15 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
+import java.nio.file.Paths;
 
 public class ManagerMenu extends Menu {
     Category selectedCategory;
@@ -38,6 +41,9 @@ public class ManagerMenu extends Menu {
     }
 
     public void setPersonalInfoScene() {
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\button.mp3";
+        Media media = new Media(Paths.get(path).toUri().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
         BorderPane pane = new BorderPane();
         Button backButton = new Button("Back");
         String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
@@ -60,7 +66,7 @@ public class ManagerMenu extends Menu {
         productButton.setStyle(style);
         discountButton.setStyle(style);
         logoutButton.setStyle(style);
-        addActionForMainButtons(accountsButton, productButton, discountButton, logoutButton);
+        addActionForMainButtons(mediaPlayer ,accountsButton, productButton, discountButton, logoutButton);
         mainButtons.getChildren().addAll(accountsButton, productButton, discountButton, logoutButton);
         pane.setTop(mainButtons);
         backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
@@ -142,7 +148,7 @@ public class ManagerMenu extends Menu {
         Menu.window.setScene(scene);
     }
 
-    public void addActionForMainButtons(Button accountsButton, Button productsButton, Button discountButton, Button logoutButton) {
+    public void addActionForMainButtons(MediaPlayer mediaPlayer ,Button accountsButton, Button productsButton, Button discountButton, Button logoutButton) {
         accountsButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -152,18 +158,21 @@ public class ManagerMenu extends Menu {
         productsButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+               mediaPlayer.play();
                 handleProductsMenu();
             }
         });
         discountButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 handleDiscountsMenu();
             }
         });
         logoutButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+               mediaPlayer.play();
                 handleLogout();
             }
         });
@@ -248,6 +257,9 @@ public class ManagerMenu extends Menu {
     }
 
     public void setManageUsersScene() {
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\button.mp3";
+        Media media = new Media(Paths.get(path).toUri().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
         BorderPane pane = new BorderPane();
         String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
                 "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
@@ -322,6 +334,9 @@ public class ManagerMenu extends Menu {
     }
 
     public void setAddManagerScene() {
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\button.mp3";
+        Media media = new Media(Paths.get(path).toUri().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
         BorderPane pane = new BorderPane();
         String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
                 "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
@@ -389,6 +404,7 @@ public class ManagerMenu extends Menu {
         backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 setManageUsersScene();
                 notify.setText("");
             }
@@ -403,6 +419,9 @@ public class ManagerMenu extends Menu {
     }
 
     public void setDiscountCodeScene() {
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\button.mp3";
+        Media media = new Media(Paths.get(path).toUri().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
         BorderPane pane = new BorderPane();
         String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
                 "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
@@ -421,6 +440,7 @@ public class ManagerMenu extends Menu {
         button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 show();
             }
         });
@@ -441,6 +461,7 @@ public class ManagerMenu extends Menu {
         view.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 Alert alert = new Alert(Alert.AlertType.NONE);
                 alert.setTitle("discount code info");
                 alert.setHeaderText("discount code information");
@@ -455,6 +476,7 @@ public class ManagerMenu extends Menu {
         edit.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 selectedDiscountCode = DiscountCode.getDiscountCodeWithCode(listView.getSelectionModel().getSelectedItem());
                 editDiscountCodeScene();
             }
@@ -462,12 +484,14 @@ public class ManagerMenu extends Menu {
         add.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+               mediaPlayer.play();
                 addDiscountCodeScene();
             }
         });
         remove.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 ManagerAbilitiesManager.removeDiscountCode(listView.getSelectionModel().getSelectedItem());
                 notify.setStyle("-fx-text-fill: #3193ff");
                 notify.setText("discount code removed successfully");
@@ -481,6 +505,9 @@ public class ManagerMenu extends Menu {
     }
 
     public void editDiscountCodeScene() {
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\button.mp3";
+        Media media = new Media(Paths.get(path).toUri().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
         BorderPane pane = new BorderPane();
         Label notify = new Label();
         String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
@@ -499,6 +526,7 @@ public class ManagerMenu extends Menu {
         button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+               mediaPlayer.play();
                 show();
             }
         });
@@ -519,6 +547,7 @@ public class ManagerMenu extends Menu {
         change.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 ManagerAbilitiesManager.editDiscountCode(selectedDiscountCode, field.getValue(), newContent.getText());
                 notify.setStyle("-fx-text-fill: #3193ff");
                 notify.setText("successfully changed");
@@ -532,6 +561,9 @@ public class ManagerMenu extends Menu {
     }
 
     public void addDiscountCodeScene() {
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\button.mp3";
+        Media media = new Media(Paths.get(path).toUri().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
         BorderPane pane = new BorderPane();
         Label notify = new Label();
         String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
@@ -550,6 +582,7 @@ public class ManagerMenu extends Menu {
         button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 show();
             }
         });
@@ -607,6 +640,9 @@ public class ManagerMenu extends Menu {
     }
 
     public void manageRequestsScene() {
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\button.mp3";
+        Media media = new Media(Paths.get(path).toUri().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
         BorderPane pane = new BorderPane();
         String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
                 "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
@@ -625,6 +661,7 @@ public class ManagerMenu extends Menu {
         button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+               mediaPlayer.play();
                 show();
             }
         });
@@ -644,6 +681,7 @@ public class ManagerMenu extends Menu {
         details.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 Alert alert = new Alert(Alert.AlertType.NONE);
                 alert.setTitle("show user info");
                 alert.setHeaderText("user information");
@@ -657,6 +695,7 @@ public class ManagerMenu extends Menu {
         accept.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 ManagerAbilitiesManager.acceptRequest(listView.getSelectionModel().getSelectedItem());
                 notify.setStyle("-fx-text-fill: #3193ff");
                 notify.setText("request accepted");
@@ -665,6 +704,7 @@ public class ManagerMenu extends Menu {
         decline.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 ManagerAbilitiesManager.declineRequest(listView.getSelectionModel().getSelectedItem());
                 notify.setStyle("-fx-text-fill: #3193ff");
                 notify.setText("request declined");
@@ -678,6 +718,9 @@ public class ManagerMenu extends Menu {
     }
 
     public void setCategoriesScene() {
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\button.mp3";
+        Media media = new Media(Paths.get(path).toUri().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
         BorderPane pane = new BorderPane();
         Label notify = new Label();
         String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
@@ -696,6 +739,7 @@ public class ManagerMenu extends Menu {
         button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 show();
                 notify.setText("");
             }
@@ -717,6 +761,7 @@ public class ManagerMenu extends Menu {
         edit.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 selectedCategory = Category.getCategoryByName(listView.getSelectionModel().getSelectedItem());
                 setEditCategoryScene();
             }
@@ -724,12 +769,14 @@ public class ManagerMenu extends Menu {
         add.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 addCategoryScene();
             }
         });
         remove.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 ManagerAbilitiesManager.removeCategory(listView.getSelectionModel().getSelectedItem());
                 notify.setStyle("-fx-text-fill: #3193ff");
                 notify.setText("category removed successfully");
@@ -743,6 +790,9 @@ public class ManagerMenu extends Menu {
     }
 
     public void addCategoryScene() {
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\button.mp3";
+        Media media = new Media(Paths.get(path).toUri().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
         BorderPane pane = new BorderPane();
         String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
                 "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
@@ -761,6 +811,7 @@ public class ManagerMenu extends Menu {
         button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+             mediaPlayer.play();
                 setCategoriesScene();
             }
         });
@@ -778,6 +829,7 @@ public class ManagerMenu extends Menu {
         add.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 ManagerAbilitiesManager.addCategory(name.getText(), feature.getText());
                 try {
                     WriteIntoFile.writeCategoriesIntoFile();
@@ -796,6 +848,9 @@ public class ManagerMenu extends Menu {
     }
 
     public void setEditCategoryScene() {
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\button.mp3";
+        Media media = new Media(Paths.get(path).toUri().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
         BorderPane pane = new BorderPane();
         String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
                 "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
@@ -814,6 +869,7 @@ public class ManagerMenu extends Menu {
         back.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+               mediaPlayer.play();
                 setCategoriesScene();
             }
         });
@@ -833,6 +889,7 @@ public class ManagerMenu extends Menu {
         button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 ManagerAbilitiesManager.editCategory(selectedCategory, field.getValue(), newContent.getText());
                 notify.setStyle("-fx-text-fill: #3193ff");
                 notify.setText("successfully changed");
@@ -846,6 +903,9 @@ public class ManagerMenu extends Menu {
     }
 
     public void setManageProductsScene() {
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\button.mp3";
+        Media media = new Media(Paths.get(path).toUri().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
         BorderPane pane = new BorderPane();
         String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
                 "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
@@ -864,6 +924,7 @@ public class ManagerMenu extends Menu {
         button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 show();
             }
         });
@@ -878,6 +939,7 @@ public class ManagerMenu extends Menu {
         remove.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 ManagerAbilitiesManager.removeProduct(listView.getSelectionModel().getSelectedItem());
                 notify.setStyle("-fx-text-fill: #3193ff");
                 notify.setText("category removed successfully");
