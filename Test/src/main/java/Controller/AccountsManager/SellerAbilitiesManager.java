@@ -1,5 +1,6 @@
 package Controller.AccountsManager;
 
+import Controller.WriteIntoFile;
 import Models.*;
 import Models.Accounts.Seller;
 import Models.Logs.Log;
@@ -10,6 +11,7 @@ import Models.Request.RemoveProductRequest;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -48,10 +50,10 @@ public class SellerAbilitiesManager {
 
 
     public static Product addProduct(String productId, String productName, String companyName,
-                                     double price, Category category, Seller seller, String productExplanation, String specialFeature, String path) {
+                                     double price, Category category, Seller seller, String productExplanation, String specialFeature, String path) throws IOException {
         Product product = new Product(productId, productName, companyName, price,
                 seller, category, productExplanation, 0, specialFeature, path);
-        Product.addProduct(product);
+        WriteIntoFile.writeProductsIntoFile();
         return product;
     }
 
@@ -68,7 +70,7 @@ public class SellerAbilitiesManager {
     }
 
     public static Discount addDiscount(String id, String beginningDate, String endingDate,
-                                       double discountPercent, String productName) {
+                                       double discountPercent, String productName) throws IOException {
         Discount discount = new Discount(id, LocalDate.parse(beginningDate), LocalDate.parse(endingDate), discountPercent, Product.getProductByName(productName));
         return discount;
     }

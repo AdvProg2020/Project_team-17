@@ -1,6 +1,7 @@
 package View;
 
 import Controller.RegisterAndLoginManager;
+import Controller.WriteIntoFile;
 import Models.Accounts.Manager;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -16,6 +17,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.nio.file.Paths;
 
 public class MainMenu extends Menu {
@@ -185,6 +187,11 @@ public class MainMenu extends Menu {
                 if (RegisterAndLoginManager.canHaveAccountWithThisUsername(userNameTextField.getText())) {
                     new Manager(userNameTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText(),
                             phoneNumberTextField.getText(), passwordField.getText());
+                    try {
+                        WriteIntoFile.writeManagersIntoFile();
+                    } catch (IOException e) {
+                        System.err.println(e.getMessage());
+                    }
                     notify.setStyle("-fx-text-fill: #3193ff");
                     notify.setText("successfully registered");
                 } else {
@@ -203,9 +210,9 @@ public class MainMenu extends Menu {
     }
 
     MediaPlayer mediaPlayer;
-
     private void music() {
-        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\My Song.m4a";
+        //nona String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\My Song.m4a";
+        String path = "C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Test\\src\\main\\java\\Sounds\\My Song.m4a";
         Media media = new Media(Paths.get(path).toUri().toString());
         mediaPlayer = new MediaPlayer(media);
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);

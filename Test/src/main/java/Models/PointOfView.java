@@ -2,17 +2,21 @@ package Models;
 
 import Models.Accounts.Account;
 
+import java.util.ArrayList;
+
 public class PointOfView {
     private Account account;
     private Product product;
     private String pointOfViewStringText;
     private boolean hasBought;
+    private static ArrayList<PointOfView> allPointOfViews = new ArrayList<>();
 
     public PointOfView(Account account, Product product, String pointOfViewStringText, boolean hasBought) {
         this.account = account;
         this.product = product;
         this.pointOfViewStringText = pointOfViewStringText;
         this.hasBought = hasBought;
+        allPointOfViews.add(this);
     }
 
     public Account getAccount() {
@@ -39,4 +43,7 @@ public class PointOfView {
         this.pointOfViewStringText = pointOfViewStringText;
     }
 
+    public static ArrayList<PointOfView> getAllPointOfViews() {
+        return allPointOfViews;
+    }
 }

@@ -1,0 +1,1 @@
+{"userName":"1","firstName":"1","lastName":"1","email":"1","phoneNumber":"1","password":"1","credit":0.0,"allDiscountCodes":[]}

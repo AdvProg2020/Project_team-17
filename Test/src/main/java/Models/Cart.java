@@ -1,12 +1,24 @@
 package Models;
 
+import Controller.WriteIntoFile;
 import Models.Accounts.Customer;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Cart {
+    private Customer customer;
+    private static ArrayList<Cart> allCarts = new ArrayList<>();
+
+    public Cart(Customer customer) throws IOException {
+        this.customer = customer;
+        allCarts.add(this);
+        WriteIntoFile.writeCartsIntoFile();
+    }
+
     private HashMap<Product, Integer> productsInCart = new HashMap<>();
+
 
     public void addProductToCart(Customer customer, Product product) {
         Cart cart = customer.getCart();
@@ -76,5 +88,9 @@ public class Cart {
 
     public double totalPriceWithDiscount(DiscountCode discountCode) {
         return totalPriceOfProductInCart() - DiscountCode.calculateDiscountAmount(totalPriceOfProductInCart(), discountCode);
+    }
+
+    public static ArrayList<Cart> getAllCarts() {
+        return allCarts;
     }
 }

@@ -1,7 +1,9 @@
 package Models;
 
+import Controller.WriteIntoFile;
 import Models.Enums.DiscountEnum;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +18,7 @@ public class Discount {
     private double discountPercent;
     private DiscountEnum discountState;
 
-    public Discount(String discountId, LocalDate startDate, LocalDate endDate, double discountPercent, Product product) {
+    public Discount(String discountId, LocalDate startDate, LocalDate endDate, double discountPercent, Product product) throws IOException {
         this.discountId = discountId;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -25,13 +27,14 @@ public class Discount {
         this.discountState = DiscountEnum.PROCESSING;
         discountProducts.add(product);
         allDiscounts.add(this);
+        WriteIntoFile.writeDiscountProductsIntoFile();
     }
 
     public static ArrayList<Discount> getAllDiscounts() {
         return allDiscounts;
     }
 
-    public List<Product> getDiscountProducts() {
+    public static List<Product> getDiscountProducts() {
         return discountProducts;
     }
 

@@ -2,6 +2,7 @@ package View;
 
 import Controller.RegisterAndLoginManager;
 
+import Controller.WriteIntoFile;
 import Models.Accounts.Seller;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -18,6 +19,8 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
 import java.nio.file.Paths;
+
+import java.io.IOException;
 
 public class RegisterSellerMenu extends Menu {
     public static Seller currentSeller;
@@ -149,6 +152,11 @@ public class RegisterSellerMenu extends Menu {
                 if (RegisterAndLoginManager.canHaveAccountWithThisUsername(userNameTextField.getText())) {
                     new Seller(userNameTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText(),
                             phoneNumberTextField.getText(), passwordField.getText(), 0, extraTextField.getText());
+                    try {
+                        WriteIntoFile.writeSellersIntoFile();
+                    } catch (IOException e) {
+                        System.err.println(e.getMessage());
+                    }
                     notify.setStyle("-fx-text-fill: #3193ff");
                     notify.setText("successfully registered");
                 } else {
