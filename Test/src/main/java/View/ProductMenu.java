@@ -2,6 +2,10 @@ package View;
 
 import Controller.ProductManager;
 import Models.Product;
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -13,6 +17,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -37,6 +42,7 @@ public class ProductMenu extends Menu {
 
     public void setProductScene() {
         BorderPane pane = new BorderPane();
+        Label notify = new Label();
         pane.setPadding(new Insets(25, 25, 25, 25));
         String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
                 "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
@@ -67,8 +73,21 @@ public class ProductMenu extends Menu {
         discountButton.setStyle(style);
         Button logoutButton = new Button("Logout");
         logoutButton.setStyle(style);
-        addActionForMainButtons(accountsButton, productButton, discountButton, logoutButton, addToCart);
-        mainButtons.getChildren().addAll(addToCart, accountsButton, productButton, discountButton, logoutButton);
+        addToCart.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if (RegisterCustomerMenu.getCurrentCustomer() != null) {
+                    handleAddCart();
+                } else {
+                    notify.setText("customer should be registered");
+                    notify.setStyle("-fx-text-fill: #ff4f59");
+                }
+            }
+        });
+        VBox vBox1 = new VBox(10);
+        vBox1.getChildren().addAll(addToCart, notify);
+        addActionForMainButtons(accountsButton, productButton, discountButton, logoutButton);
+        mainButtons.getChildren().addAll(accountsButton, productButton, discountButton, logoutButton, vBox1);
         pane.setTop(mainButtons);
         backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
@@ -83,8 +102,29 @@ public class ProductMenu extends Menu {
             image = new Image(inputStream);
         } catch (Exception e) {
         }
+
+        final DoubleProperty zoomProperty = new SimpleDoubleProperty(200);
         ImageView imageView = new ImageView(image);
-        //TODO zoom
+        imageView.preserveRatioProperty().set(true);
+        zoomProperty.addListener(new InvalidationListener() {
+            @Override
+            public void invalidated(Observable arg0) {
+                imageView.setFitWidth(zoomProperty.get() * 4);
+                imageView.setFitHeight(zoomProperty.get() * 3);
+
+            }
+        });
+        pane.addEventFilter(ScrollEvent.ANY, new EventHandler<ScrollEvent>() {
+            @Override
+            public void handle(ScrollEvent event) {
+                if (event.getDeltaY() > 0) {
+                    zoomProperty.set(zoomProperty.get() * 1.1);
+                } else if (event.getDeltaY() < 0) {
+                    zoomProperty.set(zoomProperty.get() / 1.1);
+                }
+            }
+        });
+
         Text name = new Text("Product name: " + product.getName());
         Text companyName = new Text("Company name: " + product.getCompanyName());
         Text category = new Text("Category: " + product.getCategory().getCategoryName());
@@ -145,7 +185,7 @@ public class ProductMenu extends Menu {
         Menu.window.setScene(scene);
     }
 
-    public void addActionForMainButtons(Button accountsButton, Button productsButton, Button discountButton, Button logoutButton, Button cartButton) {
+    public void addActionForMainButtons(Button accountsButton, Button productsButton, Button discountButton, Button logoutButton) {
         accountsButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -168,12 +208,6 @@ public class ProductMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 handleLogout();
-            }
-        });
-        cartButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                handleAddCart();
             }
         });
     }
