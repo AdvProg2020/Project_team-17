@@ -439,8 +439,13 @@ public class SellerMenu extends Menu {
         add.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                Product product = SellerAbilitiesManager.addProduct(ID.getText(), name.getText(), company.getText(), Double.parseDouble(price.getText()),
-                        Category.getCategoryByName(category.getText()), RegisterSellerMenu.getCurrentSeller(), explanation.getText(), feature.getText(), path.getText());
+                Product product = null;
+                try {
+                    product = SellerAbilitiesManager.addProduct(ID.getText(), name.getText(), company.getText(), Double.parseDouble(price.getText()),
+                            Category.getCategoryByName(category.getText()), RegisterSellerMenu.getCurrentSeller(), explanation.getText(), feature.getText(), path.getText());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 new AddProductRequest(RegisterSellerMenu.getCurrentSeller(), product, Category.getCategoryByName(category.getText()));
                 notify.setStyle("-fx-text-fill: #3193ff");
                 notify.setText("request sent to manager");
