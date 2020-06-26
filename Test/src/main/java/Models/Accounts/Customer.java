@@ -3,7 +3,10 @@ package Models.Accounts;
 import Models.Logs.BuyLog;
 import Models.Cart;
 import Models.DiscountCode;
+import com.google.gson.Gson;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Customer extends Account {
@@ -14,10 +17,10 @@ public class Customer extends Account {
     private String address;
 
     public Customer(String userName, String firstName, String lastName, String email,
-                    String phoneNumber, String password, double credit, String address) {
+                    String phoneNumber, String password, double credit, String address) throws IOException {
         super(userName, firstName, lastName, email, phoneNumber, password, credit);
         buyLog = new ArrayList<>();
-        this.cart = new Cart();
+        this.cart = new Cart(this);
         this.address = address;
         discountCodes = new ArrayList<>();
         allCustomers.add(this);
@@ -86,6 +89,7 @@ public class Customer extends Account {
     public ArrayList<BuyLog> getBuyLog() {
         return buyLog;
     }
+
 
     @Override
     public String toString() {

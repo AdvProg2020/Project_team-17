@@ -1,7 +1,9 @@
 package Models.Logs;
 
+import Controller.WriteIntoFile;
 import Models.Product;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
@@ -19,7 +21,7 @@ public abstract class Log {
     private static ArrayList<Log> allLogs = new ArrayList<>();
 
     public Log(String id, LocalDate date, double paymentAmount, String address, String phoneNumber, String name,
-               ArrayList<Product> products, boolean isReceived, double discountAmount) {
+               ArrayList<Product> products, boolean isReceived, double discountAmount) throws IOException {
         this.id = id;
         this.date = date;
         this.paymentAmount = paymentAmount;
@@ -30,6 +32,7 @@ public abstract class Log {
         this.isReceived = isReceived;
         this.discountAmount = discountAmount;
         allLogs.add(this);
+        WriteIntoFile.writeLogsIntoFile();
     }
 
     public static Log getLogWithId(String id) {

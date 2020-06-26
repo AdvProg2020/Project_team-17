@@ -2,6 +2,7 @@ package View.AccountMenus;
 
 import Controller.AccountsManager.ManagerAbilitiesManager;
 import Controller.RegisterAndLoginManager;
+import Controller.WriteIntoFile;
 import Models.Accounts.Customer;
 import Models.Category;
 import Models.DiscountCode;
@@ -18,6 +19,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+
+import java.io.IOException;
 
 public class ManagerMenu extends Menu {
     Category selectedCategory;
@@ -583,13 +586,18 @@ public class ManagerMenu extends Menu {
                     notify.setText("wrong customer name");
                 } else {
                     ManagerAbilitiesManager.createDiscountCode(ID.getText(), startDate.getText(), endDate.getText(), discountPercent.getText(), max.getText(), Integer.parseInt(count.getText()), s);
+                    try {
+                        WriteIntoFile.writeDiscountCodesIntoFile();
+                    } catch (IOException e) {
+                        System.err.println(e.getMessage());
+                    }
                     notify.setStyle("-fx-text-fill: #1593ff");
                     notify.setText("discount code created");
 
                 }
             }
         });
-        vBox.getChildren().addAll(ID, startDate, endDate, discountPercent, max,count ,customersName, add, notify);
+        vBox.getChildren().addAll(ID, startDate, endDate, discountPercent, max, count, customersName, add, notify);
         pane.setCenter(vBox);
         pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
         Scene scene = new Scene(pane, 600, 600);
@@ -769,6 +777,11 @@ public class ManagerMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 ManagerAbilitiesManager.addCategory(name.getText(), feature.getText());
+                try {
+                    WriteIntoFile.writeCategoriesIntoFile();
+                } catch (IOException e) {
+                    System.err.println(e.getMessage());
+                }
                 notify.setStyle("-fx-text-fill: #3193ff");
                 notify.setText("category successfully added");
             }

@@ -132,14 +132,7 @@
       <workItem from="1592142666171" duration="6014000" />
       <workItem from="1592748160826" duration="463000" />
       <workItem from="1593003119971" duration="2739000" />
-      <workItem from="1593006029988" duration="33198000" />
-    </task>
-    <task id="LOCAL-00028" summary="working on SellerMenu">
-      <created>1589634628845</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1589634628846</updated>
+      <workItem from="1593006029988" duration="33841000" />
     </task>
     <task id="LOCAL-00029" summary="fix some methods in SellerMenu">
       <created>1589634833375</created>
@@ -477,14 +470,20 @@
       <option name="project" value="LOCAL" />
       <updated>1593104389490</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="add textFiles">
+      <created>1593179262536</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1593179262536</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="seller add and edit product" />
     <MESSAGE value="remove product request" />
     <MESSAGE value="seller menu" />
     <MESSAGE value="seller requests" />
@@ -509,7 +508,8 @@
     <MESSAGE value="add background music" />
     <MESSAGE value="MainMenu done" />
     <MESSAGE value="ProductMenu debug" />
-    <option name="LAST_COMMIT_MESSAGE" value="ProductMenu debug" />
+    <MESSAGE value="add textFiles" />
+    <option name="LAST_COMMIT_MESSAGE" value="add textFiles" />
   </component>
   <component name="WindowStateProjectService">
     <state x="233" y="0" key="#Project_Structure" timestamp="1589785759293">
@@ -552,12 +552,12 @@
     </state>
     <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1589857617230" />
     <state x="445" y="105" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1588110193951" />
-    <state x="395" y="14" key="CommitChangelistDialog2" timestamp="1593104388181">
+    <state x="375" y="14" key="CommitChangelistDialog2" timestamp="1593179642086">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="265" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1593005443009" />
     <state x="425" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1593001247141" />
-    <state x="395" y="14" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1593104388181" />
+    <state x="375" y="14" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1593179642086" />
     <state x="421" y="67" key="FileChooserDialogImpl" timestamp="1592042438528">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -656,12 +656,12 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="193" y="77" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1280.680@0.0.1280.680" timestamp="1589878981587" />
-    <state x="476" y="204" key="git4idea.merge.GitPullDialog" timestamp="1593104426119">
+    <state x="476" y="204" key="git4idea.merge.GitPullDialog" timestamp="1593179532466">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="397" y="168" key="git4idea.merge.GitPullDialog/0.0.1280.680@0.0.1280.680" timestamp="1593005280403" />
     <state x="423" y="180" key="git4idea.merge.GitPullDialog/0.0.1366.728@0.0.1366.728" timestamp="1593001272806" />
-    <state x="476" y="204" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1593104426119" />
+    <state x="476" y="204" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1593179532466" />
     <state x="109" y="44" key="new project wizard" timestamp="1593009948533">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

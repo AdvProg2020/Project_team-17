@@ -1,6 +1,7 @@
 package View;
 
 import Controller.RegisterAndLoginManager;
+import Controller.WriteIntoFile;
 import Models.Accounts.Customer;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -13,6 +14,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+
+import java.io.IOException;
 
 
 public class RegisterCustomerMenu extends Menu {
@@ -130,8 +133,17 @@ public class RegisterCustomerMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 if (RegisterAndLoginManager.canHaveAccountWithThisUsername(userNameTextField.getText())) {
-                    new Customer(userNameTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText(),
-                            phoneNumberTextField.getText(), passwordField.getText(), Double.parseDouble(extraTextField.getText()), addressTextField.getText());
+                    try {
+                        new Customer(userNameTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText(),
+                                phoneNumberTextField.getText(), passwordField.getText(), Double.parseDouble(extraTextField.getText()), addressTextField.getText());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    try {
+                        WriteIntoFile.writeCustomersIntoFile();
+                    } catch (IOException e) {
+                        System.err.println(e.getMessage());
+                    }
                     notify.setStyle("-fx-text-fill: #3193ff");
                     notify.setText("successfully registered");
                 } else {
