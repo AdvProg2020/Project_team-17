@@ -166,10 +166,12 @@ public class MainMenu extends Menu {
         Menu.window.setScene(scene);
     }
 
+    MediaPlayer mediaPlayer;
+
     private void music() {
         String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\My Song.m4a";
         Media media = new Media(Paths.get(path).toUri().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(media);
+        mediaPlayer = new MediaPlayer(media);
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         mediaPlayer.play();
     }

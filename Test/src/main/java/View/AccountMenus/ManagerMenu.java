@@ -16,6 +16,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 
 import java.util.Arrays;
 import java.util.List;
@@ -35,14 +37,27 @@ public class ManagerMenu extends Menu {
 
     public void setPersonalInfoScene() {
         BorderPane pane = new BorderPane();
-        pane.setPadding(new Insets(25, 25, 25, 25));
         Button backButton = new Button("Back");
-        HBox mainButtons = new HBox(3);
+        String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
+                "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
+                + "linear-gradient(#cdded5 0%, #f6f6f6 50%);" +
+                " -fx-background-radius: 8,7,6; " +
+                "-fx-background-insets: 0,1,2; " +
+                "-fx-text-fill: #3193ff;"
+                + "-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); " +
+                "-fx-font-size: 1.2em; " +
+                "-fx-padding: 4px;";
+        HBox mainButtons = new HBox(10);
+        backButton.setStyle(style);
         mainButtons.setAlignment(Pos.TOP_RIGHT);
         Button accountsButton = new Button("Accounts");
         Button productButton = new Button("Products");
         Button discountButton = new Button("Discounts");
         Button logoutButton = new Button("Logout");
+        accountsButton.setStyle(style);
+        productButton.setStyle(style);
+        discountButton.setStyle(style);
+        logoutButton.setStyle(style);
         addActionForMainButtons(accountsButton, productButton, discountButton, logoutButton);
         mainButtons.getChildren().addAll(accountsButton, productButton, discountButton, logoutButton);
         pane.setTop(mainButtons);
@@ -54,6 +69,7 @@ public class ManagerMenu extends Menu {
         });
         VBox vBox = new VBox(10);
         Button manageUsers = new Button("Manage users");
+        manageUsers.setStyle(style);
         manageUsers.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -61,6 +77,7 @@ public class ManagerMenu extends Menu {
             }
         });
         Button manageProducts = new Button("Manage products");
+        manageProducts.setStyle(style);
         manageProducts.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -68,6 +85,7 @@ public class ManagerMenu extends Menu {
             }
         });
         Button manageDiscountCodes = new Button("Manage discount codes");
+        manageDiscountCodes.setStyle(style);
         manageDiscountCodes.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -75,6 +93,7 @@ public class ManagerMenu extends Menu {
             }
         });
         Button manageRequests = new Button("Manage requests");
+        manageRequests.setStyle(style);
         manageRequests.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -82,6 +101,7 @@ public class ManagerMenu extends Menu {
             }
         });
         Button manageCategories = new Button("Manage categories");
+        manageCategories.setStyle(style);
         manageCategories.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -90,22 +110,29 @@ public class ManagerMenu extends Menu {
         });
 
         Button editButton = new Button("Edit field");
+        editButton.setStyle(style);
         editButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 setEditScene();
             }
         });
-        vBox.getChildren().addAll(backButton, manageUsers, manageProducts, manageDiscountCodes, manageRequests,manageCategories, editButton);
+        vBox.getChildren().addAll(backButton, manageUsers, manageProducts, manageDiscountCodes, manageRequests, manageCategories, editButton);
         pane.setLeft(vBox);
         VBox vBox1 = new VBox(10);
         vBox1.setAlignment(Pos.CENTER);
-        Label title = new Label("MANAGER");
-        Label username = new Label("username: " + RegisterManagerMenu.getCurrentManager().getUserName());
-        Label firstName = new Label("first name: " + RegisterManagerMenu.getCurrentManager().getFirstName());
-        Label lastName = new Label("last name: " + RegisterManagerMenu.getCurrentManager().getLastName());
-        Label email = new Label("email: " + RegisterManagerMenu.getCurrentManager().getEmail());
-        Label phoneNumber = new Label("phone number: " + RegisterManagerMenu.getCurrentManager().getPhoneNumber());
+        Text title = new Text("MANAGER");
+        Text username = new Text("username: " + RegisterManagerMenu.getCurrentManager().getUserName());
+        Text firstName = new Text("first name: " + RegisterManagerMenu.getCurrentManager().getFirstName());
+        Text lastName = new Text("last name: " + RegisterManagerMenu.getCurrentManager().getLastName());
+        Text email = new Text("email: " + RegisterManagerMenu.getCurrentManager().getEmail());
+        Text phoneNumber = new Text("phone number: " + RegisterManagerMenu.getCurrentManager().getPhoneNumber());
+        title.setFont(Font.loadFont("file:src/main/java/Fonts/FiraSans-Medium.otf", 34));
+        username.setFont(Font.loadFont("file:src/main/java/Fonts/DroidSans.ttf", 28));
+        firstName.setFont(Font.loadFont("file:src/main/java/Fonts/DroidSans.ttf", 28));
+        lastName.setFont(Font.loadFont("file:src/main/java/Fonts/DroidSans.ttf", 28));
+        email.setFont(Font.loadFont("file:src/main/java/Fonts/DroidSans.ttf", 28));
+        phoneNumber.setFont(Font.loadFont("file:src/main/java/Fonts/DroidSans.ttf", 28));
         vBox1.getChildren().addAll(title, username, firstName, lastName, email, phoneNumber);
         pane.setCenter(vBox1);
         pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
@@ -169,10 +196,20 @@ public class ManagerMenu extends Menu {
 
     public void setEditScene() {
         BorderPane pane = new BorderPane();
+        String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
+                "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
+                + "linear-gradient(#cdded5 0%, #f6f6f6 50%);" +
+                " -fx-background-radius: 8,7,6; " +
+                "-fx-background-insets: 0,1,2; " +
+                "-fx-text-fill: #3193ff;"
+                + "-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); " +
+                "-fx-font-size: 1.2em; " +
+                "-fx-padding: 4px;";
         pane.setPadding(new Insets(25, 25, 25, 25));
-        VBox vBox = new VBox(5);
+        VBox vBox = new VBox(10);
         Label notify = new Label();
         Button backButton = new Button("Back");
+        backButton.setStyle(style);
         backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -185,12 +222,15 @@ public class ManagerMenu extends Menu {
         pane.setTop(vBox);
         HBox hBox = new HBox(10);
         ChoiceBox<String> field = new ChoiceBox<>();
+        field.setStyle(style);
         field.getItems().addAll("first name", "last name", "password", "email", "phone number");
         TextField newContent = new TextField();
+        newContent.setStyle(style);
         newContent.setPromptText("new content for this field");
         Button button = new Button("change");
+        button.setStyle(style);
         hBox.getChildren().addAll(field, newContent, button);
-        VBox vBox1 = new VBox(5);
+        VBox vBox1 = new VBox(10);
         button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -201,17 +241,28 @@ public class ManagerMenu extends Menu {
         });
         vBox1.getChildren().addAll(hBox, notify);
         pane.setCenter(vBox1);
-        Scene scene = new Scene(pane, 400, 200);
+        pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
+        Scene scene = new Scene(pane, 500, 500);
         Menu.window.setScene(scene);
     }
 
     public void setManageUsersScene() {
         BorderPane pane = new BorderPane();
         pane.setPadding(new Insets(25, 25, 25, 25));
+        String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
+                "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
+                + "linear-gradient(#cdded5 0%, #f6f6f6 50%);" +
+                " -fx-background-radius: 8,7,6; " +
+                "-fx-background-insets: 0,1,2; " +
+                "-fx-text-fill: #3193ff;"
+                + "-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); " +
+                "-fx-font-size: 1.2em; " +
+                "-fx-padding: 4px;";
         Label notify = new Label();
         VBox vBox = new VBox(10);
         vBox.setAlignment(Pos.TOP_LEFT);
         Button button = new Button("Back");
+        button.setStyle(style);
         button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -230,6 +281,9 @@ public class ManagerMenu extends Menu {
         Button view = new Button("View account");
         Button delete = new Button("Delete account");
         Button addManager = new Button("Add manager");
+        view.setStyle(style);
+        delete.setStyle(style);
+        addManager.setStyle(style);
 
         view.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
@@ -262,29 +316,29 @@ public class ManagerMenu extends Menu {
         });
         vBox1.getChildren().addAll(view, delete, addManager);
         pane.setLeft(vBox1);
+        pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
         Scene scene = new Scene(pane, 600, 600);
         Menu.window.setScene(scene);
     }
 
     public void setAddManagerScene() {
         BorderPane pane = new BorderPane();
-        pane.setPadding(new Insets(25, 25, 25, 25));
+        String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
+                "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
+                + "linear-gradient(#cdded5 0%, #f6f6f6 50%);" +
+                " -fx-background-radius: 8,7,6; " +
+                "-fx-background-insets: 0,1,2; " +
+                "-fx-text-fill: #3193ff;"
+                + "-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); " +
+                "-fx-font-size: 1.2em; " +
+                "-fx-padding: 4px;";
         Label notify = new Label();
         VBox vBox1 = new VBox(10);
         vBox1.setAlignment(Pos.TOP_LEFT);
-        Button button = new Button("Back");
-        button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                show();
-                notify.setText("");
-            }
-        });
-        vBox1.getChildren().addAll(button);
-        pane.setTop(vBox1);
 
         VBox vBox = new VBox(10);
         Button backButton = new Button("Back");
+        backButton.setStyle(style);
         Label title = new Label("Manager account registration");
         TextField userNameTextField = new TextField();
         userNameTextField.setPromptText("username");
@@ -308,6 +362,14 @@ public class ManagerMenu extends Menu {
         addressTextField.setPromptText("address");
 
         Button SUButton = new Button("Sign up");
+        userNameTextField.setStyle(style);
+        passwordField.setStyle(style);
+        firstNameTextField.setStyle(style);
+        lastNameTextField.setStyle(style);
+        emailTextField.setStyle(style);
+        addressTextField.setStyle(style);
+        phoneNumberTextField.setStyle(style);
+        SUButton.setStyle(style);
 
         SUButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
@@ -333,24 +395,33 @@ public class ManagerMenu extends Menu {
         });
 
         vBox.getChildren().addAll(backButton, title, userNameTextField, passwordField, firstNameTextField, lastNameTextField, emailTextField, phoneNumberTextField, addressTextField, SUButton, notify);
-        vBox.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#abbaab , #ffffff)");
+        vBox.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
         pane.setCenter(vBox);
+        pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
         Scene scene = new Scene(pane, 600, 600);
         Menu.window.setScene(scene);
     }
 
     public void setDiscountCodeScene() {
         BorderPane pane = new BorderPane();
-        pane.setPadding(new Insets(25, 25, 25, 25));
+        String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
+                "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
+                + "linear-gradient(#cdded5 0%, #f6f6f6 50%);" +
+                " -fx-background-radius: 8,7,6; " +
+                "-fx-background-insets: 0,1,2; " +
+                "-fx-text-fill: #3193ff;"
+                + "-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); " +
+                "-fx-font-size: 1.2em; " +
+                "-fx-padding: 4px;";
         Label notify = new Label();
         VBox vBox = new VBox(10);
         vBox.setAlignment(Pos.TOP_LEFT);
         Button button = new Button("Back");
+        button.setStyle(style);
         button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 show();
-                notify.setText("");
             }
         });
         vBox.getChildren().addAll(button);
@@ -363,6 +434,10 @@ public class ManagerMenu extends Menu {
         Button edit = new Button("edit discount code");
         Button add = new Button("add discount code");
         Button remove = new Button("remove discount code");
+        view.setStyle(style);
+        edit.setStyle(style);
+        add.setStyle(style);
+        remove.setStyle(style);
         view.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -374,7 +449,6 @@ public class ManagerMenu extends Menu {
                 ButtonType buttonType = new ButtonType("Exit", ButtonBar.ButtonData.CANCEL_CLOSE);
                 alert.getButtonTypes().setAll(buttonType);
                 alert.show();
-                notify.setText("");
             }
         });
 
@@ -383,14 +457,12 @@ public class ManagerMenu extends Menu {
             public void handle(MouseEvent mouseEvent) {
                 selectedDiscountCode = DiscountCode.getDiscountCodeWithCode(listView.getSelectionModel().getSelectedItem());
                 editDiscountCodeScene();
-                notify.setText("");
             }
         });
         add.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 addDiscountCodeScene();
-                notify.setText("");
             }
         });
         remove.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
@@ -403,22 +475,31 @@ public class ManagerMenu extends Menu {
         });
         vBox1.getChildren().addAll(edit, add, remove, notify);
         pane.setLeft(vBox1);
+        pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
         Scene scene = new Scene(pane, 600, 600);
         Menu.window.setScene(scene);
     }
 
     public void editDiscountCodeScene() {
         BorderPane pane = new BorderPane();
-        pane.setPadding(new Insets(25, 25, 25, 25));
         Label notify = new Label();
+        String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
+                "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
+                + "linear-gradient(#cdded5 0%, #f6f6f6 50%);" +
+                " -fx-background-radius: 8,7,6; " +
+                "-fx-background-insets: 0,1,2; " +
+                "-fx-text-fill: #3193ff;"
+                + "-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); " +
+                "-fx-font-size: 1.2em; " +
+                "-fx-padding: 4px;";
         VBox vBox = new VBox(10);
         vBox.setAlignment(Pos.TOP_LEFT);
         Button button = new Button("Back");
+        button.setStyle(style);
         button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 show();
-                notify.setText("");
             }
         });
         vBox.getChildren().addAll(button);
@@ -426,12 +507,15 @@ public class ManagerMenu extends Menu {
 
         HBox hBox = new HBox(10);
         ChoiceBox<String> field = new ChoiceBox<>();
+        field.setStyle(style);
         field.getItems().addAll("starting date", "ending date", "discount percent", "maximum discount amount", "count discount code");
         TextField newContent = new TextField();
+        newContent.setStyle(style);
         newContent.setPromptText("new content for this field");
         Button change = new Button("change");
+        change.setStyle(style);
         hBox.getChildren().addAll(field, newContent, change);
-        VBox vBox1 = new VBox(5);
+        VBox vBox1 = new VBox(10);
         change.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -442,22 +526,31 @@ public class ManagerMenu extends Menu {
         });
         vBox1.getChildren().addAll(hBox, notify);
         pane.setCenter(vBox1);
+        pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
         Scene scene = new Scene(pane, 350, 350);
         Menu.window.setScene(scene);
     }
 
     public void addDiscountCodeScene() {
         BorderPane pane = new BorderPane();
-        pane.setPadding(new Insets(25, 25, 25, 25));
         Label notify = new Label();
+        String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
+                "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
+                + "linear-gradient(#cdded5 0%, #f6f6f6 50%);" +
+                " -fx-background-radius: 8,7,6; " +
+                "-fx-background-insets: 0,1,2; " +
+                "-fx-text-fill: #3193ff;"
+                + "-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); " +
+                "-fx-font-size: 1.2em; " +
+                "-fx-padding: 4px;";
         VBox vBox1 = new VBox(10);
         vBox1.setAlignment(Pos.TOP_LEFT);
         Button button = new Button("Back");
+        button.setStyle(style);
         button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 show();
-                notify.setText("");
             }
         });
         vBox1.getChildren().addAll(button);
@@ -478,6 +571,14 @@ public class ManagerMenu extends Menu {
         TextField customersName = new TextField();
         customersName.setPromptText("customers name");
         Button add = new Button("Add");
+        ID.setStyle(style);
+        startDate.setStyle(style);
+        endDate.setStyle(style);
+        discountPercent.setStyle(style);
+        max.setStyle(style);
+        count.setStyle(style);
+        customersName.setStyle(style);
+        add.setStyle(style);
         add.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -492,22 +593,31 @@ public class ManagerMenu extends Menu {
         });
         vBox.getChildren().addAll(ID, startDate, endDate, discountPercent, customersName, add, notify);
         pane.setCenter(vBox);
+        pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
         Scene scene = new Scene(pane, 600, 600);
         Menu.window.setScene(scene);
     }
 
     public void manageRequestsScene() {
         BorderPane pane = new BorderPane();
-        pane.setPadding(new Insets(25, 25, 25, 25));
+        String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
+                "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
+                + "linear-gradient(#cdded5 0%, #f6f6f6 50%);" +
+                " -fx-background-radius: 8,7,6; " +
+                "-fx-background-insets: 0,1,2; " +
+                "-fx-text-fill: #3193ff;"
+                + "-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); " +
+                "-fx-font-size: 1.2em; " +
+                "-fx-padding: 4px;";
         Label notify = new Label();
         VBox vBox = new VBox(10);
         vBox.setAlignment(Pos.TOP_LEFT);
         Button button = new Button("Back");
+        button.setStyle(style);
         button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 show();
-                notify.setText("");
             }
         });
         vBox.getChildren().addAll(button);
@@ -520,6 +630,9 @@ public class ManagerMenu extends Menu {
         Button details = new Button("details");
         Button accept = new Button("accept");
         Button decline = new Button("decline");
+        details.setStyle(style);
+        accept.setStyle(style);
+        decline.setStyle(style);
         details.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -531,7 +644,6 @@ public class ManagerMenu extends Menu {
                 ButtonType buttonType = new ButtonType("Exit", ButtonBar.ButtonData.CANCEL_CLOSE);
                 alert.getButtonTypes().setAll(buttonType);
                 alert.show();
-                notify.setText("");
             }
         });
         accept.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
@@ -550,19 +662,29 @@ public class ManagerMenu extends Menu {
                 notify.setText("request declined");
             }
         });
-        vBox1.getChildren().addAll(details, accept, decline,notify);
+        vBox1.getChildren().addAll(details, accept, decline, notify);
         pane.setLeft(vBox1);
+        pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
         Scene scene = new Scene(pane, 600, 600);
         Menu.window.setScene(scene);
     }
 
     public void setCategoriesScene() {
         BorderPane pane = new BorderPane();
-        pane.setPadding(new Insets(25, 25, 25, 25));
         Label notify = new Label();
+        String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
+                "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
+                + "linear-gradient(#cdded5 0%, #f6f6f6 50%);" +
+                " -fx-background-radius: 8,7,6; " +
+                "-fx-background-insets: 0,1,2; " +
+                "-fx-text-fill: #3193ff;"
+                + "-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); " +
+                "-fx-font-size: 1.2em; " +
+                "-fx-padding: 4px;";
         VBox vBox = new VBox(10);
         vBox.setAlignment(Pos.TOP_LEFT);
         Button button = new Button("Back");
+        button.setStyle(style);
         button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -581,19 +703,20 @@ public class ManagerMenu extends Menu {
         Button edit = new Button("edit category");
         Button add = new Button("add category");
         Button remove = new Button("remove category");
+        edit.setStyle(style);
+        add.setStyle(style);
+        remove.setStyle(style);
         edit.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 selectedCategory = Category.getCategoryByName(listView.getSelectionModel().getSelectedItem());
                 setEditCategoryScene();
-                notify.setText("");
             }
         });
         add.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 addCategoryScene();
-                notify.setText("");
             }
         });
         remove.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
@@ -606,32 +729,44 @@ public class ManagerMenu extends Menu {
         });
         vBox1.getChildren().addAll(edit, add, remove, notify);
         pane.setLeft(vBox1);
+        pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
         Scene scene = new Scene(pane, 600, 600);
         Menu.window.setScene(scene);
     }
 
     public void addCategoryScene() {
         BorderPane pane = new BorderPane();
-        pane.setPadding(new Insets(25, 25, 25, 25));
+        String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
+                "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
+                + "linear-gradient(#cdded5 0%, #f6f6f6 50%);" +
+                " -fx-background-radius: 8,7,6; " +
+                "-fx-background-insets: 0,1,2; " +
+                "-fx-text-fill: #3193ff;"
+                + "-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); " +
+                "-fx-font-size: 1.2em; " +
+                "-fx-padding: 4px;";
         VBox vBox = new VBox(10);
         Label notify = new Label();
         vBox.setAlignment(Pos.TOP_LEFT);
         Button button = new Button("Back");
+        button.setStyle(style);
         button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 setCategoriesScene();
-                notify.setText("");
             }
         });
         vBox.getChildren().addAll(button);
         pane.setTop(vBox);
-        HBox hBox = new HBox();
+        HBox hBox = new HBox(10);
         TextField name = new TextField();
         name.setPromptText("category name");
         TextField feature = new TextField();
         feature.setPromptText("category feature");
         Button add = new Button("Add category");
+        name.setStyle(style);
+        feature.setStyle(style);
+        add.setStyle(style);
         add.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -642,34 +777,46 @@ public class ManagerMenu extends Menu {
         });
         hBox.getChildren().addAll(name, feature, add, notify);
         pane.setCenter(hBox);
-        Scene scene = new Scene(pane, 350, 350);
+        pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
+        Scene scene = new Scene(pane, 500, 500);
         Menu.window.setScene(scene);
     }
 
     public void setEditCategoryScene() {
         BorderPane pane = new BorderPane();
-        pane.setPadding(new Insets(25, 25, 25, 25));
+        String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
+                "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
+                + "linear-gradient(#cdded5 0%, #f6f6f6 50%);" +
+                " -fx-background-radius: 8,7,6; " +
+                "-fx-background-insets: 0,1,2; " +
+                "-fx-text-fill: #3193ff;"
+                + "-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); " +
+                "-fx-font-size: 1.2em; " +
+                "-fx-padding: 4px;";
         VBox vBox = new VBox(10);
         Label notify = new Label();
         vBox.setAlignment(Pos.TOP_LEFT);
         Button back = new Button("Back");
+        back.setStyle(style);
         back.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 setCategoriesScene();
-                notify.setText("");
             }
         });
         vBox.getChildren().addAll(back);
         pane.setTop(vBox);
         HBox hBox = new HBox(10);
         ChoiceBox<String> field = new ChoiceBox<>();
+        field.setStyle(style);
         field.getItems().addAll("feature", "name");
         TextField newContent = new TextField();
         newContent.setPromptText("new content for this field");
         Button button = new Button("change");
+        newContent.setStyle(style);
+        button.setStyle(style);
         hBox.getChildren().addAll(field, newContent, button);
-        VBox vBox1 = new VBox(5);
+        VBox vBox1 = new VBox(10);
         button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -680,22 +827,31 @@ public class ManagerMenu extends Menu {
         });
         vBox1.getChildren().addAll(hBox, notify);
         pane.setCenter(vBox1);
-        Scene scene = new Scene(pane, 350, 350);
+        pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
+        Scene scene = new Scene(pane, 500, 500);
         Menu.window.setScene(scene);
     }
 
     public void setManageProductsScene() {
         BorderPane pane = new BorderPane();
-        pane.setPadding(new Insets(25, 25, 25, 25));
+        String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
+                "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
+                + "linear-gradient(#cdded5 0%, #f6f6f6 50%);" +
+                " -fx-background-radius: 8,7,6; " +
+                "-fx-background-insets: 0,1,2; " +
+                "-fx-text-fill: #3193ff;"
+                + "-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); " +
+                "-fx-font-size: 1.2em; " +
+                "-fx-padding: 4px;";
         Label notify = new Label();
         VBox vBox = new VBox(10);
         vBox.setAlignment(Pos.TOP_LEFT);
         Button button = new Button("Back");
+        button.setStyle(style);
         button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 show();
-                notify.setText("");
             }
         });
         vBox.getChildren().addAll(button);
@@ -703,8 +859,9 @@ public class ManagerMenu extends Menu {
         ListView<String> listView = new ListView<>();
         listView.getItems().addAll(ManagerAbilitiesManager.showAllProducts());
         pane.setCenter(listView);
-        VBox vBox1 = new VBox();
+        VBox vBox1 = new VBox(10);
         Button remove = new Button("remove product");
+        remove.setStyle(style);
         remove.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -716,6 +873,7 @@ public class ManagerMenu extends Menu {
         vBox1.getChildren().addAll(remove, notify);
         pane.setLeft(vBox1);
         Scene scene = new Scene(pane, 600, 600);
+        pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
         Menu.window.setScene(scene);
     }
 }

@@ -29,7 +29,6 @@ public class Cart {
     }
 
     public void decreaseNumberOfProduct(Product product) {
-        // remove ro bayad check kard doroste ya na anemidonam az hashmap che shekli remove konam
         for (Product cartProduct : productsInCart.keySet()) {
             if (cartProduct.equals(product)) {
                 int count = productsInCart.get(cartProduct);
@@ -69,7 +68,8 @@ public class Cart {
     public double totalPriceOfProductInCart() {
         double sum = 0;
         for (Product product : this.productsInCart.keySet()) {
-            sum += product.getPrice();
+            double totalPrice = product.getPrice() * this.productsInCart.get(product);
+            sum += totalPrice;
         }
         return sum;
     }
