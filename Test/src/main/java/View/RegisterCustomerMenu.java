@@ -32,7 +32,7 @@ public class RegisterCustomerMenu extends Menu {
                 "-fx-background-insets: 0,1,2; " +
                 "-fx-text-fill: #000000;"
                 + "-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); " +
-                "-fx-font-size: 1.9em; " +
+                "-fx-font-size: 1.2em; " +
                 "-fx-padding: 10px;";
         HBox registerAndLoginButtons = new HBox(10);
         registerAndLoginButtons.setAlignment(Pos.CENTER);
@@ -85,8 +85,8 @@ public class RegisterCustomerMenu extends Menu {
                 "-fx-background-insets: 0,1,2; " +
                 "-fx-text-fill: #000000;"
                 + "-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); " +
-                "-fx-font-size: 1.9em; " +
-                "-fx-padding: 10px;";
+                "-fx-font-size: 1.2em; " +
+                "-fx-padding: 4px;";
         VBox vBox = new VBox(10);
         Button backButton = new Button("Back");
         Label title = new Label("Customer account registration");
@@ -164,8 +164,8 @@ public class RegisterCustomerMenu extends Menu {
                 "-fx-background-insets: 0,1,2; " +
                 "-fx-text-fill: #000000;"
                 + "-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); " +
-                "-fx-font-size: 1.9em; " +
-                "-fx-padding: 10px;";
+                "-fx-font-size: 1.2em; " +
+                "-fx-padding: 4px;";
         VBox vBox = new VBox(10);
         Button backButton = new Button("Back");
         Label title = new Label("Login");

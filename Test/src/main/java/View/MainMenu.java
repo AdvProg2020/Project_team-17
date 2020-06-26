@@ -28,12 +28,17 @@ public class MainMenu extends Menu {
 
     public BorderPane setMainScene() {
         BorderPane mainPane = new BorderPane();
-        mainPane.setPadding(new Insets(25, 25, 25, 25));
         VBox mainButtons = new VBox(15);
         mainButtons.setAlignment(Pos.CENTER);
-        String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
-                + "linear-gradient(#cdded5 0%, #f6f6f6 50%); -fx-background-radius: 8,7,6; -fx-background-insets: 0,1,2; -fx-text-fill: #3193ff;"
-                + "-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); -fx-font-size: 1.4em; -fx-padding: 8px;";
+        String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
+                "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
+                + "linear-gradient(#cdded5 0%, #f6f6f6 50%); " +
+                "-fx-background-radius: 8,7,6; " +
+                "-fx-background-insets: 0,1,2; " +
+                "-fx-text-fill: #3193ff;"
+                + "-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );" +
+                " -fx-font-size: 1.4em;" +
+                " -fx-padding: 8px;";
         Button accountsButton = new Button("Accounts");
         accountsButton.setStyle(style);
         Button productsButton = new Button("Products");
@@ -106,11 +111,20 @@ public class MainMenu extends Menu {
 
     public void registerFirstManager() {
         BorderPane pane = new BorderPane();
-        pane.setPadding(new Insets(25, 25, 25, 25));
+        String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
+                "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
+                + "linear-gradient(#dddddd 0%, #f6f6f6 50%);" +
+                " -fx-background-radius: 8,7,6; " +
+                "-fx-background-insets: 0,1,2; " +
+                "-fx-text-fill: #000000;"
+                + "-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); " +
+                "-fx-font-size: 1.2em; " +
+                "-fx-padding: 4px;";
         VBox vBox = new VBox(10);
         Label title = new Label("Manager account registration");
         Label notify = new Label();
         Button button = new Button("go to main page");
+        button.setStyle(style);
         button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -143,6 +157,15 @@ public class MainMenu extends Menu {
 
         Button SUButton = new Button("Sign up");
 
+        userNameTextField.setStyle(style);
+        firstNameTextField.setStyle(style);
+        lastNameTextField.setStyle(style);
+        passwordField.setStyle(style);
+        emailTextField.setStyle(style);
+        phoneNumberTextField.setStyle(style);
+        addressTextField.setStyle(style);
+        SUButton.setStyle(style);
+
         SUButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -160,8 +183,8 @@ public class MainMenu extends Menu {
         });
 
         vBox.getChildren().addAll(button, title, userNameTextField, passwordField, firstNameTextField, lastNameTextField, emailTextField, phoneNumberTextField, addressTextField, SUButton, notify);
-        vBox.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#abbaab , #ffffff)");
         pane.setCenter(vBox);
+        pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
         Scene scene = new Scene(pane, 600, 600);
         Menu.window.setScene(scene);
     }
