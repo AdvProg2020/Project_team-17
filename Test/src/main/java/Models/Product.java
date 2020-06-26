@@ -1,10 +1,12 @@
 package Models;
 
+import Controller.WriteIntoFile;
 import Models.Accounts.Customer;
 import Models.Accounts.Seller;
 import Models.Enums.ProductEnum;
 import Models.Logs.BuyLog;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +25,7 @@ public class Product {
     private int visitedTime = 0;
     private Discount discount;
     private String path;
-    private ArrayList<PointOfView> pointOfViews = new ArrayList<>();
+    private  ArrayList<PointOfView> pointOfViews;
     private ArrayList<Double> scoresForProduct = new ArrayList<>();
 
     public Product(String productId, String name, String companyName, double price, Seller seller, Category category, String explanation, double averageScore, String productsSpecialFeature, String path) {
@@ -40,6 +42,7 @@ public class Product {
         this.productsSpecialFeature = productsSpecialFeature;
         this.path = path;
         allProducts.add(this);
+        pointOfViews = new ArrayList<>();
     }
 
     public void addToVisitedTime() {
@@ -211,7 +214,7 @@ public class Product {
         return this.averageScoreForProduct(this);
     }
 
-    public void addCommentForProduct(Customer customer, String content) {
+    public void addCommentForProduct(Customer customer, String content) throws IOException {
         boolean hasBought = false;
         ArrayList<BuyLog> buyLogs = customer.getBuyLog();
         for (BuyLog log : buyLogs) {
@@ -220,9 +223,10 @@ public class Product {
             }
         }
         this.pointOfViews.add(new PointOfView(customer, this, content, hasBought));
+        WriteIntoFile.writePointOfViewsIntoFile();
     }
 
-    public ArrayList<PointOfView> getPointOfViews() {
+    public  ArrayList<PointOfView> getPointOfViews() {
         return pointOfViews;
     }
 

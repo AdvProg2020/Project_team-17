@@ -1,9 +1,11 @@
 package Models.Request;
 
+import Controller.WriteIntoFile;
 import Models.Accounts.Manager;
 import Models.Accounts.Seller;
 import Models.Enums.RequestTypeEnum;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public abstract class Request {
@@ -12,10 +14,11 @@ public abstract class Request {
     protected Seller seller;
     protected RequestTypeEnum type;
 
-    public Request(String id, Seller seller) {
+    public Request(String id, Seller seller) throws IOException {
         this.id = id;
         this.seller = seller;
         allRequests.add(this);
+        WriteIntoFile.writeRequestsIntoFile();
     }
 
     public abstract void accept();
