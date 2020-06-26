@@ -1,4 +1,4 @@
-        package Controller.AccountsManager;
+package Controller.AccountsManager;
 
 import Models.*;
 import Models.Accounts.Seller;
@@ -40,16 +40,17 @@ public class SellerAbilitiesManager {
         data.addAll(salesHistory);
         return data;
     }
-    public static String showDiscountInfo(String id){
+
+    public static String showDiscountInfo(String id) {
         SellLog log = (SellLog) Log.getLogWithId(id);
         return log.toString();
     }
 
 
     public static Product addProduct(String productId, String productName, String companyName,
-                                     double price, Category category, Seller seller, String productExplanation, String specialFeature,String path) {
+                                     double price, Category category, Seller seller, String productExplanation, String specialFeature, String path) {
         Product product = new Product(productId, productName, companyName, price,
-                seller, category, productExplanation, 0, specialFeature,path);
+                seller, category, productExplanation, 0, specialFeature, path);
         Product.addProduct(product);
         return product;
     }
@@ -57,8 +58,9 @@ public class SellerAbilitiesManager {
     public static void sendEditingProductRequest(Product product, Seller seller, String field, String newContentForThisField) {
         new EditProductRequest(seller, product, field, newContentForThisField);
     }
-    public static void sendRemovingProductRequest(Product product , Seller seller){
-        new RemoveProductRequest(seller ,product);
+
+    public static void sendRemovingProductRequest(Product product, Seller seller) {
+        new RemoveProductRequest(seller, product);
     }
 
     public static void sendEditingOffRequest(Discount discount, Seller seller, String field, String newContentForThisField) {
@@ -66,8 +68,8 @@ public class SellerAbilitiesManager {
     }
 
     public static Discount addDiscount(String id, String beginningDate, String endingDate,
-                                       double discountPercent, List<String> productsName) {
-        Discount discount = new Discount(id, LocalDate.parse(beginningDate), LocalDate.parse(endingDate), discountPercent, Product.getProductsListByName(productsName));
+                                       double discountPercent, String productName) {
+        Discount discount = new Discount(id, LocalDate.parse(beginningDate), LocalDate.parse(endingDate), discountPercent, Product.getProductByName(productName));
         return discount;
     }
 
@@ -92,25 +94,6 @@ public class SellerAbilitiesManager {
         ObservableList data = FXCollections.observableArrayList();
         data.addAll(seller.getDiscountInfo(seller));
         return data;
-    }
-
-    public static ArrayList<String> viewProductsBuyer(Seller seller, String id) {
-        ArrayList<String> customers = new ArrayList<>();
-        ArrayList<SellLog> logs = seller.getLogs();
-        for (SellLog log : logs) {
-            for (Product product : log.getAllProducts()) {
-                if (product.getProductId().equals(id)) {
-                    customers.add(log.getName());
-                }
-            }
-        }
-        return customers;
-    }
-
-    public static String viewOffByGettingId(Seller seller, String id) {
-        Discount discount = Discount.getDiscountById(id);
-        String output = discount.toString();
-        return output;
     }
 
 }

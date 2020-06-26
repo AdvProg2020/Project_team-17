@@ -74,21 +74,16 @@ public class ManagerAbilitiesManager {
         new Manager(username, firstName, lastName, email, phoneNumber, password);
     }
 
-    public static void removeProduct(String name){
+    public static void removeProduct(String name) {
         Product product = Product.getProductByName(name);
         Product.removeProduct(product);
     }
 
-    public static void createDiscountCode(String code, String beginningDate, String endingDate, String discountPercent, String max, int repeat, List<String> customersName) {
-        ArrayList<Customer> customers = new ArrayList<>();
-        for (String customer : customersName) {
-            customers.add(Customer.getCustomerByName(customer));
-        }
+    public static void createDiscountCode(String code, String beginningDate, String endingDate, String discountPercent, String max, int repeat, String customers) {
         DiscountCode discountCode = new DiscountCode(code, LocalDate.parse(beginningDate), LocalDate.parse(endingDate),
-                Double.parseDouble(discountPercent), Double.parseDouble(max), repeat, customers);
-        for (Customer customer : customers) {
-            customer.addDiscountCode(discountCode);
-        }
+                Double.parseDouble(discountPercent), Double.parseDouble(max), repeat, Customer.getCustomerByName(customers));
+        Customer.getCustomerByName(customers).addDiscountCode(discountCode);
+
     }
 
     public static void removeDiscountCodeDueToException(String code, ArrayList<String> customersName) {

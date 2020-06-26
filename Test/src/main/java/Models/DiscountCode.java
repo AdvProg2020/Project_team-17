@@ -12,19 +12,19 @@ public class DiscountCode {
     private double discountPercent;
     private double maxDiscountAmount;
     private int countDiscountCode;
-    private ArrayList<Customer> customers;
+    private Customer customer;
     private static ArrayList<DiscountCode> allDiscountCodes = new ArrayList<>();
 
 
     public DiscountCode(String discountCode, LocalDate startDate, LocalDate endDate, double discountPercent,
-                        double maxDiscountAmount, int countDiscountCode, ArrayList<Customer> customers) {
+                        double maxDiscountAmount, int countDiscountCode, Customer customer) {
         this.discountCode = discountCode;
         this.startDate = startDate;
         this.endDate = endDate;
         this.discountPercent = discountPercent;
         this.maxDiscountAmount = maxDiscountAmount;
         this.countDiscountCode = countDiscountCode;
-        this.customers = customers;
+        this.customer = customer;
         allDiscountCodes.add(this);
     }
 
@@ -89,7 +89,7 @@ public class DiscountCode {
     public void setUsageOfDiscountCode(Customer customer) {
         int num = this.getCountDiscountCode() - 1;
         this.setCountDiscountCode(num);
-        if(num==0){
+        if (num == 0) {
             allDiscountCodes.remove(this);
             customer.removeDiscountCode(this);
         }
@@ -126,7 +126,7 @@ public class DiscountCode {
                 ", discountPercent=" + discountPercent +
                 ", maxDiscountAmount=" + maxDiscountAmount +
                 ", countDiscountCode=" + countDiscountCode +
-                ", customers=" + customers +
+                ", customer=" + customer +
                 '}';
     }
 }

@@ -8,20 +8,22 @@ import java.util.List;
 
 public class Discount {
     private String discountId;
-    private List<Product> discountProducts;
+    private static List<Product> discountProducts = new ArrayList<>();
     private static ArrayList<Discount> allDiscounts = new ArrayList<>();
+    private Product product;
     private LocalDate startDate;
     private LocalDate endDate;
     private double discountPercent;
     private DiscountEnum discountState;
 
-    public Discount(String discountId, LocalDate startDate, LocalDate endDate, double discountPercent, List<Product> products) {
+    public Discount(String discountId, LocalDate startDate, LocalDate endDate, double discountPercent, Product product) {
         this.discountId = discountId;
         this.startDate = startDate;
         this.endDate = endDate;
         this.discountPercent = discountPercent;
-        this.discountProducts = products;
+        this.product = product;
         this.discountState = DiscountEnum.PROCESSING;
+        discountProducts.add(product);
         allDiscounts.add(this);
     }
 
@@ -73,22 +75,22 @@ public class Discount {
         return discountState;
     }
 
+    public Product getProduct() {
+        return product;
+    }
+
     public static ArrayList<Product> productsHaveDiscount() {
         ArrayList<Product> products = new ArrayList<>();
-        for (Discount allDiscount : allDiscounts) {
-            for (Product discountProduct : allDiscount.discountProducts) {
-                products.add(discountProduct);
-            }
+        for (Product discountProduct : discountProducts) {
+            products.add(discountProduct);
         }
         return products;
     }
 
     public static boolean doesThisProductHaveDiscount(Product product) {
-        for (Discount allDiscount : allDiscounts) {
-            for (Product discountProduct : allDiscount.discountProducts) {
-                if (discountProduct.equals(product)) {
-                    return true;
-                }
+        for (Product discountProduct : discountProducts) {
+            if (discountProduct.equals(product)) {
+                return true;
             }
         }
         return false;
@@ -96,23 +98,18 @@ public class Discount {
 
     public static Discount getProductDiscount(Product product) {
         for (Discount discount : allDiscounts) {
-            for (Product discountProduct : discount.discountProducts) {
-                if (discountProduct.equals(product)) {
-                    return discount;
-                }
+            if (discount.getProduct().equals(product)) {
+                return discount;
             }
         }
         return null;
     }
 
     public void deleteProduct(Product product) {
-        this.discountProducts.remove(product);
-    }
-
-    public void removeProductFromDiscount(Product product) {
+        discountProducts.remove(product);
         for (Discount discount : allDiscounts) {
-            if (discount.isThisProductInDiscount(product)) {
-                deleteProduct(product);
+            if (discount.getProduct().equals(product)) {
+                allDiscounts.remove(discount);
             }
         }
     }

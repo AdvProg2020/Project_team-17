@@ -22,7 +22,6 @@ public class AccountsMenu extends Menu {
     @Override
     public void show() {
         BorderPane pane = new BorderPane();
-        pane.setPadding(new Insets(25, 25, 25, 25));
         VBox accountButtons = new VBox(15);
         accountButtons.setAlignment(Pos.CENTER);
         String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
@@ -35,6 +34,7 @@ public class AccountsMenu extends Menu {
         Button mangerAccountsButton = new Button("Manger Accounts");
         mangerAccountsButton.setStyle(style);
         Button backButton = new Button("Back");
+        backButton.setStyle(style);
         backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {

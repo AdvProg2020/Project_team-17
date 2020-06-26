@@ -2,12 +2,12 @@ package View.AccountMenus;
 
 import Controller.AccountsManager.ManagerAbilitiesManager;
 import Controller.RegisterAndLoginManager;
+import Models.Accounts.Customer;
 import Models.Category;
 import Models.DiscountCode;
 import View.*;
 import View.Menu;
 import javafx.event.EventHandler;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -18,9 +18,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-
-import java.util.Arrays;
-import java.util.List;
 
 public class ManagerMenu extends Menu {
     Category selectedCategory;
@@ -205,7 +202,6 @@ public class ManagerMenu extends Menu {
                 + "-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); " +
                 "-fx-font-size: 1.2em; " +
                 "-fx-padding: 4px;";
-        pane.setPadding(new Insets(25, 25, 25, 25));
         VBox vBox = new VBox(10);
         Label notify = new Label();
         Button backButton = new Button("Back");
@@ -248,7 +244,6 @@ public class ManagerMenu extends Menu {
 
     public void setManageUsersScene() {
         BorderPane pane = new BorderPane();
-        pane.setPadding(new Insets(25, 25, 25, 25));
         String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
                 "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
                 + "linear-gradient(#cdded5 0%, #f6f6f6 50%);" +
@@ -569,7 +564,7 @@ public class ManagerMenu extends Menu {
         TextField count = new TextField();
         count.setPromptText("number of repetitions");
         TextField customersName = new TextField();
-        customersName.setPromptText("customers name");
+        customersName.setPromptText("customer name");
         Button add = new Button("Add");
         ID.setStyle(style);
         startDate.setStyle(style);
@@ -583,15 +578,18 @@ public class ManagerMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 String s = customersName.getText();
-                String str[] = s.split(" ");
-                List<String> names;
-                names = Arrays.asList(str);
-                ManagerAbilitiesManager.createDiscountCode(ID.getText(), startDate.getText(), endDate.getText(), discountPercent.getText(), max.getText(), Integer.parseInt(count.getText()), names);
-                notify.setStyle("-fx-text-fill: #3193ff");
-                notify.setText("discount code created");
+                if (Customer.getCustomerByName(s) == null) {
+                    notify.setStyle("-fx-text-fill: #ff4f59");
+                    notify.setText("wrong customer name");
+                } else {
+                    ManagerAbilitiesManager.createDiscountCode(ID.getText(), startDate.getText(), endDate.getText(), discountPercent.getText(), max.getText(), Integer.parseInt(count.getText()), s);
+                    notify.setStyle("-fx-text-fill: #1593ff");
+                    notify.setText("discount code created");
+
+                }
             }
         });
-        vBox.getChildren().addAll(ID, startDate, endDate, discountPercent, customersName, add, notify);
+        vBox.getChildren().addAll(ID, startDate, endDate, discountPercent, max,count ,customersName, add, notify);
         pane.setCenter(vBox);
         pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
         Scene scene = new Scene(pane, 600, 600);
