@@ -125,7 +125,7 @@ public class ManagerMenu extends Menu {
         Text email = new Text("email: " + RegisterManagerMenu.getCurrentManager().getEmail());
         Text phoneNumber = new Text("phone number: " + RegisterManagerMenu.getCurrentManager().getPhoneNumber());
         title.setFont(Font.loadFont("file:src/main/java/Fonts/FiraSans-Medium.otf", 34));
-        username.setFont(Font.loadFont("file:src/main/java/Fonts/DroidSans.ttf", 28));
+        username.setFont(Font.loadFont("file:src/main/java/Fonts/DroidSans.ttf", 44));
         firstName.setFont(Font.loadFont("file:src/main/java/Fonts/DroidSans.ttf", 28));
         lastName.setFont(Font.loadFont("file:src/main/java/Fonts/DroidSans.ttf", 28));
         email.setFont(Font.loadFont("file:src/main/java/Fonts/DroidSans.ttf", 28));
