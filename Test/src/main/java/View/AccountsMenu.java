@@ -10,8 +10,11 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 import java.io.FileInputStream;
+import java.nio.file.Paths;
 
 public class AccountsMenu extends Menu {
     public AccountsMenu(Menu parentMenu) {
@@ -20,6 +23,9 @@ public class AccountsMenu extends Menu {
 
     @Override
     public void show() {
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\button.mp3";
+        Media media = new Media(Paths.get(path).toUri().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
         BorderPane pane = new BorderPane();
         VBox accountButtons = new VBox(15);
         accountButtons.setAlignment(Pos.CENTER);
@@ -43,6 +49,7 @@ public class AccountsMenu extends Menu {
         backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 parentMenu.show();
             }
         });
@@ -59,17 +66,18 @@ public class AccountsMenu extends Menu {
                 BackgroundSize.DEFAULT);
         Background mainBackground = new Background(mainBackgroundImage);
         accountButtons.setBackground(mainBackground);
-        addActionForButtons(sellerAccountsButton, customerAccountsButton, mangerAccountsButton);
+        addActionForButtons(mediaPlayer,sellerAccountsButton, customerAccountsButton, mangerAccountsButton);
         accountButtons.getChildren().addAll(backButton, sellerAccountsButton, customerAccountsButton, mangerAccountsButton);
         pane.setCenter(accountButtons);
         Scene scene = new Scene(pane, 600, 600);
         Menu.window.setScene(scene);
     }
 
-    public void addActionForButtons(Button sellerButton, Button customerButton, Button managerButton) {
+    public void addActionForButtons(MediaPlayer mediaPlayer , Button sellerButton, Button customerButton, Button managerButton) {
         sellerButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 if (RegisterSellerMenu.getCurrentSeller() == null) {
                     handleRegisterSeller();
                 } else {
@@ -81,6 +89,7 @@ public class AccountsMenu extends Menu {
         customerButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 if (RegisterCustomerMenu.getCurrentCustomer() == null) {
                     handleRegisterCustomer();
                 } else {
@@ -91,6 +100,7 @@ public class AccountsMenu extends Menu {
         managerButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 if (RegisterManagerMenu.getCurrentManager() == null) {
                     handleRegisterManager();
                 } else {
