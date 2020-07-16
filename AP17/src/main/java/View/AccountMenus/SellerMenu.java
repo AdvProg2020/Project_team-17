@@ -247,7 +247,7 @@ public class SellerMenu extends Menu {
                 Alert alert = new Alert(Alert.AlertType.NONE);
                 alert.setTitle("show discount");
                 alert.setHeaderText("discount information");
-                String s = SellerAbilitiesManager.showDiscountInfo(listView.getSelectionModel().getSelectedItem());
+                String s = SellerAbilitiesManager.showLogInfo(listView.getSelectionModel().getSelectedItem());
                 alert.setContentText(s);
                 ButtonType buttonType = new ButtonType("Exit", ButtonBar.ButtonData.CANCEL_CLOSE);
                 alert.getButtonTypes().setAll(buttonType);
@@ -454,15 +454,9 @@ public class SellerMenu extends Menu {
         add.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                Product product = null;
                 try {
-                    product = SellerAbilitiesManager.addProduct(ID.getText(), name.getText(), company.getText(), Double.parseDouble(price.getText()),
+                   SellerAbilitiesManager.addProduct(ID.getText(), name.getText(), company.getText(), Double.parseDouble(price.getText()),
                             Category.getCategoryByName(category.getText()), RegisterSellerMenu.getCurrentSeller(), explanation.getText(), feature.getText(), paths.getText());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                try {
-                    new AddProductRequest(RegisterSellerMenu.getCurrentSeller(), product, Category.getCategoryByName(category.getText()));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

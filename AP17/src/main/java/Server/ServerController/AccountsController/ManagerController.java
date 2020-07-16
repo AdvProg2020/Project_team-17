@@ -195,7 +195,6 @@ public class ManagerController {
         Client.sendObject(allCategories);
     }
 
-
     public static void deleteCategory() {
         String categoryName = Client.receiveMessage();
         Category category = Category.getCategoryByName(categoryName);
