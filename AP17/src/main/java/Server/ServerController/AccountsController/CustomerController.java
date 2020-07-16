@@ -2,15 +2,10 @@ package Server.ServerController.AccountsController;
 
 import Client.Client;
 import Models.Accounts.Customer;
-import Models.Accounts.Manager;
-import Models.Discount;
 import Models.DiscountCode;
 import Models.Logs.BuyLog;
 import Models.Logs.Log;
-import Models.Logs.SellLog;
 import View.RegisterCustomerMenu;
-import View.RegisterManagerMenu;
-import View.RegisterSellerMenu;
 
 import java.util.ArrayList;
 

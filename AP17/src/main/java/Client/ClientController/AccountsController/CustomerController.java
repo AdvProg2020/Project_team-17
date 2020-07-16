@@ -4,7 +4,6 @@ import Client.Client;
 import Models.DiscountCode;
 import Models.Logs.BuyLog;
 import View.RegisterCustomerMenu;
-import View.RegisterManagerMenu;
 
 import java.util.ArrayList;
 
