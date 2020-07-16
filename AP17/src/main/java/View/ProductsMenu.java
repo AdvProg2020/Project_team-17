@@ -214,6 +214,7 @@ public class ProductsMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 mediaPlayer.play();
+                ProductsManager.setIsThereAnyFilter(false);
                 parentMenu.show();
                 notify.setText("");
             }

@@ -2,7 +2,6 @@ package Controller;
 
 import Models.Accounts.Seller;
 import Models.Category;
-import Models.Enums.ProductEnum;
 import Models.Product;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,6 +13,7 @@ public class ProductsManager {
     private static ArrayList<Product> filterProduct = new ArrayList<>(Product.getAllProducts());
     private static ArrayList<Product> sortProducts = new ArrayList<>(Product.getAllProducts());
     private static String currentSort;
+    private static boolean isThereAnyFilter;
 
     public static ArrayList<Product> showProducts() {
         return Product.getAllProducts();
@@ -34,8 +34,15 @@ public class ProductsManager {
     }
 
     public static void filterByCategory(String categoryName) {
+        ArrayList<Product> filterCategory = new ArrayList<>(Product.getAllProducts());
         Category category = Category.getCategoryByName(categoryName);
-        filterProduct.removeIf(product -> !(product.getCategory().equals(category)));
+        if (isThereAnyFilter) {
+            filterProduct.removeIf(product -> !(product.getCategory().equals(category)));
+            isThereAnyFilter = true;
+        } else {
+            filterCategory.removeIf(product -> !(product.getCategory().equals(category)));
+            isThereAnyFilter = true;
+        }
     }
 
     public static void disableFilterByCategory(String categoryName) {
@@ -48,7 +55,14 @@ public class ProductsManager {
     }
 
     public static void filterByPrice(double minPrice, double maxPrice) {
-        filterProduct.removeIf(product -> product.getPrice() <= minPrice && product.getPrice() >= maxPrice);
+        ArrayList<Product> filterPrice = new ArrayList<>(Product.getAllProducts());
+        if (isThereAnyFilter) {
+            filterProduct.removeIf(product -> product.getPrice() <= minPrice && product.getPrice() >= maxPrice);
+            isThereAnyFilter = true;
+        } else {
+            filterPrice.removeIf(product -> product.getPrice() <= minPrice && product.getPrice() >= maxPrice);
+            isThereAnyFilter = true;
+        }
     }
 
     public static void disableFilterByPrice(double minPrice, double maxPrice) {
@@ -59,10 +73,16 @@ public class ProductsManager {
         }
     }
 
-    public static void filterBySeller(String sellerName)   {
+    public static void filterBySeller(String sellerName) {
         Seller seller = Seller.getSellerByName(sellerName);
-        filterProduct.removeIf(product -> !(product.getSeller().equals(seller)));
-
+        ArrayList<Product> filterSeller = new ArrayList<>(Product.getAllProducts());
+        if (isThereAnyFilter) {
+            filterProduct.removeIf(product -> !(product.getSeller().equals(seller)));
+            isThereAnyFilter = true;
+        } else {
+            filterSeller.removeIf(product -> !(product.getSeller().equals(seller)));
+            isThereAnyFilter = true;
+        }
     }
 
     public static void disableFilterBySeller(String sellerName) {
@@ -74,20 +94,15 @@ public class ProductsManager {
         }
     }
 
-    public static void filterByAvailability(ProductEnum productEnum) {
-        filterProduct.removeIf(product -> !(product.getProductState().equals(productEnum)));
-    }
-
-    public static void disableFilterByAvailability(ProductEnum productEnum) {
-        for (Product product : filterProduct) {
-            if (!(product.getProductState().equals(productEnum))) {
-                filterProduct.add(product);
-            }
-        }
-    }
-
     public static void filterByName(String name) {
-        filterProduct.removeIf(product -> !(product.getName().equals(name)));
+        ArrayList<Product> filterName = new ArrayList<>(Product.getAllProducts());
+        if (isThereAnyFilter) {
+            filterProduct.removeIf(product -> !(product.getName().equals(name)));
+            isThereAnyFilter = true;
+        } else {
+            filterName.removeIf(product -> !(product.getName().equals(name)));
+            isThereAnyFilter = true;
+        }
     }
 
     public static void disableFilterByName(String name) {
@@ -99,7 +114,14 @@ public class ProductsManager {
     }
 
     public static void filterBySpecialFeature(String feature) {
-        filterProduct.removeIf(product -> !(product.getProductsSpecialFeature().equals(feature)));
+        ArrayList<Product> filterFeature = new ArrayList<>(Product.getAllProducts());
+        if (isThereAnyFilter) {
+            filterProduct.removeIf(product -> !(product.getProductsSpecialFeature().equals(feature)));
+            isThereAnyFilter = true;
+        } else {
+            filterFeature.removeIf(product -> !(product.getProductsSpecialFeature().equals(feature)));
+            isThereAnyFilter = true;
+        }
     }
 
     public static void disableFilterBySpecialFeature(String feature) {
@@ -111,7 +133,14 @@ public class ProductsManager {
     }
 
     public static void filterByCompanyName(String name) {
-        filterProduct.removeIf(product -> !(product.getCompanyName().equals(name)));
+        ArrayList<Product> filterCompany = new ArrayList<>(Product.getAllProducts());
+        if (isThereAnyFilter) {
+            filterProduct.removeIf(product -> !(product.getCompanyName().equals(name)));
+            isThereAnyFilter = true;
+        } else {
+            filterCompany.removeIf(product -> !(product.getCompanyName().equals(name)));
+            isThereAnyFilter = true;
+        }
     }
 
     public static void disableFilterByCompanyName(String name) {
@@ -150,5 +179,9 @@ public class ProductsManager {
 
     public static String getCurrentSort() {
         return currentSort;
+    }
+
+    public static void setIsThereAnyFilter(boolean isThereAnyFilter) {
+        ProductsManager.isThereAnyFilter = isThereAnyFilter;
     }
 }
