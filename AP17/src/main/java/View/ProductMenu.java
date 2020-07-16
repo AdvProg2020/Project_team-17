@@ -140,9 +140,10 @@ public class ProductMenu extends Menu {
         Text explanation = new Text("Explanation: " + product.getExplanation());
         Text feature = new Text("Feature: " + product.getProductsSpecialFeature());
         Text score = new Text("Product Score: " + product.getAverageScore());
+        Text seller = new Text("Seller: " + product.getSeller());
 
         VBox info = new VBox(5);
-        info.getChildren().addAll(name, companyName, category, price, explanation, feature, score);
+        info.getChildren().addAll(name, companyName, category, price, explanation, feature, score, seller);
         HBox hBox = new HBox(10);
         VBox vBox = new VBox(5);
         ListView<String> listView = new ListView<>();
@@ -290,9 +291,10 @@ public class ProductMenu extends Menu {
         Text explanation = new Text("Explanation: " + product.getExplanation());
         Text feature = new Text("Feature: " + product.getProductsSpecialFeature());
         Text score = new Text("Product Score: " + product.getAverageScore());
+        Text seller = new Text("Seller: " + product.getSeller());
 
         VBox info = new VBox(5);
-        info.getChildren().addAll(name, companyName, category, price, explanation, feature, score);
+        info.getChildren().addAll(name, companyName, category, price, explanation, feature, score,seller);
 
         HBox hBox = new HBox(10);
         hBox.getChildren().addAll(imageView, info);
@@ -333,9 +335,10 @@ public class ProductMenu extends Menu {
         Text explanation1 = new Text("Explanation: " + product1.getExplanation());
         Text feature1 = new Text("Feature: " + product1.getProductsSpecialFeature());
         Text score1 = new Text("Product Score: " + product1.getAverageScore());
+        Text seller1 = new Text("Seller: " + product1.getSeller());
 
         VBox info1 = new VBox(5);
-        info1.getChildren().addAll(name1, companyName1, category1, price1, explanation1, feature1, score1);
+        info1.getChildren().addAll(name1, companyName1, category1, price1, explanation1, feature1, score1,seller1);
 
         HBox hBox1 = new HBox(10);
         hBox1.getChildren().addAll(imageView1, info1);
