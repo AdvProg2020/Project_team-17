@@ -207,7 +207,7 @@ public class ProductsMenu extends Menu {
         productsButton.setStyle(style);
         discountButton.setStyle(style);
         logoutButton.setStyle(style);
-        addActionForMainButtonsForFilterAndSort(mediaPlayer,accountsButton, discountButton, productsButton, logoutButton);
+        addActionForMainButtonsForFilterAndSort(mediaPlayer, accountsButton, discountButton, productsButton, logoutButton);
         mainButtons.getChildren().addAll(accountsButton, productsButton, discountButton, logoutButton);
         HBox bar = new HBox(30);
         backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
@@ -517,10 +517,10 @@ public class ProductsMenu extends Menu {
         addFilterToCurrentFilter("seller");
     }
 
-    private void filterByAvailability(String name) {
-        ProductsManager.filterByAvailability(ProductEnum.valueOf(name));
-        addFilterToCurrentFilter("availability");
-    }
+//    private void filterByAvailability(String name) {
+//        ProductsManager.filterByAvailability(ProductEnum.valueOf(name));
+//        addFilterToCurrentFilter("availability");
+//    }
 
     private void filterBySpecialFeature(String name) {
         ProductsManager.filterBySpecialFeature(name);
@@ -541,9 +541,11 @@ public class ProductsMenu extends Menu {
             filterByPrice(name);
         } else if (type.equals("seller")) {
             filterBySeller(name);
-        } else if (type.equals("availability")) {
-            filterByAvailability(name);
-        } else if (type.equals("special features")) {
+        }
+//        else if (type.equals("availability")) {
+//            filterByAvailability(name);
+//        }
+        else if (type.equals("special features")) {
             filterBySpecialFeature(name);
         } else if (type.equals("brand")) {
             filterByBrand(name);

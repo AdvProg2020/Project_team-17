@@ -208,6 +208,7 @@ public class DiscountsMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 mediaPlayer.play();
+                DiscountManager.setIsThereAnyFilter(false);
                 parentMenu.show();
                 notify.setText("");
             }
@@ -588,10 +589,10 @@ public class DiscountsMenu extends Menu {
         addFilterToCurrentFilter("seller");
     }
 
-    private void filterByAvailability(String name) {
-        DiscountManager.filterByAvailability(ProductEnum.valueOf(name));
-        addFilterToCurrentFilter("availability");
-    }
+//    private void filterByAvailability(String name) {
+//        DiscountManager.filterByAvailability(ProductEnum.valueOf(name));
+//        addFilterToCurrentFilter("availability");
+//    }
 
     private void filterBySpecialFeature(String name) {
         DiscountManager.filterBySpecialFeature(name);
@@ -612,9 +613,11 @@ public class DiscountsMenu extends Menu {
             filterByPrice(name);
         } else if (filter.equals("seller")) {
             filterBySeller(name);
-        } else if (filter.equals("availability")) {
-            filterByAvailability(name);
-        } else if (filter.equals("special features")) {
+        }
+//        else if (filter.equals("availability")) {
+//            filterByAvailability(name);
+//        }
+        else if (filter.equals("special features")) {
             filterBySpecialFeature(name);
         } else if (filter.equals("brand")) {
             filterByBrand(name);
