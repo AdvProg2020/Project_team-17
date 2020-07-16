@@ -1,4 +1,4 @@
-package Client.ClientController;
+package Client.ClientController.AccountsController;
 
 import Client.Client;
 import Models.Accounts.Account;

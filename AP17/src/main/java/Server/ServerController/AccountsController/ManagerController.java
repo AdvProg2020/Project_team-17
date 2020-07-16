@@ -1,4 +1,4 @@
-package Server.ServerController;
+package Server.ServerController.AccountsController;
 
 import Client.Client;
 import Models.Accounts.Account;
