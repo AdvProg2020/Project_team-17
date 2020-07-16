@@ -168,7 +168,7 @@ public class ManagerController {
 
     public static void addManager(String username, String firstName, String lastName,
                                   String email, String phoneNumber, String password) throws Exception {
-        String func = "Add Admin Account";
+        String func = "Add Manager Account";
         Client.sendMessage(func);
 
         String info = username + " " + firstName + " " + lastName + " " + email + " " + phoneNumber + " " + password;
