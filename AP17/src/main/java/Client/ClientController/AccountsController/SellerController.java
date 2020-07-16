@@ -4,9 +4,9 @@ import Client.Client;
 import Models.Accounts.Seller;
 import Models.Category;
 import Models.Discount;
-import Models.DiscountCode;
 import Models.Logs.SellLog;
 import Models.Product;
+
 import View.RegisterSellerMenu;
 
 import java.io.IOException;
@@ -14,6 +14,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class SellerController {
+
     public static String showSellerInfo() throws Exception {
         String func = "Show Seller Info";
         Client.sendMessage(func);
@@ -49,12 +50,13 @@ public class SellerController {
         String func = "Show Sales History";
         Client.sendMessage(func);
 
+        Client.sendObject(RegisterSellerMenu.getCurrentSeller());
         Object response = Client.receiveObject();
         return (ArrayList<SellLog>) response;
     }
 
     public static String showLogDetails(String id) throws Exception {
-        String func = "Show Account Details";
+        String func = "Show Log Details";
         Client.sendMessage(func);
 
         Client.sendMessage(id);
@@ -144,7 +146,7 @@ public class SellerController {
             throw new Exception("there isn't any discount with this id");
     }
 
-    public static void removeProductRequest(Product product , Seller seller) throws Exception {
+    public static void removeProductRequest(Product product, Seller seller) throws Exception {
 
         String func = "Remove Product Request";
         Client.sendMessage(func);

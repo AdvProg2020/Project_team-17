@@ -15,6 +15,7 @@ import java.util.ArrayList;
 
 public class CustomerAbilitiesManager {
 
+    //handle in network
     public static void changeField(Customer customer, String field, String newContentForThisField) {
         if (field.equalsIgnoreCase("first name")) {
             customer.changeFirstName(customer, newContentForThisField);
@@ -29,6 +30,7 @@ public class CustomerAbilitiesManager {
         }
     }
 
+    //handle in network
     public static ObservableList<String> viewOrders(Customer customer) {
         ArrayList<String> orders = new ArrayList<>();
         for (BuyLog buyLog : customer.getBuyLog()) {
@@ -39,10 +41,12 @@ public class CustomerAbilitiesManager {
         return data;
     }
 
+    //handle in network
     public static String showOrder(String id) {
         return BuyLog.getButLogWithId(id).toString();
     }
 
+    //handle in network
     public static ObservableList<String> showDiscountCodes(Customer customer) {
         ArrayList<String> discountCodes = new ArrayList<>();
         for (DiscountCode discountCode : customer.getDiscountCodes()) {
@@ -53,6 +57,7 @@ public class CustomerAbilitiesManager {
         return data;
     }
 
+    //handle in network
     public static String showDiscountCodeInfo(String id) {
         return DiscountCode.getDiscountCodeWithCode(id).toString();
     }
@@ -70,6 +75,7 @@ public class CustomerAbilitiesManager {
         }
         return false;
     }
+
     public static void pay(Customer customer, DiscountCode discountCode) throws IOException {
         double amountForPay = customer.getCart().totalPriceWithDiscount(discountCode);
         double sum = customer.getCart().totalPriceOfProductInCart();

@@ -120,7 +120,7 @@ public class ManagerController {
     }
 
     public static String showDiscountCodeDetails(String code) throws Exception {
-        String func = "Show Account Details";
+        String func = "Show Discount Code Details";
         Client.sendMessage(func);
 
         Client.sendMessage(code);
