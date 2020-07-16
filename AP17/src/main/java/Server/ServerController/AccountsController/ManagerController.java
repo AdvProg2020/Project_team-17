@@ -16,7 +16,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class ManagerController {
-    public static void showAdminInfo() {
+    public static void showManagerInfo() {
         if (RegisterManagerMenu.getCurrentManager() == null) {
             Client.sendObject(new Exception("manager should first login"));
         }
@@ -24,7 +24,7 @@ public class ManagerController {
         Client.sendMessage(Manager.getManagerByUserName(username).toString());
     }
 
-    public static void editAdminInfo() throws Exception {
+    public static void editManagerInfo() throws Exception {
         Object[] receivedItems = (Object[]) Client.receiveObject();
         String field = (String) receivedItems[0];
         String newContentForThisField = (String) receivedItems[1];
@@ -47,7 +47,7 @@ public class ManagerController {
         }
     }
 
-    public static void showAdminRequests() {
+    public static void showManagerRequests() {
         ArrayList<Request> allRequests = new ArrayList<>();
         allRequests.addAll(Request.showRequestsNeedToBeAccepted());
         Client.sendObject(allRequests);

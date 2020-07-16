@@ -52,4 +52,6 @@ public class RegisterAndLoginController {
             Client.sendObject(new Exception("there is an account with this username"));
         }
     }
+    //TODO handle login and multi accounts login
+
 }

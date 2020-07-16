@@ -11,8 +11,8 @@ import View.RegisterManagerMenu;
 import java.util.ArrayList;
 
 public class ManagerController {
-    public static String showAdminInfo() throws Exception {
-        String func = "Show Admin Info";
+    public static String showManagerInfo() throws Exception {
+        String func = "Show Manager Info";
         Client.sendMessage(func);
         if (RegisterManagerMenu.getCurrentManager() == null) {
             throw new Exception("a manager should login first!");
@@ -28,8 +28,8 @@ public class ManagerController {
         }
     }
 
-    public static void editAdminInfo(String field, String newContent) throws Exception {
-        String func = "Edit Admin Info";
+    public static void editManagerInfo(String field, String newContent) throws Exception {
+        String func = "Edit Manager Info";
         Client.sendMessage(func);
         if (RegisterManagerMenu.getCurrentManager() == null) {
             throw new Exception("a manager should login first!");
@@ -42,8 +42,8 @@ public class ManagerController {
         }
     }
 
-    public static ArrayList<Request> showAdminRequests() {
-        String func = "Show Admin Requests";
+    public static ArrayList<Request> showManagerRequests() {
+        String func = "Show manager Requests";
         Client.sendMessage(func);
 
         // TODO in khat payine ro motmaen nistam doroste ya na
