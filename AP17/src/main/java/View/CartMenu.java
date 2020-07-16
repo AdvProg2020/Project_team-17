@@ -36,7 +36,7 @@ public class CartMenu extends Menu {
     }
 
     public void setCartScene() {
-        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\button.mp3";
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
 
@@ -89,10 +89,10 @@ public class CartMenu extends Menu {
             int numberOfProduct = CartManager.numberOfProducts(RegisterCustomerMenu.getCurrentCustomer(), product);
             Text text = new Text("Number: " + numberOfProduct + " Price per one: " + product.getPrice() + " Total price: "
                     + product.getPrice() * numberOfProduct);
-            text.setFont(Font.loadFont("file:src/main/java/Fonts/FiraSans-Medium.otf", 22));
+            //text.setFont(Font.loadFont("file:src/main/java/Fonts/FiraSans-Medium.otf", 22));
             Image image1 = null;
             try {
-                FileInputStream inputStream1 = new FileInputStream("C:\\Users\\UX434FL\\IdeaProjects\\AP17\\Test\\src\\main\\java\\Images\\Plus.png");
+                FileInputStream inputStream1 = new FileInputStream("C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Images\\Plus.png");
                 image1 = new Image(inputStream1);
             } catch (Exception e) {
             }
@@ -107,7 +107,7 @@ public class CartMenu extends Menu {
             });
             Image image2 = null;
             try {
-                FileInputStream inputStream2 = new FileInputStream("C:\\Users\\UX434FL\\IdeaProjects\\AP17\\Test\\src\\main\\java\\Images\\Minus.png");
+                FileInputStream inputStream2 = new FileInputStream("C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Images\\Minus.png");
                 image2 = new Image(inputStream2);
             } catch (Exception e) {
             }
@@ -126,7 +126,7 @@ public class CartMenu extends Menu {
         VBox vBox = new VBox(5);
         vBox.getChildren().addAll(hBoxes);
         Text totalCartPrice = new Text("Total price: " + CartManager.showTotalPriceOfCart(RegisterCustomerMenu.getCurrentCustomer()));
-        totalCartPrice.setFont(Font.loadFont("file:src/main/java/Fonts/FiraSans-Medium.otf", 28));
+        //totalCartPrice.setFont(Font.loadFont("file:src/main/java/Fonts/FiraSans-Medium.otf", 28));
         Button purchase = new Button("Purchase");
         purchase.setStyle(style);
         purchase.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {

@@ -45,7 +45,7 @@ public class ProductMenu extends Menu {
     }
 
     public void setProductScene() {
-        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\button.mp3";
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
 
@@ -67,7 +67,7 @@ public class ProductMenu extends Menu {
         mainButtons.setAlignment(Pos.TOP_RIGHT);
         Image image1 = null;
         try {
-            FileInputStream inputStream1 = new FileInputStream("C:\\Users\\UX434FL\\IdeaProjects\\AP17\\Test\\src\\main\\java\\Images\\Cart.png");
+            FileInputStream inputStream1 = new FileInputStream("C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Images\\Cart.png");
             image1 = new Image(inputStream1);
         } catch (Exception e) {
         }
@@ -140,13 +140,7 @@ public class ProductMenu extends Menu {
         Text explanation = new Text("Explanation: " + product.getExplanation());
         Text feature = new Text("Feature: " + product.getProductsSpecialFeature());
         Text score = new Text("Product Score: " + product.getAverageScore());
-        name.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf", 30));
-        companyName.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf", 30));
-        category.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf", 30));
-        price.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf", 30));
-        feature.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf", 30));
-        explanation.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf", 30));
-        score.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf", 30));
+
         VBox info = new VBox(5);
         info.getChildren().addAll(name, companyName, category, price, explanation, feature, score);
         HBox hBox = new HBox(10);
@@ -221,7 +215,7 @@ public class ProductMenu extends Menu {
     }
 
     private void setCompareProductScene(Product product1) {
-        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\button.mp3";
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
 
@@ -296,13 +290,7 @@ public class ProductMenu extends Menu {
         Text explanation = new Text("Explanation: " + product.getExplanation());
         Text feature = new Text("Feature: " + product.getProductsSpecialFeature());
         Text score = new Text("Product Score: " + product.getAverageScore());
-        name.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf", 30));
-        companyName.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf", 30));
-        category.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf", 30));
-        price.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf", 30));
-        feature.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf", 30));
-        explanation.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf", 30));
-        score.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf", 30));
+
         VBox info = new VBox(5);
         info.getChildren().addAll(name, companyName, category, price, explanation, feature, score);
 
@@ -345,13 +333,7 @@ public class ProductMenu extends Menu {
         Text explanation1 = new Text("Explanation: " + product1.getExplanation());
         Text feature1 = new Text("Feature: " + product1.getProductsSpecialFeature());
         Text score1 = new Text("Product Score: " + product1.getAverageScore());
-        name1.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf", 30));
-        companyName1.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf", 30));
-        category1.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf", 30));
-        price1.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf", 30));
-        feature1.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf", 30));
-        explanation1.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf", 30));
-        score1.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf", 30));
+
         VBox info1 = new VBox(5);
         info1.getChildren().addAll(name1, companyName1, category1, price1, explanation1, feature1, score1);
 

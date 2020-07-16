@@ -1,6 +1,5 @@
 package Models;
 
-import Controller.WriteIntoFile;
 import Models.Accounts.Customer;
 import Models.Accounts.Seller;
 import Models.Enums.ProductEnum;
@@ -25,7 +24,7 @@ public class Product {
     private int visitedTime = 0;
     private Discount discount;
     private String path;
-    private  ArrayList<PointOfView> pointOfViews;
+    private ArrayList<PointOfView> pointOfViews;
     private ArrayList<Double> scoresForProduct = new ArrayList<>();
 
     public Product(String productId, String name, String companyName, double price, Seller seller, Category category, String explanation, double averageScore, String productsSpecialFeature, String path) {
@@ -162,8 +161,10 @@ public class Product {
     }
 
     public void addScoreForProduct(Customer customer, Product product, double score) {
+        product.setAverageScore(score);
         product.scoresForProduct.add(score);
     }
+
 
     public Category getCategory() {
         return category;
@@ -176,7 +177,7 @@ public class Product {
     public double averageScoreForProduct(Product product) {
         int sum = 0;
         for (Double score : product.scoresForProduct) {
-            sum+=score;
+            sum += score;
         }
         return this.averageScore = sum / product.scoresForProduct.size();
     }
@@ -223,10 +224,10 @@ public class Product {
             }
         }
         this.pointOfViews.add(new PointOfView(customer, this, content, hasBought));
-        WriteIntoFile.writePointOfViewsIntoFile();
+        //WriteIntoFile.writePointOfViewsIntoFile();
     }
 
-    public  ArrayList<PointOfView> getPointOfViews() {
+    public ArrayList<PointOfView> getPointOfViews() {
         return pointOfViews;
     }
 

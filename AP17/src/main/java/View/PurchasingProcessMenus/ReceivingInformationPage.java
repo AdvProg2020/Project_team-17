@@ -35,9 +35,10 @@ public class ReceivingInformationPage extends Menu {
 
 
     public void setReceivingInfoScene() {
-        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\button.mp3";
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
+
         BorderPane pane = new BorderPane();
         pane.setPadding(new Insets(25, 25, 25, 25));
         String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +

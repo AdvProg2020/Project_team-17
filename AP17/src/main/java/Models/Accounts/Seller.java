@@ -5,6 +5,7 @@ import Models.Discount;
 import Models.Product;
 import Models.Logs.SellLog;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Seller extends Account {
@@ -15,7 +16,7 @@ public class Seller extends Account {
     private ArrayList<SellLog> logs;
 
     public Seller(String userName, String firstName, String lastName, String email
-            , String phoneNumber, String password, double credit, String companyName) {
+            , String phoneNumber, String password, double credit, String companyName) throws IOException {
         super(userName, firstName, lastName, email, phoneNumber, password, credit);
         this.companyName = companyName;
         allProducts = new ArrayList<>();

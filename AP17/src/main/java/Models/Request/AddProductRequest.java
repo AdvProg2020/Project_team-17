@@ -4,6 +4,7 @@ import Models.Accounts.Manager;
 import Models.Accounts.Seller;
 import Models.Category;
 import Models.Enums.ProductEnum;
+import Models.Enums.RequestStateEnum;
 import Models.Enums.RequestTypeEnum;
 import Models.Product;
 
@@ -26,6 +27,7 @@ public class AddProductRequest extends Request {
         product.setProductState(ProductEnum.ACCEPTED);
         seller.addProduct(seller, product);
         category.addProductToThisCategory(category, product);
+        this.setState(RequestStateEnum.ACCEPTED);
     }
 
     @Override

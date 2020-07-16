@@ -3,6 +3,7 @@ package Models.Request;
 import Models.Accounts.Manager;
 import Models.Accounts.Seller;
 import Models.Category;
+import Models.Enums.RequestStateEnum;
 import Models.Enums.RequestTypeEnum;
 import Models.Product;
 
@@ -21,6 +22,7 @@ public class RemoveProductRequest extends Request {
     public void accept() {
         Product.removeProduct(product);
         seller.removeProduct(seller, product);
+        this.setState(RequestStateEnum.ACCEPTED);
     }
 
     @Override

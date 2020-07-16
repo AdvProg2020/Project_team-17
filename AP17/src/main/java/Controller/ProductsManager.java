@@ -36,7 +36,6 @@ public class ProductsManager {
     public static void filterByCategory(String categoryName) {
         Category category = Category.getCategoryByName(categoryName);
         filterProduct.removeIf(product -> !(product.getCategory().equals(category)));
-
     }
 
     public static void disableFilterByCategory(String categoryName) {

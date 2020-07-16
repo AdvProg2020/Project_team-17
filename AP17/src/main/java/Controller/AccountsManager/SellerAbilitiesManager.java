@@ -1,13 +1,14 @@
 package Controller.AccountsManager;
 
-import Controller.WriteIntoFile;
 import Models.*;
 import Models.Accounts.Seller;
 import Models.Logs.Log;
 import Models.Logs.SellLog;
+import Models.Request.AddOffRequest;
 import Models.Request.EditOffRequest;
 import Models.Request.EditProductRequest;
 import Models.Request.RemoveProductRequest;
+import View.RegisterSellerMenu;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -53,7 +54,7 @@ public class SellerAbilitiesManager {
                                      double price, Category category, Seller seller, String productExplanation, String specialFeature, String path) throws IOException {
         Product product = new Product(productId, productName, companyName, price,
                 seller, category, productExplanation, 0, specialFeature, path);
-        WriteIntoFile.writeProductsIntoFile();
+        //WriteIntoFile.writeProductsIntoFile();
         return product;
     }
 
@@ -72,6 +73,7 @@ public class SellerAbilitiesManager {
     public static Discount addDiscount(String id, String beginningDate, String endingDate,
                                        double discountPercent, String productName) throws IOException {
         Discount discount = new Discount(id, LocalDate.parse(beginningDate), LocalDate.parse(endingDate), discountPercent, Product.getProductByName(productName));
+        new AddOffRequest(RegisterSellerMenu.getCurrentSeller(), discount);
         return discount;
     }
 

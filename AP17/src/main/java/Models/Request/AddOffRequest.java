@@ -4,6 +4,7 @@ import Models.Accounts.Manager;
 import Models.Accounts.Seller;
 import Models.Discount;
 import Models.Enums.DiscountEnum;
+import Models.Enums.RequestStateEnum;
 import Models.Enums.RequestTypeEnum;
 
 import java.io.IOException;
@@ -21,6 +22,7 @@ public class AddOffRequest extends Request {
     public void accept() {
         discount.setDiscountState(DiscountEnum.ACCEPTED);
         seller.addDiscount(discount);
+        this.setState(RequestStateEnum.ACCEPTED);
     }
 
     @Override

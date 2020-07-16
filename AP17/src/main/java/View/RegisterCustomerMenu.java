@@ -1,7 +1,6 @@
 package View;
 
 import Controller.RegisterAndLoginManager;
-import Controller.WriteIntoFile;
 import Models.Accounts.Customer;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -31,7 +30,7 @@ public class RegisterCustomerMenu extends Menu {
 
     @Override
     public void show() {
-        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\button.mp3";
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
 
@@ -91,7 +90,7 @@ public class RegisterCustomerMenu extends Menu {
 
 
     public void registerCustomerScene() {
-        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\button.mp3";
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
 
@@ -155,11 +154,11 @@ public class RegisterCustomerMenu extends Menu {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    try {
-                        WriteIntoFile.writeCustomersIntoFile();
-                    } catch (IOException e) {
-                        System.err.println(e.getMessage());
-                    }
+//                    try {
+//                        WriteIntoFile.writeCustomersIntoFile();
+//                    } catch (IOException e) {
+//                        System.err.println(e.getMessage());
+//                    }
                     notify.setStyle("-fx-text-fill: #3193ff");
                     notify.setText("successfully registered");
                 } else {
@@ -185,7 +184,7 @@ public class RegisterCustomerMenu extends Menu {
     }
 
     public void loginCustomerScene() {
-        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\button.mp3";
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
 

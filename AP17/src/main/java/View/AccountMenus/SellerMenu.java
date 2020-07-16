@@ -25,9 +25,6 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class SellerMenu extends Menu {
     Product selectedProduct;
@@ -43,9 +40,10 @@ public class SellerMenu extends Menu {
     }
 
     public void setPersonalScene() {
-        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\button.mp3";
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
+
         BorderPane pane = new BorderPane();
         String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
                 "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
@@ -68,13 +66,13 @@ public class SellerMenu extends Menu {
         productButton.setStyle(style);
         discountButton.setStyle(style);
         logoutButton.setStyle(style);
-        addActionForMainButtons(mediaPlayer ,accountsButton, productButton, discountButton, logoutButton);
+        addActionForMainButtons(mediaPlayer, accountsButton, productButton, discountButton, logoutButton);
         mainButtons.getChildren().addAll(accountsButton, productButton, discountButton, logoutButton);
         pane.setTop(mainButtons);
         backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-             mediaPlayer.play();
+                mediaPlayer.play();
                 parentMenu.show();
             }
         });
@@ -94,7 +92,7 @@ public class SellerMenu extends Menu {
         manageProductButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-               mediaPlayer.play();
+                mediaPlayer.play();
                 setManageProductScene();
             }
         });
@@ -140,14 +138,14 @@ public class SellerMenu extends Menu {
         Text credit = new Text("credit: " + RegisterSellerMenu.getCurrentSeller().getCredit());
         Text companyName = new Text("company name: " + RegisterSellerMenu.getCurrentSeller());
 
-        title.setFont(Font.font("calibri", FontWeight.BOLD, FontPosture.REGULAR, 32));
-        username.setFont(Font.font("verdana", FontPosture.REGULAR, 28));
-        firstName.setFont(Font.font("verdana", FontPosture.REGULAR, 28));
-        lastName.setFont(Font.font("verdana", FontPosture.REGULAR, 28));
-        email.setFont(Font.font("verdana", FontPosture.REGULAR, 28));
-        phoneNumber.setFont(Font.font("verdana", FontPosture.REGULAR, 28));
-        credit.setFont(Font.font("verdana", FontPosture.REGULAR, 28));
-        companyName.setFont(Font.font("verdana", FontPosture.REGULAR, 28));
+        title.setFont(Font.font("calibri", FontWeight.BOLD, FontPosture.REGULAR, 12));
+        username.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
+        firstName.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
+        lastName.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
+        email.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
+        phoneNumber.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
+        credit.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
+        companyName.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
 
         vBox1.getChildren().addAll(title, username, firstName, lastName, email, phoneNumber, credit, companyName);
         pane.setCenter(vBox1);
@@ -157,9 +155,10 @@ public class SellerMenu extends Menu {
     }
 
     public void setEditScene() {
-        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\button.mp3";
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
+
         BorderPane pane = new BorderPane();
         String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
                 "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
@@ -212,9 +211,10 @@ public class SellerMenu extends Menu {
     }
 
     public void setSalesHistoryScene() {
-        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\button.mp3";
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
+
         BorderPane pane = new BorderPane();
         String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
                 "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
@@ -261,9 +261,10 @@ public class SellerMenu extends Menu {
     }
 
     public void setManageProductScene() {
-        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\button.mp3";
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
+
         BorderPane pane = new BorderPane();
         String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
                 "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
@@ -336,9 +337,10 @@ public class SellerMenu extends Menu {
     }
 
     public void setEditProductScene() {
-        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\button.mp3";
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
+
         BorderPane pane = new BorderPane();
         String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
                 "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
@@ -394,9 +396,10 @@ public class SellerMenu extends Menu {
     }
 
     public void setAddProductScene() {
-        String path1 = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\button.mp3";
-        Media media = new Media(Paths.get(path1).toUri().toString());
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+        Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
+
         BorderPane pane = new BorderPane();
         String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
                 "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
@@ -436,8 +439,8 @@ public class SellerMenu extends Menu {
         explanation.setPromptText("explanation");
         TextField feature = new TextField();
         feature.setPromptText("feature");
-        TextField path = new TextField();
-        path.setPromptText("path");
+        TextField paths = new TextField();
+        paths.setPromptText("path");
         Button add = new Button("add");
         ID.setStyle(style);
         name.setStyle(style);
@@ -446,7 +449,7 @@ public class SellerMenu extends Menu {
         category.setStyle(style);
         explanation.setStyle(style);
         feature.setStyle(style);
-        path.setStyle(style);
+        paths.setStyle(style);
         add.setStyle(style);
         add.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
@@ -454,7 +457,7 @@ public class SellerMenu extends Menu {
                 Product product = null;
                 try {
                     product = SellerAbilitiesManager.addProduct(ID.getText(), name.getText(), company.getText(), Double.parseDouble(price.getText()),
-                            Category.getCategoryByName(category.getText()), RegisterSellerMenu.getCurrentSeller(), explanation.getText(), feature.getText(), path.getText());
+                            Category.getCategoryByName(category.getText()), RegisterSellerMenu.getCurrentSeller(), explanation.getText(), feature.getText(), paths.getText());
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -467,7 +470,7 @@ public class SellerMenu extends Menu {
                 notify.setText("request sent to manager");
             }
         });
-        vBox1.getChildren().addAll(ID, name, company, price, category, explanation, feature, path, add, notify);
+        vBox1.getChildren().addAll(ID, name, company, price, category, explanation, feature, paths, add, notify);
         pane.setCenter(vBox1);
         pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
         Scene scene = new Scene(pane, 600, 600);
@@ -475,9 +478,10 @@ public class SellerMenu extends Menu {
     }
 
     public void setShowCategoriesScene() {
-        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\button.mp3";
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
+
         BorderPane pane = new BorderPane();
         String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
                 "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
@@ -495,9 +499,7 @@ public class SellerMenu extends Menu {
         button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\button.mp3";
-                Media media = new Media(Paths.get(path).toUri().toString());
-                MediaPlayer mediaPlayer = new MediaPlayer(media);
+                mediaPlayer.play();
                 show();
             }
         });
@@ -512,9 +514,10 @@ public class SellerMenu extends Menu {
     }
 
     public void setOffsScene() {
-        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\button.mp3";
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
+
         BorderPane pane = new BorderPane();
         String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
                 "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
@@ -532,7 +535,7 @@ public class SellerMenu extends Menu {
         button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-            mediaPlayer.play();
+                mediaPlayer.play();
                 show();
             }
         });
@@ -551,14 +554,13 @@ public class SellerMenu extends Menu {
         addOff.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-               mediaPlayer.play();
+                mediaPlayer.play();
                 setAddOffScene();
             }
         });
         editOff.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-
                 selectedDiscount = Discount.getDiscountById(listView.getSelectionModel().getSelectedItem());
                 setEditOffScene();
             }
@@ -574,6 +576,7 @@ public class SellerMenu extends Menu {
         String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
+
         BorderPane pane = new BorderPane();
         String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
                 "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
@@ -610,6 +613,7 @@ public class SellerMenu extends Menu {
         button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
                 try {
                     SellerAbilitiesManager.sendEditingOffRequest(selectedDiscount, RegisterSellerMenu.getCurrentSeller(), field.getValue(), newContent.getText());
                 } catch (IOException e) {
@@ -627,9 +631,10 @@ public class SellerMenu extends Menu {
     }
 
     public void setAddOffScene() {
-        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\button.mp3";
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
+
         BorderPane pane = new BorderPane();
         String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
                 "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
@@ -646,7 +651,7 @@ public class SellerMenu extends Menu {
         back.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-             mediaPlayer.play();
+                mediaPlayer.play();
                 setOffsScene();
             }
         });
@@ -717,21 +722,21 @@ public class SellerMenu extends Menu {
         productsButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-             mediaPlayer.play();
+                mediaPlayer.play();
                 handleProductsMenu();
             }
         });
         discountButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-            mediaPlayer.play();
+                mediaPlayer.play();
                 handleDiscountsMenu();
             }
         });
         logoutButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-               mediaPlayer.play();
+                mediaPlayer.play();
                 handleLogout();
             }
         });

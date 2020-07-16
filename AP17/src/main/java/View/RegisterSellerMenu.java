@@ -2,7 +2,6 @@ package View;
 
 import Controller.RegisterAndLoginManager;
 
-import Controller.WriteIntoFile;
 import Models.Accounts.Seller;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -31,7 +30,7 @@ public class RegisterSellerMenu extends Menu {
 
     @Override
     public void show() {
-        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\button.mp3";
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
 
@@ -92,7 +91,7 @@ public class RegisterSellerMenu extends Menu {
 
 
     public void registerSellerScene() {
-        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\button.mp3";
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
 
@@ -150,13 +149,17 @@ public class RegisterSellerMenu extends Menu {
             public void handle(MouseEvent mouseEvent) {
                 mediaPlayer.play();
                 if (RegisterAndLoginManager.canHaveAccountWithThisUsername(userNameTextField.getText())) {
-                    new Seller(userNameTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText(),
-                            phoneNumberTextField.getText(), passwordField.getText(), 0, extraTextField.getText());
                     try {
-                        WriteIntoFile.writeSellersIntoFile();
+                        new Seller(userNameTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText(),
+                                phoneNumberTextField.getText(), passwordField.getText(), 0, extraTextField.getText());
                     } catch (IOException e) {
-                        System.err.println(e.getMessage());
+                        e.printStackTrace();
                     }
+//                    try {
+//                        WriteIntoFile.writeSellersIntoFile();
+//                    } catch (IOException e) {
+//                        System.err.println(e.getMessage());
+//                    }
                     notify.setStyle("-fx-text-fill: #3193ff");
                     notify.setText("successfully registered");
                 } else {
@@ -181,7 +184,7 @@ public class RegisterSellerMenu extends Menu {
     }
 
     public void loginSellerScene() {
-        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\button.mp3";
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
 

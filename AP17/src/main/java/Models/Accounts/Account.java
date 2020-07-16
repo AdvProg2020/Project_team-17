@@ -12,6 +12,7 @@ public abstract class Account {
     protected String phoneNumber;
     protected String password;
     protected double credit;
+    protected String bankAccountId;
     private ArrayList<DiscountCode> allDiscountCodes;
 
     public Account(String userName, String firstName, String lastName, String email, String phoneNumber, String password, double credit) {

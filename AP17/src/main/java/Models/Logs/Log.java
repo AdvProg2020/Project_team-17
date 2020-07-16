@@ -1,6 +1,5 @@
 package Models.Logs;
 
-import Controller.WriteIntoFile;
 import Models.Product;
 
 import java.io.IOException;
@@ -32,7 +31,7 @@ public abstract class Log {
         this.isReceived = isReceived;
         this.discountAmount = discountAmount;
         allLogs.add(this);
-        WriteIntoFile.writeLogsIntoFile();
+        //WriteIntoFile.writeLogsIntoFile();
     }
 
     public static Log getLogWithId(String id) {

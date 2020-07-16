@@ -1,6 +1,5 @@
 package Models;
 
-import Controller.WriteIntoFile;
 import Models.Accounts.Customer;
 
 import java.io.IOException;
@@ -14,7 +13,7 @@ public class Cart {
     public Cart(Customer customer) throws IOException {
         this.customer = customer;
         allCarts.add(this);
-        WriteIntoFile.writeCartsIntoFile();
+        //WriteIntoFile.writeCartsIntoFile();
     }
 
     private HashMap<Product, Integer> productsInCart = new HashMap<>();

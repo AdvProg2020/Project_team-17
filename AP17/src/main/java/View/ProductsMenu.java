@@ -40,7 +40,7 @@ public class ProductsMenu extends Menu {
     }
 
     public void setProductsScene() {
-        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\button.mp3";
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
 
@@ -165,9 +165,7 @@ public class ProductsMenu extends Menu {
             Text name = new Text("Product name: " + product.getName());
             Text price = new Text("Product price: " + product.getPrice() + "$");
             Text score = new Text("Product score: " + product.getPrice());
-            name.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf", 24));
-            price.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf", 24));
-            score.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf", 24));
+
             VBox vBox = new VBox(5);
             vBox.getChildren().addAll(name, price, score);
             hBox.getChildren().addAll(imageView, vBox, button);
@@ -181,7 +179,7 @@ public class ProductsMenu extends Menu {
     }
 
     public void setFilterScene() {
-        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\button.mp3";
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
 
@@ -306,9 +304,7 @@ public class ProductsMenu extends Menu {
             Text name = new Text("Product name: " + product.getName());
             Text price = new Text("Product price: " + product.getPrice() + "$");
             Text score = new Text("Product score: " + product.getPrice());
-            name.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf", 24));
-            price.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf", 24));
-            score.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf", 24));
+
             VBox vBox = new VBox(5);
             vBox.getChildren().addAll(name, price, score);
             hBox.getChildren().addAll(imageView, vBox, button);
@@ -322,7 +318,7 @@ public class ProductsMenu extends Menu {
     }
 
     public void setSortScene() {
-        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\button.mp3";
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
 
@@ -446,9 +442,7 @@ public class ProductsMenu extends Menu {
             Text name = new Text("Product name: " + product.getName());
             Text price = new Text("Product price: " + product.getPrice() + "$");
             Text score = new Text("Product score: " + product.getPrice());
-            name.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf", 24));
-            price.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf", 24));
-            score.setFont(Font.loadFont("file:src/main/java/Fonts/Oswald-Regular.ttf", 24));
+
             VBox vBox = new VBox(5);
             vBox.getChildren().addAll(name, price, score);
             hBox.getChildren().addAll(imageView, vBox, button);

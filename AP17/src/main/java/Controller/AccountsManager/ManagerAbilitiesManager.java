@@ -8,11 +8,13 @@ import Models.Request.Request;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
 
 public class ManagerAbilitiesManager {
+
+    //handle in network
     public static ObservableList<String> showAllAccounts() {
         ArrayList<String> allAccounts = new ArrayList<>();
         for (Customer customer : Customer.getAllCustomers()) {
@@ -29,7 +31,7 @@ public class ManagerAbilitiesManager {
         return data;
     }
 
-
+    //handle in network
     public static String viewAccountByUsername(String username) {
         String s = "";
         if (Customer.isThereCustomerWithUserName(username)) {
@@ -45,6 +47,7 @@ public class ManagerAbilitiesManager {
         return s;
     }
 
+    //handle in network
     public static void changeField(Manager manager, String field, String newContentForThisField) {
         if (field.equalsIgnoreCase("first name")) {
             manager.changeFirstName(manager, newContentForThisField);
@@ -59,6 +62,7 @@ public class ManagerAbilitiesManager {
         }
     }
 
+    //handle in network
     public static void deleteUser(String username) {
         if (Customer.isThereCustomerWithUserName(username)) {
             Customer.deleteCustomer(username);
@@ -69,16 +73,19 @@ public class ManagerAbilitiesManager {
         }
     }
 
+    //handle in network
     public static void createAnotherManager(String username, String firstName, String lastName,
-                                            String email, String phoneNumber, String password) {
+                                            String email, String phoneNumber, String password) throws IOException {
         new Manager(username, firstName, lastName, email, phoneNumber, password);
     }
 
+    //handle in network
     public static void removeProduct(String name) {
         Product product = Product.getProductByName(name);
         Product.removeProduct(product);
     }
 
+    //handle in network
     public static void createDiscountCode(String code, String beginningDate, String endingDate, String discountPercent, String max, int repeat, String customers) {
         DiscountCode discountCode = new DiscountCode(code, LocalDate.parse(beginningDate), LocalDate.parse(endingDate),
                 Double.parseDouble(discountPercent), Double.parseDouble(max), repeat, Customer.getCustomerByName(customers));
@@ -86,18 +93,7 @@ public class ManagerAbilitiesManager {
 
     }
 
-    public static void removeDiscountCodeDueToException(String code, ArrayList<String> customersName) {
-        ArrayList<Customer> customers = new ArrayList<>();
-        for (String customer : customersName) {
-            customers.add(Customer.getCustomerByName(customer));
-        }
-        DiscountCode discountCode = DiscountCode.getDiscountCodeWithCode(code);
-        DiscountCode.removeDiscountCode(discountCode);
-        for (Customer customer : customers) {
-            customer.removeDiscountCode(discountCode);
-        }
-    }
-
+    //handle in network
     public static ObservableList<String> viewDiscountCodes() {
         ArrayList<String> discountCodeInfo = new ArrayList<>();
         for (DiscountCode discountCode : DiscountCode.getAllDiscountCodes()) {
@@ -108,10 +104,12 @@ public class ManagerAbilitiesManager {
         return data;
     }
 
+    //handle in network
     public static String viewDiscountCode(String discountCode) {
         return DiscountCode.getDiscountCodeWithCode(discountCode).toString();
     }
 
+    //handle in network
     public static void editDiscountCode(DiscountCode discountCode, String field, String newContentForThisField) {
         if (field.equals("starting date")) {
             discountCode.setStartDate(LocalDate.parse(newContentForThisField));
@@ -126,10 +124,12 @@ public class ManagerAbilitiesManager {
         }
     }
 
+    //handle in network
     public static void removeDiscountCode(String discountCode) {
         DiscountCode.removeDiscountCode(DiscountCode.getDiscountCodeWithCode(discountCode));
     }
 
+    //handle in network
     public static ObservableList<String> showAllRequests() {
         ArrayList<String> requestInfo = new ArrayList<>();
         for (Request request : Request.getAllRequests()) {
@@ -140,23 +140,24 @@ public class ManagerAbilitiesManager {
         return data;
     }
 
-
+    //handle in network
     public static String showDetailsOfRequest(String requestId) {
         return Request.getRequestById(requestId).toString();
-
     }
 
+    //handle in network
     public static void acceptRequest(String requestId) {
         Request.getRequestById(requestId).accept();
         Request.deleteRequest(Request.getRequestById(requestId));
     }
 
+    //handle in network
     public static void declineRequest(String requestId) {
         Request request = Request.getRequestById(requestId);
         Request.deleteRequest(request);
-
     }
 
+    //handle in network
     public static ObservableList<String> showAllCategories() {
         ArrayList<String> showAllCategory = new ArrayList<>();
         for (Category category : Category.getAllCategories()) {
@@ -167,6 +168,7 @@ public class ManagerAbilitiesManager {
         return data;
     }
 
+    //handle in network
     public static ObservableList<String> showAllProducts() {
         ArrayList<String> showAllProducts = new ArrayList<>();
         for (Product product : Product.getAllProducts()) {
@@ -177,20 +179,22 @@ public class ManagerAbilitiesManager {
         return data;
     }
 
+    //handle in network
     public static void editCategory(Category category, String field, String newContentForThisField) {
         if (field.equals("name")) {
             category.changeCategoryName(category, newContentForThisField);
-        } else if (field.equals("name")) {
+        } else if (field.equals("feature")) {
             category.changeSpecialFeatures(category, newContentForThisField);
         }
     }
 
+    //handle in network
     public static void addCategory(String name, String feature) {
         new Category(name, feature);
     }
 
+    //handle in network
     public static void removeCategory(String name) {
         Category.deleteCategory(Category.getCategoryByName(name));
-
     }
 }

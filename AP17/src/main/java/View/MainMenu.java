@@ -1,7 +1,6 @@
 package View;
 
 import Controller.RegisterAndLoginManager;
-import Controller.WriteIntoFile;
 import Models.Accounts.Manager;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -28,7 +27,7 @@ public class MainMenu extends Menu {
     }
 
     public BorderPane setMainScene() {
-        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\button.mp3";
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
 
@@ -54,7 +53,7 @@ public class MainMenu extends Menu {
         exitButton.setStyle(style);
         Image mainImage = null;
         try {
-            mainImage = new Image(new FileInputStream("C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Images\\MAIN_BACKGROUND.png"));
+            mainImage = new Image(new FileInputStream("C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Images\\MAIN_BACKGROUND.png"));
 
         } catch (Exception e) {
 
@@ -119,9 +118,9 @@ public class MainMenu extends Menu {
     }
 
     public void registerFirstManager() {
-        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\button.mp3";
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(media);
+        MediaPlayer mediaPlayer = new MediaPlayer(media);;
 
         BorderPane pane = new BorderPane();
         String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
@@ -185,13 +184,17 @@ public class MainMenu extends Menu {
             public void handle(MouseEvent mouseEvent) {
                 mediaPlayer.play();
                 if (RegisterAndLoginManager.canHaveAccountWithThisUsername(userNameTextField.getText())) {
-                    new Manager(userNameTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText(),
-                            phoneNumberTextField.getText(), passwordField.getText());
                     try {
-                        WriteIntoFile.writeManagersIntoFile();
+                        new Manager(userNameTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText(),
+                                phoneNumberTextField.getText(), passwordField.getText());
                     } catch (IOException e) {
-                        System.err.println(e.getMessage());
+                        e.printStackTrace();
                     }
+//                    try {
+//                        WriteIntoFile.writeManagersIntoFile();
+//                    } catch (IOException e) {
+//                        System.err.println(e.getMessage());
+//                    }
                     notify.setStyle("-fx-text-fill: #3193ff");
                     notify.setText("successfully registered");
                 } else {
@@ -209,27 +212,27 @@ public class MainMenu extends Menu {
         Menu.window.setScene(scene);
     }
 
-    MediaPlayer mediaPlayer;
+   /* MediaPlayer mediaPlayer;
     private void music() {
-        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\My Song.m4a";
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\My Song.m4a";
         //String path = "C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Test\\src\\main\\java\\Sounds\\My Song.m4a";
         Media media = new Media(Paths.get(path).toUri().toString());
         mediaPlayer = new MediaPlayer(media);
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         mediaPlayer.play();
-    }
+    }*/
 
 
     @Override
     public void show() {
         if (Manager.getAllManagers().size() != 0) {
-            music();
+           // music();
             setMainScene();
             Scene scene = new Scene(setMainScene(), 600, 600);
             Menu.window.setScene(scene);
             Menu.window.show();
         } else {
-            music();
+           // music();
             registerFirstManager();
             Menu.window.show();
 

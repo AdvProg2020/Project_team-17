@@ -1,8 +1,8 @@
 package Models.Request;
 
-import Controller.WriteIntoFile;
 import Models.Accounts.Manager;
 import Models.Accounts.Seller;
+import Models.Enums.RequestStateEnum;
 import Models.Enums.RequestTypeEnum;
 
 import java.io.IOException;
@@ -13,20 +13,27 @@ public abstract class Request {
     protected String id;
     protected Seller seller;
     protected RequestTypeEnum type;
+    protected RequestStateEnum state;
 
     public Request(String id, Seller seller) throws IOException {
         this.id = id;
         this.seller = seller;
+        this.state = RequestStateEnum.PENDING_TO_ACCEPT;
         allRequests.add(this);
-        WriteIntoFile.writeRequestsIntoFile();
+//        WriteIntoFile.writeRequestsIntoFile();
     }
 
     public abstract void accept();
 
-
-    //public Manager getManager() {
-   //     return manager;
-    //}
+    public static ArrayList<Request> showRequestsNeedToBeAccepted() {
+        ArrayList<Request> pendingRequest = new ArrayList<>();
+        for (Request request : allRequests) {
+            if (request.getState().equals(RequestStateEnum.PENDING_TO_ACCEPT)) {
+                pendingRequest.add(request);
+            }
+        }
+        return pendingRequest;
+    }
 
 
     public static Request getRequestById(String id) {
@@ -57,6 +64,14 @@ public abstract class Request {
 
     public String getId() {
         return id;
+    }
+
+    public RequestStateEnum getState() {
+        return state;
+    }
+
+    public void setState(RequestStateEnum state) {
+        this.state = state;
     }
 
     @Override

@@ -1,6 +1,6 @@
 package Models;
 
-import Controller.WriteIntoFile;
+
 import Models.Enums.DiscountEnum;
 
 import java.io.IOException;
@@ -27,7 +27,8 @@ public class Discount {
         this.discountState = DiscountEnum.PROCESSING;
         discountProducts.add(product);
         allDiscounts.add(this);
-        WriteIntoFile.writeDiscountProductsIntoFile();
+        product.setDiscount(this);
+        //WriteIntoFile.writeDiscountProductsIntoFile();
     }
 
     public static ArrayList<Discount> getAllDiscounts() {

@@ -4,6 +4,7 @@ import Models.Accounts.Manager;
 import Models.Accounts.Seller;
 import Models.Discount;
 import Models.Enums.DiscountEnum;
+import Models.Enums.RequestStateEnum;
 import Models.Enums.RequestTypeEnum;
 
 import java.io.IOException;
@@ -33,6 +34,7 @@ public class EditOffRequest extends Request {
             discount.setEndDate(LocalDate.parse(newContentForThisField));
         }
         discount.setDiscountState(DiscountEnum.ACCEPTED);
+        this.setState(RequestStateEnum.ACCEPTED);
     }
 
     @Override
