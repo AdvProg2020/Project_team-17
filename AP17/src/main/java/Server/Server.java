@@ -12,19 +12,23 @@ public class Server {
 
     public static void main(String args[]) {
         ServerSocket serverSocket = null;
-        Socket socket = null;
+        Socket socket;
         try {
             serverSocket = new ServerSocket(PORT);
+            System.out.println("socket created");
         } catch (IOException e) {
             e.printStackTrace();
         }
         while (true) {
             try {
                 socket = serverSocket.accept();
+                System.out.println("connection settled");
+                ClientHandler clientHandler = new ClientHandler(socket);
+                System.out.println("thread is going yo start");
+                clientHandler.start();
             } catch (IOException e) {
                 System.out.println(e.getMessage());
             }
-            new ClientHandler(socket).start();
         }
 
     }

@@ -1,7 +1,5 @@
 package Client;
 
-import com.google.gson.Gson;
-
 import java.io.*;
 import java.net.Socket;
 
@@ -16,13 +14,17 @@ public class Client {
 
 
     public static void run() throws IOException {
-        clientSocket = new Socket("localhost", 8080);
+        System.out.println("client is running!");
+        clientSocket = new Socket("localhost", 8888);
         dataInputStream = new DataInputStream(new BufferedInputStream(clientSocket.getInputStream()));
-        token = dataInputStream.readUTF();
         dataInputStream = new DataInputStream(new BufferedInputStream(clientSocket.getInputStream()));
         dataOutputStream = new DataOutputStream(new DataOutputStream(clientSocket.getOutputStream()));
         objectOutputStream = new ObjectOutputStream(clientSocket.getOutputStream());
         objectInputStream = new ObjectInputStream(clientSocket.getInputStream());
+        token = dataInputStream.readUTF();
+        System.out.println("I/O streams initialized");
+        System.out.println(token);
+
     }
 
     public static void sendMessage(String string) {
