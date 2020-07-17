@@ -17,9 +17,6 @@ import java.util.ArrayList;
 
 public class ManagerController {
     public static String showManagerInfo() {
-        if (RegisterManagerMenu.getCurrentManager() == null) {
-            Client.sendObject(new Exception("manager should first login"));
-        }
         //String username = Client.receiveMessage();
         //Client.sendMessage(Manager.getManagerByUserName(username).toString());
         return (RegisterManagerMenu.getCurrentManager().toString());
@@ -81,7 +78,6 @@ public class ManagerController {
         allDiscountCode.addAll(DiscountCode.getAllDiscountCodes());
         Client.sendObject(allDiscountCode);
     }
-
     public static void editSaleInfo() {
         Object[] receivedData = (Object[]) Client.receiveObject();
         String code = (String) receivedData[0];
@@ -138,21 +134,22 @@ public class ManagerController {
         Client.sendObject(list);
     }
 
-    public static void showAccountInfo() {
-        String username = Client.receiveMessage();
+    public static String showAccountInfo(String username) {
         Account account;
+        String message = "";
         if (Customer.getCustomerByName(username) != null) {
             account = Customer.getCustomerByName(username);
-            Client.sendMessage(account.toString());
+            message = (account.toString());
         } else if (Manager.getManagerByUserName(username) != null) {
             account = Manager.getManagerByUserName(username);
-            Client.sendMessage(account.toString());
+            message = (account.toString());
         } else if (Seller.getSellerByName(username) != null) {
             account = Seller.getSellerByName(username);
-            Client.sendMessage(account.toString());
+            message = (account.toString());
         } else {
             Client.sendObject(new Exception("there isn't any account with this username"));
         }
+        return message;
     }
 
     public static void deleteUser() throws Exception {
@@ -172,7 +169,6 @@ public class ManagerController {
         String info = Client.receiveMessage();
         String[] splitInfo;
         splitInfo = info.split("\\s");
-
         if (Manager.getManagerByUserName(splitInfo[0]) == null && Customer.getCustomerByName(splitInfo[0]) == null && Seller.getSellerByName(splitInfo[0]) == null) {
             new Manager(splitInfo[0], splitInfo[1], splitInfo[2], splitInfo[3], splitInfo[4], splitInfo[5]);
         } else {
@@ -246,4 +242,3 @@ public class ManagerController {
         Client.sendObject(allProduct);
     }
 }
-
