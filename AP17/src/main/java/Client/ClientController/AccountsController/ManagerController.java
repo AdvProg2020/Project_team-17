@@ -10,7 +10,7 @@ import View.RegisterManagerMenu;
 
 import java.util.ArrayList;
 
-public class  ManagerController {
+public class ManagerController {
     public static void showManagerInfo() throws Exception {
         String func = "Show Manager Info";
         Client.sendMessage(func);
@@ -106,7 +106,6 @@ public class  ManagerController {
             throw new Exception("there isn't any discount code with this code");
         }
     }
-
     public static void addDiscountCode(String code, String beginningDate, String endingDate, String discountPercent, String max, int repeat, String customers) throws Exception {
         Client.sendMessage("Add Discount Code");
         String info;
@@ -141,18 +140,9 @@ public class  ManagerController {
         return (ArrayList<Account>) response;
     }
 
-    public static String showAccountDetails(String username) throws Exception {
+    public static void showAccountDetails() {
         String func = "Show Account Details";
         Client.sendMessage(func);
-
-        Client.sendMessage(username);
-        Object response = Client.receiveObject();
-
-        if (response instanceof Exception)
-            throw new Exception("there isn't any account with this username");
-        else {
-            return (String) response;
-        }
     }
 
     public static void deleteAccount(String username) throws Exception {
@@ -230,7 +220,6 @@ public class  ManagerController {
 
         Client.sendMessage(discountCode);
         Object response = Client.receiveObject();
-
         if (response instanceof Exception)
             throw new Exception("there isn't any discount code with this code");
     }
@@ -259,4 +248,3 @@ public class  ManagerController {
     }
 
 }
-
