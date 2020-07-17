@@ -3,17 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="32618e29-8746-4d2a-8d73-d011168a9d97" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Client/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Client/ClientController/AccountsController/ManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Client/ClientController/AccountsController/ManagerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Controller/WriteIntoFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Controller/WriteIntoFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Resources/carts.txt" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Resources/carts.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Resources/categories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Resources/categories.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Resources/managers.txt" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Resources/managers.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Resources/sellers.txt" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Resources/sellers.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Server/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Server/ClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Server/ServerController/AccountsController/ManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Server/ServerController/AccountsController/ManagerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/View/AccountMenus/ManagerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/View/AccountMenus/ManagerMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +72,7 @@
       <recent name="C:\Users\UX434FL\IdeaProjects\AP_17_project\Test\src\main\java\View" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.Server">
     <configuration name="Bank" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Models.Bank.Bank" />
       <module name="AP17" />
@@ -97,7 +86,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="AP17" />
       <method v="2">
@@ -133,17 +122,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <list>
-      <item itemvalue="Application.Bank" />
-      <item itemvalue="Application.Main" />
-      <item itemvalue="Application.Server" />
-      <item itemvalue="JUnit.junit.simpleTest" />
-    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
         <item itemvalue="Application.Server" />
         <item itemvalue="Application.Bank" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.junit.simpleTest" />
       </list>
     </recent_temporary>
@@ -196,7 +179,120 @@
       <workItem from="1593693814042" duration="2012000" />
       <workItem from="1594629352226" duration="14000" />
       <workItem from="1594629513172" duration="5910000" />
-      <workItem from="1594705743294" duration="90908000" />
+      <workItem from="1594705743294" duration="48373000" />
+      <workItem from="1594893508218" duration="333000" />
+    </task>
+    <task id="LOCAL-00069" summary="discount menu first scene">
+      <created>1593005270783</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1593005270783</updated>
+    </task>
+    <task id="LOCAL-00070" summary="handle payment page top bar">
+      <created>1593005444830</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1593005444830</updated>
+    </task>
+    <task id="LOCAL-00071" summary="ProductMenu fix">
+      <created>1593005909729</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1593005909729</updated>
+    </task>
+    <task id="LOCAL-00072" summary="cart button in customer menu fix">
+      <created>1593006732055</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1593006732055</updated>
+    </task>
+    <task id="LOCAL-00073" summary="seller menu off scene fix">
+      <created>1593007228069</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1593007228069</updated>
+    </task>
+    <task id="LOCAL-00074" summary="ManagerMenu users scene fix">
+      <created>1593007712339</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1593007712339</updated>
+    </task>
+    <task id="LOCAL-00075" summary="manager menu/manage products">
+      <created>1593009358657</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1593009358657</updated>
+    </task>
+    <task id="LOCAL-00076" summary="handle bar menu">
+      <created>1593012417223</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1593012417224</updated>
+    </task>
+    <task id="LOCAL-00077" summary="handle top bar in some menus">
+      <created>1593014319696</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1593014319696</updated>
+    </task>
+    <task id="LOCAL-00078" summary="debug top bar for ProductsMenu and DiscountsMenu">
+      <created>1593031231170</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1593031231170</updated>
+    </task>
+    <task id="LOCAL-00079" summary="filter ProductsMenu">
+      <created>1593071112485</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1593071112485</updated>
+    </task>
+    <task id="LOCAL-00080" summary="view categories in products scene">
+      <created>1593071590765</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1593071590766</updated>
+    </task>
+    <task id="LOCAL-00081" summary="sort products">
+      <created>1593078671225</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1593078671225</updated>
+    </task>
+    <task id="LOCAL-00082" summary="ProductsMenu bar fix">
+      <created>1593079455378</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1593079455378</updated>
+    </task>
+    <task id="LOCAL-00083" summary="scene size changed">
+      <created>1593079840194</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1593079840194</updated>
+    </task>
+    <task id="LOCAL-00084" summary="debug sort">
+      <created>1593080363417</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1593080363417</updated>
     </task>
     <task id="LOCAL-00085" summary="fix sort for discount products">
       <created>1593081057239</created>
@@ -429,125 +525,25 @@
       <option name="project" value="LOCAL" />
       <updated>1594886081672</updated>
     </task>
-    <task id="LOCAL-00118" summary="name changed">
-      <created>1594888805072</created>
-      <option name="number" value="00118" />
-      <option name="presentableId" value="LOCAL-00118" />
-      <option name="project" value="LOCAL" />
-      <updated>1594888805072</updated>
-    </task>
-    <task id="LOCAL-00119" summary="register controller">
-      <created>1594888842677</created>
-      <option name="number" value="00119" />
-      <option name="presentableId" value="LOCAL-00119" />
-      <option name="project" value="LOCAL" />
-      <updated>1594888842677</updated>
-    </task>
-    <task id="LOCAL-00120" summary="debug filter">
-      <created>1594894185127</created>
-      <option name="number" value="00120" />
-      <option name="presentableId" value="LOCAL-00120" />
-      <option name="project" value="LOCAL" />
-      <updated>1594894185127</updated>
-    </task>
-    <task id="LOCAL-00121" summary="debug filter">
-      <created>1594894913690</created>
-      <option name="number" value="00121" />
-      <option name="presentableId" value="LOCAL-00121" />
-      <option name="project" value="LOCAL" />
-      <updated>1594894913690</updated>
-    </task>
-    <task id="LOCAL-00122" summary="debug showing products seller">
-      <created>1594896783000</created>
-      <option name="number" value="00122" />
-      <option name="presentableId" value="LOCAL-00122" />
-      <option name="project" value="LOCAL" />
-      <updated>1594896783000</updated>
-    </task>
-    <task id="LOCAL-00123" summary="working on server and client">
-      <created>1594898822515</created>
-      <option name="number" value="00123" />
-      <option name="presentableId" value="LOCAL-00123" />
-      <option name="project" value="LOCAL" />
-      <updated>1594898822515</updated>
-    </task>
-    <task id="LOCAL-00124" summary="some changes">
-      <created>1594928883344</created>
-      <option name="number" value="00124" />
-      <option name="presentableId" value="LOCAL-00124" />
-      <option name="project" value="LOCAL" />
-      <updated>1594928883345</updated>
-    </task>
-    <task id="LOCAL-00125" summary="seller controller">
-      <created>1594928920616</created>
-      <option name="number" value="00125" />
-      <option name="presentableId" value="LOCAL-00125" />
-      <option name="project" value="LOCAL" />
-      <updated>1594928920616</updated>
-    </task>
-    <task id="LOCAL-00126" summary="some changes in server and client">
-      <created>1594931035917</created>
-      <option name="number" value="00126" />
-      <option name="presentableId" value="LOCAL-00126" />
-      <option name="project" value="LOCAL" />
-      <updated>1594931035917</updated>
-    </task>
-    <task id="LOCAL-00127" summary="some changes">
-      <created>1594934314269</created>
-      <option name="number" value="00127" />
-      <option name="presentableId" value="LOCAL-00127" />
-      <option name="project" value="LOCAL" />
-      <updated>1594934314269</updated>
-    </task>
-    <task id="LOCAL-00128" summary="customer controller">
-      <created>1594934390823</created>
-      <option name="number" value="00128" />
-      <option name="presentableId" value="LOCAL-00128" />
-      <option name="project" value="LOCAL" />
-      <updated>1594934390824</updated>
-    </task>
-    <task id="LOCAL-00129" summary="clean up imports">
-      <created>1594934507090</created>
-      <option name="number" value="00129" />
-      <option name="presentableId" value="LOCAL-00129" />
-      <option name="project" value="LOCAL" />
-      <updated>1594934507090</updated>
-    </task>
-    <task id="LOCAL-00130" summary="product controller">
-      <created>1594971975106</created>
-      <option name="number" value="00130" />
-      <option name="presentableId" value="LOCAL-00130" />
-      <option name="project" value="LOCAL" />
-      <updated>1594971975106</updated>
-    </task>
-    <task id="LOCAL-00131" summary="product controller">
-      <created>1594971990899</created>
-      <option name="number" value="00131" />
-      <option name="presentableId" value="LOCAL-00131" />
-      <option name="project" value="LOCAL" />
-      <updated>1594971990899</updated>
-    </task>
-    <task id="LOCAL-00132" summary="cart controller">
-      <created>1594979587367</created>
-      <option name="number" value="00132" />
-      <option name="presentableId" value="LOCAL-00132" />
-      <option name="project" value="LOCAL" />
-      <updated>1594979587367</updated>
-    </task>
-    <task id="LOCAL-00133" summary="some changes">
-      <created>1594983248132</created>
-      <option name="number" value="00133" />
-      <option name="presentableId" value="LOCAL-00133" />
-      <option name="project" value="LOCAL" />
-      <updated>1594983248132</updated>
-    </task>
-    <option name="localTasksCounter" value="134" />
+    <option name="localTasksCounter" value="118" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="delete score class" />
+    <MESSAGE value="set padding" />
+    <MESSAGE value="debug exception" />
+    <MESSAGE value="some changes and add files" />
+    <MESSAGE value="button style" />
+    <MESSAGE value="purchase process" />
+    <MESSAGE value="add fonts" />
+    <MESSAGE value="add font" />
+    <MESSAGE value="style added" />
+    <MESSAGE value="some changes" />
+    <MESSAGE value="zoom" />
+    <MESSAGE value="compare products" />
     <MESSAGE value="changes" />
     <MESSAGE value="font" />
     <MESSAGE value="font debug" />
@@ -561,19 +557,7 @@
     <MESSAGE value="manager controller for server" />
     <MESSAGE value="manager controller for client" />
     <MESSAGE value="change directories" />
-    <MESSAGE value="name changed" />
-    <MESSAGE value="register controller" />
-    <MESSAGE value="debug filter" />
-    <MESSAGE value="debug showing products seller" />
-    <MESSAGE value="working on server and client" />
-    <MESSAGE value="seller controller" />
-    <MESSAGE value="some changes in server and client" />
-    <MESSAGE value="customer controller" />
-    <MESSAGE value="clean up imports" />
-    <MESSAGE value="product controller" />
-    <MESSAGE value="cart controller" />
-    <MESSAGE value="some changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="some changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="change directories" />
   </component>
   <component name="WindowStateProjectService">
     <state x="233" y="0" key="#Project_Structure" timestamp="1593617936190">
@@ -581,19 +565,15 @@
     </state>
     <state x="233" y="0" key="#Project_Structure/0.0.1280.680@0.0.1280.680" timestamp="1593617936190" />
     <state x="280" y="0" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1586783426481" />
-    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1595000456451">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1595000456451" />
     <state x="420" y="144" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1586807983600">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="420" y="144" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.680@0.0.1280.680" timestamp="1586807983600" />
-    <state x="751" y="83" key="#com.intellij.ide.util.MemberChooser" timestamp="1594894763844">
+    <state x="751" y="83" key="#com.intellij.ide.util.MemberChooser" timestamp="1594826038423">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="751" y="83" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680/460.1080.1000.504@0.0.1280.680" timestamp="1587953827102" />
-    <state x="751" y="83" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1594894763844" />
+    <state x="751" y="83" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1594826038423" />
     <state x="801" y="93" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1586995828901" />
     <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1588275888120" />
     <state x="515" y="248" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1593171500635">
@@ -624,39 +604,39 @@
     </state>
     <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1593111249052" />
     <state x="445" y="105" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1588110193951" />
-    <state x="223" y="0" key="CommitChangelistDialog2" timestamp="1594983247218">
+    <state x="223" y="0" key="CommitChangelistDialog2" timestamp="1594888804238">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="223" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1594983247218" />
+    <state x="223" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1594888804238" />
     <state x="425" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1593001247141" />
     <state x="401" y="14" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1592143129254" />
-    <state x="421" y="67" key="FileChooserDialogImpl" timestamp="1593183962778">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state x="505" y="81" key="FileChooserDialogImpl" timestamp="1594893839256">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="421" y="67" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1593183962778" />
-    <state x="505" y="81" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1588326132134" />
-    <state width="1281" height="228" key="GridCell.Tab.0.bottom" timestamp="1595000915567">
+    <state x="505" y="81" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1594893839256" />
+    <state width="1281" height="2" key="GridCell.Tab.0.bottom" timestamp="1594844567114">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1281" height="228" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1595000915567" />
+    <state width="1281" height="2" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1594844567114" />
     <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1586996145625" />
     <state width="1493" height="221" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1592435351278" />
-    <state width="1281" height="228" key="GridCell.Tab.0.center" timestamp="1595000915567">
+    <state width="1281" height="2" key="GridCell.Tab.0.center" timestamp="1594844567114">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1281" height="228" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1595000915567" />
+    <state width="1281" height="2" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1594844567114" />
     <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1586996145625" />
     <state width="1493" height="221" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1592435351277" />
-    <state width="1281" height="228" key="GridCell.Tab.0.left" timestamp="1595000915567">
+    <state width="1281" height="2" key="GridCell.Tab.0.left" timestamp="1594844567114">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1281" height="228" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1595000915567" />
+    <state width="1281" height="2" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1594844567114" />
     <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1586996145625" />
     <state width="1493" height="221" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1592435351277" />
-    <state width="1281" height="228" key="GridCell.Tab.0.right" timestamp="1595000915567">
+    <state width="1281" height="2" key="GridCell.Tab.0.right" timestamp="1594844567114">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1281" height="228" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1595000915567" />
+    <state width="1281" height="2" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1594844567114" />
     <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1586996145625" />
     <state width="1493" height="221" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1592435351277" />
     <state width="1237" height="323" key="GridCell.Tab.1.bottom" timestamp="1589920866545">
@@ -696,10 +676,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1280.680@0.0.1280.680" timestamp="1589767285229" />
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1594983257590">
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1594888813428">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1594983257590" />
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1594888813428" />
     <state x="249" y="80" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1593001403029" />
     <state x="280" y="90" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1593000505024" />
     <state x="388" y="195" key="com.intellij.ide.util.TipDialog" timestamp="1594705922126">
@@ -727,31 +707,31 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="193" y="77" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1280.680@0.0.1280.680" timestamp="1589878981587" />
-    <state x="397" y="168" key="git4idea.merge.GitPullDialog" timestamp="1594983252294">
+    <state x="397" y="168" key="git4idea.merge.GitPullDialog" timestamp="1594888809032">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="397" y="168" key="git4idea.merge.GitPullDialog/0.0.1280.680@0.0.1280.680" timestamp="1594983252294" />
+    <state x="397" y="168" key="git4idea.merge.GitPullDialog/0.0.1280.680@0.0.1280.680" timestamp="1594888809032" />
     <state x="423" y="180" key="git4idea.merge.GitPullDialog/0.0.1366.728@0.0.1366.728" timestamp="1593001272806" />
     <state x="476" y="204" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1592143151948" />
-    <state x="91" y="0" key="new project wizard" timestamp="1594989243330">
+    <state x="91" y="0" key="new project wizard" timestamp="1593837999467">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="91" y="0" key="new project wizard/0.0.1280.680@0.0.1280.680" timestamp="1594989243330" />
+    <state x="91" y="0" key="new project wizard/0.0.1280.680@0.0.1280.680" timestamp="1593837999467" />
     <state x="109" y="44" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1588275478876" />
-    <state x="297" y="151" key="run.anything.popup" timestamp="1594934629097">
+    <state x="297" y="151" key="run.anything.popup" timestamp="1594804453008">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="297" y="151" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1594934629097" />
-    <state x="324" y="46" width="672" height="634" key="search.everywhere.popup" timestamp="1594934632402">
+    <state x="297" y="151" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1594804453008" />
+    <state x="324" y="46" width="672" height="634" key="search.everywhere.popup" timestamp="1594848969095">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="324" y="46" width="672" height="634" key="search.everywhere.popup/0.0.1280.680/460.1080.1000.504@0.0.1280.680" timestamp="1587860318764" />
-    <state x="324" y="46" width="672" height="634" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1594934632402" />
+    <state x="324" y="46" width="672" height="634" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1594848969095" />
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1586993653870" />
     <state x="389" y="56" width="807" height="769" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1588111579702" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/17_test1594$Main.ic" NAME="Main Coverage Results" MODIFIED="1586993201582" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/AP17$Main.ic" NAME="Main Coverage Results" MODIFIED="1589786526354" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/17_test1594$Main.ic" NAME="Main Coverage Results" MODIFIED="1586993201582" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

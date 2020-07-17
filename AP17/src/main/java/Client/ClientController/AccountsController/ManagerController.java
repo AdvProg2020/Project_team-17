@@ -10,7 +10,7 @@ import View.RegisterManagerMenu;
 
 import java.util.ArrayList;
 
-public class ManagerController {
+public class  ManagerController {
     public static void showManagerInfo() throws Exception {
         String func = "Show Manager Info";
         Client.sendMessage(func);
