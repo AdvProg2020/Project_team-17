@@ -7,7 +7,6 @@ import Models.Accounts.Manager;
 import Models.Accounts.Seller;
 import Models.Category;
 import Models.DiscountCode;
-import Models.Enums.RequestStateEnum;
 import Models.Product;
 import Models.Request.Request;
 import View.RegisterManagerMenu;
@@ -17,18 +16,10 @@ import java.util.ArrayList;
 
 public class ManagerController {
     public static String showManagerInfo() {
-        if (RegisterManagerMenu.getCurrentManager() == null) {
-            Client.sendObject(new Exception("manager should first login"));
-        }
-        //String username = Client.receiveMessage();
-        //Client.sendMessage(Manager.getManagerByUserName(username).toString());
         return (RegisterManagerMenu.getCurrentManager().toString());
     }
 
-    public static void editManagerInfo() throws Exception {
-        Object[] receivedItems = (Object[]) Client.receiveObject();
-        String field = (String) receivedItems[0];
-        String newContentForThisField = (String) receivedItems[1];
+    public static void editManagerInfo(String field, String newContentForThisField) throws Exception {
         if (RegisterManagerMenu.getCurrentManager() == null) {
             throw new Exception("manager should login first!");
         } else {
@@ -44,7 +35,7 @@ public class ManagerController {
             } else if (field.equalsIgnoreCase("password")) {
                 manager.changePassword(manager, newContentForThisField);
             }
-            Client.sendMessage("Success!");
+            //Client.sendMessage("Success!");
         }
     }
 
@@ -54,15 +45,15 @@ public class ManagerController {
         Client.sendObject(allRequests);
     }
 
-    public static void showRequest() {
-        Request request = Request.getRequestById(Client.receiveMessage());
+    public static String showRequest(String id) {
+        Request request = Request.getRequestById(id);
+        String string = "";
         if (request != null) {
-            if (request.getState().equals(RequestStateEnum.PENDING_TO_ACCEPT)) {
-                Client.sendMessage(request.toString());
-            }
+            string = request.toString();
         } else {
             Client.sendObject(new Exception("there isn't any request with this id"));
         }
+        return string;
     }
 
     public static void processRequest(String requestId, String requestState) throws Exception {
@@ -82,12 +73,7 @@ public class ManagerController {
         Client.sendObject(allDiscountCode);
     }
 
-    public static void editSaleInfo() {
-        Object[] receivedData = (Object[]) Client.receiveObject();
-        String code = (String) receivedData[0];
-        String field = (String) receivedData[1];
-        String newContentForThisField = (String) receivedData[2];
-        DiscountCode discountCode = DiscountCode.getDiscountCodeWithCode(code);
+    public static void editDiscountCodeInfo(DiscountCode discountCode, String field, String newContentForThisField) {
         if (field.equals("starting date")) {
             discountCode.setStartDate(LocalDate.parse(newContentForThisField));
         } else if (field.equals("ending date")) {
@@ -101,27 +87,24 @@ public class ManagerController {
         }
     }
 
-    public static void addDiscountCode() {
-        String info = Client.receiveMessage();
-        String[] splitInfo;
-        splitInfo = info.split("\\s");
-
-        if (DiscountCode.getDiscountCodeWithCode(splitInfo[0]) == null) {
-            DiscountCode discountCode = new DiscountCode(splitInfo[0], LocalDate.parse(splitInfo[1]), LocalDate.parse(splitInfo[2]),
-                    Double.parseDouble(splitInfo[3]), Double.parseDouble(splitInfo[4]), Integer.parseInt(splitInfo[5]), Customer.getCustomerByName(splitInfo[6]));
-            Customer.getCustomerByName(splitInfo[6]).addDiscountCode(discountCode);
+    public static void addDiscountCode(String code, String beginningDate, String endingDate, String discountPercent, String max, int repeat, String customers) {
+        if (DiscountCode.getDiscountCodeWithCode(code) == null) {
+            DiscountCode discountCode = new DiscountCode(code, LocalDate.parse(beginningDate), LocalDate.parse(endingDate),
+                    Double.parseDouble(discountPercent), Double.parseDouble(max), repeat, Customer.getCustomerByName(customers));
+            Customer.getCustomerByName(customers).addDiscountCode(discountCode);
         } else {
             Client.sendObject(new Exception("there is a discount code with this code"));
         }
     }
 
-    public static void showDiscountCodeInfo() {
-        String code = Client.receiveMessage();
+    public static String showDiscountCodeInfo(String code) {
+        String string = "";
         if (DiscountCode.getDiscountCodeWithCode(code) != null) {
-            Client.sendMessage(DiscountCode.getDiscountCodeWithCode(code).toString());
+            string = (DiscountCode.getDiscountCodeWithCode(code).toString());
         } else {
             Client.sendObject(new Exception("there isn't any account with this username"));
         }
+        return string;
     }
 
     public static void showAllAccounts() {
@@ -138,25 +121,25 @@ public class ManagerController {
         Client.sendObject(list);
     }
 
-    public static void showAccountInfo() {
-        String username = Client.receiveMessage();
+    public static String showAccountInfo(String username) {
         Account account;
+        String message = "";
         if (Customer.getCustomerByName(username) != null) {
             account = Customer.getCustomerByName(username);
-            Client.sendMessage(account.toString());
+            message = (account.toString());
         } else if (Manager.getManagerByUserName(username) != null) {
             account = Manager.getManagerByUserName(username);
-            Client.sendMessage(account.toString());
+            message = (account.toString());
         } else if (Seller.getSellerByName(username) != null) {
             account = Seller.getSellerByName(username);
-            Client.sendMessage(account.toString());
+            message = (account.toString());
         } else {
             Client.sendObject(new Exception("there isn't any account with this username"));
         }
+        return message;
     }
 
-    public static void deleteUser() throws Exception {
-        String username = Client.receiveMessage();
+    public static void deleteUser(String username) throws Exception {
         if (Customer.getCustomerByName(username) != null) {
             Customer.deleteCustomer(username);
         } else if (Manager.getManagerByUserName(username) != null) {
@@ -168,20 +151,16 @@ public class ManagerController {
         }
     }
 
-    public static void addManager() throws Exception {
-        String info = Client.receiveMessage();
-        String[] splitInfo;
-        splitInfo = info.split("\\s");
-
-        if (Manager.getManagerByUserName(splitInfo[0]) == null && Customer.getCustomerByName(splitInfo[0]) == null && Seller.getSellerByName(splitInfo[0]) == null) {
-            new Manager(splitInfo[0], splitInfo[1], splitInfo[2], splitInfo[3], splitInfo[4], splitInfo[5]);
+    public static void addManager(String username, String firstName, String lastName,
+                                  String email, String phoneNumber, String password) throws Exception {
+        if (Manager.getManagerByUserName(username) == null && Customer.getCustomerByName(username) == null && Seller.getSellerByName(username) == null) {
+            new Manager(username, firstName, lastName, email, phoneNumber, password);
         } else {
             Client.sendObject(new Exception("there is an account with this username"));
         }
     }
 
-    public static void deleteProduct() {
-        String productId = Client.receiveMessage();
+    public static void deleteProduct(String productId) {
         Product product = Product.getProductByName(productId);
         if (product != null) {
             Product.removeProduct(product);
@@ -196,8 +175,7 @@ public class ManagerController {
         Client.sendObject(allCategories);
     }
 
-    public static void deleteCategory() {
-        String categoryName = Client.receiveMessage();
+    public static void deleteCategory(String categoryName) {
         Category category = Category.getCategoryByName(categoryName);
         if (category != null) {
             Category.deleteCategory(category);
@@ -206,19 +184,15 @@ public class ManagerController {
         }
     }
 
-    public static void addCategory() throws Exception {
-        String info = Client.receiveMessage();
-        String[] splitInfo;
-        splitInfo = info.split("\\s");
-        if (Category.getCategoryByName(splitInfo[0]) == null) {
-            new Category(splitInfo[0], splitInfo[1]);
+    public static void addCategory(String name, String feature) {
+        if (Category.getCategoryByName(name) == null) {
+            new Category(name, feature);
         } else {
             Client.sendObject(new Exception("there is a category with this name"));
         }
     }
 
-    public static void deleteDiscountCode() {
-        String code = Client.receiveMessage();
+    public static void deleteDiscountCode(String code) {
         DiscountCode discountCode = DiscountCode.getDiscountCodeWithCode(code);
         if (discountCode != null) {
             DiscountCode.removeDiscountCode(discountCode);
@@ -227,12 +201,7 @@ public class ManagerController {
         }
     }
 
-    public static void editCategoryName() {
-        Object[] receivedData = (Object[]) Client.receiveObject();
-        String categoryName = (String) receivedData[0];
-        String field = (String) receivedData[1];
-        String newContentForThisField = (String) receivedData[2];
-        Category category = Category.getCategoryByName(categoryName);
+    public static void editCategory(Category category, String field, String newContentForThisField) {
         if (field.equals("name")) {
             category.changeCategoryName(category, newContentForThisField);
         } else if (field.equals("feature")) {

@@ -1,7 +1,5 @@
 package Server;
 
-import Server.ServerController.AccountsController.ManagerController;
-
 import java.io.*;
 import java.lang.Thread;
 import java.net.Socket;
@@ -42,7 +40,6 @@ public class ClientHandler extends Thread {
         } catch (IOException ignored) {
 
         }
-        String command;
         String generatedToken = generateToken();
         System.out.println("token generated");
         try {
@@ -52,13 +49,12 @@ public class ClientHandler extends Thread {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        String command;
         while (true) {
             try {
-                System.out.println("hiii");
                 command = dataInputStream.readUTF();
-                System.out.println("bye");
-                handleCommand(command);
-                System.out.println("yo");
+                //handleCommand(command);
+                System.out.println(command + " sent to server");
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -116,14 +112,13 @@ public class ClientHandler extends Thread {
         return builder.toString();
     }
 
-    public static void handleCommand(String command) throws Exception {
-        if (command.equals("Show Manager Info")) {
-            System.out.println("byyeee");
-            ManagerController.showManagerInfo();
-        } else if (command.equals("Edit Manager Info")) {
-            ManagerController.editManagerInfo();
-        }
-        //TODO other commands
-    }
+//    public static void handleCommand(String command) throws Exception {
+//        if (command.equals("Show Manager Info")) {
+//            ManagerController.showManagerInfo();
+//        } else if (command.equals("Edit Manager Info")) {
+//            ManagerController.editManagerInfo();
+//        }
+//        //TODO other commands
+//    }
 
 }

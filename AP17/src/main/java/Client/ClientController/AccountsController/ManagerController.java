@@ -6,68 +6,32 @@ import Models.Category;
 import Models.DiscountCode;
 import Models.Product;
 import Models.Request.Request;
-import View.RegisterManagerMenu;
 
 import java.util.ArrayList;
 
 public class ManagerController {
-    public static void showManagerInfo() throws Exception {
+    public static void showManagerInfo() {
         String func = "Show Manager Info";
         Client.sendMessage(func);
-//        if (RegisterManagerMenu.getCurrentManager() == null) {
-//            throw new Exception("a manager should login first!");
-//        } else {
-//            String adminUsername = RegisterManagerMenu.getCurrentManager().getUserName();
-//            Client.sendMessage(adminUsername);
-//            Object data = Client.receiveObject();
-//            if (data instanceof Exception) {
-//                throw new Exception("account with this username doesn't found");
-//            } else {
-//                return String.valueOf(data);
-//            }
-//        }
     }
 
-    public static void editManagerInfo(String field, String newContent) throws Exception {
+    public static void editManagerInfo() {
         String func = "Edit Manager Info";
         Client.sendMessage(func);
-        if (RegisterManagerMenu.getCurrentManager() == null) {
-            throw new Exception("a manager should login first!");
-        } else {
-            Object[] toSend = new Object[2];
-            toSend[0] = field;
-            toSend[1] = newContent;
-            Client.sendObject(toSend);
-            Client.receiveObject();
-        }
     }
 
     public static ArrayList<Request> showManagerRequests() {
         String func = "Show manager Requests";
         Client.sendMessage(func);
 
-        // TODO in khat payine ro motmaen nistam doroste ya na
-        //Client.sendMessage(RegisterManagerMenu.getCurrentManager().getUserName());
-
         Object response = Client.receiveObject();
         return (ArrayList<Request>) response;
     }
 
 
-    public static String showRequest(String requestId) throws Exception {
+    public static void showRequest() {
         String func = "Show Request";
         Client.sendMessage(func);
-
-        Client.sendMessage(requestId);
-        Request request = (Request) Client.receiveObject();
-
-        if (request == null) {
-            throw new Exception("there isn't any request with this id");
-        } else {
-//            if (request.getState().equals(RequestStateEnum.PENDING_TO_ACCEPT)) {
-            return request.toString();
-            // }
-        }
     }
 
     public static void processRequest() {
@@ -92,45 +56,19 @@ public class ManagerController {
     }
 
 
-    public static void editDiscountCode(String code, String field, String newContentForThisField) throws Exception {
-        Client.sendMessage("Edit Sale Info");
-
-        Object[] toSend = new Object[3];
-        toSend[0] = String.valueOf(code);
-        toSend[1] = field;
-        toSend[2] = newContentForThisField;
-        Client.sendObject(toSend);
-        Object response = Client.receiveObject();
-
-        if (response instanceof Exception) {
-            throw new Exception("there isn't any discount code with this code");
-        }
+    public static void editDiscountCode() {
+        String func = "Edit Sale Info";
+        Client.sendMessage(func);
     }
 
-    public static void addDiscountCode(String code, String beginningDate, String endingDate, String discountPercent, String max, int repeat, String customers) throws Exception {
-        Client.sendMessage("Add Discount Code");
-        String info;
-        info = code + " " + beginningDate + " " + endingDate + " " + discountPercent + " " + max + " " + repeat + " " + customers;
-        Client.sendMessage(info);
-
-        Object response = Client.receiveObject();
-
-        if (response instanceof Exception)
-            throw new Exception("there is a discount code with this code");
+    public static void addDiscountCode() {
+        String func = "Add Discount Code";
+        Client.sendMessage(func);
     }
 
-    public static String showDiscountCodeDetails(String code) throws Exception {
+    public static void showDiscountCodeDetails() throws Exception {
         String func = "Show Discount Code Details";
         Client.sendMessage(func);
-
-        Client.sendMessage(code);
-        Object response = Client.receiveObject();
-
-        if (response instanceof Exception)
-            throw new Exception("there isn't any discount code with this code");
-        else {
-            return (String) response;
-        }
     }
 
     public static ArrayList<Account> showAllAccounts() {
@@ -141,54 +79,24 @@ public class ManagerController {
         return (ArrayList<Account>) response;
     }
 
-    public static String showAccountDetails(String username) throws Exception {
+    public static void showAccountDetails() {
         String func = "Show Account Details";
         Client.sendMessage(func);
-
-        Client.sendMessage(username);
-        Object response = Client.receiveObject();
-
-        if (response instanceof Exception)
-            throw new Exception("there isn't any account with this username");
-        else {
-            return (String) response;
-        }
     }
 
-    public static void deleteAccount(String username) throws Exception {
+    public static void deleteAccount() {
         String func = "Delete User";
         Client.sendMessage(func);
-
-        Client.sendMessage(username);
-        Object response = Client.receiveObject();
-
-        if (response instanceof Exception)
-            throw new Exception("there isn't any account with this username");
     }
 
-    public static void addManager(String username, String firstName, String lastName,
-                                  String email, String phoneNumber, String password) throws Exception {
+    public static void addManager() {
         String func = "Add Manager Account";
         Client.sendMessage(func);
-
-        String info = username + " " + firstName + " " + lastName + " " + email + " " + phoneNumber + " " + password;
-
-        Client.sendMessage(info);
-        Object response = Client.receiveObject();
-
-        if (response instanceof Exception)
-            throw new Exception("there is an account with this username");
     }
 
-    public static void deleteProduct(String productId) throws Exception {
+    public static void deleteProduct() {
         String func = "Delete Product";
         Client.sendMessage(func);
-
-        Client.sendMessage(productId);
-        Object response = Client.receiveObject();
-
-        if (response instanceof Exception)
-            throw new Exception("there isn't any product with this id");
     }
 
     public static ArrayList<Category> showCategories() throws Exception {
@@ -199,55 +107,24 @@ public class ManagerController {
         return (ArrayList<Category>) response;
     }
 
-    public static void deleteCategory(String categoryName) throws Exception {
+    public static void deleteCategory() {
         String func = "Delete Category";
         Client.sendMessage(func);
-
-        Client.sendMessage(categoryName);
-        Object response = Client.receiveObject();
-
-        if (response instanceof Exception)
-            throw new Exception("there isn't any category with this name");
     }
 
-    public static void addCategory(String name, String feature) throws Exception {
+    public static void addCategory() {
         String func = "Add Category";
         Client.sendMessage(func);
-
-        String info = name + " " + feature;
-
-        Client.sendMessage(info);
-        Object response = Client.receiveObject();
-
-        if (response instanceof Exception) {
-            throw new Exception("there is a category with this name");
-        }
     }
 
-    public static void deleteDiscountCode(String discountCode) throws Exception {
+    public static void deleteDiscountCode() {
         String func = "Delete Discount Code";
         Client.sendMessage(func);
-
-        Client.sendMessage(discountCode);
-        Object response = Client.receiveObject();
-
-        if (response instanceof Exception)
-            throw new Exception("there isn't any discount code with this code");
     }
 
-    public static void editCategory(String categoryName, String field, String newContentForThisField) throws Exception {
-        Client.sendMessage("Edit Category Info");
-
-        Object[] toSend = new Object[3];
-        toSend[0] = String.valueOf(categoryName);
-        toSend[1] = field;
-        toSend[2] = newContentForThisField;
-        Client.sendObject(toSend);
-        Object response = Client.receiveObject();
-
-        if (response instanceof Exception) {
-            throw new Exception("there isn't any category with this name");
-        }
+    public static void editCategory() {
+        String func = "Edit Category Info";
+        Client.sendMessage(func);
     }
 
     public static ArrayList<Product> showAllProducts() throws Exception {
