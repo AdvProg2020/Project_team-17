@@ -17,11 +17,11 @@ public class Client {
         System.out.println("client is running!");
         clientSocket = new Socket("localhost", 8888);
         dataInputStream = new DataInputStream(new BufferedInputStream(clientSocket.getInputStream()));
+        token = dataInputStream.readUTF();
         dataInputStream = new DataInputStream(new BufferedInputStream(clientSocket.getInputStream()));
         dataOutputStream = new DataOutputStream(new DataOutputStream(clientSocket.getOutputStream()));
         objectOutputStream = new ObjectOutputStream(clientSocket.getOutputStream());
         objectInputStream = new ObjectInputStream(clientSocket.getInputStream());
-        token = dataInputStream.readUTF();
         System.out.println("I/O streams initialized");
         System.out.println(token);
 

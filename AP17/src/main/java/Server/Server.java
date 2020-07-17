@@ -24,7 +24,7 @@ public class Server {
                 socket = serverSocket.accept();
                 System.out.println("connection settled");
                 ClientHandler clientHandler = new ClientHandler(socket);
-                System.out.println("thread is going yo start");
+                System.out.println("thread is going to start");
                 clientHandler.start();
             } catch (IOException e) {
                 System.out.println(e.getMessage());

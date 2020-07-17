@@ -42,7 +42,7 @@ public class ClientHandler extends Thread {
         } catch (IOException ignored) {
             ;
         }
-        String line;
+        String command;
         String generatedToken = generateToken();
         System.out.println("token generated");
         try {
@@ -53,9 +53,9 @@ public class ClientHandler extends Thread {
         }
         while (true) {
             try {
-                line = dataInputStream.readUTF();
-
-            } catch (IOException e) {
+                command = dataInputStream.readUTF();
+                handleCommand(command);
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
@@ -112,7 +112,7 @@ public class ClientHandler extends Thread {
         return builder.toString();
     }
 
-    public static void handleFunction(String command) throws Exception {
+    public static void handleCommand(String command) throws Exception {
         if (command.equals("Show Manager Info")) {
             ManagerController.showManagerInfo();
         } else if (command.equals("Edit Manager Info")) {
