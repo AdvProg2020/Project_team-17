@@ -40,21 +40,25 @@ public class ClientHandler extends Thread {
             dataInputStream = new DataInputStream(new BufferedInputStream(inputStream));
             dataOutputStream = new DataOutputStream(socket.getOutputStream());
         } catch (IOException ignored) {
-            ;
+
         }
         String command;
         String generatedToken = generateToken();
         System.out.println("token generated");
         try {
             dataOutputStream.writeUTF(generatedToken);
+            dataOutputStream.flush();
             System.out.println(generatedToken);
         } catch (IOException e) {
             e.printStackTrace();
         }
         while (true) {
             try {
+                System.out.println("hiii");
                 command = dataInputStream.readUTF();
+                System.out.println("bye");
                 handleCommand(command);
+                System.out.println("yo");
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -114,6 +118,7 @@ public class ClientHandler extends Thread {
 
     public static void handleCommand(String command) throws Exception {
         if (command.equals("Show Manager Info")) {
+            System.out.println("byyeee");
             ManagerController.showManagerInfo();
         } else if (command.equals("Edit Manager Info")) {
             ManagerController.editManagerInfo();

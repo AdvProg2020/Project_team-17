@@ -122,4 +122,18 @@ public class WriteIntoFile {
         fileWriter.close();
     }
 
+    public static void writeIntoFile() throws IOException {
+        writeCustomersIntoFile();
+        writeCartsIntoFile();
+        writeSellersIntoFile();
+        writeCategoriesIntoFile();
+        writeDiscountCodesIntoFile();
+        writeDiscountProductsIntoFile();
+        writeManagersIntoFile();
+        writePointOfViewsIntoFile();
+        writeProductsIntoFile();
+        writeRequestsIntoFile();
+        writeLogsIntoFile();
+    }
+
 }

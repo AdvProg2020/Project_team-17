@@ -1,1 +1,0 @@
-{"companyName":"2","allProducts":[],"allDiscount":[],"logs":[],"userName":"2","firstName":"2","lastName":"2","email":"2","phoneNumber":"2","password":"2","credit":0.0,"allDiscountCodes":[]}

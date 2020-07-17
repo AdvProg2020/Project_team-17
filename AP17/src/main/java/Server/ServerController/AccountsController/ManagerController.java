@@ -16,12 +16,13 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class ManagerController {
-    public static void showManagerInfo() {
+    public static String showManagerInfo() {
         if (RegisterManagerMenu.getCurrentManager() == null) {
             Client.sendObject(new Exception("manager should first login"));
         }
-        String username = Client.receiveMessage();
-        Client.sendMessage(Manager.getManagerByUserName(username).toString());
+        //String username = Client.receiveMessage();
+        //Client.sendMessage(Manager.getManagerByUserName(username).toString());
+        return (RegisterManagerMenu.getCurrentManager().toString());
     }
 
     public static void editManagerInfo() throws Exception {

@@ -11,21 +11,21 @@ import View.RegisterManagerMenu;
 import java.util.ArrayList;
 
 public class ManagerController {
-    public static String showManagerInfo() throws Exception {
+    public static void showManagerInfo() throws Exception {
         String func = "Show Manager Info";
         Client.sendMessage(func);
-        if (RegisterManagerMenu.getCurrentManager() == null) {
-            throw new Exception("a manager should login first!");
-        } else {
-            String adminUsername = RegisterManagerMenu.getCurrentManager().getUserName();
-            Client.sendMessage(adminUsername);
-            Object data = Client.receiveObject();
-            if (data instanceof Exception) {
-                throw new Exception("account with this username doesn't found");
-            } else {
-                return String.valueOf(data);
-            }
-        }
+//        if (RegisterManagerMenu.getCurrentManager() == null) {
+//            throw new Exception("a manager should login first!");
+//        } else {
+//            String adminUsername = RegisterManagerMenu.getCurrentManager().getUserName();
+//            Client.sendMessage(adminUsername);
+//            Object data = Client.receiveObject();
+//            if (data instanceof Exception) {
+//                throw new Exception("account with this username doesn't found");
+//            } else {
+//                return String.valueOf(data);
+//            }
+//        }
     }
 
     public static void editManagerInfo(String field, String newContent) throws Exception {

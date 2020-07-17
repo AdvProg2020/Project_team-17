@@ -5,6 +5,7 @@ import Controller.RegisterAndLoginManager;
 import Models.Accounts.Customer;
 import Models.Category;
 import Models.DiscountCode;
+import Server.ServerController.AccountsController.ManagerController;
 import View.*;
 import View.Menu;
 import javafx.event.EventHandler;
@@ -303,11 +304,18 @@ public class ManagerMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 mediaPlayer.play();
+
                 Alert alert = new Alert(Alert.AlertType.NONE);
                 alert.setTitle("show user info");
                 alert.setHeaderText("user information");
-                String s = ManagerAbilitiesManager.viewAccountByUsername(listView.getSelectionModel().getSelectedItem());
-                alert.setContentText(s);
+                try {
+                    Client.ClientController.AccountsController.ManagerController.showManagerInfo();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                //String s = ManagerAbilitiesManager.viewAccountByUsername(listView.getSelectionModel().getSelectedItem());
+                //alert.setContentText(s);
+                alert.setContentText(ManagerController.showManagerInfo());
                 ButtonType buttonType = new ButtonType("Exit", ButtonBar.ButtonData.CANCEL_CLOSE);
                 alert.getButtonTypes().setAll(buttonType);
                 alert.show();
