@@ -1,10 +1,7 @@
 package Server.ServerController.AccountsController;
 
 import Client.Client;
-import Models.Accounts.Account;
-import Models.Accounts.Customer;
-import Models.Accounts.Manager;
-import Models.Accounts.Seller;
+import Models.Accounts.*;
 import Models.Category;
 import Models.DiscountCode;
 import Models.Product;
@@ -160,6 +157,15 @@ public class ManagerController {
         }
     }
 
+    public static void addSupporter(String username, String firstName, String lastName,
+                                    String email, String phoneNumber, String password) throws Exception {
+        if (Manager.getManagerByUserName(username) == null && Customer.getCustomerByName(username) == null && Seller.getSellerByName(username) == null && Supporter.getSupporterByUserName(username) == null) {
+            new Supporter(username, firstName, lastName, email, phoneNumber, password, 0);
+        } else {
+            Client.sendObject(new Exception("there is an account with this username"));
+        }
+    }
+
     public static void deleteProduct(String productId) {
         Product product = Product.getProductByName(productId);
         if (product != null) {
@@ -215,4 +221,3 @@ public class ManagerController {
         Client.sendObject(allProduct);
     }
 }
-
