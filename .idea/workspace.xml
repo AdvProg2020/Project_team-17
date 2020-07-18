@@ -3,10 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="32618e29-8746-4d2a-8d73-d011168a9d97" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Client/ClientController/AccountsController/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Client/ClientController/AccountsController/CCustomerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Client/ClientController/AccountsController/SellerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Client/ClientController/AccountsController/CSellerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Client/ClientController/RegisterAndLoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Client/ClientController/CRegisterAndLoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Server/ServerController/RegisterAndLoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Server/ServerController/RegisterAndLoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP17/src/test/java/Test/junit.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/test/java/Test/junit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/target/test-classes/Test/junit.class" beforeDir="false" afterPath="$PROJECT_DIR$/Test/target/test-classes/Test/junit.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -205,13 +204,6 @@
       <workItem from="1594629352226" duration="14000" />
       <workItem from="1594629513172" duration="5910000" />
       <workItem from="1594705743294" duration="118177000" />
-    </task>
-    <task id="LOCAL-00100" summary="some changes">
-      <created>1593159757496</created>
-      <option name="number" value="00100" />
-      <option name="presentableId" value="LOCAL-00100" />
-      <option name="project" value="LOCAL" />
-      <updated>1593159757497</updated>
     </task>
     <task id="LOCAL-00101" summary="some changes">
       <created>1593162530691</created>
@@ -549,14 +541,20 @@
       <option name="project" value="LOCAL" />
       <updated>1595101249412</updated>
     </task>
-    <option name="localTasksCounter" value="149" />
+    <task id="LOCAL-00149" summary="fix problem">
+      <created>1595101949123</created>
+      <option name="number" value="00149" />
+      <option name="presentableId" value="LOCAL-00149" />
+      <option name="project" value="LOCAL" />
+      <updated>1595101949123</updated>
+    </task>
+    <option name="localTasksCounter" value="150" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="change directories" />
     <MESSAGE value="name changed" />
     <MESSAGE value="register controller" />
     <MESSAGE value="debug filter" />
@@ -581,7 +579,8 @@
     <MESSAGE value="bank client handler" />
     <MESSAGE value="add photo for accounts" />
     <MESSAGE value="add bank account for users" />
-    <option name="LAST_COMMIT_MESSAGE" value="add bank account for users" />
+    <MESSAGE value="fix problem" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix problem" />
   </component>
   <component name="WindowStateProjectService">
     <state x="233" y="0" key="#Project_Structure" timestamp="1593617936190">
@@ -597,11 +596,11 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="420" y="144" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.680@0.0.1280.680" timestamp="1586807983600" />
-    <state x="751" y="49" key="#com.intellij.ide.util.MemberChooser" timestamp="1595093776226">
+    <state x="751" y="49" key="#com.intellij.ide.util.MemberChooser" timestamp="1595103007825">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="751" y="83" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680/460.1080.1000.504@0.0.1280.680" timestamp="1587953827102" />
-    <state x="751" y="49" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1595093776226" />
+    <state x="751" y="49" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1595103007825" />
     <state x="801" y="93" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1586995828901" />
     <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1588275888120" />
     <state x="515" y="248" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1593171500635">
@@ -632,10 +631,10 @@
     </state>
     <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1595085591466" />
     <state x="445" y="105" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1588110193951" />
-    <state x="223" y="0" key="CommitChangelistDialog2" timestamp="1595101247674">
+    <state x="223" y="0" key="CommitChangelistDialog2" timestamp="1595101946927">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="223" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1595101247674" />
+    <state x="223" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1595101946927" />
     <state x="425" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1593001247141" />
     <state x="401" y="14" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1592143129254" />
     <state x="421" y="67" key="FileChooserDialogImpl" timestamp="1595086256569">
@@ -704,10 +703,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1280.680@0.0.1280.680" timestamp="1589767285229" />
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1595101285610">
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1595101957369">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1595101285610" />
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1595101957369" />
     <state x="249" y="80" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1593001403029" />
     <state x="280" y="90" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1593000505024" />
     <state x="452" y="119" key="chooseDestDirectoryDialog" timestamp="1595066647516">
@@ -739,10 +738,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="193" y="77" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1280.680@0.0.1280.680" timestamp="1589878981587" />
-    <state x="397" y="168" key="git4idea.merge.GitPullDialog" timestamp="1595101268024">
+    <state x="397" y="168" key="git4idea.merge.GitPullDialog" timestamp="1595101951379">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="397" y="168" key="git4idea.merge.GitPullDialog/0.0.1280.680@0.0.1280.680" timestamp="1595101268024" />
+    <state x="397" y="168" key="git4idea.merge.GitPullDialog/0.0.1280.680@0.0.1280.680" timestamp="1595101951379" />
     <state x="423" y="180" key="git4idea.merge.GitPullDialog/0.0.1366.728@0.0.1366.728" timestamp="1593001272806" />
     <state x="476" y="204" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1592143151948" />
     <state x="91" y="0" key="new project wizard" timestamp="1594989243330">
