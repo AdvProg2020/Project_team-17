@@ -157,7 +157,7 @@ public class ManagerMenu extends Menu {
         lastName.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
         email.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
         phoneNumber.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
-        vBox1.getChildren().addAll(imageView,title, username, firstName, lastName, email, phoneNumber);
+        vBox1.getChildren().addAll(imageView, title, username, firstName, lastName, email, phoneNumber);
         pane.setCenter(vBox1);
         pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
         Scene scene = new Scene(pane, 600, 600);
@@ -427,8 +427,12 @@ public class ManagerMenu extends Menu {
         TextField phoneNumberTextField = new TextField();
         phoneNumberTextField.setPromptText("phone number");
 
+        TextField paths = new TextField();
+        paths.setPromptText("paths");
+
         TextField addressTextField = new TextField();
         addressTextField.setPromptText("address");
+
         Button SUButton = new Button("Sign up");
         userNameTextField.setStyle(style);
         passwordField.setStyle(style);
@@ -437,6 +441,7 @@ public class ManagerMenu extends Menu {
         emailTextField.setStyle(style);
         addressTextField.setStyle(style);
         phoneNumberTextField.setStyle(style);
+        paths.setStyle(style);
         SUButton.setStyle(style);
 
         SUButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
@@ -456,7 +461,7 @@ public class ManagerMenu extends Menu {
                     }
                     try {
                         ManagerController.addManager(userNameTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText()
-                                , phoneNumberTextField.getText(), passwordField.getText());
+                                , phoneNumberTextField.getText(), passwordField.getText(), paths.getText());
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -478,7 +483,7 @@ public class ManagerMenu extends Menu {
             }
         });
 
-        vBox.getChildren().addAll(backButton, title, userNameTextField, passwordField, firstNameTextField, lastNameTextField, emailTextField, phoneNumberTextField, addressTextField, SUButton, notify);
+        vBox.getChildren().addAll(backButton, title, userNameTextField, passwordField, firstNameTextField, lastNameTextField, emailTextField, phoneNumberTextField, addressTextField, paths, SUButton, notify);
         vBox.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
         pane.setCenter(vBox);
         pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
@@ -528,6 +533,10 @@ public class ManagerMenu extends Menu {
 
         TextField addressTextField = new TextField();
         addressTextField.setPromptText("address");
+
+        TextField paths = new TextField();
+        paths.setPromptText("path");
+
         Button SUButton = new Button("Sign up");
         userNameTextField.setStyle(style);
         passwordField.setStyle(style);
@@ -555,7 +564,7 @@ public class ManagerMenu extends Menu {
                     }
                     try {
                         ManagerController.addSupporter(userNameTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText()
-                                , phoneNumberTextField.getText(), passwordField.getText());
+                                , phoneNumberTextField.getText(), passwordField.getText(), paths.getText());
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

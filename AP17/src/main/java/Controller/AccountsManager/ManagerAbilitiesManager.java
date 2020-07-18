@@ -75,8 +75,8 @@ public class ManagerAbilitiesManager {
 
     //handle in network
     public static void createAnotherManager(String username, String firstName, String lastName,
-                                            String email, String phoneNumber, String password) throws IOException {
-        new Manager(username, firstName, lastName, email, phoneNumber, password);
+                                            String email, String phoneNumber, String password,String path) throws IOException {
+        new Manager(username, firstName, lastName, email, phoneNumber, password,path);
     }
 
     //handle in network

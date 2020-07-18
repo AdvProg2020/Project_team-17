@@ -149,18 +149,18 @@ public class ManagerController {
     }
 
     public static void addManager(String username, String firstName, String lastName,
-                                  String email, String phoneNumber, String password) throws Exception {
+                                  String email, String phoneNumber, String password,String path) throws Exception {
         if (Manager.getManagerByUserName(username) == null && Customer.getCustomerByName(username) == null && Seller.getSellerByName(username) == null) {
-            new Manager(username, firstName, lastName, email, phoneNumber, password);
+            new Manager(username, firstName, lastName, email, phoneNumber, password,path);
         } else {
             Client.sendObject(new Exception("there is an account with this username"));
         }
     }
 
     public static void addSupporter(String username, String firstName, String lastName,
-                                    String email, String phoneNumber, String password) throws Exception {
+                                    String email, String phoneNumber, String password,String path) throws Exception {
         if (Manager.getManagerByUserName(username) == null && Customer.getCustomerByName(username) == null && Seller.getSellerByName(username) == null && Supporter.getSupporterByUserName(username) == null) {
-            new Supporter(username, firstName, lastName, email, phoneNumber, password, 0);
+            new Supporter(username, firstName, lastName, email, phoneNumber, password, 0,path);
         } else {
             Client.sendObject(new Exception("there is an account with this username"));
         }
