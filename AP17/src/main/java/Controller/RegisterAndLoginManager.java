@@ -3,6 +3,7 @@ package Controller;
 import Models.Accounts.Customer;
 import Models.Accounts.Manager;
 import Models.Accounts.Seller;
+import Models.Accounts.Supporter;
 
 public class RegisterAndLoginManager {
 
@@ -28,8 +29,15 @@ public class RegisterAndLoginManager {
         return false;
     }
 
+    public static boolean isUserNameAndPasswordCorrectForSupporter(String userName, String password) {
+        if (Supporter.getSupporterByUserName(userName).getPassword().equals(password)) {
+            return true;
+        }
+        return false;
+    }
+
     public static boolean canHaveAccountWithThisUsername(String username) {
-        if (Seller.isThereSellerWithUserName(username) || Customer.isThereCustomerWithUserName(username) || Manager.isThereManagerWithUserName(username)) {
+        if (Seller.isThereSellerWithUserName(username) || Customer.isThereCustomerWithUserName(username) || Manager.isThereManagerWithUserName(username) || Supporter.isThereSupporterWithUserName(username)) {
             return false;
         }
         return true;
