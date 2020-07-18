@@ -7,6 +7,8 @@ import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -18,6 +20,7 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
+import java.io.FileInputStream;
 import java.nio.file.Paths;
 
 
@@ -33,7 +36,7 @@ public class CustomerMenu extends Menu {
 
     public void setPersonalInfoScene() {
         String path = "C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Sounds\\button.mp3";
-       // String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+        // String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
 
@@ -110,6 +113,13 @@ public class CustomerMenu extends Menu {
         pane.setLeft(vBox);
         VBox vBox1 = new VBox(10);
         vBox1.setAlignment(Pos.CENTER);
+        Image image = null;
+        try {
+            FileInputStream inputStream = new FileInputStream(RegisterSellerMenu.getCurrentSeller().getPath());
+            image = new Image(inputStream);
+        } catch (Exception e) {
+        }
+        ImageView imageView = new ImageView(image);
         Text title = new Text("CUSTOMER");
         Text username = new Text("username: " + RegisterCustomerMenu.getCurrentCustomer().getUserName());
         Text firstName = new Text("first name: " + RegisterCustomerMenu.getCurrentCustomer().getFirstName());
@@ -126,7 +136,7 @@ public class CustomerMenu extends Menu {
         phoneNumber.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
         credit.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
 
-        vBox1.getChildren().addAll(title, username, firstName, lastName, email, phoneNumber, credit);
+        vBox1.getChildren().addAll(imageView, title, username, firstName, lastName, email, phoneNumber, credit);
         pane.setCenter(vBox1);
         pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
         Scene scene = new Scene(pane, 600, 600);

@@ -14,6 +14,8 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -25,6 +27,7 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
+import java.io.FileInputStream;
 import java.nio.file.Paths;
 
 public class ManagerMenu extends Menu {
@@ -135,6 +138,13 @@ public class ManagerMenu extends Menu {
         pane.setLeft(vBox);
         VBox vBox1 = new VBox(10);
         vBox1.setAlignment(Pos.CENTER);
+        Image image = null;
+        try {
+            FileInputStream inputStream = new FileInputStream(RegisterSellerMenu.getCurrentSeller().getPath());
+            image = new Image(inputStream);
+        } catch (Exception e) {
+        }
+        ImageView imageView = new ImageView(image);
         Text title = new Text("MANAGER");
         Text username = new Text("username: " + RegisterManagerMenu.getCurrentManager().getUserName());
         Text firstName = new Text("first name: " + RegisterManagerMenu.getCurrentManager().getFirstName());
@@ -147,7 +157,7 @@ public class ManagerMenu extends Menu {
         lastName.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
         email.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
         phoneNumber.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
-        vBox1.getChildren().addAll(title, username, firstName, lastName, email, phoneNumber);
+        vBox1.getChildren().addAll(imageView,title, username, firstName, lastName, email, phoneNumber);
         pane.setCenter(vBox1);
         pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
         Scene scene = new Scene(pane, 600, 600);

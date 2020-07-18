@@ -134,6 +134,9 @@ public class RegisterCustomerMenu extends Menu {
         TextField extraTextField = new TextField();
         extraTextField.setPromptText("credit");
 
+        TextField paths = new TextField();
+        paths.setPromptText("path");
+
         Button SUButton = new Button("Sign up");
         backButton.setStyle(style);
         userNameTextField.setStyle(style);
@@ -144,6 +147,7 @@ public class RegisterCustomerMenu extends Menu {
         addressTextField.setStyle(style);
         extraTextField.setStyle(style);
         SUButton.setStyle(style);
+        paths.setStyle(style);
 
         SUButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
@@ -152,7 +156,7 @@ public class RegisterCustomerMenu extends Menu {
                 if (RegisterAndLoginManager.canHaveAccountWithThisUsername(userNameTextField.getText())) {
                     try {
                         new Customer(userNameTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText(),
-                                phoneNumberTextField.getText(), passwordField.getText(), Double.parseDouble(extraTextField.getText()), addressTextField.getText());
+                                phoneNumberTextField.getText(), passwordField.getText(), Double.parseDouble(extraTextField.getText()), addressTextField.getText(), paths.getText());
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -178,7 +182,7 @@ public class RegisterCustomerMenu extends Menu {
             }
         });
 
-        vBox.getChildren().addAll(backButton, title, userNameTextField, passwordField, firstNameTextField, lastNameTextField, emailTextField, phoneNumberTextField, addressTextField, extraTextField, SUButton, notify);
+        vBox.getChildren().addAll(backButton, title, userNameTextField, passwordField, firstNameTextField, lastNameTextField, emailTextField, phoneNumberTextField, addressTextField, extraTextField, paths, SUButton, notify);
         pane.setCenter(vBox);
         pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
         Scene scene = new Scene(pane, 600, 600);

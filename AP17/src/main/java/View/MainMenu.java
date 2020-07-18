@@ -135,7 +135,7 @@ public class MainMenu extends Menu {
 
     public void registerFirstManager() {
         //String path = "C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Sounds\\button.mp3";
-         String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
 
@@ -185,6 +185,9 @@ public class MainMenu extends Menu {
         TextField addressTextField = new TextField();
         addressTextField.setPromptText("address");
 
+        TextField paths = new TextField();
+        paths.setPromptText("path");
+
         Button SUButton = new Button("Sign up");
 
         userNameTextField.setStyle(style);
@@ -195,6 +198,7 @@ public class MainMenu extends Menu {
         phoneNumberTextField.setStyle(style);
         addressTextField.setStyle(style);
         SUButton.setStyle(style);
+        paths.setStyle(style);
 
         SUButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
@@ -203,7 +207,7 @@ public class MainMenu extends Menu {
                 if (RegisterAndLoginManager.canHaveAccountWithThisUsername(userNameTextField.getText())) {
                     try {
                         new Manager(userNameTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText(),
-                                phoneNumberTextField.getText(), passwordField.getText());
+                                phoneNumberTextField.getText(), passwordField.getText(), paths.getText());
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -222,7 +226,7 @@ public class MainMenu extends Menu {
             }
         });
 
-        vBox.getChildren().addAll(button, title, userNameTextField, passwordField, firstNameTextField, lastNameTextField, emailTextField, phoneNumberTextField, addressTextField, SUButton, notify);
+        vBox.getChildren().addAll(button, title, userNameTextField, passwordField, firstNameTextField, lastNameTextField, emailTextField, phoneNumberTextField, addressTextField, paths, SUButton, notify);
         pane.setCenter(vBox);
         pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
         Scene scene = new Scene(pane, 600, 600);
