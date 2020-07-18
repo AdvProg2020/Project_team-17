@@ -1,6 +1,8 @@
 import Client.Client;
 import Controller.LoadFromFile;
 import Controller.WriteIntoFile;
+import Models.Accounts.Customer;
+import Models.Accounts.Manager;
 import View.MainMenu;
 import View.Menu;
 import com.google.gson.Gson;
@@ -21,23 +23,39 @@ public class Main extends Application {
     }
 
 
+
+
     @Override
     public void start(Stage stage) throws Exception {
         LoadFromFile.load(new Gson());
+        System.out.println(Customer.getAllCustomers().size());
         Menu.setWindow(window);
         MainMenu mainMenu = new MainMenu();
         mainMenu.show();
 
-        stage.setOnCloseRequest(e -> {
+        /*stage.setOnCloseRequest(e -> {
             try {
+                System.out.println("salam1");
                 WriteIntoFile.writeIntoFile();
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
             Platform.exit();
+            System.out.println("salam2");
             System.exit(0);
-        });
+        });*/
+
+
     }
+
+    /*@Override
+    public void stop() throws Exception {
+        System.out.println("hi");
+        WriteIntoFile.writeIntoFile();
+        System.out.println("hii");
+        Platform.exit();
+        System.exit(1);
+    }*/
 
 
 }

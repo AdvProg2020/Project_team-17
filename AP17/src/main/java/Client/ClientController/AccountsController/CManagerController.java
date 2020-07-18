@@ -9,7 +9,7 @@ import Models.Request.Request;
 
 import java.util.ArrayList;
 
-public class ManagerController {
+public class CManagerController {
     public static void showManagerInfo() {
         String func = "Show Manager Info";
         Client.sendMessage(func);
@@ -94,6 +94,11 @@ public class ManagerController {
         Client.sendMessage(func);
     }
 
+    public static void addSupporter() {
+        String func = "Add Supporter Account";
+        Client.sendMessage(func);
+    }
+
     public static void deleteProduct() {
         String func = "Delete Product";
         Client.sendMessage(func);
@@ -136,4 +141,3 @@ public class ManagerController {
     }
 
 }
-

@@ -1,12 +1,12 @@
 package View.AccountMenus;
 
-import Client.Client;
 import Controller.AccountsManager.ManagerAbilitiesManager;
 import Controller.RegisterAndLoginManager;
 import Models.Accounts.Customer;
 import Models.Category;
 import Models.DiscountCode;
 import Server.ServerController.AccountsController.ManagerController;
+import Client.ClientController.AccountsController.CManagerController;
 import View.*;
 import View.Menu;
 import javafx.event.EventHandler;
@@ -95,7 +95,6 @@ public class ManagerMenu extends Menu {
                 setManageProductsScene();
             }
         });
-
         Button manageDiscountCodes = new Button("Manage discount codes");
         manageDiscountCodes.setStyle(style);
         manageDiscountCodes.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
@@ -234,7 +233,6 @@ public class ManagerMenu extends Menu {
                 notify.setText("");
             }
         });
-
         Label title = new Label("Editing field");
         vBox.getChildren().addAll(backButton, title);
         pane.setTop(vBox);
@@ -253,7 +251,7 @@ public class ManagerMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 try {
-                    Client.ClientController.AccountsController.ManagerController.editManagerInfo();
+                    CManagerController.editManagerInfo();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -313,10 +311,11 @@ public class ManagerMenu extends Menu {
         Button view = new Button("View account");
         Button delete = new Button("Delete account");
         Button addManager = new Button("Add manager");
+        Button addSupporter = new Button("Add supporter");
         view.setStyle(style);
         delete.setStyle(style);
         addManager.setStyle(style);
-
+        addSupporter.setStyle(style);
         view.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -325,7 +324,7 @@ public class ManagerMenu extends Menu {
                 alert.setTitle("show user info");
                 alert.setHeaderText("user information");
                 try {
-                    Client.ClientController.AccountsController.ManagerController.showAccountDetails();
+                    CManagerController.showAccountDetails();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -343,7 +342,7 @@ public class ManagerMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 mediaPlayer.play();
-                Client.ClientController.AccountsController.ManagerController.deleteAccount();
+                CManagerController.deleteAccount();
                 try {
                     ManagerController.deleteUser(listView.getSelectionModel().getSelectedItem());
                 } catch (Exception e) {
@@ -363,6 +362,15 @@ public class ManagerMenu extends Menu {
                 notify.setText("");
             }
         });
+        addSupporter.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
+                setAddSupporterScene();
+                notify.setText("");
+            }
+        });
+
         vBox1.getChildren().addAll(view, delete, addManager);
         pane.setLeft(vBox1);
         pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
@@ -392,6 +400,104 @@ public class ManagerMenu extends Menu {
         Button backButton = new Button("Back");
         backButton.setStyle(style);
         Label title = new Label("Manager account registration");
+        TextField userNameTextField = new TextField();
+        userNameTextField.setPromptText("username");
+        PasswordField passwordField = new PasswordField();
+        passwordField.setPromptText("password");
+
+        TextField firstNameTextField = new TextField();
+        firstNameTextField.setPromptText("first name");
+
+        TextField lastNameTextField = new TextField();
+        lastNameTextField.setPromptText("last name");
+
+        TextField emailTextField = new TextField();
+        emailTextField.setPromptText("email");
+
+        TextField phoneNumberTextField = new TextField();
+        phoneNumberTextField.setPromptText("phone number");
+
+        TextField addressTextField = new TextField();
+        addressTextField.setPromptText("address");
+        Button SUButton = new Button("Sign up");
+        userNameTextField.setStyle(style);
+        passwordField.setStyle(style);
+        firstNameTextField.setStyle(style);
+        lastNameTextField.setStyle(style);
+        emailTextField.setStyle(style);
+        addressTextField.setStyle(style);
+        phoneNumberTextField.setStyle(style);
+        SUButton.setStyle(style);
+
+        SUButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                if (RegisterAndLoginManager.canHaveAccountWithThisUsername(userNameTextField.getText())) {
+//                    try {
+//                        ManagerAbilitiesManager.createAnotherManager(userNameTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText(),
+//                                phoneNumberTextField.getText(), passwordField.getText());
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
+                    try {
+                        CManagerController.addManager();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    try {
+                        ManagerController.addManager(userNameTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText()
+                                , phoneNumberTextField.getText(), passwordField.getText());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    notify.setStyle("-fx-text-fill: #3193ff");
+                    notify.setText("successfully registered");
+                } else {
+                    notify.setStyle("-fx-text-fill: #ff4f59");
+                    notify.setText("this username already exist");
+                }
+            }
+        });
+
+        backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
+                setManageUsersScene();
+                notify.setText("");
+            }
+        });
+
+        vBox.getChildren().addAll(backButton, title, userNameTextField, passwordField, firstNameTextField, lastNameTextField, emailTextField, phoneNumberTextField, addressTextField, SUButton, notify);
+        vBox.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
+        pane.setCenter(vBox);
+        pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
+        Scene scene = new Scene(pane, 600, 600);
+        Menu.window.setScene(scene);
+    }
+
+    public void setAddSupporterScene() {
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\button.mp3";
+        Media media = new Media(Paths.get(path).toUri().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+        BorderPane pane = new BorderPane();
+        String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
+                "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
+                + "linear-gradient(#cdded5 0%, #f6f6f6 50%);" +
+                " -fx-background-radius: 8,7,6; " +
+                "-fx-background-insets: 0,1,2; " +
+                "-fx-text-fill: #3193ff;"
+                + "-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); " +
+                "-fx-font-size: 1.2em; " +
+                "-fx-padding: 4px;";
+        Label notify = new Label();
+        VBox vBox1 = new VBox(10);
+        vBox1.setAlignment(Pos.TOP_LEFT);
+
+        VBox vBox = new VBox(10);
+        Button backButton = new Button("Back");
+        backButton.setStyle(style);
+        Label title = new Label("Supporter account registration");
         TextField userNameTextField = new TextField();
         userNameTextField.setPromptText("username");
 
@@ -433,12 +539,12 @@ public class ManagerMenu extends Menu {
 //                        e.printStackTrace();
 //                    }
                     try {
-                        Client.ClientController.AccountsController.ManagerController.addManager();
+                        CManagerController.addSupporter();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                     try {
-                        ManagerController.addManager(userNameTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText()
+                        ManagerController.addSupporter(userNameTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText()
                                 , phoneNumberTextField.getText(), passwordField.getText());
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -451,7 +557,6 @@ public class ManagerMenu extends Menu {
                 }
             }
         });
-
         backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -520,7 +625,7 @@ public class ManagerMenu extends Menu {
                 alert.setTitle("discount code info");
                 alert.setHeaderText("discount code information");
                 try {
-                    Client.ClientController.AccountsController.ManagerController.showDiscountCodeDetails();
+                    CManagerController.showDiscountCodeDetails();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -532,7 +637,6 @@ public class ManagerMenu extends Menu {
                 alert.show();
             }
         });
-
         edit.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -554,7 +658,7 @@ public class ManagerMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 mediaPlayer.play();
-                Client.ClientController.AccountsController.ManagerController.deleteDiscountCode();
+                CManagerController.deleteDiscountCode();
                 ManagerController.deleteDiscountCode(listView.getSelectionModel().getSelectedItem());
                 //ManagerAbilitiesManager.removeDiscountCode(listView.getSelectionModel().getSelectedItem());
                 notify.setStyle("-fx-text-fill: #3193ff");
@@ -595,7 +699,6 @@ public class ManagerMenu extends Menu {
                 show();
             }
         });
-
         vBox.getChildren().addAll(button);
         pane.setTop(vBox);
         HBox hBox = new HBox(10);
@@ -613,7 +716,7 @@ public class ManagerMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 mediaPlayer.play();
-                Client.ClientController.AccountsController.ManagerController.editDiscountCode();
+                CManagerController.editDiscountCode();
                 ManagerController.editDiscountCodeInfo(selectedDiscountCode, field.getValue(), newContent.getText());
                 //ManagerAbilitiesManager.editDiscountCode(selectedDiscountCode, field.getValue(), newContent.getText());
                 notify.setStyle("-fx-text-fill: #3193ff");
@@ -653,7 +756,6 @@ public class ManagerMenu extends Menu {
                 show();
             }
         });
-
         vBox1.getChildren().addAll(button);
         pane.setTop(vBox1);
         VBox vBox = new VBox(10);
@@ -693,7 +795,7 @@ public class ManagerMenu extends Menu {
 //                       // WriteIntoFile.writeDiscountCodesIntoFile();
 //                   // } catch (IOException e) {
 //                        System.err.println(e.getMessage());
-                    Client.ClientController.AccountsController.ManagerController.addDiscountCode();
+                    CManagerController.addDiscountCode();
                     ManagerController.addDiscountCode(ID.getText(), startDate.getText(), endDate.getText(), discountPercent.getText(), max.getText(), Integer.parseInt(count.getText()), s);
 //                    }
                     notify.setStyle("-fx-text-fill: #1593ff");
@@ -735,7 +837,6 @@ public class ManagerMenu extends Menu {
                 show();
             }
         });
-
         vBox.getChildren().addAll(button);
         pane.setTop(vBox);
         ListView<String> listView = new ListView<>();
@@ -755,7 +856,7 @@ public class ManagerMenu extends Menu {
                 Alert alert = new Alert(Alert.AlertType.NONE);
                 alert.setTitle("show request info");
                 alert.setHeaderText("request information");
-                Client.ClientController.AccountsController.ManagerController.showRequest();
+                CManagerController.showRequest();
                 ManagerController.showRequest(listView.getSelectionModel().getSelectedItem());
 //                String s = ManagerAbilitiesManager.showDetailsOfRequest(listView.getSelectionModel().getSelectedItem());
 //                alert.setContentText(s);
@@ -819,7 +920,6 @@ public class ManagerMenu extends Menu {
                 notify.setText("");
             }
         });
-
         vBox.getChildren().addAll(button);
         pane.setTop(vBox);
         ListView<String> listView = new ListView<>();
@@ -891,7 +991,6 @@ public class ManagerMenu extends Menu {
                 setCategoriesScene();
             }
         });
-
         vBox.getChildren().addAll(button);
         pane.setTop(vBox);
         HBox hBox = new HBox(10);
@@ -907,7 +1006,7 @@ public class ManagerMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 mediaPlayer.play();
-                Client.ClientController.AccountsController.ManagerController.addCategory();
+                CManagerController.addCategory();
                 ManagerController.addCategory(name.getText(), feature.getText());
 //                ManagerAbilitiesManager.addCategory(name.getText(), feature.getText());
 //                try {
@@ -973,14 +1072,13 @@ public class ManagerMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 mediaPlayer.play();
-                Client.ClientController.AccountsController.ManagerController.editCategory();
+                CManagerController.editCategory();
                 ManagerController.editCategory(selectedCategory, field.getValue(), newContent.getText());
                 //ManagerAbilitiesManager.editCategory(selectedCategory, field.getValue(), newContent.getText());
                 notify.setStyle("-fx-text-fill: #3193ff");
                 notify.setText("successfully changed");
             }
         });
-
         vBox1.getChildren().addAll(hBox, notify);
         pane.setCenter(vBox1);
         pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
@@ -1030,7 +1128,7 @@ public class ManagerMenu extends Menu {
             public void handle(MouseEvent mouseEvent) {
                 mediaPlayer.play();
                 // ManagerAbilitiesManager.removeProduct(listView.getSelectionModel().getSelectedItem());
-                Client.ClientController.AccountsController.ManagerController.deleteProduct();
+                CManagerController.deleteProduct();
                 ManagerController.deleteProduct(listView.getSelectionModel().getSelectedItem());
                 notify.setStyle("-fx-text-fill: #3193ff");
                 notify.setText("category removed successfully");

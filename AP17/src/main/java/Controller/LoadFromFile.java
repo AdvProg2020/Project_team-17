@@ -10,10 +10,14 @@ import com.google.gson.Gson;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class LoadFromFile {
-    public static void load(Gson gson) throws FileNotFoundException {
+    public static void load(Gson gson) throws IOException {
         loadCustomersFromFile(gson);
         loadSellersFromFile(gson);
         loadManagersFromFile(gson);
@@ -27,18 +31,24 @@ public class LoadFromFile {
         loadPointOfViewsFromFile(gson);
     }
 
-    private static void loadCustomersFromFile(Gson gson) throws FileNotFoundException {
-        // FileInputStream fileInputStream = new FileInputStream("C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Test\\src\\main\\java\\Resources\\customers.txt");
-        FileInputStream fileInputStream = new FileInputStream("C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Resources\\customers.txt");
+    private static void loadCustomersFromFile(Gson gson) throws IOException {
+        FileInputStream fileInputStream = new FileInputStream("C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Resources\\customers.txt");
+        //FileInputStream fileInputStream = new FileInputStream("C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Resources\\customers.txt");
         Scanner scanner = new Scanner(fileInputStream);
         while (scanner.hasNextLine()) {
             Customer.getAllCustomers().add(gson.fromJson((scanner.nextLine()), Customer.class));
         }
+
+      /* String data = Files.readString(Paths.get("C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Resources\\customers.txt"));
+       String[] dataArray = data.split("\\t");
+        for (String s : dataArray) {
+            Customer.getAllCustomers().add(gson.fromJson(s, Customer.class));
+        }*/
     }
 
     private static void loadSellersFromFile(Gson gson) throws FileNotFoundException {
-        //FileInputStream fileInputStream = new FileInputStream("C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Test\\src\\main\\java\\Resources\\sellers.txt");
-        FileInputStream fileInputStream = new FileInputStream("C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Resources\\sellers.txt");
+        FileInputStream fileInputStream = new FileInputStream("C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Resources\\sellers.txt");
+        //FileInputStream fileInputStream = new FileInputStream("C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Resources\\sellers.txt");
         Scanner scanner = new Scanner(fileInputStream);
         while (scanner.hasNextLine()) {
             Seller.getAllSellers().add(gson.fromJson((scanner.nextLine()), Seller.class));
@@ -46,8 +56,8 @@ public class LoadFromFile {
     }
 
     private static void loadManagersFromFile(Gson gson) throws FileNotFoundException {
-        //FileInputStream fileInputStream = new FileInputStream("C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Test\\src\\main\\java\\Resources\\managers.txt");
-        FileInputStream fileInputStream = new FileInputStream("C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Resources\\managers.txt");
+        FileInputStream fileInputStream = new FileInputStream("C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Resources\\managers.txt");
+        //FileInputStream fileInputStream = new FileInputStream("C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Resources\\managers.txt");
         Scanner scanner = new Scanner(fileInputStream);
         while (scanner.hasNextLine()) {
             Manager.getAllManagers().add(gson.fromJson((scanner.nextLine()), Manager.class));
@@ -55,8 +65,8 @@ public class LoadFromFile {
     }
 
     private static void loadRequestFromFile(Gson gson) throws FileNotFoundException {
-        //FileInputStream fileInputStream = new FileInputStream("C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Test\\src\\main\\java\\Resources\\requests.txt");
-        FileInputStream fileInputStream = new FileInputStream("C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Resources\\requests.txt");
+        FileInputStream fileInputStream = new FileInputStream("C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Resources\\requests.txt");
+        //FileInputStream fileInputStream = new FileInputStream("C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Resources\\requests.txt");
 
         Scanner scanner = new Scanner(fileInputStream);
         while (scanner.hasNextLine()) {
@@ -65,8 +75,8 @@ public class LoadFromFile {
     }
 
     private static void loadProductsFromFile(Gson gson) throws FileNotFoundException {
-        //FileInputStream fileInputStream = new FileInputStream("C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Test\\src\\main\\java\\Resources\\products.txt");
-        FileInputStream fileInputStream = new FileInputStream("C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Resources\\products.txt");
+        FileInputStream fileInputStream = new FileInputStream("C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Resources\\products.txt");
+        //FileInputStream fileInputStream = new FileInputStream("C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Resources\\products.txt");
         Scanner scanner = new Scanner(fileInputStream);
         while (scanner.hasNextLine()) {
             Product.getAllProducts().add(gson.fromJson((scanner.nextLine()), Product.class));
@@ -74,8 +84,8 @@ public class LoadFromFile {
     }
 
     private static void loadLogsFromFile(Gson gson) throws FileNotFoundException {
-        //FileInputStream fileInputStream = new FileInputStream("C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Test\\src\\main\\java\\Resources\\logs.txt");
-        FileInputStream fileInputStream = new FileInputStream("C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Resources\\logs.txt");
+        FileInputStream fileInputStream = new FileInputStream("C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Resources\\logs.txt");
+        //FileInputStream fileInputStream = new FileInputStream("C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Resources\\logs.txt");
         Scanner scanner = new Scanner(fileInputStream);
         while (scanner.hasNextLine()) {
             Log.getAllLogs().add(gson.fromJson((scanner.nextLine()), Log.class));
@@ -83,8 +93,8 @@ public class LoadFromFile {
     }
 
     private static void loadDiscountProductsFromFile(Gson gson) throws FileNotFoundException {
-        //FileInputStream fileInputStream = new FileInputStream("C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Test\\src\\main\\java\\Resources\\discountProducts.txt");
-        FileInputStream fileInputStream = new FileInputStream("C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Resources\\discountProducts.txt");
+        FileInputStream fileInputStream = new FileInputStream("C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Resources\\discountProducts.txt");
+        //FileInputStream fileInputStream = new FileInputStream("C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Resources\\discountProducts.txt");
         Scanner scanner = new Scanner(fileInputStream);
         while (scanner.hasNextLine()) {
             Discount.getDiscountProducts().add(gson.fromJson((scanner.nextLine()), Product.class));
@@ -92,8 +102,8 @@ public class LoadFromFile {
     }
 
     private static void loadDiscountCodesFromFile(Gson gson) throws FileNotFoundException {
-        //FileInputStream fileInputStream = new FileInputStream("C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Test\\src\\main\\java\\Resources\\discountCodes.txt");
-        FileInputStream fileInputStream = new FileInputStream("C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Resources\\discountCodes.txt");
+        FileInputStream fileInputStream = new FileInputStream("C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Resources\\discountCodes.txt");
+        //FileInputStream fileInputStream = new FileInputStream("C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Resources\\discountCodes.txt");
         Scanner scanner = new Scanner(fileInputStream);
         while (scanner.hasNextLine()) {
             DiscountCode.getAllDiscountCodes().add(gson.fromJson((scanner.nextLine()), DiscountCode.class));
@@ -101,8 +111,8 @@ public class LoadFromFile {
     }
 
     private static void loadCategoriesFromFile(Gson gson) throws FileNotFoundException {
-        //FileInputStream fileInputStream = new FileInputStream("C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Test\\src\\main\\java\\Resources\\categories.txt");
-        FileInputStream fileInputStream = new FileInputStream("C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Resources\\categories.txt");
+        FileInputStream fileInputStream = new FileInputStream("C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Resources\\categories.txt");
+        //FileInputStream fileInputStream = new FileInputStream("C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Resources\\categories.txt");
         Scanner scanner = new Scanner(fileInputStream);
         while (scanner.hasNextLine()) {
             Category.getAllCategories().add(gson.fromJson((scanner.nextLine()), Category.class));
@@ -110,8 +120,8 @@ public class LoadFromFile {
     }
 
     private static void loadCartsFromFile(Gson gson) throws FileNotFoundException {
-        //FileInputStream fileInputStream = new FileInputStream("C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Test\\src\\main\\java\\Resources\\carts.txt");
-        FileInputStream fileInputStream = new FileInputStream("C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Resources\\carts.txt");
+        FileInputStream fileInputStream = new FileInputStream("C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Resources\\carts.txt");
+        //FileInputStream fileInputStream = new FileInputStream("C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Resources\\carts.txt");
         Scanner scanner = new Scanner(fileInputStream);
         while (scanner.hasNextLine()) {
             Cart.getAllCarts().add(gson.fromJson((scanner.nextLine()), Cart.class));
@@ -119,7 +129,8 @@ public class LoadFromFile {
     }
 
     private static void loadPointOfViewsFromFile(Gson gson) throws FileNotFoundException {
-        FileInputStream fileInputStream = new FileInputStream("C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Resources\\pointOfViews.txt");
+        FileInputStream fileInputStream = new FileInputStream("C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Resources\\pointOfViews.txt");
+        //  FileInputStream fileInputStream = new FileInputStream("C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Resources\\pointOfViews.txt");
         Scanner scanner = new Scanner(fileInputStream);
         while (scanner.hasNextLine()) {
             PointOfView.getAllPointOfViews().add(gson.fromJson((scanner.nextLine()), PointOfView.class));

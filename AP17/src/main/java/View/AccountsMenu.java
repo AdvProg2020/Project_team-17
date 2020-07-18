@@ -38,6 +38,8 @@ public class AccountsMenu extends Menu {
         customerAccountsButton.setStyle(style);
         Button mangerAccountsButton = new Button("Manger Accounts");
         mangerAccountsButton.setStyle(style);
+        Button supporterAccountsButton = new Button("Supporter Accounts");
+        supporterAccountsButton.setStyle(style);
         Button backButton = new Button("Back");
         backButton.setStyle(style);
         backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
@@ -60,14 +62,14 @@ public class AccountsMenu extends Menu {
                 BackgroundSize.DEFAULT);
         Background mainBackground = new Background(mainBackgroundImage);
         accountButtons.setBackground(mainBackground);
-        addActionForButtons(sellerAccountsButton, customerAccountsButton, mangerAccountsButton);
-        accountButtons.getChildren().addAll(backButton, sellerAccountsButton, customerAccountsButton, mangerAccountsButton);
+        addActionForButtons(sellerAccountsButton, customerAccountsButton, mangerAccountsButton, supporterAccountsButton);
+        accountButtons.getChildren().addAll(backButton, sellerAccountsButton, customerAccountsButton, mangerAccountsButton, supporterAccountsButton);
         pane.setCenter(accountButtons);
         Scene scene = new Scene(pane, 600, 600);
         Menu.window.setScene(scene);
     }
 
-    public void addActionForButtons(Button sellerButton, Button customerButton, Button managerButton) {
+    public void addActionForButtons(Button sellerButton, Button customerButton, Button managerButton, Button supporterButton) {
         sellerButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -78,7 +80,6 @@ public class AccountsMenu extends Menu {
                 }
             }
         });
-
         customerButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -99,6 +100,17 @@ public class AccountsMenu extends Menu {
                 }
             }
         });
+
+        supporterButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                if (RegisterManagerMenu.getCurrentManager() == null) {
+                    handleRegisterSupporter();
+                } else {
+                    handleManagerMenu();
+                }
+            }
+        });
     }
 
     public void handleRegisterSeller() {
@@ -114,6 +126,11 @@ public class AccountsMenu extends Menu {
     public void handleRegisterManager() {
         RegisterManagerMenu registerManagerMenu = new RegisterManagerMenu(this);
         registerManagerMenu.show();
+    }
+
+    public void handleRegisterSupporter() {
+        RegisterSupporterMenu registerSupporterMenu = new RegisterSupporterMenu(this);
+        registerSupporterMenu.show();
     }
 
     public void handleCustomerMenu() {
