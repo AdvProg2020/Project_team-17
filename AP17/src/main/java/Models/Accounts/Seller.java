@@ -1,9 +1,9 @@
 package Models.Accounts;
 
-import Controller.AccountsManager.SellerAbilitiesManager;
 import Models.Discount;
 import Models.Product;
 import Models.Logs.SellLog;
+import Models.Wallet;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,11 +14,13 @@ public class Seller extends Account {
     private static ArrayList<Seller> allSellers = new ArrayList<Seller>();
     private ArrayList<Discount> allDiscount = new ArrayList<>();
     private ArrayList<SellLog> logs;
+    private Wallet wallet;
 
     public Seller(String userName, String firstName, String lastName, String email
             , String phoneNumber, String password, double credit, String companyName) throws IOException {
         super(userName, firstName, lastName, email, phoneNumber, password, credit);
         this.companyName = companyName;
+        this.wallet = new Wallet(this, credit);
         allProducts = new ArrayList<>();
         logs = new ArrayList<>();
         allSellers.add(this);
@@ -55,7 +57,7 @@ public class Seller extends Account {
     public ArrayList<String> getDiscountInfo(Seller seller) {
         ArrayList<String> allDiscountForSeller = new ArrayList<>();
         for (Discount discount : seller.allDiscount) {
-            allDiscountForSeller.add( discount.getDiscountId());
+            allDiscountForSeller.add(discount.getDiscountId());
         }
         return allDiscountForSeller;
     }
@@ -131,6 +133,14 @@ public class Seller extends Account {
 
     public void addMoneyToCredit(Product product) {
         this.credit += product.calculateProductPrice(product);
+    }
+
+    public ArrayList<Discount> getAllDiscount() {
+        return allDiscount;
+    }
+
+    public Wallet getWallet() {
+        return wallet;
     }
 
     @Override
