@@ -94,6 +94,11 @@ public class CManagerController {
         Client.sendMessage(func);
     }
 
+    public static void addSupporter() {
+        String func = "Add Supporter Account";
+        Client.sendMessage(func);
+    }
+
     public static void deleteProduct() {
         String func = "Delete Product";
         Client.sendMessage(func);
@@ -136,4 +141,3 @@ public class CManagerController {
     }
 
 }
-
