@@ -27,7 +27,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        LoadFromFile.load(new Gson());
+        //LoadFromFile.load(new Gson());
         System.out.println(Customer.getAllCustomers().size());
         Menu.setWindow(window);
         MainMenu mainMenu = new MainMenu();

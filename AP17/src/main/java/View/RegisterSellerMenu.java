@@ -93,7 +93,7 @@ public class RegisterSellerMenu extends Menu {
 
     public void registerSellerScene() {
         String path = "C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Sounds\\button.mp3";
-       // String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+        // String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
 
@@ -136,6 +136,9 @@ public class RegisterSellerMenu extends Menu {
         TextField extraTextField = new TextField();
         extraTextField.setPromptText("company name");
 
+        TextField paths = new TextField();
+        paths.setPromptText("path");
+
         Button SUButton = new Button("sign up");
         userNameTextField.setStyle(style);
         passwordField.setStyle(style);
@@ -145,6 +148,7 @@ public class RegisterSellerMenu extends Menu {
         phoneNumberTextField.setStyle(style);
         addressTextField.setStyle(style);
         extraTextField.setStyle(style);
+        paths.setStyle(style);
         SUButton.setStyle(style);
         SUButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
@@ -153,7 +157,7 @@ public class RegisterSellerMenu extends Menu {
                 if (RegisterAndLoginManager.canHaveAccountWithThisUsername(userNameTextField.getText())) {
                     try {
                         new Seller(userNameTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText(),
-                                phoneNumberTextField.getText(), passwordField.getText(), 0, extraTextField.getText());
+                                phoneNumberTextField.getText(), passwordField.getText(), 0, extraTextField.getText(), paths.getText());
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -178,7 +182,7 @@ public class RegisterSellerMenu extends Menu {
                 parentMenu.show();
             }
         });
-        vBox.getChildren().addAll(backButton, title, userNameTextField, passwordField, firstNameTextField, lastNameTextField, emailTextField, phoneNumberTextField, addressTextField, extraTextField, SUButton, notify);
+        vBox.getChildren().addAll(backButton, title, userNameTextField, passwordField, firstNameTextField, lastNameTextField, emailTextField, phoneNumberTextField, addressTextField, extraTextField, paths, SUButton, notify);
         pane.setCenter(vBox);
         pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
         Scene scene = new Scene(pane, 600, 600);
@@ -187,7 +191,7 @@ public class RegisterSellerMenu extends Menu {
 
     public void loginSellerScene() {
         String path = "C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Sounds\\button.mp3";
-       // String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+        // String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
 

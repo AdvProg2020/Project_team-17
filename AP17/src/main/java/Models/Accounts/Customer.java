@@ -17,8 +17,8 @@ public class Customer extends Account {
     private Wallet wallet;
 
     public Customer(String userName, String firstName, String lastName, String email,
-                    String phoneNumber, String password, double credit, String address) throws IOException {
-        super(userName, firstName, lastName, email, phoneNumber, password, credit);
+                    String phoneNumber, String password, double credit, String address,String path) throws IOException {
+        super(userName, firstName, lastName, email, phoneNumber, password, credit,path);
         buyLog = new ArrayList<>();
         this.cart = new Cart(this);
         this.address = address;
