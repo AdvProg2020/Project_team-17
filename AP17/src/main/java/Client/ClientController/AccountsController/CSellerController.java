@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class SellerController {
+public class CSellerController {
 
     public static String showSellerInfo() throws Exception {
         String func = "Show Seller Info";
