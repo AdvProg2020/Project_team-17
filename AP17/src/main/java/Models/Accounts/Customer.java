@@ -3,9 +3,8 @@ package Models.Accounts;
 import Models.Logs.BuyLog;
 import Models.Cart;
 import Models.DiscountCode;
-import com.google.gson.Gson;
+import Models.Wallet;
 
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -15,6 +14,7 @@ public class Customer extends Account {
     private ArrayList<BuyLog> buyLog;
     private Cart cart;
     private String address;
+    private Wallet wallet;
 
     public Customer(String userName, String firstName, String lastName, String email,
                     String phoneNumber, String password, double credit, String address) throws IOException {
@@ -22,6 +22,7 @@ public class Customer extends Account {
         buyLog = new ArrayList<>();
         this.cart = new Cart(this);
         this.address = address;
+        this.wallet = new Wallet(this, credit);
         discountCodes = new ArrayList<>();
         allCustomers.add(this);
     }
@@ -90,6 +91,9 @@ public class Customer extends Account {
         return buyLog;
     }
 
+    public Wallet getWallet() {
+        return wallet;
+    }
 
     @Override
     public String toString() {
