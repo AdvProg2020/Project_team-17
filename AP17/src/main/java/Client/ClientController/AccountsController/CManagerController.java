@@ -9,7 +9,7 @@ import Models.Request.Request;
 
 import java.util.ArrayList;
 
-public class ManagerController {
+public class CManagerController {
     public static void showManagerInfo() {
         String func = "Show Manager Info";
         Client.sendMessage(func);
