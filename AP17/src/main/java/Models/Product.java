@@ -42,7 +42,7 @@ public class Product {
         scoresForProduct.add(averageScore);
         this.productsSpecialFeature = productsSpecialFeature;
         this.path = path;
-        this.productStateEnum=ProductStateEnum.PRODUCING;
+        this.productStateEnum = ProductStateEnum.PRODUCING;
         allProducts.add(this);
         pointOfViews = new ArrayList<>();
     }
@@ -248,6 +248,10 @@ public class Product {
 
     public void setProductStateEnum(ProductStateEnum productStateEnum) {
         this.productStateEnum = productStateEnum;
+    }
+
+    public ProductStateEnum getProductStateEnum() {
+        return productStateEnum;
     }
 
     public String digestAttributes() {
