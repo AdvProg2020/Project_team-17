@@ -88,6 +88,7 @@ public class PaymentPage extends Menu {
             public void handle(MouseEvent event) {
                 mediaPlayer.play();
                 try {
+                    CartManager.changeProductsState(RegisterCustomerMenu.getCurrentCustomer());
                     notify.setText(CustomerAbilitiesManager.finalPay(RegisterCustomerMenu.getCurrentCustomer(), DiscountCodePage.getDiscountCode()));
                 } catch (IOException e) {
                     e.printStackTrace();
