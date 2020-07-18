@@ -1,5 +1,6 @@
 package Models.Accounts;
 
+import Models.Bank.BankAccount;
 import Models.DiscountCode;
 
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ public abstract class Account {
     protected String phoneNumber;
     protected String password;
     protected double credit;
-    protected String bankAccountId;
+    protected BankAccount bankAccount;
     protected String path;
     private ArrayList<DiscountCode> allDiscountCodes;
 

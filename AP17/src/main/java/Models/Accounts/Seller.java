@@ -1,5 +1,6 @@
 package Models.Accounts;
 
+import Models.Bank.BankAccount;
 import Models.Discount;
 import Models.Product;
 import Models.Logs.SellLog;
@@ -21,6 +22,7 @@ public class Seller extends Account {
         super(userName, firstName, lastName, email, phoneNumber, password, credit,path);
         this.companyName = companyName;
         this.wallet = new Wallet(this, credit);
+        this.bankAccount = new BankAccount(firstName,lastName,userName,password);
         allProducts = new ArrayList<>();
         logs = new ArrayList<>();
         allSellers.add(this);

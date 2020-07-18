@@ -17,7 +17,7 @@ public class BankAccount {
         this.username = username;
         this.password = password;
         this.accountId = allBankAccounts.size() + 1000;
-        this.balance = 0;
+        this.balance = 10000;
         allBankAccounts.add(this);
     }
 
