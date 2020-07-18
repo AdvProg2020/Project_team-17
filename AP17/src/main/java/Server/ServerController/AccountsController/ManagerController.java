@@ -4,6 +4,7 @@ import Client.Client;
 import Models.Accounts.*;
 import Models.Category;
 import Models.DiscountCode;
+import Models.Logs.BuyLog;
 import Models.Product;
 import Models.Request.Request;
 import View.RegisterManagerMenu;
@@ -98,6 +99,15 @@ public class ManagerController {
         String string = "";
         if (DiscountCode.getDiscountCodeWithCode(code) != null) {
             string = (DiscountCode.getDiscountCodeWithCode(code).toString());
+        } else {
+            Client.sendObject(new Exception("there isn't any account with this username"));
+        }
+        return string;
+    }
+    public static String showLogInfo(String id) {
+        String string = "";
+        if (BuyLog.getBuyLogWithId(id) != null) {
+            string = (BuyLog.getBuyLogWithId(id).getName());
         } else {
             Client.sendObject(new Exception("there isn't any account with this username"));
         }

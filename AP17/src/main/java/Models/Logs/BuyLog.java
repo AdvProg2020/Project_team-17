@@ -28,13 +28,17 @@ public class BuyLog extends Log {
         return false;
     }
 
-    public static BuyLog getButLogWithId(String id) {
+    public static BuyLog getBuyLogWithId(String id) {
         for (BuyLog buyLog : allBuyLogs) {
             if (buyLog.getId().equals(id)) {
                 return buyLog;
             }
         }
         return null;
+    }
+
+    public static ArrayList<BuyLog> getAllBuyLogs() {
+        return allBuyLogs;
     }
 
     @Override
