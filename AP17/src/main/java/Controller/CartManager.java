@@ -3,6 +3,8 @@ package Controller;
 import Models.Accounts.Customer;
 import Models.Cart;
 import Models.DiscountCode;
+import Models.Enums.ProductEnum;
+import Models.Enums.ProductStateEnum;
 import Models.Product;
 
 import java.util.ArrayList;
@@ -37,6 +39,13 @@ public class CartManager {
     public static void decreaseProduct(Customer customer, Product product) {
         Cart cart = customer.getCart();
         cart.decreaseNumberOfProduct(product);
+    }
+
+    public static void changeProductsState(Customer customer){
+        Cart cart= customer.getCart();
+        for (Product product : cart.getProductsInCart()) {
+            product.setProductStateEnum(ProductStateEnum.SEND_TO_MANAGER);
+        }
     }
 
 }

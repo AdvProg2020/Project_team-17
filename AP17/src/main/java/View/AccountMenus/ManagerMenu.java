@@ -14,6 +14,8 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -25,6 +27,7 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
+import java.io.FileInputStream;
 import java.nio.file.Paths;
 
 public class ManagerMenu extends Menu {
@@ -131,10 +134,27 @@ public class ManagerMenu extends Menu {
             }
         });
 
-        vBox.getChildren().addAll(backButton, manageUsers, manageProducts, manageDiscountCodes, manageRequests, manageCategories, editButton);
+        Button logs = new Button("Show logs");
+        logs.setStyle(style);
+        logs.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                setLogsScene();
+            }
+        });
+
+
+        vBox.getChildren().addAll(backButton, manageUsers, manageProducts, manageDiscountCodes, manageRequests ,manageCategories, editButton, logs);
         pane.setLeft(vBox);
         VBox vBox1 = new VBox(10);
         vBox1.setAlignment(Pos.CENTER);
+        Image image = null;
+        try {
+            FileInputStream inputStream = new FileInputStream(RegisterSellerMenu.getCurrentSeller().getPath());
+            image = new Image(inputStream);
+        } catch (Exception e) {
+        }
+        ImageView imageView = new ImageView(image);
         Text title = new Text("MANAGER");
         Text username = new Text("username: " + RegisterManagerMenu.getCurrentManager().getUserName());
         Text firstName = new Text("first name: " + RegisterManagerMenu.getCurrentManager().getFirstName());
@@ -147,7 +167,7 @@ public class ManagerMenu extends Menu {
         lastName.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
         email.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
         phoneNumber.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
-        vBox1.getChildren().addAll(title, username, firstName, lastName, email, phoneNumber);
+        vBox1.getChildren().addAll(imageView, title, username, firstName, lastName, email, phoneNumber);
         pane.setCenter(vBox1);
         pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
         Scene scene = new Scene(pane, 600, 600);
@@ -201,11 +221,17 @@ public class ManagerMenu extends Menu {
 
     public void handleLogout() {
         if (RegisterCustomerMenu.getCurrentCustomer() != null) {
+            RegisterCustomerMenu.removeFromOnlineCustomer(RegisterCustomerMenu.getCurrentCustomer());
             RegisterCustomerMenu.setCurrentCustomer(null);
         } else if (RegisterSellerMenu.getCurrentSeller() != null) {
+            RegisterSellerMenu.removeFromOnlineSeller(RegisterSellerMenu.getCurrentSeller());
             RegisterSellerMenu.setCurrentSeller(null);
         } else if (RegisterManagerMenu.getCurrentManager() != null) {
+            RegisterManagerMenu.removeFromOnlineManager(RegisterManagerMenu.getCurrentManager());
             RegisterManagerMenu.setCurrentManager(null);
+        } else if (RegisterSupporterMenu.getCurrentSupporter() != null) {
+            RegisterSupporterMenu.removeFromOnlineSupporter(RegisterSupporterMenu.getCurrentSupporter());
+            RegisterSupporterMenu.setCurrentSupporter(null);
         }
         MainMenu mainMenu = new MainMenu();
         mainMenu.show();
@@ -312,6 +338,8 @@ public class ManagerMenu extends Menu {
         Button delete = new Button("Delete account");
         Button addManager = new Button("Add manager");
         Button addSupporter = new Button("Add supporter");
+        Button onlineAccounts = new Button("Users status");
+        onlineAccounts.setStyle(style);
         view.setStyle(style);
         delete.setStyle(style);
         addManager.setStyle(style);
@@ -336,6 +364,29 @@ public class ManagerMenu extends Menu {
                 alert.show();
                 notify.setText("");
             }
+        });
+
+        onlineAccounts.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
+                Alert alert = new Alert(Alert.AlertType.NONE);
+                alert.setTitle("show user status");
+                alert.setHeaderText("user information");
+                try {
+                    CManagerController.showAccountStatus();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                //String s = ManagerAbilitiesManager.viewAccountByUsername(listView.getSelectionModel().getSelectedItem());
+                //alert.setContentText(s);
+                alert.setContentText(ManagerController.showUserStatusInfo(listView.getSelectionModel().getSelectedItem()));
+                ButtonType buttonType = new ButtonType("Exit", ButtonBar.ButtonData.CANCEL_CLOSE);
+                alert.getButtonTypes().setAll(buttonType);
+                alert.show();
+                notify.setText("");
+            }
+
         });
 
         delete.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
@@ -417,8 +468,12 @@ public class ManagerMenu extends Menu {
         TextField phoneNumberTextField = new TextField();
         phoneNumberTextField.setPromptText("phone number");
 
+        TextField paths = new TextField();
+        paths.setPromptText("paths");
+
         TextField addressTextField = new TextField();
         addressTextField.setPromptText("address");
+
         Button SUButton = new Button("Sign up");
         userNameTextField.setStyle(style);
         passwordField.setStyle(style);
@@ -427,6 +482,7 @@ public class ManagerMenu extends Menu {
         emailTextField.setStyle(style);
         addressTextField.setStyle(style);
         phoneNumberTextField.setStyle(style);
+        paths.setStyle(style);
         SUButton.setStyle(style);
 
         SUButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
@@ -446,7 +502,7 @@ public class ManagerMenu extends Menu {
                     }
                     try {
                         ManagerController.addManager(userNameTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText()
-                                , phoneNumberTextField.getText(), passwordField.getText());
+                                , phoneNumberTextField.getText(), passwordField.getText(), paths.getText());
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -468,7 +524,7 @@ public class ManagerMenu extends Menu {
             }
         });
 
-        vBox.getChildren().addAll(backButton, title, userNameTextField, passwordField, firstNameTextField, lastNameTextField, emailTextField, phoneNumberTextField, addressTextField, SUButton, notify);
+        vBox.getChildren().addAll(backButton, title, userNameTextField, passwordField, firstNameTextField, lastNameTextField, emailTextField, phoneNumberTextField, addressTextField, paths, SUButton, notify);
         vBox.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
         pane.setCenter(vBox);
         pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
@@ -518,6 +574,10 @@ public class ManagerMenu extends Menu {
 
         TextField addressTextField = new TextField();
         addressTextField.setPromptText("address");
+
+        TextField paths = new TextField();
+        paths.setPromptText("path");
+
         Button SUButton = new Button("Sign up");
         userNameTextField.setStyle(style);
         passwordField.setStyle(style);
@@ -545,7 +605,7 @@ public class ManagerMenu extends Menu {
                     }
                     try {
                         ManagerController.addSupporter(userNameTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText()
-                                , phoneNumberTextField.getText(), passwordField.getText());
+                                , phoneNumberTextField.getText(), passwordField.getText(), paths.getText());
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -667,6 +727,71 @@ public class ManagerMenu extends Menu {
         });
 
         vBox1.getChildren().addAll(edit, add, remove, notify);
+        pane.setLeft(vBox1);
+        pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
+        Scene scene = new Scene(pane, 600, 600);
+        Menu.window.setScene(scene);
+    }
+
+    public void setLogsScene() {
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+        Media media = new Media(Paths.get(path).toUri().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+        BorderPane pane = new BorderPane();
+        String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
+                "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
+                + "linear-gradient(#cdded5 0%, #f6f6f6 50%);" +
+                " -fx-background-radius: 8,7,6; " +
+                "-fx-background-insets: 0,1,2; " +
+                "-fx-text-fill: #3193ff;"
+                + "-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); " +
+                "-fx-font-size: 1.2em; " +
+                "-fx-padding: 4px;";
+        Label notify = new Label();
+        VBox vBox = new VBox(10);
+        vBox.setAlignment(Pos.TOP_LEFT);
+        Button button = new Button("Back");
+        button.setStyle(style);
+
+        button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
+                show();
+            }
+        });
+
+        vBox.getChildren().addAll(button);
+        pane.setTop(vBox);
+        ListView<String> listView = new ListView<>();
+        listView.getItems().addAll(ManagerAbilitiesManager.showAllLogs());
+        pane.setCenter(listView);
+        VBox vBox1 = new VBox(10);
+        Button view = new Button("view log");
+        view.setStyle(style);
+
+        view.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
+                Alert alert = new Alert(Alert.AlertType.NONE);
+                alert.setTitle("log info");
+                alert.setHeaderText("log information");
+                try {
+                    CManagerController.showLogDetails();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                ManagerController.showLogInfo(listView.getSelectionModel().getSelectedItem());
+//                String s = ManagerAbilitiesManager.viewDiscountCode(listView.getSelectionModel().getSelectedItem());
+//                alert.setContentText(s);
+                ButtonType buttonType = new ButtonType("Exit", ButtonBar.ButtonData.CANCEL_CLOSE);
+                alert.getButtonTypes().setAll(buttonType);
+                alert.show();
+            }
+        });
+
+        vBox1.getChildren().addAll(view);
         pane.setLeft(vBox1);
         pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
         Scene scene = new Scene(pane, 600, 600);

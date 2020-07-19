@@ -4,18 +4,18 @@ import Client.Client;
 import Models.Accounts.Customer;
 import Models.Accounts.Manager;
 import Models.Accounts.Seller;
+import Models.Accounts.Supporter;
 
 import java.io.IOException;
 
 public class RegisterAndLoginController {
-    public static void registerSeller() {
-        String info = Client.receiveMessage();
-        String[] splitInfo;
-        splitInfo = info.split("\\s");
-        if (Seller.getSellerByName(splitInfo[0]) == null && Manager.getManagerByUserName(splitInfo[0]) == null && Customer.getCustomerByName(splitInfo[0]) == null) {
+    public static void registerSeller(String username, String firstName, String lastName,
+                                      String email, String phoneNumber, String password, String extraInfo, String path) {
+        if (Seller.getSellerByName(username) == null && Manager.getManagerByUserName(username) == null &&
+                Customer.getCustomerByName(username) == null && Supporter.getSupporterByUserName(username) == null) {
             try {
-                new Seller(splitInfo[0], splitInfo[1], splitInfo[2], splitInfo[3],
-                        splitInfo[4], splitInfo[5], 0, splitInfo[6]);
+                new Seller(username, firstName, lastName, email,
+                        phoneNumber, password, 0, extraInfo, path);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -24,26 +24,23 @@ public class RegisterAndLoginController {
         }
     }
 
-    public static void registerManger() throws Exception {
-        String info = Client.receiveMessage();
-        String[] splitInfo;
-        splitInfo = info.split("\\s");
-
-        if (Manager.getManagerByUserName(splitInfo[0]) == null && Customer.getCustomerByName(splitInfo[0]) == null && Seller.getSellerByName(splitInfo[0]) == null) {
-            new Manager(splitInfo[0], splitInfo[1], splitInfo[2], splitInfo[3], splitInfo[4], splitInfo[5]);
+    public static void registerManger(String username, String firstName, String lastName,
+                                      String email, String phoneNumber, String password,String path) throws Exception {
+        if (Seller.getSellerByName(username) == null && Manager.getManagerByUserName(username) == null &&
+                Customer.getCustomerByName(username) == null && Supporter.getSupporterByUserName(username) == null) {
+            new Manager(username, firstName, lastName, email, phoneNumber, password,path);
         } else {
             Client.sendObject(new Exception("there is an account with this username"));
         }
     }
 
-    public static void registerCustomer() {
-        String info = Client.receiveMessage();
-        String[] splitInfo;
-        splitInfo = info.split("\\s");
-        if (Seller.getSellerByName(splitInfo[0]) == null && Manager.getManagerByUserName(splitInfo[0]) == null && Customer.getCustomerByName(splitInfo[0]) == null) {
+    public static void registerCustomer(String username, String firstName, String lastName,
+                                        String email, String phoneNumber, String password, String extraInfo, String address, String path) {
+        if (Seller.getSellerByName(username) == null && Manager.getManagerByUserName(username) == null &&
+                Customer.getCustomerByName(username) == null && Supporter.getSupporterByUserName(username) == null) {
             try {
-                new Customer(splitInfo[0], splitInfo[1], splitInfo[2], splitInfo[3],
-                        splitInfo[4], splitInfo[5], Double.parseDouble(splitInfo[6]), splitInfo[7]);
+                new Customer(username, firstName, lastName, email,
+                        phoneNumber, password, Double.parseDouble(extraInfo), address, path);
             } catch (IOException e) {
                 e.printStackTrace();
             }

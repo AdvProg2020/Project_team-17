@@ -7,7 +7,7 @@ import View.RegisterCustomerMenu;
 
 import java.util.ArrayList;
 
-public class CustomerController {
+public class CCustomerController {
 
     public static String showCustomerInfo() throws Exception {
         String func = "Show Customer Info";

@@ -294,7 +294,7 @@ public class ProductMenu extends Menu {
         Text seller = new Text("Seller: " + product.getSeller());
 
         VBox info = new VBox(5);
-        info.getChildren().addAll(name, companyName, category, price, explanation, feature, score,seller);
+        info.getChildren().addAll(name, companyName, category, price, explanation, feature, score, seller);
 
         HBox hBox = new HBox(10);
         hBox.getChildren().addAll(imageView, info);
@@ -338,7 +338,7 @@ public class ProductMenu extends Menu {
         Text seller1 = new Text("Seller: " + product1.getSeller());
 
         VBox info1 = new VBox(5);
-        info1.getChildren().addAll(name1, companyName1, category1, price1, explanation1, feature1, score1,seller1);
+        info1.getChildren().addAll(name1, companyName1, category1, price1, explanation1, feature1, score1, seller1);
 
         HBox hBox1 = new HBox(10);
         hBox1.getChildren().addAll(imageView1, info1);
@@ -403,11 +403,17 @@ public class ProductMenu extends Menu {
 
     public void handleLogout() {
         if (RegisterCustomerMenu.getCurrentCustomer() != null) {
+            RegisterCustomerMenu.removeFromOnlineCustomer(RegisterCustomerMenu.getCurrentCustomer());
             RegisterCustomerMenu.setCurrentCustomer(null);
         } else if (RegisterSellerMenu.getCurrentSeller() != null) {
+            RegisterSellerMenu.removeFromOnlineSeller(RegisterSellerMenu.getCurrentSeller());
             RegisterSellerMenu.setCurrentSeller(null);
         } else if (RegisterManagerMenu.getCurrentManager() != null) {
+            RegisterManagerMenu.removeFromOnlineManager(RegisterManagerMenu.getCurrentManager());
             RegisterManagerMenu.setCurrentManager(null);
+        } else if (RegisterSupporterMenu.getCurrentSupporter() != null) {
+            RegisterSupporterMenu.removeFromOnlineSupporter(RegisterSupporterMenu.getCurrentSupporter());
+            RegisterSupporterMenu.setCurrentSupporter(null);
         }
         MainMenu mainMenu = new MainMenu();
         mainMenu.show();

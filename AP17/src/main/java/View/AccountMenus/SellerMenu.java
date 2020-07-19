@@ -12,6 +12,8 @@ import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -23,6 +25,7 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Paths;
 
@@ -41,7 +44,7 @@ public class SellerMenu extends Menu {
 
     public void setPersonalScene() {
         String path = "C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Sounds\\button.mp3";
-       // String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+        // String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
 
@@ -131,6 +134,13 @@ public class SellerMenu extends Menu {
         VBox vBox1 = new VBox(10);
         vBox1.setAlignment(Pos.CENTER);
         Text title = new Text("SELLER");
+        Image image = null;
+        try {
+            FileInputStream inputStream = new FileInputStream(RegisterSellerMenu.getCurrentSeller().getPath());
+            image = new Image(inputStream);
+        } catch (Exception e) {
+        }
+        ImageView imageView = new ImageView(image);
         Text username = new Text("username: " + RegisterSellerMenu.getCurrentSeller().getUserName());
         Text firstName = new Text("first name: " + RegisterSellerMenu.getCurrentSeller().getFirstName());
         Text lastName = new Text("last name: " + RegisterSellerMenu.getCurrentSeller().getLastName());
@@ -148,7 +158,7 @@ public class SellerMenu extends Menu {
         credit.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
         companyName.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
 
-        vBox1.getChildren().addAll(title, username, firstName, lastName, email, phoneNumber, credit, companyName);
+        vBox1.getChildren().addAll(imageView,title, username, firstName, lastName, email, phoneNumber, credit, companyName);
         pane.setCenter(vBox1);
         pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
         Scene scene = new Scene(pane, 600, 600);
@@ -263,7 +273,7 @@ public class SellerMenu extends Menu {
 
     public void setManageProductScene() {
         String path = "C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Sounds\\button.mp3";
-       // String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+        // String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
 
@@ -400,7 +410,7 @@ public class SellerMenu extends Menu {
 
     public void setAddProductScene() {
         String path = "C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Sounds\\button.mp3";
-       // String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+        // String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
 
@@ -459,7 +469,7 @@ public class SellerMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 try {
-                   SellerAbilitiesManager.addProduct(ID.getText(), name.getText(), company.getText(), Double.parseDouble(price.getText()),
+                    SellerAbilitiesManager.addProduct(ID.getText(), name.getText(), company.getText(), Double.parseDouble(price.getText()),
                             Category.getCategoryByName(category.getText()), RegisterSellerMenu.getCurrentSeller(), explanation.getText(), feature.getText(), paths.getText());
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -757,11 +767,17 @@ public class SellerMenu extends Menu {
 
     public void handleLogout() {
         if (RegisterCustomerMenu.getCurrentCustomer() != null) {
+            RegisterCustomerMenu.removeFromOnlineCustomer(RegisterCustomerMenu.getCurrentCustomer());
             RegisterCustomerMenu.setCurrentCustomer(null);
         } else if (RegisterSellerMenu.getCurrentSeller() != null) {
+            RegisterSellerMenu.removeFromOnlineSeller(RegisterSellerMenu.getCurrentSeller());
             RegisterSellerMenu.setCurrentSeller(null);
         } else if (RegisterManagerMenu.getCurrentManager() != null) {
+            RegisterManagerMenu.removeFromOnlineManager(RegisterManagerMenu.getCurrentManager());
             RegisterManagerMenu.setCurrentManager(null);
+        } else if (RegisterSupporterMenu.getCurrentSupporter() != null) {
+            RegisterSupporterMenu.removeFromOnlineSupporter(RegisterSupporterMenu.getCurrentSupporter());
+            RegisterSupporterMenu.setCurrentSupporter(null);
         }
         MainMenu mainMenu = new MainMenu();
         mainMenu.show();

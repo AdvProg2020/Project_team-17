@@ -1,5 +1,6 @@
 package Models.Accounts;
 
+import Models.Bank.BankAccount;
 import Models.DiscountCode;
 
 import java.util.ArrayList;
@@ -12,10 +13,11 @@ public abstract class Account {
     protected String phoneNumber;
     protected String password;
     protected double credit;
-    protected String bankAccountId;
+    protected BankAccount bankAccount;
+    protected String path;
     private ArrayList<DiscountCode> allDiscountCodes;
 
-    public Account(String userName, String firstName, String lastName, String email, String phoneNumber, String password, double credit) {
+    public Account(String userName, String firstName, String lastName, String email, String phoneNumber, String password, double credit, String path) {
         this.userName = userName;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -23,6 +25,7 @@ public abstract class Account {
         this.phoneNumber = phoneNumber;
         this.password = password;
         this.credit = credit;
+        this.path = path;
         allDiscountCodes = new ArrayList<>();
     }
 
@@ -76,6 +79,10 @@ public abstract class Account {
 
     public double getCredit() {
         return credit;
+    }
+
+    public String getPath() {
+        return path;
     }
 
     public void setCredit(double credit) {

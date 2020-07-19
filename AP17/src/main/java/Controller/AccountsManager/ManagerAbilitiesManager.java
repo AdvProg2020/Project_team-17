@@ -4,6 +4,8 @@ import Models.*;
 import Models.Accounts.Customer;
 import Models.Accounts.Manager;
 import Models.Accounts.Seller;
+import Models.Accounts.Supporter;
+import Models.Logs.BuyLog;
 import Models.Request.Request;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -26,6 +28,9 @@ public class ManagerAbilitiesManager {
         for (Manager manager : Manager.getAllManagers()) {
             allAccounts.add(manager.getUserName());
         }
+        for (Supporter supporter : Supporter.getAllSupporters()) {
+            allAccounts.add(supporter.getUserName());
+        }
         ObservableList data = FXCollections.observableArrayList();
         data.addAll(allAccounts);
         return data;
@@ -43,6 +48,9 @@ public class ManagerAbilitiesManager {
         } else if (Manager.isThereManagerWithUserName(username)) {
             Manager manager = Manager.getManagerByUserName(username);
             s = manager.toString();
+        }else if (Supporter.isThereSupporterWithUserName(username)) {
+            Supporter supporter = Supporter.getSupporterByUserName(username);
+            s = supporter.toString();
         }
         return s;
     }
@@ -75,8 +83,8 @@ public class ManagerAbilitiesManager {
 
     //handle in network
     public static void createAnotherManager(String username, String firstName, String lastName,
-                                            String email, String phoneNumber, String password) throws IOException {
-        new Manager(username, firstName, lastName, email, phoneNumber, password);
+                                            String email, String phoneNumber, String password, String path) throws IOException {
+        new Manager(username, firstName, lastName, email, phoneNumber, password, path);
     }
 
     //handle in network
@@ -176,6 +184,16 @@ public class ManagerAbilitiesManager {
         }
         ObservableList data = FXCollections.observableArrayList();
         data.addAll(showAllProducts);
+        return data;
+    }
+
+    public static ObservableList<String> showAllLogs() {
+        ArrayList<String> showAllLogs = new ArrayList<>();
+        for (BuyLog buyLog : BuyLog.getAllBuyLogs()) {
+            showAllLogs.add(buyLog.getId());
+        }
+        ObservableList data = FXCollections.observableArrayList();
+        data.addAll(showAllLogs);
         return data;
     }
 

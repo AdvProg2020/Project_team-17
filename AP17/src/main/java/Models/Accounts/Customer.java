@@ -1,5 +1,6 @@
 package Models.Accounts;
 
+import Models.Bank.BankAccount;
 import Models.Logs.BuyLog;
 import Models.Cart;
 import Models.DiscountCode;
@@ -17,12 +18,13 @@ public class Customer extends Account {
     private Wallet wallet;
 
     public Customer(String userName, String firstName, String lastName, String email,
-                    String phoneNumber, String password, double credit, String address) throws IOException {
-        super(userName, firstName, lastName, email, phoneNumber, password, credit);
+                    String phoneNumber, String password, double credit, String address, String path) throws IOException {
+        super(userName, firstName, lastName, email, phoneNumber, password, credit, path);
         buyLog = new ArrayList<>();
         this.cart = new Cart(this);
         this.address = address;
         this.wallet = new Wallet(this, credit);
+        this.bankAccount = new BankAccount(firstName, lastName, userName, password);
         discountCodes = new ArrayList<>();
         allCustomers.add(this);
     }

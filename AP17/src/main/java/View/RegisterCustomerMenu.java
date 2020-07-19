@@ -2,6 +2,7 @@ package View;
 
 import Controller.RegisterAndLoginManager;
 import Models.Accounts.Customer;
+import Models.Accounts.Supporter;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -19,10 +20,12 @@ import javafx.scene.media.MediaPlayer;
 import java.nio.file.Paths;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 
 public class RegisterCustomerMenu extends Menu {
     public static Customer currentCustomer;
+    public static ArrayList<Customer> onlineCustomers = new ArrayList<>();
 
     public RegisterCustomerMenu(Menu parentMenu) {
         super("Register Seller", parentMenu);
@@ -134,6 +137,9 @@ public class RegisterCustomerMenu extends Menu {
         TextField extraTextField = new TextField();
         extraTextField.setPromptText("credit");
 
+        TextField paths = new TextField();
+        paths.setPromptText("path");
+
         Button SUButton = new Button("Sign up");
         backButton.setStyle(style);
         userNameTextField.setStyle(style);
@@ -144,6 +150,7 @@ public class RegisterCustomerMenu extends Menu {
         addressTextField.setStyle(style);
         extraTextField.setStyle(style);
         SUButton.setStyle(style);
+        paths.setStyle(style);
 
         SUButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
@@ -152,7 +159,7 @@ public class RegisterCustomerMenu extends Menu {
                 if (RegisterAndLoginManager.canHaveAccountWithThisUsername(userNameTextField.getText())) {
                     try {
                         new Customer(userNameTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText(),
-                                phoneNumberTextField.getText(), passwordField.getText(), Double.parseDouble(extraTextField.getText()), addressTextField.getText());
+                                phoneNumberTextField.getText(), passwordField.getText(), Double.parseDouble(extraTextField.getText()), addressTextField.getText(), paths.getText());
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -178,7 +185,7 @@ public class RegisterCustomerMenu extends Menu {
             }
         });
 
-        vBox.getChildren().addAll(backButton, title, userNameTextField, passwordField, firstNameTextField, lastNameTextField, emailTextField, phoneNumberTextField, addressTextField, extraTextField, SUButton, notify);
+        vBox.getChildren().addAll(backButton, title, userNameTextField, passwordField, firstNameTextField, lastNameTextField, emailTextField, phoneNumberTextField, addressTextField, extraTextField, paths, SUButton, notify);
         pane.setCenter(vBox);
         pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
         Scene scene = new Scene(pane, 600, 600);
@@ -221,6 +228,7 @@ public class RegisterCustomerMenu extends Menu {
                 if (Customer.isThereCustomerWithUserName(usernameTextField.getText())) {
                     if (RegisterAndLoginManager.isUserNameAndPasswordCorrectForCustomer(usernameTextField.getText(), passwordField.getText())) {
                         currentCustomer = Customer.getCustomerByName(usernameTextField.getText());
+                        onlineCustomers.add(currentCustomer);
                         notify.setStyle("-fx-text-fill: #3193ff");
                         notify.setText("successfully signed in");
                     } else {
@@ -250,5 +258,13 @@ public class RegisterCustomerMenu extends Menu {
 
     public static void setCurrentCustomer(Customer currentCustomer) {
         RegisterCustomerMenu.currentCustomer = currentCustomer;
+    }
+
+    public static void removeFromOnlineCustomer(Customer customer) {
+        onlineCustomers.remove(customer);
+    }
+
+    public static ArrayList<Customer> getOnlineCustomers() {
+        return onlineCustomers;
     }
 }

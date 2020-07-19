@@ -92,15 +92,6 @@ public class CustomerMenu extends Menu {
                 setProductStateScene();
             }
         });
-        Button onlineSupporters = new Button("Online supportes");
-        onlineSupporters.setStyle(style);
-        onlineSupporters.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                mediaPlayer.play();
-                setOnlineSupportesScene();
-            }
-        });
 
         Button viewListOfDiscountCodes = new Button("Discount codes");
         viewListOfDiscountCodes.setStyle(style);
@@ -167,6 +158,7 @@ public class CustomerMenu extends Menu {
         String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
+
         BorderPane pane = new BorderPane();
         String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
                 "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
@@ -223,6 +215,7 @@ public class CustomerMenu extends Menu {
         String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
+
         BorderPane pane = new BorderPane();
         String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
                 "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
@@ -348,41 +341,6 @@ public class CustomerMenu extends Menu {
                 alert.show();
             }
         });
-        pane.setCenter(listView);
-        pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
-        Scene scene = new Scene(pane, 350, 350);
-        Menu.window.setScene(scene);
-    }
-
-    public void setOnlineSupportesScene() {
-        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
-        Media media = new Media(Paths.get(path).toUri().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(media);
-        BorderPane pane = new BorderPane();
-        String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
-                "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
-                + "linear-gradient(#cdded5 0%, #f6f6f6 50%);" +
-                " -fx-background-radius: 8,7,6; " +
-                "-fx-background-insets: 0,1,2; " +
-                "-fx-text-fill: #3193ff;"
-                + "-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); " +
-                "-fx-font-size: 1.2em; " +
-                "-fx-padding: 4px;";
-        VBox vBox = new VBox(10);
-        vBox.setAlignment(Pos.TOP_LEFT);
-        Button button = new Button("Back");
-        button.setStyle(style);
-        button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                mediaPlayer.play();
-                show();
-            }
-        });
-        vBox.getChildren().addAll(button);
-        pane.setTop(vBox);
-        ListView<String> listView = new ListView<>();
-        listView.getItems().addAll(CustomerAbilitiesManager.viewOnlineSupporters());
         pane.setCenter(listView);
         pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
         Scene scene = new Scene(pane, 350, 350);

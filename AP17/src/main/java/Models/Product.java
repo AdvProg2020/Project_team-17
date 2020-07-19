@@ -3,6 +3,7 @@ package Models;
 import Models.Accounts.Customer;
 import Models.Accounts.Seller;
 import Models.Enums.ProductEnum;
+import Models.Enums.ProductStateEnum;
 import Models.Logs.BuyLog;
 
 import java.io.IOException;
@@ -24,6 +25,7 @@ public class Product {
     private int visitedTime = 0;
     private Discount discount;
     private String path;
+    private ProductStateEnum productStateEnum;
     private ArrayList<PointOfView> pointOfViews;
     private ArrayList<Double> scoresForProduct = new ArrayList<>();
 
@@ -40,6 +42,7 @@ public class Product {
         scoresForProduct.add(averageScore);
         this.productsSpecialFeature = productsSpecialFeature;
         this.path = path;
+        this.productStateEnum = ProductStateEnum.PRODUCING;
         allProducts.add(this);
         pointOfViews = new ArrayList<>();
     }
@@ -241,6 +244,14 @@ public class Product {
 
     public String getProductsSpecialFeature() {
         return productsSpecialFeature;
+    }
+
+    public void setProductStateEnum(ProductStateEnum productStateEnum) {
+        this.productStateEnum = productStateEnum;
+    }
+
+    public ProductStateEnum getProductStateEnum() {
+        return productStateEnum;
     }
 
     public String digestAttributes() {

@@ -41,9 +41,22 @@ public class CustomerAbilitiesManager {
         return data;
     }
 
+    public static ObservableList<String> viewProductAndState(Customer customer) {
+        ArrayList<String> orders = new ArrayList<>();
+        for (BuyLog buyLog : customer.getBuyLog()) {
+            for (Product product : buyLog.getAllProducts()) {
+                orders.add(product.getName()+" "+product.getProductStateEnum());
+            }
+            orders.add(buyLog.getId());
+        }
+        ObservableList data = FXCollections.observableArrayList();
+        data.addAll(orders);
+        return data;
+    }
+
     //handle in network
     public static String showOrder(String id) {
-        return BuyLog.getButLogWithId(id).toString();
+        return BuyLog.getBuyLogWithId(id).toString();
     }
 
     //handle in network

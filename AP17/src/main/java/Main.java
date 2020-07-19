@@ -3,6 +3,7 @@ import Controller.LoadFromFile;
 import Controller.WriteIntoFile;
 import Models.Accounts.Customer;
 import Models.Accounts.Manager;
+import Models.ShopBankAccount;
 import View.MainMenu;
 import View.Menu;
 import com.google.gson.Gson;
@@ -27,8 +28,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        LoadFromFile.load(new Gson());
-        System.out.println(Customer.getAllCustomers().size());
+        //LoadFromFile.load(new Gson());
+        ShopBankAccount.getInstance();
         Menu.setWindow(window);
         MainMenu mainMenu = new MainMenu();
         mainMenu.show();

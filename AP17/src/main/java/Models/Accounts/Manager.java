@@ -1,14 +1,17 @@
 package Models.Accounts;
 
 
+import Models.Bank.BankAccount;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
 public class Manager extends Account {
     private static ArrayList<Manager> allManagers = new ArrayList<>();
 
-    public Manager(String userName, String firstName, String lastName, String email, String phoneNumber, String password) throws IOException {
-        super(userName, firstName, lastName, email, phoneNumber, password, 0);
+    public Manager(String userName, String firstName, String lastName, String email, String phoneNumber, String password, String path) throws IOException {
+        super(userName, firstName, lastName, email, phoneNumber, password, 0, path);
+        this.bankAccount = new BankAccount(firstName, lastName, userName, password);
         allManagers.add(this);
     }
 
