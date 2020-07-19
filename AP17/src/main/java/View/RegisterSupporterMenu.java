@@ -1,7 +1,6 @@
 package View;
 
 import Controller.RegisterAndLoginManager;
-import Models.Accounts.Manager;
 import Models.Accounts.Supporter;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -18,9 +17,11 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
 public class RegisterSupporterMenu extends Menu {
     public static Supporter currentSupporter;
+    public static ArrayList<Supporter> onlineSupporter = new ArrayList<>();
 
     public RegisterSupporterMenu(Menu parentMenu) {
         super("Login Supporter", parentMenu);
@@ -114,6 +115,7 @@ public class RegisterSupporterMenu extends Menu {
                 if (Supporter.isThereSupporterWithUserName(usernameTextField.getText())) {
                     if (RegisterAndLoginManager.isUserNameAndPasswordCorrectForSupporter(usernameTextField.getText(), passwordField.getText())) {
                         currentSupporter = Supporter.getSupporterByUserName(usernameTextField.getText());
+                        onlineSupporter.add(currentSupporter);
                         notify.setStyle("-fx-text-fill: #3193ff");
                         notify.setText("successfully signed in");
                     } else {
@@ -135,5 +137,21 @@ public class RegisterSupporterMenu extends Menu {
         pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
         Scene scene = new Scene(pane, 600, 600);
         Menu.window.setScene(scene);
+    }
+
+    public static Supporter getCurrentSupporter() {
+        return currentSupporter;
+    }
+
+    public static void removeFromOnlineSupporter(Supporter supporter) {
+        onlineSupporter.remove(supporter);
+    }
+
+    public static ArrayList<Supporter> getOnlineSupporter() {
+        return onlineSupporter;
+    }
+
+    public static void setCurrentSupporter(Supporter currentSupporter) {
+        RegisterSupporterMenu.currentSupporter = currentSupporter;
     }
 }

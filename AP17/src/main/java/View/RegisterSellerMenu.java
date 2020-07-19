@@ -3,6 +3,7 @@ package View;
 import Controller.RegisterAndLoginManager;
 
 import Models.Accounts.Seller;
+import Models.Accounts.Supporter;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -20,9 +21,11 @@ import javafx.scene.media.MediaPlayer;
 import java.nio.file.Paths;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class RegisterSellerMenu extends Menu {
     public static Seller currentSeller;
+    public static ArrayList<Seller> onlineSellers = new ArrayList<>();
 
     public RegisterSellerMenu(Menu parentMenu) {
         super("Register Seller ", parentMenu);
@@ -225,6 +228,7 @@ public class RegisterSellerMenu extends Menu {
                 if (Seller.isThereSellerWithUserName(usernameTextField.getText())) {
                     if (RegisterAndLoginManager.isUserNameAndPasswordCorrectForSeller(usernameTextField.getText(), passwordField.getText())) {
                         currentSeller = Seller.getSellerByName(usernameTextField.getText());
+                        onlineSellers.add(currentSeller);
                         notify.setStyle("-fx-text-fill: #3193ff");
                         notify.setText("successfully signed in");
                     } else {
@@ -257,5 +261,13 @@ public class RegisterSellerMenu extends Menu {
 
     public static void setCurrentSeller(Seller currentSeller) {
         RegisterSellerMenu.currentSeller = currentSeller;
+    }
+
+    public static void removeFromOnlineSeller(Seller seller) {
+        onlineSellers.remove(seller);
+    }
+
+    public static ArrayList<Seller> getOnlineSellers() {
+        return onlineSellers;
     }
 }

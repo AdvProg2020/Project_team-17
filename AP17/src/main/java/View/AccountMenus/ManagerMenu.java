@@ -221,11 +221,17 @@ public class ManagerMenu extends Menu {
 
     public void handleLogout() {
         if (RegisterCustomerMenu.getCurrentCustomer() != null) {
+            RegisterCustomerMenu.removeFromOnlineCustomer(RegisterCustomerMenu.getCurrentCustomer());
             RegisterCustomerMenu.setCurrentCustomer(null);
         } else if (RegisterSellerMenu.getCurrentSeller() != null) {
+            RegisterSellerMenu.removeFromOnlineSeller(RegisterSellerMenu.getCurrentSeller());
             RegisterSellerMenu.setCurrentSeller(null);
         } else if (RegisterManagerMenu.getCurrentManager() != null) {
+            RegisterManagerMenu.removeFromOnlineManager(RegisterManagerMenu.getCurrentManager());
             RegisterManagerMenu.setCurrentManager(null);
+        } else if (RegisterSupporterMenu.getCurrentSupporter() != null) {
+            RegisterSupporterMenu.removeFromOnlineSupporter(RegisterSupporterMenu.getCurrentSupporter());
+            RegisterSupporterMenu.setCurrentSupporter(null);
         }
         MainMenu mainMenu = new MainMenu();
         mainMenu.show();

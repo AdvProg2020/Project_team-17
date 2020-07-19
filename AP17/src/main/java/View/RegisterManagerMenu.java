@@ -2,6 +2,7 @@ package View;
 
 import Controller.RegisterAndLoginManager;
 import Models.Accounts.Manager;
+import Models.Accounts.Supporter;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -17,9 +18,11 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
 public class RegisterManagerMenu extends Menu {
     public static Manager currentManager;
+    public static ArrayList<Manager> onlineManagers = new ArrayList<>();
 
     public RegisterManagerMenu(Menu parentMenu) {
         super("Register Manager", parentMenu);
@@ -80,7 +83,7 @@ public class RegisterManagerMenu extends Menu {
 
     public void loginManagerScene() {
         String path = "C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Sounds\\button.mp3";
-       // String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+        // String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
 
@@ -114,6 +117,7 @@ public class RegisterManagerMenu extends Menu {
                 if (Manager.isThereManagerWithUserName(usernameTextField.getText())) {
                     if (RegisterAndLoginManager.isUserNameAndPasswordCorrectForManager(usernameTextField.getText(), passwordField.getText())) {
                         currentManager = Manager.getManagerByUserName(usernameTextField.getText());
+                        onlineManagers.add(currentManager);
                         notify.setStyle("-fx-text-fill: #3193ff");
                         notify.setText("successfully signed in");
                     } else {
@@ -143,6 +147,14 @@ public class RegisterManagerMenu extends Menu {
 
     public static void setCurrentManager(Manager currentManager) {
         RegisterManagerMenu.currentManager = currentManager;
+    }
+
+    public static void removeFromOnlineManager(Manager manager) {
+        onlineManagers.remove(manager);
+    }
+
+    public static ArrayList<Manager> getOnlineManagers() {
+        return onlineManagers;
     }
 }
 
