@@ -51,4 +51,14 @@ public class Wallet {
     public static void setLeastAmount(double leastAmount) {
         Wallet.leastAmount = leastAmount;
     }
+
+    public void increaseAmount(int amount) {
+        this.balance += amount;
+    }
+
+    public void decreaseAmount(int amount) throws Exception {
+        if (this.balance - amount < leastAmount)
+            throw new Exception("Can't decrease this amount !");
+        this.balance -= amount;
+    }
 }
