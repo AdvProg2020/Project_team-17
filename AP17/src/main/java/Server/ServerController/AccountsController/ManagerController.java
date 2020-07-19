@@ -7,6 +7,7 @@ import Models.DiscountCode;
 import Models.Logs.BuyLog;
 import Models.Product;
 import Models.Request.Request;
+import Models.Wallet;
 import View.RegisterCustomerMenu;
 import View.RegisterManagerMenu;
 import View.RegisterSellerMenu;
@@ -243,6 +244,10 @@ public class ManagerController {
         } else if (field.equals("feature")) {
             category.changeSpecialFeatures(category, newContentForThisField);
         }
+    }
+
+    public static void defineLeastAmountForSellerAndCustomerWallet(double amount) {
+        Wallet.setLeastAmount(amount);
     }
 
     public static void showAllProducts() {
