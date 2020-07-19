@@ -9,6 +9,7 @@ import Models.Request.Request;
 import com.google.gson.Gson;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -16,16 +17,19 @@ public class WriteIntoFile {
     public static void writeCustomersIntoFile(Gson gson) throws IOException {
         // Gson gson = new Gson();
         System.out.println(3);
-        FileWriter fileWriter = new FileWriter("C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Resources\\customers.txt", true);
+       // FileWriter fileWriter = new FileWriter("C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Resources\\customers.txt", true);
         // FileWriter fileWriter = new FileWriter("C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Resources\\customers.txt");
+        FileOutputStream fileOutputStream = new FileOutputStream("C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Resources\\customers.txt");
         System.out.println(4);
         for (Customer customer : Customer.getAllCustomers()) {
             System.out.println(5);
-            fileWriter.append(gson.toJson(customer) + "\n");
+            String toWrite = gson.toJson(customer) + "\n";
+            fileOutputStream.write(toWrite.getBytes());
+            fileOutputStream.flush();
             System.out.println(8);
         }
         System.out.println(6);
-        fileWriter.close();
+        fileOutputStream.close();
         System.out.println(7);
 
 
