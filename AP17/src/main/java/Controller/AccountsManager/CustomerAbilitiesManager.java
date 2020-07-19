@@ -3,9 +3,11 @@ package Controller.AccountsManager;
 import Models.*;
 import Models.Accounts.Customer;
 import Models.Accounts.Seller;
+import Models.Accounts.Supporter;
 import Models.Logs.BuyLog;
 import Models.Logs.SellLog;
 import View.PurchasingProcessMenus.ReceivingInformationPage;
+import View.RegisterSupporterMenu;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -41,11 +43,21 @@ public class CustomerAbilitiesManager {
         return data;
     }
 
+    public static ObservableList<String> viewOnlineSupporters() {
+        ArrayList<String> online = new ArrayList<>();
+        for (Supporter supporter : RegisterSupporterMenu.getOnlineSupporter()) {
+            online.add(supporter.getUserName());
+        }
+        ObservableList data = FXCollections.observableArrayList();
+        data.addAll(online);
+        return data;
+    }
+
     public static ObservableList<String> viewProductAndState(Customer customer) {
         ArrayList<String> orders = new ArrayList<>();
         for (BuyLog buyLog : customer.getBuyLog()) {
             for (Product product : buyLog.getAllProducts()) {
-                orders.add(product.getName()+" "+product.getProductStateEnum());
+                orders.add(product.getName() + " " + product.getProductStateEnum());
             }
             orders.add(buyLog.getId());
         }
