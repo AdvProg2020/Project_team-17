@@ -7,6 +7,8 @@ import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -18,6 +20,7 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
+import java.io.FileInputStream;
 import java.nio.file.Paths;
 
 
@@ -33,7 +36,7 @@ public class CustomerMenu extends Menu {
 
     public void setPersonalInfoScene() {
         String path = "C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Sounds\\button.mp3";
-       // String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+        // String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
 
@@ -79,6 +82,26 @@ public class CustomerMenu extends Menu {
                 setViewOrdersScene();
             }
         });
+
+        Button productState = new Button("Product state");
+        productState.setStyle(style);
+        productState.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
+                setProductStateScene();
+            }
+        });
+        Button onlineSupporters = new Button("Online supportes");
+        onlineSupporters.setStyle(style);
+        onlineSupporters.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
+                setOnlineSupportesScene();
+            }
+        });
+
         Button viewListOfDiscountCodes = new Button("Discount codes");
         viewListOfDiscountCodes.setStyle(style);
         viewListOfDiscountCodes.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
@@ -110,6 +133,13 @@ public class CustomerMenu extends Menu {
         pane.setLeft(vBox);
         VBox vBox1 = new VBox(10);
         vBox1.setAlignment(Pos.CENTER);
+        Image image = null;
+        try {
+            FileInputStream inputStream = new FileInputStream(RegisterSellerMenu.getCurrentSeller().getPath());
+            image = new Image(inputStream);
+        } catch (Exception e) {
+        }
+        ImageView imageView = new ImageView(image);
         Text title = new Text("CUSTOMER");
         Text username = new Text("username: " + RegisterCustomerMenu.getCurrentCustomer().getUserName());
         Text firstName = new Text("first name: " + RegisterCustomerMenu.getCurrentCustomer().getFirstName());
@@ -126,7 +156,7 @@ public class CustomerMenu extends Menu {
         phoneNumber.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
         credit.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
 
-        vBox1.getChildren().addAll(title, username, firstName, lastName, email, phoneNumber, credit);
+        vBox1.getChildren().addAll(imageView, title, username, firstName, lastName, email, phoneNumber, credit);
         pane.setCenter(vBox1);
         pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
         Scene scene = new Scene(pane, 600, 600);
@@ -137,7 +167,6 @@ public class CustomerMenu extends Menu {
         String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
-
         BorderPane pane = new BorderPane();
         String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
                 "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
@@ -194,7 +223,6 @@ public class CustomerMenu extends Menu {
         String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
-
         BorderPane pane = new BorderPane();
         String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
                 "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
@@ -234,6 +262,42 @@ public class CustomerMenu extends Menu {
                 alert.show();
             }
         });
+        pane.setCenter(listView);
+        pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
+        Scene scene = new Scene(pane, 600, 600);
+        Menu.window.setScene(scene);
+    }
+
+    public void setProductStateScene() {
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+        Media media = new Media(Paths.get(path).toUri().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+
+        BorderPane pane = new BorderPane();
+        String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
+                "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
+                + "linear-gradient(#cdded5 0%, #f6f6f6 50%);" +
+                " -fx-background-radius: 8,7,6; " +
+                "-fx-background-insets: 0,1,2; " +
+                "-fx-text-fill: #3193ff;"
+                + "-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); " +
+                "-fx-font-size: 1.2em; " +
+                "-fx-padding: 4px;";
+        VBox vBox = new VBox(10);
+        vBox.setAlignment(Pos.TOP_LEFT);
+        Button button = new Button("Back");
+        button.setStyle(style);
+        button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
+                show();
+            }
+        });
+        vBox.getChildren().addAll(button);
+        pane.setTop(vBox);
+        ListView<String> listView = new ListView<>();
+        listView.getItems().addAll(CustomerAbilitiesManager.viewProductAndState(RegisterCustomerMenu.getCurrentCustomer()));
         pane.setCenter(listView);
         pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
         Scene scene = new Scene(pane, 600, 600);
@@ -284,6 +348,41 @@ public class CustomerMenu extends Menu {
                 alert.show();
             }
         });
+        pane.setCenter(listView);
+        pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
+        Scene scene = new Scene(pane, 350, 350);
+        Menu.window.setScene(scene);
+    }
+
+    public void setOnlineSupportesScene() {
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+        Media media = new Media(Paths.get(path).toUri().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+        BorderPane pane = new BorderPane();
+        String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
+                "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
+                + "linear-gradient(#cdded5 0%, #f6f6f6 50%);" +
+                " -fx-background-radius: 8,7,6; " +
+                "-fx-background-insets: 0,1,2; " +
+                "-fx-text-fill: #3193ff;"
+                + "-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); " +
+                "-fx-font-size: 1.2em; " +
+                "-fx-padding: 4px;";
+        VBox vBox = new VBox(10);
+        vBox.setAlignment(Pos.TOP_LEFT);
+        Button button = new Button("Back");
+        button.setStyle(style);
+        button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
+                show();
+            }
+        });
+        vBox.getChildren().addAll(button);
+        pane.setTop(vBox);
+        ListView<String> listView = new ListView<>();
+        listView.getItems().addAll(CustomerAbilitiesManager.viewOnlineSupporters());
         pane.setCenter(listView);
         pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
         Scene scene = new Scene(pane, 350, 350);
@@ -343,11 +442,17 @@ public class CustomerMenu extends Menu {
 
     public void handleLogout() {
         if (RegisterCustomerMenu.getCurrentCustomer() != null) {
+            RegisterCustomerMenu.removeFromOnlineCustomer(RegisterCustomerMenu.getCurrentCustomer());
             RegisterCustomerMenu.setCurrentCustomer(null);
         } else if (RegisterSellerMenu.getCurrentSeller() != null) {
+            RegisterSellerMenu.removeFromOnlineSeller(RegisterSellerMenu.getCurrentSeller());
             RegisterSellerMenu.setCurrentSeller(null);
         } else if (RegisterManagerMenu.getCurrentManager() != null) {
+            RegisterManagerMenu.removeFromOnlineManager(RegisterManagerMenu.getCurrentManager());
             RegisterManagerMenu.setCurrentManager(null);
+        } else if (RegisterSupporterMenu.getCurrentSupporter() != null) {
+            RegisterSupporterMenu.removeFromOnlineSupporter(RegisterSupporterMenu.getCurrentSupporter());
+            RegisterSupporterMenu.setCurrentSupporter(null);
         }
         MainMenu mainMenu = new MainMenu();
         mainMenu.show();
