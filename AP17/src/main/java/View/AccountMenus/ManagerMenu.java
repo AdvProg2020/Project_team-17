@@ -125,6 +125,15 @@ public class ManagerMenu extends Menu {
             }
         });
 
+        Button defineLeastAmount = new Button("Define wallet least amount");
+        defineLeastAmount.setStyle(style);
+        defineLeastAmount.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                setLeastAmount();
+            }
+        });
+
         Button editButton = new Button("Edit field");
         editButton.setStyle(style);
         editButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
@@ -144,7 +153,7 @@ public class ManagerMenu extends Menu {
         });
 
 
-        vBox.getChildren().addAll(backButton, manageUsers, manageProducts, manageDiscountCodes, manageRequests ,manageCategories, editButton, logs);
+        vBox.getChildren().addAll(backButton, manageUsers, manageProducts, manageDiscountCodes, manageRequests, manageCategories, editButton, defineLeastAmount, logs);
         pane.setLeft(vBox);
         VBox vBox1 = new VBox(10);
         vBox1.setAlignment(Pos.CENTER);
@@ -289,6 +298,65 @@ public class ManagerMenu extends Menu {
                 // ManagerAbilitiesManager.changeField(RegisterManagerMenu.getCurrentManager(), field.getValue(), newContent.getText());
                 notify.setStyle("-fx-text-fill: #3193ff");
                 notify.setText("successfully changed");
+            }
+        });
+
+        vBox1.getChildren().addAll(hBox, notify);
+        pane.setCenter(vBox1);
+        pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
+        Scene scene = new Scene(pane, 500, 500);
+        Menu.window.setScene(scene);
+    }
+
+    public void setLeastAmount() {
+        BorderPane pane = new BorderPane();
+        String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
+                "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
+                + "linear-gradient(#cdded5 0%, #f6f6f6 50%);" +
+                " -fx-background-radius: 8,7,6; " +
+                "-fx-background-insets: 0,1,2; " +
+                "-fx-text-fill: #3193ff;"
+                + "-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); " +
+                "-fx-font-size: 1.2em; " +
+                "-fx-padding: 4px;";
+        VBox vBox = new VBox(10);
+        Label notify = new Label();
+        Button backButton = new Button("Back");
+        backButton.setStyle(style);
+        backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                show();
+                notify.setText("");
+            }
+        });
+        Label title = new Label("Define least amount for wallet");
+        vBox.getChildren().addAll(backButton, title);
+        pane.setTop(vBox);
+        HBox hBox = new HBox(10);
+        TextField textField = new TextField();
+        textField.setStyle(style);
+        textField.setPromptText("define least amount for wallet");
+        Button button = new Button("set");
+        button.setStyle(style);
+        hBox.getChildren().addAll(textField, button);
+        VBox vBox1 = new VBox(10);
+        button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                try {
+                    CManagerController.defineLeastAmount();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                try {
+                    ManagerController.defineLeastAmountForSellerAndCustomerWallet(Double.parseDouble(textField.getText()));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                // ManagerAbilitiesManager.changeField(RegisterManagerMenu.getCurrentManager(), field.getValue(), newContent.getText());
+                notify.setStyle("-fx-text-fill: #3193ff");
+                notify.setText("successfully defined");
             }
         });
 

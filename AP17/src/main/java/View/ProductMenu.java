@@ -1,7 +1,9 @@
 package View;
 
+import Client.ClientController.AccountsController.CManagerController;
 import Controller.ProductManager;
 import Models.Product;
+import Server.ServerController.AccountsController.ManagerController;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.beans.property.DoubleProperty;
@@ -23,9 +25,11 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Paths;
@@ -292,9 +296,20 @@ public class ProductMenu extends Menu {
         Text feature = new Text("Feature: " + product.getProductsSpecialFeature());
         Text score = new Text("Product Score: " + product.getAverageScore());
         Text seller = new Text("Seller: " + product.getSeller());
+        TextField textField = new TextField();
+        textField.setPromptText("enter the path");
+        Button button = new Button("show video");
+
+        button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
+                setVideoScene(textField.getText());
+            }
+        });
 
         VBox info = new VBox(5);
-        info.getChildren().addAll(name, companyName, category, price, explanation, feature, score, seller);
+        info.getChildren().addAll(name, companyName, category, price, explanation, feature, score, seller, textField, button);
 
         HBox hBox = new HBox(10);
         hBox.getChildren().addAll(imageView, info);
@@ -347,6 +362,43 @@ public class ProductMenu extends Menu {
         hBox2.getChildren().addAll(hBox, hBox1);
         pane.setCenter(hBox2);
         Scene scene = new Scene(pane, 1270, 650);
+        Menu.window.setScene(scene);
+    }
+
+    public void setVideoScene(String path) {
+        BorderPane pane = new BorderPane();
+        String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
+                "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
+                + "linear-gradient(#cdded5 0%, #f6f6f6 50%);" +
+                " -fx-background-radius: 8,7,6; " +
+                "-fx-background-insets: 0,1,2; " +
+                "-fx-text-fill: #3193ff;"
+                + "-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); " +
+                "-fx-font-size: 1.2em; " +
+                "-fx-padding: 4px;";
+        VBox vBox = new VBox(10);
+        Label notify = new Label();
+        Button backButton = new Button("Back");
+        backButton.setStyle(style);
+        backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                show();
+                notify.setText("");
+            }
+        });
+        Label title = new Label("video for product");
+        vBox.getChildren().addAll(backButton, title);
+        pane.setTop(vBox);
+
+        Media media = new Media(new File(path).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+        MediaView mediaView = new MediaView(mediaPlayer);
+        mediaPlayer.setAutoPlay(true);
+
+        pane.setCenter(mediaView);
+        pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
+        Scene scene = new Scene(pane, 500, 500);
         Menu.window.setScene(scene);
     }
 
