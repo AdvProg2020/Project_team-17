@@ -84,6 +84,11 @@ public class CManagerController {
         Client.sendMessage(func);
     }
 
+    public static void showAccountStatus() {
+        String func = "Show Account Status";
+        Client.sendMessage(func);
+    }
+
     public static void showLogDetails() {
         String func = "Show Log Details";
         Client.sendMessage(func);

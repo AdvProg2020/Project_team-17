@@ -8,6 +8,7 @@ public class Supporter extends Account {
 
     public Supporter(String userName, String firstName, String lastName, String email, String phoneNumber, String password, double credit,String path) {
         super(userName, firstName, lastName, email, phoneNumber, password, credit,path);
+        allSupporters.add(this);
     }
 
     public static boolean isThereSupporterWithUserName(String username) {
@@ -26,6 +27,10 @@ public class Supporter extends Account {
             }
         }
         return null;
+    }
+
+    public static ArrayList<Supporter> getAllSupporters() {
+        return allSupporters;
     }
 
     @Override

@@ -7,7 +7,10 @@ import Models.DiscountCode;
 import Models.Logs.BuyLog;
 import Models.Product;
 import Models.Request.Request;
+import View.RegisterCustomerMenu;
 import View.RegisterManagerMenu;
+import View.RegisterSellerMenu;
+import View.RegisterSupporterMenu;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -104,12 +107,26 @@ public class ManagerController {
         }
         return string;
     }
+
     public static String showLogInfo(String id) {
         String string = "";
         if (BuyLog.getBuyLogWithId(id) != null) {
             string = (BuyLog.getBuyLogWithId(id).getName());
         } else {
             Client.sendObject(new Exception("there isn't any account with this username"));
+        }
+        return string;
+    }
+
+    public static String showUserStatusInfo(String username) {
+        String string;
+        if (RegisterManagerMenu.getOnlineManagers().contains(Manager.getManagerByUserName(username)) ||
+                RegisterCustomerMenu.getOnlineCustomers().contains(Customer.getCustomerByName(username)) ||
+                RegisterSupporterMenu.getOnlineSupporter().contains(Supporter.getSupporterByUserName(username)) ||
+                RegisterSellerMenu.getOnlineSellers().contains(Seller.getSellerByName(username))) {
+            string = "online";
+        } else {
+            string = "offline";
         }
         return string;
     }
@@ -140,13 +157,16 @@ public class ManagerController {
         } else if (Seller.getSellerByName(username) != null) {
             account = Seller.getSellerByName(username);
             message = (account.toString());
+        } else if (Supporter.getSupporterByUserName(username) != null) {
+            account = Supporter.getSupporterByUserName(username);
+            message = (account.toString());
         } else {
             Client.sendObject(new Exception("there isn't any account with this username"));
         }
         return message;
     }
 
-    public static void deleteUser(String username) throws Exception {
+    public static void deleteUser(String username) {
         if (Customer.getCustomerByName(username) != null) {
             Customer.deleteCustomer(username);
         } else if (Manager.getManagerByUserName(username) != null) {
@@ -159,18 +179,18 @@ public class ManagerController {
     }
 
     public static void addManager(String username, String firstName, String lastName,
-                                  String email, String phoneNumber, String password,String path) throws Exception {
+                                  String email, String phoneNumber, String password, String path) throws Exception {
         if (Manager.getManagerByUserName(username) == null && Customer.getCustomerByName(username) == null && Seller.getSellerByName(username) == null) {
-            new Manager(username, firstName, lastName, email, phoneNumber, password,path);
+            new Manager(username, firstName, lastName, email, phoneNumber, password, path);
         } else {
             Client.sendObject(new Exception("there is an account with this username"));
         }
     }
 
     public static void addSupporter(String username, String firstName, String lastName,
-                                    String email, String phoneNumber, String password,String path) throws Exception {
+                                    String email, String phoneNumber, String password, String path) throws Exception {
         if (Manager.getManagerByUserName(username) == null && Customer.getCustomerByName(username) == null && Seller.getSellerByName(username) == null && Supporter.getSupporterByUserName(username) == null) {
-            new Supporter(username, firstName, lastName, email, phoneNumber, password, 0,path);
+            new Supporter(username, firstName, lastName, email, phoneNumber, password, 0, path);
         } else {
             Client.sendObject(new Exception("there is an account with this username"));
         }

@@ -4,6 +4,7 @@ import Models.*;
 import Models.Accounts.Customer;
 import Models.Accounts.Manager;
 import Models.Accounts.Seller;
+import Models.Accounts.Supporter;
 import Models.Logs.BuyLog;
 import Models.Request.Request;
 import javafx.collections.FXCollections;
@@ -27,6 +28,9 @@ public class ManagerAbilitiesManager {
         for (Manager manager : Manager.getAllManagers()) {
             allAccounts.add(manager.getUserName());
         }
+        for (Supporter supporter : Supporter.getAllSupporters()) {
+            allAccounts.add(supporter.getUserName());
+        }
         ObservableList data = FXCollections.observableArrayList();
         data.addAll(allAccounts);
         return data;
@@ -44,6 +48,9 @@ public class ManagerAbilitiesManager {
         } else if (Manager.isThereManagerWithUserName(username)) {
             Manager manager = Manager.getManagerByUserName(username);
             s = manager.toString();
+        }else if (Supporter.isThereSupporterWithUserName(username)) {
+            Supporter supporter = Supporter.getSupporterByUserName(username);
+            s = supporter.toString();
         }
         return s;
     }

@@ -144,7 +144,7 @@ public class ManagerMenu extends Menu {
         });
 
 
-        vBox.getChildren().addAll(backButton, manageUsers, manageProducts, manageDiscountCodes, manageRequests, manageCategories, editButton, logs);
+        vBox.getChildren().addAll(backButton, manageUsers, manageProducts, manageDiscountCodes, manageRequests ,manageCategories, editButton, logs);
         pane.setLeft(vBox);
         VBox vBox1 = new VBox(10);
         vBox1.setAlignment(Pos.CENTER);
@@ -338,6 +338,8 @@ public class ManagerMenu extends Menu {
         Button delete = new Button("Delete account");
         Button addManager = new Button("Add manager");
         Button addSupporter = new Button("Add supporter");
+        Button onlineAccounts = new Button("Users status");
+        onlineAccounts.setStyle(style);
         view.setStyle(style);
         delete.setStyle(style);
         addManager.setStyle(style);
@@ -362,6 +364,29 @@ public class ManagerMenu extends Menu {
                 alert.show();
                 notify.setText("");
             }
+        });
+
+        onlineAccounts.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
+                Alert alert = new Alert(Alert.AlertType.NONE);
+                alert.setTitle("show user status");
+                alert.setHeaderText("user information");
+                try {
+                    CManagerController.showAccountStatus();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                //String s = ManagerAbilitiesManager.viewAccountByUsername(listView.getSelectionModel().getSelectedItem());
+                //alert.setContentText(s);
+                alert.setContentText(ManagerController.showUserStatusInfo(listView.getSelectionModel().getSelectedItem()));
+                ButtonType buttonType = new ButtonType("Exit", ButtonBar.ButtonData.CANCEL_CLOSE);
+                alert.getButtonTypes().setAll(buttonType);
+                alert.show();
+                notify.setText("");
+            }
+
         });
 
         delete.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
