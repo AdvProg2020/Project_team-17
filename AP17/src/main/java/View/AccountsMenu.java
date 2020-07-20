@@ -23,8 +23,8 @@ public class AccountsMenu extends Menu {
 
     @Override
     public void show() {
-        String path = "C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Sounds\\button.mp3";
-       // String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+        //String path = "C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
         BorderPane pane = new BorderPane();
@@ -52,8 +52,8 @@ public class AccountsMenu extends Menu {
         });
         Image mainImage = null;
         try {
-            mainImage = new Image(new FileInputStream("C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Images\\MAIN_BACKGROUND.png"));
-           // mainImage = new Image(new FileInputStream("C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Images\\MAIN_BACKGROUND.png"));
+            //mainImage = new Image(new FileInputStream("C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Images\\MAIN_BACKGROUND.png"));
+            mainImage = new Image(new FileInputStream("C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Images\\MAIN_BACKGROUND.png"));
         } catch (Exception e) {
 
         }

@@ -159,7 +159,7 @@ public class ManagerMenu extends Menu {
         vBox1.setAlignment(Pos.CENTER);
         Image image = null;
         try {
-            FileInputStream inputStream = new FileInputStream(RegisterSellerMenu.getCurrentSeller().getPath());
+            FileInputStream inputStream = new FileInputStream(RegisterManagerMenu.getCurrentManager().getPath());
             image = new Image(inputStream);
         } catch (Exception e) {
         }
@@ -498,7 +498,7 @@ public class ManagerMenu extends Menu {
     }
 
     public void setAddManagerScene() {
-        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\button.mp3";
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
         BorderPane pane = new BorderPane();

@@ -1,6 +1,7 @@
 package Controller.AccountsManager;
 
 import Models.*;
+import Models.Accounts.Account;
 import Models.Accounts.Seller;
 import Models.Logs.Log;
 import Models.Logs.SellLog;
@@ -10,8 +11,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class SellerAbilitiesManager {
 
@@ -50,7 +54,7 @@ public class SellerAbilitiesManager {
 
     //handle in network (but need to be checked)
     public static void addProduct(String productId, String productName, String companyName,
-                                     double price, Category category, Seller seller, String productExplanation, String specialFeature, String path) throws IOException {
+                                  double price, Category category, Seller seller, String productExplanation, String specialFeature, String path) throws IOException {
         Product product = new Product(productId, productName, companyName, price,
                 seller, category, productExplanation, 0, specialFeature, path);
         new AddProductRequest(RegisterSellerMenu.getCurrentSeller(), product, category);

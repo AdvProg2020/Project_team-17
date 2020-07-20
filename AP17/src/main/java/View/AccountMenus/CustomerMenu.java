@@ -35,8 +35,8 @@ public class CustomerMenu extends Menu {
     }
 
     public void setPersonalInfoScene() {
-        String path = "C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Sounds\\button.mp3";
-        // String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+        //String path = "C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
 
@@ -136,7 +136,7 @@ public class CustomerMenu extends Menu {
         vBox1.setAlignment(Pos.CENTER);
         Image image = null;
         try {
-            FileInputStream inputStream = new FileInputStream(RegisterSellerMenu.getCurrentSeller().getPath());
+            FileInputStream inputStream = new FileInputStream(RegisterCustomerMenu.getCurrentCustomer().getPath());
             image = new Image(inputStream);
         } catch (Exception e) {
         }

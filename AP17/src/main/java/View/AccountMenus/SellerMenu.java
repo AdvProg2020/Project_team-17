@@ -43,8 +43,8 @@ public class SellerMenu extends Menu {
     }
 
     public void setPersonalScene() {
-        String path = "C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Sounds\\button.mp3";
-        // String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+        //String path = "C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
 
@@ -158,7 +158,7 @@ public class SellerMenu extends Menu {
         credit.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
         companyName.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
 
-        vBox1.getChildren().addAll(imageView,title, username, firstName, lastName, email, phoneNumber, credit, companyName);
+        vBox1.getChildren().addAll(imageView, title, username, firstName, lastName, email, phoneNumber, credit, companyName);
         pane.setCenter(vBox1);
         pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
         Scene scene = new Scene(pane, 600, 600);
@@ -272,8 +272,8 @@ public class SellerMenu extends Menu {
     }
 
     public void setManageProductScene() {
-        String path = "C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Sounds\\button.mp3";
-        // String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+        //String path = "C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
 
@@ -349,7 +349,6 @@ public class SellerMenu extends Menu {
     }
 
     public void setEditProductScene() {
-
         String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
@@ -409,8 +408,8 @@ public class SellerMenu extends Menu {
     }
 
     public void setAddProductScene() {
-        String path = "C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Sounds\\button.mp3";
-        // String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+        // String path = "C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
 
