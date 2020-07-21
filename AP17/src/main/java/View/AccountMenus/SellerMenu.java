@@ -1,11 +1,13 @@
 package View.AccountMenus;
 
+import Client.ClientController.AccountsController.CSellerController;
 import Controller.AccountsManager.SellerAbilitiesManager;
 import Models.Category;
 import Models.Discount;
 import Models.Product;
 import Models.Request.AddOffRequest;
 import Models.Request.AddProductRequest;
+import Server.ServerController.AccountsController.SellerController;
 import View.*;
 import View.Menu;
 import javafx.event.EventHandler;
@@ -271,7 +273,9 @@ public class SellerMenu extends Menu {
             public void handle(MouseEvent mouseEvent) {
                 if (Product.getProductWithId(productID.getText()) != null) {
                     if (Product.getProductWithId(productID.getText()).getSeller().equals(RegisterSellerMenu.getCurrentSeller())) {
-                        SellerAbilitiesManager.addAuction(productID.getText(), date.getText());
+                        //SellerAbilitiesManager.addAuction(productID.getText(), date.getText());
+                        CSellerController.addAuction();
+                        SellerController.addAuction(productID.getText(), date.getText());
                         notify.setStyle("-fx-text-fill: #3193ff");
                         notify.setText("auction added successfully");
                     } else {
