@@ -6,7 +6,7 @@ import Models.Accounts.Manager;
 import Models.ShopBankAccount;
 import View.MainMenu;
 import View.Menu;
-import com.google.gson.Gson;
+//import com.google.gson.Gson;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
