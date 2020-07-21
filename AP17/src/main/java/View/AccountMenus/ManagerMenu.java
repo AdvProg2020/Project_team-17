@@ -409,13 +409,11 @@ public class ManagerMenu extends Menu {
         Button addManager = new Button("Add manager");
         Button addSupporter = new Button("Add supporter");
         Button onlineAccounts = new Button("Users status");
-        Button addAuction = new Button("Add auction");
         onlineAccounts.setStyle(style);
         view.setStyle(style);
         delete.setStyle(style);
         addManager.setStyle(style);
         addSupporter.setStyle(style);
-        addAuction.setStyle(style);
         view.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -493,15 +491,8 @@ public class ManagerMenu extends Menu {
                 notify.setText("");
             }
         });
-        addAuction.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                mediaPlayer.play();
-                setAddAuctionScene();
-            }
-        });
 
-        vBox1.getChildren().addAll(view, delete, addManager, addAuction);
+        vBox1.getChildren().addAll(view, delete, addManager);
         pane.setLeft(vBox1);
         pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
         Scene scene = new Scene(pane, 600, 600);
