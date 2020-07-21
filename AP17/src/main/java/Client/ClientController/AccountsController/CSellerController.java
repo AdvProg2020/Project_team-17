@@ -161,4 +161,9 @@ public class CSellerController {
         if (response instanceof Exception)
             throw new Exception("there isn't any product with this id");
     }
+
+    public static void addAuction() {
+        String func = "Add Auction";
+        Client.sendMessage(func);
+    }
 }
