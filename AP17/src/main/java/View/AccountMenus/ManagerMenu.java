@@ -884,11 +884,16 @@ public class ManagerMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 mediaPlayer.play();
-                CManagerController.deleteDiscountCode();
-                ManagerController.deleteDiscountCode(listView.getSelectionModel().getSelectedItem());
+                try {
+                    CManagerController.deleteDiscountCode(listView.getSelectionModel().getSelectedItem());
+                    notify.setStyle("-fx-text-fill: #3193ff");
+                    notify.setText("discount code removed successfully");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 //ManagerAbilitiesManager.removeDiscountCode(listView.getSelectionModel().getSelectedItem());
-                notify.setStyle("-fx-text-fill: #3193ff");
-                notify.setText("discount code removed successfully");
+//                notify.setStyle("-fx-text-fill: #3193ff");
+//                notify.setText("discount code removed successfully");
             }
         });
 

@@ -121,8 +121,17 @@ public class ManagerController {
         }
     }
 
+    public static void deleteDiscountCode() throws Exception {
+        String code = ClientHandler.receiveMessage();
+        DiscountCode discountCode = DataBaseForServer.getDiscountCode(code);
+        if (discountCode != null) {
+            ClientHandler.sendObject(discountCode);
+        } else {
+            ClientHandler.sendObject(new Exception("there isn't request with this id"));
+        }
+    }
 
-//
+
 //    public static void addSale() {
 //        Sale sale = (Sale) ClientHandler.receiveObject();
 //        while (checkSaleCode(sale.getSaleCode())) {
@@ -146,29 +155,8 @@ public class ManagerController {
 //
 //        SetDataToDatabase.setSale(sale);
 //    }
-//
-//    public static void addSale(Sale sale) {
-//        while (checkSaleCode(sale.getSaleCode())) {
-//            sale.setSaleCode(Sale.getRandomSaleCode());
-//        }
-//        if (sale.getSaleAccounts().size() == 0) {
-//            try {
-//                sale.getSaleAccounts().clear();
-//                sale.getSaleAccounts().addAll(AdminController.showAllUsersLocal());
-//            } catch (ExceptionsLibrary.NoAccountException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//        for (Account i : sale.getSaleAccounts()) {
-//            if (i.getSaleCodes() == null) {
-//                i.setSaleCodes(new ArrayList<>());
-//            }
-//            i.getSaleCodes().add(sale);
-//            SetDataToDatabase.setAccount(i);
-//        }
-//
-//        SetDataToDatabase.setSale(sale);
-//    }
+
+
 //
 //    public static void showAllUsers() throws ExceptionsLibrary.NoAccountException {
 //        String customerPath = "Resources/Accounts/Customer";

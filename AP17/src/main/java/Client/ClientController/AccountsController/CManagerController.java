@@ -179,7 +179,7 @@ public class CManagerController {
         }
     }
 
-    public static void editDiscountCode(String code,String dataToEdit) throws Exception {
+    public static void editDiscountCode(String code, String dataToEdit) throws Exception {
         String func = "Edit Discount Code";
         Client.sendMessage(func);
 
@@ -209,141 +209,25 @@ public class CManagerController {
         }
     }
 
-//
-//    public static void editSaleInfo(String saleCode, HashMap<String, String> dataToEdit) throws ExceptionsLibrary.NoSaleException, ExceptionsLibrary.NoFeatureWithThisName, ExceptionsLibrary.CannotChangeThisFeature {
-//
-//        Client.sendMessage("Edit Sale Info");
-//
-//        Object[] toSend = new Object[2];
-//        toSend[0] = String.valueOf(saleCode);
-//        toSend[1] = dataToEdit;
-//        Client.sendObject(toSend);
-//        Object response = Client.receiveObject();
-//
-//        if (response instanceof ExceptionsLibrary.NoSaleException)
-//            throw new ExceptionsLibrary.NoSaleException();
-//        if (response instanceof ExceptionsLibrary.NoFeatureWithThisName)
-//            throw new ExceptionsLibrary.NoFeatureWithThisName();
-//        if (response instanceof ExceptionsLibrary.CannotChangeThisFeature)
-//            throw new ExceptionsLibrary.CannotChangeThisFeature();
-//
-////                Sale sale = GetDataFromDatabase.getSale(saleCode);
-////        for (String i : dataToEdit.keySet()) {
-////            try {
-////                if (i.equalsIgnoreCase("saleId")){
-////                    throw new ExceptionsLibrary.CannotChangeThisFeature();
-////                }
-////                Field field = Sale.class.getDeclaredField(i);
-////                if (i.equals("salePercent")) {
-////                    field.setAccessible(true);
-////                    field.set(sale, Double.parseDouble(dataToEdit.get(i)));
-////                } else if (i.equals("saleMaxAmount")) {
-////                    field.setAccessible(true);
-////                    field.set(sale, Double.parseDouble(dataToEdit.get(i)));
-////                } else if (i.equals("validTimes")) {
-////                    field.setAccessible(true);
-////                    field.set(sale, Integer.parseInt(dataToEdit.get(i)));
-////                } else {
-////                    field.setAccessible(true);
-////                    field.set(sale, dataToEdit.get(i));
-////                }
-////            } catch (NoSuchFieldException | IllegalAccessException e) {
-////                throw new ExceptionsLibrary.NoFeatureWithThisName();
-////            }
-////        }
-////        File customerFolder = new File("Resources/Accounts/Customer");
-////        File sellerFolder = new File("Resources/Accounts/Seller");
-////        File adminFolder = new File("Resources/Accounts/Admin");
-////
-////        FileFilter fileFilter = new FileFilter() {
-////            @Override
-////            public boolean accept(File file1) {
-////                if (file1.getName().endsWith(".json")) {
-////                    return true;
-////                }
-////                return false;
-////            }
-////        };
-////
-////        for (File i : customerFolder.listFiles(fileFilter)) {
-////            Gson gson = new GsonBuilder().serializeNulls().create();
-////            try {
-////                String fileData = "";
-////                fileData = new String(Files.readAllBytes(Paths.get(i.getPath())));
-////                Customer customer = gson.fromJson(fileData, Customer.class);
-////                Iterator<Sale> iterator = customer.getSaleCodes().iterator();
-////                while (iterator.hasNext()) {
-////                    Sale tempSale = iterator.next();
-////                    if (tempSale.getSaleCode().equalsIgnoreCase(sale.getSaleCode())) {
-////                        iterator.remove();
-////                    }
-////                }
-////                customer.getSaleCodes().add(sale);
-////                SetDataToDatabase.setAccount(customer);
-////            } catch (FileNotFoundException e) {
-////                e.printStackTrace();
-////            } catch (IOException e) {
-////                e.printStackTrace();
-////            }
-////        }
-////
-////        for (File i : sellerFolder.listFiles(fileFilter)) {
-////            Gson gson = new GsonBuilder().serializeNulls().create();
-////            try {
-////                String fileData = "";
-////                fileData = new String(Files.readAllBytes(Paths.get(i.getPath())));
-////                Seller seller = gson.fromJson(fileData, Seller.class);
-////
-////                Iterator<Sale> iterator = seller.getSaleCodes().iterator();
-////                while (iterator.hasNext()) {
-////                    Sale tempSale = iterator.next();
-////                    if (tempSale.getSaleCode().equalsIgnoreCase(sale.getSaleCode())) {
-////                        iterator.remove();
-////                    }
-////                }
-////                seller.getSaleCodes().add(sale);
-////                SetDataToDatabase.setAccount(seller);
-////            } catch (FileNotFoundException e) {
-////                e.printStackTrace();
-////            } catch (IOException e) {
-////                e.printStackTrace();
-////            }
-////        }
-////
-////        for (File i : adminFolder.listFiles(fileFilter)) {
-////            Gson gson = new GsonBuilder().serializeNulls().create();
-////            try {
-////                String fileData = "";
-////                fileData = new String(Files.readAllBytes(Paths.get(i.getPath())));
-////                Admin admin = gson.fromJson(fileData, Admin.class);
-////                Iterator<Sale> iterator = admin.getSaleCodes().iterator();
-////                while (iterator.hasNext()) {
-////                    Sale tempSale = iterator.next();
-////                    if (tempSale.getSaleCode().equalsIgnoreCase(sale.getSaleCode())) {
-////                        iterator.remove();
-////                    }
-////                }
-////                admin.getSaleCodes().add(sale);
-////                SetDataToDatabase.setAccount(admin);
-////            } catch (FileNotFoundException e) {
-////                e.printStackTrace();
-////            } catch (IOException e) {
-////                e.printStackTrace();
-////            }
-////        }
-////        Gson gson = new GsonBuilder().serializeNulls().create();
-////        String editedDetails = gson.toJson(sale);
-////        try {
-////            String path = "Resources/Sales/" + sale.getSaleCode() + ".json";
-////            FileWriter fileWriter = new FileWriter(path);
-////            fileWriter.write(editedDetails);
-////            fileWriter.close();
-////        } catch (IOException e) {
-////            e.printStackTrace();
-////        }
-//    }
-//
-//    public static void addSale(Sale sale) {
+    public static void deleteDiscountCode(String code) throws Exception {
+        String func = "Delete Discount Code";
+        Client.sendMessage(func);
+
+        Client.sendMessage(code);
+
+        try {
+            Object data = Client.receiveObject();
+            DiscountCode discountCode = (DiscountCode) data;
+            DiscountCode.removeDiscountCode(discountCode);
+            DataBaseForServer.deleletDiscoubtCode(discountCode);
+            //TODO check with kian's commit
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+
+//    public static void addSale() {
 //        while (checkSaleCode(sale.getSaleCode())) {
 //            sale.setSaleCode(Sale.getRandomSaleCode());
 //        }
@@ -363,24 +247,24 @@ public class CManagerController {
 //                e.printStackTrace();
 //            }
 //        }
-////        if (sale.getSaleAccounts().size() == 0){
-////            try {
-////                sale.getSaleAccounts().clear();
-////                sale.getSaleAccounts().addAll(controller.AdminController.showAllUsers());
-////            } catch (ExceptionsLibrary.NoAccountException e) {
-////                e.printStackTrace();
-////            }
-////        }
-////        for (Account i : sale.getSaleAccounts()) {
-////            if (i.getSaleCodes() == null) {
-////                i.setSaleCodes(new ArrayList<>());
-////            }
-////            i.getSaleCodes().add(sale);
-////            SetDataToDatabase.setAccount(i);
-////        }
-////
-////        SetDataToDatabase.setSale(sale);
-//    }
+//        if (sale.getSaleAccounts().size() == 0){
+//            try {
+//                sale.getSaleAccounts().clear();
+//                sale.getSaleAccounts().addAll(controller.AdminController.showAllUsers());
+//            } catch (ExceptionsLibrary.NoAccountException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//        for (Account i : sale.getSaleAccounts()) {
+//            if (i.getSaleCodes() == null) {
+//                i.setSaleCodes(new ArrayList<>());
+//            }
+//            i.getSaleCodes().add(sale);
+//            SetDataToDatabase.setAccount(i);
+//        }
+//
+//        SetDataToDatabase.setSale(sale);
+}
 //
 //    public static ArrayList<Account> showAllUsers() throws ExceptionsLibrary.NoAccountException {
 //
@@ -1022,167 +906,6 @@ public class CManagerController {
 ////        else {
 ////            return;
 ////        }
-////
-////    }
-////
-////    public static void showManagerInfo() {
-////        String func = "Show Manager Info";
-////        Client.sendMessage(func);
-////    }
-////
-////    public static void editManagerInfo(String field, String newContentForThisField) {
-////        String func = "Edit Manager Info " + field + " " + newContentForThisField;
-////        Client.sendMessage(func);
-////    }
-////
-////    public static void loginManager(String username) {
-////        String func = "Login Manager " + username;
-////        Client.sendMessage(func);
-////    }
-////
-////    public static void registerManager(String username, String firstName, String lastName, String email, String phoneNumber, String password, String path) {
-////        String func = "Register Manager " + username + "+" + firstName + "+" + lastName + "+" + email + "+" + phoneNumber + "+" + password + "+" + path;
-////        Client.sendMessage(func);
-////    }
-////
-////    public static ArrayList<Request> showManagerRequests() {
-////        String func = "Show manager Requests";
-////        Client.sendMessage(func);
-////
-////        Object response = Client.receiveObject();
-////        return (ArrayList<Request>) response;
-////    }
-////
-////
-////    public static void showRequest() {
-////        String func = "Show Request";
-////        Client.sendMessage(func);
-////    }
-////
-////    public static void processRequest() {
-////        Object[] receivedArray = (Object[]) Client.receiveObject();
-////        String requestId = (String) receivedArray[0];
-////        String acceptState = (String) receivedArray[1];
-////        Request request = Request.getRequestById(requestId);
-////        if (acceptState.equals("accepted")) {
-////            Request.getRequestById(requestId).accept();
-////            Request.deleteRequest(Request.getRequestById(requestId));
-////        } else if (acceptState.equals("rejected")) {
-////            Request.deleteRequest(request);
-////        }
-////    }
-////
-////    public static ArrayList<DiscountCode> showDiscountCodes() {
-////        String func = "Show Discount Code";
-////        Client.sendMessage(func);
-////
-////        Object response = Client.receiveObject();
-////        return (ArrayList<DiscountCode>) response;
-////    }
-////
-////
-////    public static void editDiscountCode() {
-////        String func = "Edit Sale Info";
-////        Client.sendMessage(func);
-////    }
-////
-////    public static void addDiscountCode() {
-////        String func = "Add Discount Code";
-////        Client.sendMessage(func);
-////    }
-////
-////    public static void addAuction() {
-////        String func = "Add Auction";
-////        Client.sendMessage(func);
-////    }
-////
-////    public static void showDiscountCodeDetails() throws Exception {
-////        String func = "Show Discount Code Details";
-////        Client.sendMessage(func);
-////    }
-////
-////    public static ArrayList<Account> showAllAccounts() {
-////        String func = "Show All Accounts";
-////        Client.sendMessage(func);
-////
-////        Object response = Client.receiveObject();
-////        return (ArrayList<Account>) response;
-////    }
-////
-////    public static void showAccountDetails() {
-////        String func = "Show Account Details";
-////        Client.sendMessage(func);
-////    }
-////
-////    public static void showAccountStatus() {
-////        String func = "Show Account Status";
-////        Client.sendMessage(func);
-//    }
-//
-//    public static void defineLeastAmount() {
-//        String func = "Define Least Amount";
-//        Client.sendMessage(func);
-//    }
-//
-//    public static void showLogDetails() {
-//        String func = "Show Log Details";
-//        Client.sendMessage(func);
-//    }
-//
-//    public static void deleteAccount() {
-//        String func = "Delete User";
-//        Client.sendMessage(func);
-//    }
-//
-//    public static void addManager() {
-//        String func = "Add Manager Account";
-//        Client.sendMessage(func);
-//    }
-//
-//    public static void addSupporter() {
-//        String func = "Add Supporter Account";
-//        Client.sendMessage(func);
-//    }
-//
-//    public static void deleteProduct() {
-//        String func = "Delete Product";
-//        Client.sendMessage(func);
-//    }
-//
-//    public static ArrayList<Category> showCategories() throws Exception {
-//        String func = "Show Categories";
-//        Client.sendMessage(func);
-//
-//        Object response = Client.receiveObject();
-//        return (ArrayList<Category>) response;
-//    }
-//
-//    public static void deleteCategory() {
-//        String func = "Delete Category";
-//        Client.sendMessage(func);
-//    }
-//
-//    public static void addCategory() {
-//        String func = "Add Category";
-//        Client.sendMessage(func);
-//    }
-//
-//    public static void deleteDiscountCode() {
-//        String func = "Delete Discount Code";
-//        Client.sendMessage(func);
-//    }
-//
-//    public static void editCategory() {
-//        String func = "Edit Category Info";
-//        Client.sendMessage(func);
-//    }
-//
-//    public static ArrayList<Product> showAllProducts() throws Exception {
-//        String func = "Show Products";
-//        Client.sendMessage(func);
-//
-//        Object response = Client.receiveObject();
-//        return (ArrayList<Product>) response;
-//    }
+
 
 }
