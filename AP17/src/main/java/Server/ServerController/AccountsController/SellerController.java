@@ -111,33 +111,47 @@ public class SellerController {
     }
 
     public static void editProductRequest() throws Exception {
-        Object[] receivedData = (Object[]) Client.receiveObject();
-        String productId = (String) receivedData[0];
-        if (Product.getProductWithId(productId) != null) {
-            Seller seller = Seller.getSellerByName((String) receivedData[1]);
-            String field = (String) receivedData[1];
-            String newContentForThisField = (String) receivedData[2];
-            new EditProductRequest(seller, Product.getProductWithId(productId), field, newContentForThisField);
+        Object[] receivedItems = (Object[]) ClientHandler.receiveObject();
+        String id = (String) receivedItems[0];
+        String field = (String) receivedItems[1];
+        String newContentForThisField = (String) receivedItems[2];
+
+        Product product = DataBaseForServer.getProduct(id);
+        if (product == null) {
+            ClientHandler.sendObject(new Exception("there isn't any product with this id"));
         } else {
-            Client.sendObject(new Exception("there isn't any product with this id"));
+            DataBaseForServer.addRequest(new EditProductRequest(getSeller(), product, field, newContentForThisField));
+            ClientHandler.sendObject(product);
         }
     }
 
     public static void addDiscountRequest() throws IOException {
-        Discount discount = (Discount) Client.receiveObject();
-        new AddOffRequest(RegisterSellerMenu.getCurrentSeller(), discount);
+        String dataToRegister = ClientHandler.receiveMessage();
+        String[] split = dataToRegister.split("\\s");
+
+        if (DataBaseForServer.getProduct(split[5]) != null) {
+            ClientHandler.sendObject(new Exception("there is a product with this id"));
+        } else {
+            ClientHandler.sendObject("Done");
+            Discount discount = new Discount(split[0], LocalDate.parse(split[1]), LocalDate.parse(split[2]),
+                    Double.parseDouble(split[4]), DataBaseForServer.getProduct(split[5]));
+            DataBaseForServer.addDiscount(discount);
+            DataBaseForServer.addRequest(new AddOffRequest(getSeller(), discount));
+        }
     }
 
     public static void editDiscountRequest() throws Exception {
-        Object[] receivedData = (Object[]) Client.receiveObject();
-        Discount discount = (Discount) receivedData[0];
-        if (Discount.getAllDiscounts().contains(discount)) {
-            Seller seller = Seller.getSellerByName((String) receivedData[1]);
-            String field = (String) receivedData[1];
-            String newContentForThisField = (String) receivedData[2];
-            new EditOffRequest(seller, discount, field, newContentForThisField);
+        Object[] receivedItems = (Object[]) ClientHandler.receiveObject();
+        String code = (String) receivedItems[0];
+        String field = (String) receivedItems[1];
+        String newContentForThisField = (String) receivedItems[2];
+
+        Discount discount = DataBaseForServer.getDiscount(code);
+        if (discount == null) {
+            ClientHandler.sendObject(new Exception("there isn't any discount with this code"));
         } else {
-            Client.sendObject(new Exception("there isn't any discount with this id"));
+            DataBaseForServer.addRequest(new EditOffRequest(getSeller(), discount, field, newContentForThisField));
+            ClientHandler.sendObject(discount);
         }
     }
 

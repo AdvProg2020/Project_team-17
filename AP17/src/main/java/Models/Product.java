@@ -43,7 +43,9 @@ public class Product {
         this.productsSpecialFeature = productsSpecialFeature;
         this.path = path;
         this.productStateEnum = ProductStateEnum.PRODUCING;
-        allProducts.add(this);
+        if (!allProducts.contains(this)) {
+            allProducts.add(this);
+        }
         pointOfViews = new ArrayList<>();
     }
 

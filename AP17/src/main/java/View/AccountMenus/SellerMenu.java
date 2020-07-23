@@ -503,13 +503,23 @@ public class SellerMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 mediaPlayer.play();
+
+                String data = field.getValue() + " " + newContent.getText();
                 try {
-                    SellerAbilitiesManager.sendEditingProductRequest(selectedProduct, RegisterSellerMenu.getCurrentSeller(), field.getValue(), newContent.getText());
-                } catch (IOException e) {
-                    e.printStackTrace();
+                    CSellerController.editProductRequest(selectedProduct.getProductId(), data);
+                    notify.setStyle("-fx-text-fill: #3193ff");
+                    notify.setText("request sent");
+                } catch (Exception e) {
+                    notify.setStyle("-fx-text-fill: #ff4f59");
+                    notify.setText(e.getMessage());
                 }
-                notify.setStyle("-fx-text-fill: #3193ff");
-                notify.setText("request sent");
+//                try {
+//                    SellerAbilitiesManager.sendEditingProductRequest(selectedProduct, RegisterSellerMenu.getCurrentSeller(), field.getValue(), newContent.getText());
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//                notify.setStyle("-fx-text-fill: #3193ff");
+//                notify.setText("request sent");
             }
         });
         hBox.getChildren().addAll(field, newContent, button, notify);
@@ -672,7 +682,8 @@ public class SellerMenu extends Menu {
         pane.setTop(vBox);
 
         ListView<String> listView = new ListView<>();
-        listView.getItems().addAll(SellerAbilitiesManager.viewOffs(RegisterSellerMenu.getCurrentSeller()));
+        listView.getItems().addAll(CSellerController.showDiscounts());
+        //listView.getItems().addAll(SellerAbilitiesManager.viewOffs(RegisterSellerMenu.getCurrentSeller()));
         pane.setCenter(listView);
 
         VBox vBox1 = new VBox(10);
@@ -743,13 +754,22 @@ public class SellerMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 mediaPlayer.play();
+                String data = field.getValue() + " " + newContent.getText();
                 try {
-                    SellerAbilitiesManager.sendEditingOffRequest(selectedDiscount, RegisterSellerMenu.getCurrentSeller(), field.getValue(), newContent.getText());
-                } catch (IOException e) {
-                    e.printStackTrace();
+                    CSellerController.editDiscountRequest(selectedDiscount.getDiscountId(), data);
+                    notify.setStyle("-fx-text-fill: #3193ff");
+                    notify.setText("request sent");
+                } catch (Exception e) {
+                    notify.setStyle("-fx-text-fill: #ff4f59");
+                    notify.setText(e.getMessage());
                 }
-                notify.setStyle("-fx-text-fill: #3193ff");
-                notify.setText("request sent");
+//                try {
+//                    SellerAbilitiesManager.sendEditingOffRequest(selectedDiscount, RegisterSellerMenu.getCurrentSeller(), field.getValue(), newContent.getText());
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//                notify.setStyle("-fx-text-fill: #3193ff");
+//                notify.setText("request sent");
             }
         });
         hBox.getChildren().addAll(field, newContent, button, notify);
@@ -810,26 +830,36 @@ public class SellerMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 mediaPlayer.play();
-                String s = productsName.getText();
-                if (Product.getProductByName(s) == null) {
-                    notify.setStyle("-fx-text-fill: #ff4f59");
-                    notify.setText("wrong product name");
-                } else {
-                    Discount discount = null;
-                    try {
-                        discount = SellerAbilitiesManager.addDiscount(ID.getText(), startDate.getText(), endDate.getText(),
-                                Double.parseDouble(discountPercent.getText()), s);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    try {
-                        new AddOffRequest(RegisterSellerMenu.getCurrentSeller(), discount);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                String data = ID.getText() + " " + startDate.getText() + " " + endDate.getText() + " " +
+                        Double.parseDouble(discountPercent.getText()) + " " + productsName.getText();
+                try {
+                    CSellerController.addDiscountRequest(data);
                     notify.setStyle("-fx-text-fill: #3193ff");
                     notify.setText("request sent");
+                } catch (Exception e) {
+                    notify.setStyle("-fx-text-fill: #ff4f59");
+                    notify.setText(e.getMessage());
                 }
+//                String s = productsName.getText();
+//                if (Product.getProductByName(s) == null) {
+//                    notify.setStyle("-fx-text-fill: #ff4f59");
+//                    notify.setText("wrong product name");
+//                } else {
+//                    Discount discount = null;
+//                    try {
+//                        discount = SellerAbilitiesManager.addDiscount(ID.getText(), startDate.getText(), endDate.getText(),
+//                                Double.parseDouble(discountPercent.getText()), s);
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
+//                    try {
+//                        new AddOffRequest(RegisterSellerMenu.getCurrentSeller(), discount);
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
+//                    notify.setStyle("-fx-text-fill: #3193ff");
+//                    notify.setText("request sent");
+//                }
             }
         });
         vBox1.getChildren().

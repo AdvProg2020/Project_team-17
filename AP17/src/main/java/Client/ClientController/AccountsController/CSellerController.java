@@ -9,7 +9,10 @@ import Models.Logs.BuyLog;
 import Models.Logs.SellLog;
 import Models.Product;
 
+import Models.Request.AddOffRequest;
 import Models.Request.AddProductRequest;
+import Models.Request.EditOffRequest;
+import Models.Request.EditProductRequest;
 import Server.ServerController.DataBaseForServer;
 import View.RegisterSellerMenu;
 import javafx.collections.FXCollections;
@@ -189,50 +192,66 @@ public class CSellerController {
         }
     }
 
-    public static void editProductRequest(int productId, Seller seller, String field, String
-            newContentForThisField) throws Exception {
-
+    public static void editProductRequest(String id, String data) throws Exception {
         String func = "Edit Product Request";
         Client.sendMessage(func);
 
-        Object[] toSend = new Object[4];
-        toSend[0] = productId;
-        toSend[1] = seller;
-        toSend[2] = field;
-        toSend[3] = newContentForThisField;
+        Object[] toSend = new Object[2];
+        toSend[0] = id;
+        toSend[1] = data;
         Client.sendObject(toSend);
-
-        Object response = Client.receiveObject();
-
-        if (response instanceof Exception)
-            throw new Exception("there isn't any product with this id");
+        try {
+            Object response = Client.receiveObject();
+            String[] split = data.split("\\s");
+            Product product = (Product) response;
+            String field = split[0];
+            String newContentForThisField = split[1];
+            new EditProductRequest(getSeller(), product, field, newContentForThisField);
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
     }
 
-    public static void addDiscountRequest(String id, String beginningDate, String endingDate,
-                                          double discountPercent, String productName) throws IOException {
+    public static void addDiscountRequest(String data) throws Exception {
         String func = "Add Discount Request";
         Client.sendMessage(func);
-        Discount discount = new Discount(id, LocalDate.parse(beginningDate), LocalDate.parse(endingDate), discountPercent, Product.getProductByName(productName));
-        Client.sendObject(discount);
+
+        Client.sendObject(data);
+
+        try {
+            Object response = Client.receiveObject();
+            String responseString = (String) response;
+            if (responseString.equals("Done")) {
+                String[] split = data.split("\\s");
+                Discount discount = new Discount(split[0], LocalDate.parse(split[1]), LocalDate.parse(split[2]),
+                        Double.parseDouble(split[4]), DataBaseForServer.getProduct(split[5]));
+                new AddOffRequest(getSeller(), discount);
+            }
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+
+        }
     }
 
-    public static void editDiscountRequest(Discount discount, Seller seller, String field, String
-            newContentForThisField) throws Exception {
+    public static void editDiscountRequest(String code, String data) throws Exception {
 
         String func = "Edit Discount Request";
         Client.sendMessage(func);
 
-        Object[] toSend = new Object[4];
-        toSend[0] = discount;
-        toSend[1] = seller;
-        toSend[2] = field;
-        toSend[3] = newContentForThisField;
+        Object[] toSend = new Object[2];
+        toSend[0] = code;
+        toSend[1] = data;
         Client.sendObject(toSend);
-
-        Object response = Client.receiveObject();
-
-        if (response instanceof Exception)
-            throw new Exception("there isn't any discount with this id");
+        try {
+            Object response = Client.receiveObject();
+            String[] split = data.split("\\s");
+            Discount discount = (Discount) response;
+            String field = split[0];
+            String newContentForThisField = split[1];
+            new EditOffRequest(getSeller(), discount, field, newContentForThisField);
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
     }
 
     public static void removeProductRequest(Product product, Seller seller) throws Exception {

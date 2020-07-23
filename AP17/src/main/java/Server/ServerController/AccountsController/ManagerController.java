@@ -118,9 +118,10 @@ public class ManagerController {
     }
 
     public static void editDiscountCodeInfo() throws Exception {
-        String receivedItems = (String) ClientHandler.receiveObject();
+        Object[] receivedItems = (Object[]) ClientHandler.receiveObject();
+        String code = (String) receivedItems[0];
 
-        DiscountCode discountCode = DataBaseForServer.getDiscountCode(receivedItems);
+        DiscountCode discountCode = DataBaseForServer.getDiscountCode(code);
         if (discountCode == null) {
             ClientHandler.sendObject(new Exception("there isn't any discount code with this code"));
         } else {
