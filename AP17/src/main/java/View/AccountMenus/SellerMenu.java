@@ -287,21 +287,32 @@ public class SellerMenu extends Menu {
         addAuction.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                if (Product.getProductWithId(productID.getText()) != null) {
-                    if (Product.getProductWithId(productID.getText()).getSeller().equals(RegisterSellerMenu.getCurrentSeller())) {
-                        //SellerAbilitiesManager.addAuction(productID.getText(), date.getText());
-                        CSellerController.addAuction();
-                        SellerController.addAuction(productID.getText(), date.getText());
-                        notify.setStyle("-fx-text-fill: #3193ff");
-                        notify.setText("auction added successfully");
-                    } else {
-                        notify.setStyle("-fx-text-fill: #ff4f59");
-                        notify.setText("adding auction is only allowed for your own products");
-                    }
-                } else {
+//                if (Product.getProductWithId(productID.getText()) != null) {
+//                    if (Product.getProductWithId(productID.getText()).getSeller().equals(RegisterSellerMenu.getCurrentSeller())) {
+//                        //SellerAbilitiesManager.addAuction(productID.getText(), date.getText());
+//                        CSellerController.addAuction();
+//                        SellerController.addAuction(productID.getText(), date.getText());
+//                        notify.setStyle("-fx-text-fill: #3193ff");
+//                        notify.setText("auction added successfully");
+//                    } else {
+//                        notify.setStyle("-fx-text-fill: #ff4f59");
+//                        notify.setText("adding auction is only allowed for your own products");
+//                    }
+//                } else {
+//                    notify.setStyle("-fx-text-fill: #ff4f59");
+//                    notify.setText("there isn't any product with this id");
+//                }
+//            }
+                String data = productID.getText() + " " + date.getText();
+                try {
+                    CSellerController.addAuction(data);
+                    notify.setStyle("-fx-text-fill: #3193ff");
+                    notify.setText("auction added successfully");
+                } catch (Exception e) {
                     notify.setStyle("-fx-text-fill: #ff4f59");
-                    notify.setText("there isn't any product with this id");
+                    notify.setText(e.getMessage());
                 }
+
             }
         });
 
@@ -443,12 +454,20 @@ public class SellerMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 mediaPlayer.play();
-                selectedProduct = Product.getProductByName(listView.getSelectionModel().getSelectedItem());
                 try {
-                    SellerAbilitiesManager.sendRemovingProductRequest(selectedProduct, RegisterSellerMenu.getCurrentSeller());
-                } catch (IOException e) {
-                    e.printStackTrace();
+                    CSellerController.removeProductRequest(listView.getSelectionModel().getSelectedItem());
+                    notify.setStyle("-fx-text-fill: #3193ff");
+                    notify.setText("request sent");
+                } catch (Exception e) {
+                    notify.setStyle("-fx-text-fill: #ff4f59");
+                    notify.setText(e.getMessage());
                 }
+//                selectedProduct = Product.getProductByName(listView.getSelectionModel().getSelectedItem());
+//                try {
+//                    SellerAbilitiesManager.sendRemovingProductRequest(selectedProduct, RegisterSellerMenu.getCurrentSeller());
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
                 notify.setStyle("-fx-text-fill: #3193ff");
                 notify.setText("request sent");
             }
@@ -645,7 +664,8 @@ public class SellerMenu extends Menu {
         vBox.getChildren().addAll(button);
         pane.setTop(vBox);
         ListView<String> listView = new ListView<>();
-        listView.getItems().addAll(SellerAbilitiesManager.showCategories());
+//        listView.getItems().addAll(SellerAbilitiesManager.showCategories());
+        listView.getItems().addAll(CSellerController.showCategories());
         pane.setCenter(listView);
         pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
         Scene scene = new Scene(pane, 500, 500);

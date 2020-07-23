@@ -209,16 +209,6 @@ public class DataBaseForServer implements Serializable {
         allAuctions.add(auction);
     }
 
-    // va tu in
-    public static Auction getAuction(String Name) {
-        for (Auction auction : allAuctions) {
-            if (auction.getName().equals(Name)) {
-                return auction;
-            }
-        }
-        return null;
-    }
-
     public static void deleteAuction(Auction auction) {
         allAuctions.remove(auction);
     }

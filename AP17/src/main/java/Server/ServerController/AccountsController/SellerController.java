@@ -6,6 +6,7 @@ import Models.*;
 import Models.Accounts.Customer;
 import Models.Accounts.Manager;
 import Models.Accounts.Seller;
+import Models.Accounts.Supporter;
 import Models.Logs.Log;
 import Models.Logs.SellLog;
 import Models.Request.*;
@@ -156,27 +157,26 @@ public class SellerController {
     }
 
     public static void removeProductRequest() throws Exception {
-        Object[] receivedData = (Object[]) Client.receiveObject();
-        Product product = (Product) receivedData[0];
-        Seller seller = (Seller) receivedData[1];
-        if (Product.getAllProducts().contains(product)) {
-            new RemoveProductRequest(seller, product);
+        String id = ClientHandler.receiveMessage();
+        Product product = DataBaseForServer.getProduct(id);
+        if (product != null) {
+            ClientHandler.sendObject(product);
+            DataBaseForServer.addRequest(new RemoveProductRequest(getSeller(), product));
         } else {
-            Client.sendObject(new Exception("there isn't any product with this id"));
+            ClientHandler.sendObject(new Exception("there isn't any product with this id"));
         }
     }
 
-    public static void addAuction(String productID, String endDate) {
-        try {
-            Date endDateAsDate = new SimpleDateFormat("yyyy-MM-dd_HH:mm").parse(endDate);
-            Product product = Product.getProductWithId(productID);
+    public static void addAuction() throws ParseException {
+        String dataToRegister = ClientHandler.receiveMessage();
+        String[] split = dataToRegister.split("\\s");
 
-            Auction auction = new Auction(product, endDateAsDate);
-            auction.start();
-        } catch (ParseException e) {
-            e.getMessage();
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (DataBaseForServer.getProduct(split[0]) != null) {
+            ClientHandler.sendObject(new Exception("there isn't any product with this id"));
+        } else {
+            ClientHandler.sendObject("Done");
+            DataBaseForServer.addAuction(new Auction(DataBaseForServer.getProduct(split[0]),
+                    new SimpleDateFormat("yyyy-MM-dd_HH:mm").parse(split[1])));
         }
     }
 

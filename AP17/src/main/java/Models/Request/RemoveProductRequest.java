@@ -6,6 +6,7 @@ import Models.Category;
 import Models.Enums.RequestStateEnum;
 import Models.Enums.RequestTypeEnum;
 import Models.Product;
+import Server.ServerController.DataBaseForServer;
 
 import java.io.IOException;
 
@@ -22,6 +23,7 @@ public class RemoveProductRequest extends Request {
     public void accept() {
         Product.removeProduct(product);
         seller.removeProduct(seller, product);
+        DataBaseForServer.deleteProduct(product);
         this.setState(RequestStateEnum.ACCEPTED);
     }
 

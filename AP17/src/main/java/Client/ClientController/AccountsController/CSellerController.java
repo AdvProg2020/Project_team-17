@@ -3,22 +3,21 @@ package Client.ClientController.AccountsController;
 import Client.Client;
 import Models.Accounts.Manager;
 import Models.Accounts.Seller;
+import Models.Auction;
 import Models.Category;
 import Models.Discount;
 import Models.Logs.BuyLog;
 import Models.Logs.SellLog;
 import Models.Product;
 
-import Models.Request.AddOffRequest;
-import Models.Request.AddProductRequest;
-import Models.Request.EditOffRequest;
-import Models.Request.EditProductRequest;
+import Models.Request.*;
 import Server.ServerController.DataBaseForServer;
 import View.RegisterSellerMenu;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -254,24 +253,51 @@ public class CSellerController {
         }
     }
 
-    public static void removeProductRequest(Product product, Seller seller) throws Exception {
-
+    public static void removeProductRequest(String id) throws Exception {
         String func = "Remove Product Request";
         Client.sendMessage(func);
 
-        Object[] toSend = new Object[4];
-        toSend[0] = product;
-        toSend[1] = seller;
-        Client.sendObject(toSend);
+        Client.sendObject(id);
 
         Object response = Client.receiveObject();
 
-        if (response instanceof Exception)
-            throw new Exception("there isn't any product with this id");
+        try {
+            Object data = Client.receiveObject();
+            Product product = (Product) data;
+            new RemoveProductRequest(getSeller(), product);
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
     }
 
-    public static void addAuction() {
+    public static void addAuction(String data) throws Exception {
         String func = "Add Auction";
         Client.sendMessage(func);
+
+        try {
+            Object response = Client.receiveObject();
+            String responseString = (String) response;
+            if (responseString.equals("Done")) {
+                String[] split = data.split("\\s");
+                new Auction(DataBaseForServer.getProduct(split[0]), new SimpleDateFormat("yyyy-MM-dd_HH:mm").parse(split[1]));
+                //.start auction
+            }
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
     }
+
+    //    public static void addAuction(String productID, String endDate) {
+//        try {
+//            Date endDateAsDate = new SimpleDateFormat("yyyy-MM-dd_HH:mm").parse(endDate);
+//            Product product = Product.getProductWithId(productID);
+//
+//            Auction auction = new Auction(product, endDateAsDate);
+//            auction.start();
+//        } catch (ParseException e) {
+//            e.getMessage();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 }
