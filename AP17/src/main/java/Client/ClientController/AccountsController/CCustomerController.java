@@ -9,60 +9,30 @@ import java.util.ArrayList;
 
 public class CCustomerController {
 
-    public static String showCustomerInfo() throws Exception {
+    public static void showCustomerInfo()  {
         String func = "Show Customer Info";
         Client.sendMessage(func);
-        if (RegisterCustomerMenu.getCurrentCustomer() == null) {
-            throw new Exception("a customer should login first!");
-        } else {
-            String customerName = RegisterCustomerMenu.getCurrentCustomer().getUserName();
-            Client.sendMessage(customerName);
-            Object data = Client.receiveObject();
-            if (data instanceof Exception) {
-                throw new Exception("account with this username doesn't found");
-            } else {
-                return String.valueOf(data);
-            }
-        }
     }
 
-    public static void editCustomerInfo(String field, String newContent) throws Exception {
+    public static void editCustomerInfo() {
         String func = "Edit Customer Info";
         Client.sendMessage(func);
-        if (RegisterCustomerMenu.getCurrentCustomer() == null) {
-            throw new Exception("a customer should login first!");
-        } else {
-            Object[] toSend = new Object[2];
-            toSend[0] = field;
-            toSend[1] = newContent;
-            Client.sendObject(toSend);
-            Client.receiveObject();
-        }
     }
 
 
-    public static ArrayList<BuyLog> showCustomerLogs() {
+    public static void showCustomerLogs() {
         String func = "Show Customer Logs";
         Client.sendMessage(func);
 
-        Client.sendObject(RegisterCustomerMenu.getCurrentCustomer());
+       /* Client.sendObject(RegisterCustomerMenu.getCurrentCustomer());
         Object response = Client.receiveObject();
-        return (ArrayList<BuyLog>) response;
+        return (ArrayList<BuyLog>) response;*/
 
     }
 
-    public static String showLogDetails(String id) throws Exception {
+    public static void showLogDetails() {
         String func = "Show Log Details";
         Client.sendMessage(func);
-
-        Client.sendMessage(id);
-        Object response = Client.receiveObject();
-
-        if (response instanceof Exception)
-            throw new Exception("there isn't any log with this id");
-        else {
-            return (String) response;
-        }
     }
 
     public static ArrayList<DiscountCode> showDiscountCodes() {

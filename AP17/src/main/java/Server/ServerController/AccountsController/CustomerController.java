@@ -11,18 +11,11 @@ import java.util.ArrayList;
 
 public class CustomerController {
 
-    public static void showCustomerInfo() {
-        if (RegisterCustomerMenu.getCurrentCustomer() == null) {
-            Client.sendObject(new Exception("customer should first login"));
-        }
-        String username = Client.receiveMessage();
-        Client.sendMessage(Customer.getCustomerByName(username).toString());
+    public static String showCustomerInfo() {
+        return RegisterCustomerMenu.getCurrentCustomer().toString();
     }
 
-    public static void editManagerInfo() throws Exception {
-        Object[] receivedItems = (Object[]) Client.receiveObject();
-        String field = (String) receivedItems[0];
-        String newContentForThisField = (String) receivedItems[1];
+    public static void editCustomerInfo(String field, String newContentForThisField) throws Exception {
         if (RegisterCustomerMenu.getCurrentCustomer() == null) {
             throw new Exception("customer should login first!");
         } else {
@@ -38,17 +31,17 @@ public class CustomerController {
             } else if (field.equalsIgnoreCase("password")) {
                 customer.changePassword(customer, newContentForThisField);
             }
-            Client.sendMessage("Success!");
+            //Client.sendMessage("Success!");
         }
     }
 
-    public static void showCustomerLogs() {
+    public static ArrayList<String> showCustomerLogs() {
         ArrayList<BuyLog> logs = RegisterCustomerMenu.getCurrentCustomer().getBuyLog();
         ArrayList<String> order = new ArrayList<String>();
         for (BuyLog log : logs) {
             order.add(log.getId());
         }
-        Client.sendObject(order);
+        return order;
     }
 
     public static void showLog() {
