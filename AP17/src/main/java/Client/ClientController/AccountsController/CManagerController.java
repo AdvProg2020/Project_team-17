@@ -216,8 +216,7 @@ public class CManagerController {
             Object data = Client.receiveObject();
             DiscountCode discountCode = (DiscountCode) data;
             DiscountCode.removeDiscountCode(discountCode);
-            DataBaseForServer.deleletDiscountCode(discountCode);
-            //TODO check with kian's commit
+            DataBaseForServer.deleteDiscountCode(discountCode);
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }

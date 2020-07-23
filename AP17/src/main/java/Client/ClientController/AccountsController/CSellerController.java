@@ -1,13 +1,18 @@
 package Client.ClientController.AccountsController;
 
 import Client.Client;
+import Models.Accounts.Manager;
 import Models.Accounts.Seller;
 import Models.Category;
 import Models.Discount;
+import Models.Logs.BuyLog;
 import Models.Logs.SellLog;
 import Models.Product;
 
+import Server.ServerController.DataBaseForServer;
 import View.RegisterSellerMenu;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -31,82 +36,136 @@ public class CSellerController {
     }
 
     public static String showSellerInfo() throws Exception {
+        if (getSeller() == null) {
+            throw new Exception("there isn't any seller logged in");
+        }
         String func = "Show Seller Info";
         Client.sendMessage(func);
-        if (RegisterSellerMenu.getCurrentSeller() == null) {
-            throw new Exception("a seller should login first!");
-        } else {
-            String sellerUsername = RegisterSellerMenu.getCurrentSeller().getUserName();
-            Client.sendMessage(sellerUsername);
+
+        String username = getSeller().getUserName();
+        Client.sendMessage(username);
+
+        try {
             Object data = Client.receiveObject();
-            if (data instanceof Exception) {
-                throw new Exception("account with this username doesn't found");
-            } else {
-                return String.valueOf(data);
-            }
+            return String.valueOf(data);
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
         }
     }
 
-    public static void editSellerInfo(String field, String newContent) throws Exception {
+    public static void editSellerInfo(String dataToEdit) throws Exception {
         String func = "Edit Seller Info";
         Client.sendMessage(func);
-        if (RegisterSellerMenu.getCurrentSeller() == null) {
-            throw new Exception("a seller should login first!");
-        } else {
-            Object[] toSend = new Object[2];
-            toSend[0] = field;
-            toSend[1] = newContent;
-            Client.sendObject(toSend);
-            Client.receiveObject();
+
+        Object[] toSend = new Object[2];
+        toSend[0] = getSeller().getUserName();
+        toSend[1] = dataToEdit;
+        Client.sendObject(toSend);
+        try {
+            Object response = Client.receiveObject();
+            String responseString = (String) response;
+            if (responseString.equals("Success")) {
+                String[] split = dataToEdit.split("\\s");
+                Seller seller = DataBaseForServer.getSeller(getSeller().getUserName());
+                String field = split[0];
+                String newContentForThisField = split[1];
+                if (field.equalsIgnoreCase("first name")) {
+                    seller.changeFirstName(seller, newContentForThisField);
+                } else if (field.equalsIgnoreCase("last name")) {
+                    seller.changeLastName(seller, newContentForThisField);
+                } else if (field.equalsIgnoreCase("email")) {
+                    seller.changeEmail(seller, newContentForThisField);
+                } else if (field.equalsIgnoreCase("phone number")) {
+                    seller.changePhoneNumber(seller, newContentForThisField);
+                } else if (field.equalsIgnoreCase("password")) {
+                    seller.changePassword(seller, newContentForThisField);
+                }
+            }
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
         }
     }
 
-    public static ArrayList<SellLog> showSalesHistory() {
+    public static ObservableList<String> showSalesHistory() throws Exception {
+        ArrayList<SellLog> allLogs;
         String func = "Show Sales History";
         Client.sendMessage(func);
 
-        Client.sendObject(RegisterSellerMenu.getCurrentSeller());
         Object response = Client.receiveObject();
-        return (ArrayList<SellLog>) response;
+        allLogs = (ArrayList<SellLog>) response;
+        ArrayList<String> showAllLogs = new ArrayList<>();
+        for (SellLog sellLog : allLogs) {
+            showAllLogs.add(sellLog.getId());
+        }
+        ObservableList data = FXCollections.observableArrayList();
+        data.addAll(showAllLogs);
+        return data;
+
     }
 
-    public static String showLogDetails(String id) throws Exception {
-        String func = "Show Log Details";
+    public static String showLog(String id) throws Exception {
+        String func = "Show Sell Log";
         Client.sendMessage(func);
 
-        Client.sendMessage(id);
-        Object response = Client.receiveObject();
+        Client.sendMessage(String.valueOf(id));
+        SellLog sellLog = (SellLog) Client.receiveObject();
 
-        if (response instanceof Exception)
+        if (sellLog != null) {
+            String requestData = sellLog.toString();
+            return requestData;
+        } else {
             throw new Exception("there isn't any log with this id");
-        else {
-            return (String) response;
         }
     }
 
-    public static ArrayList<Category> showCategories() throws Exception {
+    public static ObservableList<String> showCategories() {
+        ArrayList<Category> allCategories;
+        ArrayList<String> info = new ArrayList<>();
         String func = "Show Categories";
         Client.sendMessage(func);
 
         Object response = Client.receiveObject();
-        return (ArrayList<Category>) response;
+        allCategories = (ArrayList<Category>) response;
+        for (Category category : allCategories) {
+            info.add(category.getCategoryName());
+        }
+        ObservableList data = FXCollections.observableArrayList();
+        data.addAll(info);
+        return data;
     }
 
-    public static ArrayList<Discount> showDiscounts() throws Exception {
+    public static ObservableList<String> showDiscounts() {
+        ArrayList<Discount> allDiscount;
+        ArrayList<String> info = new ArrayList<>();
         String func = "Show Discounts";
         Client.sendMessage(func);
 
         Object response = Client.receiveObject();
-        return (ArrayList<Discount>) response;
+        allDiscount = (ArrayList<Discount>) response;
+        for (Discount discount : allDiscount) {
+            info.add(discount.getDiscountId());
+        }
+        ObservableList data = FXCollections.observableArrayList();
+        data.addAll(info);
+        return data;
     }
 
-    public static ArrayList<Product> showProducts() throws Exception {
-        String func = "Show Discounts";
+    public static ObservableList<String> showProducts() {
+        ArrayList<Product> allProducts;
+        ArrayList<String> info = new ArrayList<>();
+        String func = "Show Products";
         Client.sendMessage(func);
 
         Object response = Client.receiveObject();
-        return (ArrayList<Product>) response;
+        allProducts = (ArrayList<Product>) response;
+        for (Product product : allProducts) {
+            info.add(product.getProductId());
+        }
+        ObservableList data = FXCollections.observableArrayList();
+        data.addAll(info);
+        return data;
     }
+
 
     public static void addProductRequest(String productId, String productName, String companyName,
                                          double price, Category category, Seller seller, String productExplanation, String specialFeature, String path) {

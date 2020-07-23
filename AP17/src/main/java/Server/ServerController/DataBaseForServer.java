@@ -13,7 +13,6 @@ import Models.Logs.SellLog;
 import Models.Request.Request;
 
 import java.io.Serializable;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class DataBaseForServer implements Serializable {
@@ -32,8 +31,8 @@ public class DataBaseForServer implements Serializable {
     private static ArrayList<Category> allCategories = new ArrayList<>();
     private static ArrayList<Discount> allDiscounts = new ArrayList<>();
     private static ArrayList<Product> allProducts = new ArrayList<>();
-    //discount product lazeme?
-    private static ArrayList<Product> allDiscountProducts = new ArrayList<>();
+    private static ArrayList<Discount> allDiscountProducts = new ArrayList<>();
+    private static ArrayList<DiscountCode> allDiscountCodes = new ArrayList<>();
 
 
     public static void addManager(Manager manager) {
@@ -125,7 +124,6 @@ public class DataBaseForServer implements Serializable {
         allReceipts.add(receipt);
     }
 
-    //tu if e in chio bayad bbinam yekie ya na
     public static Receipt getReceipt(String Id) {
         for (Receipt receipt : allReceipts) {
             if (receipt.getId() == Integer.parseInt(Id)) {
@@ -142,7 +140,6 @@ public class DataBaseForServer implements Serializable {
     public static void addLog(Log log) {
         allLogs.add(log);
     }
-
 
     public static Log getLog(String Id) {
         for (Log log : allLogs) {
@@ -226,22 +223,6 @@ public class DataBaseForServer implements Serializable {
         allAuctions.remove(auction);
     }
 
-    public static void addCart(Cart cart) {
-        allCarts.add(cart);
-    }
-
-    //ino tuye for chi bezanam ba chi moghayese konam?
-    public static Cart getCart(String Name) {
-        for (Cart cart : allCarts) {
-            //TODO
-        }
-        return null;
-    }
-
-    public static void deleteCart(Cart cart) {
-        allCarts.remove(cart);
-    }
-
     public static void addCategory(Category category) {
         allCategories.add(category);
     }
@@ -277,6 +258,23 @@ public class DataBaseForServer implements Serializable {
         allDiscounts.remove(discount);
     }
 
+    public static void addDiscountCode(DiscountCode discountCode) {
+        allDiscountCodes.add(discountCode);
+    }
+
+    public static DiscountCode getDiscountCode(String code) {
+        for (DiscountCode discountCode : allDiscountCodes) {
+            if (discountCode.getDiscountCode().equals(code)) {
+                return discountCode;
+            }
+        }
+        return null;
+    }
+
+    public static void deleteDiscountCode(DiscountCode discountCode) {
+        allDiscountCodes.remove(discountCode);
+    }
+
     public static void addProduct(Product product) {
         allProducts.add(product);
     }
@@ -294,7 +292,7 @@ public class DataBaseForServer implements Serializable {
         allProducts.remove(product);
     }
 
-    public static ArrayList<Manager> getAllMangers() {
+    public static ArrayList<Manager> getAllManagers() {
         return allMangers;
     }
 
@@ -352,5 +350,9 @@ public class DataBaseForServer implements Serializable {
 
     public static ArrayList<Product> getAllProducts() {
         return allProducts;
+    }
+
+    public static ArrayList<DiscountCode> getAllDiscountCodes() {
+        return allDiscountCodes;
     }
 }

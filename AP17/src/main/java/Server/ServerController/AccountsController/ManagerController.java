@@ -118,9 +118,9 @@ public class ManagerController {
     }
 
     public static void editDiscountCodeInfo() throws Exception {
-        Object[] receivedItems = (Object[]) ClientHandler.receiveObject();
+        String receivedItems = (String) ClientHandler.receiveObject();
 
-        DiscountCode discountCode = DataBaseForServer.getDiscountCode(receivedItems[0]);
+        DiscountCode discountCode = DataBaseForServer.getDiscountCode(receivedItems);
         if (discountCode == null) {
             ClientHandler.sendObject(new Exception("there isn't any discount code with this code"));
         } else {
@@ -259,19 +259,15 @@ public class ManagerController {
         }
     }
 
-    public static void createDiscountCode() throws IOException {
+    public static void createCategory() throws IOException {
         String dataToRegister = ClientHandler.receiveMessage();
         String[] split = dataToRegister.split("\\s");
 
         if (DataBaseForServer.getCategory(split[0]) != null) {
             ClientHandler.sendObject(new Exception("there is a category with this name"));
         } else {
-            if (DataBaseForServer.getCategory(split[6]) == null) {
-                ClientHandler.sendObject(new Exception("there isn't any customer with this username"));
-            } else {
-                ClientHandler.sendObject("Done");
-                DataBaseForServer.addCategory(new Category(split[0], split[1]);
-            }
+            ClientHandler.sendObject("Done");
+            DataBaseForServer.addCategory(new Category(split[0], split[1]));
         }
     }
 
@@ -332,10 +328,10 @@ public class ManagerController {
             }
         }
         if (DataBaseForServer.getSupporter(username) != null) {
-            if (.contains(DataBaseForServer.getSupporter(username))){
+            if (SupporterController.getOnlineSupporters().contains(DataBaseForServer.getSupporter(username))) {
                 status = "online";
                 ClientHandler.sendObject(status);
-            } else{
+            } else {
                 status = "offline";
                 ClientHandler.sendObject(status);
             }

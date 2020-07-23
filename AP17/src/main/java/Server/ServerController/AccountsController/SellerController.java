@@ -2,6 +2,7 @@ package Server.ServerController.AccountsController;
 
 import Client.Client;
 import Client.ClientController.AccountsController.CSellerController;
+import Models.Accounts.Manager;
 import Models.Accounts.Seller;
 import Models.Auction;
 import Models.Category;
@@ -10,6 +11,8 @@ import Models.Logs.Log;
 import Models.Logs.SellLog;
 import Models.Product;
 import Models.Request.*;
+import Server.ClientHandler;
+import Server.ServerController.DataBaseForServer;
 import View.RegisterSellerMenu;
 
 import java.io.IOException;
@@ -35,49 +38,36 @@ public class SellerController {
         return onlineSellers;
     }
 
-
-    public static void showSellerInfo() {
-        if (RegisterSellerMenu.getCurrentSeller() == null) {
-            Client.sendObject(new Exception("seller should first login"));
-        }
-        String username = Client.receiveMessage();
-        Client.sendMessage(Seller.getSellerByName(username).toString());
-    }
-
-    public static void editSellerInfo() throws Exception {
-        Object[] receivedItems = (Object[]) Client.receiveObject();
-        String field = (String) receivedItems[0];
-        String newContentForThisField = (String) receivedItems[1];
-        if (RegisterSellerMenu.getCurrentSeller() == null) {
-            throw new Exception("seller should login first!");
+    public static void showManagerInfo() throws Exception {
+        if (getSeller() == null) {
+            ClientHandler.sendObject(new Exception("there isn't any seller logged in"));
         } else {
-            Seller seller = RegisterSellerMenu.getCurrentSeller();
-            if (field.equalsIgnoreCase("first name")) {
-                seller.changeFirstName(seller, newContentForThisField);
-            } else if (field.equalsIgnoreCase("last name")) {
-                seller.changeLastName(seller, newContentForThisField);
-            } else if (field.equalsIgnoreCase("email")) {
-                seller.changeEmail(seller, newContentForThisField);
-            } else if (field.equalsIgnoreCase("phone number")) {
-                seller.changePhoneNumber(seller, newContentForThisField);
-            } else if (field.equalsIgnoreCase("password")) {
-                seller.changePassword(seller, newContentForThisField);
-            }
-            Client.sendMessage("Success!");
+            String username = ClientHandler.receiveMessage();
+            Seller seller = DataBaseForServer.getSeller(username);
+            setSeller(seller);
+            ClientHandler.sendObject(seller.toString());
         }
     }
+
+    public static void editManagerInfo() throws Exception {
+        String receivedItems = (String) ClientHandler.receiveObject();
+
+        Seller seller = DataBaseForServer.getSeller(receivedItems);
+        if (seller == null) {
+            ClientHandler.sendObject(new Exception("there isn't any seller with this username"));
+        } else {
+            ClientHandler.sendObject("Success!");
+        }
+    }
+
 
     public static void showSellerLogs() {
-        ArrayList<SellLog> logs = RegisterSellerMenu.getCurrentSeller().getLogs();
-        ArrayList<String> salesHistory = new ArrayList<String>();
-        for (SellLog log : logs) {
-            salesHistory.add(log.getId());
-        }
-        Client.sendObject(salesHistory);
+        ArrayList<SellLog> logs = new ArrayList<>(getSeller().getLogs());
+        Client.sendObject(logs);
     }
 
     public static void showLog() {
-        SellLog sellLog = (SellLog) Log.getLogWithId(Client.receiveMessage());
+        SellLog sellLog = (SellLog) DataBaseForServer.getLog(Client.receiveMessage());
         if (sellLog != null) {
             Client.sendMessage(sellLog.toString());
         } else {
@@ -86,22 +76,17 @@ public class SellerController {
     }
 
     public static void showCategories() {
-        ArrayList<Category> allCategories = new ArrayList<>();
-        allCategories.addAll(Category.getAllCategories());
-        Client.sendObject(allCategories);
+        ArrayList<Category> allCategories = new ArrayList<>(DataBaseForServer.getAllCategories());
+        ClientHandler.sendObject(allCategories);
     }
 
     public static void showDiscounts() {
-        ArrayList<String> sellerDiscounts = new ArrayList<>();
-        sellerDiscounts.addAll(RegisterSellerMenu.getCurrentSeller().getDiscountInfo(RegisterSellerMenu.getCurrentSeller()));
+        ArrayList<Discount> sellerDiscounts = new ArrayList<>(getSeller().getAllDiscount());
         Client.sendObject(sellerDiscounts);
     }
 
     public static void showProducts() {
-        ArrayList<String> products = new ArrayList<>();
-        for (Product product : RegisterSellerMenu.getCurrentSeller().getAllProducts()) {
-            products.add(product.getName());
-        }
+        ArrayList<Product> products = new ArrayList<>(getSeller().getAllProducts());
         Client.sendObject(products);
     }
 
