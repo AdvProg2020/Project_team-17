@@ -1,9 +1,13 @@
 package View;
 
+import Client.ClientController.AccountsController.CManagerController;
+import Client.ClientController.CRegisterAndLoginController;
 import Controller.RegisterAndLoginManager;
 import Controller.WriteIntoFile;
 import Models.Accounts.Manager;
+import Server.ServerController.RegisterAndLoginController;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -18,6 +22,8 @@ import javafx.scene.layout.*;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
+import java.io.File;
+import java.io.FileFilter;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Paths;
@@ -204,13 +210,26 @@ public class MainMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 mediaPlayer.play();
-                if (RegisterAndLoginManager.canHaveAccountWithThisUsername(userNameTextField.getText())) {
-                    try {
-                        new Manager(userNameTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText(),
-                                phoneNumberTextField.getText(), passwordField.getText(), paths.getText());
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                Manager manager = null;
+                try {
+                    manager = new Manager(userNameTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText(),
+                            phoneNumberTextField.getText(), passwordField.getText(), paths.getText());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                Gson gson = new GsonBuilder().serializeNulls().create();
+                String data = gson.toJson(manager);
+                try {
+                    CRegisterAndLoginController.register(data);
+//                if (RegisterAndLoginManager.canHaveAccountWithThisUsername(userNameTextField.getText())) {
+//                    CManagerController.registerManager(userNameTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText(),
+//                            phoneNumberTextField.getText(), passwordField.getText(), paths.getText());
+//                    try {
+//                        new Manager(userNameTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText(),
+//                                phoneNumberTextField.getText(), passwordField.getText(), paths.getText());
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
 //                    try {
 //                        WriteIntoFile.writeManagersIntoFile();
 //                    } catch (IOException e) {
@@ -218,10 +237,15 @@ public class MainMenu extends Menu {
 //                    }
                     notify.setStyle("-fx-text-fill: #3193ff");
                     notify.setText("successfully registered");
-                } else {
+                } catch (Exception e) {
                     notify.setStyle("-fx-text-fill: #ff4f59");
-                    notify.setText("this username already exist");
+                    notify.setText(e.getMessage());
+                    e.printStackTrace();
                 }
+//                } else {
+//                    notify.setStyle("-fx-text-fill: #ff4f59");
+//                    notify.setText("this username already exist");
+//                }
 
             }
         });
@@ -246,17 +270,45 @@ public class MainMenu extends Menu {
 
     @Override
     public void show() {
-        if (Manager.getAllManagers().size() != 0) {
-            // music();
+//        if (Manager.getAllManagers().size() != 0) {
+//            // music();
+//            setMainScene();
+//            Scene scene = new Scene(setMainScene(), 600, 600);
+//            Menu.window.setScene(scene);
+//            Menu.window.show();
+//        } else {
+//            // music();
+//            registerFirstManager();
+//            Menu.window.show();
+//
+//        }
+        if (!adminNotExists()) {
             setMainScene();
             Scene scene = new Scene(setMainScene(), 600, 600);
             Menu.window.setScene(scene);
             Menu.window.show();
+
         } else {
-            // music();
             registerFirstManager();
             Menu.window.show();
-
         }
+    }
+
+    private boolean adminNotExists() {
+        File file = new File("Resources/Accounts/Admin");
+        FileFilter fileFilter = new FileFilter() {
+            @Override
+            public boolean accept(File file1) {
+                if (file1.getName().endsWith(".json")) {
+                    return true;
+                }
+                return false;
+            }
+        };
+        boolean exist = true;
+        for (File i : file.listFiles(fileFilter)) {
+            exist = false;
+        }
+        return exist;
     }
 }

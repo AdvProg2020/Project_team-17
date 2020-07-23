@@ -1,10 +1,16 @@
 package Server;
 
+import Models.Accounts.Manager;
+import Server.ServerController.AccountsController.ManagerController;
+import Server.ServerController.HandleController;
+import View.RegisterManagerMenu;
+
 import java.io.*;
 import java.lang.Thread;
 import java.net.Socket;
 
 public class ClientHandler extends Thread {
+    private static Manager currentManager;
     protected Socket socket;
     private static final String ALPHA_NUMERIC_STRING = "NAKAPPROJECT";
     public static ObjectOutputStream objectOutputStream;
@@ -52,54 +58,17 @@ public class ClientHandler extends Thread {
         String command;
         while (true) {
             try {
-                command = dataInputStream.readUTF();
+                command = receiveMessage();
                 //handleCommand(command);
-                System.out.println(command + " sent to server");
+                HandleController.handleFunction(command);
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
     }
 
-
-    public void writeToClient(String dataToWrite) {
-        try {
-            dataOutputStream.writeUTF(dataToWrite);
-            dataOutputStream.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public String readDataFromClient() {
-        String readData;
-        try {
-            readData = dataInputStream.readUTF();
-            return readData;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    public Object readObjectFromClient() {
-        Object object;
-        try {
-            object = objectInputStream.readObject();
-            return object;
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    public void writeObjectToClient(Object object) {
-        try {
-            objectOutputStream.writeObject(object);
-            objectOutputStream.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public static Manager getCurrentManager() {
+        return currentManager;
     }
 
     public static String generateToken() {
@@ -112,13 +81,86 @@ public class ClientHandler extends Thread {
         return builder.toString();
     }
 
-//    public static void handleCommand(String command) throws Exception {
-//        if (command.equals("Show Manager Info")) {
-//            ManagerController.showManagerInfo();
-//        } else if (command.equals("Edit Manager Info")) {
-//            ManagerController.editManagerInfo();
+    public static void handleCommand(String command) throws Exception {
+    }
+
+
+    public static void sendMessage(String dataToWrite){
+        //System.out.println("Server Said: "+dataToWrite);
+        sendObject(dataToWrite);
+        //out.writeUTF(dataToWrite);
+        //out.flush();
+    }
+
+    public static String receiveMessage() {
+        String readData;
+        readData = (String) receiveObject();
+        return readData;
+    }
+
+    public static Object receiveObject() {
+        Object object = null;
+        try {
+            object = objectInputStream.readObject();
+            System.out.println("Client Said: "+object);
+            return object;
+        }catch (IOException | ClassNotFoundException e){
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public static void sendObject(Object object){
+        try {
+            System.out.println("Server Said: "+object);
+            objectOutputStream.writeObject(object);
+            objectOutputStream.flush();
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+//
+//    public void writeToClient(String dataToWrite) {
+//        try {
+//            dataOutputStream.writeUTF(dataToWrite);
+//            dataOutputStream.flush();
+//        } catch (IOException e) {
+//            e.printStackTrace();
 //        }
-//        //TODO other commands
 //    }
+//
+//    public String readDataFromClient() {
+//        String readData;
+//        try {
+//            readData = dataInputStream.readUTF();
+//            return readData;
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        return null;
+//    }
+//
+//    public Object readObjectFromClient() {
+//        Object object;
+//        try {
+//            object = objectInputStream.readObject();
+//            return object;
+//        } catch (IOException | ClassNotFoundException e) {
+//            e.printStackTrace();
+//        }
+//        return null;
+//    }
+//
+//    public void writeObjectToClient(Object object) {
+//        try {
+//            objectOutputStream.writeObject(object);
+//            objectOutputStream.flush();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
+
+
 
 }

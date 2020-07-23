@@ -1,5 +1,7 @@
 package View;
 
+import Client.ClientController.AccountsController.CManagerController;
+import Client.ClientController.CRegisterAndLoginController;
 import Controller.RegisterAndLoginManager;
 import Models.Accounts.Manager;
 import Models.Accounts.Supporter;
@@ -19,6 +21,7 @@ import javafx.scene.media.MediaPlayer;
 
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class RegisterManagerMenu extends Menu {
     public static Manager currentManager;
@@ -114,17 +117,36 @@ public class RegisterManagerMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 mediaPlayer.play();
-                if (Manager.isThereManagerWithUserName(usernameTextField.getText())) {
-                    if (RegisterAndLoginManager.isUserNameAndPasswordCorrectForManager(usernameTextField.getText(), passwordField.getText())) {
-                        currentManager = Manager.getManagerByUserName(usernameTextField.getText());
-                        onlineManagers.add(currentManager);
-                        notify.setStyle("-fx-text-fill: #3193ff");
-                        notify.setText("successfully signed in");
-                    } else {
-                        notify.setStyle("-fx-text-fill: #ff4f59");
-                        notify.setText("password is wrong");
-                    }
+                HashMap<String, String> dataToSend = new HashMap();
+                dataToSend.put("username", usernameTextField.getText());
+                dataToSend.put("password", passwordField.getText());
+                try {
+                    CRegisterAndLoginController.login(dataToSend);
+                    notify.setStyle("-fx-text-fill: #3193ff");
+                    notify.setText("successfully signed in");
+                } catch (Exception e) {
+                    notify.setStyle("-fx-text-fill: #ff4f59");
+                    notify.setText(e.getMessage());
                 }
+                //              try {
+//                    CRegisterAndLoginController.login(dataToSend);
+//                if (Manager.isThereManagerWithUserName(usernameTextField.getText())) {
+//                    if (RegisterAndLoginManager.isUserNameAndPasswordCorrectForManager(usernameTextField.getText(), passwordField.getText())) {
+//                        CManagerController.loginManager(usernameTextField.getText());
+//                        currentManager = Manager.getManagerByUserName(usernameTextField.getText());
+//                        System.out.println(currentManager.getUserName());
+//                        onlineManagers.add(currentManager);
+//                        notify.setStyle("-fx-text-fill: #3193ff");
+//                        notify.setText("successfully signed in");
+//                    } else {
+//                        notify.setStyle("-fx-text-fill: #ff4f59");
+//                        notify.setText("password is wrong");
+//                    }
+//                } else {
+//                    notify.setStyle("-fx-text-fill: #ff4f59");
+//                    notify.setText("there isn't any manager with this username");
+//                }
+//            }
             }
         });
         backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {

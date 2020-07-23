@@ -3,9 +3,11 @@ package Models.Accounts;
 import Models.Bank.BankAccount;
 import Models.DiscountCode;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public abstract class Account {
+public class Account implements Serializable {
+    protected String role;
     protected String userName;
     protected String firstName;
     protected String lastName;
@@ -17,7 +19,8 @@ public abstract class Account {
     protected String path;
     private ArrayList<DiscountCode> allDiscountCodes;
 
-    public Account(String userName, String firstName, String lastName, String email, String phoneNumber, String password, double credit, String path) {
+    public Account(String role, String userName, String firstName, String lastName, String email, String phoneNumber, String password, double credit, String path) {
+        this.role = role;
         this.userName = userName;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -85,6 +88,10 @@ public abstract class Account {
         return path;
     }
 
+    public String getRole() {
+        return role;
+    }
+
     public void setCredit(double credit) {
         this.credit = credit;
     }
@@ -108,8 +115,5 @@ public abstract class Account {
     public void changePhoneNumber(Account account, String phoneNumber) {
         account.phoneNumber = phoneNumber;
     }
-
-    @Override
-    public abstract String toString();
 }
 

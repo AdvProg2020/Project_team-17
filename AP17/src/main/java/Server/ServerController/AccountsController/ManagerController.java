@@ -1,44 +1,88 @@
 package Server.ServerController.AccountsController;
 
 import Client.Client;
+import Client.ClientController.CRegisterAndLoginController;
+import Models.*;
 import Models.Accounts.*;
-import Models.Category;
-import Models.DiscountCode;
 import Models.Logs.BuyLog;
-import Models.Product;
 import Models.Request.Request;
-import Models.Wallet;
+import Server.ClientHandler;
 import View.RegisterCustomerMenu;
 import View.RegisterManagerMenu;
 import View.RegisterSellerMenu;
 import View.RegisterSupporterMenu;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
+import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class ManagerController {
-    public static String showManagerInfo() {
-        return (RegisterManagerMenu.getCurrentManager().toString());
+    private static Manager manager;
+
+    public ManagerController(Manager manager) {
+        this.manager = manager;
     }
 
-    public static void editManagerInfo(String field, String newContentForThisField) throws Exception {
-        if (RegisterManagerMenu.getCurrentManager() == null) {
-            throw new Exception("manager should login first!");
+    public static Manager getManager() {
+        return manager;
+    }
+
+    public static void setManager(Manager manager) {
+        ManagerController.manager = manager;
+    }
+
+    public static void addAdminAccount() throws Exception {
+        String newAdminDetails = ClientHandler.receiveMessage();
+        System.out.println(newAdminDetails);
+        Gson gson = new GsonBuilder().serializeNulls().create();
+        Manager admin1 = gson.fromJson(newAdminDetails, Manager.class);
+        if (CRegisterAndLoginController.checkUsername(admin1.getUserName())) {
+            CRegisterAndLoginController.registerAdmin(newAdminDetails);
         } else {
-            Manager manager = RegisterManagerMenu.getCurrentManager();
-            if (field.equalsIgnoreCase("first name")) {
-                manager.changeFirstName(manager, newContentForThisField);
-            } else if (field.equalsIgnoreCase("last name")) {
-                manager.changeLastName(manager, newContentForThisField);
-            } else if (field.equalsIgnoreCase("email")) {
-                manager.changeEmail(manager, newContentForThisField);
-            } else if (field.equalsIgnoreCase("phone number")) {
-                manager.changePhoneNumber(manager, newContentForThisField);
-            } else if (field.equalsIgnoreCase("password")) {
-                manager.changePassword(manager, newContentForThisField);
-            }
-            //Client.sendMessage("Success!");
+            ClientHandler.sendObject(new Exception("username already exists"));
+            return;
         }
+        ClientHandler.sendMessage("Success!");
+    }
+
+    //    //public static String showManagerInfo() {
+//        return (RegisterManagerMenu.getCurrentManager().toString());
+//    }
+//    public static void showAdminInfo() {
+//        Gson gson = new GsonBuilder().serializeNulls().create();
+//        if (getManager() == null) {
+//            ClientHandler.sendObject(new ExceptionsLibrary.NoAccountException());
+//        }
+//        String username = ClientHandler.receiveMessage();
+//        Manager manager = (Manager) GetDataFromDatabaseServerSide.getAccount(username);
+//        setManager(manager);
+//        String data = gson.toJson(manager);
+//        ClientHandler.sendMessage(data);
+//    }
+
+
+    public static void editManagerInfo(Manager manager, String field, String newContentForThisField) throws Exception {
+//        Manager manager = RegisterManagerMenu.getCurrentManager();
+        if (field.equalsIgnoreCase("first name")) {
+            manager.changeFirstName(manager, newContentForThisField);
+        } else if (field.equalsIgnoreCase("last name")) {
+            manager.changeLastName(manager, newContentForThisField);
+        } else if (field.equalsIgnoreCase("email")) {
+            manager.changeEmail(manager, newContentForThisField);
+        } else if (field.equalsIgnoreCase("phone number")) {
+            manager.changePhoneNumber(manager, newContentForThisField);
+        } else if (field.equalsIgnoreCase("password")) {
+            manager.changePassword(manager, newContentForThisField);
+        }
+    }
+
+    public static void createManager(String username, String firstName, String lastName, String email, String phoneNumber, String password, String path) throws IOException {
+        new Manager(username, firstName, lastName, email, phoneNumber, password, path);
     }
 
     public static void showManagerRequests() {
@@ -254,5 +298,19 @@ public class ManagerController {
         ArrayList<Product> allProduct = new ArrayList<>();
         allProduct.addAll(Product.getAllProducts());
         Client.sendObject(allProduct);
+    }
+
+    public static void addAuction(String productID, String endDate) {
+        try {
+            Date endDateAsDate = new SimpleDateFormat("yyyy-MM-dd_HH:mm").parse(endDate);
+            Product product = Product.getProductWithId(productID);
+
+            Auction auction = new Auction(product, endDateAsDate);
+            auction.start();
+        } catch (ParseException e) {
+            e.getMessage();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

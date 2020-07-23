@@ -108,4 +108,18 @@ public class SellerAbilitiesManager {
         return data;
     }
 
+    public static void addAuction(String productID, String endDate) {
+        try {
+            Date endDateAsDate = new SimpleDateFormat("yyyy-MM-dd_HH:mm").parse(endDate);
+            Product product = Product.getProductWithId(productID);
+
+            Auction auction = new Auction(product, endDateAsDate);
+            auction.start();
+        } catch (ParseException e) {
+            e.getMessage();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

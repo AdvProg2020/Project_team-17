@@ -1,5 +1,6 @@
 package View;
 
+import Server.ClientHandler;
 import View.AccountMenus.CustomerMenu;
 import View.AccountMenus.ManagerMenu;
 import View.AccountMenus.SellerMenu;
@@ -100,6 +101,11 @@ public class AccountsMenu extends Menu {
                 } else {
                     handleManagerMenu();
                 }
+//                if (ClientHandler.getCurrentManager() == null) {
+//                    handleRegisterManager();
+//                } else {
+//                    handleManagerMenu();
+//                }
             }
         });
 

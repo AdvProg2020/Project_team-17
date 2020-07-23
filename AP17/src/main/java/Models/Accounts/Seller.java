@@ -19,7 +19,7 @@ public class Seller extends Account {
 
     public Seller(String userName, String firstName, String lastName, String email
             , String phoneNumber, String password, double credit, String companyName,String path) throws IOException {
-        super(userName, firstName, lastName, email, phoneNumber, password, credit,path);
+        super("Seller",userName, firstName, lastName, email, phoneNumber, password, credit,path);
         this.companyName = companyName;
         this.wallet = new Wallet(this, credit);
         this.bankAccount = new BankAccount(firstName,lastName,userName,password);
@@ -132,6 +132,7 @@ public class Seller extends Account {
         }
         return false;
     }
+
 
     public void addMoneyToCredit(Product product) {
         this.credit += product.calculateProductPrice(product);

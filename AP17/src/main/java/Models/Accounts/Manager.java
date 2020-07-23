@@ -10,9 +10,10 @@ public class Manager extends Account {
     private static ArrayList<Manager> allManagers = new ArrayList<>();
 
     public Manager(String userName, String firstName, String lastName, String email, String phoneNumber, String password, String path) throws IOException {
-        super(userName, firstName, lastName, email, phoneNumber, password, 0, path);
-        this.bankAccount = new BankAccount(firstName, lastName, userName, password);
+        super("Manager",userName, firstName, lastName, email, phoneNumber, password, 0, path);
         allManagers.add(this);
+        this.bankAccount = new BankAccount(firstName, lastName, userName, password);
+        //allManagers.add(this);
     }
 
     public static ArrayList<Manager> getAllManagers() {

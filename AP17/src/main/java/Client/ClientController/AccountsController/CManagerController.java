@@ -2,6 +2,7 @@ package Client.ClientController.AccountsController;
 
 import Client.Client;
 import Models.Accounts.Account;
+import Models.Accounts.Manager;
 import Models.Category;
 import Models.DiscountCode;
 import Models.Product;
@@ -10,13 +11,40 @@ import Models.Request.Request;
 import java.util.ArrayList;
 
 public class CManagerController {
+
+    public static void addAdminAccount(String newAdminDetails) throws Exception {
+
+        String func = "Add Admin Account";
+        Client.sendMessage(func);
+
+        Client.sendMessage(newAdminDetails);
+        Object response = Client.receiveObject();
+
+        if (response instanceof Exception)
+            throw new Exception("username already exists");
+        else {
+            return;
+        }
+
+    }
+
     public static void showManagerInfo() {
         String func = "Show Manager Info";
         Client.sendMessage(func);
     }
 
-    public static void editManagerInfo() {
-        String func = "Edit Manager Info";
+    public static void editManagerInfo(String field, String newContentForThisField) {
+        String func = "Edit Manager Info " + field + " " + newContentForThisField;
+        Client.sendMessage(func);
+    }
+
+    public static void loginManager(String username) {
+        String func = "Login Manager " + username;
+        Client.sendMessage(func);
+    }
+
+    public static void registerManager(String username, String firstName, String lastName, String email, String phoneNumber, String password, String path) {
+        String func = "Register Manager " + username + "+" + firstName + "+" + lastName + "+" + email + "+" + phoneNumber + "+" + password + "+" + path;
         Client.sendMessage(func);
     }
 
@@ -63,6 +91,11 @@ public class CManagerController {
 
     public static void addDiscountCode() {
         String func = "Add Discount Code";
+        Client.sendMessage(func);
+    }
+
+    public static void addAuction() {
+        String func = "Add Auction";
         Client.sendMessage(func);
     }
 

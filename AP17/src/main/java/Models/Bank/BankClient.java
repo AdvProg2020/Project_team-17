@@ -10,7 +10,7 @@ public class BankClient {
     }
 
     public static class ClientImplementation {
-        public final int PORT = 2020;
+        public final int PORT = 3989;
         public final String IP = "127.0.0.1";
         public final int SHOP_SERVER_PORT = 9000;
 
@@ -57,7 +57,7 @@ public class BankClient {
                 connectToBankServer();
                 startListeningOnInput();
                 while (true) {
-                    String messageToSend = shopInputStream.readUTF();
+                    String messageToSend = inputStream.readUTF();
                     sendMessage(messageToSend);
                 }
             } catch (IOException e) {
