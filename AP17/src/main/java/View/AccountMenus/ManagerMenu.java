@@ -5,6 +5,7 @@ import Controller.AccountsManager.ManagerAbilitiesManager;
 import Controller.AccountsManager.SellerAbilitiesManager;
 import Controller.RegisterAndLoginManager;
 import Models.Accounts.Customer;
+import Models.Accounts.Manager;
 import Models.Category;
 import Models.DiscountCode;
 import Models.Product;
@@ -166,7 +167,7 @@ public class ManagerMenu extends Menu {
         vBox1.setAlignment(Pos.CENTER);
         Image image = null;
         try {
-            FileInputStream inputStream = new FileInputStream(RegisterManagerMenu.getCurrentManager().getPath());
+            FileInputStream inputStream = new FileInputStream(ManagerController.getManager().getPath());
             image = new Image(inputStream);
         } catch (Exception e) {
         }

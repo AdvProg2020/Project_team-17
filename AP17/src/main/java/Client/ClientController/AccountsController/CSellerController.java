@@ -9,6 +9,7 @@ import Models.Logs.BuyLog;
 import Models.Logs.SellLog;
 import Models.Product;
 
+import Models.Request.AddProductRequest;
 import Server.ServerController.DataBaseForServer;
 import View.RegisterSellerMenu;
 import javafx.collections.FXCollections;
@@ -166,17 +167,30 @@ public class CSellerController {
         return data;
     }
 
-
-    public static void addProductRequest(String productId, String productName, String companyName,
-                                         double price, Category category, Seller seller, String productExplanation, String specialFeature, String path) {
+    public static void addProductRequest(String data) throws Exception {
         String func = "Add Product Request";
         Client.sendMessage(func);
-        Product product = new Product(productId, productName, companyName, price,
-                seller, category, productExplanation, 0, specialFeature, path);
-        Client.sendObject(product);
+
+        Client.sendObject(data);
+
+        try {
+            Object response = Client.receiveObject();
+            String responseString = (String) response;
+            if (responseString.equals("Done")) {
+                String[] split = data.split("\\s");
+                Product product = new Product(split[0], split[1], split[2],
+                        Double.parseDouble(split[3]), getSeller(),
+                        DataBaseForServer.getCategory(split[4]), split[5], 0, split[6], split[7]);
+                new AddProductRequest(getSeller(), product, DataBaseForServer.getCategory(split[4]));
+            }
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+
+        }
     }
 
-    public static void editProductRequest(int productId, Seller seller, String field, String newContentForThisField) throws Exception {
+    public static void editProductRequest(int productId, Seller seller, String field, String
+            newContentForThisField) throws Exception {
 
         String func = "Edit Product Request";
         Client.sendMessage(func);
@@ -202,7 +216,8 @@ public class CSellerController {
         Client.sendObject(discount);
     }
 
-    public static void editDiscountRequest(Discount discount, Seller seller, String field, String newContentForThisField) throws Exception {
+    public static void editDiscountRequest(Discount discount, Seller seller, String field, String
+            newContentForThisField) throws Exception {
 
         String func = "Edit Discount Request";
         Client.sendMessage(func);

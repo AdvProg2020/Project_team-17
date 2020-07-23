@@ -2,22 +2,22 @@ package Server.ServerController.AccountsController;
 
 import Client.Client;
 import Client.ClientController.AccountsController.CSellerController;
+import Models.*;
+import Models.Accounts.Customer;
 import Models.Accounts.Manager;
 import Models.Accounts.Seller;
-import Models.Auction;
-import Models.Category;
-import Models.Discount;
 import Models.Logs.Log;
 import Models.Logs.SellLog;
-import Models.Product;
 import Models.Request.*;
 import Server.ClientHandler;
 import Server.ServerController.DataBaseForServer;
 import View.RegisterSellerMenu;
 
+import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -91,8 +91,23 @@ public class SellerController {
     }
 
     public static void addProductRequest() throws IOException {
-        Product product = (Product) Client.receiveObject();
-        new AddProductRequest(RegisterSellerMenu.getCurrentSeller(), product, product.getCategory());
+        String dataToRegister = ClientHandler.receiveMessage();
+        String[] split = dataToRegister.split("\\s");
+
+        if (DataBaseForServer.getProduct(split[0]) != null) {
+            ClientHandler.sendObject(new Exception("there is a product with this id"));
+        } else if (DataBaseForServer.getCategory(split[5]) == null) {
+            ClientHandler.sendObject(new Exception("there isn't any category with this name"));
+        } else {
+            ClientHandler.sendObject("Done");
+            Product product = new Product(split[0], split[1], split[2],
+                    Double.parseDouble(split[3]), DataBaseForServer.getSeller(split[4]),
+                    DataBaseForServer.getCategory(split[5]), split[6], Double.parseDouble(split[7]), split[8], split[9]);
+            DataBaseForServer.addProduct(new Product(split[0], split[1], split[2],
+                    Double.parseDouble(split[3]), getSeller(),
+                    DataBaseForServer.getCategory(split[5]), split[6], 0, split[8], split[9]));
+            DataBaseForServer.addRequest(new AddProductRequest(getSeller(), product, DataBaseForServer.getCategory(split[5])));
+        }
     }
 
     public static void editProductRequest() throws Exception {

@@ -1,5 +1,6 @@
 package View.AccountMenus;
 
+import Client.ClientController.AccountsController.CManagerController;
 import Client.ClientController.AccountsController.CSellerController;
 import Controller.AccountsManager.SellerAbilitiesManager;
 import Models.Category;
@@ -148,29 +149,36 @@ public class SellerMenu extends Menu {
         Text title = new Text("SELLER");
         Image image = null;
         try {
-            FileInputStream inputStream = new FileInputStream(RegisterSellerMenu.getCurrentSeller().getPath());
+            FileInputStream inputStream = new FileInputStream(CSellerController.getSeller().getPath());
             image = new Image(inputStream);
         } catch (Exception e) {
         }
+        Text info = new Text();
+        try {
+            info = new Text(CSellerController.showSellerInfo());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         ImageView imageView = new ImageView(image);
-        Text username = new Text("username: " + RegisterSellerMenu.getCurrentSeller().getUserName());
-        Text firstName = new Text("first name: " + RegisterSellerMenu.getCurrentSeller().getFirstName());
-        Text lastName = new Text("last name: " + RegisterSellerMenu.getCurrentSeller().getLastName());
-        Text email = new Text("email: " + RegisterSellerMenu.getCurrentSeller().getEmail());
-        Text phoneNumber = new Text("phone number: " + RegisterSellerMenu.getCurrentSeller().getPhoneNumber());
-        Text credit = new Text("credit: " + RegisterSellerMenu.getCurrentSeller().getCredit());
-        Text companyName = new Text("company name: " + RegisterSellerMenu.getCurrentSeller());
+//        Text username = new Text("username: " + RegisterSellerMenu.getCurrentSeller().getUserName());
+//        Text firstName = new Text("first name: " + RegisterSellerMenu.getCurrentSeller().getFirstName());
+//        Text lastName = new Text("last name: " + RegisterSellerMenu.getCurrentSeller().getLastName());
+//        Text email = new Text("email: " + RegisterSellerMenu.getCurrentSeller().getEmail());
+//        Text phoneNumber = new Text("phone number: " + RegisterSellerMenu.getCurrentSeller().getPhoneNumber());
+//        Text credit = new Text("credit: " + RegisterSellerMenu.getCurrentSeller().getCredit());
+//        Text companyName = new Text("company name: " + RegisterSellerMenu.getCurrentSeller());
 
         title.setFont(Font.font("calibri", FontWeight.BOLD, FontPosture.REGULAR, 12));
-        username.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
-        firstName.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
-        lastName.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
-        email.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
-        phoneNumber.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
-        credit.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
-        companyName.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
+//        username.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
+//        firstName.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
+//        lastName.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
+//        email.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
+//        phoneNumber.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
+//        credit.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
+//        companyName.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
 
-        vBox1.getChildren().addAll(imageView, title, username, firstName, lastName, email, phoneNumber, credit, companyName);
+//        vBox1.getChildren().addAll(imageView, title, username, firstName, lastName, email, phoneNumber, credit, companyName);
+        vBox1.getChildren().addAll(imageView, title, info);
         pane.setCenter(vBox1);
         pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
         Scene scene = new Scene(pane, 600, 600);
@@ -221,9 +229,17 @@ public class SellerMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 mediaPlayer.play();
-                SellerAbilitiesManager.changeField(RegisterSellerMenu.getCurrentSeller(), field.getValue(), newContent.getText());
-                notify.setStyle("-fx-text-fill: #3193ff");
-                notify.setText("successfully changed");
+                String data = field.getValue() + " " + newContent.getText();
+                try {
+                    CSellerController.editSellerInfo(data);
+                    notify.setStyle("-fx-text-fill: #3193ff");
+                    notify.setText("successfully changed");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                //SellerAbilitiesManager.changeField(RegisterSellerMenu.getCurrentSeller(), field.getValue(), newContent.getText());
+//                notify.setStyle("-fx-text-fill: #3193ff");
+//                notify.setText("successfully changed");
             }
         });
         vBox1.getChildren().addAll(hBox, notify);
@@ -335,7 +351,12 @@ public class SellerMenu extends Menu {
         vBox.getChildren().addAll(button);
         pane.setTop(vBox);
         ListView<String> listView = new ListView<>();
-        listView.getItems().addAll(SellerAbilitiesManager.viewSalesHistory(RegisterSellerMenu.getCurrentSeller()));
+        //listView.getItems().addAll(SellerAbilitiesManager.viewSalesHistory(RegisterSellerMenu.getCurrentSeller()));
+        try {
+            listView.getItems().addAll(CSellerController.showSalesHistory());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         listView.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -343,8 +364,13 @@ public class SellerMenu extends Menu {
                 Alert alert = new Alert(Alert.AlertType.NONE);
                 alert.setTitle("show discount");
                 alert.setHeaderText("discount information");
-                String s = SellerAbilitiesManager.showLogInfo(listView.getSelectionModel().getSelectedItem());
-                alert.setContentText(s);
+                try {
+                    alert.setContentText(CSellerController.showLog(listView.getSelectionModel().getSelectedItem()));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+//                String s = SellerAbilitiesManager.showLogInfo(listView.getSelectionModel().getSelectedItem());
+//                alert.setContentText(s);
                 ButtonType buttonType = new ButtonType("Exit", ButtonBar.ButtonData.CANCEL_CLOSE);
                 alert.getButtonTypes().setAll(buttonType);
                 alert.show();
@@ -387,7 +413,8 @@ public class SellerMenu extends Menu {
         pane.setTop(vBox);
 
         ListView<String> listView = new ListView<>();
-        listView.getItems().addAll(SellerAbilitiesManager.showProducts(RegisterSellerMenu.getCurrentSeller()));
+        //listView.getItems().addAll(SellerAbilitiesManager.showProducts(RegisterSellerMenu.getCurrentSeller()));
+        listView.getItems().addAll(CSellerController.showProducts());
         pane.setCenter(listView);
 
         VBox vBox1 = new VBox(10);
@@ -552,14 +579,24 @@ public class SellerMenu extends Menu {
         add.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                String data = ID.getText() + " " + name.getText() + " " + company.getText() + " " + Double.parseDouble(price.getText()) + " " +
+                        Category.getCategoryByName(category.getText()) + " " + explanation.getText() + " " + feature.getText() + " " + paths.getText();
                 try {
-                    SellerAbilitiesManager.addProduct(ID.getText(), name.getText(), company.getText(), Double.parseDouble(price.getText()),
-                            Category.getCategoryByName(category.getText()), RegisterSellerMenu.getCurrentSeller(), explanation.getText(), feature.getText(), paths.getText());
-                } catch (IOException e) {
-                    e.printStackTrace();
+                    CSellerController.addProductRequest(data);
+                    notify.setStyle("-fx-text-fill: #3193ff");
+                    notify.setText("request sent to manager");
+                } catch (Exception e) {
+                    notify.setStyle("-fx-text-fill: #ff4f59");
+                    notify.setText(e.getMessage());
                 }
-                notify.setStyle("-fx-text-fill: #3193ff");
-                notify.setText("request sent to manager");
+//                try {
+//                    SellerAbilitiesManager.addProduct(ID.getText(), name.getText(), company.getText(), Double.parseDouble(price.getText()),
+//                            Category.getCategoryByName(category.getText()), RegisterSellerMenu.getCurrentSeller(), explanation.getText(), feature.getText(), paths.getText());
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//                notify.setStyle("-fx-text-fill: #3193ff");
+//                notify.setText("request sent to manager");
             }
         });
         vBox1.getChildren().addAll(ID, name, company, price, category, explanation, feature, paths, add, notify);
