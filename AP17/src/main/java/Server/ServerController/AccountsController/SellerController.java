@@ -10,7 +10,6 @@ import Models.Logs.SellLog;
 import Models.Product;
 import Models.Request.*;
 import View.RegisterSellerMenu;
-
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
