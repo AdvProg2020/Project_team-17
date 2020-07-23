@@ -416,7 +416,8 @@ public class ManagerMenu extends Menu {
         pane.setTop(vBox);
 
         ListView<String> listView = new ListView<>();
-        listView.getItems().addAll(ManagerAbilitiesManager.showAllAccounts());
+        //listView.getItems().addAll(ManagerAbilitiesManager.showAllAccounts());
+        listView.getItems().addAll(CManagerController.showUsers());
         pane.setCenter(listView);
 
         VBox vBox1 = new VBox(10);
@@ -1087,24 +1088,33 @@ public class ManagerMenu extends Menu {
         add.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                String s = customersName.getText();
-                if (Customer.getCustomerByName(s) == null) {
+                String data = ID.getText() + " " + startDate.getText() + " " + endDate.getText() + " " + discountPercent.getText()
+                        + " " + max.getText() + " " + Integer.parseInt(count.getText()) + " " + customersName.getText();
+
+                try {
+                    CManagerController.createDiscountCode(data);
+                    notify.setStyle("-fx-text-fill: #1593ff");
+                    notify.setText("discount code created");
+                } catch (Exception e) {
                     notify.setStyle("-fx-text-fill: #ff4f59");
-                    notify.setText("wrong customer name");
-                } else {
-                    //ManagerAbilitiesManager.createDiscountCode(ID.getText(), startDate.getText(), endDate.getText(), discountPercent.getText(), max.getText(), Integer.parseInt(count.getText()), s);
+                    notify.setText(e.getMessage());
+                }
+//                String s = customersName.getText();
+//                if (Customer.getCustomerByName(s) == null) {
+//                    notify.setStyle("-fx-text-fill: #ff4f59");
+//                    notify.setText("wrong customer name");
+//                } else {
+                //ManagerAbilitiesManager.createDiscountCode(ID.getText(), startDate.getText(), endDate.getText(), discountPercent.getText(), max.getText(), Integer.parseInt(count.getText()), s);
 //                    try {
 //                       // WriteIntoFile.writeDiscountCodesIntoFile();
 //                   // } catch (IOException e) {
 //                        System.err.println(e.getMessage());
-                    CManagerController.addDiscountCode();
-                    ManagerController.addDiscountCode(ID.getText(), startDate.getText(), endDate.getText(), discountPercent.getText(), max.getText(), Integer.parseInt(count.getText()), s);
 //                    }
-                    notify.setStyle("-fx-text-fill: #1593ff");
-                    notify.setText("discount code created");
+//                notify.setStyle("-fx-text-fill: #1593ff");
+//                notify.setText("discount code created");
 
-                }
             }
+
         });
         vBox.getChildren().addAll(ID, startDate, endDate, discountPercent, max, count, customersName, add, notify);
         pane.setCenter(vBox);

@@ -90,6 +90,7 @@ public class ManagerController {
         Request request = DataBaseForServer.getRequest(requestId);
         if (request != null) {
             ClientHandler.sendObject(request);
+            DataBaseForServer.deleteRequest(request);
         } else {
             ClientHandler.sendObject(new Exception("there isn't request with this id"));
         }
@@ -126,36 +127,37 @@ public class ManagerController {
         DiscountCode discountCode = DataBaseForServer.getDiscountCode(code);
         if (discountCode != null) {
             ClientHandler.sendObject(discountCode);
+            DataBaseForServer.deleteDiscountCode(discountCode);
         } else {
             ClientHandler.sendObject(new Exception("there isn't request with this id"));
         }
     }
 
+    public static void createDiscountCode() throws IOException {
+        String dataToRegister = ClientHandler.receiveMessage();
+        String[] split = dataToRegister.split("\\s");
 
-//    public static void addSale() {
-//        Sale sale = (Sale) ClientHandler.receiveObject();
-//        while (checkSaleCode(sale.getSaleCode())) {
-//            sale.setSaleCode(Sale.getRandomSaleCode());
-//        }
-//        if (sale.getSaleAccounts().size() == 0) {
-//            try {
-//                sale.getSaleAccounts().clear();
-//                sale.getSaleAccounts().addAll(AdminController.showAllUsersLocal());
-//            } catch (ExceptionsLibrary.NoAccountException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//        for (Account i : sale.getSaleAccounts()) {
-//            if (i.getSaleCodes() == null) {
-//                i.setSaleCodes(new ArrayList<>());
-//            }
-//            i.getSaleCodes().add(sale);
-//            SetDataToDatabase.setAccount(i);
-//        }
-//
-//        SetDataToDatabase.setSale(sale);
-//    }
+        if (DataBaseForServer.getManager(split[0]) != null) {
+            ClientHandler.sendObject(new Exception("there is an discount code with this code"));
+        } else {
+            if (DataBaseForServer.getCustomer(split[6]) == null) {
+                ClientHandler.sendObject(new Exception("there isn't any customer with this username"));
+            } else {
+                ClientHandler.sendObject("Done");
+                DataBaseForServer.addDiscountCode(new DiscountCode(split[0], LocalDate.parse(split[1]), LocalDate.parse(split[2]),
+                        Double.parseDouble(split[3]), Double.parseDouble(split[4]), Integer.parseInt(split[5]), Customer.getCustomerByName(split[6])));
+            }
+        }
+    }
 
+    public static void showAllUsers() {
+        ArrayList<Account> allAccounts = new ArrayList<>();
+        allAccounts.addAll(DataBaseForServer.getAllManagers());
+        allAccounts.addAll(DataBaseForServer.getAllCustomers());
+        allAccounts.addAll(DataBaseForServer.getAllSellers());
+        allAccounts.addAll(DataBaseForServer.getAllSupporters());
+        ClientHandler.sendObject(allAccounts);
+    }
 
 //
 //    public static void showAllUsers() throws ExceptionsLibrary.NoAccountException {
