@@ -458,7 +458,7 @@ public class ManagerMenu extends Menu {
                 alert.setTitle("show user status");
                 alert.setHeaderText("user information");
                 try {
-                    alert.setContentText(CManagerController.showUser(listView.getSelectionModel().getSelectedItem()));
+                    alert.setContentText(CManagerController.showUserStatus(listView.getSelectionModel().getSelectedItem()));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

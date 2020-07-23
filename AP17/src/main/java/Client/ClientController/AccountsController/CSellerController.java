@@ -38,6 +38,10 @@ public class CSellerController {
         return onlineSellers;
     }
 
+    public static void addOnlineSeller(Seller seller) {
+        onlineSellers.add(seller);
+    }
+
     public static String showSellerInfo() throws Exception {
         if (getSeller() == null) {
             throw new Exception("there isn't any seller logged in");

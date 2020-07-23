@@ -1,5 +1,6 @@
 package View;
 
+import Client.ClientController.CRegisterAndLoginController;
 import Controller.RegisterAndLoginManager;
 
 import Models.Accounts.Seller;
@@ -157,25 +158,37 @@ public class RegisterSellerMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 mediaPlayer.play();
-                if (RegisterAndLoginManager.canHaveAccountWithThisUsername(userNameTextField.getText())) {
-                    try {
-                        new Seller(userNameTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText(),
-                                phoneNumberTextField.getText(), passwordField.getText(), 0, extraTextField.getText(), paths.getText());
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                String data = userNameTextField.getText() + " " + firstNameTextField.getText() + " " + lastNameTextField.getText() + " " + emailTextField.getText() + " " +
+                        " " + phoneNumberTextField.getText() + " " + passwordField.getText() + " " + extraTextField.getText() + " " + paths.getText();
+                try {
+                    CRegisterAndLoginController.registerSeller(data);
+                    notify.setStyle("-fx-text-fill: #3193ff");
+                    notify.setText("successfully registered");
+                } catch (Exception e) {
+                    notify.setStyle("-fx-text-fill: #ff4f59");
+                    notify.setText(e.getMessage());
+                    e.printStackTrace();
+                }
+//                if (RegisterAndLoginManager.canHaveAccountWithThisUsername(userNameTextField.getText())) {
+//                    try {
+//                        new Seller(userNameTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText(),
+//                                phoneNumberTextField.getText(), passwordField.getText(), 0, extraTextField.getText(), paths.getText());
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
 //                    try {
 //                        WriteIntoFile.writeSellersIntoFile();
 //                    } catch (IOException e) {
 //                        System.err.println(e.getMessage());
 //                    }
-                    notify.setStyle("-fx-text-fill: #3193ff");
-                    notify.setText("successfully registered");
-                } else {
-                    notify.setStyle("-fx-text-fill: #ff4f59");
-                    notify.setText("this username already exist");
-                }
-
+//                    notify.setStyle("-fx-text-fill: #3193ff");
+//                    notify.setText("successfully registered");
+//                } else {
+//                    notify.setStyle("-fx-text-fill: #ff4f59");
+//                    notify.setText("this username already exist");
+//                }
+//
+//            }
             }
         });
         backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
@@ -225,20 +238,31 @@ public class RegisterSellerMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 mediaPlayer.play();
-                if (Seller.isThereSellerWithUserName(usernameTextField.getText())) {
-                    if (RegisterAndLoginManager.isUserNameAndPasswordCorrectForSeller(usernameTextField.getText(), passwordField.getText())) {
-                        currentSeller = Seller.getSellerByName(usernameTextField.getText());
-                        onlineSellers.add(currentSeller);
-                        notify.setStyle("-fx-text-fill: #3193ff");
-                        notify.setText("successfully signed in");
-                    } else {
-                        notify.setStyle("-fx-text-fill: #ff4f59");
-                        notify.setText("password is wrong");
-                    }
-                } else {
+
+                String dataToSend = usernameTextField.getText() + " " + passwordField.getText();
+                try {
+                    CRegisterAndLoginController.loginSeller(dataToSend);
+                    notify.setStyle("-fx-text-fill: #3193ff");
+                    notify.setText("successfully signed in");
+                } catch (Exception e) {
                     notify.setStyle("-fx-text-fill: #ff4f59");
-                    notify.setText("there isn't any account registered with this username");
+                    notify.setText(e.getMessage());
                 }
+
+//                if (Seller.isThereSellerWithUserName(usernameTextField.getText())) {
+//                    if (RegisterAndLoginManager.isUserNameAndPasswordCorrectForSeller(usernameTextField.getText(), passwordField.getText())) {
+//                        currentSeller = Seller.getSellerByName(usernameTextField.getText());
+//                        onlineSellers.add(currentSeller);
+//                        notify.setStyle("-fx-text-fill: #3193ff");
+//                        notify.setText("successfully signed in");
+//                    } else {
+//                        notify.setStyle("-fx-text-fill: #ff4f59");
+//                        notify.setText("password is wrong");
+//                    }
+//                } else {
+//                    notify.setStyle("-fx-text-fill: #ff4f59");
+//                    notify.setText("there isn't any account registered with this username");
+//                }
             }
         });
         backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {

@@ -39,6 +39,10 @@ public class SellerController {
         return onlineSellers;
     }
 
+    public static void addOnlineSeller(Seller seller) {
+        onlineSellers.add(seller);
+    }
+
     public static void showManagerInfo() throws Exception {
         if (getSeller() == null) {
             ClientHandler.sendObject(new Exception("there isn't any seller logged in"));

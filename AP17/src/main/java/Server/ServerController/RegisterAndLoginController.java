@@ -25,7 +25,6 @@ public class RegisterAndLoginController {
     }
 
     public static void loginManager() {
-        System.out.println("printt");
         String dataToRegister = ClientHandler.receiveMessage();
         String[] split = dataToRegister.split("\\s");
 
@@ -38,7 +37,35 @@ public class RegisterAndLoginController {
                 ClientHandler.sendObject(new Exception("wrong password"));
             }
         } else {
-            System.out.println("manger is null");
+            ClientHandler.sendObject(new Exception("wrong username"));
+        }
+    }
+
+    public static void registerSeller() throws IOException {
+        String dataToRegister = ClientHandler.receiveMessage();
+        String[] split = dataToRegister.split("\\s");
+
+        if (DataBaseForServer.getManager(split[0]) != null && DataBaseForServer.getCustomer(split[0]) != null && DataBaseForServer.getSeller(split[0]) != null) {
+            ClientHandler.sendObject(new Exception("there is an account with this username"));
+        } else {
+            ClientHandler.sendObject("Done");
+            DataBaseForServer.addSeller(new Seller(split[0], split[1], split[2], split[3], split[4], split[5], 0, split[6], split[7]));
+        }
+    }
+
+    public static void loginSeller() {
+        String dataToRegister = ClientHandler.receiveMessage();
+        String[] split = dataToRegister.split("\\s");
+
+        Seller seller = DataBaseForServer.getSeller(split[0]);
+
+        if (seller != null) {
+            if (seller.getPassword().equals(split[1])) {
+                ClientHandler.sendObject(seller);
+            } else {
+                ClientHandler.sendObject(new Exception("wrong password"));
+            }
+        } else {
             ClientHandler.sendObject(new Exception("wrong username"));
         }
     }
