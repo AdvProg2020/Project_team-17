@@ -294,4 +294,63 @@ public class DataBaseForServer implements Serializable {
         allProducts.remove(product);
     }
 
+    public static ArrayList<Manager> getAllMangers() {
+        return allMangers;
+    }
+
+    public static ArrayList<Customer> getAllCustomers() {
+        return allCustomers;
+    }
+
+    public static ArrayList<Seller> getAllSellers() {
+        return allSellers;
+    }
+
+    public static ArrayList<Supporter> getAllSupporters() {
+        return allSupporters;
+    }
+
+    public static ArrayList<BankAccount> getAllBankAccounts() {
+        return allBankAccounts;
+    }
+
+    public static ArrayList<Receipt> getAllReceipts() {
+        return allReceipts;
+    }
+
+    public static ArrayList<Log> getAllLogs() {
+        return allLogs;
+    }
+
+    public static ArrayList<BuyLog> getAllBuyLogs() {
+        return allBuyLogs;
+    }
+
+    public static ArrayList<SellLog> getAllSellLogs() {
+        return allSellLogs;
+    }
+
+    public static ArrayList<Request> getAllRequests() {
+        return allRequests;
+    }
+
+    public static ArrayList<Auction> getAllAuctions() {
+        return allAuctions;
+    }
+
+    public static ArrayList<Cart> getAllCarts() {
+        return allCarts;
+    }
+
+    public static ArrayList<Category> getAllCategories() {
+        return allCategories;
+    }
+
+    public static ArrayList<Discount> getAllDiscounts() {
+        return allDiscounts;
+    }
+
+    public static ArrayList<Product> getAllProducts() {
+        return allProducts;
+    }
 }
