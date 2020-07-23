@@ -32,6 +32,7 @@ public class DataBaseForServer implements Serializable {
     private static ArrayList<Category> allCategories = new ArrayList<>();
     private static ArrayList<Discount> allDiscounts = new ArrayList<>();
     private static ArrayList<Product> allProducts = new ArrayList<>();
+    //discount product lazeme?
     private static ArrayList<Product> allDiscountProducts = new ArrayList<>();
 
 
@@ -125,9 +126,9 @@ public class DataBaseForServer implements Serializable {
     }
 
     //tu if e in chio bayad bbinam yekie ya na
-    public static Receipt getReceipt(String description) {
+    public static Receipt getReceipt(String Id) {
         for (Receipt receipt : allReceipts) {
-            if (receipt.getDescription().equals(description)) {
+            if (receipt.getId() == Integer.parseInt(Id)) {
                 return receipt;
             }
         }
@@ -142,10 +143,10 @@ public class DataBaseForServer implements Serializable {
         allLogs.add(log);
     }
 
-    //tu inam chio bayad tu if check konam?
-    public static Log getLog(String Name) {
+
+    public static Log getLog(String Id) {
         for (Log log : allLogs) {
-            if (log.getName().equals(Name)) {
+            if (log.getId().equals(Id)) {
                 return log;
             }
         }
@@ -160,10 +161,9 @@ public class DataBaseForServer implements Serializable {
         allBuyLogs.add(buyLog);
     }
 
-    // va tu in
-    public static BuyLog getBuyLog(String Name) {
+    public static BuyLog getBuyLog(String Id) {
         for (BuyLog buyLog : allBuyLogs) {
-            if (buyLog.getName().equals(Name)) {
+            if (buyLog.getId().equals(Id)) {
                 return buyLog;
             }
         }
@@ -178,10 +178,9 @@ public class DataBaseForServer implements Serializable {
         allSellLogs.add(sellLog);
     }
 
-    // va tu in
-    public static SellLog getSellLog(String Name) {
+    public static SellLog getSellLog(String Id) {
         for (SellLog sellLog : allSellLogs) {
-            if (sellLog.getName().equals(Name)) {
+            if (sellLog.getId().equals(Id)) {
                 return sellLog;
             }
         }
@@ -196,7 +195,6 @@ public class DataBaseForServer implements Serializable {
         allRequests.add(request);
     }
 
-    // va tu in
     public static Request getRequest(String Id) {
         for (Request request : allRequests) {
             if (request.getId().equals(Id)) {
@@ -279,4 +277,80 @@ public class DataBaseForServer implements Serializable {
         allDiscounts.remove(discount);
     }
 
+    public static void addProduct(Product product) {
+        allProducts.add(product);
+    }
+
+    public static Product getProduct(String Id) {
+        for (Product product : allProducts) {
+            if (product.getProductId().equals(Id)) {
+                return product;
+            }
+        }
+        return null;
+    }
+
+    public static void deleteProduct(Product product) {
+        allProducts.remove(product);
+    }
+
+    public static ArrayList<Manager> getAllMangers() {
+        return allMangers;
+    }
+
+    public static ArrayList<Customer> getAllCustomers() {
+        return allCustomers;
+    }
+
+    public static ArrayList<Seller> getAllSellers() {
+        return allSellers;
+    }
+
+    public static ArrayList<Supporter> getAllSupporters() {
+        return allSupporters;
+    }
+
+    public static ArrayList<BankAccount> getAllBankAccounts() {
+        return allBankAccounts;
+    }
+
+    public static ArrayList<Receipt> getAllReceipts() {
+        return allReceipts;
+    }
+
+    public static ArrayList<Log> getAllLogs() {
+        return allLogs;
+    }
+
+    public static ArrayList<BuyLog> getAllBuyLogs() {
+        return allBuyLogs;
+    }
+
+    public static ArrayList<SellLog> getAllSellLogs() {
+        return allSellLogs;
+    }
+
+    public static ArrayList<Request> getAllRequests() {
+        return allRequests;
+    }
+
+    public static ArrayList<Auction> getAllAuctions() {
+        return allAuctions;
+    }
+
+    public static ArrayList<Cart> getAllCarts() {
+        return allCarts;
+    }
+
+    public static ArrayList<Category> getAllCategories() {
+        return allCategories;
+    }
+
+    public static ArrayList<Discount> getAllDiscounts() {
+        return allDiscounts;
+    }
+
+    public static ArrayList<Product> getAllProducts() {
+        return allProducts;
+    }
 }
