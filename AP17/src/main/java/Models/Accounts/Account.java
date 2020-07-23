@@ -6,7 +6,7 @@ import Models.DiscountCode;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Account implements Serializable {
+public abstract class Account implements Serializable{
     protected String role;
     protected String userName;
     protected String firstName;
@@ -115,5 +115,8 @@ public class Account implements Serializable {
     public void changePhoneNumber(Account account, String phoneNumber) {
         account.phoneNumber = phoneNumber;
     }
+
+    @Override
+    public abstract String toString();
 }
 

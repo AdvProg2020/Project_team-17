@@ -1,19 +1,18 @@
 package Server.ServerController;
 
-import Server.ServerController.*;
-import Server.ServerController.AccountsController.ManagerController;
-
 public class HandleController {
 
     //System.out.println(command);
     public static void handleFunction(String command) throws Exception {
+        System.out.println(command);
         switch (command) {
-            case "Log in": {
-                RegisterAndLoginController.login();
+
+            case "Login Manager": {
+                RegisterAndLoginController.loginManager();
                 break;
             }
-            case "Register": {
-                RegisterAndLoginController.register();
+            case "Register Manager": {
+                RegisterAndLoginController.registerManager();
                 break;
             }
 

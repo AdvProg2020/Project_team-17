@@ -28,25 +28,12 @@ public class Client {
 
     public static void sendMessage(String string) {
         sendObject(string);
-//        string += token;
-//        try {
-//            dataOutputStream.writeUTF(string);
-//            dataOutputStream.flush();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
     }
 
     public static String receiveMessage() {
         String message = null;
         message = (String) receiveObject();
         return message;
-//        try {
-//            return dataInputStream.readUTF();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        return null;
     }
 
     public static void sendObject(Object sent) {
@@ -58,12 +45,6 @@ public class Client {
         } catch (IOException e) {
             e.printStackTrace();
         }
-//        try {
-//            objectOutputStream.writeObject(sent);
-//            objectOutputStream.flush();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
     }
 
     public static Object receiveObject() {
@@ -71,19 +52,10 @@ public class Client {
         try {
             object = objectInputStream.readObject();
             System.out.println("Server Said: " + object);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
 
         return object;
-
-//        try {
-//            return objectInputStream.readObject();
-//        } catch (IOException | ClassNotFoundException e) {
-//            e.printStackTrace();
-//        }
-//        return null;
     }
 }

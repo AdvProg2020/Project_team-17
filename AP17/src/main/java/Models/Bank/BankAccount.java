@@ -1,8 +1,9 @@
 package Models.Bank;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class BankAccount {
+public class BankAccount implements Serializable {
     private int accountId;
     private double balance;
     private String firstName;

@@ -3,7 +3,9 @@ package Models;
 import Models.Accounts.Customer;
 import Models.Accounts.Seller;
 
-public class Wallet {
+import java.io.Serializable;
+
+public class Wallet implements Serializable {
 
     private Customer customer;
     private Seller seller;

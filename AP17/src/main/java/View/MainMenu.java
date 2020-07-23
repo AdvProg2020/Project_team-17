@@ -210,17 +210,10 @@ public class MainMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 mediaPlayer.play();
-                Manager manager = null;
+                String data = userNameTextField.getText() + " " + firstNameTextField.getText() + " " + lastNameTextField.getText() + " " + emailTextField.getText() + " " +
+                        " " + phoneNumberTextField.getText() + " " + passwordField.getText() + " " + paths.getText();
                 try {
-                    manager = new Manager(userNameTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText(),
-                            phoneNumberTextField.getText(), passwordField.getText(), paths.getText());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                Gson gson = new GsonBuilder().serializeNulls().create();
-                String data = gson.toJson(manager);
-                try {
-                    CRegisterAndLoginController.register(data);
+                    CRegisterAndLoginController.registerManager(data);
 //                if (RegisterAndLoginManager.canHaveAccountWithThisUsername(userNameTextField.getText())) {
 //                    CManagerController.registerManager(userNameTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText(),
 //                            phoneNumberTextField.getText(), passwordField.getText(), paths.getText());
@@ -270,45 +263,18 @@ public class MainMenu extends Menu {
 
     @Override
     public void show() {
-//        if (Manager.getAllManagers().size() != 0) {
-//            // music();
-//            setMainScene();
-//            Scene scene = new Scene(setMainScene(), 600, 600);
-//            Menu.window.setScene(scene);
-//            Menu.window.show();
-//        } else {
-//            // music();
-//            registerFirstManager();
-//            Menu.window.show();
-//
-//        }
-        if (!adminNotExists()) {
+        if (Manager.getAllManagers().size() != 0) {
+            // music();
             setMainScene();
             Scene scene = new Scene(setMainScene(), 600, 600);
             Menu.window.setScene(scene);
             Menu.window.show();
-
         } else {
+            // music();
             registerFirstManager();
             Menu.window.show();
+
         }
     }
 
-    private boolean adminNotExists() {
-        File file = new File("Resources/Accounts/Admin");
-        FileFilter fileFilter = new FileFilter() {
-            @Override
-            public boolean accept(File file1) {
-                if (file1.getName().endsWith(".json")) {
-                    return true;
-                }
-                return false;
-            }
-        };
-        boolean exist = true;
-        for (File i : file.listFiles(fileFilter)) {
-            exist = false;
-        }
-        return exist;
-    }
 }

@@ -167,18 +167,26 @@ public class ManagerMenu extends Menu {
         }
         ImageView imageView = new ImageView(image);
         Text title = new Text("MANAGER");
-        Text username = new Text("username: " + RegisterManagerMenu.getCurrentManager().getUserName());
-        Text firstName = new Text("first name: " + RegisterManagerMenu.getCurrentManager().getFirstName());
-        Text lastName = new Text("last name: " + RegisterManagerMenu.getCurrentManager().getLastName());
-        Text email = new Text("email: " + RegisterManagerMenu.getCurrentManager().getEmail());
-        Text phoneNumber = new Text("phone number: " + RegisterManagerMenu.getCurrentManager().getPhoneNumber());
+        Text info = new Text();
+        try {
+            info = new Text(CManagerController.showManagerInfo());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+//        Text username = new Text("username: " + ManagerController.getManager().getUserName());
+//        Text firstName = new Text("first name: " + ManagerController.getManager().getFirstName());
+//        Text lastName = new Text("last name: " + ManagerController.getManager().getLastName());
+//        Text email = new Text("email: " + ManagerController.getManager().getEmail());
+//        Text phoneNumber = new Text("phone number: " + ManagerController.getManager().getPhoneNumber());
         title.setFont(Font.font("calibri", FontWeight.BOLD, FontPosture.REGULAR, 12));
-        username.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
-        firstName.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
-        lastName.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
-        email.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
-        phoneNumber.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
-        vBox1.getChildren().addAll(imageView, title, username, firstName, lastName, email, phoneNumber);
+//        username.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
+//        firstName.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
+//        lastName.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
+//        email.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
+//        phoneNumber.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
+//        vBox1.getChildren().addAll(imageView, title, username, firstName, lastName, email, phoneNumber);
+        vBox1.getChildren().addAll(imageView, title, info);
+
         pane.setCenter(vBox1);
         pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
         Scene scene = new Scene(pane, 600, 600);

@@ -81,15 +81,8 @@ public class ClientHandler extends Thread {
         return builder.toString();
     }
 
-    public static void handleCommand(String command) throws Exception {
-    }
-
-
-    public static void sendMessage(String dataToWrite){
-        //System.out.println("Server Said: "+dataToWrite);
+    public static void sendMessage(String dataToWrite) {
         sendObject(dataToWrite);
-        //out.writeUTF(dataToWrite);
-        //out.flush();
     }
 
     public static String receiveMessage() {
@@ -102,21 +95,21 @@ public class ClientHandler extends Thread {
         Object object = null;
         try {
             object = objectInputStream.readObject();
-            System.out.println("Client Said: "+object);
+            System.out.println("Client Said: " + object);
             return object;
-        }catch (IOException | ClassNotFoundException e){
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
 
         return null;
     }
 
-    public static void sendObject(Object object){
+    public static void sendObject(Object object) {
         try {
-            System.out.println("Server Said: "+object);
+            System.out.println("Server Said: " + object);
             objectOutputStream.writeObject(object);
             objectOutputStream.flush();
-        }catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -160,7 +153,6 @@ public class ClientHandler extends Thread {
 //            e.printStackTrace();
 //        }
 //    }
-
 
 
 }

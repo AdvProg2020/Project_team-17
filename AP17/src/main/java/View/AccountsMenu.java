@@ -1,6 +1,7 @@
 package View;
 
 import Server.ClientHandler;
+import Server.ServerController.AccountsController.ManagerController;
 import View.AccountMenus.CustomerMenu;
 import View.AccountMenus.ManagerMenu;
 import View.AccountMenus.SellerMenu;
@@ -96,63 +97,71 @@ public class AccountsMenu extends Menu {
         managerButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                if (RegisterManagerMenu.getCurrentManager() == null) {
+//                if (RegisterManagerMenu.getCurrentManager() == null) {
+//                    handleRegisterManager();
+//                } else {
+//                    handleManagerMenu();
+//                }
+                if (ManagerController.getManager() == null) {
                     handleRegisterManager();
                 } else {
                     handleManagerMenu();
                 }
+
 //                if (ClientHandler.getCurrentManager() == null) {
 //                    handleRegisterManager();
 //                } else {
 //                    handleManagerMenu();
 //                }
-            }
-        });
+                }
+            });
 
-        supporterButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
+        supporterButton.addEventFilter(MouseEvent.MOUSE_CLICKED,new EventHandler<MouseEvent>()
+
+            {
+                @Override
+                public void handle (MouseEvent mouseEvent){
                 if (RegisterManagerMenu.getCurrentManager() == null) {
                     handleRegisterSupporter();
                 } else {
                     handleManagerMenu();
                 }
             }
-        });
-    }
+            });
+        }
 
-    public void handleRegisterSeller() {
-        RegisterSellerMenu registerSellerMenu = new RegisterSellerMenu(this);
-        registerSellerMenu.show();
-    }
+        public void handleRegisterSeller () {
+            RegisterSellerMenu registerSellerMenu = new RegisterSellerMenu(this);
+            registerSellerMenu.show();
+        }
 
-    public void handleRegisterCustomer() {
-        RegisterCustomerMenu registerCustomerMenu = new RegisterCustomerMenu(this);
-        registerCustomerMenu.show();
-    }
+        public void handleRegisterCustomer () {
+            RegisterCustomerMenu registerCustomerMenu = new RegisterCustomerMenu(this);
+            registerCustomerMenu.show();
+        }
 
-    public void handleRegisterManager() {
-        RegisterManagerMenu registerManagerMenu = new RegisterManagerMenu(this);
-        registerManagerMenu.show();
-    }
+        public void handleRegisterManager () {
+            RegisterManagerMenu registerManagerMenu = new RegisterManagerMenu(this);
+            registerManagerMenu.show();
+        }
 
-    public void handleRegisterSupporter() {
-        RegisterSupporterMenu registerSupporterMenu = new RegisterSupporterMenu(this);
-        registerSupporterMenu.show();
-    }
+        public void handleRegisterSupporter () {
+            RegisterSupporterMenu registerSupporterMenu = new RegisterSupporterMenu(this);
+            registerSupporterMenu.show();
+        }
 
-    public void handleCustomerMenu() {
-        CustomerMenu customerMenu = new CustomerMenu(this);
-        customerMenu.show();
-    }
+        public void handleCustomerMenu () {
+            CustomerMenu customerMenu = new CustomerMenu(this);
+            customerMenu.show();
+        }
 
-    public void handleSellerMenu() {
-        SellerMenu sellerMenu = new SellerMenu(this);
-        sellerMenu.show();
-    }
+        public void handleSellerMenu () {
+            SellerMenu sellerMenu = new SellerMenu(this);
+            sellerMenu.show();
+        }
 
-    public void handleManagerMenu() {
-        ManagerMenu managerMenu = new ManagerMenu(this);
-        managerMenu.show();
+        public void handleManagerMenu () {
+            ManagerMenu managerMenu = new ManagerMenu(this);
+            managerMenu.show();
+        }
     }
-}

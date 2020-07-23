@@ -1,6 +1,5 @@
 import Client.Client;
 import Models.ShopBankAccount;
-import Server.ServerController.GetDataFromDataBase;
 import View.MainMenu;
 import View.Menu;
 import javafx.application.Application;
@@ -19,7 +18,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        GetDataFromDataBase.setResources();
         //LoadFromFile.load(new Gson());
         ShopBankAccount.getInstance();
         Menu.setWindow(window);

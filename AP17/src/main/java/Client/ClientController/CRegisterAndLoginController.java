@@ -1,66 +1,45 @@
 package Client.ClientController;
 
 import Client.Client;
-import Models.Accounts.Account;
+import Client.ClientController.AccountsController.CManagerController;
+import Models.Accounts.Customer;
 import Models.Accounts.Manager;
 import Server.ServerController.AccountsController.ManagerController;
 
-import java.util.HashMap;
-
 public class CRegisterAndLoginController {
 
-
-    public static void register(String dataToRegister) throws Exception {
-
-        String func = "Register";
+    public static void registerManager(String dataToRegister) throws Exception {
+        String func = "Register Manager";
         Client.sendMessage(func);
 
         Client.sendObject(dataToRegister);
-//        Object response = Client.receiveObject();
-//        String responseString = (String) response;
         try {
             Object response = Client.receiveObject();
             String responseString = (String) response;
             if (responseString.equals("Done")) {
-
+                String[] split = dataToRegister.split("\\s");
+                new Manager(split[0], split[1], split[2], split[3], split[4], split[5], split[6]);
             }
-        }catch(Exception e){
-                throw new Exception(e.getMessage());
-            }
-//        if (responseString.equals("Done")) {
-//            return;
-//        } else if (response instanceof Exception) {
-//            //TODO ask yani vaghti chand ta exception be dalayele mokhtalef throw mikone khob man mikham hamoon essage ro neshon bede injori chejori mitonam in karo bokonam k begam hamoon message ro neshon bede ?
-//        }
-
-    }
-
-    public static void login(HashMap<String, String> dataToLogin) throws Exception {
-        String func = "Log in";
-        Client.sendMessage(func);
-
-        Client.sendObject(dataToLogin);
-
-        Object response = Client.receiveObject();
-
-        if (response instanceof Exception) {
-            throw new Exception("wrong info");
-        } else {
-            Account account = (Account) response;
-            if (account.getRole().equals("Manager")) {
-                ManagerController.setManager((Manager) account);
-                return;
-            }
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
         }
     }
 
-    public static void registerAdmin(String data) {
-
-        String func = "Register Admin";
+    public static void loginManager(String dataToLogin) throws Exception {
+        String func = "Login Manager";
         Client.sendMessage(func);
 
-        Client.sendMessage(data);
+        Client.sendObject(dataToLogin);
+        try {
+            Object response = Client.receiveObject();
+            Manager manager = (Manager) response;
+            ManagerController.setManager(manager);
+            CManagerController.setManager(manager);
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
     }
+
 
     public static boolean checkUsername(String username) {
 

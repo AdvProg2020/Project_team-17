@@ -1,10 +1,7 @@
 package View;
 
-import Client.ClientController.AccountsController.CManagerController;
 import Client.ClientController.CRegisterAndLoginController;
-import Controller.RegisterAndLoginManager;
 import Models.Accounts.Manager;
-import Models.Accounts.Supporter;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -117,11 +114,9 @@ public class RegisterManagerMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 mediaPlayer.play();
-                HashMap<String, String> dataToSend = new HashMap();
-                dataToSend.put("username", usernameTextField.getText());
-                dataToSend.put("password", passwordField.getText());
+                String dataToSend = usernameTextField.getText() + " " + passwordField.getText();
                 try {
-                    CRegisterAndLoginController.login(dataToSend);
+                    CRegisterAndLoginController.loginManager(dataToSend);
                     notify.setStyle("-fx-text-fill: #3193ff");
                     notify.setText("successfully signed in");
                 } catch (Exception e) {
