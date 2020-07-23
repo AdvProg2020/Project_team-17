@@ -1,6 +1,7 @@
 package Server.ServerController.AccountsController;
 
 import Client.Client;
+import Client.ClientController.AccountsController.CCustomerController;
 import Models.Accounts.Customer;
 import Models.DiscountCode;
 import Models.Logs.BuyLog;
@@ -11,6 +12,20 @@ import java.util.ArrayList;
 
 public class CustomerController {
 
+    private static ArrayList<Customer> onlineCustomers = new ArrayList<>();
+    private static Customer customer;
+
+    public static Customer getCustomer() {
+        return customer;
+    }
+
+    public static void setCustomer(Customer customer) {
+        CustomerController.customer = customer;
+    }
+
+    public static ArrayList<Customer> getOnlineCustomers() {
+        return onlineCustomers;
+    }
     public static String showCustomerInfo() {
         return RegisterCustomerMenu.getCurrentCustomer().toString();
     }

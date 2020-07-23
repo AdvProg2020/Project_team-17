@@ -1,6 +1,7 @@
 package Server.ServerController.AccountsController;
 
 import Client.Client;
+import Client.ClientController.AccountsController.CSellerController;
 import Models.Accounts.Seller;
 import Models.Auction;
 import Models.Category;
@@ -10,6 +11,7 @@ import Models.Logs.SellLog;
 import Models.Product;
 import Models.Request.*;
 import View.RegisterSellerMenu;
+
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -17,6 +19,23 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class SellerController {
+
+    private static ArrayList<Seller> onlineSellers = new ArrayList<>();
+    private static Seller seller;
+
+    public static Seller getSeller() {
+        return seller;
+    }
+
+    public static void setSeller(Seller seller) {
+        SellerController.seller = seller;
+    }
+
+    public static ArrayList<Seller> getOnlineSellers() {
+        return onlineSellers;
+    }
+
+
     public static void showSellerInfo() {
         if (RegisterSellerMenu.getCurrentSeller() == null) {
             Client.sendObject(new Exception("seller should first login"));

@@ -363,16 +363,10 @@ public class ManagerMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 try {
-                    CManagerController.defineLeastAmount();
+                    CManagerController.setLeastAmount(textField.getText());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                try {
-                    ManagerController.defineLeastAmountForSellerAndCustomerWallet(Double.parseDouble(textField.getText()));
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                // ManagerAbilitiesManager.changeField(RegisterManagerMenu.getCurrentManager(), field.getValue(), newContent.getText());
                 notify.setStyle("-fx-text-fill: #3193ff");
                 notify.setText("successfully defined");
             }
@@ -463,13 +457,13 @@ public class ManagerMenu extends Menu {
                 alert.setTitle("show user status");
                 alert.setHeaderText("user information");
                 try {
-                    CManagerController.showAccountStatus();
+                    alert.setContentText(CManagerController.showUser(listView.getSelectionModel().getSelectedItem()));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
                 //String s = ManagerAbilitiesManager.viewAccountByUsername(listView.getSelectionModel().getSelectedItem());
                 //alert.setContentText(s);
-                alert.setContentText(ManagerController.showUserStatusInfo(listView.getSelectionModel().getSelectedItem()));
+                //alert.setContentText(ManagerController.showUserStatusInfo(listView.getSelectionModel().getSelectedItem()));
                 ButtonType buttonType = new ButtonType("Exit", ButtonBar.ButtonData.CANCEL_CLOSE);
                 alert.getButtonTypes().setAll(buttonType);
                 alert.show();

@@ -1,11 +1,8 @@
 package Client.ClientController.AccountsController;
 
 import Client.Client;
+import Models.*;
 import Models.Accounts.*;
-import Models.Category;
-import Models.Discount;
-import Models.DiscountCode;
-import Models.Product;
 import Models.Request.Request;
 import Server.ServerController.DataBaseForServer;
 import javafx.collections.FXCollections;
@@ -18,16 +15,16 @@ public class CManagerController {
 
     private static Manager manager;
 
-    public CManagerController(Manager manager) {
-        this.manager = manager;
-    }
-
     public static Manager getManager() {
         return manager;
     }
 
     public static void setManager(Manager manager) {
         CManagerController.manager = manager;
+    }
+
+    public static void addOnlineManager(Manager manager){
+        onlineManagers.add(manager);
     }
 
     public static String showManagerInfo() throws Exception {
@@ -140,7 +137,6 @@ public class CManagerController {
             Request request = (Request) data;
             Request.deleteRequest(request);
             DataBaseForServer.deleteRequest(request);
-            //TODO check with kian's commit
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
@@ -385,6 +381,38 @@ public class CManagerController {
         }
     }
 
+    public static void setLeastAmount(String num) throws Exception {
+        String func = "Set Least Amount";
+        Client.sendMessage(func);
+
+        Client.sendObject(num);
+        try {
+            Object response = Client.receiveObject();
+            String responseString = (String) response;
+            if (responseString.equals("Done")) {
+                Wallet.setLeastAmount(Double.parseDouble(num));
+            }
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    public static void deleteCategory(String name) throws Exception {
+        String func = "Delete Category";
+        Client.sendMessage(func);
+
+        Client.sendMessage(name);
+
+        try {
+            Object data = Client.receiveObject();
+            Category category = (Category) data;
+            Category.deleteCategory(category);
+            DataBaseForServer.deleteCategory(category);
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
 
     public static void editCategory(String name, String dataToEdit) throws Exception {
         String func = "Edit Category";
@@ -442,5 +470,17 @@ public class CManagerController {
         return data;
     }
 
+    public static String showUserStatus(String username) throws Exception {
+        String func = "Show User Status";
+        Client.sendMessage(func);
 
+        Client.sendMessage(username);
+
+        try {
+            Object data = Client.receiveObject();
+            return String.valueOf(data);
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
 }

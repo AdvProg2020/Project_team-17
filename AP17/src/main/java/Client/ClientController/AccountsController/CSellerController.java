@@ -15,6 +15,21 @@ import java.util.ArrayList;
 
 public class CSellerController {
 
+    private static ArrayList<Seller> onlineSellers = new ArrayList<>();
+    private static Seller seller;
+
+    public static Seller getSeller() {
+        return seller;
+    }
+
+    public static void setSeller(Seller seller) {
+        CSellerController.seller = seller;
+    }
+
+    public static ArrayList<Seller> getOnlineSellers() {
+        return onlineSellers;
+    }
+
     public static String showSellerInfo() throws Exception {
         String func = "Show Seller Info";
         Client.sendMessage(func);

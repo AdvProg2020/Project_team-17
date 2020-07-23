@@ -1,6 +1,7 @@
 package Client.ClientController.AccountsController;
 
 import Client.Client;
+import Models.Accounts.Customer;
 import Models.DiscountCode;
 import Models.Logs.BuyLog;
 import View.RegisterCustomerMenu;
@@ -8,8 +9,22 @@ import View.RegisterCustomerMenu;
 import java.util.ArrayList;
 
 public class CCustomerController {
+    private static ArrayList<Customer> onlineCustomers = new ArrayList<>();
+    private static Customer customer;
 
-    public static void showCustomerInfo()  {
+    public static Customer getCustomer() {
+        return customer;
+    }
+
+    public static void setCustomer(Customer customer) {
+        CCustomerController.customer = customer;
+    }
+
+    public static ArrayList<Customer> getOnlineCustomers() {
+        return onlineCustomers;
+    }
+
+    public static void showCustomerInfo() {
         String func = "Show Customer Info";
         Client.sendMessage(func);
     }

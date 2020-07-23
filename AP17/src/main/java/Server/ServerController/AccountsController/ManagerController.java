@@ -24,6 +24,7 @@ import java.util.Date;
 
 public class ManagerController {
     private static Manager manager;
+    private static ArrayList<Manager> onlineManagers = new ArrayList<>();
 
     public ManagerController(Manager manager) {
         this.manager = manager;
@@ -35,6 +36,10 @@ public class ManagerController {
 
     public static void setManager(Manager manager) {
         ManagerController.manager = manager;
+    }
+
+    public static void addOnlineManager(Manager manager) {
+        onlineManagers.add(manager);
     }
 
     public static void showManagerInfo() throws Exception {
@@ -286,6 +291,57 @@ public class ManagerController {
         }
     }
 
+    public static void setLeastAmount() {
+        String data = ClientHandler.receiveMessage();
+        try {
+            Double num = Double.parseDouble(data);
+            ClientHandler.sendObject("Done");
+        } catch (Exception e) {
+            ClientHandler.sendObject(new Exception("you should enter number"));
+        }
+    }
+
+    public static void showUserStatus() throws Exception {
+        String username = ClientHandler.receiveMessage();
+        String status = "";
+        if (DataBaseForServer.getManager(username) != null) {
+            if (onlineManagers.contains(DataBaseForServer.getManager(username))) {
+                status = "online";
+                ClientHandler.sendObject(status);
+            } else {
+                status = "offline";
+                ClientHandler.sendObject(status);
+            }
+        } else if (DataBaseForServer.getSeller(username) != null) {
+            if (SellerController.getOnlineSellers().contains(DataBaseForServer.getSeller(username))) {
+                status = "online";
+                ClientHandler.sendObject(status);
+            } else {
+                status = "offline";
+                ClientHandler.sendObject(status);
+            }
+        }
+        if (DataBaseForServer.getCustomer(username) != null) {
+            if (CustomerController.getOnlineCustomers().contains(DataBaseForServer.getCustomer(username))) {
+                status = "online";
+                ClientHandler.sendObject(status);
+            } else {
+                status = "offline";
+                ClientHandler.sendObject(status);
+            }
+        }
+        if (DataBaseForServer.getSupporter(username) != null) {
+            if (.contains(DataBaseForServer.getSupporter(username))) {
+                status = "online";
+                ClientHandler.sendObject(status);
+            } else {
+                status = "offline";
+                ClientHandler.sendObject(status);
+            }
+        }
+
+    }
+}
 
 //    public static void addAuction(String productID, String endDate) {
 //        try {

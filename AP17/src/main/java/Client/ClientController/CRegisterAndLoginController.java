@@ -35,6 +35,8 @@ public class CRegisterAndLoginController {
             Manager manager = (Manager) response;
             ManagerController.setManager(manager);
             CManagerController.setManager(manager);
+            ManagerController.addOnlineManager(manager);
+            CManagerController.addOnlineManager(manager);
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
