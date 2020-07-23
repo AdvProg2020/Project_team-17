@@ -1,5 +1,6 @@
 package View.AccountMenus;
 
+import Client.ClientController.CRegisterAndLoginController;
 import Controller.AccountsManager.ManagerAbilitiesManager;
 import Controller.AccountsManager.SellerAbilitiesManager;
 import Controller.RegisterAndLoginManager;
@@ -584,31 +585,32 @@ public class ManagerMenu extends Menu {
         SUButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                if (RegisterAndLoginManager.canHaveAccountWithThisUsername(userNameTextField.getText())) {
+//                if (RegisterAndLoginManager.canHaveAccountWithThisUsername(userNameTextField.getText())) {
 //                    try {
 //                        ManagerAbilitiesManager.createAnotherManager(userNameTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText(),
 //                                phoneNumberTextField.getText(), passwordField.getText());
 //                    } catch (IOException e) {
 //                        e.printStackTrace();
 //                    }
-                    try {
-                        CManagerController.addManager();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    try {
-                        ManagerController.addManager(userNameTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText()
-                                , phoneNumberTextField.getText(), passwordField.getText(), paths.getText());
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+                String data = userNameTextField.getText() + " " + firstNameTextField.getText() + " " + lastNameTextField.getText() + " " + emailTextField.getText() + " " +
+                        " " + phoneNumberTextField.getText() + " " + passwordField.getText() + " " + paths.getText();
+                try {
+                    CManagerController.addManager(data);
                     notify.setStyle("-fx-text-fill: #3193ff");
                     notify.setText("successfully registered");
-                } else {
+                } catch (Exception e) {
                     notify.setStyle("-fx-text-fill: #ff4f59");
-                    notify.setText("this username already exist");
+                    notify.setText(e.getMessage());
+                    e.printStackTrace();
                 }
             }
+//                    notify.setStyle("-fx-text-fill: #3193ff");
+//                    notify.setText("successfully registered");
+//                } else {
+//                    notify.setStyle("-fx-text-fill: #ff4f59");
+//                    notify.setText("this username already exist");
+//                }
+
         });
 
         backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
@@ -758,30 +760,32 @@ public class ManagerMenu extends Menu {
         SUButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                if (RegisterAndLoginManager.canHaveAccountWithThisUsername(userNameTextField.getText())) {
+//                if (RegisterAndLoginManager.canHaveAccountWithThisUsername(userNameTextField.getText())) {
 //                    try {
 //                        ManagerAbilitiesManager.createAnotherManager(userNameTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText(),
 //                                phoneNumberTextField.getText(), passwordField.getText());
 //                    } catch (IOException e) {
 //                        e.printStackTrace();
 //                    }
-                    try {
-                        CManagerController.addSupporter();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    try {
-                        ManagerController.addSupporter(userNameTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText()
-                                , phoneNumberTextField.getText(), passwordField.getText(), paths.getText());
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+                String data = userNameTextField.getText() + " " + firstNameTextField.getText() + " " + lastNameTextField.getText() + " " + emailTextField.getText() + " " +
+                        " " + phoneNumberTextField.getText() + " " + passwordField.getText() + " " + paths.getText();
+                try {
+                    CManagerController.addSupporter(data);
                     notify.setStyle("-fx-text-fill: #3193ff");
                     notify.setText("successfully registered");
-                } else {
+                } catch (Exception e) {
                     notify.setStyle("-fx-text-fill: #ff4f59");
-                    notify.setText("this username already exist");
+                    notify.setText(e.getMessage());
+                    e.printStackTrace();
                 }
+//                }
+//                    notify.setStyle("-fx-text-fill: #3193ff");
+//                    notify.setText("successfully registered");
+//                } else {
+//                    notify.setStyle("-fx-text-fill: #ff4f59");
+//                    notify.setText("this username already exist");
+//                }
+//            }
             }
         });
         backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
@@ -1254,7 +1258,7 @@ public class ManagerMenu extends Menu {
         vBox.getChildren().addAll(button);
         pane.setTop(vBox);
         ListView<String> listView = new ListView<>();
-        listView.getItems().addAll(ManagerAbilitiesManager.showAllCategories());
+        listView.getItems().addAll(CManagerController.showCategories());
         pane.setCenter(listView);
         VBox vBox1 = new VBox(10);
         Button edit = new Button("edit category");
@@ -1284,9 +1288,16 @@ public class ManagerMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 mediaPlayer.play();
-                ManagerAbilitiesManager.removeCategory(listView.getSelectionModel().getSelectedItem());
-                notify.setStyle("-fx-text-fill: #3193ff");
-                notify.setText("category removed successfully");
+                try {
+                    CManagerController.deleteCategory(listView.getSelectionModel().getSelectedItem());
+                    notify.setStyle("-fx-text-fill: #3193ff");
+                    notify.setText("category removed successfully");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+//                ManagerAbilitiesManager.removeCategory(listView.getSelectionModel().getSelectedItem());
+//                notify.setStyle("-fx-text-fill: #3193ff");
+//                notify.setText("category removed successfully");
             }
         });
         vBox1.getChildren().addAll(edit, add, remove, notify);
@@ -1336,17 +1347,23 @@ public class ManagerMenu extends Menu {
         add.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                String data = name.getText() + " " + feature.getText();
                 mediaPlayer.play();
-                CManagerController.addCategory();
-                ManagerController.addCategory(name.getText(), feature.getText());
+                try {
+                    CManagerController.addCategory(data);
+                    notify.setStyle("-fx-text-fill: #3193ff");
+                    notify.setText("category successfully added");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 //                ManagerAbilitiesManager.addCategory(name.getText(), feature.getText());
 //                try {
 //                    //WriteIntoFile.writeCategoriesIntoFile();
 //                } catch (IOException e) {
 //                    System.err.println(e.getMessage());
 //                }
-                notify.setStyle("-fx-text-fill: #3193ff");
-                notify.setText("category successfully added");
+//                notify.setStyle("-fx-text-fill: #3193ff");
+//                notify.setText("category successfully added");
             }
         });
 
@@ -1403,11 +1420,18 @@ public class ManagerMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 mediaPlayer.play();
-                CManagerController.editCategory();
-                ManagerController.editCategory(selectedCategory, field.getValue(), newContent.getText());
+                String data = field.getValue() + " " + newContent.getText();
+                try {
+                    CManagerController.editCategory(selectedCategory.getCategoryName(), data);
+                    notify.setStyle("-fx-text-fill: #3193ff");
+                    notify.setText("successfully changed");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
                 //ManagerAbilitiesManager.editCategory(selectedCategory, field.getValue(), newContent.getText());
-                notify.setStyle("-fx-text-fill: #3193ff");
-                notify.setText("successfully changed");
+//                notify.setStyle("-fx-text-fill: #3193ff");
+//                notify.setText("successfully changed");
             }
         });
         vBox1.getChildren().addAll(hBox, notify);
@@ -1448,7 +1472,8 @@ public class ManagerMenu extends Menu {
         vBox.getChildren().addAll(button);
         pane.setTop(vBox);
         ListView<String> listView = new ListView<>();
-        listView.getItems().addAll(ManagerAbilitiesManager.showAllProducts());
+        //listView.getItems().addAll(ManagerAbilitiesManager.showAllProducts());
+        listView.getItems().addAll(CManagerController.showProducts());
         pane.setCenter(listView);
         VBox vBox1 = new VBox(10);
         Button remove = new Button("remove product");
@@ -1459,10 +1484,15 @@ public class ManagerMenu extends Menu {
             public void handle(MouseEvent mouseEvent) {
                 mediaPlayer.play();
                 // ManagerAbilitiesManager.removeProduct(listView.getSelectionModel().getSelectedItem());
-                CManagerController.deleteProduct();
-                ManagerController.deleteProduct(listView.getSelectionModel().getSelectedItem());
-                notify.setStyle("-fx-text-fill: #3193ff");
-                notify.setText("category removed successfully");
+                try {
+                    CManagerController.deleteProduct(listView.getSelectionModel().getSelectedItem());
+                    notify.setStyle("-fx-text-fill: #3193ff");
+                    notify.setText("product removed successfully");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+//                notify.setStyle("-fx-text-fill: #3193ff");
+//                notify.setText("category removed successfully");
             }
         });
 
