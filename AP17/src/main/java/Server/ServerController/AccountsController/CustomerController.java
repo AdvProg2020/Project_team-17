@@ -26,6 +26,10 @@ public class CustomerController {
     public static ArrayList<Customer> getOnlineCustomers() {
         return onlineCustomers;
     }
+
+    public static void addOnlineCustomer(Customer customer) {
+        onlineCustomers.add(customer);
+    }
     public static String showCustomerInfo() {
         return RegisterCustomerMenu.getCurrentCustomer().toString();
     }

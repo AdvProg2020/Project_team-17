@@ -1,5 +1,6 @@
 package View;
 
+import Client.ClientController.CRegisterAndLoginController;
 import Controller.RegisterAndLoginManager;
 import Models.Accounts.Customer;
 import Models.Accounts.Supporter;
@@ -156,24 +157,35 @@ public class RegisterCustomerMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 mediaPlayer.play();
-                if (RegisterAndLoginManager.canHaveAccountWithThisUsername(userNameTextField.getText())) {
-                    try {
-                        new Customer(userNameTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText(),
-                                phoneNumberTextField.getText(), passwordField.getText(), Double.parseDouble(extraTextField.getText()), addressTextField.getText(), paths.getText());
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-//                    try {
-//                        WriteIntoFile.writeCustomersIntoFile();
-//                    } catch (IOException e) {
-//                        System.err.println(e.getMessage());
-//                    }
+                String data = userNameTextField.getText() + " " + firstNameTextField.getText() + " " + lastNameTextField.getText() + " " + emailTextField.getText() + " " +
+                        " " + phoneNumberTextField.getText() + " " + passwordField.getText() + " " + extraTextField.getText() + " " + addressTextField.getText() + " " + paths.getText();
+                try {
+                    CRegisterAndLoginController.registerCustomer(data);
                     notify.setStyle("-fx-text-fill: #3193ff");
                     notify.setText("successfully registered");
-                } else {
+                } catch (Exception e) {
                     notify.setStyle("-fx-text-fill: #ff4f59");
-                    notify.setText("this username already exist");
+                    notify.setText(e.getMessage());
+                    e.printStackTrace();
                 }
+//                if (RegisterAndLoginManager.canHaveAccountWithThisUsername(userNameTextField.getText())) {
+//                    try {
+//                        new Customer(userNameTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText(),
+//                                phoneNumberTextField.getText(), passwordField.getText(), Double.parseDouble(extraTextField.getText()), addressTextField.getText(), paths.getText());
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
+////                    try {
+////                        WriteIntoFile.writeCustomersIntoFile();
+////                    } catch (IOException e) {
+////                        System.err.println(e.getMessage());
+////                    }
+//                    notify.setStyle("-fx-text-fill: #3193ff");
+//                    notify.setText("successfully registered");
+//                } else {
+//                    notify.setStyle("-fx-text-fill: #ff4f59");
+//                    notify.setText("this username already exist");
+//                }
 
             }
         });
@@ -225,17 +237,26 @@ public class RegisterCustomerMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 mediaPlayer.play();
-                if (Customer.isThereCustomerWithUserName(usernameTextField.getText())) {
-                    if (RegisterAndLoginManager.isUserNameAndPasswordCorrectForCustomer(usernameTextField.getText(), passwordField.getText())) {
-                        currentCustomer = Customer.getCustomerByName(usernameTextField.getText());
-                        onlineCustomers.add(currentCustomer);
-                        notify.setStyle("-fx-text-fill: #3193ff");
-                        notify.setText("successfully signed in");
-                    } else {
-                        notify.setStyle("-fx-text-fill: #ff4f59");
-                        notify.setText("password is wrong");
-                    }
+                String dataToSend = usernameTextField.getText() + " " + passwordField.getText();
+                try {
+                    CRegisterAndLoginController.loginCustomer(dataToSend);
+                    notify.setStyle("-fx-text-fill: #3193ff");
+                    notify.setText("successfully signed in");
+                } catch (Exception e) {
+                    notify.setStyle("-fx-text-fill: #ff4f59");
+                    notify.setText(e.getMessage());
                 }
+//                if (Customer.isThereCustomerWithUserName(usernameTextField.getText())) {
+//                    if (RegisterAndLoginManager.isUserNameAndPasswordCorrectForCustomer(usernameTextField.getText(), passwordField.getText())) {
+//                        currentCustomer = Customer.getCustomerByName(usernameTextField.getText());
+//                        onlineCustomers.add(currentCustomer);
+//                        notify.setStyle("-fx-text-fill: #3193ff");
+//                        notify.setText("successfully signed in");
+//                    } else {
+//                        notify.setStyle("-fx-text-fill: #ff4f59");
+//                        notify.setText("password is wrong");
+//                    }
+//                }
             }
         });
         backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {

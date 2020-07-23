@@ -1,11 +1,13 @@
 package Client.ClientController;
 
 import Client.Client;
+import Client.ClientController.AccountsController.CCustomerController;
 import Client.ClientController.AccountsController.CManagerController;
 import Client.ClientController.AccountsController.CSellerController;
 import Models.Accounts.Customer;
 import Models.Accounts.Manager;
 import Models.Accounts.Seller;
+import Server.ServerController.AccountsController.CustomerController;
 import Server.ServerController.AccountsController.ManagerController;
 import Server.ServerController.AccountsController.SellerController;
 
@@ -55,7 +57,7 @@ public class CRegisterAndLoginController {
             String responseString = (String) response;
             if (responseString.equals("Done")) {
                 String[] split = dataToRegister.split("\\s");
-                new Seller(split[0], split[1], split[2], split[3], split[4], split[5], 0, split[7], split[8]);
+                new Seller(split[0], split[1], split[2], split[3], split[4], split[5], 0, split[6], split[7]);
             }
         } catch (Exception e) {
             throw new Exception(e.getMessage());
@@ -74,6 +76,40 @@ public class CRegisterAndLoginController {
             CSellerController.setSeller(seller);
             SellerController.addOnlineSeller(seller);
             CSellerController.addOnlineSeller(seller);
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    public static void registerCustomer(String dataToRegister) throws Exception {
+        String func = "Register Customer";
+        Client.sendMessage(func);
+
+        Client.sendObject(dataToRegister);
+        try {
+            Object response = Client.receiveObject();
+            String responseString = (String) response;
+            if (responseString.equals("Done")) {
+                String[] split = dataToRegister.split("\\s");
+                new Customer(split[0], split[1], split[2], split[3], split[4], split[5], Double.parseDouble(split[6]), split[7], split[8]);
+            }
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    public static void loginCustomer(String dataToLogin) throws Exception {
+        String func = "Login Customer";
+        Client.sendMessage(func);
+
+        Client.sendObject(dataToLogin);
+        try {
+            Object response = Client.receiveObject();
+            Customer customer = (Customer) response;
+            CustomerController.setCustomer(customer);
+            CCustomerController.setCustomer(customer);
+            CustomerController.addOnlineCustomer(customer);
+            CCustomerController.addOnlineCustomer(customer);
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }

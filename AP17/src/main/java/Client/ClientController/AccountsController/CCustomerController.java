@@ -24,6 +24,10 @@ public class CCustomerController {
         return onlineCustomers;
     }
 
+    public static void addOnlineCustomer(Customer customer) {
+        onlineCustomers.add(customer);
+    }
+
     public static void showCustomerInfo() {
         String func = "Show Customer Info";
         Client.sendMessage(func);
