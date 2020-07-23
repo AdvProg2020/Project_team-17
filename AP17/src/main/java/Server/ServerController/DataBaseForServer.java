@@ -103,4 +103,92 @@ public class DataBaseForServer implements Serializable {
         allSupporters.remove(supporter);
     }
 
+    public static void addBankAccount(BankAccount bankAccount) {
+        allBankAccounts.add(bankAccount);
+    }
+
+    public static BankAccount getBankAccount(String userName) {
+        for (BankAccount bankAccount : allBankAccounts) {
+            if (bankAccount.getUsername().equals(userName)) {
+                return bankAccount;
+            }
+        }
+        return null;
+    }
+
+    public static void deleteBankAccount(BankAccount bankAccount) {
+        allBankAccounts.remove(bankAccount);
+    }
+
+    public static void addReceipt(Receipt receipt) {
+        allReceipts.add(receipt);
+    }
+
+    //tu if e in chio bayad bbinam yekie ya na
+    public static Receipt getReceipt(String description) {
+        for (Receipt receipt : allReceipts) {
+            if (receipt.getDescription().equals(description)) {
+                return receipt;
+            }
+        }
+        return null;
+    }
+
+    public static void deleteReceipt(Receipt receipt) {
+        allReceipts.remove(receipt);
+    }
+
+    public static void addLog(Log log) {
+        allLogs.add(log);
+    }
+
+    //tu inam chio bayad tu if check konam?
+    public static Log getLog(String Name) {
+        for (Log log : allLogs) {
+            if (log.getName().equals(Name)) {
+                return log;
+            }
+        }
+        return null;
+    }
+
+    public static void deleteLog(Log log) {
+        allLogs.remove(log);
+    }
+
+    public static void addBuyLog(BuyLog buyLog) {
+        allBuyLogs.add(buyLog);
+    }
+
+    // va tu in
+    public static BuyLog getBuyLog(String Name) {
+        for (BuyLog buyLog : allBuyLogs) {
+            if (buyLog.getName().equals(Name)) {
+                return buyLog;
+            }
+        }
+        return null;
+    }
+
+    public static void deleteBuyLog(BuyLog buyLog) {
+        allBuyLogs.remove(buyLog);
+    }
+
+    public static void addSellLog(SellLog sellLog) {
+        allSellLogs.add(sellLog);
+    }
+
+    public static SellLog getSellLog(String Name) {
+        for (SellLog sellLog : allSellLogs) {
+            if (sellLog.getName().equals(Name)) {
+                return sellLog;
+            }
+        }
+        return null;
+    }
+
+    public static void deleteSellLog(SellLog sellLog) {
+        allSellLogs.remove(sellLog);
+    }
+
 }
