@@ -3,23 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="32618e29-8746-4d2a-8d73-d011168a9d97" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Client/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Client/ClientController/AccountsController/CManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Client/ClientController/AccountsController/CManagerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Client/ClientController/CGetDataFromDataBase.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Client/ClientController/CRegisterAndLoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Client/ClientController/CRegisterAndLoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Models/Accounts/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Models/Accounts/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Models/Bank/BankAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Models/Bank/BankAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Models/Wallet.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Models/Wallet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Server/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Server/ClientHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Server/ServerController/AccountsController/ManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Server/ServerController/AccountsController/ManagerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Server/ServerController/GetDataFromDataBase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Server/ServerController/DataBaseForServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Server/ServerController/DataBaseForServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Server/ServerController/HandleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Server/ServerController/HandleController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Server/ServerController/RegisterAndLoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Server/ServerController/RegisterAndLoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AP17/src/main/java/View/AccountMenus/ManagerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/View/AccountMenus/ManagerMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/View/AccountsMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/View/AccountsMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/View/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/View/MainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/View/RegisterManagerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/View/RegisterManagerMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -220,14 +210,7 @@
       <workItem from="1594705743294" duration="118177000" />
       <workItem from="1595107186331" duration="15840000" />
       <workItem from="1595166080014" duration="27605000" />
-      <workItem from="1595485660990" duration="30474000" />
-    </task>
-    <task id="LOCAL-00111" summary="debug">
-      <created>1594884811972</created>
-      <option name="number" value="00111" />
-      <option name="presentableId" value="LOCAL-00111" />
-      <option name="project" value="LOCAL" />
-      <updated>1594884811975</updated>
+      <workItem from="1595485660990" duration="34727000" />
     </task>
     <task id="LOCAL-00112" summary="add request state enum">
       <created>1594884874403</created>
@@ -565,14 +548,20 @@
       <option name="project" value="LOCAL" />
       <updated>1595515154755</updated>
     </task>
-    <option name="localTasksCounter" value="160" />
+    <task id="LOCAL-00160" summary="sounds good">
+      <created>1595524439386</created>
+      <option name="number" value="00160" />
+      <option name="presentableId" value="LOCAL-00160" />
+      <option name="project" value="LOCAL" />
+      <updated>1595524439387</updated>
+    </task>
+    <option name="localTasksCounter" value="161" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="cart controller" />
     <MESSAGE value="some changes" />
     <MESSAGE value="fix manager controller and view (server and client)" />
     <MESSAGE value="add supporter" />
@@ -597,7 +586,8 @@
     <MESSAGE value="some changes;)" />
     <MESSAGE value="debug" />
     <MESSAGE value="literally i dont know anything:)" />
-    <option name="LAST_COMMIT_MESSAGE" value="literally i dont know anything:)" />
+    <MESSAGE value="sounds good" />
+    <option name="LAST_COMMIT_MESSAGE" value="sounds good" />
   </component>
   <component name="WindowStateProjectService">
     <state x="233" y="0" key="#Project_Structure" timestamp="1595508707294">
@@ -608,11 +598,11 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1595000456451" />
-    <state x="751" y="49" key="#com.intellij.ide.util.MemberChooser" timestamp="1595522960538">
+    <state x="751" y="49" key="#com.intellij.ide.util.MemberChooser" timestamp="1595524836036">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="751" y="83" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680/460.1080.1000.504@0.0.1280.680" timestamp="1587953827102" />
-    <state x="751" y="49" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1595522960538" />
+    <state x="751" y="49" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1595524836036" />
     <state x="801" y="93" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1586995828901" />
     <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1588275888120" />
     <state x="515" y="248" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1593171500635">
@@ -625,11 +615,11 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="267" y="266" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1280.680@0.0.1280.680" timestamp="1594885978133" />
-    <state x="432" y="200" width="404" height="287" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1595073472072">
+    <state x="432" y="200" width="404" height="287" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1595524560195">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="432" y="200" width="417" height="287" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1280.680/460.1080.1000.504@0.0.1280.680" timestamp="1587970052701" />
-    <state x="432" y="200" width="404" height="287" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1280.680@0.0.1280.680" timestamp="1595073472072" />
+    <state x="432" y="200" width="404" height="287" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1280.680@0.0.1280.680" timestamp="1595524560195" />
     <state x="85" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1591957164403">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -639,10 +629,10 @@
     </state>
     <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1595085591466" />
     <state x="445" y="105" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1588110193951" />
-    <state x="223" y="0" key="CommitChangelistDialog2" timestamp="1595515152234">
+    <state x="223" y="0" key="CommitChangelistDialog2" timestamp="1595524437444">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="223" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1595515152234" />
+    <state x="223" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1595524437444" />
     <state x="425" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1593001247141" />
     <state x="401" y="14" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1592143129254" />
     <state x="421" y="67" key="FileChooserDialogImpl" timestamp="1595507915007">
@@ -715,10 +705,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1280.680@0.0.1280.680" timestamp="1589767285229" />
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1595515182224">
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1595524448432">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1595515182224" />
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1595524448432" />
     <state x="249" y="80" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1593001403029" />
     <state x="280" y="90" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1593000505024" />
     <state x="452" y="119" key="chooseDestDirectoryDialog" timestamp="1595066647516">
@@ -750,10 +740,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="193" y="77" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1280.680@0.0.1280.680" timestamp="1589878981587" />
-    <state x="397" y="168" key="git4idea.merge.GitPullDialog" timestamp="1595515157418">
+    <state x="397" y="168" key="git4idea.merge.GitPullDialog" timestamp="1595524444654">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="397" y="168" key="git4idea.merge.GitPullDialog/0.0.1280.680@0.0.1280.680" timestamp="1595515157418" />
+    <state x="397" y="168" key="git4idea.merge.GitPullDialog/0.0.1280.680@0.0.1280.680" timestamp="1595524444654" />
     <state x="423" y="180" key="git4idea.merge.GitPullDialog/0.0.1366.728@0.0.1366.728" timestamp="1593001272806" />
     <state x="476" y="204" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1592143151948" />
     <state x="91" y="0" key="new project wizard" timestamp="1595162754233">

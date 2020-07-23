@@ -3,6 +3,8 @@ package Server.ServerController;
 import Models.Accounts.Customer;
 import Models.Accounts.Manager;
 import Models.Accounts.Seller;
+import Models.Product;
+import Models.Request.Request;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -11,6 +13,9 @@ public class DataBaseForServer implements Serializable {
     private static ArrayList<Manager> allMangers = new ArrayList<>();
     private static ArrayList<Customer> allCustomers = new ArrayList<>();
     private static ArrayList<Seller> allSellers = new ArrayList<>();
+    private static ArrayList<Product> allProducts = new ArrayList<>();
+    private static ArrayList<Request> allRequests = new ArrayList<>();
+
 
     public static void addManager(Manager manager) {
         allMangers.add(manager);
@@ -51,5 +56,20 @@ public class DataBaseForServer implements Serializable {
         return null;
     }
 
+    public static void addRequest(Request request) {
+        allRequests.add(request);
+    }
 
+    public static Request getRequest(String id) {
+        for (Request request : allRequests) {
+            if (request.getId().equals(id)) {
+                return request;
+            }
+        }
+        return null;
+    }
+
+    public static ArrayList<Request> getAllRequests() {
+        return allRequests;
+    }
 }

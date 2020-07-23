@@ -4,11 +4,15 @@ import Client.Client;
 import Models.Accounts.Account;
 import Models.Accounts.Manager;
 import Models.Category;
+import Models.Discount;
 import Models.DiscountCode;
 import Models.Product;
 import Models.Request.Request;
 import Server.ServerController.DataBaseForServer;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class CManagerController {
@@ -78,317 +82,133 @@ public class CManagerController {
         }
     }
 
-//
-//    public static ArrayList<Request> showAdminRequests() throws ExceptionsLibrary.NoRequestException {
-//        ArrayList<Request> allRequests = new ArrayList<>();
-//
-//        String func = "Show Admin Requests";
-//        Client.sendMessage(func);
-//
-//        Object response = Client.receiveObject();
-//
-//        if (response instanceof ExceptionsLibrary.NoRequestException)
-//            throw new ExceptionsLibrary.NoRequestException();
-//        else {
-//            allRequests = (ArrayList<Request>) response;
-//        }
-////        String path = "Resources/Requests";
-////        File file = new File(path);
-////        FileFilter fileFilter = new FileFilter() {
-////            @Override
-////            public boolean accept(File file1) {
-////                if (file1.getName().endsWith(".json")) {
-////                    return true;
-////                }
-////                return false;
-////            }
-////        };
-////        for (File i : file.listFiles(fileFilter)) {
-////            String fileName = i.getName();
-////            String requestId = fileName.replace(".json", "");
-////            Request request = GetDataFromDatabase.getRequest(Integer.parseInt(requestId));
-////            if (request.getRequestCondition().equals(RequestOrCommentCondition.PENDING_TO_ACCEPT)) {
-////                allRequests.add(request);
-////            }
-////        }
-//        return allRequests;
-//    }
-//
-//    public static String showRequest(int requestId) throws ExceptionsLibrary.NoRequestException {
-//
-////        Request request = GetDataFromDatabase.getRequest(requestId);
-//
-//        String func = "Show Request";
-//        Client.sendMessage(func);
-//
-//        Client.sendMessage(String.valueOf(requestId));
-//        Request request = (Request) Client.receiveObject();
-//
-//        if (request != null) {
-//            if (request.getRequestCondition().equals(RequestOrCommentCondition.PENDING_TO_ACCEPT)) {
-//                Gson gson = new GsonBuilder().serializeNulls().create();
-//                String requestData = gson.toJson(request);
-//                return requestData;
-//            } else {
-//                throw new ExceptionsLibrary.NoRequestException();
-//            }
-//        } else {
-//            throw new ExceptionsLibrary.NoRequestException();
-//        }
-//    }
-//
-//    public static void processRequest(int requestId, boolean acceptStatus) throws ExceptionsLibrary.NoRequestException, ExceptionsLibrary.NoAccountException, ExceptionsLibrary.UsernameAlreadyExists, ExceptionsLibrary.NoProductException {
-//
-//        Object[] toSend = new Object[2];
-//        toSend[0] = requestId;
-//        toSend[1] = acceptStatus;
-//        Client.sendObject(toSend);
-//        Object response = Client.receiveObject();
-//
-//        if (response instanceof ExceptionsLibrary.NoRequestException)
-//            throw new ExceptionsLibrary.NoRequestException();
-//        if (response instanceof ExceptionsLibrary.NoAccountException)
-//            throw new ExceptionsLibrary.NoAccountException();
-//        if (response instanceof ExceptionsLibrary.UsernameAlreadyExists)
-//            throw new ExceptionsLibrary.UsernameAlreadyExists();
-//        if (response instanceof ExceptionsLibrary.NoProductException)
-//            throw new ExceptionsLibrary.NoProductException();
-////        Request request = GetDataFromDatabase.getRequest(requestId);
-////        Gson gson = new GsonBuilder().serializeNulls().create();
-////        switch (request.getRequestType()) {
-////            case ADD_OFF:
-////                if (acceptStatus) {
-////                    Off off = gson.fromJson(request.getRequestDescription(), Off.class);
-////                    off.setOffCondition(ProductOrOffCondition.ACCEPTED);
-////                    while (checkIfOffExist(off.getOffId())) {
-////                        Random random = new Random();
-////                        off.setOffId(random.nextInt(1000000));
-////                    }
-////                    String offDetails = gson.toJson(off);
-////                    Seller seller = (Seller) GetDataFromDatabase.getAccount(request.getRequestSeller());
-////                    seller.getSellerOffs().add(off);
-////                    try {
-////                        String offPath = "Resources/Offs/" + off.getOffId() + ".json";
-////                        File file = new File(offPath);
-////                        file.createNewFile();
-////                        FileWriter fileWriter = new FileWriter(file);
-////                        fileWriter.write(offDetails);
-////                        fileWriter.close();
-////                        SetDataToDatabase.setAccount(seller);
-////                        for (String i :off.getOffProducts()){
-////                            Product temp = GetDataFromDatabase.getProduct(Integer.parseInt(i));
-////                            temp.setPriceWithOff(temp.getPrice()-off.getOffAmount());
-////                            SetDataToDatabase.setProduct(temp);
-////                            SetDataToDatabase.updateSellerOfProduct(temp,0);
-////                        }
-////                        request.setRequestCondition(RequestOrCommentCondition.ACCEPTED);
-////                        SetDataToDatabase.setRequest(request);
-////                    } catch (IOException e) {
-////                        request.setRequestCondition(RequestOrCommentCondition.NOT_ACCEPTED);
-////                        SetDataToDatabase.setRequest(request);
-////                        throw new ExceptionsLibrary.NoAccountException();
-////                    }
-////                } else {
-////                    request.setRequestCondition(RequestOrCommentCondition.NOT_ACCEPTED);
-////                    SetDataToDatabase.setRequest(request);
-////
-////                }
-////                break;
-////            case EDIT_OFF:
-////                if (acceptStatus) {
-////                    Off off = gson.fromJson(request.getRequestDescription(), Off.class);
-////                    off.setOffCondition(ProductOrOffCondition.ACCEPTED);
-////                    String offDetails = gson.toJson(off);
-////                    Seller seller = (Seller) GetDataFromDatabase.getAccount(request.getRequestSeller());
-////                    Iterator iterator = seller.getSellerOffs().iterator();
-////                    while (iterator.hasNext()) {
-////                        Off tempOff = (Off) iterator.next();
-////                        if (tempOff.getOffId() == off.getOffId()) {
-////                            iterator.remove();
-////                        }
-////                    }
-////                    seller.getSellerOffs().add(off);
-////                    SetDataToDatabase.setAccount(seller);
-////                    for (String i :off.getOffProducts()){
-////                        Product temp = GetDataFromDatabase.getProduct(Integer.parseInt(i));
-////                        temp.setPriceWithOff(temp.getPrice()-off.getOffAmount());
-////                        SetDataToDatabase.setProduct(temp);
-////                        SetDataToDatabase.updateSellerOfProduct(temp,0);
-////                    }
-////                    try {
-////                        String offPath = "Resources/Offs/" + off.getOffId() + ".json";
-////                        String sellerPath = "Resources/Accounts/Seller/" + seller.getUsername() + ".json";
-////                        FileWriter fileWriter = new FileWriter(offPath);
-////                        fileWriter.write(offDetails);
-////                        fileWriter.close();
-////                        request.setRequestCondition(RequestOrCommentCondition.ACCEPTED);
-////                        SetDataToDatabase.setRequest(request);
-////                    } catch (IOException e) {
-////                        request.setRequestCondition(RequestOrCommentCondition.NOT_ACCEPTED);
-////                        SetDataToDatabase.setRequest(request);
-////                        throw new ExceptionsLibrary.NoAccountException();
-////                    }
-////                } else {
-////                    request.setRequestCondition(RequestOrCommentCondition.NOT_ACCEPTED);
-////                    SetDataToDatabase.setRequest(request);
-////                }
-////                break;
-////            case ADD_PRODUCT:
-////                if (acceptStatus) {
-////                    Product product = gson.fromJson(request.getRequestDescription(), Product.class);
-////                    product.setProductCondition(ProductOrOffCondition.ACCEPTED);
-////                    while (checkIfProductExist(product.getProductId())) {
-////                        Random random = new Random();
-////                        product.setProductId(random.nextInt(1000000));
-////                    }
-////                    String productDetails = gson.toJson(product);
-////                    Seller seller = (Seller) GetDataFromDatabase.getAccount(request.getRequestSeller());
-////                    seller.getSellerProducts().add(product);
-////                    try {
-////                        String productPath = "Resources/Products/" + product.getProductId() + ".json";
-////                        File file = new File(productPath);
-////                        file.createNewFile();
-////                        FileWriter fileWriter = new FileWriter(file);
-////                        fileWriter.write(productDetails);
-////                        fileWriter.close();
-////                        SetDataToDatabase.setAccount(seller);
-////                        request.setRequestCondition(RequestOrCommentCondition.ACCEPTED);
-////                        SetDataToDatabase.setRequest(request);
-////                    } catch (IOException e) {
-////                        request.setRequestCondition(RequestOrCommentCondition.NOT_ACCEPTED);
-////                        SetDataToDatabase.setRequest(request);
-////                        throw new ExceptionsLibrary.NoAccountException();
-////                    }
-////                } else {
-////                    request.setRequestCondition(RequestOrCommentCondition.NOT_ACCEPTED);
-////                    SetDataToDatabase.setRequest(request);
-////                }
-////                break;
-////            case EDIT_PRODUCT:
-////                if (acceptStatus) {
-////                    Product product = gson.fromJson(request.getRequestDescription(), Product.class);
-////                    product.setProductCondition(ProductOrOffCondition.ACCEPTED);
-////                    String productDetails = gson.toJson(product);
-////                    Seller seller = (Seller) GetDataFromDatabase.getAccount(request.getRequestSeller());
-////                    Iterator iterator = seller.getSellerProducts().iterator();
-////                    while (iterator.hasNext()) {
-////                        Product tempProduct = (Product) iterator.next();
-////                        if (tempProduct.getProductId() == product.getProductId()) {
-////                            iterator.remove();
-////                        }
-////                    }
-////                    seller.getSellerProducts().add(product);
-////                    try {
-////                        String productPath = "Resources/Products/" + product.getProductId() + ".json";
-////                        String sellerPath = "Resources/Accounts/Seller/" + seller.getUsername() + ".json";
-////                        FileWriter fileWriter = new FileWriter(productPath);
-////                        fileWriter.write(productDetails);
-////                        fileWriter.close();
-////                        SetDataToDatabase.setAccount(seller);
-////                        SetDataToDatabase.updateSellerOfProduct(product,0);
-////                        request.setRequestCondition(RequestOrCommentCondition.ACCEPTED);
-////                        SetDataToDatabase.setRequest(request);
-////                    } catch (IOException e) {
-////                        request.setRequestCondition(RequestOrCommentCondition.NOT_ACCEPTED);
-////                        SetDataToDatabase.setRequest(request);
-////                        throw new ExceptionsLibrary.NoAccountException();
-////                    }
-////                } else {
-////                    request.setRequestCondition(RequestOrCommentCondition.NOT_ACCEPTED);
-////                    SetDataToDatabase.setRequest(request);
-////                }
-////                break;
-////            case REGISTER_SELLER:
-////                if (acceptStatus) {
-////                    Seller seller = gson.fromJson(request.getRequestDescription(),Seller.class);
-////                    if (RegisterAndLogin.checkUsername(seller.getUsername())) {
-////                        try {
-////                            String sellerPath = "Resources/Accounts/Seller/" + seller.getUsername() + ".json";
-////                            File file = new File(sellerPath);
-////                            file.createNewFile();
-////                            FileWriter fileWriterSeller = new FileWriter(sellerPath);
-////                            Gson gsonSeller = new GsonBuilder().serializeNulls().create();
-////                            String sellerData = gsonSeller.toJson(seller);
-////                            fileWriterSeller.write(sellerData);
-////                            fileWriterSeller.close();
-////                            request.setRequestCondition(RequestOrCommentCondition.ACCEPTED);
-////                            SetDataToDatabase.setRequest(request);
-////                        } catch (IOException e) {
-////                            throw new ExceptionsLibrary.NoAccountException();
-////                        }
-////                    } else {
-////                        request.setRequestCondition(RequestOrCommentCondition.NOT_ACCEPTED);
-////                        SetDataToDatabase.setRequest(request);
-////                        throw new ExceptionsLibrary.UsernameAlreadyExists();
-////                    }
-////                } else {
-////                    request.setRequestCondition(RequestOrCommentCondition.NOT_ACCEPTED);
-////                    SetDataToDatabase.setRequest(request);
-////                }
-////                break;
-////            case REMOVE_PRODUCT:
-////                if (acceptStatus) {
-////                    Product product = gson.fromJson(request.getRequestDescription(),Product.class);
-////                    String path = "Resources/Products/" + product.getProductId() + ".json";
-////                    SetDataToDatabase.updateSellerOfProduct(product,1);
-////                    File file = new File(path);
-////                    file.delete();
-////                    request.setRequestCondition(RequestOrCommentCondition.ACCEPTED);
-////                    SetDataToDatabase.setRequest(request);
-////                } else {
-////                    request.setRequestCondition(RequestOrCommentCondition.NOT_ACCEPTED);
-////                    SetDataToDatabase.setRequest(request);
-////                }
-////                break;
-////        }
-//    }
-//
-//    private static boolean checkIfOffExist(int offId) {
-//
-//        Client.sendMessage("check if off exists");
-//        String toSend = String.valueOf(offId);
-//        Client.sendObject(toSend);
-//        String response = Client.receiveMessage();
-//        if (response.equals("true"))
-//            return true;
-//        return false;
-////        String path = "Resources/Offs/" + offId + ".json";
-////        File file = new File(path);
-////        if (!file.exists()) {
-////            return false;
-////        } else {
-////            return true;
-////        }
-//    }
-//
-//    public static ArrayList<Sale> showSales() throws ExceptionsLibrary.NoSaleException {
-//        ArrayList<Sale> allSales = new ArrayList<>();
-//        Client.sendMessage("Show Sales");
-//        Object response = Client.receiveObject();
-//
-//        if (response instanceof ExceptionsLibrary.NoSaleException)
-//            throw new ExceptionsLibrary.NoSaleException();
-//        else
-//            allSales = (ArrayList<Sale>) response;
-////        String path = "Resources/Sales";
-////        File file = new File(path);
-////        FileFilter fileFilter = new FileFilter() {
-////            @Override
-////            public boolean accept(File file) {
-////                if (file.getName().endsWith(".json")) {
-////                    return true;
-////                }
-////                return false;
-////            }
-////        };
-////        for (File i : file.listFiles(fileFilter)) {
-////            String fileName = i.getName();
-////            String saleCode = fileName.replace(".json", "");
-////            Sale sale = GetDataFromDatabase.getSale(saleCode);
-////            allSales.add(sale);
-////        }
-//        return allSales;
-//    }
+
+    public static ObservableList<String> showManagerRequests() throws Exception {
+        ArrayList<Request> allRequests;
+        ArrayList<String> info = new ArrayList<>();
+        String func = "Show Manager Requests";
+        Client.sendMessage(func);
+
+        Object response = Client.receiveObject();
+        allRequests = (ArrayList<Request>) response;
+        for (Request request : allRequests) {
+            info.add(request.getId());
+        }
+        ObservableList data = FXCollections.observableArrayList();
+        data.addAll(info);
+        return data;
+    }
+
+
+    public static String showRequest(String requestId) throws Exception {
+        String func = "Show Request";
+        Client.sendMessage(func);
+
+        Client.sendMessage(String.valueOf(requestId));
+        Request request = (Request) Client.receiveObject();
+
+        if (request != null) {
+            String requestData = request.toString();
+            return requestData;
+        } else {
+            throw new Exception("there isn't any request with this id");
+        }
+    }
+
+
+    public static void acceptRequest(String requestId) throws Exception {
+        String func = "Accept Request";
+        Client.sendMessage(func);
+
+        Client.sendMessage(requestId);
+        try {
+            Object data = Client.receiveObject();
+            Request request = (Request) data;
+            request.accept();
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    public static void declineRequest(String requestId) throws Exception {
+        String func = "Decline Request";
+        Client.sendMessage(func);
+
+        Client.sendMessage(requestId);
+
+        try {
+            Object data = Client.receiveObject();
+            Request request = (Request) data;
+            Request.deleteRequest(request);
+            DataBaseForServer.deleteRequest(request);
+            //TODO check with kian's commit
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    public static ObservableList<String> showDiscountCodes() {
+        ArrayList<DiscountCode> allDiscountCodes;
+        ArrayList<String> info = new ArrayList<>();
+        String func = "Show Discount Codes";
+        Client.sendMessage(func);
+
+        Object response = Client.receiveObject();
+        allDiscountCodes = (ArrayList<DiscountCode>) response;
+        for (DiscountCode discountCode : allDiscountCodes) {
+            info.add(discountCode.getDiscountCode());
+        }
+        ObservableList data = FXCollections.observableArrayList();
+        data.addAll(info);
+        return data;
+    }
+
+
+    public static String showDiscountCode(String code) throws Exception {
+        String func = "Show Discount Code";
+        Client.sendMessage(func);
+
+        Client.sendMessage(String.valueOf(code));
+        DiscountCode discountCode = (DiscountCode) Client.receiveObject();
+
+        if (discountCode != null) {
+            String discountCodeData = discountCode.toString();
+            return discountCodeData;
+        } else {
+            throw new Exception("there isn't any request with this id");
+        }
+    }
+
+    public static void editDiscountCode(String code,String dataToEdit) throws Exception {
+        String func = "Edit Discount Code";
+        Client.sendMessage(func);
+
+        Object[] toSend = new Object[2];
+        toSend[0] = code;
+        toSend[1] = dataToEdit;
+        Client.sendObject(toSend);
+        try {
+            Object response = Client.receiveObject();
+            String[] split = dataToEdit.split("\\s");
+            DiscountCode discountCode = (DiscountCode) response;
+            String field = split[0];
+            String newContentForThisField = split[1];
+            if (field.equals("starting date")) {
+                discountCode.setStartDate(LocalDate.parse(newContentForThisField));
+            } else if (field.equals("ending date")) {
+                discountCode.setEndDate(LocalDate.parse(newContentForThisField));
+            } else if (field.equals("discount percent")) {
+                discountCode.setDiscountCode(newContentForThisField);
+            } else if (field.equals("maximum discount amount")) {
+                discountCode.setMaxDiscountAmount(Double.parseDouble(newContentForThisField));
+            } else if (field.equals("count discount code")) {
+                discountCode.setCountDiscountCode(Integer.parseInt(newContentForThisField));
+            }
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
 //
 //    public static void editSaleInfo(String saleCode, HashMap<String, String> dataToEdit) throws ExceptionsLibrary.NoSaleException, ExceptionsLibrary.NoFeatureWithThisName, ExceptionsLibrary.CannotChangeThisFeature {
 //

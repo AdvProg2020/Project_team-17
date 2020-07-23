@@ -114,7 +114,11 @@ public class ManagerMenu extends Menu {
         manageRequests.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                manageRequestsScene();
+                try {
+                    manageRequestsScene();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -256,6 +260,7 @@ public class ManagerMenu extends Menu {
         mainMenu.show();
     }
 
+    //handled
     public void setEditScene() {
         BorderPane pane = new BorderPane();
         String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
@@ -295,8 +300,9 @@ public class ManagerMenu extends Menu {
         button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                String data = field.getValue() + " " + newContent.getText();
                 try {
-                    CManagerController.editManagerInfo(field.getValue(), newContent.getText());
+                    CManagerController.editManagerInfo(data);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -317,6 +323,7 @@ public class ManagerMenu extends Menu {
         Scene scene = new Scene(pane, 500, 500);
         Menu.window.setScene(scene);
     }
+
 
     public void setLeastAmount() {
         BorderPane pane = new BorderPane();
@@ -376,6 +383,7 @@ public class ManagerMenu extends Menu {
         Scene scene = new Scene(pane, 500, 500);
         Menu.window.setScene(scene);
     }
+
 
     public void setManageUsersScene() {
         String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
@@ -823,7 +831,8 @@ public class ManagerMenu extends Menu {
         vBox.getChildren().addAll(button);
         pane.setTop(vBox);
         ListView<String> listView = new ListView<>();
-        listView.getItems().addAll(ManagerAbilitiesManager.viewDiscountCodes());
+        listView.getItems().addAll(CManagerController.showDiscountCodes());
+        //listView.getItems().addAll(ManagerAbilitiesManager.viewDiscountCodes());
         pane.setCenter(listView);
         VBox vBox1 = new VBox(10);
         Button view = new Button("view discount code");
@@ -843,11 +852,10 @@ public class ManagerMenu extends Menu {
                 alert.setTitle("discount code info");
                 alert.setHeaderText("discount code information");
                 try {
-                    CManagerController.showDiscountCodeDetails();
+                    alert.setContentText(CManagerController.showDiscountCode(listView.getSelectionModel().getSelectedItem()));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                ManagerController.showDiscountCodeInfo(listView.getSelectionModel().getSelectedItem());
 //                String s = ManagerAbilitiesManager.viewDiscountCode(listView.getSelectionModel().getSelectedItem());
 //                alert.setContentText(s);
                 ButtonType buttonType = new ButtonType("Exit", ButtonBar.ButtonData.CANCEL_CLOSE);
@@ -999,11 +1007,17 @@ public class ManagerMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 mediaPlayer.play();
-                CManagerController.editDiscountCode();
-                ManagerController.editDiscountCodeInfo(selectedDiscountCode, field.getValue(), newContent.getText());
+                String data = field.getValue() + " " + newContent.getText();
+                try {
+                    CManagerController.editDiscountCode(selectedDiscountCode.getDiscountCode(), data);
+                    notify.setStyle("-fx-text-fill: #3193ff");
+                    notify.setText("successfully changed");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 //ManagerAbilitiesManager.editDiscountCode(selectedDiscountCode, field.getValue(), newContent.getText());
-                notify.setStyle("-fx-text-fill: #3193ff");
-                notify.setText("successfully changed");
+//                notify.setStyle("-fx-text-fill: #3193ff");
+//                notify.setText("successfully changed");
             }
         });
         vBox1.getChildren().addAll(hBox, notify);
@@ -1094,7 +1108,7 @@ public class ManagerMenu extends Menu {
         Menu.window.setScene(scene);
     }
 
-    public void manageRequestsScene() {
+    public void manageRequestsScene() throws Exception {
         String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
@@ -1123,7 +1137,7 @@ public class ManagerMenu extends Menu {
         vBox.getChildren().addAll(button);
         pane.setTop(vBox);
         ListView<String> listView = new ListView<>();
-        listView.getItems().addAll(ManagerAbilitiesManager.showAllRequests());
+        listView.getItems().addAll(CManagerController.showManagerRequests());
         pane.setCenter(listView);
         VBox vBox1 = new VBox(10);
         Button details = new Button("details");
@@ -1139,8 +1153,13 @@ public class ManagerMenu extends Menu {
                 Alert alert = new Alert(Alert.AlertType.NONE);
                 alert.setTitle("show request info");
                 alert.setHeaderText("request information");
-                CManagerController.showRequest();
-                ManagerController.showRequest(listView.getSelectionModel().getSelectedItem());
+                try {
+                    String s = CManagerController.showRequest(listView.getSelectionModel().getSelectedItem());
+                    alert.setContentText(s);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+//                ManagerController.showRequest(listView.getSelectionModel().getSelectedItem());
 //                String s = ManagerAbilitiesManager.showDetailsOfRequest(listView.getSelectionModel().getSelectedItem());
 //                alert.setContentText(s);
                 ButtonType buttonType = new ButtonType("Exit", ButtonBar.ButtonData.CANCEL_CLOSE);
@@ -1153,9 +1172,16 @@ public class ManagerMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 mediaPlayer.play();
-                ManagerAbilitiesManager.acceptRequest(listView.getSelectionModel().getSelectedItem());
-                notify.setStyle("-fx-text-fill: #3193ff");
-                notify.setText("request accepted");
+                try {
+                    CManagerController.acceptRequest(listView.getSelectionModel().getSelectedItem());
+                    notify.setStyle("-fx-text-fill: #3193ff");
+                    notify.setText("request accepted");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                //ManagerAbilitiesManager.acceptRequest(listView.getSelectionModel().getSelectedItem());
+//                notify.setStyle("-fx-text-fill: #3193ff");
+//                notify.setText("request accepted");
             }
         });
 
@@ -1163,9 +1189,16 @@ public class ManagerMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 mediaPlayer.play();
-                ManagerAbilitiesManager.declineRequest(listView.getSelectionModel().getSelectedItem());
-                notify.setStyle("-fx-text-fill: #3193ff");
-                notify.setText("request declined");
+                try {
+                    CManagerController.declineRequest(listView.getSelectionModel().getSelectedItem());
+                    notify.setStyle("-fx-text-fill: #3193ff");
+                    notify.setText("request declined");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+//                ManagerAbilitiesManager.declineRequest(listView.getSelectionModel().getSelectedItem());
+//                notify.setStyle("-fx-text-fill: #3193ff");
+//                notify.setText("request declined");
             }
         });
 
