@@ -41,15 +41,4 @@ public class CRegisterAndLoginController {
     }
 
 
-    public static boolean checkUsername(String username) {
-
-        String func = "Check Username";
-        Client.sendMessage(func);
-
-        Client.sendMessage(username);
-
-        return (boolean) Client.receiveObject();
-    }
-
-
 }

@@ -13,7 +13,6 @@ import java.util.HashMap;
 
 public class RegisterAndLoginController {
     public static void registerManager() throws IOException {
-
         String dataToRegister = ClientHandler.receiveMessage();
         String[] split = dataToRegister.split("\\s");
 
