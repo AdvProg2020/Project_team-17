@@ -318,29 +318,39 @@ public class CManagerController {
         }
     }
 
-//    public static void addAdminAccount(String newAdminDetails) throws ExceptionsLibrary.UsernameAlreadyExists {
-//
-//        String func = "Add Admin Account";
-//        Client.sendMessage(func);
-//
-//        Client.sendMessage(newAdminDetails);
-//        Object response = Client.receiveObject();
-//
-//        if (response instanceof ExceptionsLibrary.UsernameAlreadyExists)
-//            throw new ExceptionsLibrary.UsernameAlreadyExists();
-//        else {
-//            return;
-//        }
-//
-//
-////        Gson gson = new GsonBuilder().serializeNulls().create();
-////        Admin admin1 = gson.fromJson(newAdminDetails,Admin.class);
-////        if (RegisterAndLogin.checkUsername(admin1.getUsername())) {
-////            RegisterAndLogin.registerAdmin(newAdminDetails);
-////        } else {
-////            throw new ExceptionsLibrary.UsernameAlreadyExists();
-////        }
-//    }
+    public static void addManager(String dataToRegister) throws Exception {
+        String func = "Add Manager";
+        Client.sendMessage(func);
+
+        Client.sendObject(dataToRegister);
+        try {
+            Object response = Client.receiveObject();
+            String responseString = (String) response;
+            if (responseString.equals("Done")) {
+                String[] split = dataToRegister.split("\\s");
+                new Manager(split[0], split[1], split[2], split[3], split[4], split[5], split[6]);
+            }
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    public static void addSupporter(String dataToRegister) throws Exception {
+        String func = "Add Supporter";
+        Client.sendMessage(func);
+
+        Client.sendObject(dataToRegister);
+        try {
+            Object response = Client.receiveObject();
+            String responseString = (String) response;
+            if (responseString.equals("Done")) {
+                String[] split = dataToRegister.split("\\s");
+                new Supporter(split[0], split[1], split[2], split[3], split[4], split[5], split[6]);
+            }
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
 //
 //    public static void deleteProduct(int productId) throws ExceptionsLibrary.NoProductException, ExceptionsLibrary.NoAccountException {
 //
@@ -583,216 +593,7 @@ public class CManagerController {
 ////        }
 //    }
 //
-//    public static String viewSaleCodeDetails(String saleCode) throws ExceptionsLibrary.NoSaleException {
-//
-//        String func = "View Sale Code Details";
-//        Client.sendMessage(func);
-//
-//        Client.sendMessage(saleCode);
-//        Object response = Client.receiveObject();
-//
-//        if (response instanceof ExceptionsLibrary.NoSaleException)
-//            throw new ExceptionsLibrary.NoSaleException();
-//
-//        else
-//            return (String) response;
-//
-////        Sale sale = GetDataFromDatabase.getSale(saleCode);
-////        Gson gson = new GsonBuilder().serializeNulls().create();
-////        return gson.toJson(sale);
-//    }
-//
-//    public static void removeSaleCode(String saleCode) throws ExceptionsLibrary.NoSaleException {
-//
-//        String func = "Remove Sale Code";
-//        Client.sendMessage(func);
-//
-//        Client.sendMessage(saleCode);
-//        Object response = Client.receiveObject();
-//
-//        if (response instanceof ExceptionsLibrary.NoSaleException)
-//            throw new ExceptionsLibrary.NoSaleException();
-//        else
-//            return;
-////        try {
-////            Sale sale = GetDataFromDatabase.getSale(saleCode);
-////            FileFilter fileFilter = new FileFilter() {
-////                @Override
-////                public boolean accept(File file1) {
-////                    if (file1.getName().endsWith(".json")) {
-////                        return true;
-////                    }
-////                    return false;
-////                }
-////            };
-////            File customerFolder = new File("Resources/Accounts/Customer");
-////            File sellerFolder = new File("Resources/Accounts/Seller");
-////            File adminFolder = new File("Resources/Accounts/Admin");
-////
-////            for (File i : customerFolder.listFiles(fileFilter)) {
-////                Gson gson = new GsonBuilder().serializeNulls().create();
-////                try {
-////                    String fileData = "";
-////                    fileData = new String(Files.readAllBytes(Paths.get(i.getPath())));
-////                    Customer customer = gson.fromJson(fileData, Customer.class);
-////                    Iterator<Sale> iterator = customer.getSaleCodes().iterator();
-////                    while (iterator.hasNext()) {
-////                        Sale tempSale = iterator.next();
-////                        if (tempSale.getSaleCode().equalsIgnoreCase(sale.getSaleCode())) {
-////                            iterator.remove();
-////                        }
-////                    }
-////                    SetDataToDatabase.setAccount(customer);
-////                } catch (FileNotFoundException e) {
-////                    e.printStackTrace();
-////                } catch (IOException e) {
-////                    e.printStackTrace();
-////                }
-////            }
-////
-////            for (File i : sellerFolder.listFiles(fileFilter)) {
-////                Gson gson = new GsonBuilder().serializeNulls().create();
-////                try {
-////                    String fileData = "";
-////                    fileData = new String(Files.readAllBytes(Paths.get(i.getPath())));
-////                    Seller seller = gson.fromJson(fileData, Seller.class);
-////                    Iterator<Sale> iterator = seller.getSaleCodes().iterator();
-////                    while (iterator.hasNext()) {
-////                        Sale tempSale = iterator.next();
-////                        if (tempSale.getSaleCode().equalsIgnoreCase(sale.getSaleCode())) {
-////                            iterator.remove();
-////                        }
-////                    }
-////                    SetDataToDatabase.setAccount(seller);
-////                } catch (FileNotFoundException e) {
-////                    e.printStackTrace();
-////                } catch (IOException e) {
-////                    e.printStackTrace();
-////                }
-////            }
-////
-////            for (File i : adminFolder.listFiles(fileFilter)) {
-////                Gson gson = new GsonBuilder().serializeNulls().create();
-////                try {
-////                    String fileData = "";
-////                    fileData = new String(Files.readAllBytes(Paths.get(i.getPath())));
-////                    Admin admin = gson.fromJson(fileData, Admin.class);
-////                    Iterator<Sale> iterator = admin.getSaleCodes().iterator();
-////                    while (iterator.hasNext()) {
-////                        Sale tempSale = iterator.next();
-////                        if (tempSale.getSaleCode().equalsIgnoreCase(sale.getSaleCode())) {
-////                            iterator.remove();
-////                        }
-////                    }
-////                    SetDataToDatabase.setAccount(admin);
-////                } catch (FileNotFoundException e) {
-////                    e.printStackTrace();
-////                } catch (IOException e) {
-////                    e.printStackTrace();
-////                }
-////            }
-////
-////            String path = "Resources/Sales/" + sale.getSaleCode() + ".json";
-////            File file = new File(path);
-////            file.delete();
-////        } catch (ExceptionsLibrary.NoSaleException e) {
-////            throw new ExceptionsLibrary.NoSaleException();
-////        }
-//    }
-//
-//    public static boolean checkCategoryName(String categoryName) {
-//
-//        String func = "Check Category Name";
-//        Client.sendMessage(func);
-//
-//        Client.sendMessage(categoryName);
-//        Object response = Client.receiveObject();
-//        return (boolean) response;
-//        String path = "Resources/Category";
-//        File folder = new File(path);
-//        FileFilter fileFilter = new FileFilter() {
-//            @Override
-//            public boolean accept(File file1) {
-//                if (file1.getName().endsWith(".json")) {
-//                    return true;
-//                }
-//                return false;
-//            }
-//        };
-//        for (File i : folder.listFiles(fileFilter)) {
-//            String fileName = i.getName();
-//            String fileCategoryName = fileName.replace(".json", "");
-//            if (categoryName.equals(fileCategoryName)) {
-//                return true;
-//            }
-//        }
-//        return false;
-//    }
-//
-//    public static boolean checkSaleCode(String saleCode) {
-//
-//        String func = "Check Sale Code";
-//        Client.sendMessage(func);
-//
-//        Client.sendMessage(saleCode);
-//        Object response = Client.receiveObject();
-//        return (boolean) response;
-////        String path = "Resources/Sales";
-////        File folder = new File(path);
-////        FileFilter fileFilter = new FileFilter() {
-////            @Override
-////            public boolean accept(File file) {
-////                if (file.getName().endsWith(".json")) {
-////                    return true;
-////                }
-////                return false;
-////            }
-////        };
-////        for (File i : folder.listFiles(fileFilter)) {
-////            String fileName = i.getName();
-////            String fileSaleCode = fileName.replace(".json", "");
-////            if (saleCode.equals(fileSaleCode)) {
-////                return true;
-////            }
-////        }
-////        return false;
-//    }
-//
-//
-//    public static boolean checkIfProductExist(int productId) {
-//
-//        String func = "Check If Product Exists";
-//        Client.sendMessage(func);
-//
-//        Client.sendMessage(String.valueOf(productId));
-//        Object response = Client.receiveObject();
-//        return (boolean) response;
-////        String path = "Resources/Products/" + productId + ".json";
-////        File file = new File(path);
-////        if (!file.exists()) {
-////            return false;
-////        } else {
-////            return true;
-////        }
-//    }
-//
-//    public static boolean checkIfRequestExist(int requestId) {
-//
-//        String func = "Check If Request Exists";
-//        Client.sendMessage(func);
-//
-//        Client.sendMessage(String.valueOf(requestId));
-//        Object response = Client.receiveObject();
-//        return (boolean) response;
-////        String path = "Resources/Requests/" + requestId + ".json";
-////        File file = new File(path);
-////        if (!file.exists()) {
-////            return false;
-////        } else {
-////            return true;
-////        }
-//    }
-//
+
 //    public static ArrayList<Product> getAllProducts() throws ExceptionsLibrary.NoProductException {
 //        ArrayList<Product> allProducts = new ArrayList<>();
 //
@@ -826,19 +627,6 @@ public class CManagerController {
 //    }
 //
 //
-////    public static void addAdminAccount(String newAdminDetails) throws Exception {
-////
-////        String func = "Add Admin Account";
-////        Client.sendMessage(func);
-////
-////        Client.sendMessage(newAdminDetails);
-////        Object response = Client.receiveObject();
-////
-////        if (response instanceof Exception)
-////            throw new Exception("username already exists");
-////        else {
-////            return;
-////        }
 
 
 }

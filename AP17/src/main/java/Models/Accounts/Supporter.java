@@ -6,8 +6,8 @@ public class Supporter extends Account {
 
     private static ArrayList<Supporter> allSupporters = new ArrayList<>();
 
-    public Supporter(String userName, String firstName, String lastName, String email, String phoneNumber, String password, double credit, String path) {
-        super("Supporter", userName, firstName, lastName, email, phoneNumber, password, credit, path);
+    public Supporter(String userName, String firstName, String lastName, String email, String phoneNumber, String password,String path) {
+        super("Supporter", userName, firstName, lastName, email, phoneNumber, password, 0, path);
         allSupporters.add(this);
     }
 

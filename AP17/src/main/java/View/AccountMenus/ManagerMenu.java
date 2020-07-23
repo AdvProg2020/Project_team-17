@@ -1,5 +1,6 @@
 package View.AccountMenus;
 
+import Client.ClientController.CRegisterAndLoginController;
 import Controller.AccountsManager.ManagerAbilitiesManager;
 import Controller.AccountsManager.SellerAbilitiesManager;
 import Controller.RegisterAndLoginManager;
@@ -584,31 +585,32 @@ public class ManagerMenu extends Menu {
         SUButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                if (RegisterAndLoginManager.canHaveAccountWithThisUsername(userNameTextField.getText())) {
+//                if (RegisterAndLoginManager.canHaveAccountWithThisUsername(userNameTextField.getText())) {
 //                    try {
 //                        ManagerAbilitiesManager.createAnotherManager(userNameTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText(),
 //                                phoneNumberTextField.getText(), passwordField.getText());
 //                    } catch (IOException e) {
 //                        e.printStackTrace();
 //                    }
-                    try {
-                        CManagerController.addManager();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    try {
-                        ManagerController.addManager(userNameTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText()
-                                , phoneNumberTextField.getText(), passwordField.getText(), paths.getText());
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+                String data = userNameTextField.getText() + " " + firstNameTextField.getText() + " " + lastNameTextField.getText() + " " + emailTextField.getText() + " " +
+                        " " + phoneNumberTextField.getText() + " " + passwordField.getText() + " " + paths.getText();
+                try {
+                    CManagerController.addManager(data);
                     notify.setStyle("-fx-text-fill: #3193ff");
                     notify.setText("successfully registered");
-                } else {
+                } catch (Exception e) {
                     notify.setStyle("-fx-text-fill: #ff4f59");
-                    notify.setText("this username already exist");
+                    notify.setText(e.getMessage());
+                    e.printStackTrace();
                 }
             }
+//                    notify.setStyle("-fx-text-fill: #3193ff");
+//                    notify.setText("successfully registered");
+//                } else {
+//                    notify.setStyle("-fx-text-fill: #ff4f59");
+//                    notify.setText("this username already exist");
+//                }
+
         });
 
         backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
@@ -758,30 +760,32 @@ public class ManagerMenu extends Menu {
         SUButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                if (RegisterAndLoginManager.canHaveAccountWithThisUsername(userNameTextField.getText())) {
+//                if (RegisterAndLoginManager.canHaveAccountWithThisUsername(userNameTextField.getText())) {
 //                    try {
 //                        ManagerAbilitiesManager.createAnotherManager(userNameTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText(),
 //                                phoneNumberTextField.getText(), passwordField.getText());
 //                    } catch (IOException e) {
 //                        e.printStackTrace();
 //                    }
-                    try {
-                        CManagerController.addSupporter();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    try {
-                        ManagerController.addSupporter(userNameTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText()
-                                , phoneNumberTextField.getText(), passwordField.getText(), paths.getText());
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+                String data = userNameTextField.getText() + " " + firstNameTextField.getText() + " " + lastNameTextField.getText() + " " + emailTextField.getText() + " " +
+                        " " + phoneNumberTextField.getText() + " " + passwordField.getText() + " " + paths.getText();
+                try {
+                    CManagerController.addSupporter(data);
                     notify.setStyle("-fx-text-fill: #3193ff");
                     notify.setText("successfully registered");
-                } else {
+                } catch (Exception e) {
                     notify.setStyle("-fx-text-fill: #ff4f59");
-                    notify.setText("this username already exist");
+                    notify.setText(e.getMessage());
+                    e.printStackTrace();
                 }
+//                }
+//                    notify.setStyle("-fx-text-fill: #3193ff");
+//                    notify.setText("successfully registered");
+//                } else {
+//                    notify.setStyle("-fx-text-fill: #ff4f59");
+//                    notify.setText("this username already exist");
+//                }
+//            }
             }
         });
         backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
