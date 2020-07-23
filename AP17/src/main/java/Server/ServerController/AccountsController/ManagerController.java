@@ -242,7 +242,7 @@ public class ManagerController {
         }
     }
 
-    public static void deleteDiscountCode() throws Exception {
+    public static void deleteCategory() throws Exception {
         String name = ClientHandler.receiveMessage();
         Category category = DataBaseForServer.getCategory(name);
         if (category != null) {
@@ -270,49 +270,34 @@ public class ManagerController {
     }
 
 
-//    public static void deleteProduct() throws ExceptionsLibrary.NoProductException, ExceptionsLibrary.NoAccountException {
-//        int productId = Integer.parseInt(ClientHandler.receiveMessage());
-//        Product product = GetDataFromDatabaseServerSide.getProduct(productId);
-//        String path = "Resources/Products/" + product.getProductId() + ".json";
-//        SetDataToDatabase.updateSellerOfProduct(product, 1);
-//        File file = new File(path);
-//        file.delete();
-//    }
-//
+    public static void showProducts() {
+        ArrayList<Product> allProducts = new ArrayList<>(DataBaseForServer.getAllProducts());
+        ClientHandler.sendObject(allProducts);
+    }
 
-//    public static void getAllProducts() throws ExceptionsLibrary.NoProductException {
-//        ArrayList<Product> allProducts = new ArrayList<>();
-//        String path = "Resources/Products";
-//        File folder = new File(path);
-//        FileFilter fileFilter = new FileFilter() {
-//            @Override
-//            public boolean accept(File file1) {
-//                if (file1.getName().endsWith(".json")) {
-//                    return true;
-//                }
-//                return false;
-//            }
-//        };
-//        for (File i : folder.listFiles(fileFilter)) {
-//            String fileName = i.getName();
-//            int productId = Integer.parseInt(fileName.replace(".json", ""));
-//            allProducts.add(GetDataFromDatabaseServerSide.getProduct(productId));
+    public static void deleteProduct() throws Exception {
+        String id = ClientHandler.receiveMessage();
+        Product product = DataBaseForServer.getProduct(id);
+        if (product != null) {
+            ClientHandler.sendObject(product);
+            DataBaseForServer.deleteProduct(product);
+        } else {
+            ClientHandler.sendObject(new Exception("there isn't any product with this id"));
+        }
+    }
+
+
+//    public static void addAuction(String productID, String endDate) {
+//        try {
+//            Date endDateAsDate = new SimpleDateFormat("yyyy-MM-dd_HH:mm").parse(endDate);
+//            Product product = Product.getProductWithId(productID);
+//
+//            Auction auction = new Auction(product, endDateAsDate);
+//            auction.start();
+//        } catch (ParseException e) {
+//            e.getMessage();
+//        } catch (Exception e) {
+//            e.printStackTrace();
 //        }
-//        ClientHandler.sendObject(allProducts);
 //    }
-//
-//
-////    public static void addAuction(String productID, String endDate) {
-////        try {
-////            Date endDateAsDate = new SimpleDateFormat("yyyy-MM-dd_HH:mm").parse(endDate);
-////            Product product = Product.getProductWithId(productID);
-////
-////            Auction auction = new Auction(product, endDateAsDate);
-////            auction.start();
-////        } catch (ParseException e) {
-////            e.getMessage();
-////        } catch (Exception e) {
-////            e.printStackTrace();
-////        }
-////    }
 }
