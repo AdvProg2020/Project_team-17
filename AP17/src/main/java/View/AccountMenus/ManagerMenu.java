@@ -441,13 +441,12 @@ public class ManagerMenu extends Menu {
                 alert.setTitle("show user info");
                 alert.setHeaderText("user information");
                 try {
-                    CManagerController.showAccountDetails();
+                    alert.setContentText(CManagerController.showUser(listView.getSelectionModel().getSelectedItem()));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
                 //String s = ManagerAbilitiesManager.viewAccountByUsername(listView.getSelectionModel().getSelectedItem());
                 //alert.setContentText(s);
-                alert.setContentText(ManagerController.showAccountInfo(listView.getSelectionModel().getSelectedItem()));
                 ButtonType buttonType = new ButtonType("Exit", ButtonBar.ButtonData.CANCEL_CLOSE);
                 alert.getButtonTypes().setAll(buttonType);
                 alert.show();
@@ -482,15 +481,16 @@ public class ManagerMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 mediaPlayer.play();
-                CManagerController.deleteAccount();
                 try {
-                    ManagerController.deleteUser(listView.getSelectionModel().getSelectedItem());
+                    CManagerController.deleteUser(listView.getSelectionModel().getSelectedItem());
+                    notify.setStyle("-fx-text-fill: #3193ff");
+                    notify.setText("user deleted successfully");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
                 // ManagerAbilitiesManager.deleteUser(listView.getSelectionModel().getSelectedItem());
-                notify.setStyle("-fx-text-fill: #3193ff");
-                notify.setText("user deleted successfully");
+//                notify.setStyle("-fx-text-fill: #3193ff");
+//                notify.setText("user deleted successfully");
             }
         });
 

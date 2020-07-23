@@ -218,7 +218,7 @@ public class CManagerController {
             Object data = Client.receiveObject();
             DiscountCode discountCode = (DiscountCode) data;
             DiscountCode.removeDiscountCode(discountCode);
-            DataBaseForServer.deleletDiscoubtCode(discountCode);
+            DataBaseForServer.deleletDiscountCode(discountCode);
             //TODO check with kian's commit
         } catch (Exception e) {
             throw new Exception(e.getMessage());
@@ -259,77 +259,65 @@ public class CManagerController {
         return data;
     }
 
-//
-//    public static ArrayList<Account> showAllCustomers() throws ExceptionsLibrary.NoAccountException {
-//
-//        ArrayList<Account> list = new ArrayList<Account>();
-//        String func = "Show All Customers";
-//        Client.sendMessage(func);
-//
-//        Object response = Client.receiveObject();
-//
-//        if (response instanceof ExceptionsLibrary.NoAccountException)
-//            throw new ExceptionsLibrary.NoAccountException();
-//        else
-//            list = (ArrayList<Account>) response;
-//
-////        String customerPath = "Resources/Accounts/Customer";
-////        File customerFolder = new File(customerPath);
-////        FileFilter fileFilter = new FileFilter() {
-////            @Override
-////            public boolean accept(File file) {
-////                if (file.getName().endsWith(".json")) {
-////                    return true;
-////                }
-////                return false;
-////            }
-////        };
-////        for (File i : customerFolder.listFiles(fileFilter)) {
-////            String fileName = i.getName();
-////            String username = fileName.replace(".json", "");
-////            Account account = GetDataFromDatabase.getAccount(username);
-////            list.add(account);
-////        }
-//        return list;
-//    }
-//
-//    public static String showUserDetails(String username) throws ExceptionsLibrary.NoAccountException {
-//
-//        String func = "Show User Details";
-//        Client.sendMessage(func);
-//
-//        Client.sendMessage(username);
-//        Object response = Client.receiveObject();
-//
-//        if (response instanceof ExceptionsLibrary.NoAccountException)
-//            throw new ExceptionsLibrary.NoAccountException();
-//        else {
-//            return (String) response;
-//        }
-////        Account account = GetDataFromDatabase.getAccount(username);
-////        Gson gson = new GsonBuilder().serializeNulls().create();
-////        return gson.toJson(account);
-//    }
-//
-//    public static void deleteUser(String username) throws ExceptionsLibrary.NoAccountException {
-//
-//        String func = "Delete User";
-//        Client.sendMessage(func);
-//
-//        Client.sendMessage(username);
-//        Object response = Client.receiveObject();
-//
-//        if (response instanceof ExceptionsLibrary.NoAccountException)
-//            throw new ExceptionsLibrary.NoAccountException();
-//        else {
-//            return;
-//        }
-////        Account account = GetDataFromDatabase.getAccount(username);
-////        String path = "Resources/Accounts/" + account.getRole() + "/" + account.getUsername() + ".json";
-////        File file = new File(path);
-////        file.delete();
-//    }
-//
+    public static String showUser(String username) throws Exception {
+        String func = "Show User";
+        Client.sendMessage(func);
+
+        Client.sendMessage(username);
+        Account account = (Account) Client.receiveObject();
+
+        if (account != null) {
+            String info = "";
+            if (account instanceof Customer) {
+                Customer customer = (Customer) account;
+                info = customer.toString();
+            } else if (account instanceof Manager) {
+                Manager manager = (Manager) account;
+                info = manager.toString();
+            } else if (account instanceof Seller) {
+                Seller seller = (Seller) account;
+                info = seller.toString();
+            } else if (account instanceof Supporter) {
+                Supporter supporter = (Supporter) account;
+                info = supporter.toString();
+            }
+            return info;
+        } else {
+            throw new Exception("there isn't any request with this id");
+        }
+    }
+
+    public static void deleteUser(String username) throws Exception {
+        String func = "Delete User";
+        Client.sendMessage(func);
+
+        Client.sendMessage(username);
+
+        try {
+            Object data = Client.receiveObject();
+            Account account = (Account) data;
+            if (account != null) {
+                if (account instanceof Customer) {
+                    Customer customer = (Customer) account;
+                    Customer.deleteCustomer(customer);
+                } else if (account instanceof Manager) {
+                    Manager manager = (Manager) account;
+                    Manager.deleteManager(manager);
+                } else if (account instanceof Seller) {
+                    Seller seller = (Seller) account;
+                    Seller.deleteSeller(seller);
+                } else if (account instanceof Supporter) {
+                    Supporter supporter = (Supporter) account;
+                    Supporter.deleteSupporter(supporter);
+                }
+            } else {
+                throw new Exception("there isn't any request with this id");
+            }
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
 //    public static void addAdminAccount(String newAdminDetails) throws ExceptionsLibrary.UsernameAlreadyExists {
 //
 //        String func = "Add Admin Account";
