@@ -178,6 +178,7 @@ public class DataBaseForServer implements Serializable {
         allSellLogs.add(sellLog);
     }
 
+    // va tu in
     public static SellLog getSellLog(String Name) {
         for (SellLog sellLog : allSellLogs) {
             if (sellLog.getName().equals(Name)) {
@@ -189,6 +190,93 @@ public class DataBaseForServer implements Serializable {
 
     public static void deleteSellLog(SellLog sellLog) {
         allSellLogs.remove(sellLog);
+    }
+
+    public static void addRequest(Request request) {
+        allRequests.add(request);
+    }
+
+    // va tu in
+    public static Request getRequest(String Id) {
+        for (Request request : allRequests) {
+            if (request.getId().equals(Id)) {
+                return request;
+            }
+        }
+        return null;
+    }
+
+    public static void deleteRequest(Request request) {
+        allRequests.remove(request);
+    }
+
+    public static void addAuction(Auction auction) {
+        allAuctions.add(auction);
+    }
+
+    // va tu in
+    public static Auction getAuction(String Name) {
+        for (Auction auction : allAuctions) {
+            if (auction.getName().equals(Name)) {
+                return auction;
+            }
+        }
+        return null;
+    }
+
+    public static void deleteAuction(Auction auction) {
+        allAuctions.remove(auction);
+    }
+
+    public static void addCart(Cart cart) {
+        allCarts.add(cart);
+    }
+
+    //ino tuye for chi bezanam ba chi moghayese konam?
+    public static Cart getCart(String Name) {
+        for (Cart cart : allCarts) {
+            //TODO
+        }
+        return null;
+    }
+
+    public static void deleteCart(Cart cart) {
+        allCarts.remove(cart);
+    }
+
+    public static void addCategory(Category category) {
+        allCategories.add(category);
+    }
+
+
+    public static Category getCategory(String Name) {
+        for (Category category : allCategories) {
+            if (category.getCategoryName().equals(Name)) {
+                return category;
+            }
+        }
+        return null;
+    }
+
+    public static void deleteCategory(Category category) {
+        allCategories.remove(category);
+    }
+
+    public static void addDiscount(Discount discount) {
+        allDiscounts.add(discount);
+    }
+
+    public static Discount getDiscount(String Id) {
+        for (Discount discount : allDiscounts) {
+            if (discount.getDiscountId().equals(Id)) {
+                return discount;
+            }
+        }
+        return null;
+    }
+
+    public static void deleteDiscount(Discount discount) {
+        allDiscounts.remove(discount);
     }
 
 }
