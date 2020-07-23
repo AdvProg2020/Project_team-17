@@ -90,6 +90,10 @@ public class Seller extends Account {
         allSellers.remove(getSellerByName(username));
     }
 
+    public static void deleteSeller (Seller seller){
+        allSellers.remove(seller);
+    }
+
     public static Seller getSellerByName(String userName) {
         for (Seller seller : allSellers) {
             if (seller.getUserName().equals(userName))

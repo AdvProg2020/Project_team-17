@@ -24,6 +24,10 @@ public class Manager extends Account {
         allManagers.remove(getManagerByUserName(userName));
     }
 
+    public static void deleteManager(Manager manager){
+        allManagers.remove(manager);
+    }
+
     public static boolean isThereManagerWithUserName(String username) {
         for (Manager manager : allManagers) {
             if (manager.getUserName().equals(username)) {

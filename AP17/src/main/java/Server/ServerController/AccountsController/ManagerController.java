@@ -90,6 +90,7 @@ public class ManagerController {
         Request request = DataBaseForServer.getRequest(requestId);
         if (request != null) {
             ClientHandler.sendObject(request);
+            DataBaseForServer.deleteRequest(request);
         } else {
             ClientHandler.sendObject(new Exception("there isn't request with this id"));
         }
@@ -126,152 +127,82 @@ public class ManagerController {
         DiscountCode discountCode = DataBaseForServer.getDiscountCode(code);
         if (discountCode != null) {
             ClientHandler.sendObject(discountCode);
+            DataBaseForServer.deleteDiscountCode(discountCode);
         } else {
             ClientHandler.sendObject(new Exception("there isn't request with this id"));
         }
     }
 
+    public static void createDiscountCode() throws IOException {
+        String dataToRegister = ClientHandler.receiveMessage();
+        String[] split = dataToRegister.split("\\s");
 
-//    public static void addSale() {
-//        Sale sale = (Sale) ClientHandler.receiveObject();
-//        while (checkSaleCode(sale.getSaleCode())) {
-//            sale.setSaleCode(Sale.getRandomSaleCode());
-//        }
-//        if (sale.getSaleAccounts().size() == 0) {
-//            try {
-//                sale.getSaleAccounts().clear();
-//                sale.getSaleAccounts().addAll(AdminController.showAllUsersLocal());
-//            } catch (ExceptionsLibrary.NoAccountException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//        for (Account i : sale.getSaleAccounts()) {
-//            if (i.getSaleCodes() == null) {
-//                i.setSaleCodes(new ArrayList<>());
-//            }
-//            i.getSaleCodes().add(sale);
-//            SetDataToDatabase.setAccount(i);
-//        }
-//
-//        SetDataToDatabase.setSale(sale);
-//    }
+        if (DataBaseForServer.getManager(split[0]) != null) {
+            ClientHandler.sendObject(new Exception("there is an discount code with this code"));
+        } else {
+            if (DataBaseForServer.getCustomer(split[6]) == null) {
+                ClientHandler.sendObject(new Exception("there isn't any customer with this username"));
+            } else {
+                ClientHandler.sendObject("Done");
+                DataBaseForServer.addDiscountCode(new DiscountCode(split[0], LocalDate.parse(split[1]), LocalDate.parse(split[2]),
+                        Double.parseDouble(split[3]), Double.parseDouble(split[4]), Integer.parseInt(split[5]), Customer.getCustomerByName(split[6])));
+            }
+        }
+    }
+
+    public static void showAllUsers() {
+        ArrayList<Account> allAccounts = new ArrayList<>();
+        allAccounts.addAll(DataBaseForServer.getAllManagers());
+        allAccounts.addAll(DataBaseForServer.getAllCustomers());
+        allAccounts.addAll(DataBaseForServer.getAllSellers());
+        allAccounts.addAll(DataBaseForServer.getAllSupporters());
+        ClientHandler.sendObject(allAccounts);
+    }
+
+    public static void showUser() {
+        String username = ClientHandler.receiveMessage();
+        if (DataBaseForServer.getCustomer(username) != null) {
+            Customer customer = DataBaseForServer.getCustomer(username);
+            ClientHandler.sendObject(customer);
+        } else if (DataBaseForServer.getManager(username) != null) {
+            Manager manager = DataBaseForServer.getManager(username);
+            ClientHandler.sendObject(manager);
+        } else if (DataBaseForServer.getSeller(username) != null) {
+            Seller seller = DataBaseForServer.getSeller(username);
+            ClientHandler.sendObject(seller);
+        } else if (DataBaseForServer.getSupporter(username) != null) {
+            Supporter supporter = DataBaseForServer.getSupporter(username);
+            ClientHandler.sendObject(supporter);
+        } else {
+            ClientHandler.sendObject(new Exception("there isn't any account with this username"));
+        }
+    }
+
+    public static void deleteUser() {
+        String username = ClientHandler.receiveMessage();
+        if (DataBaseForServer.getCustomer(username) != null) {
+            Customer customer = DataBaseForServer.getCustomer(username);
+            DataBaseForServer.deleteCustomer(customer);
+            ClientHandler.sendObject(customer);
+        } else if (DataBaseForServer.getManager(username) != null) {
+            Manager manager = DataBaseForServer.getManager(username);
+            DataBaseForServer.deleteManager(manager);
+            ClientHandler.sendObject(manager);
+        } else if (DataBaseForServer.getSeller(username) != null) {
+            Seller seller = DataBaseForServer.getSeller(username);
+            DataBaseForServer.deleteSeller(seller);
+            ClientHandler.sendObject(seller);
+        } else if (DataBaseForServer.getSupporter(username) != null) {
+            Supporter supporter = DataBaseForServer.getSupporter(username);
+            DataBaseForServer.deleteSupporter(supporter);
+            ClientHandler.sendObject(supporter);
+        } else {
+            ClientHandler.sendObject(new Exception("there isn't any account with this username"));
+        }
+
+    }
 
 
-//
-//    public static void showAllUsers() throws ExceptionsLibrary.NoAccountException {
-//        String customerPath = "Resources/Accounts/Customer";
-//        String sellerPath = "Resources/Accounts/Seller";
-//        String adminPath = "Resources/Accounts/Admin";
-//        ArrayList<Account> list = new ArrayList<>();
-//        File customerFolder = new File(customerPath);
-//        File sellerFolder = new File(sellerPath);
-//        File adminFolder = new File(adminPath);
-//        FileFilter fileFilter = new FileFilter() {
-//            @Override
-//            public boolean accept(File file) {
-//                if (file.getName().endsWith(".json")) {
-//                    return true;
-//                }
-//                return false;
-//            }
-//        };
-//        for (File i : customerFolder.listFiles(fileFilter)) {
-//            String fileName = i.getName();
-//            String username = fileName.replace(".json", "");
-//            Account account = GetDataFromDatabaseServerSide.getAccount(username);
-//            list.add(account);
-//        }
-//        for (File i : sellerFolder.listFiles(fileFilter)) {
-//            String fileName = i.getName();
-//            String username = fileName.replace(".json", "");
-//            Account account = GetDataFromDatabaseServerSide.getAccount(username);
-//            list.add(account);
-//        }
-//
-//        for (File i : adminFolder.listFiles(fileFilter)) {
-//            String fileName = i.getName();
-//            String username = fileName.replace(".json", "");
-//            Account account = GetDataFromDatabaseServerSide.getAccount(username);
-//            list.add(account);
-//        }
-//        ClientHandler.sendObject(list);
-//    }
-//
-//    public static ArrayList<Account> showAllUsersLocal() throws ExceptionsLibrary.NoAccountException {
-//        String customerPath = "Resources/Accounts/Customer";
-//        String sellerPath = "Resources/Accounts/Seller";
-//        String adminPath = "Resources/Accounts/Admin";
-//        ArrayList<Account> list = new ArrayList<>();
-//        File customerFolder = new File(customerPath);
-//        File sellerFolder = new File(sellerPath);
-//        File adminFolder = new File(adminPath);
-//        FileFilter fileFilter = new FileFilter() {
-//            @Override
-//            public boolean accept(File file) {
-//                if (file.getName().endsWith(".json")) {
-//                    return true;
-//                }
-//                return false;
-//            }
-//        };
-//        for (File i : customerFolder.listFiles(fileFilter)) {
-//            String fileName = i.getName();
-//            String username = fileName.replace(".json", "");
-//            Account account = GetDataFromDatabaseServerSide.getAccount(username);
-//            list.add(account);
-//        }
-//        for (File i : sellerFolder.listFiles(fileFilter)) {
-//            String fileName = i.getName();
-//            String username = fileName.replace(".json", "");
-//            Account account = GetDataFromDatabaseServerSide.getAccount(username);
-//            list.add(account);
-//        }
-//
-//        for (File i : adminFolder.listFiles(fileFilter)) {
-//            String fileName = i.getName();
-//            String username = fileName.replace(".json", "");
-//            Account account = GetDataFromDatabaseServerSide.getAccount(username);
-//            list.add(account);
-//        }
-//        return list;
-//    }
-//
-//    public static void showAllCustomers() throws ExceptionsLibrary.NoAccountException {
-//        ArrayList<Account> list = new ArrayList<>();
-//        String customerPath = "Resources/Accounts/Customer";
-//        File customerFolder = new File(customerPath);
-//        FileFilter fileFilter = new FileFilter() {
-//            @Override
-//            public boolean accept(File file) {
-//                if (file.getName().endsWith(".json")) {
-//                    return true;
-//                }
-//                return false;
-//            }
-//        };
-//        for (File i : customerFolder.listFiles(fileFilter)) {
-//            String fileName = i.getName();
-//            String username = fileName.replace(".json", "");
-//            Account account = GetDataFromDatabaseServerSide.getAccount(username);
-//            list.add(account);
-//        }
-//        ClientHandler.sendObject(list);
-//    }
-//
-//    public static void showUserDetails() throws ExceptionsLibrary.NoAccountException {
-//        String username = ClientHandler.receiveMessage();
-//        Account account = GetDataFromDatabaseServerSide.getAccount(username);
-//        Gson gson = new GsonBuilder().serializeNulls().create();
-//        ClientHandler.sendMessage(gson.toJson(account));
-//    }
-//
-//    public static void deleteUser() throws ExceptionsLibrary.NoAccountException {
-//        String username = ClientHandler.receiveMessage();
-//        Account account = GetDataFromDatabaseServerSide.getAccount(username);
-//        String path = "Resources/Accounts/" + account.getRole() + "/" + account.getUsername() + ".json";
-//        File file = new File(path);
-//        file.delete();
-//    }
 //
 //    public static void addAdminAccount() throws ExceptionsLibrary.UsernameAlreadyExists {
 //        String newAdminDetails = ClientHandler.receiveMessage();
