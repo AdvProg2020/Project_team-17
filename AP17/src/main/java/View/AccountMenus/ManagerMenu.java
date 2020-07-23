@@ -934,7 +934,12 @@ public class ManagerMenu extends Menu {
         vBox.getChildren().addAll(button);
         pane.setTop(vBox);
         ListView<String> listView = new ListView<>();
-        listView.getItems().addAll(ManagerAbilitiesManager.showAllLogs());
+        //listView.getItems().addAll(ManagerAbilitiesManager.showAllLogs());
+        try {
+            listView.getItems().addAll(CManagerController.showLogs());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         pane.setCenter(listView);
         VBox vBox1 = new VBox(10);
         Button view = new Button("view log");
@@ -948,11 +953,10 @@ public class ManagerMenu extends Menu {
                 alert.setTitle("log info");
                 alert.setHeaderText("log information");
                 try {
-                    CManagerController.showLogDetails();
+                    CManagerController.showLog(listView.getSelectionModel().getSelectedItem());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                ManagerController.showLogInfo(listView.getSelectionModel().getSelectedItem());
 //                String s = ManagerAbilitiesManager.viewDiscountCode(listView.getSelectionModel().getSelectedItem());
 //                alert.setContentText(s);
                 ButtonType buttonType = new ButtonType("Exit", ButtonBar.ButtonData.CANCEL_CLOSE);

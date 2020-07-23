@@ -15,6 +15,7 @@ import View.RegisterSupporterMenu;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.awt.*;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -331,15 +332,31 @@ public class ManagerController {
             }
         }
         if (DataBaseForServer.getSupporter(username) != null) {
-            if (.contains(DataBaseForServer.getSupporter(username))) {
+            if (.contains(DataBaseForServer.getSupporter(username))){
                 status = "online";
                 ClientHandler.sendObject(status);
-            } else {
+            } else{
                 status = "offline";
                 ClientHandler.sendObject(status);
             }
         }
 
+    }
+
+    public static void showLogs() {
+        ArrayList<BuyLog> allLogs = new ArrayList<>(DataBaseForServer.getAllBuyLogs());
+        ClientHandler.sendObject(allLogs);
+    }
+
+
+    public static void showLog() throws Exception {
+        String lodId = ClientHandler.receiveMessage();
+        BuyLog buyLog = DataBaseForServer.getBuyLog(lodId);
+        if (buyLog != null) {
+            ClientHandler.sendObject(buyLog);
+        } else {
+            ClientHandler.sendObject(new Exception("there isn't any log with this id"));
+        }
     }
 }
 
@@ -356,4 +373,3 @@ public class ManagerController {
 //            e.printStackTrace();
 //        }
 //    }
-}

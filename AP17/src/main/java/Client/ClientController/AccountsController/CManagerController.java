@@ -3,6 +3,7 @@ package Client.ClientController.AccountsController;
 import Client.Client;
 import Models.*;
 import Models.Accounts.*;
+import Models.Logs.BuyLog;
 import Models.Request.Request;
 import Server.ServerController.DataBaseForServer;
 import javafx.collections.FXCollections;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 public class CManagerController {
 
     private static Manager manager;
+    private static ArrayList<Manager> onlineManagers = new ArrayList<>();
 
     public static Manager getManager() {
         return manager;
@@ -23,7 +25,7 @@ public class CManagerController {
         CManagerController.manager = manager;
     }
 
-    public static void addOnlineManager(Manager manager){
+    public static void addOnlineManager(Manager manager) {
         onlineManagers.add(manager);
     }
 
@@ -481,6 +483,40 @@ public class CManagerController {
             return String.valueOf(data);
         } catch (Exception e) {
             throw new Exception(e.getMessage());
+        }
+    }
+
+    public static ObservableList<String> showLogs() throws Exception {
+        ArrayList<BuyLog> allLogs;
+        ArrayList<String> info = new ArrayList<>();
+        String func = "Show  Logs";
+        Client.sendMessage(func);
+
+        Object response = Client.receiveObject();
+        allLogs = (ArrayList<BuyLog>) response;
+        ArrayList<String> showAllLogs = new ArrayList<>();
+        for (BuyLog buyLog : allLogs) {
+            showAllLogs.add(buyLog.getId());
+        }
+        ObservableList data = FXCollections.observableArrayList();
+        data.addAll(showAllLogs);
+        return data;
+
+    }
+
+
+    public static String showLog(String id) throws Exception {
+        String func = "Show Log";
+        Client.sendMessage(func);
+
+        Client.sendMessage(String.valueOf(id));
+        BuyLog buyLog = (BuyLog) Client.receiveObject();
+
+        if (buyLog != null) {
+            String requestData = buyLog.toString();
+            return requestData;
+        } else {
+            throw new Exception("there isn't any log with this id");
         }
     }
 }
