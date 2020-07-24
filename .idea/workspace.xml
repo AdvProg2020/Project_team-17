@@ -5,10 +5,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Client/ClientController/AccountsController/CCustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Client/ClientController/AccountsController/CCustomerController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Models/Auction.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Models/Auction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Models/Bank/BankClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Models/Bank/BankClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Models/Bank/InitiateBank.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Models/Bank/BankServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Server/ServerController/AccountsController/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Server/ServerController/AccountsController/CustomerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Server/ServerController/DataBaseForServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Server/ServerController/DataBaseForServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AP17/src/main/java/View/AccountMenus/CustomerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/View/AccountMenus/CustomerMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -211,14 +208,7 @@
       <workItem from="1595107186331" duration="15840000" />
       <workItem from="1595166080014" duration="27605000" />
       <workItem from="1595485660990" duration="63310000" />
-      <workItem from="1595581407806" duration="3831000" />
-    </task>
-    <task id="LOCAL-00135" summary="fix manager controller and view (server and client)">
-      <created>1595013722787</created>
-      <option name="number" value="00135" />
-      <option name="presentableId" value="LOCAL-00135" />
-      <option name="project" value="LOCAL" />
-      <updated>1595013722787</updated>
+      <workItem from="1595581407806" duration="5653000" />
     </task>
     <task id="LOCAL-00136" summary="add supporter">
       <created>1595054103269</created>
@@ -556,14 +546,20 @@
       <option name="project" value="LOCAL" />
       <updated>1595581458757</updated>
     </task>
-    <option name="localTasksCounter" value="184" />
+    <task id="LOCAL-00184" summary="working on Auction">
+      <created>1595587483338</created>
+      <option name="number" value="00184" />
+      <option name="presentableId" value="LOCAL-00184" />
+      <option name="project" value="LOCAL" />
+      <updated>1595587483338</updated>
+    </task>
+    <option name="localTasksCounter" value="185" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="show product state for customer" />
     <MESSAGE value="change the structure of logout to see online users" />
     <MESSAGE value="manager now can see online users;)" />
     <MESSAGE value="some changes;)" />
@@ -588,7 +584,8 @@
     <MESSAGE value="product server and client" />
     <MESSAGE value="add registerMenu package" />
     <MESSAGE value="handle wallet server and client" />
-    <option name="LAST_COMMIT_MESSAGE" value="handle wallet server and client" />
+    <MESSAGE value="working on Auction" />
+    <option name="LAST_COMMIT_MESSAGE" value="working on Auction" />
   </component>
   <component name="WindowStateProjectService">
     <state x="233" y="0" key="#Project_Structure" timestamp="1595508707294">
@@ -599,11 +596,11 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1595000456451" />
-    <state x="751" y="49" key="#com.intellij.ide.util.MemberChooser" timestamp="1595585899648">
+    <state x="751" y="49" key="#com.intellij.ide.util.MemberChooser" timestamp="1595588825785">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="751" y="83" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680/460.1080.1000.504@0.0.1280.680" timestamp="1587953827102" />
-    <state x="751" y="49" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1595585899648" />
+    <state x="751" y="49" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1595588825785" />
     <state x="801" y="93" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1586995828901" />
     <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1588275888120" />
     <state x="515" y="248" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1593171500635">
@@ -630,10 +627,10 @@
     </state>
     <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1595085591466" />
     <state x="445" y="105" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1588110193951" />
-    <state x="223" y="0" key="CommitChangelistDialog2" timestamp="1595581455583">
+    <state x="223" y="0" key="CommitChangelistDialog2" timestamp="1595587481026">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="223" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1595581455583" />
+    <state x="223" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1595587481026" />
     <state x="425" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1593001247141" />
     <state x="401" y="14" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1592143129254" />
     <state x="421" y="67" key="FileChooserDialogImpl" timestamp="1595507915007">
@@ -760,11 +757,11 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="297" y="151" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1594934629097" />
-    <state x="324" y="46" width="672" height="634" key="search.everywhere.popup" timestamp="1595574741001">
+    <state x="324" y="46" width="672" height="634" key="search.everywhere.popup" timestamp="1595587946985">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="324" y="46" width="672" height="634" key="search.everywhere.popup/0.0.1280.680/460.1080.1000.504@0.0.1280.680" timestamp="1587860318764" />
-    <state x="324" y="46" width="672" height="634" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1595574741001" />
+    <state x="324" y="46" width="672" height="634" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1595587946985" />
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1586993653870" />
     <state x="389" y="56" width="807" height="769" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1588111579702" />
   </component>

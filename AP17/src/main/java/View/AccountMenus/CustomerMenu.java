@@ -237,7 +237,7 @@ public class CustomerMenu extends Menu {
             public void handle(MouseEvent mouseEvent) {
                 try {
                     CCustomerController.joinAuction(listView.getSelectionModel().getSelectedItem());
-                    setAuctionScene();
+                    setAuctionScene(listView.getSelectionModel().getSelectedItem());
                 } catch (Exception e) {
                     notify.setStyle("-fx-text-fill: #ff4f59");
                     notify.setText(e.getMessage());
@@ -252,11 +252,59 @@ public class CustomerMenu extends Menu {
         Menu.window.setScene(scene);
     }
 
-    public void setAuctionScene(){
-        //TODO
-        ....
-    }
+    //NO IDEA
+    public void setAuctionScene(String id) {
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+        Media media = new Media(Paths.get(path).toUri().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
 
+        BorderPane pane = new BorderPane();
+        String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
+                "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
+                + "linear-gradient(#cdded5 0%, #f6f6f6 50%);" +
+                " -fx-background-radius: 8,7,6; " +
+                "-fx-background-insets: 0,1,2; " +
+                "-fx-text-fill: #3193ff;"
+                + "-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); " +
+                "-fx-font-size: 1.2em; " +
+                "-fx-padding: 4px;";
+        VBox vBox = new VBox(10);
+        vBox.setAlignment(Pos.TOP_LEFT);
+        Button button = new Button("Back");
+        button.setStyle(style);
+        button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
+                setJoinAuctionScene();
+            }
+        });
+        vBox.getChildren().addAll(button);
+        pane.setTop(vBox);
+
+        TextField textField = new TextField();
+        textField.setPromptText("price");
+
+        Button button1 = new Button("submit");
+        Label notify = new Label();
+
+        HBox hBox = new HBox(5);
+        hBox.getChildren().addAll(textField, button1, notify);
+
+        button1.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                try {
+                    CCustomerController.bidAuction(id, Double.parseDouble(textField.getText()));
+                    notify.setStyle("-fx-text-fill: #3193ff");
+                    notify.setText("you bid auction");
+                } catch (Exception e) {
+                    notify.setStyle("-fx-text-fill: #ff4f59");
+                    notify.setText(e.getMessage());
+                }
+            }
+        });
+    }
 
     public void setEditScene() {
         String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";

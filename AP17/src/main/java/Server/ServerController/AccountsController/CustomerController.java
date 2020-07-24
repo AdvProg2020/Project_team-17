@@ -7,6 +7,7 @@ import Models.Auction;
 import Models.DiscountCode;
 import Models.Logs.BuyLog;
 import Models.Product;
+import Models.Wallet;
 import Server.ClientHandler;
 import Server.ServerController.DataBaseForServer;
 
@@ -111,6 +112,22 @@ public class CustomerController {
             }
         } else {
             ClientHandler.sendObject(new Exception("there isn't an auction with this id"));
+        }
+    }
+
+    public static void bidAuction() {
+        Object[] receive = (Object[]) ClientHandler.receiveObject();
+        Auction auction = DataBaseForServer.getAuction(Integer.parseInt((String) receive[0]));
+        double amount = Double.parseDouble((String) receive[1]);
+
+        if (customer.getWallet().getBalance() - amount < Wallet.getLeastAmount())
+            ClientHandler.sendObject(new Exception("You don't have enough money in your wallet"));
+        if (amount <= auction.getMaxPrice())
+            ClientHandler.sendObject(new Exception("You should place a higher bid"));
+        if (!auction.isAuctionAvailable())
+            ClientHandler.sendObject(new Exception("Auction has been expired"));
+        else {
+            ClientHandler.sendObject(auction);
         }
     }
 

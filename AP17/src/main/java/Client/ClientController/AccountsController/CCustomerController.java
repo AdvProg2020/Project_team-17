@@ -212,6 +212,22 @@ public class CCustomerController {
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
+    }
 
+    public static void bidAuction(String id, double amount) throws Exception {
+        String func = "Bid Auction";
+        Client.sendMessage(func);
+        Object[] toSend = new Object[2];
+        toSend[0] = id;
+        toSend[1] = amount;
+        Client.sendObject(toSend);
+
+        try {
+            Object response = Client.receiveObject();
+            Auction auction = (Auction) response;
+            auction.setPrice(getCustomer(), amount);
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
     }
 }
