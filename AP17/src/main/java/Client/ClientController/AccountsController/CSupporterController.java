@@ -19,5 +19,9 @@ public class CSupporterController {
     public static ArrayList<Supporter> getOnlineSupporters() {
         return onlineSupporters;
     }
+
+    public static void addOnlineSupporters(Supporter supporter) {
+        onlineSupporters.add(supporter);
+    }
 }
 

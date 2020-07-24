@@ -1,5 +1,6 @@
 package View;
 
+import Client.ClientController.CRegisterAndLoginController;
 import Controller.RegisterAndLoginManager;
 import Models.Accounts.Supporter;
 import javafx.event.EventHandler;
@@ -112,17 +113,27 @@ public class RegisterSupporterMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 mediaPlayer.play();
-                if (Supporter.isThereSupporterWithUserName(usernameTextField.getText())) {
-                    if (RegisterAndLoginManager.isUserNameAndPasswordCorrectForSupporter(usernameTextField.getText(), passwordField.getText())) {
-                        currentSupporter = Supporter.getSupporterByUserName(usernameTextField.getText());
-                        onlineSupporter.add(currentSupporter);
-                        notify.setStyle("-fx-text-fill: #3193ff");
-                        notify.setText("successfully signed in");
-                    } else {
-                        notify.setStyle("-fx-text-fill: #ff4f59");
-                        notify.setText("password is wrong");
-                    }
+                String dataToSend = usernameTextField.getText() + " " + passwordField.getText();
+                try {
+                    CRegisterAndLoginController.loginSupporter(dataToSend);
+                    notify.setStyle("-fx-text-fill: #3193ff");
+                    notify.setText("successfully signed in");
+                } catch (Exception e) {
+                    notify.setStyle("-fx-text-fill: #ff4f59");
+                    notify.setText(e.getMessage());
                 }
+
+//                if (Supporter.isThereSupporterWithUserName(usernameTextField.getText())) {
+//                    if (RegisterAndLoginManager.isUserNameAndPasswordCorrectForSupporter(usernameTextField.getText(), passwordField.getText())) {
+//                        currentSupporter = Supporter.getSupporterByUserName(usernameTextField.getText());
+//                        onlineSupporter.add(currentSupporter);
+//                        notify.setStyle("-fx-text-fill: #3193ff");
+//                        notify.setText("successfully signed in");
+//                    } else {
+//                        notify.setStyle("-fx-text-fill: #ff4f59");
+//                        notify.setText("password is wrong");
+//                    }
+//                }
             }
         });
         backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {

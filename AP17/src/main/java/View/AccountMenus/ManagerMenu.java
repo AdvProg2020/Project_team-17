@@ -422,13 +422,11 @@ public class ManagerMenu extends Menu {
         Button addManager = new Button("Add manager");
         Button addSupporter = new Button("Add supporter");
         Button onlineAccounts = new Button("Users status");
-        Button addAuction = new Button("Add auction");
         onlineAccounts.setStyle(style);
         view.setStyle(style);
         delete.setStyle(style);
         addManager.setStyle(style);
         addSupporter.setStyle(style);
-        addAuction.setStyle(style);
         view.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -506,15 +504,8 @@ public class ManagerMenu extends Menu {
                 notify.setText("");
             }
         });
-        addAuction.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                mediaPlayer.play();
-                setAddAuctionScene();
-            }
-        });
 
-        vBox1.getChildren().addAll(view, delete, addManager, addAuction);
+        vBox1.getChildren().addAll(view, delete, addManager, onlineAccounts, addSupporter);
         pane.setLeft(vBox1);
         pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
         Scene scene = new Scene(pane, 600, 600);
@@ -618,77 +609,6 @@ public class ManagerMenu extends Menu {
         });
 
         vBox.getChildren().addAll(backButton, title, userNameTextField, passwordField, firstNameTextField, lastNameTextField, emailTextField, phoneNumberTextField, addressTextField, paths, SUButton, notify);
-        vBox.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
-        pane.setCenter(vBox);
-        pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
-        Scene scene = new Scene(pane, 600, 600);
-        Menu.window.setScene(scene);
-    }
-
-    public void setAddAuctionScene() {
-        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
-        Media media = new Media(Paths.get(path).toUri().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(media);
-        BorderPane pane = new BorderPane();
-        String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
-                "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
-                + "linear-gradient(#cdded5 0%, #f6f6f6 50%);" +
-                " -fx-background-radius: 8,7,6; " +
-                "-fx-background-insets: 0,1,2; " +
-                "-fx-text-fill: #3193ff;"
-                + "-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); " +
-                "-fx-font-size: 1.2em; " +
-                "-fx-padding: 4px;";
-        Label notify = new Label();
-        VBox vBox1 = new VBox(10);
-        vBox1.setAlignment(Pos.TOP_LEFT);
-
-        VBox vBox = new VBox(10);
-        Button backButton = new Button("Back");
-        backButton.setStyle(style);
-        Label title = new Label("Add auction");
-
-        TextField productID = new TextField();
-        productID.setPromptText("product ID");
-
-        TextField date = new TextField();
-        date.setPromptText("yyyy-MM-dd_HH:mm");
-
-        Button addAuction = new Button("Add auction");
-        productID.setStyle(style);
-        date.setStyle(style);
-
-        addAuction.setStyle(style);
-
-        addAuction.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                if (Product.getProductWithId(productID.getText()) != null) {
-                    if (Product.getProductWithId(productID.getText()).getSeller().equals(RegisterSellerMenu.getCurrentSeller())) {
-                        SellerAbilitiesManager.addAuction(productID.getText(), date.getText());
-                        notify.setStyle("-fx-text-fill: #3193ff");
-                        notify.setText("auction added successfully");
-                    } else {
-                        notify.setStyle("-fx-text-fill: #ff4f59");
-                        notify.setText("adding auction is only allowed for your own products");
-                    }
-                } else {
-                    notify.setStyle("-fx-text-fill: #ff4f59");
-                    notify.setText("there isn't any product with this id");
-                }
-            }
-        });
-
-        backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                mediaPlayer.play();
-                setManageUsersScene();
-                notify.setText("");
-            }
-        });
-
-        vBox.getChildren().addAll(backButton, title, addAuction, notify);
         vBox.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
         pane.setCenter(vBox);
         pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
