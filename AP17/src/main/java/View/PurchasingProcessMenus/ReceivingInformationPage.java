@@ -1,5 +1,13 @@
 package View.PurchasingProcessMenus;
 
+import Client.ClientController.AccountsController.CCustomerController;
+import Client.ClientController.AccountsController.CManagerController;
+import Client.ClientController.AccountsController.CSellerController;
+import Client.ClientController.AccountsController.CSupporterController;
+import Server.ServerController.AccountsController.CustomerController;
+import Server.ServerController.AccountsController.ManagerController;
+import Server.ServerController.AccountsController.SellerController;
+import Server.ServerController.AccountsController.SupporterController;
 import View.*;
 import View.RegisterMenus.RegisterCustomerMenu;
 import View.RegisterMenus.RegisterManagerMenu;
@@ -157,13 +165,39 @@ public class ReceivingInformationPage extends Menu {
         accountsMenu.show();
     }
 
+//    public void handleLogout() {
+//        if (RegisterCustomerMenu.getCurrentCustomer() != null) {
+//            RegisterCustomerMenu.setCurrentCustomer(null);
+//        } else if (RegisterSellerMenu.getCurrentSeller() != null) {
+//            RegisterSellerMenu.setCurrentSeller(null);
+//        } else if (RegisterManagerMenu.getCurrentManager() != null) {
+//            RegisterManagerMenu.setCurrentManager(null);
+//        }
+//        MainMenu mainMenu = new MainMenu();
+//        mainMenu.show();
+//    }
+
     public void handleLogout() {
-        if (RegisterCustomerMenu.getCurrentCustomer() != null) {
-            RegisterCustomerMenu.setCurrentCustomer(null);
-        } else if (RegisterSellerMenu.getCurrentSeller() != null) {
-            RegisterSellerMenu.setCurrentSeller(null);
-        } else if (RegisterManagerMenu.getCurrentManager() != null) {
-            RegisterManagerMenu.setCurrentManager(null);
+        if (CustomerController.getCustomer() != null) {
+            CustomerController.setCustomer(null);
+            CCustomerController.setCustomer(null);
+            CustomerController.removeOnlineCustomer(CustomerController.getCustomer());
+            CCustomerController.removeOnlineCustomer(CCustomerController.getCustomer());
+        } else if (SellerController.getSeller() != null) {
+            SellerController.setSeller(null);
+            CSellerController.setSeller(null);
+            SellerController.removeOnlineSeller(SellerController.getSeller());
+            CSellerController.removeOnlineSeller(CSellerController.getSeller());
+        } else if (ManagerController.getManager() != null) {
+            ManagerController.setManager(null);
+            CManagerController.setManager(null);
+            ManagerController.removeOnlineManger(ManagerController.getManager());
+            CManagerController.removeOnlineManger(CManagerController.getManager());
+        } else if (SupporterController.getSupporter() != null) {
+            SupporterController.setSupporter(null);
+            CSupporterController.setSupporter(null);
+            SupporterController.removeOnlineSupporter(SupporterController.getSupporter());
+            CSupporterController.removeOnlineSupporter(CSupporterController.getSupporter());
         }
         MainMenu mainMenu = new MainMenu();
         mainMenu.show();

@@ -1,8 +1,16 @@
 package View.PurchasingProcessMenus;
 
+import Client.ClientController.AccountsController.CCustomerController;
+import Client.ClientController.AccountsController.CManagerController;
+import Client.ClientController.AccountsController.CSellerController;
+import Client.ClientController.AccountsController.CSupporterController;
 import Client.ClientController.CCartController;
 import Controller.AccountsManager.CustomerAbilitiesManager;
 import Controller.CartManager;
+import Server.ServerController.AccountsController.CustomerController;
+import Server.ServerController.AccountsController.ManagerController;
+import Server.ServerController.AccountsController.SellerController;
+import Server.ServerController.AccountsController.SupporterController;
 import View.*;
 import View.RegisterMenus.RegisterCustomerMenu;
 import View.RegisterMenus.RegisterManagerMenu;
@@ -165,19 +173,45 @@ public class PaymentPage extends Menu {
         accountsMenu.show();
     }
 
+//    public void handleLogout() {
+//        if (RegisterCustomerMenu.getCurrentCustomer() != null) {
+//            RegisterCustomerMenu.removeFromOnlineCustomer(RegisterCustomerMenu.getCurrentCustomer());
+//            RegisterCustomerMenu.setCurrentCustomer(null);
+//        } else if (RegisterSellerMenu.getCurrentSeller() != null) {
+//            RegisterSellerMenu.removeFromOnlineSeller(RegisterSellerMenu.getCurrentSeller());
+//            RegisterSellerMenu.setCurrentSeller(null);
+//        } else if (RegisterManagerMenu.getCurrentManager() != null) {
+//            RegisterManagerMenu.removeFromOnlineManager(RegisterManagerMenu.getCurrentManager());
+//            RegisterManagerMenu.setCurrentManager(null);
+//        } else if (RegisterSupporterMenu.getCurrentSupporter() != null) {
+//            RegisterSupporterMenu.removeFromOnlineSupporter(RegisterSupporterMenu.getCurrentSupporter());
+//            RegisterSupporterMenu.setCurrentSupporter(null);
+//        }
+//        MainMenu mainMenu = new MainMenu();
+//        mainMenu.show();
+//    }
+
     public void handleLogout() {
-        if (RegisterCustomerMenu.getCurrentCustomer() != null) {
-            RegisterCustomerMenu.removeFromOnlineCustomer(RegisterCustomerMenu.getCurrentCustomer());
-            RegisterCustomerMenu.setCurrentCustomer(null);
-        } else if (RegisterSellerMenu.getCurrentSeller() != null) {
-            RegisterSellerMenu.removeFromOnlineSeller(RegisterSellerMenu.getCurrentSeller());
-            RegisterSellerMenu.setCurrentSeller(null);
-        } else if (RegisterManagerMenu.getCurrentManager() != null) {
-            RegisterManagerMenu.removeFromOnlineManager(RegisterManagerMenu.getCurrentManager());
-            RegisterManagerMenu.setCurrentManager(null);
-        } else if (RegisterSupporterMenu.getCurrentSupporter() != null) {
-            RegisterSupporterMenu.removeFromOnlineSupporter(RegisterSupporterMenu.getCurrentSupporter());
-            RegisterSupporterMenu.setCurrentSupporter(null);
+        if (CustomerController.getCustomer() != null) {
+            CustomerController.setCustomer(null);
+            CCustomerController.setCustomer(null);
+            CustomerController.removeOnlineCustomer(CustomerController.getCustomer());
+            CCustomerController.removeOnlineCustomer(CCustomerController.getCustomer());
+        } else if (SellerController.getSeller() != null) {
+            SellerController.setSeller(null);
+            CSellerController.setSeller(null);
+            SellerController.removeOnlineSeller(SellerController.getSeller());
+            CSellerController.removeOnlineSeller(CSellerController.getSeller());
+        } else if (ManagerController.getManager() != null) {
+            ManagerController.setManager(null);
+            CManagerController.setManager(null);
+            ManagerController.removeOnlineManger(ManagerController.getManager());
+            CManagerController.removeOnlineManger(CManagerController.getManager());
+        } else if (SupporterController.getSupporter() != null) {
+            SupporterController.setSupporter(null);
+            CSupporterController.setSupporter(null);
+            SupporterController.removeOnlineSupporter(SupporterController.getSupporter());
+            CSupporterController.removeOnlineSupporter(CSupporterController.getSupporter());
         }
         MainMenu mainMenu = new MainMenu();
         mainMenu.show();
