@@ -1,13 +1,11 @@
 package Server.ServerController;
 
-import Models.Accounts.Seller;
 import Server.ServerController.AccountsController.CustomerController;
 import Server.ServerController.AccountsController.ManagerController;
 import Server.ServerController.AccountsController.SellerController;
 
 public class HandleController {
 
-    //System.out.println(command);
     public static void handleFunction(String command) throws Exception {
         switch (command) {
             case "Login Manager": {
@@ -300,6 +298,9 @@ public class HandleController {
             case "Seller withdrawal Wallet": {
                 WalletController.sellerWithdrawalWallet();
                 break;
+            }
+            default: {
+                System.out.println("invalid command");
             }
         }
     }

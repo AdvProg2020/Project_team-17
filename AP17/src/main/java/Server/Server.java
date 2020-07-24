@@ -11,9 +11,10 @@ import java.util.ArrayList;
 public class Server {
 
     public static BankAPI bankAPI;
-    public static ArrayList<String> listOfTokens = new ArrayList<>();
 
     public static void main(String args[]) {
+        ArrayList<String> listOfTokens = new ArrayList<>();
+
         ServerSocket serverSocket = null;
         Socket socket;
         BankClient bankClient = new BankClient();

@@ -18,11 +18,11 @@ public class Seller extends Account {
     private Wallet wallet;
 
     public Seller(String userName, String firstName, String lastName, String email
-            , String phoneNumber, String password, double credit, String companyName,String path) throws IOException {
-        super("Seller",userName, firstName, lastName, email, phoneNumber, password, credit,path);
+            , String phoneNumber, String password, double credit, String companyName, String path) throws IOException {
+        super("Seller", userName, firstName, lastName, email, phoneNumber, password, credit, path);
         this.companyName = companyName;
         this.wallet = new Wallet(this, credit);
-        this.bankAccount = new BankAccount(firstName,lastName,userName,password);
+        this.bankAccount = new BankAccount(firstName, lastName, userName, password);
         allProducts = new ArrayList<>();
         logs = new ArrayList<>();
         allSellers.add(this);
@@ -90,7 +90,7 @@ public class Seller extends Account {
         allSellers.remove(getSellerByName(username));
     }
 
-    public static void deleteSeller (Seller seller){
+    public static void deleteSeller(Seller seller) {
         allSellers.remove(seller);
     }
 
@@ -149,6 +149,7 @@ public class Seller extends Account {
     public Wallet getWallet() {
         return wallet;
     }
+
     @Override
     public String toString() {
         return "Seller{" +

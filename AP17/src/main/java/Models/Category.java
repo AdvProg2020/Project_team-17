@@ -1,8 +1,9 @@
 package Models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Category {
+public class Category implements Serializable {
     private String categoryName;
     private String specialFeature;
     private static ArrayList<Category> allCategories = new ArrayList<>();

@@ -1,7 +1,6 @@
 package Server.ServerController;
 
 import Models.Accounts.Customer;
-import Models.Accounts.Seller;
 import Server.ClientHandler;
 import Server.ServerController.AccountsController.SellerController;
 

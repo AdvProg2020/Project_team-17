@@ -5,7 +5,6 @@ import Models.Product;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class SellLog extends Log {
     public SellLog( LocalDate date, double paymentAmount, String address, String phoneNumber, String customerName, ArrayList<Product> products, boolean isReceived, double discountAmount) throws IOException {

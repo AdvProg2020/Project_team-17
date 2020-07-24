@@ -2,11 +2,12 @@ package Models;
 
 import Models.Accounts.Customer;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
-public class Auction {
+public class Auction implements Serializable {
     private ArrayList<Customer> allCustomer;
     private int id;
     private Product product;

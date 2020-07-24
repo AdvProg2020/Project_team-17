@@ -116,55 +116,53 @@ public class AccountsMenu extends Menu {
 //                } else {
 //                    handleManagerMenu();
 //                }
-                }
-            });
+            }
+        });
 
-        supporterButton.addEventFilter(MouseEvent.MOUSE_CLICKED,new EventHandler<MouseEvent>()
-
-            {
-                @Override
-                public void handle (MouseEvent mouseEvent){
+        supporterButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
                 if (RegisterManagerMenu.getCurrentManager() == null) {
                     handleRegisterSupporter();
                 } else {
                     handleManagerMenu();
                 }
             }
-            });
-        }
-
-        public void handleRegisterSeller () {
-            RegisterSellerMenu registerSellerMenu = new RegisterSellerMenu(this);
-            registerSellerMenu.show();
-        }
-
-        public void handleRegisterCustomer () {
-            RegisterCustomerMenu registerCustomerMenu = new RegisterCustomerMenu(this);
-            registerCustomerMenu.show();
-        }
-
-        public void handleRegisterManager () {
-            RegisterManagerMenu registerManagerMenu = new RegisterManagerMenu(this);
-            registerManagerMenu.show();
-        }
-
-        public void handleRegisterSupporter () {
-            RegisterSupporterMenu registerSupporterMenu = new RegisterSupporterMenu(this);
-            registerSupporterMenu.show();
-        }
-
-        public void handleCustomerMenu () {
-            CustomerMenu customerMenu = new CustomerMenu(this);
-            customerMenu.show();
-        }
-
-        public void handleSellerMenu () {
-            SellerMenu sellerMenu = new SellerMenu(this);
-            sellerMenu.show();
-        }
-
-        public void handleManagerMenu () {
-            ManagerMenu managerMenu = new ManagerMenu(this);
-            managerMenu.show();
-        }
+        });
     }
+
+    public void handleRegisterSeller() {
+        RegisterSellerMenu registerSellerMenu = new RegisterSellerMenu(this);
+        registerSellerMenu.show();
+    }
+
+    public void handleRegisterCustomer() {
+        RegisterCustomerMenu registerCustomerMenu = new RegisterCustomerMenu(this);
+        registerCustomerMenu.show();
+    }
+
+    public void handleRegisterManager() {
+        RegisterManagerMenu registerManagerMenu = new RegisterManagerMenu(this);
+        registerManagerMenu.show();
+    }
+
+    public void handleRegisterSupporter() {
+        RegisterSupporterMenu registerSupporterMenu = new RegisterSupporterMenu(this);
+        registerSupporterMenu.show();
+    }
+
+    public void handleCustomerMenu() {
+        CustomerMenu customerMenu = new CustomerMenu(this);
+        customerMenu.show();
+    }
+
+    public void handleSellerMenu() {
+        SellerMenu sellerMenu = new SellerMenu(this);
+        sellerMenu.show();
+    }
+
+    public void handleManagerMenu() {
+        ManagerMenu managerMenu = new ManagerMenu(this);
+        managerMenu.show();
+    }
+}

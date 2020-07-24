@@ -46,6 +46,4 @@ public class ProductController {
             Client.sendObject(new Exception("there isn't any product with this id"));
         }
     }
-
-
 }

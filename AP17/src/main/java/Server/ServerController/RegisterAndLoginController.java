@@ -1,15 +1,9 @@
 package Server.ServerController;
 
-import Client.Client;
 import Models.Accounts.*;
 import Server.ClientHandler;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.util.HashMap;
 
 public class RegisterAndLoginController {
     public static void registerManager() throws IOException {

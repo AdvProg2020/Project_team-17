@@ -1,6 +1,5 @@
 package Server;
 
-import Models.Accounts.Manager;
 import Server.ServerController.HandleController;
 
 import java.io.*;
@@ -8,7 +7,6 @@ import java.lang.Thread;
 import java.net.Socket;
 
 public class ClientHandler extends Thread {
-    private static Manager currentManager;
     protected Socket socket;
     private static final String ALPHA_NUMERIC_STRING = "NAKAPPROJECT";
     public static ObjectOutputStream objectOutputStream;
@@ -63,10 +61,6 @@ public class ClientHandler extends Thread {
                 e.printStackTrace();
             }
         }
-    }
-
-    public static Manager getCurrentManager() {
-        return currentManager;
     }
 
     public static String generateToken() {

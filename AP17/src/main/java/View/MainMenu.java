@@ -1,13 +1,9 @@
 package View;
 
-import Client.ClientController.AccountsController.CManagerController;
 import Client.ClientController.CRegisterAndLoginController;
-import Controller.RegisterAndLoginManager;
 import Controller.WriteIntoFile;
 import Models.Accounts.Manager;
-import Server.ServerController.RegisterAndLoginController;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -22,8 +18,6 @@ import javafx.scene.layout.*;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
-import java.io.File;
-import java.io.FileFilter;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Paths;

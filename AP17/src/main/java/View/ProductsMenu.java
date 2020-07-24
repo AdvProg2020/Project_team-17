@@ -13,10 +13,6 @@ import Server.ServerController.AccountsController.CustomerController;
 import Server.ServerController.AccountsController.ManagerController;
 import Server.ServerController.AccountsController.SellerController;
 import Server.ServerController.AccountsController.SupporterController;
-import View.RegisterMenus.RegisterCustomerMenu;
-import View.RegisterMenus.RegisterManagerMenu;
-import View.RegisterMenus.RegisterSellerMenu;
-import View.RegisterMenus.RegisterSupporterMenu;
 import javafx.collections.FXCollections;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -36,7 +32,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Text;
-
 
 public class ProductsMenu extends Menu {
     private ArrayList<String> currentFilters = new ArrayList<>();

@@ -48,7 +48,7 @@ public class ManagerAbilitiesManager {
         } else if (Manager.isThereManagerWithUserName(username)) {
             Manager manager = Manager.getManagerByUserName(username);
             s = manager.toString();
-        }else if (Supporter.isThereSupporterWithUserName(username)) {
+        } else if (Supporter.isThereSupporterWithUserName(username)) {
             Supporter supporter = Supporter.getSupporterByUserName(username);
             s = supporter.toString();
         }

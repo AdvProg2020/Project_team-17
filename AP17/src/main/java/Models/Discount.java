@@ -1,14 +1,14 @@
 package Models;
 
-
 import Models.Enums.DiscountEnum;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Discount {
+public class Discount implements Serializable {
     private String discountId;
     private static List<Product> discountProducts = new ArrayList<>();
     private static ArrayList<Discount> allDiscounts = new ArrayList<>();

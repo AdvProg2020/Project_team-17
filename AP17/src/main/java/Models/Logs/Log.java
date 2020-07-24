@@ -3,11 +3,11 @@ package Models.Logs;
 import Models.Product;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 
-public abstract class Log {
+public abstract class Log implements Serializable {
     protected String id;
     protected LocalDate date;
     protected double paymentAmount;

@@ -6,7 +6,7 @@ import Models.DiscountCode;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public abstract class Account implements Serializable{
+public abstract class Account implements Serializable {
     protected String role;
     protected String userName;
     protected String firstName;

@@ -2,9 +2,10 @@ package Models;
 
 import Models.Accounts.Account;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class PointOfView {
+public class PointOfView implements Serializable {
     private Account account;
     private Product product;
     private String pointOfViewStringText;

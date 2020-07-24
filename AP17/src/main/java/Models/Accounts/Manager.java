@@ -1,6 +1,5 @@
 package Models.Accounts;
 
-
 import Models.Bank.BankAccount;
 
 import java.io.IOException;
@@ -10,10 +9,9 @@ public class Manager extends Account {
     private static ArrayList<Manager> allManagers = new ArrayList<>();
 
     public Manager(String userName, String firstName, String lastName, String email, String phoneNumber, String password, String path) throws IOException {
-        super("Manager",userName, firstName, lastName, email, phoneNumber, password, 0, path);
+        super("Manager", userName, firstName, lastName, email, phoneNumber, password, 0, path);
         allManagers.add(this);
         this.bankAccount = new BankAccount(firstName, lastName, userName, password);
-        //allManagers.add(this);
     }
 
     public static ArrayList<Manager> getAllManagers() {
@@ -24,7 +22,7 @@ public class Manager extends Account {
         allManagers.remove(getManagerByUserName(userName));
     }
 
-    public static void deleteManager(Manager manager){
+    public static void deleteManager(Manager manager) {
         allManagers.remove(manager);
     }
 
