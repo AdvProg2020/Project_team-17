@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class Server {
 
-    public static BankClient.ClientImplementation clientImplementation;
+    public static BankClient.Client client;
     public static ArrayList<String> listOfTokens = new ArrayList<>();
     static final int PORT = 1989;
 
@@ -17,7 +17,7 @@ public class Server {
         ServerSocket serverSocket = null;
         Socket socket;
 //        BankClient bankClient = new BankClient();
-//        clientImplementation = new BankClient.ClientImplementation();
+//        client = new BankClient.Client();
         try {
             serverSocket = new ServerSocket(PORT);
             System.out.println("socket created");

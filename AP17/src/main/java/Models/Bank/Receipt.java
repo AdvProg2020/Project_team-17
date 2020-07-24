@@ -1,8 +1,9 @@
 package Models.Bank;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Receipt {
+public class Receipt implements Serializable {
     private int id;
     private String type;
     private double money;

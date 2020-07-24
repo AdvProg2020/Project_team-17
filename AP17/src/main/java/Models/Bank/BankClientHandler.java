@@ -33,50 +33,42 @@ public class BankClientHandler extends Thread {
     @Override
     public void run() {
         try {
-            handler();
+            functionHandle();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
 
-    private void handler() throws IOException {
+    private void functionHandle() throws IOException {
         while (true) {
             String input = dataInputStream.readUTF();
             String[] splitInputs = input.split("\\s");
-            //TODO change to if and else
-            switch (splitInputs[0]) {
-                case "create_account":
-                    createAccount(splitInputs);
-                    break;
-                case "get_token":
-                    getToken(splitInputs);
-                    break;
-                case "create_receipt":
-                    createReceipt(input);
-                    break;
-                case "get_transactions":
-                    getTransactions(splitInputs);
-                    break;
-                case "pay":
-                    pay(splitInputs);
-                    break;
-                case "get_balance":
-                    getBalance(splitInputs);
-                    break;
-                case "exit":
-                    socket.close();
-                    exit = true;
-                    break;
-                default:
-                    dataOutputStream.writeUTF("invalid input");
-                    dataOutputStream.flush();
-                    break;
+            String string = splitInputs[0];
+            if (string.equals("create_account")) {
+                createAccount(splitInputs);
+            } else if (string.equals("get_token")) {
+                getToken(splitInputs);
+            } else if (string.equals("create_receipt")) {
+                createReceipt(input);
+            } else if (string.equals("get_transactions")) {
+                getTransactions(splitInputs);
+            } else if (string.equals("pay")) {
+                pay(splitInputs);
+            } else if (string.equals("get_balance")) {
+                getBalance(splitInputs);
+            } else if (string.equals("exit")) {
+                socket.close();
+                exit = true;
+            } else {
+                dataOutputStream.writeUTF("invalid input");
+                dataOutputStream.flush();
             }
             if (exit) {
                 break;
             }
         }
+
     }
 
     private void getBalance(String[] splitInputs) {
@@ -242,7 +234,8 @@ public class BankClientHandler extends Thread {
                 } else if (type.equals("*")) {
                     ArrayList<Receipt> receiptsResult = new ArrayList<>();
                     for (Receipt receipt : Receipt.getAllReceipts()) {
-                        if (receipt.getSourceId() == bankAccount.getAccountId() || receipt.getDestinationId() == bankAccount.getAccountId()) {
+                        if (receipt.getSourceId() == bankAccount.getAccountId() ||
+                                receipt.getDestinationId() == bankAccount.getAccountId()) {
                             receiptsResult.add(receipt);
                         }
                     }
@@ -488,6 +481,4 @@ public class BankClientHandler extends Thread {
         }
 
     }
-
-
 }

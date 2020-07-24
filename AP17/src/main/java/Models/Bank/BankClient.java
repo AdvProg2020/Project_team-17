@@ -6,13 +6,13 @@ import java.net.Socket;
 public class BankClient {
 
     public static void main(String[] args) {
-        new ClientImplementation().run();
+        new Client().run();
     }
 
-    public static class ClientImplementation {
+    public static class Client {
         public final int PORT = 3989;
         public final String IP = "127.0.0.1";
-        public final int SHOP_SERVER_PORT = 9000;
+        public final int SHOP_SERVER_PORT = 8000;
 
         private DataOutputStream outputStream;
         private DataInputStream inputStream;
