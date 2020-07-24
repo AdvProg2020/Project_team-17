@@ -247,6 +247,25 @@ public class HandleController {
                 SellerController.addAuction();
                 break;
             }
+
+            ////////
+
+            case "Increase Product": {
+                CartController.increaseProduct();
+                break;
+            }
+            case "Decrease Product": {
+                CartController.decreaseProduct();
+                break;
+            }
+            case "Show Total Price": {
+                CartController.showTotalPrice();
+                break;
+            }
+            case "Show Total Price With Discount Code": {
+                CartController.showTotalPriceWithDiscountCode();
+                break;
+            }
         }
     }
 }
