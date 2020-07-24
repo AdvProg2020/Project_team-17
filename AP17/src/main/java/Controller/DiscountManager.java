@@ -3,7 +3,6 @@ package Controller;
 import Models.Accounts.Seller;
 import Models.Category;
 import Models.Discount;
-import Models.Enums.ProductEnum;
 import Models.Product;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
