@@ -58,9 +58,10 @@ public class Wallet implements Serializable {
         this.balance += amount;
     }
 
-    public void decreaseAmount(int amount) throws Exception {
-        if (this.balance - amount < leastAmount)
-            throw new Exception("Can't decrease this amount !");
-        this.balance -= amount;
+    public boolean canDecreaseAmount(double amount) {
+        if (this.balance - amount < leastAmount) {
+            return false;
+        }
+        return true;
     }
 }

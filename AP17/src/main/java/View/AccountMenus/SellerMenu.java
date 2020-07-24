@@ -1,6 +1,7 @@
 package View.AccountMenus;
 
 import Client.ClientController.AccountsController.CSellerController;
+import Client.ClientController.CWalletController;
 import Models.Category;
 import Models.Discount;
 import Models.Product;
@@ -110,6 +111,17 @@ public class SellerMenu extends Menu {
                 setOffsScene();
             }
         });
+
+        Button wallet = new Button("Wallet");
+        wallet.setStyle(style);
+        wallet.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
+                setWalletScene();
+            }
+        });
+
         Button showCategories = new Button("Show category");
         showCategories.setStyle(style);
         showCategories.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
@@ -139,7 +151,7 @@ public class SellerMenu extends Menu {
                 setAddAuctionScene();
             }
         });
-        vBox.getChildren().addAll(backButton, viewSalesHistory, manageProductButton, viewOffsButton, editButton, addAuctionButton);
+        vBox.getChildren().addAll(backButton, viewSalesHistory, manageProductButton, viewOffsButton, editButton, addAuctionButton, wallet);
         pane.setLeft(vBox);
 
         VBox vBox1 = new VBox(10);
@@ -181,6 +193,73 @@ public class SellerMenu extends Menu {
         pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
         Scene scene = new Scene(pane, 600, 600);
         Menu.window.setScene(scene);
+    }
+
+    public void setWalletScene() {
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+        Media media = new Media(Paths.get(path).toUri().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+
+        BorderPane pane = new BorderPane();
+        String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
+                "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
+                + "linear-gradient(#cdded5 0%, #f6f6f6 50%);" +
+                " -fx-background-radius: 8,7,6; " +
+                "-fx-background-insets: 0,1,2; " +
+                "-fx-text-fill: #3193ff;"
+                + "-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); " +
+                "-fx-font-size: 1.2em; " +
+                "-fx-padding: 4px;";
+        VBox vBox = new VBox(10);
+        vBox.setAlignment(Pos.TOP_LEFT);
+        Button button = new Button("Back");
+        button.setStyle(style);
+        button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
+                show();
+            }
+        });
+        vBox.getChildren().addAll(button);
+        pane.setTop(vBox);
+
+        TextField textField = new TextField();
+        textField.setPromptText("amount");
+        Button button1 = new Button("charge wallet");
+        Button button2 = new Button("withdrawal from wallet");
+
+        Label notify = new Label();
+        HBox hBox = new HBox(5);
+        hBox.getChildren().addAll(textField, button1, button2, notify);
+        button1.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                try {
+                    CWalletController.sellerWalletCharge(Double.parseDouble(textField.getText()));
+                    notify.setText("seller wallet charged");
+                    notify.setStyle("-fx-text-fill: #3193ff");
+                } catch (Exception e) {
+                    notify.setText(e.getMessage());
+                    notify.setStyle("-fx-text-fill: #ff4f59");
+                }
+            }
+        });
+
+        button2.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                try {
+                    CWalletController.sellerWithdrawalWallet(Double.parseDouble(textField.getText()));
+                    notify.setText("withdrawal from seller wallet is done");
+                    notify.setStyle("-fx-text-fill: #3193ff");
+                } catch (Exception e) {
+                    notify.setText(e.getMessage());
+                    notify.setStyle("-fx-text-fill: #ff4f59");
+                }
+            }
+        });
+
     }
 
     public void setEditScene() {

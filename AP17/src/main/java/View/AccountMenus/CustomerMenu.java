@@ -1,6 +1,8 @@
 package View.AccountMenus;
 
 import Client.ClientController.AccountsController.CCustomerController;
+import Client.ClientController.CWalletController;
+import Models.Logs.BuyLog;
 import Server.ServerController.AccountsController.CustomerController;
 import View.*;
 import View.Menu;
@@ -98,13 +100,23 @@ public class CustomerMenu extends Menu {
             }
         });
 
-        Button onlineSupporters = new Button("Online supportes");
+        Button onlineSupporters = new Button("Online supporters");
         onlineSupporters.setStyle(style);
         onlineSupporters.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 mediaPlayer.play();
                 setOnlineSupportersScene();
+            }
+        });
+
+        Button chargeWallet = new Button("Charge wallet");
+        chargeWallet.setStyle(style);
+        chargeWallet.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
+                setChargeWalletScene();
             }
         });
 
@@ -135,7 +147,7 @@ public class CustomerMenu extends Menu {
                 setEditScene();
             }
         });
-        vBox.getChildren().addAll(backButton, viewOrdersButton, cartButton, viewListOfDiscountCodes, editButton);
+        vBox.getChildren().addAll(backButton, viewOrdersButton, cartButton, viewListOfDiscountCodes, editButton, chargeWallet);
         pane.setLeft(vBox);
         VBox vBox1 = new VBox(10);
         vBox1.setAlignment(Pos.CENTER);
@@ -236,6 +248,61 @@ public class CustomerMenu extends Menu {
         });
         vBox1.getChildren().addAll(hBox, notify);
         pane.setCenter(vBox1);
+        pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
+        Scene scene = new Scene(pane, 500, 500);
+        Menu.window.setScene(scene);
+    }
+
+    public void setChargeWalletScene() {
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+        Media media = new Media(Paths.get(path).toUri().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+
+        BorderPane pane = new BorderPane();
+        String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
+                "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
+                + "linear-gradient(#cdded5 0%, #f6f6f6 50%);" +
+                " -fx-background-radius: 8,7,6; " +
+                "-fx-background-insets: 0,1,2; " +
+                "-fx-text-fill: #3193ff;"
+                + "-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); " +
+                "-fx-font-size: 1.2em; " +
+                "-fx-padding: 4px;";
+        VBox vBox = new VBox(10);
+        vBox.setAlignment(Pos.TOP_LEFT);
+        Button button = new Button("Back");
+        button.setStyle(style);
+        button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
+                show();
+            }
+        });
+        vBox.getChildren().addAll(button);
+        pane.setTop(vBox);
+
+        TextField textField = new TextField();
+        textField.setPromptText("amount");
+        Button button1 = new Button("charge wallet");
+        Label notify = new Label();
+        HBox hBox = new HBox(5);
+        hBox.getChildren().addAll(textField, button1, notify);
+        button1.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                try {
+                    CWalletController.customerWalletCharge(Double.parseDouble(textField.getText()));
+                    notify.setText("customer wallet charged");
+                    notify.setStyle("-fx-text-fill: #3193ff");
+                } catch (Exception e) {
+                    notify.setText(e.getMessage());
+                    notify.setStyle("-fx-text-fill: #ff4f59");
+                }
+            }
+        });
+
+        pane.setCenter(hBox);
         pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
         Scene scene = new Scene(pane, 500, 500);
         Menu.window.setScene(scene);
