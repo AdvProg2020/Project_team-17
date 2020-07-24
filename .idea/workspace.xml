@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="32618e29-8746-4d2a-8d73-d011168a9d97" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Client/ClientController/AccountsController/CManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Client/ClientController/AccountsController/CManagerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Models/Bank/BankClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Models/Bank/BankClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Models/Bank/BankClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Models/Bank/BankClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Server/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Server/ServerController/AccountsController/ManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Server/ServerController/AccountsController/ManagerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Models/Logs/Log.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Models/Logs/Log.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,11 +137,11 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.BankClient" />
+      <item itemvalue="Application.BankServer" />
       <item itemvalue="Application.Bank" />
       <item itemvalue="Application.Main" />
       <item itemvalue="Application.Server" />
-      <item itemvalue="Application.BankClient" />
-      <item itemvalue="Application.BankServer" />
     </list>
     <recent_temporary>
       <list>
@@ -604,11 +600,11 @@
     <state x="751" y="49" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1595607611607" />
     <state x="801" y="93" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1586995828901" />
     <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1588275888120" />
-    <state x="515" y="248" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1593171500635">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state x="550" y="266" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1595616662972">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="515" y="248" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1280.680@0.0.1280.680" timestamp="1593171500635" />
-    <state x="550" y="266" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1366.728@0.0.1366.728" timestamp="1592998403718" />
+    <state x="550" y="266" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1366.728@0.0.1366.728" timestamp="1595616662972" />
     <state x="618" y="301" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1536.824@0.0.1536.824" timestamp="1589638319442" />
     <state x="267" y="266" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1594885978133">
       <screen x="0" y="0" width="1280" height="680" />
