@@ -1,6 +1,7 @@
 package View;
 
 import Client.ClientController.AccountsController.CManagerController;
+import Client.ClientController.CProductController;
 import Controller.ProductManager;
 import Models.Product;
 import Server.ServerController.AccountsController.ManagerController;
@@ -73,7 +74,7 @@ public class ProductMenu extends Menu {
         try {
             FileInputStream inputStream1 = new FileInputStream("C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Images\\Cart.png");
             image1 = new Image(inputStream1);
-        } catch (Exception e) {
+        } catch (Exception ignored) {
         }
         ImageView imageView1 = new ImageView(image1);
         Button addToCart = new Button("", imageView1);
@@ -112,7 +113,7 @@ public class ProductMenu extends Menu {
         try {
             FileInputStream inputStream = new FileInputStream(product.getPath());
             image = new Image(inputStream);
-        } catch (Exception e) {
+        } catch (Exception ignored) {
         }
 
         final DoubleProperty zoomProperty = new SimpleDoubleProperty(200);
@@ -145,9 +146,20 @@ public class ProductMenu extends Menu {
         Text feature = new Text("Feature: " + product.getProductsSpecialFeature());
         Text score = new Text("Product Score: " + product.getAverageScore());
         Text seller = new Text("Seller: " + product.getSeller());
+        TextField textField = new TextField();
+        textField.setPromptText("enter the path");
+        Button button = new Button("show video");
+
+        button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
+                setVideoScene(textField.getText());
+            }
+        });
 
         VBox info = new VBox(5);
-        info.getChildren().addAll(name, companyName, category, price, explanation, feature, score, seller);
+        info.getChildren().addAll(name, companyName, category, price, explanation, feature, score, seller, textField, button);
         HBox hBox = new HBox(10);
         VBox vBox = new VBox(5);
         ListView<String> listView = new ListView<>();
@@ -160,32 +172,40 @@ public class ProductMenu extends Menu {
         HBox hBox1 = new HBox(5);
         hBox1.getChildren().addAll(comment, submitComment);
         HBox hBox3 = new HBox(5);
-        TextField textField = new TextField();
-        textField.setPromptText("compare product with ...");
-        textField.setStyle(style);
-        Button button = new Button("compare");
-        button.setStyle(style);
+        TextField field = new TextField();
+        field.setPromptText("compare product with ...");
+        field.setStyle(style);
+        Button compare = new Button("compare");
+        compare.setStyle(style);
         Label text = new Label();
-        button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+        compare.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 mediaPlayer.play();
-                if (Product.getProductByName(textField.getText()) != null) {
-                    setCompareProductScene(Product.getProductByName(textField.getText()));
-                } else {
-                    text.setText("there isn't any product with this ID");
+                try {
+                    setCompareProductScene(CProductController.compareProduct(field.getText()));
+                } catch (Exception e) {
+                    text.setText(e.getMessage());
                     text.setStyle("-fx-text-fill: #ff4f59");
                 }
+//                if (Product.getProductByName(field.getText()) != null) {
+//                    setCompareProductScene(Product.getProductByName(field.getText()));
+//                } else {
+//                    text.setText("there isn't any product with this ID");
+//                    text.setStyle("-fx-text-fill: #ff4f59");
+//                }
+//            }
             }
         });
-        hBox3.getChildren().addAll(textField, button);
+        hBox3.getChildren().addAll(field, compare);
         submitComment.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 mediaPlayer.play();
                 try {
-                    ProductManager.addComment(RegisterCustomerMenu.getCurrentCustomer(), product, comment.getText());
-                } catch (IOException e) {
+//                    ProductManager.addComment(RegisterCustomerMenu.getCurrentCustomer(), product, comment.getText());
+                    CProductController.commentProduct(product.getProductId(), comment.getText());
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
@@ -201,7 +221,12 @@ public class ProductMenu extends Menu {
                     @Override
                     public void handle(MouseEvent event) {
                         mediaPlayer.play();
-                        ProductManager.rateProduct(RegisterCustomerMenu.getCurrentCustomer(), product, Double.parseDouble(rate.getText()));
+                        try {
+                            CProductController.rateProduct(product.getProductId(), Double.parseDouble(rate.getText()));
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+//                        ProductManager.rateProduct(RegisterCustomerMenu.getCurrentCustomer(), product, Double.parseDouble(rate.getText()));
                     }
                 });
                 HBox hBox2 = new HBox(5);
@@ -296,20 +321,9 @@ public class ProductMenu extends Menu {
         Text feature = new Text("Feature: " + product.getProductsSpecialFeature());
         Text score = new Text("Product Score: " + product.getAverageScore());
         Text seller = new Text("Seller: " + product.getSeller());
-        TextField textField = new TextField();
-        textField.setPromptText("enter the path");
-        Button button = new Button("show video");
-
-        button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                mediaPlayer.play();
-                setVideoScene(textField.getText());
-            }
-        });
 
         VBox info = new VBox(5);
-        info.getChildren().addAll(name, companyName, category, price, explanation, feature, score, seller, textField, button);
+        info.getChildren().addAll(name, companyName, category, price, explanation, feature, score, seller);
 
         HBox hBox = new HBox(10);
         hBox.getChildren().addAll(imageView, info);

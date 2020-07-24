@@ -1,30 +1,48 @@
 package Server.ServerController;
 
 import Client.Client;
+import Controller.ProductManager;
 import Models.Product;
+import Server.ClientHandler;
+import Server.ServerController.AccountsController.CustomerController;
 import View.RegisterCustomerMenu;
 
 public class ProductController {
 
-    public static void rateProduct() throws Exception {
-        Object[] receivedData = (Object[]) Client.receiveObject();
+    public static void rateProduct() {
+        Object[] receivedData = (Object[]) ClientHandler.receiveObject();
         String productId = (String) receivedData[0];
-        double score = (double) receivedData[1];
         Product product = Product.getProductWithId(productId);
         if (product != null) {
-            product.addScoreForProduct(RegisterCustomerMenu.getCurrentCustomer(), product, score);
+            if (ProductManager.doesCustomerBoughtThisProduct(CustomerController.getCustomer(), product)){
+                ClientHandler.sendObject(product);
+            }else {
+                ClientHandler.sendObject(new Exception("you can only rate products you have purchased it"));
+            }
         } else {
-            Client.sendObject(new Exception("there isn't any product with this id"));
+            ClientHandler.sendObject(new Exception("there isn't any product with this id"));
         }
     }
 
-    public static void commentProduct() throws Exception {
+    public static void commentProduct() {
         Object[] receivedData = (Object[]) Client.receiveObject();
         String productId = (String) receivedData[0];
         String content = (String) receivedData[1];
         Product product = Product.getProductWithId(productId);
         if (product != null) {
-            product.addCommentForProduct(RegisterCustomerMenu.getCurrentCustomer(), content);
+            ClientHandler.sendObject(product);
+        } else {
+            Client.sendObject(new Exception("there isn't any product with this id"));
+        }
+    }
+
+    public static void compareProduct() {
+        Object[] receivedData = (Object[]) Client.receiveObject();
+        String productId = (String) receivedData[0];
+
+        Product product = Product.getProductWithId(productId);
+        if (product != null) {
+            ClientHandler.sendObject(product);
         } else {
             Client.sendObject(new Exception("there isn't any product with this id"));
         }
