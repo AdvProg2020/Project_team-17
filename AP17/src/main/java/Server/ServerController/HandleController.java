@@ -266,6 +266,22 @@ public class HandleController {
                 CartController.showTotalPriceWithDiscountCode();
                 break;
             }
+
+
+            ///////
+
+            case "Rate Product": {
+                ProductController.rateProduct();
+                break;
+            }
+            case "Comment Product": {
+                ProductController.commentProduct();
+                break;
+            }
+            case "Compare Product": {
+                ProductController.compareProduct();
+                break;
+            }
         }
     }
 }

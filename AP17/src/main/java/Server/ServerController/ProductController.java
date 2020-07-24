@@ -13,9 +13,9 @@ public class ProductController {
         String productId = (String) receivedData[0];
         Product product = Product.getProductWithId(productId);
         if (product != null) {
-            if (ProductManager.doesCustomerBoughtThisProduct(CustomerController.getCustomer(), product)){
+            if (ProductManager.doesCustomerBoughtThisProduct(CustomerController.getCustomer(), product)) {
                 ClientHandler.sendObject(product);
-            }else {
+            } else {
                 ClientHandler.sendObject(new Exception("you can only rate products you have purchased it"));
             }
         } else {
