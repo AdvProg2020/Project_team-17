@@ -38,7 +38,7 @@ public class CSellerController {
         onlineSellers.add(seller);
     }
 
-    public static void RemoveOnlineSeller(Seller seller) {
+    public static void removeOnlineSeller(Seller seller) {
         onlineSellers.remove(seller);
     }
 

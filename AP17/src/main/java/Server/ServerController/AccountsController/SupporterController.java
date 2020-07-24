@@ -8,7 +8,7 @@ public class SupporterController {
     private static ArrayList<Supporter> onlineSupporters = new ArrayList<>();
     private static Supporter supporter;
 
-    public Supporter getSupporter() {
+    public static Supporter getSupporter() {
         return supporter;
     }
 
