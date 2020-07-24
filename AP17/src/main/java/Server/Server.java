@@ -1,5 +1,6 @@
 package Server;
 
+import Models.Bank.BankAPI;
 import Models.Bank.BankClient;
 
 import java.io.IOException;
@@ -9,17 +10,16 @@ import java.util.ArrayList;
 
 public class Server {
 
-    public static BankClient.Client client;
+    public static BankAPI bankAPI;
     public static ArrayList<String> listOfTokens = new ArrayList<>();
-    static final int PORT = 1989;
 
     public static void main(String args[]) {
         ServerSocket serverSocket = null;
         Socket socket;
-//        BankClient bankClient = new BankClient();
-//        client = new BankClient.Client();
+        BankClient bankClient = new BankClient();
+        bankAPI = new BankAPI();
         try {
-            serverSocket = new ServerSocket(PORT);
+            serverSocket = new ServerSocket(1989);
             System.out.println("socket created");
         } catch (IOException e) {
             e.printStackTrace();
