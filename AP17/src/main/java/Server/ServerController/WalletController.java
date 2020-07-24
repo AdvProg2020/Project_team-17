@@ -6,7 +6,7 @@ import Server.ClientHandler;
 import Server.ServerController.AccountsController.SellerController;
 
 public class WalletController {
-    public void customerWalletCharge() {
+    public static void customerWalletCharge() {
         Object[] toReceive = (Object[]) ClientHandler.receiveObject();
         Customer customer = (Customer) toReceive[0];
         double amount = (double) toReceive[1];
@@ -18,7 +18,7 @@ public class WalletController {
         }
     }
 
-    public void sellerWalletCharge() {
+    public static void sellerWalletCharge() {
         Object[] toReceive = (Object[]) ClientHandler.receiveObject();
         Customer customer = (Customer) toReceive[0];
         double amount = (double) toReceive[1];
@@ -30,7 +30,7 @@ public class WalletController {
         }
     }
 
-    public void sellerWithdrawalWallet() {
+    public static void sellerWithdrawalWallet() {
         Object[] toReceive = (Object[]) ClientHandler.receiveObject();
         Customer customer = (Customer) toReceive[0];
         double amount = (double) toReceive[1];

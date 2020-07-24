@@ -282,6 +282,25 @@ public class HandleController {
                 ProductController.compareProduct();
                 break;
             }
+
+            /////
+
+            case "Show Categories": {
+                ProductsController.showCategories();
+                break;
+            }
+            case "Customer Wallet Charge": {
+                WalletController.customerWalletCharge();
+                break;
+            }
+            case "Seller Wallet Charge": {
+                WalletController.sellerWalletCharge();
+                break;
+            }
+            case "Seller withdrawal Wallet": {
+                WalletController.sellerWithdrawalWallet();
+                break;
+            }
         }
     }
 }
