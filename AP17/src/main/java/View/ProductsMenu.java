@@ -1,9 +1,9 @@
 package View;
 
+import Client.ClientController.CProductsController;
 import Controller.ProductsManager;
 import Models.Accounts.Seller;
 import Models.Category;
-import Models.Enums.ProductEnum;
 import Models.Product;
 import javafx.collections.FXCollections;
 import javafx.event.EventHandler;
@@ -23,7 +23,6 @@ import java.util.ArrayList;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 
@@ -139,7 +138,8 @@ public class ProductsMenu extends Menu {
         HBox sort = new HBox(5);
         sort.getChildren().addAll(choiceBox1, submitButton);
 
-        ChoiceBox category = new ChoiceBox(ProductsManager.showCategory());
+//        ChoiceBox category = new ChoiceBox(ProductsManager.showCategory());
+        ChoiceBox category = new ChoiceBox(CProductsController.showCategories());
         bar.getChildren().addAll(backButton, mainButtons, filter, sort, category);
         category.setStyle(style);
         ArrayList<HBox> hBoxes = new ArrayList<>();
