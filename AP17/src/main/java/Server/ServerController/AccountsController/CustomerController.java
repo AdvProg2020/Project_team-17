@@ -34,7 +34,11 @@ public class CustomerController {
         onlineCustomers.add(customer);
     }
 
-    public static void showCustomerInfo() throws Exception {
+    public static void removeOnlineCustomer(Customer customer) {
+        onlineCustomers.remove(customer);
+    }
+
+    public static void showManagerInfo() throws Exception {
         if (getCustomer() == null) {
             ClientHandler.sendObject(new Exception("there isn't any customer logged in"));
         } else {
@@ -45,7 +49,7 @@ public class CustomerController {
         }
     }
 
-    public static void editCustomerInfo() throws Exception {
+    public static void editManagerInfo() throws Exception {
         String receivedItems = (String) ClientHandler.receiveObject();
 
         Customer customer = DataBaseForServer.getCustomer(receivedItems);
@@ -56,7 +60,7 @@ public class CustomerController {
         }
     }
 
-    public static void showCustomerLogs() {
+    public static void showSellerLogs() {
         ArrayList<BuyLog> logs = new ArrayList<>(getCustomer().getBuyLog());
         ClientHandler.sendObject(logs);
     }

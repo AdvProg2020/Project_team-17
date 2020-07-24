@@ -29,6 +29,10 @@ public class CManagerController {
         onlineManagers.add(manager);
     }
 
+    public static void removeOnlineManger(Manager manager) {
+        onlineManagers.remove(manager);
+    }
+
     public static String showManagerInfo() throws Exception {
         if (getManager() == null) {
             throw new Exception("there isn't any manager logged in");

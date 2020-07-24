@@ -31,6 +31,10 @@ public class ManagerController {
         onlineManagers.add(manager);
     }
 
+    public static void removeOnlineManger(Manager manager) {
+        onlineManagers.remove(manager);
+    }
+
     public static void showManagerInfo() throws Exception {
         if (getManager() == null) {
             ClientHandler.sendObject(new Exception("there isn't any manager logged in"));

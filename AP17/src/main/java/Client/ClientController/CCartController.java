@@ -51,4 +51,17 @@ public class CCartController {
         Client.sendObject(CustomerController.getCustomer().getCart());
         return (double) Client.receiveObject();
     }
+
+    public static double showTotalPriceWithDiscountCode(String code) {
+        String func = "Show Total Price With Discount Code";
+        Client.sendMessage(func);
+
+        Object[] toSend = new Object[2];
+        toSend[0] = code;
+        toSend[1] = CustomerController.getCustomer().getCart();
+        Client.sendObject(toSend);
+
+        Client.sendObject(CustomerController.getCustomer().getCart());
+        return (double) Client.receiveObject();
+    }
 }

@@ -8,7 +8,7 @@ public class SupporterController {
     private static ArrayList<Supporter> onlineSupporters = new ArrayList<>();
     private static Supporter supporter;
 
-    public Supporter getSupporter() {
+    public static Supporter getSupporter() {
         return supporter;
     }
 
@@ -22,5 +22,9 @@ public class SupporterController {
 
     public static void addOnlineSupporters(Supporter supporter) {
         onlineSupporters.add(supporter);
+    }
+
+    public static void removeOnlineSupporter(Supporter supporter) {
+        onlineSupporters.remove(supporter);
     }
 }
