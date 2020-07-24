@@ -20,12 +20,4 @@ public class BankServer {
             new BankClientHandler(socket).start();
         }
     }
-
-    public static HashMap<String, String> getTokens() {
-        return tokens;
-    }
-
-    public static void setTokens(HashMap<String, String> tokens) {
-        BankServer.tokens = tokens;
-    }
 }
