@@ -99,5 +99,22 @@ public class RegisterAndLoginController {
         }
     }
 
+    public static void loginSupporter() {
+        String dataToRegister = ClientHandler.receiveMessage();
+        String[] split = dataToRegister.split("\\s");
+
+        Supporter supporter = DataBaseForServer.getSupporter(split[0]);
+
+        if (supporter != null) {
+            if (supporter.getPassword().equals(split[1])) {
+                ClientHandler.sendObject(supporter);
+            } else {
+                ClientHandler.sendObject(new Exception("wrong password"));
+            }
+        } else {
+            ClientHandler.sendObject(new Exception("wrong username"));
+        }
+    }
+
 
 }

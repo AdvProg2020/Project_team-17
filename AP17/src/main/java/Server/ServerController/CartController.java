@@ -2,6 +2,8 @@ package Server.ServerController;
 
 import Client.Client;
 import Models.Cart;
+import Models.Discount;
+import Models.DiscountCode;
 import Models.Product;
 import Server.ClientHandler;
 
@@ -28,6 +30,17 @@ public class CartController {
     public static void showTotalPrice() {
         Cart cart = (Cart) ClientHandler.receiveObject();
         double totalPrice = cart.totalPriceOfProductInCart();
-        Client.sendMessage(String.valueOf(totalPrice));
+        Client.sendObject(String.valueOf(totalPrice));
+    }
+
+    public static void showTotalPriceWithDiscountCode() {
+        Object[] receivedItems = (Object[]) ClientHandler.receiveObject();
+        String code = (String) receivedItems[0];
+        DiscountCode discountCode = DataBaseForServer.getDiscountCode(code);
+
+        Cart cart = (Cart) receivedItems[1];
+
+        double totalPrice = cart.totalPriceWithDiscount(discountCode);
+        Client.sendObject(String.valueOf(totalPrice));
     }
 }

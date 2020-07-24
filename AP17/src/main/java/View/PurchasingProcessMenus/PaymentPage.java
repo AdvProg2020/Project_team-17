@@ -1,5 +1,6 @@
 package View.PurchasingProcessMenus;
 
+import Client.ClientController.CCartController;
 import Controller.AccountsManager.CustomerAbilitiesManager;
 import Controller.CartManager;
 import View.*;
@@ -76,12 +77,16 @@ public class PaymentPage extends Menu {
         VBox vBox1 = new VBox(10);
         Text totalPrice;
         if (DiscountCodePage.getCodeOfDiscountCode() != null) {
+//            totalPrice = new Text("total price with your discount code is going to be:" + "\n" +
+//                    CartManager.showTotalPriceOfCartIncludingDiscountCode(RegisterCustomerMenu.getCurrentCustomer(), DiscountCodePage.getDiscountCode()));
             totalPrice = new Text("total price with your discount code is going to be:" + "\n" +
-                    CartManager.showTotalPriceOfCartIncludingDiscountCode(RegisterCustomerMenu.getCurrentCustomer(), DiscountCodePage.getDiscountCode()));
+                    CCartController.showTotalPriceWithDiscountCode(DiscountCodePage.getDiscountCode().getDiscountCode()));
         } else {
+//            totalPrice = new Text("total price is going to be:" + "\n" +
+//                    CartManager.showTotalPriceOfCart(RegisterCustomerMenu.getCurrentCustomer()));
             totalPrice = new Text("total price is going to be:" + "\n" +
-                    CartManager.showTotalPriceOfCart(RegisterCustomerMenu.getCurrentCustomer()));
-            totalPrice.setFont(Font.loadFont("file:src/main/java/Fonts/Titillium-Semibold.otf",28));
+                    CCartController.showTotalPrice());
+            totalPrice.setFont(Font.loadFont("file:src/main/java/Fonts/Titillium-Semibold.otf", 28));
         }
 
         Button done = new Button("Done");
@@ -114,7 +119,7 @@ public class PaymentPage extends Menu {
 
     }
 
-    public void addActionForMainButtons(MediaPlayer mediaPlayer ,Button accountsButton, Button productsButton, Button discountButton, Button logoutButton) {
+    public void addActionForMainButtons(MediaPlayer mediaPlayer, Button accountsButton, Button productsButton, Button discountButton, Button logoutButton) {
         accountsButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -139,7 +144,7 @@ public class PaymentPage extends Menu {
         logoutButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-              mediaPlayer.play();
+                mediaPlayer.play();
                 handleLogout();
             }
         });
