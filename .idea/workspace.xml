@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="32618e29-8746-4d2a-8d73-d011168a9d97" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Controller/CartManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Controller/CartManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/View/ProductMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/View/ProductMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -202,34 +202,6 @@
       <workItem from="1595166080014" duration="27605000" />
       <workItem from="1595485660990" duration="63310000" />
       <workItem from="1595581407806" duration="16625000" />
-    </task>
-    <task id="LOCAL-00148" summary="add bank account for users">
-      <created>1595101249412</created>
-      <option name="number" value="00148" />
-      <option name="presentableId" value="LOCAL-00148" />
-      <option name="project" value="LOCAL" />
-      <updated>1595101249412</updated>
-    </task>
-    <task id="LOCAL-00149" summary="fix problem">
-      <created>1595101949123</created>
-      <option name="number" value="00149" />
-      <option name="presentableId" value="LOCAL-00149" />
-      <option name="project" value="LOCAL" />
-      <updated>1595101949123</updated>
-    </task>
-    <task id="LOCAL-00150" summary="add shop account">
-      <created>1595106582435</created>
-      <option name="number" value="00150" />
-      <option name="presentableId" value="LOCAL-00150" />
-      <option name="project" value="LOCAL" />
-      <updated>1595106582435</updated>
-    </task>
-    <task id="LOCAL-00151" summary="fix junit test">
-      <created>1595107371340</created>
-      <option name="number" value="00151" />
-      <option name="presentableId" value="LOCAL-00151" />
-      <option name="project" value="LOCAL" />
-      <updated>1595107371341</updated>
     </task>
     <task id="LOCAL-00152" summary="handle change product state">
       <created>1595107425504</created>
@@ -546,16 +518,41 @@
       <option name="project" value="LOCAL" />
       <updated>1595617328606</updated>
     </task>
-    <option name="localTasksCounter" value="197" />
+    <task id="LOCAL-00197" summary="CartManager debug">
+      <created>1595617543716</created>
+      <option name="number" value="00197" />
+      <option name="presentableId" value="LOCAL-00197" />
+      <option name="project" value="LOCAL" />
+      <updated>1595617543716</updated>
+    </task>
+    <task id="LOCAL-00198" summary="DiscountManager check">
+      <created>1595617617136</created>
+      <option name="number" value="00198" />
+      <option name="presentableId" value="LOCAL-00198" />
+      <option name="project" value="LOCAL" />
+      <updated>1595617617137</updated>
+    </task>
+    <task id="LOCAL-00199" summary="LoadFromFile debug">
+      <created>1595617680283</created>
+      <option name="number" value="00199" />
+      <option name="presentableId" value="LOCAL-00199" />
+      <option name="project" value="LOCAL" />
+      <updated>1595617680283</updated>
+    </task>
+    <task id="LOCAL-00200" summary="LoadFromFile debug">
+      <created>1595617697377</created>
+      <option name="number" value="00200" />
+      <option name="presentableId" value="LOCAL-00200" />
+      <option name="project" value="LOCAL" />
+      <updated>1595617697378</updated>
+    </task>
+    <option name="localTasksCounter" value="201" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value=":)" />
-    <MESSAGE value="seller server and client done(no idea about auction)" />
-    <MESSAGE value="seller login and register server and client" />
     <MESSAGE value="login and register server and client" />
     <MESSAGE value="login and register supporter server and client" />
     <MESSAGE value="seller server and client controller" />
@@ -578,7 +575,10 @@
     <MESSAGE value="DiscountCode.java debug" />
     <MESSAGE value="PointOfView check" />
     <MESSAGE value="Product debug" />
-    <option name="LAST_COMMIT_MESSAGE" value="Product debug" />
+    <MESSAGE value="CartManager debug" />
+    <MESSAGE value="DiscountManager check" />
+    <MESSAGE value="LoadFromFile debug" />
+    <option name="LAST_COMMIT_MESSAGE" value="LoadFromFile debug" />
   </component>
   <component name="WindowStateProjectService">
     <state x="233" y="0" key="#Project_Structure" timestamp="1595508707294">
@@ -620,11 +620,11 @@
     </state>
     <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1595085591466" />
     <state x="445" y="105" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1588110193951" />
-    <state x="425" y="0" key="CommitChangelistDialog2" timestamp="1595617676745">
+    <state x="425" y="0" key="CommitChangelistDialog2" timestamp="1595617692331">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="223" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1595603452647" />
-    <state x="425" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1595617676745" />
+    <state x="425" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1595617692331" />
     <state x="401" y="14" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1592143129254" />
     <state x="421" y="67" key="FileChooserDialogImpl" timestamp="1595507915007">
       <screen x="0" y="0" width="1280" height="680" />
@@ -700,11 +700,11 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1280.680@0.0.1280.680" timestamp="1589767285229" />
-    <state x="249" y="80" key="Vcs.Push.Dialog.v2" timestamp="1595617628898">
+    <state x="249" y="80" key="Vcs.Push.Dialog.v2" timestamp="1595617710603">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1595603460224" />
-    <state x="249" y="80" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1595617628898" />
+    <state x="249" y="80" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1595617710603" />
     <state x="280" y="90" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1593000505024" />
     <state x="452" y="119" key="chooseDestDirectoryDialog" timestamp="1595066647516">
       <screen x="0" y="0" width="1280" height="680" />
@@ -739,11 +739,11 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="93" y="93" width="1095" height="495" key="dock-window-1/0.0.1280.680@0.0.1280.680" timestamp="1595606569044" />
-    <state x="423" y="180" key="git4idea.merge.GitPullDialog" timestamp="1595617620553">
+    <state x="423" y="180" key="git4idea.merge.GitPullDialog" timestamp="1595617700369">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="397" y="168" key="git4idea.merge.GitPullDialog/0.0.1280.680@0.0.1280.680" timestamp="1595603456637" />
-    <state x="423" y="180" key="git4idea.merge.GitPullDialog/0.0.1366.728@0.0.1366.728" timestamp="1595617620553" />
+    <state x="423" y="180" key="git4idea.merge.GitPullDialog/0.0.1366.728@0.0.1366.728" timestamp="1595617700369" />
     <state x="476" y="204" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1592143151948" />
     <state x="91" y="0" key="new project wizard" timestamp="1595162754233">
       <screen x="0" y="0" width="1280" height="680" />
