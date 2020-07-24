@@ -1,16 +1,13 @@
 package Server.ServerController.AccountsController;
 
 import Client.Client;
-import Client.ClientController.AccountsController.CCustomerController;
 import Models.Accounts.Customer;
-import Models.Accounts.Manager;
+import Models.Accounts.Supporter;
 import Models.DiscountCode;
 import Models.Logs.BuyLog;
-import Models.Logs.Log;
-import Models.Logs.SellLog;
+import Models.Product;
 import Server.ClientHandler;
 import Server.ServerController.DataBaseForServer;
-import View.RegisterCustomerMenu;
 
 import java.util.ArrayList;
 
@@ -83,6 +80,19 @@ public class CustomerController {
         } else {
             Client.sendObject(new Exception("there isn't any discount code with this code"));
         }
+    }
+
+    public static void showProductState() {
+        ArrayList<Product> product = new ArrayList<>();
+        for (BuyLog log : getCustomer().getBuyLog()) {
+            product.addAll(log.getAllProducts());
+        }
+        Client.sendObject(product);
+    }
+
+    public static void showOnlineSupporters() {
+        ArrayList<Supporter> supporters = new ArrayList<>(SupporterController.getOnlineSupporters());
+        Client.sendObject(supporters);
     }
 
 }

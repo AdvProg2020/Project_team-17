@@ -1,6 +1,7 @@
 package View.AccountMenus;
 
-import Controller.AccountsManager.CustomerAbilitiesManager;
+import Client.ClientController.AccountsController.CCustomerController;
+import Server.ServerController.AccountsController.CustomerController;
 import View.*;
 import View.Menu;
 import javafx.event.EventHandler;
@@ -99,7 +100,7 @@ public class CustomerMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 mediaPlayer.play();
-                setOnlineSupportesScene();
+                setOnlineSupportersScene();
             }
         });
 
@@ -136,28 +137,35 @@ public class CustomerMenu extends Menu {
         vBox1.setAlignment(Pos.CENTER);
         Image image = null;
         try {
-            FileInputStream inputStream = new FileInputStream(RegisterCustomerMenu.getCurrentCustomer().getPath());
+            FileInputStream inputStream = new FileInputStream(CustomerController.getCustomer().getPath());
             image = new Image(inputStream);
         } catch (Exception e) {
         }
         ImageView imageView = new ImageView(image);
         Text title = new Text("CUSTOMER");
-        Text username = new Text("username: " + RegisterCustomerMenu.getCurrentCustomer().getUserName());
-        Text firstName = new Text("first name: " + RegisterCustomerMenu.getCurrentCustomer().getFirstName());
-        Text lastName = new Text("last name: " + RegisterCustomerMenu.getCurrentCustomer().getLastName());
-        Text email = new Text("email: " + RegisterCustomerMenu.getCurrentCustomer().getEmail());
-        Text phoneNumber = new Text("phone number: " + RegisterCustomerMenu.getCurrentCustomer().getPhoneNumber());
-        Text credit = new Text("credit: " + RegisterCustomerMenu.getCurrentCustomer().getCredit());
+        Text info = new Text();
+        try {
+            info = new Text(CCustomerController.showCustomerInfo());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+//        Text username = new Text("username: " + RegisterCustomerMenu.getCurrentCustomer().getUserName());
+//        Text firstName = new Text("first name: " + RegisterCustomerMenu.getCurrentCustomer().getFirstName());
+//        Text lastName = new Text("last name: " + RegisterCustomerMenu.getCurrentCustomer().getLastName());
+//        Text email = new Text("email: " + RegisterCustomerMenu.getCurrentCustomer().getEmail());
+//        Text phoneNumber = new Text("phone number: " + RegisterCustomerMenu.getCurrentCustomer().getPhoneNumber());
+//        Text credit = new Text("credit: " + RegisterCustomerMenu.getCurrentCustomer().getCredit());
 
         title.setFont(Font.font("calibri", FontWeight.BOLD, FontPosture.REGULAR, 12));
-        username.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
-        firstName.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
-        lastName.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
-        email.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
-        phoneNumber.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
-        credit.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
+//        username.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
+//        firstName.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
+//        lastName.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
+//        email.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
+//        phoneNumber.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
+//        credit.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
 
-        vBox1.getChildren().addAll(imageView, title, username, firstName, lastName, email, phoneNumber, credit);
+//        vBox1.getChildren().addAll(imageView, title, username, firstName, lastName, email, phoneNumber, credit);
+        vBox1.getChildren().addAll(imageView, title, info);
         pane.setCenter(vBox1);
         pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
         Scene scene = new Scene(pane, 600, 600);
@@ -208,9 +216,18 @@ public class CustomerMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 mediaPlayer.play();
-                CustomerAbilitiesManager.changeField(RegisterCustomerMenu.getCurrentCustomer(), field.getValue(), newContent.getText());
-                notify.setStyle("-fx-text-fill: #3193ff");
-                notify.setText("successfully changed");
+                String data = field.getValue() + " " + newContent.getText();
+                try {
+                    CCustomerController.editCustomerInfo(data);
+                    notify.setStyle("-fx-text-fill: #3193ff");
+                    notify.setText("successfully changed");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+//
+//                CustomerAbilitiesManager.changeField(RegisterCustomerMenu.getCurrentCustomer(), field.getValue(), newContent.getText());
+//                notify.setStyle("-fx-text-fill: #3193ff");
+//                notify.setText("successfully changed");
             }
         });
         vBox1.getChildren().addAll(hBox, notify);
@@ -250,7 +267,9 @@ public class CustomerMenu extends Menu {
         vBox.getChildren().addAll(button);
         pane.setTop(vBox);
         ListView<String> listView = new ListView<>();
-        listView.getItems().addAll(CustomerAbilitiesManager.viewOrders(RegisterCustomerMenu.getCurrentCustomer()));
+//        listView.getItems().addAll(CustomerAbilitiesManager.viewOrders(RegisterCustomerMenu.getCurrentCustomer()));
+        listView.getItems().addAll(CCustomerController.showBuyLogs());
+
         listView.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -258,10 +277,16 @@ public class CustomerMenu extends Menu {
                 Alert alert = new Alert(Alert.AlertType.NONE);
                 alert.setTitle("show order");
                 alert.setHeaderText("buy log information");
-                String s = CustomerAbilitiesManager.showOrder(listView.getSelectionModel().getSelectedItem());
+                try {
+                    alert.setContentText(CCustomerController.showBuyLog(listView.getSelectionModel().getSelectedItem()));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                //String s = CustomerAbilitiesManager.showOrder(listView.getSelectionModel().getSelectedItem());
                 ButtonType buttonType = new ButtonType("Exit", ButtonBar.ButtonData.CANCEL_CLOSE);
                 alert.getButtonTypes().setAll(buttonType);
-                alert.setContentText(s);
+                // alert.setContentText(s);
                 alert.show();
             }
         });
@@ -300,7 +325,8 @@ public class CustomerMenu extends Menu {
         vBox.getChildren().addAll(button);
         pane.setTop(vBox);
         ListView<String> listView = new ListView<>();
-        listView.getItems().addAll(CustomerAbilitiesManager.viewProductAndState(RegisterCustomerMenu.getCurrentCustomer()));
+//        listView.getItems().addAll(CustomerAbilitiesManager.viewProductAndState(RegisterCustomerMenu.getCurrentCustomer()));
+        listView.getItems().addAll(CCustomerController.showProductAndState());
         pane.setCenter(listView);
         pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
         Scene scene = new Scene(pane, 600, 600);
@@ -336,7 +362,8 @@ public class CustomerMenu extends Menu {
         vBox.getChildren().addAll(button);
         pane.setTop(vBox);
         ListView<String> listView = new ListView<>();
-        listView.getItems().addAll(CustomerAbilitiesManager.showDiscountCodes(RegisterCustomerMenu.getCurrentCustomer()));
+//        listView.getItems().addAll(CustomerAbilitiesManager.showDiscountCodes(RegisterCustomerMenu.getCurrentCustomer()));
+        listView.getItems().addAll(CCustomerController.showDiscountCodes());
         listView.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -344,8 +371,13 @@ public class CustomerMenu extends Menu {
                 Alert alert = new Alert(Alert.AlertType.NONE);
                 alert.setTitle("show discount code");
                 alert.setHeaderText("discount code information");
-                String s = CustomerAbilitiesManager.showDiscountCodeInfo(listView.getSelectionModel().getSelectedItem());
-                alert.setContentText(s);
+//                String s = CustomerAbilitiesManager.showDiscountCodeInfo(listView.getSelectionModel().getSelectedItem());
+//                alert.setContentText(s);
+                try {
+                    alert.setContentText(CCustomerController.showDiscountCode(listView.getSelectionModel().getSelectedItem()));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 ButtonType buttonType = new ButtonType("Exit", ButtonBar.ButtonData.CANCEL_CLOSE);
                 alert.getButtonTypes().setAll(buttonType);
                 alert.show();
@@ -357,7 +389,7 @@ public class CustomerMenu extends Menu {
         Menu.window.setScene(scene);
     }
 
-    public void setOnlineSupportesScene() {
+    public void setOnlineSupportersScene() {
         String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
@@ -386,7 +418,8 @@ public class CustomerMenu extends Menu {
         vBox.getChildren().addAll(button);
         pane.setTop(vBox);
         ListView<String> listView = new ListView<>();
-        listView.getItems().addAll(CustomerAbilitiesManager.viewOnlineSupporters());
+//        listView.getItems().addAll(CustomerAbilitiesManager.viewOnlineSupporters());
+        listView.getItems().addAll(CCustomerController.showOnlineSupporter());
         pane.setCenter(listView);
         pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
         Scene scene = new Scene(pane, 350, 350);

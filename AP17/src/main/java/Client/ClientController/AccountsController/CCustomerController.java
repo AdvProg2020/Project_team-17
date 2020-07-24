@@ -2,12 +2,11 @@ package Client.ClientController.AccountsController;
 
 import Client.Client;
 import Models.Accounts.Customer;
-import Models.Accounts.Manager;
+import Models.Accounts.Supporter;
 import Models.DiscountCode;
 import Models.Logs.BuyLog;
-import Models.Logs.SellLog;
+import Models.Product;
 import Server.ServerController.DataBaseForServer;
-import View.RegisterCustomerMenu;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -84,7 +83,7 @@ public class CCustomerController {
         }
     }
 
-    public static ObservableList<String> showBuyLogs() throws Exception {
+    public static ObservableList<String> showBuyLogs() {
         ArrayList<BuyLog> allLogs;
         String func = "Show Buy Logs";
         Client.sendMessage(func);
@@ -117,7 +116,7 @@ public class CCustomerController {
     }
 
 
-    public static ObservableList<String> showDiscountCodes() throws Exception {
+    public static ObservableList<String> showDiscountCodes() {
         ArrayList<DiscountCode> discountCodes;
         String func = "Show Discount Codes";
         Client.sendMessage(func);
@@ -147,5 +146,39 @@ public class CCustomerController {
         } else {
             throw new Exception("there isn't any discount code with this code");
         }
+    }
+
+    public static ObservableList<String> showProductAndState() {
+        ArrayList<Product> products;
+        String func = "Show Product And State";
+        Client.sendMessage(func);
+
+        Object response = Client.receiveObject();
+        products = (ArrayList<Product>) response;
+        ArrayList<String> info = new ArrayList<>();
+        for (Product product : products) {
+            info.add(product.getName() + " " + product.getProductStateEnum());
+        }
+        ObservableList data = FXCollections.observableArrayList();
+        data.addAll(info);
+        return data;
+
+    }
+
+    public static ObservableList<String> showOnlineSupporter() {
+        ArrayList<Supporter> supporters;
+        String func = "Show Online Supporter";
+        Client.sendMessage(func);
+
+        Object response = Client.receiveObject();
+        supporters = (ArrayList<Supporter>) response;
+        ArrayList<String> info = new ArrayList<>();
+        for (Supporter supporter : supporters) {
+            info.add(supporter.getUserName());
+        }
+        ObservableList data = FXCollections.observableArrayList();
+        data.addAll(info);
+        return data;
+
     }
 }
