@@ -3,7 +3,7 @@ package Client.ClientController;
 import Client.Client;
 import Models.Product;
 import Server.ClientHandler;
-import View.RegisterCustomerMenu;
+import View.RegisterMenus.RegisterCustomerMenu;
 
 public class CProductController {
 

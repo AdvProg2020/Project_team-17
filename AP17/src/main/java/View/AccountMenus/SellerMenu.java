@@ -1,16 +1,15 @@
 package View.AccountMenus;
 
-import Client.ClientController.AccountsController.CManagerController;
 import Client.ClientController.AccountsController.CSellerController;
-import Controller.AccountsManager.SellerAbilitiesManager;
 import Models.Category;
 import Models.Discount;
 import Models.Product;
-import Models.Request.AddOffRequest;
-import Models.Request.AddProductRequest;
-import Server.ServerController.AccountsController.SellerController;
 import View.*;
 import View.Menu;
+import View.RegisterMenus.RegisterCustomerMenu;
+import View.RegisterMenus.RegisterManagerMenu;
+import View.RegisterMenus.RegisterSellerMenu;
+import View.RegisterMenus.RegisterSupporterMenu;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -29,7 +28,6 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.nio.file.Paths;
 
 public class SellerMenu extends Menu {

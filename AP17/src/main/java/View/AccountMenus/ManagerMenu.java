@@ -1,18 +1,15 @@
 package View.AccountMenus;
 
-import Client.ClientController.CRegisterAndLoginController;
-import Controller.AccountsManager.ManagerAbilitiesManager;
-import Controller.AccountsManager.SellerAbilitiesManager;
-import Controller.RegisterAndLoginManager;
-import Models.Accounts.Customer;
-import Models.Accounts.Manager;
 import Models.Category;
 import Models.DiscountCode;
-import Models.Product;
 import Server.ServerController.AccountsController.ManagerController;
 import Client.ClientController.AccountsController.CManagerController;
 import View.*;
 import View.Menu;
+import View.RegisterMenus.RegisterCustomerMenu;
+import View.RegisterMenus.RegisterManagerMenu;
+import View.RegisterMenus.RegisterSellerMenu;
+import View.RegisterMenus.RegisterSupporterMenu;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;

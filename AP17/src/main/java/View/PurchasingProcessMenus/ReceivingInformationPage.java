@@ -1,6 +1,9 @@
 package View.PurchasingProcessMenus;
 
 import View.*;
+import View.RegisterMenus.RegisterCustomerMenu;
+import View.RegisterMenus.RegisterManagerMenu;
+import View.RegisterMenus.RegisterSellerMenu;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;

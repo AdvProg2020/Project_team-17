@@ -1,7 +1,8 @@
-package View;
+package View.RegisterMenus;
 
 import Client.ClientController.CRegisterAndLoginController;
-import Models.Accounts.Manager;
+import Models.Accounts.Supporter;
+import View.Menu;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -18,19 +19,17 @@ import javafx.scene.media.MediaPlayer;
 
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.HashMap;
 
-public class RegisterManagerMenu extends Menu {
-    public static Manager currentManager;
-    public static ArrayList<Manager> onlineManagers = new ArrayList<>();
+public class RegisterSupporterMenu extends Menu {
+    public static Supporter currentSupporter;
+    public static ArrayList<Supporter> onlineSupporter = new ArrayList<>();
 
-    public RegisterManagerMenu(Menu parentMenu) {
-        super("Register Manager", parentMenu);
+    public RegisterSupporterMenu(Menu parentMenu) {
+        super("Login Supporter", parentMenu);
     }
 
     @Override
     public void show() {
-        //String path = "C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
@@ -76,13 +75,13 @@ public class RegisterManagerMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 mediaPlayer.play();
-                loginManagerScene();
+                loginSupporterScene();
             }
         });
     }
 
-    public void loginManagerScene() {
-        //String path = "C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+
+    public void loginSupporterScene() {
         String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
@@ -116,32 +115,25 @@ public class RegisterManagerMenu extends Menu {
                 mediaPlayer.play();
                 String dataToSend = usernameTextField.getText() + " " + passwordField.getText();
                 try {
-                    CRegisterAndLoginController.loginManager(dataToSend);
+                    CRegisterAndLoginController.loginSupporter(dataToSend);
                     notify.setStyle("-fx-text-fill: #3193ff");
                     notify.setText("successfully signed in");
                 } catch (Exception e) {
                     notify.setStyle("-fx-text-fill: #ff4f59");
                     notify.setText(e.getMessage());
                 }
-                //              try {
-//                    CRegisterAndLoginController.login(dataToSend);
-//                if (Manager.isThereManagerWithUserName(usernameTextField.getText())) {
-//                    if (RegisterAndLoginManager.isUserNameAndPasswordCorrectForManager(usernameTextField.getText(), passwordField.getText())) {
-//                        CManagerController.loginManager(usernameTextField.getText());
-//                        currentManager = Manager.getManagerByUserName(usernameTextField.getText());
-//                        System.out.println(currentManager.getUserName());
-//                        onlineManagers.add(currentManager);
+
+//                if (Supporter.isThereSupporterWithUserName(usernameTextField.getText())) {
+//                    if (RegisterAndLoginManager.isUserNameAndPasswordCorrectForSupporter(usernameTextField.getText(), passwordField.getText())) {
+//                        currentSupporter = Supporter.getSupporterByUserName(usernameTextField.getText());
+//                        onlineSupporter.add(currentSupporter);
 //                        notify.setStyle("-fx-text-fill: #3193ff");
 //                        notify.setText("successfully signed in");
 //                    } else {
 //                        notify.setStyle("-fx-text-fill: #ff4f59");
 //                        notify.setText("password is wrong");
 //                    }
-//                } else {
-//                    notify.setStyle("-fx-text-fill: #ff4f59");
-//                    notify.setText("there isn't any manager with this username");
 //                }
-//            }
             }
         });
         backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
@@ -158,21 +150,19 @@ public class RegisterManagerMenu extends Menu {
         Menu.window.setScene(scene);
     }
 
-    public static Manager getCurrentManager() {
-        return currentManager;
+    public static Supporter getCurrentSupporter() {
+        return currentSupporter;
     }
 
-    public static void setCurrentManager(Manager currentManager) {
-        RegisterManagerMenu.currentManager = currentManager;
+    public static void removeFromOnlineSupporter(Supporter supporter) {
+        onlineSupporter.remove(supporter);
     }
 
-    public static void removeFromOnlineManager(Manager manager) {
-        onlineManagers.remove(manager);
+    public static ArrayList<Supporter> getOnlineSupporter() {
+        return onlineSupporter;
     }
 
-    public static ArrayList<Manager> getOnlineManagers() {
-        return onlineManagers;
+    public static void setCurrentSupporter(Supporter currentSupporter) {
+        RegisterSupporterMenu.currentSupporter = currentSupporter;
     }
 }
-
-

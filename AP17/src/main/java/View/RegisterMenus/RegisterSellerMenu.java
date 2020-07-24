@@ -1,13 +1,12 @@
-package View;
+package View.RegisterMenus;
 
 import Client.ClientController.CRegisterAndLoginController;
-import Controller.RegisterAndLoginManager;
-import Models.Accounts.Customer;
-import Models.Accounts.Supporter;
+
+import Models.Accounts.Seller;
+import View.Menu;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -15,21 +14,20 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.control.Button;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
 import java.nio.file.Paths;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
+public class RegisterSellerMenu extends Menu {
+    public static Seller currentSeller;
+    public static ArrayList<Seller> onlineSellers = new ArrayList<>();
 
-public class RegisterCustomerMenu extends Menu {
-    public static Customer currentCustomer;
-    public static ArrayList<Customer> onlineCustomers = new ArrayList<>();
-
-    public RegisterCustomerMenu(Menu parentMenu) {
-        super("Register Seller", parentMenu);
+    public RegisterSellerMenu(Menu parentMenu) {
+        super("Register Seller ", parentMenu);
     }
 
     @Override
@@ -59,6 +57,7 @@ public class RegisterCustomerMenu extends Menu {
         HBox backAndOthersButton = new HBox(10);
         backAndOthersButton.setAlignment(Pos.TOP_LEFT);
         Button backButton = new Button("Back");
+        backButton.setStyle(style);
         backAndOthersButton.getChildren().addAll(backButton, registerAndLoginButtons);
         VBox vBox = new VBox(220);
         vBox.getChildren().addAll(backAndOthersButton, registerAndLoginButtons);
@@ -81,20 +80,20 @@ public class RegisterCustomerMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 mediaPlayer.play();
-                loginCustomerScene();
+                loginSellerScene();
             }
         });
         registerButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 mediaPlayer.play();
-                registerCustomerScene();
+                registerSellerScene();
             }
         });
     }
 
 
-    public void registerCustomerScene() {
+    public void registerSellerScene() {
         //String path = "C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
@@ -105,14 +104,15 @@ public class RegisterCustomerMenu extends Menu {
                 "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
                 + "linear-gradient(#dddddd 0%, #f6f6f6 50%);" +
                 " -fx-background-radius: 8,7,6; " +
-                "-fx-background-insets: 0,1,2; " +
-                "-fx-text-fill: #000000;"
+                "-fx-background-insets: 0,1,2;" +
+                " -fx-text-fill: #000000;"
                 + "-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); " +
-                "-fx-font-size: 1.2em; " +
-                "-fx-padding: 4px;";
+                "-fx-font-size: 1.2em;" +
+                " -fx-padding: 4px;";
         VBox vBox = new VBox(10);
         Button backButton = new Button("Back");
-        Label title = new Label("Customer account registration");
+        backButton.setStyle(style);
+        Label title = new Label("Seller account registration");
         Label notify = new Label();
         TextField userNameTextField = new TextField();
         userNameTextField.setPromptText("username");
@@ -136,31 +136,30 @@ public class RegisterCustomerMenu extends Menu {
         addressTextField.setPromptText("address");
 
         TextField extraTextField = new TextField();
-        extraTextField.setPromptText("credit");
+        extraTextField.setPromptText("company name");
 
         TextField paths = new TextField();
         paths.setPromptText("path");
 
-        Button SUButton = new Button("Sign up");
-        backButton.setStyle(style);
+        Button SUButton = new Button("sign up");
         userNameTextField.setStyle(style);
+        passwordField.setStyle(style);
         firstNameTextField.setStyle(style);
         lastNameTextField.setStyle(style);
         emailTextField.setStyle(style);
         phoneNumberTextField.setStyle(style);
         addressTextField.setStyle(style);
         extraTextField.setStyle(style);
-        SUButton.setStyle(style);
         paths.setStyle(style);
-
+        SUButton.setStyle(style);
         SUButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 mediaPlayer.play();
                 String data = userNameTextField.getText() + " " + firstNameTextField.getText() + " " + lastNameTextField.getText() + " " + emailTextField.getText() + " " +
-                        " " + phoneNumberTextField.getText() + " " + passwordField.getText() + " " + extraTextField.getText() + " " + addressTextField.getText() + " " + paths.getText();
+                        " " + phoneNumberTextField.getText() + " " + passwordField.getText() + " " + extraTextField.getText() + " " + paths.getText();
                 try {
-                    CRegisterAndLoginController.registerCustomer(data);
+                    CRegisterAndLoginController.registerSeller(data);
                     notify.setStyle("-fx-text-fill: #3193ff");
                     notify.setText("successfully registered");
                 } catch (Exception e) {
@@ -170,23 +169,24 @@ public class RegisterCustomerMenu extends Menu {
                 }
 //                if (RegisterAndLoginManager.canHaveAccountWithThisUsername(userNameTextField.getText())) {
 //                    try {
-//                        new Customer(userNameTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText(),
-//                                phoneNumberTextField.getText(), passwordField.getText(), Double.parseDouble(extraTextField.getText()), addressTextField.getText(), paths.getText());
+//                        new Seller(userNameTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText(),
+//                                phoneNumberTextField.getText(), passwordField.getText(), 0, extraTextField.getText(), paths.getText());
 //                    } catch (IOException e) {
 //                        e.printStackTrace();
 //                    }
-////                    try {
-////                        WriteIntoFile.writeCustomersIntoFile();
-////                    } catch (IOException e) {
-////                        System.err.println(e.getMessage());
-////                    }
+//                    try {
+//                        WriteIntoFile.writeSellersIntoFile();
+//                    } catch (IOException e) {
+//                        System.err.println(e.getMessage());
+//                    }
 //                    notify.setStyle("-fx-text-fill: #3193ff");
 //                    notify.setText("successfully registered");
 //                } else {
 //                    notify.setStyle("-fx-text-fill: #ff4f59");
 //                    notify.setText("this username already exist");
 //                }
-
+//
+//            }
             }
         });
         backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
@@ -196,7 +196,6 @@ public class RegisterCustomerMenu extends Menu {
                 parentMenu.show();
             }
         });
-
         vBox.getChildren().addAll(backButton, title, userNameTextField, passwordField, firstNameTextField, lastNameTextField, emailTextField, phoneNumberTextField, addressTextField, extraTextField, paths, SUButton, notify);
         pane.setCenter(vBox);
         pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
@@ -204,9 +203,9 @@ public class RegisterCustomerMenu extends Menu {
         Menu.window.setScene(scene);
     }
 
-    public void loginCustomerScene() {
-        String path = "C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Sounds\\button.mp3";
-        //  String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+    public void loginSellerScene() {
+        //String path = "C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
 
@@ -215,13 +214,14 @@ public class RegisterCustomerMenu extends Menu {
                 "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
                 + "linear-gradient(#dddddd 0%, #f6f6f6 50%);" +
                 " -fx-background-radius: 8,7,6; " +
-                "-fx-background-insets: 0,1,2; " +
-                "-fx-text-fill: #000000;"
+                "-fx-background-insets: 0,1,2;" +
+                " -fx-text-fill: #000000;"
                 + "-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); " +
-                "-fx-font-size: 1.2em; " +
-                "-fx-padding: 4px;";
+                "-fx-font-size: 1.2em;" +
+                " -fx-padding: 4px;";
         VBox vBox = new VBox(10);
         Button backButton = new Button("Back");
+        backButton.setStyle(style);
         Label title = new Label("Login");
         Label notify = new Label();
         TextField usernameTextField = new TextField();
@@ -229,7 +229,6 @@ public class RegisterCustomerMenu extends Menu {
         PasswordField passwordField = new PasswordField();
         passwordField.setPromptText("password");
         Button loginButton = new Button("login");
-        backButton.setStyle(style);
         usernameTextField.setStyle(style);
         passwordField.setStyle(style);
         loginButton.setStyle(style);
@@ -237,31 +236,36 @@ public class RegisterCustomerMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 mediaPlayer.play();
+
                 String dataToSend = usernameTextField.getText() + " " + passwordField.getText();
                 try {
-                    CRegisterAndLoginController.loginCustomer(dataToSend);
+                    CRegisterAndLoginController.loginSeller(dataToSend);
                     notify.setStyle("-fx-text-fill: #3193ff");
                     notify.setText("successfully signed in");
                 } catch (Exception e) {
                     notify.setStyle("-fx-text-fill: #ff4f59");
                     notify.setText(e.getMessage());
                 }
-//                if (Customer.isThereCustomerWithUserName(usernameTextField.getText())) {
-//                    if (RegisterAndLoginManager.isUserNameAndPasswordCorrectForCustomer(usernameTextField.getText(), passwordField.getText())) {
-//                        currentCustomer = Customer.getCustomerByName(usernameTextField.getText());
-//                        onlineCustomers.add(currentCustomer);
+
+//                if (Seller.isThereSellerWithUserName(usernameTextField.getText())) {
+//                    if (RegisterAndLoginManager.isUserNameAndPasswordCorrectForSeller(usernameTextField.getText(), passwordField.getText())) {
+//                        currentSeller = Seller.getSellerByName(usernameTextField.getText());
+//                        onlineSellers.add(currentSeller);
 //                        notify.setStyle("-fx-text-fill: #3193ff");
 //                        notify.setText("successfully signed in");
 //                    } else {
 //                        notify.setStyle("-fx-text-fill: #ff4f59");
 //                        notify.setText("password is wrong");
 //                    }
+//                } else {
+//                    notify.setStyle("-fx-text-fill: #ff4f59");
+//                    notify.setText("there isn't any account registered with this username");
 //                }
             }
         });
         backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
-            public void handle(MouseEvent mouseEvent) {
+            public void handle(MouseEvent event) {
                 mediaPlayer.play();
                 parentMenu.show();
             }
@@ -273,19 +277,19 @@ public class RegisterCustomerMenu extends Menu {
         Menu.window.setScene(scene);
     }
 
-    public static Customer getCurrentCustomer() {
-        return currentCustomer;
+    public static Seller getCurrentSeller() {
+        return currentSeller;
     }
 
-    public static void setCurrentCustomer(Customer currentCustomer) {
-        RegisterCustomerMenu.currentCustomer = currentCustomer;
+    public static void setCurrentSeller(Seller currentSeller) {
+        RegisterSellerMenu.currentSeller = currentSeller;
     }
 
-    public static void removeFromOnlineCustomer(Customer customer) {
-        onlineCustomers.remove(customer);
+    public static void removeFromOnlineSeller(Seller seller) {
+        onlineSellers.remove(seller);
     }
 
-    public static ArrayList<Customer> getOnlineCustomers() {
-        return onlineCustomers;
+    public static ArrayList<Seller> getOnlineSellers() {
+        return onlineSellers;
     }
 }

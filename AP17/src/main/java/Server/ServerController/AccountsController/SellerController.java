@@ -1,26 +1,18 @@
 package Server.ServerController.AccountsController;
 
 import Client.Client;
-import Client.ClientController.AccountsController.CSellerController;
 import Models.*;
-import Models.Accounts.Customer;
-import Models.Accounts.Manager;
 import Models.Accounts.Seller;
-import Models.Accounts.Supporter;
-import Models.Logs.Log;
 import Models.Logs.SellLog;
 import Models.Request.*;
 import Server.ClientHandler;
 import Server.ServerController.DataBaseForServer;
-import View.RegisterSellerMenu;
 
-import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class SellerController {
 

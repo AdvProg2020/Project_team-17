@@ -1,9 +1,7 @@
 package Server;
 
 import Models.Accounts.Manager;
-import Server.ServerController.AccountsController.ManagerController;
 import Server.ServerController.HandleController;
-import View.RegisterManagerMenu;
 
 import java.io.*;
 import java.lang.Thread;

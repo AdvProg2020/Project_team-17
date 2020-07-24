@@ -1,22 +1,18 @@
 package Client.ClientController.AccountsController;
 
 import Client.Client;
-import Models.Accounts.Manager;
 import Models.Accounts.Seller;
 import Models.Auction;
 import Models.Category;
 import Models.Discount;
-import Models.Logs.BuyLog;
 import Models.Logs.SellLog;
 import Models.Product;
 
 import Models.Request.*;
 import Server.ServerController.DataBaseForServer;
-import View.RegisterSellerMenu;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;

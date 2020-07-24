@@ -1,12 +1,11 @@
 package Controller.AccountsManager;
 
 import Models.*;
-import Models.Accounts.Account;
 import Models.Accounts.Seller;
 import Models.Logs.Log;
 import Models.Logs.SellLog;
 import Models.Request.*;
-import View.RegisterSellerMenu;
+import View.RegisterMenus.RegisterSellerMenu;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 

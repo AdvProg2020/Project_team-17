@@ -7,7 +7,7 @@ import Models.Accounts.Supporter;
 import Models.Logs.BuyLog;
 import Models.Logs.SellLog;
 import View.PurchasingProcessMenus.ReceivingInformationPage;
-import View.RegisterSupporterMenu;
+import View.RegisterMenus.RegisterSupporterMenu;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 

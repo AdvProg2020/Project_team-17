@@ -4,7 +4,7 @@ import Client.Client;
 import Models.Cart;
 import Models.Product;
 import Server.ServerController.AccountsController.CustomerController;
-import View.RegisterCustomerMenu;
+import View.RegisterMenus.RegisterCustomerMenu;
 
 public class CCartController {
 

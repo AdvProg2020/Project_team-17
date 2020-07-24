@@ -1,10 +1,12 @@
 package View;
 
-import Client.ClientController.AccountsController.CManagerController;
 import Client.ClientController.CProductController;
 import Controller.ProductManager;
 import Models.Product;
-import Server.ServerController.AccountsController.ManagerController;
+import View.RegisterMenus.RegisterCustomerMenu;
+import View.RegisterMenus.RegisterManagerMenu;
+import View.RegisterMenus.RegisterSellerMenu;
+import View.RegisterMenus.RegisterSupporterMenu;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.beans.property.DoubleProperty;
@@ -27,12 +29,10 @@ import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
-import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.nio.file.Paths;
 
 public class ProductMenu extends Menu {

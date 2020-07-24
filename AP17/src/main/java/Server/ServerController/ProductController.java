@@ -5,7 +5,6 @@ import Controller.ProductManager;
 import Models.Product;
 import Server.ClientHandler;
 import Server.ServerController.AccountsController.CustomerController;
-import View.RegisterCustomerMenu;
 
 public class ProductController {
 

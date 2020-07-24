@@ -1,27 +1,15 @@
 package Server.ServerController.AccountsController;
 
-import Client.Client;
-import Client.ClientController.CRegisterAndLoginController;
 import Models.*;
 import Models.Accounts.*;
 import Models.Logs.BuyLog;
 import Models.Request.Request;
 import Server.ClientHandler;
 import Server.ServerController.DataBaseForServer;
-import View.RegisterCustomerMenu;
-import View.RegisterManagerMenu;
-import View.RegisterSellerMenu;
-import View.RegisterSupporterMenu;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
-import java.awt.*;
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class ManagerController {
     private static Manager manager;

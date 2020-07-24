@@ -1,10 +1,13 @@
 package View;
 
-import Server.ClientHandler;
 import Server.ServerController.AccountsController.ManagerController;
 import View.AccountMenus.CustomerMenu;
 import View.AccountMenus.ManagerMenu;
 import View.AccountMenus.SellerMenu;
+import View.RegisterMenus.RegisterCustomerMenu;
+import View.RegisterMenus.RegisterManagerMenu;
+import View.RegisterMenus.RegisterSellerMenu;
+import View.RegisterMenus.RegisterSupporterMenu;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
