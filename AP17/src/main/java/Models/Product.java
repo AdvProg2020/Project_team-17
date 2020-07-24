@@ -7,10 +7,11 @@ import Models.Enums.ProductStateEnum;
 import Models.Logs.BuyLog;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Product {
+public class Product implements Serializable {
     private static ArrayList<Product> allProducts = new ArrayList<Product>();
     private String productId;
     private ProductEnum productState;
