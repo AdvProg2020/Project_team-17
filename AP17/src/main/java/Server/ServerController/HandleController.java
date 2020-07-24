@@ -1,7 +1,9 @@
 package Server.ServerController;
 
+import Models.Accounts.Seller;
 import Server.ServerController.AccountsController.CustomerController;
 import Server.ServerController.AccountsController.ManagerController;
+import Server.ServerController.AccountsController.SellerController;
 
 public class HandleController {
 
@@ -154,13 +156,16 @@ public class HandleController {
                 ManagerController.addSupporter();
                 break;
             }
-            case "Show Categories": {
+            case "Show Manager Categories": {
                 ManagerController.showCategories();
                 break;
             }
             case "Add Category": {
                 ManagerController.createCategory();
                 break;
+            }
+            case "Set Least Amount": {
+                ManagerController.setLeastAmount();
             }
             case "Delete Category": {
                 ManagerController.deleteCategory();
@@ -174,7 +179,7 @@ public class HandleController {
                 ManagerController.deleteProduct();
                 break;
             }
-            case "Show Products": {
+            case "Show Manager Products": {
                 ManagerController.showProducts();
                 break;
             }
@@ -190,7 +195,58 @@ public class HandleController {
                 ManagerController.showLog();
                 break;
             }
-
+            case "Show Seller Info": {
+                SellerController.showSellerInfo();
+                break;
+            }
+            case "Edit Seller Info": {
+                SellerController.editSellerInfo();
+                break;
+            }
+            case "Show Sales History": {
+                SellerController.showSellerLogs();
+                break;
+            }
+            case "Show Sell Log": {
+                SellerController.showLog();
+                break;
+            }
+            case "Show Seller Categories": {
+                SellerController.showCategories();
+                break;
+            }
+            case "Show Discounts": {
+                SellerController.showDiscounts();
+                break;
+            }
+            case "Show Seller Products": {
+                SellerController.showProducts();
+                break;
+            }
+            case "Add Product Request": {
+                SellerController.addProductRequest();
+                break;
+            }
+            case "Edit Product Request": {
+                SellerController.editProductRequest();
+                break;
+            }
+            case "Add Discount Request": {
+                SellerController.addDiscountRequest();
+                break;
+            }
+            case "Edit Discount Request": {
+                SellerController.editDiscountRequest();
+                break;
+            }
+            case "Remove Product Request": {
+                SellerController.removeProductRequest();
+                break;
+            }
+            case "Add Auction": {
+                SellerController.addAuction();
+                break;
+            }
         }
     }
 }

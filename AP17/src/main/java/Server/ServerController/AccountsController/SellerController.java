@@ -39,7 +39,7 @@ public class SellerController {
         onlineSellers.remove(seller);
     }
 
-    public static void showManagerInfo() throws Exception {
+    public static void showSellerInfo() throws Exception {
         if (getSeller() == null) {
             ClientHandler.sendObject(new Exception("there isn't any seller logged in"));
         } else {
@@ -50,7 +50,7 @@ public class SellerController {
         }
     }
 
-    public static void editManagerInfo() throws Exception {
+    public static void editSellerInfo() throws Exception {
         String receivedItems = (String) ClientHandler.receiveObject();
 
         Seller seller = DataBaseForServer.getSeller(receivedItems);

@@ -128,7 +128,7 @@ public class CSellerController {
     public static ObservableList<String> showCategories() {
         ArrayList<Category> allCategories;
         ArrayList<String> info = new ArrayList<>();
-        String func = "Show Categories";
+        String func = "Show Seller Categories";
         Client.sendMessage(func);
 
         Object response = Client.receiveObject();
@@ -160,7 +160,7 @@ public class CSellerController {
     public static ObservableList<String> showProducts() {
         ArrayList<Product> allProducts;
         ArrayList<String> info = new ArrayList<>();
-        String func = "Show Products";
+        String func = "Show Seller Products";
         Client.sendMessage(func);
 
         Object response = Client.receiveObject();
@@ -260,11 +260,7 @@ public class CSellerController {
     public static void removeProductRequest(String id) throws Exception {
         String func = "Remove Product Request";
         Client.sendMessage(func);
-
         Client.sendObject(id);
-
-        Object response = Client.receiveObject();
-
         try {
             Object data = Client.receiveObject();
             Product product = (Product) data;

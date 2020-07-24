@@ -356,7 +356,7 @@ public class CManagerController {
     public static ObservableList<String> showCategories() {
         ArrayList<Category> allCategories;
         ArrayList<String> info = new ArrayList<>();
-        String func = "Show Categories";
+        String func = "Show Manager Categories";
         Client.sendMessage(func);
 
         Object response = Client.receiveObject();
@@ -462,7 +462,7 @@ public class CManagerController {
     public static ObservableList<String> showProducts() {
         ArrayList<Product> allProducts;
         ArrayList<String> info = new ArrayList<>();
-        String func = "Show Products";
+        String func = "Show Manager Products";
         Client.sendMessage(func);
 
         Object response = Client.receiveObject();
