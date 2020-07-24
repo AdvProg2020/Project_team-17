@@ -226,6 +226,7 @@ public class CManagerController {
         }
     }
 
+
     public static void createDiscountCode(String data) throws Exception {
         String func = "Create Discount Code";
         Client.sendMessage(func);

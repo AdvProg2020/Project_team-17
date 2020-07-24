@@ -39,7 +39,6 @@ public class BankClientHandler extends Thread {
         }
     }
 
-
     private void functionHandle() throws IOException {
         while (true) {
             String input = dataInputStream.readUTF();
@@ -68,7 +67,35 @@ public class BankClientHandler extends Thread {
                 break;
             }
         }
+    }
 
+
+    private void createAccount(String[] splitInputs) {
+        if (splitInputs[4].equals(splitInputs[5])) {
+            if (!(BankAccount.isThereAccountWithThisUsername(splitInputs[3]))) {
+                BankAccount bankAccount = new BankAccount(splitInputs[1], splitInputs[2], splitInputs[3], splitInputs[4]);
+                try {
+                    dataOutputStream.writeUTF(String.valueOf(bankAccount.getAccountId()));
+                    dataOutputStream.flush();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                try {
+                    dataOutputStream.writeUTF("Username is not available");
+                    dataOutputStream.flush();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        } else {
+            try {
+                dataOutputStream.writeUTF("Passwords do not match");
+                dataOutputStream.flush();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     private void getBalance(String[] splitInputs) {
@@ -451,34 +478,5 @@ public class BankClientHandler extends Thread {
             stringBuilder.append(ALPHA_NUMERIC_STRING.charAt(character));
         }
         return stringBuilder.toString();
-    }
-
-    private void createAccount(String[] splitInputs) {
-        if (splitInputs[4].equals(splitInputs[5])) {
-            if (!(BankAccount.isThereAccountWithThisUsername(splitInputs[3]))) {
-                BankAccount bankAccount = new BankAccount(splitInputs[1], splitInputs[2], splitInputs[3], splitInputs[4]);
-                try {
-                    dataOutputStream.writeUTF(String.valueOf(bankAccount.getAccountId()));
-                    dataOutputStream.flush();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            } else {
-                try {
-                    dataOutputStream.writeUTF("Username is not available");
-                    dataOutputStream.flush();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        } else {
-            try {
-                dataOutputStream.writeUTF("Passwords do not match");
-                dataOutputStream.flush();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
     }
 }
