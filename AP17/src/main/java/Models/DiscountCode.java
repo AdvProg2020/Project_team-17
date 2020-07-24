@@ -2,10 +2,11 @@ package Models;
 
 import Models.Accounts.Customer;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class DiscountCode {
+public class DiscountCode implements Serializable {
     private String discountCode;
     private LocalDate startDate;
     private LocalDate endDate;
@@ -14,7 +15,6 @@ public class DiscountCode {
     private int countDiscountCode;
     private Customer customer;
     private static ArrayList<DiscountCode> allDiscountCodes = new ArrayList<>();
-
 
     public DiscountCode(String discountCode, LocalDate startDate, LocalDate endDate, double discountPercent,
                         double maxDiscountAmount, int countDiscountCode, Customer customer) {
