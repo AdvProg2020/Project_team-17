@@ -1,5 +1,6 @@
 package View;
 
+import Client.ClientController.CCartController;
 import Controller.CartManager;
 import Models.Product;
 import View.PurchasingProcessMenus.ReceivingInformationPage;
@@ -17,7 +18,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 import java.io.FileInputStream;
@@ -63,7 +63,7 @@ public class CartMenu extends Menu {
         productButton.setStyle(style);
         discountButton.setStyle(style);
         logoutButton.setStyle(style);
-        addActionForMainButtons(mediaPlayer,accountsButton, productButton, discountButton, logoutButton);
+        addActionForMainButtons(mediaPlayer, accountsButton, productButton, discountButton, logoutButton);
         mainButtons.getChildren().addAll(accountsButton, productButton, discountButton, logoutButton);
         HBox bar = new HBox(30);
         bar.getChildren().addAll(backButton, mainButtons);
@@ -102,7 +102,12 @@ public class CartMenu extends Menu {
                 @Override
                 public void handle(MouseEvent event) {
                     mediaPlayer.play();
-                    CartManager.increaseProduct(RegisterCustomerMenu.getCurrentCustomer(), product);
+                    try {
+                        CCartController.increaseProduct(product);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+//                    CartManager.increaseProduct(RegisterCustomerMenu.getCurrentCustomer(), product);
                 }
             });
             Image image2 = null;
@@ -117,7 +122,12 @@ public class CartMenu extends Menu {
                 @Override
                 public void handle(MouseEvent event) {
                     mediaPlayer.play();
-                    CartManager.decreaseProduct(RegisterCustomerMenu.getCurrentCustomer(), product);
+                    try {
+                        CCartController.decreaseProduct(product);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+//                    CartManager.decreaseProduct(RegisterCustomerMenu.getCurrentCustomer(), product);
                 }
             });
             hBox.getChildren().addAll(imageView, name, text, increase, decrease);
@@ -125,7 +135,8 @@ public class CartMenu extends Menu {
         }
         VBox vBox = new VBox(5);
         vBox.getChildren().addAll(hBoxes);
-        Text totalCartPrice = new Text("Total price: " + CartManager.showTotalPriceOfCart(RegisterCustomerMenu.getCurrentCustomer()));
+//        Text totalCartPrice = new Text("Total price: " + CartManager.showTotalPriceOfCart(RegisterCustomerMenu.getCurrentCustomer()));
+        Text totalCartPrice = new Text("Total price: " + CCartController.showTotalPrice());
         //totalCartPrice.setFont(Font.loadFont("file:src/main/java/Fonts/FiraSans-Medium.otf", 28));
         Button purchase = new Button("Purchase");
         purchase.setStyle(style);
@@ -148,7 +159,7 @@ public class CartMenu extends Menu {
         receivingInformationPage.show();
     }
 
-    public void addActionForMainButtons(MediaPlayer mediaPlayer,Button accountsButton, Button productsButton, Button discountButton, Button logoutButton) {
+    public void addActionForMainButtons(MediaPlayer mediaPlayer, Button accountsButton, Button productsButton, Button discountButton, Button logoutButton) {
         accountsButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {

@@ -2,7 +2,7 @@ package Client.ClientController;
 
 import Client.Client;
 
-public class WalletController {
+public class CWalletController {
 
     public void customerWalletCharge() {
         String func = "Charge Customer Wallet";

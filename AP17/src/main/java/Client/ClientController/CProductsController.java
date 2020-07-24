@@ -4,7 +4,7 @@ import Client.Client;
 
 import java.util.ArrayList;
 
-public class ProductsController {
+public class CProductsController {
     public static ArrayList<String> viewCategories() {
         String func = "View Categories For Products";
         Client.sendMessage(func);

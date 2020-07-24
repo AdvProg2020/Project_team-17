@@ -2,7 +2,7 @@ package Client.ClientController;
 
 import Client.Client;
 
-public class ProductController {
+public class CProductController {
 
     public static void rateProduct(String productId, double rateScore) throws Exception {
         String func = "Rate Product";
