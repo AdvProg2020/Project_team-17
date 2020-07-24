@@ -90,7 +90,7 @@ public class CCustomerController {
 
     public static ObservableList<String> showBuyLogs() {
         ArrayList<BuyLog> allLogs;
-        String func = "Show Buy Logs";
+        String func = "Show Customer Buy Logs";
         Client.sendMessage(func);
 
         Object response = Client.receiveObject();
@@ -106,7 +106,7 @@ public class CCustomerController {
     }
 
     public static String showBuyLog(String id) throws Exception {
-        String func = "Show Buy Log";
+        String func = "Show Customer Buy Log";
         Client.sendMessage(func);
 
         Client.sendMessage(String.valueOf(id));
@@ -123,7 +123,7 @@ public class CCustomerController {
 
     public static ObservableList<String> showDiscountCodes() {
         ArrayList<DiscountCode> discountCodes;
-        String func = "Show Discount Codes";
+        String func = "Show Customer Discount Codes";
         Client.sendMessage(func);
 
         Object response = Client.receiveObject();
@@ -139,7 +139,7 @@ public class CCustomerController {
     }
 
     public static String showDiscountCode(String id) throws Exception {
-        String func = "Show Discount Code";
+        String func = "Show Customer Discount Code";
         Client.sendMessage(func);
 
         Client.sendMessage(String.valueOf(id));

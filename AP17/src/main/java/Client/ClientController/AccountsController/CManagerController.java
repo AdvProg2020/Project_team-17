@@ -52,7 +52,7 @@ public class CManagerController {
     }
 
     public static void editManagerInfo(String dataToEdit) throws Exception {
-        String func = "Edit Admin Info";
+        String func = "Edit Manager Info";
         Client.sendMessage(func);
 
         Object[] toSend = new Object[2];
@@ -151,7 +151,7 @@ public class CManagerController {
     public static ObservableList<String> showDiscountCodes() {
         ArrayList<DiscountCode> allDiscountCodes;
         ArrayList<String> info = new ArrayList<>();
-        String func = "Show Discount Codes";
+        String func = "Show Manager Discount Codes";
         Client.sendMessage(func);
 
         Object response = Client.receiveObject();
@@ -166,7 +166,7 @@ public class CManagerController {
 
 
     public static String showDiscountCode(String code) throws Exception {
-        String func = "Show Discount Code";
+        String func = "Show Manager Discount Code";
         Client.sendMessage(func);
 
         Client.sendMessage(String.valueOf(code));
