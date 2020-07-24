@@ -3,9 +3,13 @@ package Server.ServerController.AccountsController;
 import Client.Client;
 import Client.ClientController.AccountsController.CCustomerController;
 import Models.Accounts.Customer;
+import Models.Accounts.Manager;
 import Models.DiscountCode;
 import Models.Logs.BuyLog;
 import Models.Logs.Log;
+import Models.Logs.SellLog;
+import Server.ClientHandler;
+import Server.ServerController.DataBaseForServer;
 import View.RegisterCustomerMenu;
 
 import java.util.ArrayList;
@@ -30,41 +34,36 @@ public class CustomerController {
     public static void addOnlineCustomer(Customer customer) {
         onlineCustomers.add(customer);
     }
-    public static String showCustomerInfo() {
-        return RegisterCustomerMenu.getCurrentCustomer().toString();
-    }
 
-    public static void editCustomerInfo(String field, String newContentForThisField) throws Exception {
-        if (RegisterCustomerMenu.getCurrentCustomer() == null) {
-            throw new Exception("customer should login first!");
+    public static void showManagerInfo() throws Exception {
+        if (getCustomer() == null) {
+            ClientHandler.sendObject(new Exception("there isn't any customer logged in"));
         } else {
-            Customer customer = RegisterCustomerMenu.getCurrentCustomer();
-            if (field.equalsIgnoreCase("first name")) {
-                customer.changeFirstName(customer, newContentForThisField);
-            } else if (field.equalsIgnoreCase("last name")) {
-                customer.changeLastName(customer, newContentForThisField);
-            } else if (field.equalsIgnoreCase("email")) {
-                customer.changeEmail(customer, newContentForThisField);
-            } else if (field.equalsIgnoreCase("phone number")) {
-                customer.changePhoneNumber(customer, newContentForThisField);
-            } else if (field.equalsIgnoreCase("password")) {
-                customer.changePassword(customer, newContentForThisField);
-            }
-            //Client.sendMessage("Success!");
+            String username = ClientHandler.receiveMessage();
+            Customer customer = DataBaseForServer.getCustomer(username);
+            setCustomer(customer);
+            ClientHandler.sendObject(customer.toString());
         }
     }
 
-    public static ArrayList<String> showCustomerLogs() {
-        ArrayList<BuyLog> logs = RegisterCustomerMenu.getCurrentCustomer().getBuyLog();
-        ArrayList<String> order = new ArrayList<String>();
-        for (BuyLog log : logs) {
-            order.add(log.getId());
+    public static void editManagerInfo() throws Exception {
+        String receivedItems = (String) ClientHandler.receiveObject();
+
+        Customer customer = DataBaseForServer.getCustomer(receivedItems);
+        if (customer == null) {
+            ClientHandler.sendObject(new Exception("there isn't any customer with this username"));
+        } else {
+            ClientHandler.sendObject("Success!");
         }
-        return order;
+    }
+
+    public static void showSellerLogs() {
+        ArrayList<BuyLog> logs = new ArrayList<>(getCustomer().getBuyLog());
+        Client.sendObject(logs);
     }
 
     public static void showLog() {
-        BuyLog buyLog = (BuyLog) Log.getLogWithId(Client.receiveMessage());
+        BuyLog buyLog = (BuyLog) DataBaseForServer.getLog(Client.receiveMessage());
         if (buyLog != null) {
             Client.sendMessage(buyLog.toString());
         } else {
@@ -73,17 +72,16 @@ public class CustomerController {
     }
 
     public static void showDiscountCodes() {
-        ArrayList<DiscountCode> discounts = new ArrayList<>();
-        discounts.addAll(RegisterCustomerMenu.getCurrentCustomer().getDiscountCodes());
-        Client.sendObject(discounts);
+        ArrayList<DiscountCode> discountCodes = new ArrayList<>(getCustomer().getDiscountCodes());
+        Client.sendObject(discountCodes);
     }
 
-    public static void showDiscountCodeInfo() {
-        String code = Client.receiveMessage();
-        if (DiscountCode.getDiscountCodeWithCode(code) != null) {
-            Client.sendMessage(DiscountCode.getDiscountCodeWithCode(code).toString());
+    public static void showDiscountCode() {
+        DiscountCode discountCode = (DiscountCode) DataBaseForServer.getDiscountCode(Client.receiveMessage());
+        if (discountCode != null) {
+            Client.sendMessage(discountCode.toString());
         } else {
-            Client.sendObject(new Exception("there isn't any account with this username"));
+            Client.sendObject(new Exception("there isn't any discount code with this code"));
         }
     }
 
