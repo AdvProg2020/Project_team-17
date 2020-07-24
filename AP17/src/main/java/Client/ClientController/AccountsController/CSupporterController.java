@@ -23,5 +23,9 @@ public class CSupporterController {
     public static void addOnlineSupporters(Supporter supporter) {
         onlineSupporters.add(supporter);
     }
+
+    public static void removeOnlineSupporter(Supporter supporter) {
+        onlineSupporters.remove(supporter);
+    }
 }
 

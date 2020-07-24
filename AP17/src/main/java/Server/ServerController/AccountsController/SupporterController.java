@@ -23,4 +23,8 @@ public class SupporterController {
     public static void addOnlineSupporters(Supporter supporter) {
         onlineSupporters.add(supporter);
     }
+
+    public static void removeOnlineSupporter(Supporter supporter) {
+        onlineSupporters.remove(supporter);
+    }
 }

@@ -33,6 +33,10 @@ public class CCustomerController {
         onlineCustomers.add(customer);
     }
 
+    public static void removeOnlineCustomer(Customer customer) {
+        onlineCustomers.remove(customer);
+    }
+
     public static String showCustomerInfo() throws Exception {
         if (getCustomer() == null) {
             throw new Exception("there isn't any customer logged in");

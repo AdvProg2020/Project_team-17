@@ -34,6 +34,10 @@ public class CustomerController {
         onlineCustomers.add(customer);
     }
 
+    public static void removeOnlineCustomer(Customer customer) {
+        onlineCustomers.remove(customer);
+    }
+
     public static void showManagerInfo() throws Exception {
         if (getCustomer() == null) {
             ClientHandler.sendObject(new Exception("there isn't any customer logged in"));
