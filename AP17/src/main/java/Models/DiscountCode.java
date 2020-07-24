@@ -16,7 +16,6 @@ public class DiscountCode implements Serializable {
     private Customer customer;
     private static ArrayList<DiscountCode> allDiscountCodes = new ArrayList<>();
 
-
     public DiscountCode(String discountCode, LocalDate startDate, LocalDate endDate, double discountPercent,
                         double maxDiscountAmount, int countDiscountCode, Customer customer) {
         this.discountCode = discountCode;
