@@ -1,16 +1,13 @@
 package Models;
 
-
-import Controller.AccountsManager.CustomerAbilitiesManager;
 import Models.Accounts.Customer;
-import View.PurchasingProcessMenus.DiscountCodePage;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Auction extends Thread {
+public class Auction {
     private ArrayList<Customer> allCustomer;
+    private int id;
     private Product product;
     private long maxPrice;
     private Customer customerWithMaxPrice;
@@ -19,6 +16,7 @@ public class Auction extends Thread {
     private static ArrayList<Auction> allAuctions = new ArrayList<>();
 
     public Auction(Product product, Date endDate) {
+        this.id = allAuctions.size() + 1000;
         this.product = product;
         this.endDate = endDate;
         allCustomer = new ArrayList<>();
@@ -28,7 +26,7 @@ public class Auction extends Thread {
     }
 
     public void joinAuction(Customer buyerAccount) {
-        allCustomer.add(buyerAccount);
+        this.allCustomer.add(buyerAccount);
     }
 
     public boolean isAuctionAvailable() {
@@ -46,30 +44,19 @@ public class Auction extends Thread {
         return true;
     }
 
+    public int getId() {
+        return id;
+    }
+
     private boolean canSetPrice(Customer customer) {
         return true;
     }
 
-    @Override
-    public void run() {
-        while (isAuctionAvailable()) {
-            try {
-                Thread.sleep(60000);
-            } catch (InterruptedException e) {
-                System.out.println(e.getMessage());
-            }
-        }
-        Customer customer = customerWithMaxPrice;
-        Cart cart = customer.getCart();
-        cart.addProductToCart(customer, product);
-        try {
-            CustomerAbilitiesManager.pay(customer, DiscountCodePage.getDiscountCode());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     public Product getProduct() {
         return product;
+    }
+
+    public static ArrayList<Auction> getAllAuctions() {
+        return allAuctions;
     }
 }

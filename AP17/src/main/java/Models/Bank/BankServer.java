@@ -6,7 +6,7 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class InitiateBank {
+public class BankServer {
 
     public static HashMap<String, String> tokens;
     public static ArrayList<String> expiredTokens;
@@ -26,6 +26,6 @@ public class InitiateBank {
     }
 
     public static void setTokens(HashMap<String, String> tokens) {
-        InitiateBank.tokens = tokens;
+        BankServer.tokens = tokens;
     }
 }

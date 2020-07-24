@@ -90,6 +90,16 @@ public class CustomerMenu extends Menu {
             }
         });
 
+        Button joinAuction = new Button("join auction");
+        joinAuction.setStyle(style);
+        joinAuction.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
+                setJoinAuctionScene();
+            }
+        });
+
         Button productState = new Button("Product state");
         productState.setStyle(style);
         productState.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
@@ -187,6 +197,66 @@ public class CustomerMenu extends Menu {
         Scene scene = new Scene(pane, 600, 600);
         Menu.window.setScene(scene);
     }
+
+    public void setJoinAuctionScene() {
+        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+        Media media = new Media(Paths.get(path).toUri().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+
+        BorderPane pane = new BorderPane();
+        String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
+                "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
+                + "linear-gradient(#cdded5 0%, #f6f6f6 50%);" +
+                " -fx-background-radius: 8,7,6; " +
+                "-fx-background-insets: 0,1,2; " +
+                "-fx-text-fill: #3193ff;"
+                + "-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); " +
+                "-fx-font-size: 1.2em; " +
+                "-fx-padding: 4px;";
+        VBox vBox = new VBox(10);
+        vBox.setAlignment(Pos.TOP_LEFT);
+        Button button = new Button("Back");
+        button.setStyle(style);
+        button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                mediaPlayer.play();
+                show();
+            }
+        });
+        vBox.getChildren().addAll(button);
+        pane.setTop(vBox);
+        ListView<String> listView = new ListView<>();
+        listView.getItems().addAll(CCustomerController.showAllAuction());
+        Button button1 = new Button("Join");
+        Label notify = new Label();
+        VBox vBox1 = new VBox(5);
+        vBox1.getChildren().addAll(button1, notify);
+        button1.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                try {
+                    CCustomerController.joinAuction(listView.getSelectionModel().getSelectedItem());
+                    setAuctionScene();
+                } catch (Exception e) {
+                    notify.setStyle("-fx-text-fill: #ff4f59");
+                    notify.setText(e.getMessage());
+                }
+
+            }
+        });
+        pane.setCenter(listView);
+        pane.setLeft(vBox1);
+        pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
+        Scene scene = new Scene(pane, 600, 600);
+        Menu.window.setScene(scene);
+    }
+
+    public void setAuctionScene(){
+        //TODO
+        ....
+    }
+
 
     public void setEditScene() {
         String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";

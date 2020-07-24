@@ -3,6 +3,7 @@ package Client.ClientController.AccountsController;
 import Client.Client;
 import Models.Accounts.Customer;
 import Models.Accounts.Supporter;
+import Models.Auction;
 import Models.DiscountCode;
 import Models.Logs.BuyLog;
 import Models.Product;
@@ -179,6 +180,38 @@ public class CCustomerController {
         ObservableList data = FXCollections.observableArrayList();
         data.addAll(info);
         return data;
+
+    }
+
+    public static ObservableList<String> showAllAuction() {
+        ArrayList<Auction> allAuction;
+        String func = "Show All Auction";
+        Client.sendMessage(func);
+
+        Object response = Client.receiveObject();
+        allAuction = (ArrayList<Auction>) response;
+        ArrayList<String> showAllLogs = new ArrayList<>();
+        for (Auction auction : allAuction) {
+            showAllLogs.add(String.valueOf(auction.getId()));
+        }
+        ObservableList data = FXCollections.observableArrayList();
+        data.addAll(showAllLogs);
+        return data;
+    }
+
+    public static void joinAuction(String id) throws Exception {
+        String func = "Join Auction";
+        Client.sendMessage(func);
+
+        Client.sendMessage(String.valueOf(id));
+
+        try {
+            Object response = Client.receiveObject();
+            Auction auction = (Auction) response;
+            auction.joinAuction(getCustomer());
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
 
     }
 }

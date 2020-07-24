@@ -3,6 +3,7 @@ package Server.ServerController.AccountsController;
 import Client.Client;
 import Models.Accounts.Customer;
 import Models.Accounts.Supporter;
+import Models.Auction;
 import Models.DiscountCode;
 import Models.Logs.BuyLog;
 import Models.Product;
@@ -56,29 +57,29 @@ public class CustomerController {
 
     public static void showSellerLogs() {
         ArrayList<BuyLog> logs = new ArrayList<>(getCustomer().getBuyLog());
-        Client.sendObject(logs);
+        ClientHandler.sendObject(logs);
     }
 
     public static void showLog() {
         BuyLog buyLog = (BuyLog) DataBaseForServer.getLog(Client.receiveMessage());
         if (buyLog != null) {
-            Client.sendMessage(buyLog.toString());
+            ClientHandler.sendMessage(buyLog.toString());
         } else {
-            Client.sendObject(new Exception("there isn't any log with this id"));
+            ClientHandler.sendObject(new Exception("there isn't any log with this id"));
         }
     }
 
     public static void showDiscountCodes() {
         ArrayList<DiscountCode> discountCodes = new ArrayList<>(getCustomer().getDiscountCodes());
-        Client.sendObject(discountCodes);
+        ClientHandler.sendObject(discountCodes);
     }
 
     public static void showDiscountCode() {
         DiscountCode discountCode = (DiscountCode) DataBaseForServer.getDiscountCode(Client.receiveMessage());
         if (discountCode != null) {
-            Client.sendMessage(discountCode.toString());
+            ClientHandler.sendMessage(discountCode.toString());
         } else {
-            Client.sendObject(new Exception("there isn't any discount code with this code"));
+            ClientHandler.sendObject(new Exception("there isn't any discount code with this code"));
         }
     }
 
@@ -87,12 +88,30 @@ public class CustomerController {
         for (BuyLog log : getCustomer().getBuyLog()) {
             product.addAll(log.getAllProducts());
         }
-        Client.sendObject(product);
+        ClientHandler.sendObject(product);
     }
 
     public static void showOnlineSupporters() {
         ArrayList<Supporter> supporters = new ArrayList<>(SupporterController.getOnlineSupporters());
-        Client.sendObject(supporters);
+        ClientHandler.sendObject(supporters);
+    }
+
+    public static void showAuctions() {
+        ArrayList<Auction> auctions = new ArrayList<>(Auction.getAllAuctions());
+        ClientHandler.sendObject(auctions);
+    }
+
+    public static void joinAuction() {
+        Auction auction = (Auction) DataBaseForServer.getAuction(Integer.parseInt(Client.receiveMessage()));
+        if (auction != null) {
+            if (auction.isAuctionAvailable()) {
+                ClientHandler.sendObject(auction);
+            } else {
+                ClientHandler.sendObject(new Exception("auction is expired"));
+            }
+        } else {
+            ClientHandler.sendObject(new Exception("there isn't an auction with this id"));
+        }
     }
 
 }

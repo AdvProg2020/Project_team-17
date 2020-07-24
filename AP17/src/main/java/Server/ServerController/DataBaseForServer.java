@@ -209,6 +209,15 @@ public class DataBaseForServer implements Serializable {
         allAuctions.add(auction);
     }
 
+    public static Auction getAuction(int id) {
+        for (Auction auction : allAuctions) {
+            if (auction.getId() == id) {
+                return auction;
+            }
+        }
+        return null;
+    }
+
     public static void deleteAuction(Auction auction) {
         allAuctions.remove(auction);
     }

@@ -11,7 +11,7 @@ import java.util.TimerTask;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static Models.Bank.InitiateBank.*;
+import static Models.Bank.BankServer.*;
 
 public class BankClientHandler extends Thread {
     private Socket socket;
