@@ -136,22 +136,7 @@ public class CRegisterAndLoginController {
         }
     }
 
-    public static void registerSupporter(String dataToRegister) throws Exception {
-        String func = "Register Supporter";
-        Client.sendMessage(func);
 
-        Client.sendObject(dataToRegister);
-        try {
-            Object response = Client.receiveObject();
-            String responseString = (String) response;
-            if (responseString.equals("Done")) {
-                String[] split = dataToRegister.split("\\s");
-                new Supporter(split[0], split[1], split[2], split[3], split[4], split[5], split[6]);
-            }
-        } catch (Exception e) {
-            throw new Exception(e.getMessage());
-        }
-    }
 
 
 }
