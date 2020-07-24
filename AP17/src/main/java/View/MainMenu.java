@@ -1,7 +1,6 @@
 package View;
 
 import Client.ClientController.CRegisterAndLoginController;
-import Controller.RegisterAndLoginManager;
 import Controller.WriteIntoFile;
 import Models.Accounts.Manager;
 import com.google.gson.Gson;
