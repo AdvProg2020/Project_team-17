@@ -116,6 +116,10 @@ public abstract class Account implements Serializable {
         account.phoneNumber = phoneNumber;
     }
 
+    public void setBankAccount(BankAccount bankAccount) {
+        this.bankAccount = bankAccount;
+    }
+
     @Override
     public abstract String toString();
 }

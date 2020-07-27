@@ -3,7 +3,6 @@ package View;
 import Client.ClientController.CRegisterAndLoginController;
 import Controller.WriteIntoFile;
 import Models.Accounts.Manager;
-import Server.Server;
 import com.google.gson.Gson;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
@@ -210,7 +209,7 @@ public class MainMenu extends Menu {
                         phoneNumberTextField.getText() + "," + passwordField.getText() + "," + paths.getText();
                 try {
                     CRegisterAndLoginController.registerManager(data);
-//                if (RegisterAndLoginManager.canHaveAccountWithThisUsername(userNameTextField.getText())) {
+                    //                if (RegisterAndLoginManager.canHaveAccountWithThisUsername(userNameTextField.getText())) {
 //                    CManagerController.registerManager(userNameTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText(),
 //                            phoneNumberTextField.getText(), passwordField.getText(), paths.getText());
 //                    try {

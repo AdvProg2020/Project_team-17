@@ -11,7 +11,9 @@ import Server.ServerController.AccountsController.CustomerController;
 import Server.ServerController.AccountsController.ManagerController;
 import Server.ServerController.AccountsController.SellerController;
 import Server.ServerController.AccountsController.SupporterController;
+import Server.ServerController.DataBaseForServer;
 import View.RegisterMenus.RegisterCustomerMenu;
+import javafx.animation.Animation;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.beans.property.DoubleProperty;
@@ -19,6 +21,7 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -35,13 +38,21 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
 public class ProductMenu extends Menu {
     private Product product;
+    private static final int COLUMNS = 4;
+    private static final int COUNT = 10;
+    private static final int OFFSET_X = 18;
+    private static final int OFFSET_Y = 25;
+    private static final int WIDTH = 374;
+    private static final int HEIGHT = 243;
 
     public ProductMenu(Menu parentMenu, Product product) {
         super("Product Menu", parentMenu);
@@ -148,6 +159,20 @@ public class ProductMenu extends Menu {
             }
         });
 
+
+        imageView.setViewport(new Rectangle2D(OFFSET_X, OFFSET_Y, WIDTH, HEIGHT));
+
+        final Animation animation = new SpriteAnimation(
+                imageView,
+                Duration.millis(1000),
+                COUNT, COLUMNS,
+                OFFSET_X, OFFSET_Y,
+                WIDTH, HEIGHT
+        );
+        animation.setCycleCount(Animation.INDEFINITE);
+        animation.play();
+
+
         Text name = new Text("Product name: " + product.getName());
         Text companyName = new Text("Company name: " + product.getCompanyName());
         Text category = new Text("Category: " + product.getCategory().getCategoryName());
@@ -167,6 +192,7 @@ public class ProductMenu extends Menu {
                 setVideoScene(textField.getText());
             }
         });
+
 
         VBox info = new VBox(5);
         info.getChildren().addAll(name, companyName, category, price, explanation, feature, score, seller, textField, button);
@@ -250,6 +276,28 @@ public class ProductMenu extends Menu {
         }
         hBox.getChildren().addAll(imageView, info, vBox, hBox3);
         pane.setCenter(hBox);
+
+        ArrayList<Product> similarProducts = new ArrayList<>();
+        for (Product allProduct : DataBaseForServer.getAllProducts()) {
+            if (allProduct.getCategory().equals(product.getCategory())) {
+                similarProducts.add(allProduct);
+            }
+        }
+
+        HBox hBox2 = new HBox(10);
+        for (Product product : similarProducts) {
+            Image image2 = null;
+            try {
+                FileInputStream inputStream = new FileInputStream(product.getPath());
+                image2 = new Image(inputStream);
+            } catch (Exception ignored) {
+            }
+            ImageView imageView2 = new ImageView(image);
+            hBox2.getChildren().addAll(imageView2);
+        }
+
+        pane.setBottom(hBox2);
+
         Scene scene = new Scene(pane, 700, 630);
         Menu.window.setScene(scene);
     }

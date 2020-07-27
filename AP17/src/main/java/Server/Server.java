@@ -46,11 +46,11 @@ public class Server {
         }
     }
 
-    public static BankAPI getBankAPI() {
-        return bankAPI;
-    }
-
-    public static void setBankAPI(BankAPI bankAPI) {
-        Server.bankAPI = bankAPI;
-    }
+//    public static BankAPI getBankAPI() {
+//        return bankAPI;
+//    }
+//
+//    public static void setBankAPI(BankAPI bankAPI) {
+//        Server.bankAPI = bankAPI;
+//    }
 }
