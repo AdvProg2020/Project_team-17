@@ -48,13 +48,15 @@ public class Manager extends Account {
     @Override
     public String toString() {
         return "Manager{" +
-                "username='" + userName + '\'' +
+                "role='" + role + '\'' +
+                ", userName='" + userName + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", password='" + password + '\'' +
-                ", credit='" + credit + '\'' +
+                ", credit=" + credit +
+                ", bankAccount=" + bankAccount +
                 '}';
     }
 }

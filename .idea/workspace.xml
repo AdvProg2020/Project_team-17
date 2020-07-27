@@ -2,44 +2,42 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="32618e29-8746-4d2a-8d73-d011168a9d97" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Client/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Client/ClientController/AccountsController/CCustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Client/ClientController/AccountsController/CCustomerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Client/ClientController/AccountsController/CManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Client/ClientController/AccountsController/CManagerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Client/ClientController/AccountsController/CSellerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Client/ClientController/AccountsController/CSellerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Client/ClientController/AccountsController/CSupporterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Client/ClientController/AccountsController/CSupporterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Client/ClientController/CProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Client/ClientController/CProductController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Client/ClientController/CRegisterAndLoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Client/ClientController/CRegisterAndLoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Controller/AccountsManager/ManagerAbilitiesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Controller/AccountsManager/ManagerAbilitiesManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Controller/AccountsManager/SellerAbilitiesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Controller/AccountsManager/SellerAbilitiesManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Controller/CartManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Controller/CartManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Controller/DiscountManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Controller/DiscountManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Models/Accounts/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Models/Accounts/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Models/Accounts/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Models/Accounts/Customer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Models/Accounts/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Models/Accounts/Manager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Models/Accounts/Seller.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Models/Accounts/Seller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Models/Accounts/Supporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Models/Accounts/Supporter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Models/Auction.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Models/Auction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Models/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Models/Category.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Models/Discount.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Models/Discount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Models/DiscountCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Models/DiscountCode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Models/Logs/BuyLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Models/Logs/BuyLog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Models/Logs/Log.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Models/Logs/Log.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Models/Logs/SellLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Models/Logs/SellLog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Models/PointOfView.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Models/PointOfView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Models/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Models/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Server/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Server/ClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Models/Bank/BankAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Models/Bank/BankAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Models/Bank/BankServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Models/Bank/BankServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Models/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Models/Cart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Models/Request/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Models/Request/Request.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Server/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Server/ServerController/AccountsController/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Server/ServerController/AccountsController/CustomerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Server/ServerController/AccountsController/ManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Server/ServerController/AccountsController/ManagerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Server/ServerController/AccountsController/SellerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Server/ServerController/AccountsController/SellerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Server/ServerController/AccountsController/SupporterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Server/ServerController/AccountsController/SupporterController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Server/ServerController/CartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Server/ServerController/CartController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Server/ServerController/DataBaseForServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Server/ServerController/DataBaseForServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Server/ServerController/HandleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Server/ServerController/HandleController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Server/ServerController/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Server/ServerController/ProductController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Server/ServerController/RegisterAndLoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Server/ServerController/RegisterAndLoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/Server/ServerController/WalletController.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/Server/ServerController/WalletController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AP17/src/main/java/View/AccountMenus/CustomerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/View/AccountMenus/CustomerMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AP17/src/main/java/View/AccountMenus/ManagerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/View/AccountMenus/ManagerMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AP17/src/main/java/View/AccountMenus/SellerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/View/AccountMenus/SellerMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AP17/src/main/java/View/AccountsMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/View/AccountsMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AP17/src/main/java/View/CartMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/View/CartMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/View/DiscountsMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/View/DiscountsMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AP17/src/main/java/View/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/View/MainMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AP17/src/main/java/View/ProductMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/View/ProductMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AP17/src/main/java/View/ProductsMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/View/ProductsMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/View/PurchasingProcessMenus/DiscountCodePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/View/PurchasingProcessMenus/DiscountCodePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/View/PurchasingProcessMenus/PaymentPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/View/PurchasingProcessMenus/PaymentPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/View/PurchasingProcessMenus/ReceivingInformationPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/View/PurchasingProcessMenus/ReceivingInformationPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AP17/src/main/java/View/RegisterMenus/RegisterCustomerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/AP17/src/main/java/View/RegisterMenus/RegisterCustomerMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,8 +181,8 @@
       <list>
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.Server" />
-        <item itemvalue="Application.BankClient" />
         <item itemvalue="Application.BankServer" />
+        <item itemvalue="Application.BankClient" />
         <item itemvalue="Application.Bank" />
       </list>
     </recent_temporary>
@@ -241,14 +239,7 @@
       <workItem from="1595107186331" duration="15840000" />
       <workItem from="1595166080014" duration="27605000" />
       <workItem from="1595485660990" duration="63310000" />
-      <workItem from="1595581407806" duration="22521000" />
-    </task>
-    <task id="LOCAL-00144" summary="bank client handler">
-      <created>1595089759169</created>
-      <option name="number" value="00144" />
-      <option name="presentableId" value="LOCAL-00144" />
-      <option name="project" value="LOCAL" />
-      <updated>1595089759169</updated>
+      <workItem from="1595581407806" duration="66044000" />
     </task>
     <task id="LOCAL-00145" summary="add photo for accounts">
       <created>1595093992885</created>
@@ -586,14 +577,20 @@
       <option name="project" value="LOCAL" />
       <updated>1595608328939</updated>
     </task>
-    <option name="localTasksCounter" value="193" />
+    <task id="LOCAL-00193" summary="final changessssss ;)))))))))">
+      <created>1595618667302</created>
+      <option name="number" value="00193" />
+      <option name="presentableId" value="LOCAL-00193" />
+      <option name="project" value="LOCAL" />
+      <updated>1595618667302</updated>
+    </task>
+    <option name="localTasksCounter" value="194" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="server and client for manager almost done" />
     <MESSAGE value="omidvaram tamom she:)" />
     <MESSAGE value="add supporter controller" />
     <MESSAGE value="manager server and client done :)" />
@@ -618,7 +615,8 @@
     <MESSAGE value="logout handled" />
     <MESSAGE value=";)" />
     <MESSAGE value="some changes in bank" />
-    <option name="LAST_COMMIT_MESSAGE" value="some changes in bank" />
+    <MESSAGE value="final changessssss ;)))))))))" />
+    <option name="LAST_COMMIT_MESSAGE" value="final changessssss ;)))))))))" />
   </component>
   <component name="WindowStateProjectService">
     <state x="233" y="0" key="#Project_Structure" timestamp="1595508707294">
@@ -629,17 +627,17 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1595000456451" />
-    <state x="751" y="49" key="#com.intellij.ide.util.MemberChooser" timestamp="1595607611607">
+    <state x="751" y="3" width="458" height="677" key="#com.intellij.ide.util.MemberChooser" timestamp="1595850529830">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="751" y="83" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680/460.1080.1000.504@0.0.1280.680" timestamp="1587953827102" />
-    <state x="751" y="49" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1595607611607" />
+    <state x="751" y="3" width="458" height="677" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1595850529830" />
     <state x="801" y="93" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1586995828901" />
     <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1588275888120" />
-    <state x="515" y="248" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1593171500635">
+    <state x="515" y="248" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1595619070084">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="515" y="248" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1280.680@0.0.1280.680" timestamp="1593171500635" />
+    <state x="515" y="248" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1280.680@0.0.1280.680" timestamp="1595619070084" />
     <state x="550" y="266" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1366.728@0.0.1366.728" timestamp="1592998403718" />
     <state x="618" y="301" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1536.824@0.0.1536.824" timestamp="1589638319442" />
     <state x="267" y="266" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1594885978133">
@@ -660,10 +658,10 @@
     </state>
     <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1595085591466" />
     <state x="445" y="105" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1588110193951" />
-    <state x="223" y="0" key="CommitChangelistDialog2" timestamp="1595608328085">
+    <state x="223" y="0" key="CommitChangelistDialog2" timestamp="1595618709927">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="223" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1595608328085" />
+    <state x="223" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1595618709927" />
     <state x="425" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1593001247141" />
     <state x="401" y="14" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1592143129254" />
     <state x="421" y="67" key="FileChooserDialogImpl" timestamp="1595507915007">
@@ -671,28 +669,28 @@
     </state>
     <state x="421" y="67" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1595507915007" />
     <state x="505" y="81" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1588326132134" />
-    <state width="1281" height="224" key="GridCell.Tab.0.bottom" timestamp="1595617594283">
+    <state width="1281" height="302" key="GridCell.Tab.0.bottom" timestamp="1595854319518">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1281" height="224" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1595617594283" />
+    <state width="1281" height="302" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1595854319518" />
     <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1586996145625" />
     <state width="1493" height="221" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1592435351278" />
-    <state width="1281" height="224" key="GridCell.Tab.0.center" timestamp="1595617594283">
+    <state width="1281" height="302" key="GridCell.Tab.0.center" timestamp="1595854319517">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1281" height="224" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1595617594283" />
+    <state width="1281" height="302" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1595854319517" />
     <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1586996145625" />
     <state width="1493" height="221" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1592435351277" />
-    <state width="1281" height="224" key="GridCell.Tab.0.left" timestamp="1595617594282">
+    <state width="1281" height="302" key="GridCell.Tab.0.left" timestamp="1595854319516">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1281" height="224" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1595617594282" />
+    <state width="1281" height="302" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1595854319516" />
     <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1586996145625" />
     <state width="1493" height="221" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1592435351277" />
-    <state width="1281" height="224" key="GridCell.Tab.0.right" timestamp="1595617594283">
+    <state width="1281" height="302" key="GridCell.Tab.0.right" timestamp="1595854319518">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1281" height="224" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1595617594283" />
+    <state width="1281" height="302" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1595854319518" />
     <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1586996145625" />
     <state width="1493" height="221" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1592435351277" />
     <state width="1281" height="348" key="GridCell.Tab.1.bottom" timestamp="1595501137291">
@@ -719,10 +717,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="121" y="51" key="MergeDialog/0.0.1280.680@0.0.1280.680" timestamp="1595528703115" />
-    <state x="354" y="57" key="MultipleFileMergeDialog" timestamp="1595528706629">
+    <state x="354" y="57" key="MultipleFileMergeDialog" timestamp="1595618682591">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="354" y="57" key="MultipleFileMergeDialog/0.0.1280.680@0.0.1280.680" timestamp="1595528706629" />
+    <state x="354" y="57" key="MultipleFileMergeDialog/0.0.1280.680@0.0.1280.680" timestamp="1595618682591" />
     <state x="315" y="40" key="NewModule_or_Project.wizard" timestamp="1595507844219">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -740,10 +738,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1280.680@0.0.1280.680" timestamp="1589767285229" />
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1595608336685">
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1595618688632">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1595608336685" />
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1595618688632" />
     <state x="249" y="80" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1593001403029" />
     <state x="280" y="90" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1593000505024" />
     <state x="452" y="119" key="chooseDestDirectoryDialog" timestamp="1595066647516">
@@ -779,12 +777,16 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="93" y="93" width="1095" height="495" key="dock-window-1/0.0.1280.680@0.0.1280.680" timestamp="1595606569044" />
-    <state x="397" y="168" key="git4idea.merge.GitPullDialog" timestamp="1595608332078">
+    <state x="397" y="168" key="git4idea.merge.GitPullDialog" timestamp="1595618671786">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="397" y="168" key="git4idea.merge.GitPullDialog/0.0.1280.680@0.0.1280.680" timestamp="1595608332078" />
+    <state x="397" y="168" key="git4idea.merge.GitPullDialog/0.0.1280.680@0.0.1280.680" timestamp="1595618671786" />
     <state x="423" y="180" key="git4idea.merge.GitPullDialog/0.0.1366.728@0.0.1366.728" timestamp="1593001272806" />
     <state x="476" y="204" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1592143151948" />
+    <state x="451" y="186" key="git4idea.ui.GitTagDialog" timestamp="1595619023418">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="451" y="186" key="git4idea.ui.GitTagDialog/0.0.1280.680@0.0.1280.680" timestamp="1595619023418" />
     <state x="91" y="0" key="new project wizard" timestamp="1595162754233">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -801,6 +803,17 @@
     <state x="324" y="46" width="672" height="634" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1595587946985" />
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1586993653870" />
     <state x="389" y="56" width="807" height="769" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1588111579702" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/AP17/src/main/java/Server/ServerController/AccountsController/SellerController.java</url>
+          <line>105</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/17_test1594$Main.ic" NAME="Main Coverage Results" MODIFIED="1586993201582" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

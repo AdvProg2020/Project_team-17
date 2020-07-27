@@ -1,6 +1,8 @@
 package Client.ClientController;
 
 import Client.Client;
+import Client.ClientController.AccountsController.CCustomerController;
+import Models.Cart;
 import Models.Product;
 import Server.ClientHandler;
 import View.RegisterMenus.RegisterCustomerMenu;
@@ -48,11 +50,32 @@ public class CProductController {
 
         Object[] toSend = new Object[1];
         toSend[0] = productId;
+        Client.sendObject(toSend);
 
         try {
             Object response = Client.receiveObject();
             Product product = (Product) response;
             return product;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    public static void addToCart(Product product) throws Exception {
+        String func = "Add To Cart";
+        Client.sendMessage(func);
+
+        Object[] toSend = new Object[1];
+        toSend[0] = product;
+        Client.sendObject(toSend);
+
+        try {
+            Object response = Client.receiveObject();
+            String string = (String) response;
+            if(string.equals("Done")){
+                Cart cart = CCustomerController.getCustomer().getCart();
+                cart.addProductToCart(CCustomerController.getCustomer(), product);
+            }
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }

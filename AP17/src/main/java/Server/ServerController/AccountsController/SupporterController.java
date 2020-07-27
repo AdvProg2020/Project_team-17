@@ -1,6 +1,9 @@
 package Server.ServerController.AccountsController;
 
+import Models.Accounts.Manager;
 import Models.Accounts.Supporter;
+import Server.ClientHandler;
+import Server.ServerController.DataBaseForServer;
 
 import java.util.ArrayList;
 
@@ -26,5 +29,16 @@ public class SupporterController {
 
     public static void removeOnlineSupporter(Supporter supporter) {
         onlineSupporters.remove(supporter);
+    }
+
+    public static void showSupporterInfo() throws Exception {
+        if (getSupporter() == null) {
+            ClientHandler.sendObject(new Exception("there isn't any supporter logged in"));
+        } else {
+            String username = ClientHandler.receiveMessage();
+            Supporter supporter = DataBaseForServer.getSupporter(username);
+            setSupporter(supporter);
+            ClientHandler.sendObject(supporter.toString());
+        }
     }
 }

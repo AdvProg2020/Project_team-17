@@ -1,9 +1,13 @@
 package View;
 
+import Client.ClientController.AccountsController.CSellerController;
+import Server.ServerController.AccountsController.CustomerController;
 import Server.ServerController.AccountsController.ManagerController;
+import Server.ServerController.AccountsController.SupporterController;
 import View.AccountMenus.CustomerMenu;
 import View.AccountMenus.ManagerMenu;
 import View.AccountMenus.SellerMenu;
+import View.AccountMenus.SupporterMenu;
 import View.RegisterMenus.RegisterCustomerMenu;
 import View.RegisterMenus.RegisterManagerMenu;
 import View.RegisterMenus.RegisterSellerMenu;
@@ -80,7 +84,13 @@ public class AccountsMenu extends Menu {
         sellerButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                if (RegisterSellerMenu.getCurrentSeller() == null) {
+//                if (RegisterSellerMenu.getCurrentSeller() == null) {
+//                    handleRegisterSeller();
+//                } else {
+//                    handleSellerMenu();
+//                }
+
+                if (CSellerController.getSeller() == null) {
                     handleRegisterSeller();
                 } else {
                     handleSellerMenu();
@@ -90,7 +100,12 @@ public class AccountsMenu extends Menu {
         customerButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                if (RegisterCustomerMenu.getCurrentCustomer() == null) {
+//                if (RegisterCustomerMenu.getCurrentCustomer() == null) {
+//                    handleRegisterCustomer();
+//                } else {
+//                    handleCustomerMenu();
+//                }
+                if (CustomerController.getCustomer() == null) {
                     handleRegisterCustomer();
                 } else {
                     handleCustomerMenu();
@@ -122,10 +137,15 @@ public class AccountsMenu extends Menu {
         supporterButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                if (RegisterManagerMenu.getCurrentManager() == null) {
+//                if (RegisterManagerMenu.getCurrentManager() == null) {
+//                    handleRegisterSupporter();
+//                } else {
+//                    handleManagerMenu();
+//                }
+                if (SupporterController.getSupporter() == null) {
                     handleRegisterSupporter();
                 } else {
-                    handleManagerMenu();
+                    handleSupporterMenu();
                 }
             }
         });
@@ -164,5 +184,10 @@ public class AccountsMenu extends Menu {
     public void handleManagerMenu() {
         ManagerMenu managerMenu = new ManagerMenu(this);
         managerMenu.show();
+    }
+
+    public void handleSupporterMenu() {
+        SupporterMenu supporterMenu = new SupporterMenu(this);
+        supporterMenu.show();
     }
 }

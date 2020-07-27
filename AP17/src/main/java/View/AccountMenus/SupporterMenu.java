@@ -1,56 +1,51 @@
-package View;
+package View.AccountMenus;
 
 import Client.ClientController.AccountsController.CCustomerController;
 import Client.ClientController.AccountsController.CManagerController;
 import Client.ClientController.AccountsController.CSellerController;
 import Client.ClientController.AccountsController.CSupporterController;
-import Client.ClientController.CCartController;
-import Controller.CartManager;
-import Models.Product;
 import Server.ServerController.AccountsController.CustomerController;
 import Server.ServerController.AccountsController.ManagerController;
 import Server.ServerController.AccountsController.SellerController;
 import Server.ServerController.AccountsController.SupporterController;
-import View.PurchasingProcessMenus.ReceivingInformationPage;
-import View.RegisterMenus.RegisterCustomerMenu;
+import View.*;
 import javafx.event.EventHandler;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
 import java.io.FileInputStream;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 
-public class CartMenu extends Menu {
-
-    public CartMenu(Menu parentMenu) {
-        super("Cart", parentMenu);
+public class SupporterMenu extends Menu {
+    public SupporterMenu(Menu parentMenu) {
+        super("Supporter Menu", parentMenu);
     }
 
     @Override
     public void show() {
-        setCartScene();
+        setPersonalInfoScene();
     }
 
-    public void setCartScene() {
+    public void setPersonalInfoScene() {
         String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
 
-        ScrollPane scrollPane = new ScrollPane();
-        scrollPane.setPadding(new Insets(25, 25, 25, 25));
+        BorderPane pane = new BorderPane();
+        Button backButton = new Button("Back");
         String style = "-fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), " +
                 "linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%), "
                 + "linear-gradient(#cdded5 0%, #f6f6f6 50%);" +
@@ -60,9 +55,8 @@ public class CartMenu extends Menu {
                 + "-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); " +
                 "-fx-font-size: 1.2em; " +
                 "-fx-padding: 4px;";
-        Button backButton = new Button("Back");
+        HBox mainButtons = new HBox(10);
         backButton.setStyle(style);
-        HBox mainButtons = new HBox(3);
         mainButtons.setAlignment(Pos.TOP_RIGHT);
         Button accountsButton = new Button("Accounts");
         Button productButton = new Button("Products");
@@ -74,105 +68,58 @@ public class CartMenu extends Menu {
         logoutButton.setStyle(style);
         addActionForMainButtons(mediaPlayer, accountsButton, productButton, discountButton, logoutButton);
         mainButtons.getChildren().addAll(accountsButton, productButton, discountButton, logoutButton);
-        HBox bar = new HBox(30);
-        bar.getChildren().addAll(backButton, mainButtons);
+        pane.setTop(mainButtons);
         backButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                mediaPlayer.play();
                 parentMenu.show();
             }
         });
-        ArrayList<HBox> hBoxes = new ArrayList<>();
-        hBoxes.add(bar);
-        for (Product product : CartManager.cartProducts(CCustomerController.getCustomer())) {
-            HBox hBox = new HBox(5);
-            Image image = null;
-            try {
-                FileInputStream inputStream = new FileInputStream(product.getPath());
-                image = new Image(inputStream);
-            } catch (Exception e) {
-            }
-            ImageView imageView = new ImageView(image);
-            Label name = new Label(product.getName());
-            int numberOfProduct = CartManager.numberOfProducts(CCustomerController.getCustomer(), product);
-            Text text = new Text("Number: " + numberOfProduct + " Price per one: " + product.getPrice() + " Total price: "
-                    + product.getPrice() * numberOfProduct);
-            //text.setFont(Font.loadFont("file:src/main/java/Fonts/FiraSans-Medium.otf", 22));
-            Image image1 = null;
-            try {
-                FileInputStream inputStream1 = new FileInputStream("C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Images\\Plus.png");
-                image1 = new Image(inputStream1);
-            } catch (Exception e) {
-            }
-            ImageView imageView1 = new ImageView(image1);
-            Button increase = new Button("", imageView1);
-            increase.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    mediaPlayer.play();
-                    try {
-                        CCartController.increaseProduct(product);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-//                    CartManager.increaseProduct(RegisterCustomerMenu.getCurrentCustomer(), product);
-                }
-            });
-            Image image2 = null;
-            try {
-                FileInputStream inputStream2 = new FileInputStream("C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Images\\Minus.png");
-                image2 = new Image(inputStream2);
-            } catch (Exception e) {
-            }
-            ImageView imageView2 = new ImageView(image2);
-            Button decrease = new Button("", imageView2);
-            decrease.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    mediaPlayer.play();
-                    try {
-                        CCartController.decreaseProduct(product);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-//                    CartManager.decreaseProduct(RegisterCustomerMenu.getCurrentCustomer(), product);
-                }
-            });
-            hBox.getChildren().addAll(imageView, name, text, increase, decrease);
-            hBoxes.add(hBox);
-        }
-        VBox vBox = new VBox(5);
-        vBox.getChildren().addAll(hBoxes);
-        Text totalCartPrice = new Text("Total price: " + CartManager.showTotalPriceOfCart(CCustomerController.getCustomer()));
-//        Text totalCartPrice = new Text("Total price: " + CCartController.showTotalPrice());
-        //totalCartPrice.setFont(Font.loadFont("file:src/main/java/Fonts/FiraSans-Medium.otf", 28));
-        Button purchase = new Button("Purchase");
-        purchase.setStyle(style);
-        purchase.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                mediaPlayer.play();
-                handleReceivingInformationPage();
-            }
-        });
-        VBox vBox1 = new VBox(5);
-        vBox1.getChildren().addAll(vBox, totalCartPrice, purchase);
-        scrollPane.setContent(vBox1);
-        Scene scene = new Scene(scrollPane, 1270, 650);
-        Menu.window.setScene(scene);
-    }
 
-    private void handleReceivingInformationPage() {
-        ReceivingInformationPage receivingInformationPage = new ReceivingInformationPage(this);
-        receivingInformationPage.show();
+        VBox vBox = new VBox(10);
+        vBox.getChildren().addAll(backButton);
+        pane.setLeft(vBox);
+        VBox vBox1 = new VBox(10);
+        vBox1.setAlignment(Pos.CENTER);
+        Image image = null;
+        try {
+            //TODO BUG
+            FileInputStream inputStream = new FileInputStream(CManagerController.getManager().getPath());
+            image = new Image(inputStream);
+        } catch (Exception e) {
+        }
+        ImageView imageView = new ImageView(image);
+        Text title = new Text("Supporter");
+        Text info = new Text();
+        try {
+            info = new Text(CSupporterController.showSupporterInfo());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+//        Text username = new Text("username: " + ManagerController.getManager().getUserName());
+//        Text firstName = new Text("first name: " + ManagerController.getManager().getFirstName());
+//        Text lastName = new Text("last name: " + ManagerController.getManager().getLastName());
+//        Text email = new Text("email: " + ManagerController.getManager().getEmail());
+//        Text phoneNumber = new Text("phone number: " + ManagerController.getManager().getPhoneNumber());
+        title.setFont(Font.font("calibri", FontWeight.BOLD, FontPosture.REGULAR, 12));
+//        username.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
+//        firstName.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
+//        lastName.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
+//        email.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
+//        phoneNumber.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
+//        vBox1.getChildren().addAll(imageView, title, username, firstName, lastName, email, phoneNumber);
+        vBox1.getChildren().addAll(imageView, title, info);
+
+        pane.setCenter(vBox1);
+        pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
+        Scene scene = new Scene(pane, 600, 600);
+        Menu.window.setScene(scene);
     }
 
     public void addActionForMainButtons(MediaPlayer mediaPlayer, Button accountsButton, Button productsButton, Button discountButton, Button logoutButton) {
         accountsButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                mediaPlayer.play();
                 handleAccountsMenu();
             }
         });

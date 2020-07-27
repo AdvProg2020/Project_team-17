@@ -34,9 +34,6 @@ public class CManagerController {
     }
 
     public static String showManagerInfo() throws Exception {
-        if (getManager() == null) {
-            throw new Exception("there isn't any manager logged in");
-        }
         String func = "Show Manager Info";
         Client.sendMessage(func);
 
@@ -59,25 +56,27 @@ public class CManagerController {
         toSend[0] = getManager().getUserName();
         toSend[1] = dataToEdit;
         Client.sendObject(toSend);
+//        Client.sendObject(getManager().getUserName());
         try {
             Object response = Client.receiveObject();
             String responseString = (String) response;
             if (responseString.equals("Success")) {
-                String[] split = dataToEdit.split("\\s");
-                Manager manager = DataBaseForServer.getManager(getManager().getUserName());
-                String field = split[0];
-                String newContentForThisField = split[1];
-                if (field.equalsIgnoreCase("first name")) {
-                    manager.changeFirstName(manager, newContentForThisField);
-                } else if (field.equalsIgnoreCase("last name")) {
-                    manager.changeLastName(manager, newContentForThisField);
-                } else if (field.equalsIgnoreCase("email")) {
-                    manager.changeEmail(manager, newContentForThisField);
-                } else if (field.equalsIgnoreCase("phone number")) {
-                    manager.changePhoneNumber(manager, newContentForThisField);
-                } else if (field.equalsIgnoreCase("password")) {
-                    manager.changePassword(manager, newContentForThisField);
-                }
+//                String[] split = dataToEdit.split(",");
+//                Manager manager = DataBaseForServer.getManager(getManager().getUserName());
+//                String field = split[0];
+//                String newContentForThisField = split[1];
+//                if (field.equalsIgnoreCase("first name")) {
+//                    manager.changeFirstName(manager, newContentForThisField);
+//                } else if (field.equalsIgnoreCase("last name")) {
+//                    manager.changeLastName(manager, newContentForThisField);
+//                } else if (field.equalsIgnoreCase("email")) {
+//                    manager.changeEmail(manager, newContentForThisField);
+//                } else if (field.equalsIgnoreCase("phone number")) {
+//                    manager.changePhoneNumber(manager, newContentForThisField);
+//                } else if (field.equalsIgnoreCase("password")) {
+//                    manager.changePassword(manager, newContentForThisField);
+//                }
+                return;
             }
         } catch (Exception e) {
             throw new Exception(e.getMessage());
@@ -127,6 +126,8 @@ public class CManagerController {
             Object data = Client.receiveObject();
             Request request = (Request) data;
             request.accept();
+            Request.deleteRequest(request);
+            DataBaseForServer.deleteRequest(request);
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
@@ -379,8 +380,9 @@ public class CManagerController {
             Object response = Client.receiveObject();
             String responseString = (String) response;
             if (responseString.equals("Done")) {
-                String[] split = data.split("\\s");
-                new Category(split[0], split[1]);
+                String[] split = data.split(",");
+                Category category = new Category(split[0], split[1]);
+                DataBaseForServer.addCategory(category);
             }
         } catch (Exception e) {
             throw new Exception(e.getMessage());

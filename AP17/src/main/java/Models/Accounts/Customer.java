@@ -101,16 +101,36 @@ public class Customer extends Account {
         allCustomers.remove(customer);
     }
 
+//    @Override
+//    public String toString() {
+//        return "Customer{" +
+//                "username='" + userName + '\'' +
+//                ", firstName='" + firstName + '\'' +
+//                ", lastName='" + lastName + '\'' +
+//                ", email='" + email + '\'' +
+//                ", phoneNumber='" + phoneNumber + '\'' +
+//                ", password='" + password + '\'' +
+//                ", credit='" + credit + '\'' +
+//                '}';
+//    }
+
     @Override
     public String toString() {
         return "Customer{" +
-                "username='" + userName + '\'' +
+                "discountCodes=" + discountCodes +
+                ", buyLog=" + buyLog +
+                ", cart=" + cart +
+                ", address='" + address + '\'' +
+                ", wallet=" + wallet +
+                ", role='" + role + '\'' +
+                ", userName='" + userName + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", password='" + password + '\'' +
-                ", credit='" + credit + '\'' +
+                ", credit=" + credit +
+                ", bankAccount=" + bankAccount +
                 '}';
     }
 }

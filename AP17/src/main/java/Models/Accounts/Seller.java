@@ -153,14 +153,20 @@ public class Seller extends Account {
     @Override
     public String toString() {
         return "Seller{" +
-                "username='" + userName + '\'' +
+                "companyName='" + companyName + '\'' +
+                ", allProducts=" + allProducts +
+                ", allDiscount=" + allDiscount +
+                ", logs=" + logs +
+                ", wallet=" + wallet +
+                ", role='" + role + '\'' +
+                ", userName='" + userName + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", password='" + password + '\'' +
-                ", credit='" + credit + '\'' +
-                "companyName='" + companyName + '\'' +
+                ", credit=" + credit +
+                ", bankAccount=" + bankAccount +
                 '}';
     }
 }

@@ -67,21 +67,21 @@ public class CCustomerController {
             Object response = Client.receiveObject();
             String responseString = (String) response;
             if (responseString.equals("Success")) {
-                String[] split = dataToEdit.split("\\s");
-                Customer customer = DataBaseForServer.getCustomer(getCustomer().getUserName());
-                String field = split[0];
-                String newContentForThisField = split[1];
-                if (field.equalsIgnoreCase("first name")) {
-                    customer.changeFirstName(customer, newContentForThisField);
-                } else if (field.equalsIgnoreCase("last name")) {
-                    customer.changeLastName(customer, newContentForThisField);
-                } else if (field.equalsIgnoreCase("email")) {
-                    customer.changeEmail(customer, newContentForThisField);
-                } else if (field.equalsIgnoreCase("phone number")) {
-                    customer.changePhoneNumber(customer, newContentForThisField);
-                } else if (field.equalsIgnoreCase("password")) {
-                    customer.changePassword(customer, newContentForThisField);
-                }
+//                String[] split = dataToEdit.split(",");
+//                Customer customer = DataBaseForServer.getCustomer(getCustomer().getUserName());
+//                String field = split[0];
+//                String newContentForThisField = split[1];
+//                if (field.equalsIgnoreCase("first name")) {
+//                    customer.changeFirstName(customer, newContentForThisField);
+//                } else if (field.equalsIgnoreCase("last name")) {
+//                    customer.changeLastName(customer, newContentForThisField);
+//                } else if (field.equalsIgnoreCase("email")) {
+//                    customer.changeEmail(customer, newContentForThisField);
+//                } else if (field.equalsIgnoreCase("phone number")) {
+//                    customer.changePhoneNumber(customer, newContentForThisField);
+//                } else if (field.equalsIgnoreCase("password")) {
+//                    customer.changePassword(customer, newContentForThisField);
+//                }
             }
         } catch (Exception e) {
             throw new Exception(e.getMessage());

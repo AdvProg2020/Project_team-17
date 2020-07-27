@@ -3,10 +3,11 @@ package Models;
 import Models.Accounts.Customer;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Cart {
+public class Cart implements Serializable {
     private Customer customer;
     private static ArrayList<Cart> allCarts = new ArrayList<>();
 

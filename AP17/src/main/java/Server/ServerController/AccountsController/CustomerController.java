@@ -2,6 +2,7 @@ package Server.ServerController.AccountsController;
 
 import Client.Client;
 import Models.Accounts.Customer;
+import Models.Accounts.Manager;
 import Models.Accounts.Supporter;
 import Models.Auction;
 import Models.DiscountCode;
@@ -50,12 +51,27 @@ public class CustomerController {
     }
 
     public static void editCustomerInfo() throws Exception {
-        String receivedItems = (String) ClientHandler.receiveObject();
+        Object[] receivedItems = (Object[]) ClientHandler.receiveObject();
+        String dataToEdit = (String) receivedItems[1];
 
-        Customer customer = DataBaseForServer.getCustomer(receivedItems);
+        Customer customer = DataBaseForServer.getCustomer((String) receivedItems[0]);
         if (customer == null) {
             ClientHandler.sendObject(new Exception("there isn't any customer with this username"));
         } else {
+            String[] split = dataToEdit.split(",");
+            String field = split[0];
+            String newContentForThisField = split[1];
+            if (field.equalsIgnoreCase("first name")) {
+                customer.changeFirstName(customer, newContentForThisField);
+            } else if (field.equalsIgnoreCase("last name")) {
+                customer.changeLastName(customer, newContentForThisField);
+            } else if (field.equalsIgnoreCase("email")) {
+                customer.changeEmail(customer, newContentForThisField);
+            } else if (field.equalsIgnoreCase("phone number")) {
+                customer.changePhoneNumber(customer, newContentForThisField);
+            } else if (field.equalsIgnoreCase("password")) {
+                customer.changePassword(customer, newContentForThisField);
+            }
             ClientHandler.sendObject("Success!");
         }
     }

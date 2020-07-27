@@ -351,7 +351,7 @@ public class CustomerMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 mediaPlayer.play();
-                String data = field.getValue() + " " + newContent.getText();
+                String data = field.getValue() + "," + newContent.getText();
                 try {
                     CCustomerController.editCustomerInfo(data);
                     notify.setStyle("-fx-text-fill: #3193ff");

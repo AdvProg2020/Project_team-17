@@ -14,10 +14,14 @@ public class BankServer {
     public static void main(String[] args) throws IOException {
         tokens = new HashMap<>();
         expiredTokens = new ArrayList<>();
-        ServerSocket serverSocket = new ServerSocket(3989);
+        ServerSocket serverSocket = new ServerSocket(2020);
+        System.out.println("socket created");
         while (true) {
             Socket socket = serverSocket.accept();
-            new BankClientHandler(socket).start();
+            System.out.println("connection settled");
+            BankClientHandler bankClientHandler = new BankClientHandler(socket);
+            System.out.println("thread is going to start");
+            bankClientHandler.start();
         }
     }
 }

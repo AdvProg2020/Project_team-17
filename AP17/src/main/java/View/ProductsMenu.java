@@ -13,6 +13,7 @@ import Server.ServerController.AccountsController.CustomerController;
 import Server.ServerController.AccountsController.ManagerController;
 import Server.ServerController.AccountsController.SellerController;
 import Server.ServerController.AccountsController.SupporterController;
+import Server.ServerController.DataBaseForServer;
 import javafx.collections.FXCollections;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -151,7 +152,8 @@ public class ProductsMenu extends Menu {
         category.setStyle(style);
         ArrayList<HBox> hBoxes = new ArrayList<>();
         hBoxes.add(bar);
-        for (Product product : ProductsManager.showProducts()) {
+//        for (Product product : ProductsManager.showProducts()) {
+        for (Product product : DataBaseForServer.getAllProducts()) {
             HBox hBox = new HBox(10);
             Image image = null;
             try {
@@ -172,9 +174,10 @@ public class ProductsMenu extends Menu {
             Text name = new Text("Product name: " + product.getName());
             Text price = new Text("Product price: " + product.getPrice() + "$");
             Text score = new Text("Product score: " + product.getPrice());
+            Text x = new Text("Product score: " + product.getCategory());
 
             VBox vBox = new VBox(5);
-            vBox.getChildren().addAll(name, price, score);
+            vBox.getChildren().addAll(name, price, score, x);
             hBox.getChildren().addAll(imageView, vBox, button);
             hBoxes.add(hBox);
         }

@@ -29,7 +29,7 @@ public class CartController {
     public static void showTotalPrice() {
         Cart cart = (Cart) ClientHandler.receiveObject();
         double totalPrice = cart.totalPriceOfProductInCart();
-        Client.sendObject(String.valueOf(totalPrice));
+        ClientHandler.sendObject(String.valueOf(totalPrice));
     }
 
     public static void showTotalPriceWithDiscountCode() {
@@ -40,6 +40,6 @@ public class CartController {
         Cart cart = (Cart) receivedItems[1];
 
         double totalPrice = cart.totalPriceWithDiscount(discountCode);
-        Client.sendObject(String.valueOf(totalPrice));
+        ClientHandler.sendObject(String.valueOf(totalPrice));
     }
 }

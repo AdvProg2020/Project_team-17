@@ -1,5 +1,6 @@
 package Client.ClientController.AccountsController;
 
+import Client.Client;
 import Models.Accounts.Supporter;
 
 import java.util.ArrayList;
@@ -26,6 +27,21 @@ public class CSupporterController {
 
     public static void removeOnlineSupporter(Supporter supporter) {
         onlineSupporters.remove(supporter);
+    }
+
+    public static String showSupporterInfo() throws Exception {
+        String func = "Show Supporter Info";
+        Client.sendMessage(func);
+
+        String username = getSupporter().getUserName();
+        Client.sendMessage(username);
+
+        try {
+            Object data = Client.receiveObject();
+            return String.valueOf(data);
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
     }
 }
 

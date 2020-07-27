@@ -94,8 +94,13 @@ public class ProductMenu extends Menu {
         addToCart.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                if (RegisterCustomerMenu.getCurrentCustomer() != null) {
-                    handleAddCart();
+                if (CCustomerController.getCustomer() != null) {
+//                    handleAddCart();
+                    try {
+                        CProductController.addToCart(product);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 } else {
                     notify.setText("customer should be login");
                     notify.setStyle("-fx-text-fill: #ff4f59");

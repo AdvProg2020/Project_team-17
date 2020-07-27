@@ -166,9 +166,10 @@ public class ManagerMenu extends Menu {
         vBox1.setAlignment(Pos.CENTER);
         Image image = null;
         try {
-            FileInputStream inputStream = new FileInputStream(ManagerController.getManager().getPath());
+            FileInputStream inputStream = new FileInputStream(CManagerController.getManager().getPath());
             image = new Image(inputStream);
         } catch (Exception e) {
+            System.out.println("file not found");
         }
         ImageView imageView = new ImageView(image);
         Text title = new Text("MANAGER");
@@ -326,7 +327,7 @@ public class ManagerMenu extends Menu {
         button.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                String data = field.getValue() + " " + newContent.getText();
+                String data = field.getValue() + "," + newContent.getText();
                 try {
                     CManagerController.editManagerInfo(data);
                 } catch (Exception e) {
@@ -478,7 +479,7 @@ public class ManagerMenu extends Menu {
                 mediaPlayer.play();
                 Alert alert = new Alert(Alert.AlertType.NONE);
                 alert.setTitle("show user status");
-                alert.setHeaderText("user information");
+                alert.setHeaderText("user status");
                 try {
                     alert.setContentText(CManagerController.showUserStatus(listView.getSelectionModel().getSelectedItem()));
                 } catch (Exception e) {
@@ -1290,7 +1291,7 @@ public class ManagerMenu extends Menu {
         add.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                String data = name.getText() + " " + feature.getText();
+                String data = name.getText() + "," + feature.getText();
                 mediaPlayer.play();
                 try {
                     CManagerController.addCategory(data);

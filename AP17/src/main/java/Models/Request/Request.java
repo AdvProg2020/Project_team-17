@@ -1,14 +1,14 @@
 package Models.Request;
 
-import Models.Accounts.Manager;
 import Models.Accounts.Seller;
 import Models.Enums.RequestStateEnum;
 import Models.Enums.RequestTypeEnum;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public abstract class Request {
+public abstract class Request implements Serializable {
     protected static ArrayList<Request> allRequests = new ArrayList<Request>();
     protected String id;
     protected Seller seller;

@@ -3,6 +3,7 @@ package Server.ServerController;
 import Server.ServerController.AccountsController.CustomerController;
 import Server.ServerController.AccountsController.ManagerController;
 import Server.ServerController.AccountsController.SellerController;
+import Server.ServerController.AccountsController.SupporterController;
 
 public class HandleController {
 
@@ -42,6 +43,11 @@ public class HandleController {
                 break;
             }
 
+            /////
+            case "Show Supporter Info": {
+                SupporterController.showSupporterInfo();
+                break;
+            }
             /////
             case "Show Customer Info": {
                 CustomerController.showCustomerInfo();
@@ -297,6 +303,11 @@ public class HandleController {
             }
             case "Seller withdrawal Wallet": {
                 WalletController.sellerWithdrawalWallet();
+                break;
+            }
+            /////
+            case "Add To Cart": {
+                ProductController.addToCart();
                 break;
             }
             default: {

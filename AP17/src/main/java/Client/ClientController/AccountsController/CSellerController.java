@@ -72,21 +72,22 @@ public class CSellerController {
             Object response = Client.receiveObject();
             String responseString = (String) response;
             if (responseString.equals("Success")) {
-                String[] split = dataToEdit.split("\\s");
-                Seller seller = DataBaseForServer.getSeller(getSeller().getUserName());
-                String field = split[0];
-                String newContentForThisField = split[1];
-                if (field.equalsIgnoreCase("first name")) {
-                    seller.changeFirstName(seller, newContentForThisField);
-                } else if (field.equalsIgnoreCase("last name")) {
-                    seller.changeLastName(seller, newContentForThisField);
-                } else if (field.equalsIgnoreCase("email")) {
-                    seller.changeEmail(seller, newContentForThisField);
-                } else if (field.equalsIgnoreCase("phone number")) {
-                    seller.changePhoneNumber(seller, newContentForThisField);
-                } else if (field.equalsIgnoreCase("password")) {
-                    seller.changePassword(seller, newContentForThisField);
-                }
+//                String[] split = dataToEdit.split(",");
+//                Seller seller = DataBaseForServer.getSeller(getSeller().getUserName());
+//                String field = split[0];
+//                String newContentForThisField = split[1];
+//                if (field.equalsIgnoreCase("first name")) {
+//                    seller.changeFirstName(seller, newContentForThisField);
+//                } else if (field.equalsIgnoreCase("last name")) {
+//                    seller.changeLastName(seller, newContentForThisField);
+//                } else if (field.equalsIgnoreCase("email")) {
+//                    seller.changeEmail(seller, newContentForThisField);
+//                } else if (field.equalsIgnoreCase("phone number")) {
+//                    seller.changePhoneNumber(seller, newContentForThisField);
+//                } else if (field.equalsIgnoreCase("password")) {
+//                    seller.changePassword(seller, newContentForThisField);
+//                }
+                return;
             }
         } catch (Exception e) {
             throw new Exception(e.getMessage());
@@ -163,6 +164,8 @@ public class CSellerController {
         String func = "Show Seller Products";
         Client.sendMessage(func);
 
+        Client.sendObject(getSeller().getUserName());
+
         Object response = Client.receiveObject();
         allProducts = (ArrayList<Product>) response;
         for (Product product : allProducts) {
@@ -183,11 +186,16 @@ public class CSellerController {
             Object response = Client.receiveObject();
             String responseString = (String) response;
             if (responseString.equals("Done")) {
-                String[] split = data.split("\\s");
+                String[] split = data.split(",");
+                System.out.println(DataBaseForServer.getAllCategories());
+                System.out.println(DataBaseForServer.getCategory(split[4]));
                 Product product = new Product(split[0], split[1], split[2],
                         Double.parseDouble(split[3]), getSeller(),
                         DataBaseForServer.getCategory(split[4]), split[5], 0, split[6], split[7]);
+                DataBaseForServer.addProduct(product);
                 new AddProductRequest(getSeller(), product, DataBaseForServer.getCategory(split[4]));
+                System.out.println(DataBaseForServer.getCategory(split[4]));
+                System.out.println(product.getCategory());
             }
         } catch (Exception e) {
             throw new Exception(e.getMessage());

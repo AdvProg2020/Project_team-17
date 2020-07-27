@@ -47,12 +47,28 @@ public class ManagerController {
     }
 
     public static void editManagerInfo() throws Exception {
-        String receivedItems = (String) ClientHandler.receiveObject();
-
-        Manager manager = DataBaseForServer.getManager(receivedItems);
+//        String receivedItems = (String) ClientHandler.receiveObject();
+        Object[] receivedItems = (Object[]) ClientHandler.receiveObject();
+        Manager manager = DataBaseForServer.getManager((String) receivedItems[0]);
+        String dataToEdit = (String) receivedItems[1];
         if (manager == null) {
             ClientHandler.sendObject(new Exception("there isn't any manager with this username"));
         } else {
+            String[] split = dataToEdit.split(",");
+//            Manager manager = DataBaseForServer.getManager(getManager().getUserName());
+            String field = split[0];
+            String newContentForThisField = split[1];
+            if (field.equalsIgnoreCase("first name")) {
+                manager.changeFirstName(manager, newContentForThisField);
+            } else if (field.equalsIgnoreCase("last name")) {
+                manager.changeLastName(manager, newContentForThisField);
+            } else if (field.equalsIgnoreCase("email")) {
+                manager.changeEmail(manager, newContentForThisField);
+            } else if (field.equalsIgnoreCase("phone number")) {
+                manager.changePhoneNumber(manager, newContentForThisField);
+            } else if (field.equalsIgnoreCase("password")) {
+                manager.changePassword(manager, newContentForThisField);
+            }
             ClientHandler.sendObject("Success!");
         }
     }
@@ -254,13 +270,13 @@ public class ManagerController {
 
     public static void createCategory() throws IOException {
         String dataToRegister = ClientHandler.receiveMessage();
-        String[] split = dataToRegister.split("\\s");
+        String[] split = dataToRegister.split(",");
 
         if (DataBaseForServer.getCategory(split[0]) != null) {
             ClientHandler.sendObject(new Exception("there is a category with this name"));
         } else {
-            ClientHandler.sendObject("Done");
             DataBaseForServer.addCategory(new Category(split[0], split[1]));
+            ClientHandler.sendObject("Done");
         }
     }
 

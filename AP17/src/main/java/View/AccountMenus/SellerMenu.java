@@ -5,6 +5,7 @@ import Client.ClientController.AccountsController.CManagerController;
 import Client.ClientController.AccountsController.CSellerController;
 import Client.ClientController.AccountsController.CSupporterController;
 import Client.ClientController.CWalletController;
+import Controller.AccountsManager.SellerAbilitiesManager;
 import Models.Category;
 import Models.Discount;
 import Models.Product;
@@ -154,7 +155,7 @@ public class SellerMenu extends Menu {
                 setAddAuctionScene();
             }
         });
-        vBox.getChildren().addAll(backButton, viewSalesHistory, manageProductButton, viewOffsButton, editButton, addAuctionButton, wallet);
+        vBox.getChildren().addAll(backButton, viewSalesHistory, manageProductButton, showCategories, viewOffsButton, editButton, addAuctionButton, wallet);
         pane.setLeft(vBox);
 
         VBox vBox1 = new VBox(10);
@@ -309,7 +310,7 @@ public class SellerMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 mediaPlayer.play();
-                String data = field.getValue() + " " + newContent.getText();
+                String data = field.getValue() + "," + newContent.getText();
                 try {
                     CSellerController.editSellerInfo(data);
                     notify.setStyle("-fx-text-fill: #3193ff");
@@ -504,8 +505,8 @@ public class SellerMenu extends Menu {
         pane.setTop(vBox);
 
         ListView<String> listView = new ListView<>();
-        //listView.getItems().addAll(SellerAbilitiesManager.showProducts(RegisterSellerMenu.getCurrentSeller()));
-        listView.getItems().addAll(CSellerController.showProducts());
+        listView.getItems().addAll(SellerAbilitiesManager.showProducts(SellerController.getSeller()));
+//        listView.getItems().addAll(CSellerController.showProducts());
         pane.setCenter(listView);
 
         VBox vBox1 = new VBox(10);
@@ -688,8 +689,8 @@ public class SellerMenu extends Menu {
         add.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                String data = ID.getText() + " " + name.getText() + " " + company.getText() + " " + Double.parseDouble(price.getText()) + " " +
-                        Category.getCategoryByName(category.getText()) + " " + explanation.getText() + " " + feature.getText() + " " + paths.getText();
+                String data = ID.getText() + "," + name.getText() + "," + company.getText() + "," + Double.parseDouble(price.getText()) + "," +
+                        category.getText() + "," + explanation.getText() + "," + feature.getText() + "," + paths.getText();
                 try {
                     CSellerController.addProductRequest(data);
                     notify.setStyle("-fx-text-fill: #3193ff");

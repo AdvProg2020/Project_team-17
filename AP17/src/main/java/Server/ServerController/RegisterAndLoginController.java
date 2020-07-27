@@ -1,14 +1,22 @@
 package Server.ServerController;
 
+import Client.ClientController.AccountsController.CCustomerController;
+import Client.ClientController.AccountsController.CManagerController;
+import Client.ClientController.AccountsController.CSellerController;
+import Client.ClientController.AccountsController.CSupporterController;
 import Models.Accounts.*;
 import Server.ClientHandler;
+import Server.ServerController.AccountsController.CustomerController;
+import Server.ServerController.AccountsController.ManagerController;
+import Server.ServerController.AccountsController.SellerController;
+import Server.ServerController.AccountsController.SupporterController;
 
 import java.io.IOException;
 
 public class RegisterAndLoginController {
     public static void registerManager() throws IOException {
         String dataToRegister = ClientHandler.receiveMessage();
-        String[] split = dataToRegister.split("\\s");
+        String[] split = dataToRegister.split(",");
 
         if (DataBaseForServer.getManager(split[0]) != null && DataBaseForServer.getCustomer(split[0]) != null && DataBaseForServer.getSeller(split[0]) != null) {
             ClientHandler.sendObject(new Exception("there is an account with this username"));
@@ -23,10 +31,14 @@ public class RegisterAndLoginController {
         String[] split = dataToRegister.split("\\s");
 
         Manager manager = DataBaseForServer.getManager(split[0]);
-
         if (manager != null) {
             if (manager.getPassword().equals(split[1])) {
+                System.out.println(manager.toString());
                 ClientHandler.sendObject(manager);
+                ManagerController.setManager(manager);
+                CManagerController.setManager(manager);
+                ManagerController.addOnlineManager(manager);
+                CManagerController.addOnlineManager(manager);
             } else {
                 ClientHandler.sendObject(new Exception("wrong password"));
             }
@@ -56,6 +68,10 @@ public class RegisterAndLoginController {
         if (seller != null) {
             if (seller.getPassword().equals(split[1])) {
                 ClientHandler.sendObject(seller);
+                SellerController.setSeller(seller);
+                CSellerController.setSeller(seller);
+                SellerController.addOnlineSeller(seller);
+                CSellerController.addOnlineSeller(seller);
             } else {
                 ClientHandler.sendObject(new Exception("wrong password"));
             }
@@ -85,6 +101,10 @@ public class RegisterAndLoginController {
         if (customer != null) {
             if (customer.getPassword().equals(split[1])) {
                 ClientHandler.sendObject(customer);
+                CustomerController.setCustomer(customer);
+                CCustomerController.setCustomer(customer);
+                CustomerController.addOnlineCustomer(customer);
+                CCustomerController.addOnlineCustomer(customer);
             } else {
                 ClientHandler.sendObject(new Exception("wrong password"));
             }
@@ -102,6 +122,10 @@ public class RegisterAndLoginController {
         if (supporter != null) {
             if (supporter.getPassword().equals(split[1])) {
                 ClientHandler.sendObject(supporter);
+                SupporterController.setSupporter(supporter);
+                CSupporterController.setSupporter(supporter);
+                SupporterController.addOnlineSupporters(supporter);
+                CSupporterController.addOnlineSupporters(supporter);
             } else {
                 ClientHandler.sendObject(new Exception("wrong password"));
             }

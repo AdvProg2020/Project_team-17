@@ -11,6 +11,7 @@ import Models.Logs.BuyLog;
 import Models.Logs.Log;
 import Models.Logs.SellLog;
 import Models.Request.Request;
+import Server.ServerController.AccountsController.SellerController;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -33,6 +34,7 @@ public class DataBaseForServer implements Serializable {
     private static ArrayList<Product> allProducts = new ArrayList<>();
     private static ArrayList<Discount> allDiscountProducts = new ArrayList<>();
     private static ArrayList<DiscountCode> allDiscountCodes = new ArrayList<>();
+//    private static ArrayList<Product> sellerProducts = new ArrayList<>();
 
 
     public static void addManager(Manager manager) {
@@ -226,7 +228,6 @@ public class DataBaseForServer implements Serializable {
         allCategories.add(category);
     }
 
-
     public static Category getCategory(String Name) {
         for (Category category : allCategories) {
             if (category.getCategoryName().equals(Name)) {
@@ -353,5 +354,19 @@ public class DataBaseForServer implements Serializable {
 
     public static ArrayList<DiscountCode> getAllDiscountCodes() {
         return allDiscountCodes;
+    }
+
+//    public static ArrayList<Product> getSellerProducts() {
+//        return SellerController.getSeller().getAllProducts();
+//    }
+
+    public static ArrayList<Product> getSellerProducts(String username) {
+        ArrayList<Product> sellerProducts = new ArrayList<>();
+        for (Product product : allProducts) {
+            if (product.getSeller().equals(getSeller(username))) {
+                sellerProducts.add(product);
+            }
+        }
+        return sellerProducts;
     }
 }

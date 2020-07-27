@@ -2,6 +2,7 @@ package Server.ServerController.AccountsController;
 
 import Client.Client;
 import Models.*;
+import Models.Accounts.Manager;
 import Models.Accounts.Seller;
 import Models.Logs.SellLog;
 import Models.Request.*;
@@ -51,12 +52,26 @@ public class SellerController {
     }
 
     public static void editSellerInfo() throws Exception {
-        String receivedItems = (String) ClientHandler.receiveObject();
-
-        Seller seller = DataBaseForServer.getSeller(receivedItems);
+        Object[] receivedItems = (Object[]) ClientHandler.receiveObject();
+        String dataToEdit = (String) receivedItems[1];
+        Seller seller = DataBaseForServer.getSeller((String) receivedItems[0]);
         if (seller == null) {
             ClientHandler.sendObject(new Exception("there isn't any seller with this username"));
         } else {
+            String[] split = dataToEdit.split(",");
+            String field = split[0];
+            String newContentForThisField = split[1];
+            if (field.equalsIgnoreCase("first name")) {
+                seller.changeFirstName(seller, newContentForThisField);
+            } else if (field.equalsIgnoreCase("last name")) {
+                seller.changeLastName(seller, newContentForThisField);
+            } else if (field.equalsIgnoreCase("email")) {
+                seller.changeEmail(seller, newContentForThisField);
+            } else if (field.equalsIgnoreCase("phone number")) {
+                seller.changePhoneNumber(seller, newContentForThisField);
+            } else if (field.equalsIgnoreCase("password")) {
+                seller.changePassword(seller, newContentForThisField);
+            }
             ClientHandler.sendObject("Success!");
         }
     }
@@ -64,15 +79,15 @@ public class SellerController {
 
     public static void showSellerLogs() {
         ArrayList<SellLog> logs = new ArrayList<>(getSeller().getLogs());
-        Client.sendObject(logs);
+        ClientHandler.sendObject(logs);
     }
 
     public static void showLog() {
-        SellLog sellLog = (SellLog) DataBaseForServer.getLog(Client.receiveMessage());
+        SellLog sellLog = (SellLog) DataBaseForServer.getLog(ClientHandler.receiveMessage());
         if (sellLog != null) {
-            Client.sendMessage(sellLog.toString());
+            ClientHandler.sendMessage(sellLog.toString());
         } else {
-            Client.sendObject(new Exception("there isn't any log with this id"));
+            ClientHandler.sendObject(new Exception("there isn't any log with this id"));
         }
     }
 
@@ -83,31 +98,31 @@ public class SellerController {
 
     public static void showDiscounts() {
         ArrayList<Discount> sellerDiscounts = new ArrayList<>(getSeller().getAllDiscount());
-        Client.sendObject(sellerDiscounts);
+        ClientHandler.sendObject(sellerDiscounts);
     }
 
     public static void showProducts() {
-        ArrayList<Product> products = new ArrayList<>(getSeller().getAllProducts());
-        Client.sendObject(products);
+//        ArrayList<Product> products = new ArrayList<>(getSeller().getAllProducts());
+        String username = (String) ClientHandler.receiveObject();
+        ArrayList<Product> products = new ArrayList<>(DataBaseForServer.getSellerProducts(username));
+        ClientHandler.sendObject(products);
     }
 
     public static void addProductRequest() throws IOException {
         String dataToRegister = ClientHandler.receiveMessage();
-        String[] split = dataToRegister.split("\\s");
+        String[] split = dataToRegister.split(",");
 
         if (DataBaseForServer.getProduct(split[0]) != null) {
             ClientHandler.sendObject(new Exception("there is a product with this id"));
-        } else if (DataBaseForServer.getCategory(split[5]) == null) {
+        } else if (DataBaseForServer.getCategory(split[4]) == null) {
             ClientHandler.sendObject(new Exception("there isn't any category with this name"));
         } else {
             ClientHandler.sendObject("Done");
             Product product = new Product(split[0], split[1], split[2],
-                    Double.parseDouble(split[3]), DataBaseForServer.getSeller(split[4]),
-                    DataBaseForServer.getCategory(split[5]), split[6], Double.parseDouble(split[7]), split[8], split[9]);
-            DataBaseForServer.addProduct(new Product(split[0], split[1], split[2],
-                    Double.parseDouble(split[3]), getSeller(),
-                    DataBaseForServer.getCategory(split[5]), split[6], 0, split[8], split[9]));
-            DataBaseForServer.addRequest(new AddProductRequest(getSeller(), product, DataBaseForServer.getCategory(split[5])));
+                    Double.parseDouble(split[3]), SellerController.getSeller(),
+                    DataBaseForServer.getCategory(split[4]), split[5], 0, split[6], split[7]);
+            DataBaseForServer.addProduct(product);
+            DataBaseForServer.addRequest(new AddProductRequest(getSeller(), product, DataBaseForServer.getCategory(split[4])));
         }
     }
 

@@ -12,15 +12,23 @@ public class Server {
 
     public static BankAPI bankAPI;
 
-    public static void main(String args[]) {
+    public static void main(String args[]) throws IOException {
         ArrayList<String> listOfTokens = new ArrayList<>();
 
         ServerSocket serverSocket = null;
         Socket socket;
-        BankClient bankClient = new BankClient();
+
         bankAPI = new BankAPI();
+        bankAPI.run();
+        System.out.println("Connection to Bank Initialized!");
+
+//        bankAPI.sendMessage("get_token a b");
+//        String response = bankAPI.getResponse();
+//        System.out.println(response);
+
+
         try {
-            serverSocket = new ServerSocket(1989);
+            serverSocket = new ServerSocket(3040);
             System.out.println("socket created");
         } catch (IOException e) {
             e.printStackTrace();
@@ -36,6 +44,13 @@ public class Server {
                 System.out.println(e.getMessage());
             }
         }
+    }
 
+    public static BankAPI getBankAPI() {
+        return bankAPI;
+    }
+
+    public static void setBankAPI(BankAPI bankAPI) {
+        Server.bankAPI = bankAPI;
     }
 }

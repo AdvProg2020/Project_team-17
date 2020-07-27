@@ -7,16 +7,23 @@ import java.net.Socket;
 
 public class BankAPI {
 
-    public final int PORT = 3989;
+    public final int PORT = 2020;
     public final String IP = "127.0.0.1";
     public final int SHOP_SERVER_PORT = 8000;
 
     private DataOutputStream outputStream;
     private DataInputStream inputStream;
-    private DataOutputStream shopOutputStream;
-    private DataInputStream shopInputStream;
 
     private String token;
+    private static String response;
+
+    public static String getResponse() {
+        return response;
+    }
+
+    public static void setResponse(String response) {
+        BankAPI.response = response;
+    }
 
     public void connectToBankServer() throws IOException {
         try {
@@ -28,22 +35,25 @@ public class BankAPI {
         }
     }
 
-    public void startListeningOnInput() {
-        new Thread(() -> {
-            while (true) {
-                try {
-                    shopOutputStream.writeUTF(inputStream.readUTF());
-                } catch (IOException e) {
-                    System.out.println("disconnected");
-                    System.exit(0);
-                }
-            }
-        }).start();
-    }
+//    public void startListeningOnInput() {
+//        new Thread(() -> {
+//            while (true) {
+//                try {
+//                    shopOutputStream.writeUTF(inputStream.readUTF());
+//                } catch (IOException e) {
+//                    System.out.println("disconnected");
+//                    System.exit(0);
+//                }
+//            }
+//        }).start();
+//    }
 
     public void sendMessage(String msg) throws IOException {
         try {
             outputStream.writeUTF(msg);
+            String response = inputStream.readUTF();
+            System.out.println(response);
+            setResponse(response);
         } catch (IOException e) {
             throw new IOException("Exception while sending message:");
         }
@@ -51,12 +61,13 @@ public class BankAPI {
 
     public void run() {
         try {
+            response = "";
             connectToBankServer();
-            startListeningOnInput();
-            while (true) {
-                String messageToSend = inputStream.readUTF();
-                sendMessage(messageToSend);
-            }
+//            startListeningOnInput();
+//            while (true) {
+//                String messageToSend = inputStream.readUTF();
+//                sendMessage(messageToSend);
+//            }
         } catch (IOException e) {
             System.out.println(e.getMessage());
             e.printStackTrace();

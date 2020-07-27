@@ -24,26 +24,37 @@ public class ProductController {
     }
 
     public static void commentProduct() {
-        Object[] receivedData = (Object[]) Client.receiveObject();
+        Object[] receivedData = (Object[]) ClientHandler.receiveObject();
         String productId = (String) receivedData[0];
         String content = (String) receivedData[1];
         Product product = Product.getProductWithId(productId);
         if (product != null) {
             ClientHandler.sendObject(product);
         } else {
-            Client.sendObject(new Exception("there isn't any product with this id"));
+            ClientHandler.sendObject(new Exception("there isn't any product with this id"));
         }
     }
 
     public static void compareProduct() {
-        Object[] receivedData = (Object[]) Client.receiveObject();
+        Object[] receivedData = (Object[]) ClientHandler.receiveObject();
         String productId = (String) receivedData[0];
 
         Product product = Product.getProductWithId(productId);
         if (product != null) {
             ClientHandler.sendObject(product);
         } else {
-            Client.sendObject(new Exception("there isn't any product with this id"));
+            ClientHandler.sendObject(new Exception("there isn't any product with this id"));
+        }
+    }
+
+    public static void addToCart() {
+        Object[] receivedData = (Object[]) ClientHandler.receiveObject();
+        Product product = (Product) receivedData[0];
+
+        if (product != null) {
+            ClientHandler.sendObject("Done");
+        } else {
+            ClientHandler.sendObject(new Exception("there isn't any product with this id"));
         }
     }
 }

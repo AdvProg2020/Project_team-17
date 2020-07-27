@@ -40,13 +40,15 @@ public class Supporter extends Account {
     @Override
     public String toString() {
         return "Supporter{" +
-                "userName='" + userName + '\'' +
+                "role='" + role + '\'' +
+                ", userName='" + userName + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", password='" + password + '\'' +
                 ", credit=" + credit +
+                ", bankAccount=" + bankAccount +
                 '}';
     }
 }
