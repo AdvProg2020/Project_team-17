@@ -1284,14 +1284,17 @@ public class ManagerMenu extends Menu {
         name.setPromptText("category name");
         TextField feature = new TextField();
         feature.setPromptText("category feature");
+        TextField parent = new TextField();
+        parent.setPromptText("if it doesnt have parent enter null");
         Button add = new Button("Add category");
         name.setStyle(style);
         feature.setStyle(style);
         add.setStyle(style);
+        parent.setStyle(style);
         add.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                String data = name.getText() + "," + feature.getText();
+                String data = name.getText() + "," + feature.getText() + "," + parent.getText();
                 mediaPlayer.play();
                 try {
                     CManagerController.addCategory(data);
@@ -1311,7 +1314,7 @@ public class ManagerMenu extends Menu {
             }
         });
 
-        hBox.getChildren().addAll(name, feature, add, notify);
+        hBox.getChildren().addAll(name, feature, parent, add, notify);
         pane.setCenter(hBox);
         pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
         Scene scene = new Scene(pane, 500, 500);

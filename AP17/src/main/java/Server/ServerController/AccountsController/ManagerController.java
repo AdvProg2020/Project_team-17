@@ -257,7 +257,7 @@ public class ManagerController {
         }
     }
 
-    public static void deleteCategory() throws Exception {
+    public static void deleteCategory() {
         String name = ClientHandler.receiveMessage();
         Category category = DataBaseForServer.getCategory(name);
         if (category != null) {
@@ -268,16 +268,22 @@ public class ManagerController {
         }
     }
 
-    public static void createCategory() throws IOException {
+    public static void createCategory(){
         String dataToRegister = ClientHandler.receiveMessage();
         String[] split = dataToRegister.split(",");
 
         if (DataBaseForServer.getCategory(split[0]) != null) {
             ClientHandler.sendObject(new Exception("there is a category with this name"));
         } else {
-            DataBaseForServer.addCategory(new Category(split[0], split[1]));
-            ClientHandler.sendObject("Done");
+            if (split[2].equals("null")) {
+                DataBaseForServer.addCategory(new Category(split[0], split[1], null));
+                ClientHandler.sendObject("Done");
+            } else {
+                DataBaseForServer.addCategory(new Category(split[0], split[1], DataBaseForServer.getCategory(split[2])));
+                ClientHandler.sendObject("Done");
+            }
         }
+
     }
 
 

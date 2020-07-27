@@ -381,8 +381,13 @@ public class CManagerController {
             String responseString = (String) response;
             if (responseString.equals("Done")) {
                 String[] split = data.split(",");
-                Category category = new Category(split[0], split[1]);
-                DataBaseForServer.addCategory(category);
+                if(split[2].equals("null")){
+                    Category category = new Category(split[0], split[1],null);
+                    DataBaseForServer.addCategory(category);
+                }else {
+                    Category category = new Category(split[0], split[1],DataBaseForServer.getCategory(split[2]));
+                    DataBaseForServer.addCategory(category);
+                }
             }
         } catch (Exception e) {
             throw new Exception(e.getMessage());

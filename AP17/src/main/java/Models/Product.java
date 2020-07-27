@@ -277,7 +277,6 @@ public class Product implements Serializable {
                 ", name='" + name + '\'' +
                 ", companyName='" + companyName + '\'' +
                 ", price=" + price +
-                ", seller=" + seller +
                 ", category=" + category.getCategoryName() +
                 ", explanation='" + explanation + '\'' +
                 ", averageScore=" + averageScore +

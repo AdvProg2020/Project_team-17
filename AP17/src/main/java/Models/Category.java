@@ -7,11 +7,18 @@ public class Category implements Serializable {
     private String categoryName;
     private String specialFeature;
     private static ArrayList<Category> allCategories = new ArrayList<>();
+    private ArrayList<Category> children = new ArrayList<>();
     private ArrayList<Product> products;
+    private Category parent;
 
-    public Category(String categoryName, String specialFeature) {
+
+    public Category(String categoryName, String specialFeature, Category parent) {
         this.categoryName = categoryName;
         this.specialFeature = specialFeature;
+        this.parent = parent;
+        if (parent != null) {
+            parent.children.add(this);
+        }
         products = new ArrayList<>();
         allCategories.add(this);
     }

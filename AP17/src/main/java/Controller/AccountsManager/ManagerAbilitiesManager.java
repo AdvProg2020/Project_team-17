@@ -207,8 +207,8 @@ public class ManagerAbilitiesManager {
     }
 
     //handle in network
-    public static void addCategory(String name, String feature) {
-        new Category(name, feature);
+    public static void addCategory(String name, String feature,String parent) {
+        new Category(name, feature,Category.getCategoryByName(parent));
     }
 
     //handle in network
