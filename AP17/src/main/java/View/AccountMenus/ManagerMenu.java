@@ -12,8 +12,10 @@ import Server.ServerController.AccountsController.SellerController;
 import Server.ServerController.AccountsController.SupporterController;
 import View.*;
 import View.Menu;
+import javafx.animation.Animation;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -31,6 +33,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 
 import java.io.FileInputStream;
 import java.nio.file.Paths;
@@ -43,6 +46,12 @@ public class ManagerMenu extends Menu {
     double orgCliskSceneX, orgReleaseSceneX;
     Category selectedCategory;
     DiscountCode selectedDiscountCode;
+    private static final int COLUMNS = 4;
+    private static final int COUNT = 10;
+    private static final int OFFSET_X = 2;
+    private static final int OFFSET_Y = 3;
+    private static final int WIDTH = 50;
+    private static final int HEIGHT = 150;
 
     public ManagerMenu(Menu parentMenu) {
         super("Manager ", parentMenu);
@@ -54,7 +63,8 @@ public class ManagerMenu extends Menu {
     }
 
     public void setPersonalInfoScene() {
-        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+        String path = "C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+       // String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
 
@@ -180,7 +190,7 @@ public class ManagerMenu extends Menu {
         HBox hBox = new HBox();
         try {
             list.add(CManagerController.getManager().getPath());
-            list.add("C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Images\\avatar.png");
+            list.add("C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Images\\avatar.png");
 
             GridPane root = new GridPane();
             root.setAlignment(Pos.CENTER);
@@ -228,6 +238,18 @@ public class ManagerMenu extends Menu {
 
             imageView.setFitHeight(100);
             imageView.setFitWidth(300);
+
+            imageView.setViewport(new Rectangle2D(OFFSET_X, OFFSET_Y, WIDTH, HEIGHT));
+
+            final Animation animation = new SpriteAnimation(
+                    imageView,
+                    Duration.millis(1000),
+                    COUNT, COLUMNS,
+                    OFFSET_X, OFFSET_Y,
+                    WIDTH, HEIGHT
+            );
+            animation.setCycleCount(Animation.INDEFINITE);
+            animation.play();
 
             hBox.setSpacing(15);
             hBox.setAlignment(Pos.CENTER);
@@ -490,7 +512,8 @@ public class ManagerMenu extends Menu {
 
 
     public void setManageUsersScene() {
-        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+        String path = "C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+       // String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
         BorderPane pane = new BorderPane();
@@ -621,7 +644,8 @@ public class ManagerMenu extends Menu {
     }
 
     public void setAddManagerScene() {
-        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+        String path = "C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+       // String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
         BorderPane pane = new BorderPane();
@@ -725,7 +749,8 @@ public class ManagerMenu extends Menu {
     }
 
     public void setAddSupporterScene() {
-        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\button.mp3";
+        String path = "C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+       // String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\Test\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
         BorderPane pane = new BorderPane();
@@ -829,7 +854,8 @@ public class ManagerMenu extends Menu {
     }
 
     public void setDiscountCodeScene() {
-        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+        String path = "C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+       // String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
         BorderPane pane = new BorderPane();
@@ -933,7 +959,8 @@ public class ManagerMenu extends Menu {
     }
 
     public void setLogsScene() {
-        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+        String path = "C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+       // String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
         BorderPane pane = new BorderPane();
@@ -1002,7 +1029,8 @@ public class ManagerMenu extends Menu {
     }
 
     public void editDiscountCodeScene() {
-        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+        String path = "C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+       // String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
         BorderPane pane = new BorderPane();
@@ -1065,7 +1093,8 @@ public class ManagerMenu extends Menu {
     }
 
     public void addDiscountCodeScene() {
-        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+        String path = "C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+       // String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
         BorderPane pane = new BorderPane();
@@ -1155,7 +1184,8 @@ public class ManagerMenu extends Menu {
     }
 
     public void manageRequestsScene() throws Exception {
-        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+        String path = "C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+        //String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
         BorderPane pane = new BorderPane();
@@ -1256,7 +1286,8 @@ public class ManagerMenu extends Menu {
     }
 
     public void setCategoriesScene() {
-        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+        String path = "C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+        // String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
         BorderPane pane = new BorderPane();
@@ -1335,7 +1366,8 @@ public class ManagerMenu extends Menu {
     }
 
     public void addCategoryScene() {
-        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+        String path = "C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+        // String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
         BorderPane pane = new BorderPane();
@@ -1405,7 +1437,8 @@ public class ManagerMenu extends Menu {
     }
 
     public void setEditCategoryScene() {
-        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+        String path = "C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+       // String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
         BorderPane pane = new BorderPane();
@@ -1472,7 +1505,8 @@ public class ManagerMenu extends Menu {
     }
 
     public void setManageProductsScene() {
-        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+        String path = "C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+        //String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
         BorderPane pane = new BorderPane();
