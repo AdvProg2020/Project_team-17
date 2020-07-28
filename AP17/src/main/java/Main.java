@@ -1,4 +1,5 @@
 import Client.Client;
+import Models.Bank.BankAccount;
 import Models.ShopBankAccount;
 import View.MainMenu;
 import View.Menu;
@@ -21,6 +22,7 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
         //LoadFromFile.load(new Gson());
         ShopBankAccount.getInstance();
+        System.out.println(BankAccount.getAllBankAccounts().size());
         Menu.setWindow(window);
         MainMenu mainMenu = new MainMenu();
         mainMenu.show();

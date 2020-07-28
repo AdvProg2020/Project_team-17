@@ -40,6 +40,7 @@ public class CRegisterAndLoginController {
         Client.sendMessage(func);
 
         Client.sendObject(dataToLogin);
+        Client.sendToken();
         try {
             Object response = Client.receiveObject();
             Manager manager = (Manager) response;

@@ -59,4 +59,8 @@ public class Client {
 
         return object;
     }
+
+    public static void sendToken() {
+        sendMessage(token);
+    }
 }

@@ -7,6 +7,7 @@ import java.lang.Thread;
 import java.net.Socket;
 
 public class ClientHandler extends Thread {
+    boolean isAllowedToCommunicate = true;
     protected Socket socket;
     private static final String ALPHA_NUMERIC_STRING = "NAKAPPROJECT";
     public static ObjectOutputStream objectOutputStream;
@@ -42,6 +43,7 @@ public class ClientHandler extends Thread {
         } catch (IOException ignored) {
 
         }
+        long startTime = System.currentTimeMillis();
         String generatedToken = generateToken();
         System.out.println("token generated");
         try {
@@ -53,10 +55,25 @@ public class ClientHandler extends Thread {
         }
         String command;
         while (true) {
+
+            if (!isAllowedToCommunicate) {
+                try {
+                    socket.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
             try {
                 command = receiveMessage();
-                //handleCommand(command);
-                HandleController.handleFunction(command);
+                long elapsedTime = System.currentTimeMillis() - startTime;
+                if (elapsedTime < 400)
+                    isAllowedToCommunicate = false;
+                else {
+                    startTime = 0;
+                    HandleController.handleFunction(command);
+                }
+
             } catch (Exception e) {
                 e.printStackTrace();
             }

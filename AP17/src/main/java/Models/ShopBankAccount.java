@@ -2,7 +2,7 @@ package Models;
 
 import Models.Bank.BankAccount;
 
-public class ShopBankAccount {
+public class ShopBankAccount{
     private static ShopBankAccount shopBankAccount = new ShopBankAccount();
 
     private ShopBankAccount() {
