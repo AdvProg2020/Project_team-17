@@ -32,7 +32,7 @@ public class Server {
 
 
         try {
-            serverSocket = new ServerSocket(3040);
+            serverSocket = new ServerSocket(55555);
             System.out.println("socket created");
         } catch (IOException e) {
             e.printStackTrace();
