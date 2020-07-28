@@ -4,6 +4,8 @@ import Client.Client;
 import Models.*;
 import Models.Accounts.Manager;
 import Models.Accounts.Seller;
+import Models.Enums.ProductEnum;
+import Models.Enums.RequestStateEnum;
 import Models.Logs.SellLog;
 import Models.Request.*;
 import Server.ClientHandler;
@@ -129,14 +131,30 @@ public class SellerController {
     public static void editProductRequest() throws Exception {
         Object[] receivedItems = (Object[]) ClientHandler.receiveObject();
         String id = (String) receivedItems[0];
-        String field = (String) receivedItems[1];
-        String newContentForThisField = (String) receivedItems[2];
+        String string = (String) receivedItems[1];
+        String[] split = string.split("\\s");
+        String field = split[0];
+        String newContentForThisField = split[1];
 
         Product product = DataBaseForServer.getProduct(id);
         if (product == null) {
             ClientHandler.sendObject(new Exception("there isn't any product with this id"));
         } else {
             DataBaseForServer.addRequest(new EditProductRequest(getSeller(), product, field, newContentForThisField));
+            if (field.equals("name")) {
+                product.setName(newContentForThisField);
+            } else if (field.equals("company name")) {
+                product.setCompanyName(newContentForThisField);
+            } else if (field.equals("description")) {
+                product.setExplanation(newContentForThisField);
+            } else if (field.equals("seller")) {
+                product.setSeller(Seller.getSellerByName(newContentForThisField));
+            } else if (field.equals("price")) {
+                product.setPrice(Double.parseDouble(newContentForThisField));
+            } else if (field.equals("category")) {
+                product.setCategory(Category.getCategoryByName(newContentForThisField));
+            }
+            product.setProductState(ProductEnum.ACCEPTED);
             ClientHandler.sendObject(product);
         }
     }

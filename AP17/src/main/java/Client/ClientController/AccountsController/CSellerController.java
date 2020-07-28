@@ -3,6 +3,7 @@ package Client.ClientController.AccountsController;
 import Client.Client;
 import Models.*;
 import Models.Accounts.Seller;
+import Models.Enums.ProductEnum;
 import Models.Logs.SellLog;
 
 import Models.Request.*;
@@ -214,6 +215,20 @@ public class CSellerController {
             String field = split[0];
             String newContentForThisField = split[1];
             new EditProductRequest(getSeller(), product, field, newContentForThisField);
+            if (field.equals("name")) {
+                product.setName(newContentForThisField);
+            } else if (field.equals("company name")) {
+                product.setCompanyName(newContentForThisField);
+            } else if (field.equals("description")) {
+                product.setExplanation(newContentForThisField);
+            } else if (field.equals("seller")) {
+                product.setSeller(Seller.getSellerByName(newContentForThisField));
+            } else if (field.equals("price")) {
+                product.setPrice(Double.parseDouble(newContentForThisField));
+            } else if (field.equals("category")) {
+                product.setCategory(Category.getCategoryByName(newContentForThisField));
+            }
+            product.setProductState(ProductEnum.ACCEPTED);
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }

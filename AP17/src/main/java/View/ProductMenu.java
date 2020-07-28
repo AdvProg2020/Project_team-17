@@ -66,7 +66,8 @@ public class ProductMenu extends Menu {
     }
 
     public void setProductScene() {
-        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+        String path = "C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+        //String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
 
@@ -88,7 +89,8 @@ public class ProductMenu extends Menu {
         mainButtons.setAlignment(Pos.TOP_RIGHT);
         Image image1 = null;
         try {
-            FileInputStream inputStream1 = new FileInputStream("C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Images\\Cart.png");
+            FileInputStream inputStream1 = new FileInputStream("C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Images\\Cart.png");
+            // FileInputStream inputStream1 = new FileInputStream("C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Images\\Cart.png");
             image1 = new Image(inputStream1);
         } catch (Exception ignored) {
         }
@@ -137,40 +139,40 @@ public class ProductMenu extends Menu {
         } catch (Exception ignored) {
         }
 
-        final DoubleProperty zoomProperty = new SimpleDoubleProperty(200);
+//        final DoubleProperty zoomProperty = new SimpleDoubleProperty(200);
         ImageView imageView = new ImageView(image);
-        imageView.preserveRatioProperty().set(true);
-        zoomProperty.addListener(new InvalidationListener() {
-            @Override
-            public void invalidated(Observable arg0) {
-                imageView.setFitWidth(zoomProperty.get() * 4);
-                imageView.setFitHeight(zoomProperty.get() * 3);
+//        imageView.preserveRatioProperty().set(true);
+//        zoomProperty.addListener(new InvalidationListener() {
+//            @Override
+//            public void invalidated(Observable arg0) {
+//                imageView.setFitWidth(zoomProperty.get() * 4);
+//                imageView.setFitHeight(zoomProperty.get() * 3);
+//
+//            }
+//        });
+//        pane.addEventFilter(ScrollEvent.ANY, new EventHandler<ScrollEvent>() {
+//            @Override
+//            public void handle(ScrollEvent event) {
+//                if (event.getDeltaY() > 0) {
+//                    zoomProperty.set(zoomProperty.get() * 1.1);
+//                } else if (event.getDeltaY() < 0) {
+//                    zoomProperty.set(zoomProperty.get() / 1.1);
+//                }
+//            }
+//        });
 
-            }
-        });
-        pane.addEventFilter(ScrollEvent.ANY, new EventHandler<ScrollEvent>() {
-            @Override
-            public void handle(ScrollEvent event) {
-                if (event.getDeltaY() > 0) {
-                    zoomProperty.set(zoomProperty.get() * 1.1);
-                } else if (event.getDeltaY() < 0) {
-                    zoomProperty.set(zoomProperty.get() / 1.1);
-                }
-            }
-        });
-
-
-        imageView.setViewport(new Rectangle2D(OFFSET_X, OFFSET_Y, WIDTH, HEIGHT));
-
-        final Animation animation = new SpriteAnimation(
-                imageView,
-                Duration.millis(1000),
-                COUNT, COLUMNS,
-                OFFSET_X, OFFSET_Y,
-                WIDTH, HEIGHT
-        );
-        animation.setCycleCount(Animation.INDEFINITE);
-        animation.play();
+//
+//        imageView.setViewport(new Rectangle2D(OFFSET_X, OFFSET_Y, WIDTH, HEIGHT));
+//
+//        final Animation animation = new SpriteAnimation(
+//                imageView,
+//                Duration.millis(1000),
+//                COUNT, COLUMNS,
+//                OFFSET_X, OFFSET_Y,
+//                WIDTH, HEIGHT
+//        );
+//        animation.setCycleCount(Animation.INDEFINITE);
+//        animation.play();
 
 
         Text name = new Text("Product name: " + product.getName());
@@ -180,7 +182,7 @@ public class ProductMenu extends Menu {
         Text explanation = new Text("Explanation: " + product.getExplanation());
         Text feature = new Text("Feature: " + product.getProductsSpecialFeature());
         Text score = new Text("Product Score: " + product.getAverageScore());
-        Text seller = new Text("Seller: " + product.getSeller());
+//        Text seller = new Text("Seller: " + product.getSeller());
         TextField textField = new TextField();
         textField.setPromptText("enter the path");
         Button button = new Button("show video");
@@ -195,7 +197,8 @@ public class ProductMenu extends Menu {
 
 
         VBox info = new VBox(5);
-        info.getChildren().addAll(name, companyName, category, price, explanation, feature, score, seller, textField, button);
+//        info.getChildren().addAll(name, companyName, category, price, explanation, feature, score, seller, textField, button);
+        info.getChildren().addAll(name, companyName, category, price, explanation, feature, score, textField, button);
         HBox hBox = new HBox(10);
         VBox vBox = new VBox(5);
         ListView<String> listView = new ListView<>();
@@ -285,15 +288,31 @@ public class ProductMenu extends Menu {
         }
 
         HBox hBox2 = new HBox(10);
+//        for (Product product : similarProducts) {
+//            Image image2 = null;
+//            try {
+//                FileInputStream inputStream = new FileInputStream(product.getPath());
+//                image2 = new Image(inputStream);
+//            } catch (Exception ignored) {
+//            }
+//            ImageView imageView2 = new ImageView(image);
+//            hBox2.getChildren().addAll(imageView2);
+//        }
+
         for (Product product : similarProducts) {
-            Image image2 = null;
+            ArrayList<String> names = new ArrayList<>();
             try {
-                FileInputStream inputStream = new FileInputStream(product.getPath());
-                image2 = new Image(inputStream);
+                names.add(product.getName());
             } catch (Exception ignored) {
             }
-            ImageView imageView2 = new ImageView(image);
-            hBox2.getChildren().addAll(imageView2);
+            String texts = "";
+
+            for (String s : names) {
+                texts += s + "#";
+            }
+            Label label = new Label();
+            label.setText(texts);
+            hBox2.getChildren().addAll(label);
         }
 
         pane.setBottom(hBox2);
@@ -303,7 +322,8 @@ public class ProductMenu extends Menu {
     }
 
     private void setCompareProductScene(Product product1) {
-        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+        String path = "C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+        // String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
 

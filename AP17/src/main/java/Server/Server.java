@@ -17,14 +17,14 @@ public class Server {
 
         ServerSocket serverSocket = null;
         Socket socket;
+//
+//        bankAPI = new BankAPI();
+//        bankAPI.run();
+//        System.out.println("Connection to Bank Initialized!");
 
-        bankAPI = new BankAPI();
-        bankAPI.run();
-        System.out.println("Connection to Bank Initialized!");
-
-        bankAPI.sendMessage("create_account Nona ghazizadeh ngh 1234 1234");
-        String response = bankAPI.getResponse();
-        System.out.println(response);
+//        bankAPI.sendMessage("create_account Nona ghazizadeh ngh 1234 1234");
+//        String response = bankAPI.getResponse();
+//        System.out.println(response);
 
 //        bankAPI.sendMessage("get_token a b");
 //        String response = bankAPI.getResponse();
@@ -32,7 +32,7 @@ public class Server {
 
 
         try {
-            serverSocket = new ServerSocket(55555);
+            serverSocket = new ServerSocket(8090);
             System.out.println("socket created");
         } catch (IOException e) {
             e.printStackTrace();

@@ -102,18 +102,14 @@ public class MainMenu extends Menu {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 mediaPlayer.play();
-                try {
-                    System.out.println("a");
+               /* try {
                     WriteIntoFile.writeIntoFile(new Gson());
-                    System.out.println("b");
+
                 } catch (IOException e) {
                     e.printStackTrace();
-                }
-                System.out.println("c");
+                }*/
                 Platform.exit();
-                System.out.println("d");
                 System.exit(0);
-                System.out.println("e");
             }
         });
     }
