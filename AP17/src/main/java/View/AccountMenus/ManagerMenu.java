@@ -14,6 +14,7 @@ import View.*;
 import View.Menu;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.*;
@@ -21,6 +22,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
@@ -32,8 +34,13 @@ import javafx.scene.text.Text;
 
 import java.io.FileInputStream;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ManagerMenu extends Menu {
+
+    int j = 0;
+    double orgCliskSceneX, orgReleaseSceneX;
     Category selectedCategory;
     DiscountCode selectedDiscountCode;
 
@@ -164,14 +171,81 @@ public class ManagerMenu extends Menu {
         pane.setLeft(vBox);
         VBox vBox1 = new VBox(10);
         vBox1.setAlignment(Pos.CENTER);
-        Image image = null;
+
+        List<String> list = new ArrayList<String>();
+
+        Button lbutton, rButton;
+        ImageView imageView;
+
+        HBox hBox = new HBox();
         try {
-            FileInputStream inputStream = new FileInputStream(CManagerController.getManager().getPath());
-            image = new Image(inputStream);
+            list.add(CManagerController.getManager().getPath());
+            list.add("C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Images\\avatar.png");
+
+            GridPane root = new GridPane();
+            root.setAlignment(Pos.CENTER);
+
+            lbutton = new Button("<");
+            rButton = new Button(">");
+
+            Image images[] = new Image[list.size()];
+            for (int i = 0; i < list.size(); i++) {
+                FileInputStream inputStream = new FileInputStream(list.get(i));
+                images[i] = new Image(inputStream);
+
+            }
+
+            imageView = new ImageView(images[j]);
+            imageView.setCursor(Cursor.CLOSED_HAND);
+
+            imageView.setOnMousePressed(circleOnMousePressedEventHandler);
+
+            imageView.setOnMouseReleased(e -> {
+                orgReleaseSceneX = e.getSceneX();
+                if (orgCliskSceneX > orgReleaseSceneX) {
+                    lbutton.fire();
+                } else {
+                    rButton.fire();
+                }
+            });
+
+            rButton.setOnAction(e -> {
+                j = j + 1;
+                if (j == list.size()) {
+                    j = 0;
+                }
+                imageView.setImage(images[j]);
+
+            });
+            lbutton.setOnAction(e -> {
+                j = j - 1;
+                if (j == 0 || j > list.size() + 1 || j == -1) {
+                    j = list.size() - 1;
+                }
+                imageView.setImage(images[j]);
+
+            });
+
+            imageView.setFitHeight(100);
+            imageView.setFitWidth(300);
+
+            hBox.setSpacing(15);
+            hBox.setAlignment(Pos.CENTER);
+            hBox.getChildren().addAll(lbutton, imageView, rButton);
         } catch (Exception e) {
-            System.out.println("file not found");
+            System.out.println("e");
+            ;
         }
-        ImageView imageView = new ImageView(image);
+
+
+//        Image image = null;
+//        try {
+//            FileInputStream inputStream = new FileInputStream(CManagerController.getManager().getPath());
+//            image = new Image(inputStream);
+//        } catch (Exception e) {
+//            System.out.println("file not found");
+//        }
+//        ImageView imageView = new ImageView(image);
         Text title = new Text("MANAGER");
         Text info = new Text();
         try {
@@ -191,13 +265,22 @@ public class ManagerMenu extends Menu {
 //        email.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
 //        phoneNumber.setFont(Font.font("verdana", FontPosture.REGULAR, 10));
 //        vBox1.getChildren().addAll(imageView, title, username, firstName, lastName, email, phoneNumber);
-        vBox1.getChildren().addAll(imageView, title, info);
+//        vBox1.getChildren().addAll(imageView, title, info);
+        vBox1.getChildren().addAll(hBox, title, info);
 
         pane.setCenter(vBox1);
         pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
         Scene scene = new Scene(pane, 600, 600);
         Menu.window.setScene(scene);
     }
+
+    EventHandler<MouseEvent> circleOnMousePressedEventHandler = new EventHandler<MouseEvent>() {
+
+        @Override
+        public void handle(MouseEvent t) {
+            orgCliskSceneX = t.getSceneX();
+        }
+    };
 
     public void addActionForMainButtons(MediaPlayer mediaPlayer, Button accountsButton, Button productsButton, Button discountButton, Button logoutButton) {
         accountsButton.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {

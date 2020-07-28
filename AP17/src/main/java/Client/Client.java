@@ -15,7 +15,7 @@ public class Client {
 
     public static void run() throws IOException {
         System.out.println("client is running!");
-        clientSocket = new Socket("localhost", 3040);
+        clientSocket = new Socket("0.tcp.ngrok.io", 11144);
 
 //        dataInputStream = new DataInputStream(new BufferedInputStream(clientSocket.getInputStream()));
         dataInputStream = new DataInputStream(new BufferedInputStream(clientSocket.getInputStream()));
