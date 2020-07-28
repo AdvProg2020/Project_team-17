@@ -24,27 +24,14 @@ public class CRegisterAndLoginController {
 
         Client.sendObject(dataToRegister);
         try {
-            System.out.println("b");
             Object response = Client.receiveObject();
-            System.out.println("a");
             String responseString = (String) response;
-            System.out.println("c");
             if (responseString.equals("Done")) {
-                System.out.println("d");
                 String[] split = dataToRegister.split(",");
-                System.out.println("e");
-                Manager manager = new Manager(split[0], split[1], split[2], split[3], split[4], split[5], split[6]);
-//                Server.bankAPI.sendMessage("create_account " + split[1] + " " + split[2] + " " + split[0] + " " +
-//                        split[5] + " " + split[5]);
-//                BankAccount bankAccount = BankAccount.getBankAccountWithUsername(split[0]);
-//                System.out.println(bankAccount);
-//                manager.setBankAccount(bankAccount);
-                System.out.println("f");
+                new Manager(split[0], split[1], split[2], split[3], split[4], split[5], split[6]);
             }
         } catch (Exception e) {
-            System.out.println("in");
             System.out.println(e.getMessage());
-            System.out.println("ba");
         }
     }
 

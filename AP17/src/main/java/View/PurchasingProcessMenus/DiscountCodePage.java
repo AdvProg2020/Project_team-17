@@ -103,7 +103,7 @@ public class DiscountCodePage extends Menu {
                 try {
                     CustomerAbilitiesManager.checkDiscountCodeValidation(textField.getText());
                     discountCode = textField.getText();
-                    DiscountCode.getDiscountCodeWithCode(textField.getText()).setUsageOfDiscountCode(RegisterCustomerMenu.getCurrentCustomer());
+                    DiscountCode.getDiscountCodeWithCode(textField.getText()).setUsageOfDiscountCode(CCustomerController.getCustomer());
                     handlePaymentPage();
                 } catch (Exception e) {
                     notify.setStyle("-fx-text-fill: #ff4f59");

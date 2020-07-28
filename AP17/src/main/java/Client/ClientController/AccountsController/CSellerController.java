@@ -1,12 +1,9 @@
 package Client.ClientController.AccountsController;
 
 import Client.Client;
+import Models.*;
 import Models.Accounts.Seller;
-import Models.Auction;
-import Models.Category;
-import Models.Discount;
 import Models.Logs.SellLog;
-import Models.Product;
 
 import Models.Request.*;
 import Server.ServerController.DataBaseForServer;
@@ -187,8 +184,7 @@ public class CSellerController {
             String responseString = (String) response;
             if (responseString.equals("Done")) {
                 String[] split = data.split(",");
-                System.out.println(DataBaseForServer.getAllCategories());
-                System.out.println(DataBaseForServer.getCategory(split[4]));
+
                 Product product = new Product(split[0], split[1], split[2],
                         Double.parseDouble(split[3]), getSeller(),
                         DataBaseForServer.getCategory(split[4]), split[5], 0, split[6], split[7]);

@@ -102,8 +102,8 @@ public class PaymentPage extends Menu {
             public void handle(MouseEvent event) {
                 mediaPlayer.play();
                 try {
-                    CartManager.changeProductsState(RegisterCustomerMenu.getCurrentCustomer());
-                    notify.setText(CustomerAbilitiesManager.finalPay(RegisterCustomerMenu.getCurrentCustomer(), DiscountCodePage.getDiscountCode()));
+                    CartManager.changeProductsState(CCustomerController.getCustomer());
+                    notify.setText(CustomerAbilitiesManager.finalPay(CCustomerController.getCustomer(), DiscountCodePage.getDiscountCode()));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

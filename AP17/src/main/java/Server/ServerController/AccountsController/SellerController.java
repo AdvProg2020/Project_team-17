@@ -145,12 +145,12 @@ public class SellerController {
         String dataToRegister = ClientHandler.receiveMessage();
         String[] split = dataToRegister.split("\\s");
 
-        if (DataBaseForServer.getProduct(split[5]) != null) {
+        if (DataBaseForServer.getProduct(split[4]) != null) {
             ClientHandler.sendObject(new Exception("there is a product with this id"));
         } else {
             ClientHandler.sendObject("Done");
             Discount discount = new Discount(split[0], LocalDate.parse(split[1]), LocalDate.parse(split[2]),
-                    Double.parseDouble(split[4]), DataBaseForServer.getProduct(split[5]));
+                    Double.parseDouble(split[3]), DataBaseForServer.getProduct(split[4]));
             DataBaseForServer.addDiscount(discount);
             DataBaseForServer.addRequest(new AddOffRequest(getSeller(), discount));
         }
