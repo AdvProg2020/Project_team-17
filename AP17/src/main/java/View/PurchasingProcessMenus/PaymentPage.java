@@ -44,7 +44,8 @@ public class PaymentPage extends Menu {
     }
 
     public void setPaymentScene() {
-        String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+        String path = "C:\\Users\\kian\\IdeaProjects\\Project_team-17\\project_AP\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\Project_team-17\\AP17\\src\\main\\java\\Sounds\\button.mp3";
+        // String path = "C:\\Users\\UX434FL\\IdeaProjects\\project\\AP17\\src\\main\\java\\Sounds\\button.mp3";
         Media media = new Media(Paths.get(path).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
 
@@ -81,17 +82,20 @@ public class PaymentPage extends Menu {
         title.setFont(Font.font("calibri", FontWeight.BOLD, FontPosture.REGULAR, 32));
         VBox vBox1 = new VBox(10);
         Text totalPrice;
-        if (DiscountCodePage.getCodeOfDiscountCode() != null) {
-//            totalPrice = new Text("total price with your discount code is going to be:" + "\n" +
-//                    CartManager.showTotalPriceOfCartIncludingDiscountCode(RegisterCustomerMenu.getCurrentCustomer(), DiscountCodePage.getDiscountCode()));
+        if (DiscountCodePage.getDiscountCode() == null) {
             totalPrice = new Text("total price with your discount code is going to be:" + "\n" +
-                    CCartController.showTotalPriceWithDiscountCode(DiscountCodePage.getDiscountCode().getDiscountCode()));
-        } else {
+                    CartManager.showTotalPriceOfCartIncludingDiscountCode(CCustomerController.getCustomer(), DiscountCodePage.getDiscountCode()));
+
+
 //            totalPrice = new Text("total price is going to be:" + "\n" +
-//                    CartManager.showTotalPriceOfCart(RegisterCustomerMenu.getCurrentCustomer()));
+//                    CCartController.showTotalPrice());
+
+        } else {
             totalPrice = new Text("total price is going to be:" + "\n" +
-                    CCartController.showTotalPrice());
-            totalPrice.setFont(Font.loadFont("file:src/main/java/Fonts/Titillium-Semibold.otf", 28));
+                    CartManager.showTotalPriceOfCart(CCustomerController.getCustomer()));
+//            totalPrice = new Text("total price with your discount code is going to be:" + "\n" +
+//                    CCartController.showTotalPriceWithDiscountCode(DiscountCodePage.getDiscountCode().getDiscountCode()));
+            //totalPrice.setFont(Font.loadFont("file:src/main/java/Fonts/Titillium-Semibold.otf", 28));
         }
 
         Button done = new Button("Done");

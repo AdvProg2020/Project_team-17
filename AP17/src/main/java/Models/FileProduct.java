@@ -10,6 +10,8 @@ public class FileProduct extends Product {
     public FileProduct(String productId, String name, String companyName, double price, Seller seller, Category category, String explanation, double averageScore, String productsSpecialFeature, String path, File file) {
         super(productId, name, companyName, price, seller, category, explanation, averageScore, productsSpecialFeature, path);
         this.file = file;
+        /*file.setWritable(true);
+        file.*/
     }
 
     public File getFile() {
