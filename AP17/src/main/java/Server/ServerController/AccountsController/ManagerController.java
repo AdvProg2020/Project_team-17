@@ -155,7 +155,7 @@ public class ManagerController {
         if (DataBaseForServer.getDiscountCode(split[0]) != null) {
             ClientHandler.sendObject(new Exception("there is a discount code with this code"));
         } else {
-            if (DataBaseForServer.getDiscountCode(split[6]) == null) {
+            if (Customer.getCustomerByName(split[6]) == null) {
                 ClientHandler.sendObject(new Exception("there isn't any customer with this username"));
             } else {
                 ClientHandler.sendObject("Done");

@@ -278,13 +278,14 @@ public class CSellerController {
         String func = "Add Auction";
         Client.sendMessage(func);
 
+        Client.sendObject(data);
+
         try {
             Object response = Client.receiveObject();
             String responseString = (String) response;
             if (responseString.equals("Done")) {
                 String[] split = data.split("\\s");
                 new Auction(DataBaseForServer.getProduct(split[0]), new SimpleDateFormat("yyyy-MM-dd_HH:mm").parse(split[1]));
-                //.start auction
             }
         } catch (Exception e) {
             throw new Exception(e.getMessage());

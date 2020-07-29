@@ -158,7 +158,7 @@ public class CustomerMenu extends Menu {
                 setEditScene();
             }
         });
-        vBox.getChildren().addAll(backButton, viewOrdersButton, cartButton, viewListOfDiscountCodes, editButton, chargeWallet);
+        vBox.getChildren().addAll(backButton, viewOrdersButton, cartButton, viewListOfDiscountCodes, editButton, chargeWallet,joinAuction);
         pane.setLeft(vBox);
         VBox vBox1 = new VBox(10);
         vBox1.setAlignment(Pos.CENTER);

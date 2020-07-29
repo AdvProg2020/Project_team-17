@@ -2,8 +2,6 @@ package Models.Bank;
 
 import java.io.IOException;
 
-import static Server.Server.bankAPI;
-
 public class BankClient {
 
     public static void main(String[] args) throws IOException {

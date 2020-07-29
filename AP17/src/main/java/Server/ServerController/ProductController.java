@@ -1,6 +1,5 @@
 package Server.ServerController;
 
-import Client.Client;
 import Controller.ProductManager;
 import Models.Product;
 import Server.ClientHandler;

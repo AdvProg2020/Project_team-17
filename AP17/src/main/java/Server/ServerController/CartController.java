@@ -1,6 +1,5 @@
 package Server.ServerController;
 
-import Client.Client;
 import Models.Cart;
 import Models.DiscountCode;
 import Models.Product;

@@ -9,8 +9,6 @@ import Models.Accounts.Customer;
 import Models.Accounts.Manager;
 import Models.Accounts.Seller;
 import Models.Accounts.Supporter;
-import Models.Bank.BankAccount;
-import Server.Server;
 import Server.ServerController.AccountsController.CustomerController;
 import Server.ServerController.AccountsController.ManagerController;
 import Server.ServerController.AccountsController.SellerController;

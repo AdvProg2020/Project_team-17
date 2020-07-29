@@ -1,8 +1,6 @@
 package Server.ServerController.AccountsController;
 
-import Client.Client;
 import Models.*;
-import Models.Accounts.Manager;
 import Models.Accounts.Seller;
 import Models.Logs.SellLog;
 import Models.Request.*;
@@ -183,10 +181,10 @@ public class SellerController {
     }
 
     public static void addAuction() throws ParseException {
-        String dataToRegister = ClientHandler.receiveMessage();
+        String dataToRegister = (String) ClientHandler.receiveObject();
         String[] split = dataToRegister.split("\\s");
 
-        if (DataBaseForServer.getProduct(split[0]) != null) {
+        if (Product.getProductWithId(split[0]) == null) {
             ClientHandler.sendObject(new Exception("there isn't any product with this id"));
         } else {
             ClientHandler.sendObject("Done");

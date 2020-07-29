@@ -1,7 +1,6 @@
 package Server;
 
 import Models.Bank.BankAPI;
-import Models.Bank.BankClient;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -32,7 +31,7 @@ public class Server {
 
 
         try {
-            serverSocket = new ServerSocket(55555);
+            serverSocket = new ServerSocket(8080);
             System.out.println("socket created");
         } catch (IOException e) {
             e.printStackTrace();

@@ -159,18 +159,18 @@ public class ProductMenu extends Menu {
             }
         });
 
-
-        imageView.setViewport(new Rectangle2D(OFFSET_X, OFFSET_Y, WIDTH, HEIGHT));
-
-        final Animation animation = new SpriteAnimation(
-                imageView,
-                Duration.millis(1000),
-                COUNT, COLUMNS,
-                OFFSET_X, OFFSET_Y,
-                WIDTH, HEIGHT
-        );
-        animation.setCycleCount(Animation.INDEFINITE);
-        animation.play();
+//
+//        imageView.setViewport(new Rectangle2D(OFFSET_X, OFFSET_Y, WIDTH, HEIGHT));
+//
+//        final Animation animation = new SpriteAnimation(
+//                imageView,
+//                Duration.millis(1000),
+//                COUNT, COLUMNS,
+//                OFFSET_X, OFFSET_Y,
+//                WIDTH, HEIGHT
+//        );
+//        animation.setCycleCount(Animation.INDEFINITE);
+//        animation.play();
 
 
         Text name = new Text("Product name: " + product.getName());
@@ -180,7 +180,7 @@ public class ProductMenu extends Menu {
         Text explanation = new Text("Explanation: " + product.getExplanation());
         Text feature = new Text("Feature: " + product.getProductsSpecialFeature());
         Text score = new Text("Product Score: " + product.getAverageScore());
-        Text seller = new Text("Seller: " + product.getSeller());
+//        Text seller = new Text("Seller: " + product.getSeller());
         TextField textField = new TextField();
         textField.setPromptText("enter the path");
         Button button = new Button("show video");
@@ -195,7 +195,7 @@ public class ProductMenu extends Menu {
 
 
         VBox info = new VBox(5);
-        info.getChildren().addAll(name, companyName, category, price, explanation, feature, score, seller, textField, button);
+        info.getChildren().addAll(name, companyName, category, price, explanation, feature, score, textField, button);
         HBox hBox = new HBox(10);
         VBox vBox = new VBox(5);
         ListView<String> listView = new ListView<>();

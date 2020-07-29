@@ -7,8 +7,10 @@ import java.net.Socket;
 
 public class BankAPI {
 
-    public final int PORT = 2020;
-    public final String IP = "127.0.0.1";
+//    public final int PORT = 17876;
+    public final int PORT = 8080;
+//    public final String IP = "0.tcp.ngrok.io";
+    public final String IP = "localhost";
     public final int SHOP_SERVER_PORT = 8000;
 
     private DataOutputStream outputStream;

@@ -1,6 +1,5 @@
 package Server.ServerController.AccountsController;
 
-import Models.Accounts.Manager;
 import Models.Accounts.Supporter;
 import Server.ClientHandler;
 import Server.ServerController.DataBaseForServer;

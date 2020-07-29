@@ -14,7 +14,7 @@ public class BankServer {
     public static void main(String[] args) throws IOException {
         tokens = new HashMap<>();
         expiredTokens = new ArrayList<>();
-        ServerSocket serverSocket = new ServerSocket(2020);
+        ServerSocket serverSocket = new ServerSocket(8080);
         System.out.println("socket created");
         while (true) {
             Socket socket = serverSocket.accept();

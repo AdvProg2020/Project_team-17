@@ -406,7 +406,7 @@ public class SellerMenu extends Menu {
             }
         });
 
-        vBox.getChildren().addAll(backButton, title, addAuction, notify);
+        vBox.getChildren().addAll(backButton, title, productID, date, addAuction, notify);
         vBox.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");
         pane.setCenter(vBox);
         pane.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#e0eafc , #cfdef3)");

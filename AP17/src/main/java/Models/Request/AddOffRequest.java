@@ -1,6 +1,5 @@
 package Models.Request;
 
-import Models.Accounts.Manager;
 import Models.Accounts.Seller;
 import Models.Discount;
 import Models.Enums.DiscountEnum;
